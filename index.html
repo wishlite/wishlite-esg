@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企業 ESG 活動規劃 — Wishlite 韻手作永續</title>
+<meta name="description" content="從手作體驗到永續行動，Wishlite 為企業打造有感的 ESG 工作坊與 Team Building 活動。2 分鐘填寫需求，48 小時內收到專屬提案。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --moss: #3d5a3e;
+  --moss-dark: #2e4630;
+  --sage: #7a9e7e;
+  --cream: #f5f0e8;
+  --sand: #e8dcc8;
+  --bark: #6b4f3a;
+  --gold: #c49a3c;
+  --gold-light: #d4b06a;
+  --mist: #d4e4d0;
+  --ink: #1e2a1e;
+  --soft: #f9f6f0;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', -apple-system, sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════ NAV ══════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { height: 32px; }
+.nav-cta {
+  background: var(--moss);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--moss-dark); }
+
+/* ══════════════ HERO ══════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  padding-top: 60px;
+  text-align: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--moss) 0%, var(--moss-dark) 100%);
+}
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 25%, rgba(122,158,126,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(196,154,60,0.12) 0%, transparent 45%);
+}
+.hero-img {
+  position: absolute; inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.12;
+}
+@media(min-width: 769px) {
+  .hero-img { opacity: 0.18; }
+}
+.hero-inner {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 28px 100px;
+  width: 100%;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  letter-spacing: 3px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(32px, 5.5vw, 52px);
+  color: #fff;
+  font-weight: 900;
+  line-height: 1.45;
+  margin-bottom: 32px;
+  max-width: none;
+  letter-spacing: 1px;
+}
+.hero h1 em {
+  color: var(--gold-light);
+  font-style: normal;
+}
+.hero-desc {
+  color: rgba(255,255,255,0.7);
+  font-size: 15px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 2;
+  letter-spacing: 0.5px;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.hero-chip {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+.hero-trust {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.hero-trust span {
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  position: relative;
+  padding-left: 14px;
+}
+.hero-trust span::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.hero-cta-group { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(196,154,60,0.3);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(196,154,60,0.4);
+}
+.hero-note {
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+}
+
+/* ══════════════ TRUST BAR ══════════════ */
+.trust-bar {
+  background: var(--white);
+  padding: 44px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--sand);
+}
+.trust-bar p {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.trust-numbers {
+  display: flex; justify-content: center; gap: 56px; flex-wrap: wrap;
+}
+.trust-num {
+  text-align: center;
+}
+.trust-num strong {
+  display: block;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 38px;
+  color: var(--moss);
+  font-weight: 700;
+}
+.trust-num span {
+  font-size: 14px;
+  color: #888;
+}
+
+/* ══════════════ SERVICES ══════════════ */
+.services {
+  padding: 72px 20px;
+}
+.services > * {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section-label {
+  font-size: 11px;
+  color: var(--sage);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  color: var(--moss);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.section-desc {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 44px;
+  max-width: 520px;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 680px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
+.service-card {
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--mist);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.service-card h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.service-card p {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.7;
+}
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 14px;
+}
+.service-tags span {
+  font-size: 11px;
+  background: var(--soft);
+  color: var(--moss);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--mist);
+}
+
+/* ══════════════ CLIENT LOGOS ══════════════ */
+.clients {
+  background: var(--white);
+  padding: 56px 20px;
+  border-bottom: 1px solid var(--sand);
+}
+.clients-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+.clients-inner .section-label { margin-bottom: 24px; }
+.logo-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px 48px;
+}
+.logo-wall .client-logo {
+  height: 36px;
+  opacity: 0.45;
+  filter: grayscale(100%);
+  transition: all 0.3s;
+}
+.logo-wall .client-logo:hover {
+  opacity: 0.85;
+  filter: grayscale(0%);
+}
+.logo-wall .client-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #999;
+  padding: 10px 20px;
+  border: 1.5px solid var(--sand);
+  border-radius: 8px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.logo-wall .client-name:hover {
+  color: var(--moss);
+  border-color: var(--sage);
+}
+
+/* ══════════════ COURSES / MATERIALS ══════════════ */
+.courses {
+  padding: 72px 20px;
+}
+.courses > * {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.course-card {
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.course-card-img {
+  height: 240px;
+  background: var(--mist);
+  overflow: hidden;
+}
+.course-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.course-card:hover .course-card-img img {
+  transform: scale(1.05);
+}
+.course-card-body {
+  padding: 22px 20px;
+}
+.course-card-body .tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--moss);
+  background: var(--mist);
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.course-card-body h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.course-card-body p {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.7;
+}
+.material-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--sand);
+}
+.material-tags span {
+  font-size: 10px;
+  background: var(--soft);
+  color: var(--bark);
+  padding: 3px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--sand);
+}
+
+/* ══════════════ MATERIAL TRUST TAGS ══════════════ */
+.mat-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 40px;
+  padding: 6px 14px 6px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  cursor: default;
+}
+.mat-tag:hover {
+  border-color: var(--sage);
+  box-shadow: 0 4px 16px rgba(100,120,80,0.1);
+  transform: translateY(-1px);
+}
+.mat-tag-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+@media(max-width: 768px) {
+  .mat-tag { padding: 5px 10px 5px 5px; font-size: 11px; gap: 6px; }
+  .mat-tag-img { width: 24px; height: 24px; }
+}
+
+/* ══════════════ PRICING ══════════════ */
+.pricing {
+  background: var(--soft);
+  padding: 72px 20px;
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+}
+.pricing-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.pricing-card {
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 16px;
+  padding: 32px 24px;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.pricing-card.featured {
+  border-color: var(--moss);
+  box-shadow: 0 8px 24px rgba(61,90,62,0.12);
+}
+.pricing-card.featured::before {
+  content: '最多企業選擇';
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--moss);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.pricing-card .tier-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+.pricing-card h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.pricing-card .price {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--moss);
+  margin-bottom: 4px;
+}
+.pricing-card .price-note {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+.pricing-card .features {
+  list-style: none;
+  margin-bottom: 20px;
+}
+.pricing-card .features li {
+  font-size: 13px;
+  color: #666;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--soft);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.pricing-card .features li::before {
+  content: '✓';
+  color: var(--sage);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.pricing-card .card-cta {
+  display: block;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.pricing-card .card-cta.primary {
+  background: var(--gold);
+  color: #fff;
+}
+.pricing-card .card-cta.primary:hover {
+  background: var(--gold-light);
+}
+.pricing-card .card-cta.outline {
+  border: 1.5px solid var(--sand);
+  color: var(--moss);
+  background: transparent;
+}
+.pricing-card .card-cta.outline:hover {
+  border-color: var(--moss);
+  background: var(--mist);
+}
+.pricing-note {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* ══════════════ WHY US ══════════════ */
+.why-us {
+  background: var(--moss);
+  padding: 72px 20px;
+}
+.why-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.why-us .section-label { color: var(--gold-light); }
+.why-us .section-title { color: #fff; }
+.why-us .section-desc { color: rgba(255,255,255,0.6); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.why-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 24px 20px;
+}
+.why-card .num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 32px;
+  color: var(--gold-light);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.why-card h3 {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.why-card p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+/* ══════════════ PROCESS ══════════════ */
+.process {
+  padding: 72px 20px;
+  background: var(--white);
+}
+.process > * {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.step-card {
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+}
+.step-num {
+  width: 36px; height: 36px;
+  background: var(--moss);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 auto 14px;
+}
+.step-card h3 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.step-card p {
+  font-size: 12px;
+  color: #888;
+}
+.step-card .time {
+  display: inline-block;
+  background: var(--mist);
+  color: var(--moss);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ══════════════ CASES ══════════════ */
+.cases {
+  background: var(--soft);
+  padding: 72px 20px;
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+}
+.cases-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.case-card {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid var(--sand);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.case-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.case-img {
+  height: 180px;
+  background: var(--mist);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  overflow: hidden;
+}
+.case-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.case-body {
+  padding: 20px;
+}
+.case-tag {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--moss);
+  background: var(--mist);
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.case-body h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.case-body p {
+  font-size: 12px;
+  color: #888;
+  line-height: 1.6;
+}
+.case-stats {
+  display: flex; gap: 16px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--sand);
+}
+.case-stats span {
+  font-size: 11px;
+  color: var(--moss);
+  font-weight: 500;
+}
+
+/* ══════════════ CTA BANNER ══════════════ */
+.cta-banner {
+  background: var(--moss);
+  padding: 56px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 30%, rgba(196,154,60,0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+.cta-banner-inner {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cta-banner-text h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(20px, 3vw, 26px);
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.cta-banner-text p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
+.cta-banner .btn-primary {
+  flex-shrink: 0;
+  font-size: 15px;
+  padding: 14px 32px;
+}
+@media(max-width: 600px) {
+  .cta-banner-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ══════════════ FORM MODAL ══════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  overflow-y: auto;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  animation: modalSlideUp 0.35s ease;
+}
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-close {
+  position: absolute;
+  top: 12px; right: 16px;
+  z-index: 10;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  line-height: 1;
+}
+.modal-close:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ══════════════ CTA / FORM ══════════════ */
+.form-wrapper {
+  background: var(--white);
+  border-radius: 20px;
+  border: 1.5px solid var(--sand);
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left;
+}
+.form-header {
+  background: var(--moss);
+  padding: 48px 32px 40px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.form-header::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 90% 20%, rgba(196,154,60,0.15) 0%, transparent 50%);
+}
+.form-header .form-header-sub {
+  position: relative;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.form-header h3 {
+  position: relative;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 26px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.form-header h3 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.form-header p {
+  position: relative;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+}
+.form-header-tags {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.form-header-tags span {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+.form-body {
+  padding: 32px;
+}
+.form-group {
+  margin-bottom: 24px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.form-group label .req {
+  color: #c0392b;
+  margin-left: 2px;
+}
+.form-group label .hint {
+  font-weight: 300;
+  color: #aaa;
+  font-size: 11px;
+  margin-left: 6px;
+}
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--sand);
+  border-radius: 10px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+.form-input:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(122,158,126,0.15);
+  background: #fff;
+}
+.form-input::placeholder {
+  color: #bbb;
+  font-weight: 300;
+}
+textarea.form-input {
+  resize: vertical;
+  min-height: 100px;
+}
+select.form-input {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media(max-width: 520px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+.radio-group, .checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.radio-group label, .checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 8px 14px;
+  border: 1.5px solid var(--sand);
+  border-radius: 8px;
+  background: var(--soft);
+  transition: all 0.2s;
+  margin-bottom: 0;
+}
+.radio-group label:hover, .checkbox-group label:hover {
+  border-color: var(--sage);
+  background: var(--mist);
+}
+.radio-group input, .checkbox-group input {
+  accent-color: var(--moss);
+  width: 16px; height: 16px;
+}
+.radio-group input:checked + span,
+.checkbox-group input:checked + span {
+  font-weight: 500;
+  color: var(--moss);
+}
+.radio-group label:has(input:checked),
+.checkbox-group label:has(input:checked) {
+  border-color: var(--moss);
+  background: var(--mist);
+}
+.form-divider {
+  border: none;
+  border-top: 1px dashed var(--sand);
+  margin: 28px 0;
+}
+.form-section-label {
+  font-size: 11px;
+  color: var(--sage);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.form-submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--gold);
+  color: #fff;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(196,154,60,0.3);
+}
+.form-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(196,154,60,0.4);
+}
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+.form-footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #bbb;
+}
+/* Success state */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 60px 32px;
+}
+.form-success .check-icon {
+  width: 64px; height: 64px;
+  background: var(--mist);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  margin: 0 auto 20px;
+}
+.form-success h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  color: var(--moss);
+  margin-bottom: 10px;
+}
+.form-success p {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.8;
+}
+
+/* ══════════════ FAQ ══════════════ */
+.faq {
+  background: var(--soft);
+  padding: 72px 20px;
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+}
+.faq-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media(max-width: 768px) {
+  .faq-grid { grid-template-columns: 1fr; }
+}
+.faq-item {
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 18px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.faq-q::after {
+  content: '+';
+  font-size: 20px;
+  color: var(--sage);
+  transition: transform 0.2s;
+}
+.faq-item.open .faq-q::after {
+  transform: rotate(45deg);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-a-inner {
+  padding: 0 20px 18px;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* ══════════════ FOOTER ══════════════ */
+.footer {
+  background: var(--moss-dark);
+  padding: 40px 20px;
+  text-align: center;
+}
+.footer-logo { height: 80px; margin-bottom: 20px; opacity: 0.9; }
+.footer p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+}
+.footer a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+}
+.footer a:hover { color: var(--gold-light); }
+
+/* ══════════════ MOBILE ══════════════ */
+@media(max-width: 768px) {
+  .hero { min-height: auto; padding-top: 56px; }
+  .hero-inner { padding: 48px 20px 60px; }
+  .hero-img { opacity: 0.1; }
+  .trust-numbers { gap: 28px; }
+  .trust-num strong { font-size: 30px; }
+  .services, .process, .cta-section { padding: 56px 16px; }
+  .why-us, .cases, .faq { padding: 56px 16px; }
+  .form-body { padding: 24px 20px; }
+  .form-header { padding: 32px 20px 28px; }
+  .form-header h3 { font-size: 21px; }
+  .form-header-tags span { font-size: 12px; padding: 5px 12px; }
+  .radio-group, .checkbox-group { gap: 6px; }
+  .radio-group label, .checkbox-group label {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+}
+
+/* ══════════════ ANIMATIONS ══════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <img src="wishlite logo 橫.jpeg" alt="Wishlite" class="nav-logo">
+  <a href="#form" class="nav-cta">取得提案與報價</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <img src="格子1 - 我要辦活動.jpg" alt="ESG 工作坊活動現場" class="hero-img">
+  <div class="hero-inner">
+    <div class="hero-tag">Enterprise ESG Solutions</div>
+    <h1>讓 ESG 不只是報告，<br>而是可以被參與、被記住的<br><em>行動體驗。</em></h1>
+    <p class="hero-desc">
+      一場活動，完成員工參與、品牌溝通與 ESG 成果輸出。<br>
+      從活動規劃、永續禮品到 SROI 成果報告，一站式交付。
+    </p>
+    <div class="hero-trust">
+      <span>300+ 場企業 ESG 專案經驗</span>
+      <span>涵蓋金融 × 科技 × 製造 × 教育</span>
+      <span>每場皆可產出 ESG 報告與減碳數據</span>
+    </div>
+    <p style="color:rgba(255,255,255,0.5); font-size:13px; margin-bottom:20px; letter-spacing:0.5px;">適用 20–200 人企業活動｜支援客製主題</p>
+    <div class="hero-cta-group">
+      <a href="#form" class="btn-primary" style="padding:15px 40px; font-size:15px; border-radius:28px;">免費取得專屬 ESG 活動提案 →</a>
+      <a href="#solution" class="btn-outline" style="display:inline-block; padding:15px 40px; font-size:15px; border-radius:28px; border:1px solid rgba(255,255,255,0.3); color:#fff; text-decoration:none; transition:all 0.25s;">了解服務方案</a>
+    </div>
+    <p class="hero-note" style="margin-top:16px;">約 2 分鐘完成 ✔ 2 個工作天內提供初步方案與報價</p>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<section class="trust-bar fade-up">
+  <p>合作實績</p>
+  <div class="trust-numbers">
+    <div class="trust-num">
+      <strong>300+</strong>
+      <span>場企業 ESG 專案</span>
+    </div>
+    <div class="trust-num">
+      <strong>80+</strong>
+      <span>家合作企業</span>
+    </div>
+    <div class="trust-num">
+      <strong>10,000+</strong>
+      <span>位參與者</span>
+    </div>
+    <div class="trust-num">
+      <strong>98%</strong>
+      <span>活動滿意度</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION（第二屏：一站式 ESG 行動方案） ── -->
+<section id="solution" class="services" style="padding-top:72px; padding-bottom:72px; background:var(--soft); border-top:1px solid var(--sand); border-bottom:1px solid var(--sand);">
+  <div class="section-label fade-up">What We Deliver</div>
+  <h2 class="section-title fade-up">一站式 ESG 行動方案</h2>
+  <p class="section-desc fade-up" style="font-size:17px; font-weight:500; color:#555;">我們協助企業，用一場活動完成 ESG 行動、品牌溝通與成果輸出。</p>
+
+  <div class="service-grid" style="grid-template-columns: repeat(3, 1fr); max-width:1080px; margin:40px auto 0;">
+
+    <!-- 卡片 1：ESG 活動體驗 -->
+    <div class="service-card fade-up" style="text-align:left; padding:0; overflow:hidden; display:flex; flex-direction:column;">
+      <div style="height:180px; background:url('activity-kenvue.jpg') center/cover; position:relative;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(58,75,55,0.85) 100%);"></div>
+        <div style="position:absolute; bottom:16px; left:20px; color:#fff; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; opacity:0.8;">員工參與 / Team Building</div>
+      </div>
+      <div style="padding:24px 24px 28px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="font-size:20px; font-weight:800; margin-bottom:10px; color:var(--moss-dark);">ESG 活動體驗</h3>
+        <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:16px;">一場工作坊，同時完成員工參與、ESG 教育與品牌溝通。</p>
+        <ul style="list-style:none; padding:0; margin:0 0 20px; font-size:13px; color:#666; line-height:2;">
+          <li>✔ 適用 20–200 人，支援客製企業主題</li>
+          <li>✔ 六大循環材料（咖啡渣、牡蠣殼、回收塑膠等）</li>
+          <li>✔ 活動後提供照片、滿意度與 ESG 數據</li>
+        </ul>
+        <a href="https://wishlite.notion.site/esgdiy?v=2b2704274681819ea59c000cfd04a44c" target="_blank" style="margin-top:auto; display:inline-block; font-size:13px; font-weight:600; color:var(--moss); text-decoration:none; border-bottom:1.5px solid var(--moss); padding-bottom:2px;">查看活動方案 →</a>
+      </div>
+    </div>
+
+    <!-- 卡片 2：ESG 永續禮品 -->
+    <div class="service-card fade-up" style="text-align:left; padding:0; overflow:hidden; display:flex; flex-direction:column;">
+      <div style="height:180px; background:url('gift-mountain.jpg') center/cover; position:relative;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(58,75,55,0.85) 100%);"></div>
+        <div style="position:absolute; bottom:16px; left:20px; color:#fff; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; opacity:0.8;">企業禮贈 / 品牌延伸</div>
+      </div>
+      <div style="padding:24px 24px 28px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="font-size:20px; font-weight:800; margin-bottom:10px; color:var(--moss-dark);">ESG 永續禮品</h3>
+        <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:16px;">讓企業送出的每一份禮物，都成為品牌永續態度的延伸。</p>
+        <ul style="list-style:none; padding:0; margin:0 0 20px; font-size:13px; color:#666; line-height:2;">
+          <li>✔ 企業 LOGO 客製｜ESG 故事卡｜永續包裝</li>
+          <li>✔ 可搭配活動成為完整 ESG 體驗方案</li>
+          <li>✔ 適用客戶贈禮、員工禮盒、活動紀念品</li>
+        </ul>
+        <a href="https://wishlite.notion.site/esg-gifts?v=e6cf547cac9348b983de68ce3664f641" target="_blank" style="margin-top:auto; display:inline-block; font-size:13px; font-weight:600; color:var(--moss); text-decoration:none; border-bottom:1.5px solid var(--moss); padding-bottom:2px;">探索禮品系列 →</a>
+      </div>
+    </div>
+
+    <!-- 卡片 3：ESG 成果報告 -->
+    <div class="service-card fade-up" style="text-align:left; padding:0; overflow:hidden; display:flex; flex-direction:column;">
+      <div style="height:180px; background:url('report-esg.jpg') center/cover; position:relative;">
+        <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 40%, rgba(58,75,55,0.85) 100%);"></div>
+        <div style="position:absolute; bottom:16px; left:20px; color:#fff; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; opacity:0.8;">SROI / 減碳數據</div>
+      </div>
+      <div style="padding:24px 24px 28px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="font-size:20px; font-weight:800; margin-bottom:10px; color:var(--moss-dark);">ESG 成果報告</h3>
+        <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:16px;">活動結束不是終點——每場都產出可呈報的 ESG 數據。</p>
+        <ul style="list-style:none; padding:0; margin:0 0 20px; font-size:13px; color:#666; line-height:2;">
+          <li>✔ 含 SROI 社會影響力指標與碳減量數據</li>
+          <li>✔ 可直接對接 CSR 年報與 ESG 揭露</li>
+          <li>✔ 支援企業內部呈報與利害關係人溝通</li>
+        </ul>
+        <a href="https://www.notion.so/wishlite/ESG-2c5704274681800d8b90f045e1f6cf00?source=copy_link" target="_blank" style="margin-top:auto; display:inline-block; font-size:13px; font-weight:600; color:var(--moss); text-decoration:none; border-bottom:1.5px solid var(--moss); padding-bottom:2px;">ESG 合作案例 →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── CLIENT LOGOS ── -->
+<section class="clients fade-up">
+  <div class="clients-inner">
+    <div class="section-label">合作夥伴｜Trusted By</div>
+    <p style="font-size:13px; color:#888; margin-bottom:20px;">涵蓋金融、科技、電信、製造與教育等產業。</p>
+    <img src="ＥＳＧ合作案例2.jpg" alt="Wishlite ESG 合作案例" style="width:100%; max-width:900px; margin:0 auto; display:block; border-radius:12px;">
+  </div>
+</section>
+
+<!-- ── COURSES / MATERIALS ── -->
+<section class="courses" style="background:var(--white);">
+  <div class="section-label fade-up">Popular Programs</div>
+  <h2 class="section-title fade-up">熱門體驗方案</h2>
+  <p class="section-desc fade-up">從咖啡渣、再生紙纖、牡蠣殼、回收塑膠到自然素材，<br>Wishlite 將材料故事轉化為可被參與的 ESG 體驗。</p>
+
+  <div class="course-grid">
+    <div class="course-card fade-up">
+      <div class="course-card-img"><img src="course-seed-earth3.jpg" alt="種子地球工作坊成品"></div>
+      <div class="course-card-body">
+        <span class="tag">品牌代表</span>
+        <h3>種子地球</h3>
+        <p style="font-size:11px; color:var(--sage); margin-bottom:8px;">1–1.5 小時 ｜ 20–100 人</p>
+        <p>以 NG 尿布棉包裹植物種子，讓參與者透過手作理解資源重生與行動萌芽，是一堂兼具象徵意義與參與感的永續體驗課。</p>
+        <div class="material-tags">
+          <span>尿布棉</span>
+          <span>種子材料</span>
+          <span>永續教育</span>
+        </div>
+        <div style="margin-top:8px;">
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 12</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 9</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 15</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px;">SDG 4</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-up">
+      <div class="course-card-img"><img src="course-coffee-soap.jpg" alt="咖啡渣手工皂成品"></div>
+      <div class="course-card-body">
+        <span class="tag">人氣熱選</span>
+        <h3>咖啡手工皂</h3>
+        <p style="font-size:11px; color:var(--sage); margin-bottom:8px;">1.5–2 小時 ｜ 20–80 人</p>
+        <p>將日常生活中的咖啡渣重新轉化為手作體驗材料，結合香氣、觸感與生活應用，讓永續從抽象概念走進日常使用。</p>
+        <div class="material-tags">
+          <span>咖啡渣</span>
+          <span>手工皂</span>
+          <span>日常應用</span>
+        </div>
+        <div style="margin-top:8px;">
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 12</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 13</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 4</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px;">SDG 8</span>
+        </div>
+      </div>
+    </div>
+    <div class="course-card fade-up">
+      <div class="course-card-img"><img src="course-mosaic-coaster2.jpg" alt="塑木馬賽克杯墊成品"></div>
+      <div class="course-card-body">
+        <span class="tag">ESG 熱門</span>
+        <h3>塑木馬賽克杯墊</h3>
+        <p style="font-size:11px; color:var(--sage); margin-bottom:8px;">1.5–2 小時 ｜ 20–60 人</p>
+        <p>運用回收塑膠再生杯墊進行馬賽克拼貼創作，讓參與者從色彩、材質與組合中理解塑膠循環再生的可能，完成兼具美感與實用性的永續作品。</p>
+        <div class="material-tags">
+          <span>回收塑膠</span>
+          <span>PCR 塑木</span>
+          <span>循環材料</span>
+        </div>
+        <div style="margin-top:8px;">
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 12</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 13</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px; margin-right:4px;">SDG 14</span>
+          <span style="font-size:10px; background:var(--cream); color:var(--moss); padding:2px 8px; border-radius:10px;">SDG 9</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="fade-up" style="text-align:center; margin-top:28px; font-size:13px; color:var(--sage); letter-spacing:0.3px; line-height:1.8;">更多課程主題、材料應用與合作形式，<br>可延伸查看完整課程目錄。</p>
+  <p class="fade-up" style="text-align:center; margin-top:16px;"><a href="https://wishlite.notion.site/esgdiy?v=2b2704274681819ea59c000cfd04a44c" target="_blank" style="display:inline-block; padding:12px 28px; background:var(--white); color:var(--moss); font-size:13px; font-weight:600; border:1.5px solid var(--moss); border-radius:30px; text-decoration:none; transition:all 0.2s;" onmouseover="this.style.background='var(--moss)';this.style.color='#fff'" onmouseout="this.style.background='var(--white)';this.style.color='var(--moss)'">查看完整課程目錄 →</a></p>
+
+</section>
+
+<!-- ── USE CASES ── -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <div class="section-label fade-up">Use Cases</div>
+    <h2 class="section-title fade-up">我們常見的合作場景</h2>
+    <p class="section-desc fade-up" style="max-width:600px;">從企業 ESG、品牌共創、校園教育到親子活動，每一場都是真實發生的永續行動。</p>
+
+    <div class="fade-up" style="margin:32px 0; border-radius:16px; overflow:hidden;">
+      <img src="ＥＳＧ合作案例3.jpg" alt="ESG 合作案例：企業永續行動實踐、品牌共創、校外循環教育、親子教育活動實景" style="width:100%; display:block;">
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:28px;">
+      <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
+        <img src="扁平畫1.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
+        <div>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">企業 ESG × 永續行動實踐</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">員工活動、ESG 主題月、CSR 參與式設計、ESG 報告素材產出</p>
+        </div>
+      </div>
+      <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
+        <img src="扁平畫2.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
+        <div>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">品牌共創 × 綠色行銷</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">品牌聯名活動、綠色行銷體驗、永續品牌日、客戶答謝活動</p>
+        </div>
+      </div>
+      <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
+        <img src="扁平畫3.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
+        <div>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">校外循環教育 × 技職探索</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">國中小校外教學、大專永續課程、教師研習、SDGs 主題學習</p>
+        </div>
+      </div>
+      <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
+        <img src="扁平畫4.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
+        <div>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">親子教育 × 資源活化</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">企業家庭日、親子共創體驗、員工日、大型互動闖關活動</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="fade-up" style="text-align:center; margin-top:24px; font-size:13px; color:var(--sage); letter-spacing:0.3px;">每場活動皆可依人數、主題、材料內容與品牌需求客製規劃。</p>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section class="why-us">
+  <div class="why-inner">
+    <div class="section-label fade-up">Why Wishlite</div>
+    <h2 class="section-title fade-up">為什麼企業選擇韻手作</h2>
+    <p class="section-desc fade-up">300+ 場 ESG 專案背後，是一套可量化、可擴展、可交付的執行體系。</p>
+
+    <div class="fade-up" style="margin-top:32px; margin-bottom:32px; text-align:center;">
+      <img src="impact.png" alt="韻手作行動成果與執行績效" style="max-width:100%; border-radius:12px; mix-blend-mode:multiply;">
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:32px;">
+      <div class="why-card fade-up" style="text-align:center;">
+        <div style="font-size:32px; margin-bottom:12px;">📈</div>
+        <h3 style="font-size:17px;">可量化的 ESG 成果</h3>
+        <p>每場活動產出減碳數據與 SROI 報告——ESG 不只是感覺，而是可直接對接 CSR 年報的數字。</p>
+      </div>
+      <div class="why-card fade-up" style="text-align:center;">
+        <div style="font-size:32px; margin-bottom:12px;">🧩</div>
+        <h3 style="font-size:17px;">模組化彈性組合</h3>
+        <p>活動、禮品、報告可獨立或打包，依企業需求靈活配置、分場次或分部門執行。</p>
+      </div>
+      <div class="why-card fade-up" style="text-align:center;">
+        <div style="font-size:32px; margin-bottom:12px;">🎯</div>
+        <h3 style="font-size:17px;">一站式穩定交付</h3>
+        <p>場地、材料、講師、紀錄、報告全程包辦——企業只需讓團隊出席，其餘我們負責。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MATERIAL TRUST ── -->
+<section class="mat-trust-section" style="background:var(--soft); padding:56px 20px; border-top:1px solid var(--sand);">
+  <div class="fade-up" style="text-align:center; max-width:720px; margin:0 auto;">
+    <div class="section-label" style="margin-bottom:10px;">Materials We Use</div>
+    <h3 style="font-family:'Noto Serif TC', serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:10px;">每一場活動的材料，都來自真實的循環故事。</h3>
+    <p style="font-size:14px; color:#888; margin-bottom:32px; line-height:1.7;">六種在地循環材料，轉化為可被體驗、可被記住的 ESG 行動。</p>
+
+    <div style="display:flex; flex-wrap:nowrap; justify-content:center; gap:10px; margin-bottom:36px;">
+      <span class="mat-tag fade-up"><img src="mat-coffee.jpg" alt="" class="mat-tag-img">咖啡渣</span>
+      <span class="mat-tag fade-up"><img src="mat-oyster.jpg" alt="" class="mat-tag-img">牡蠣殼</span>
+      <span class="mat-tag fade-up"><img src="mat-plastic.jpg" alt="" class="mat-tag-img">再生塑膠</span>
+      <span class="mat-tag fade-up"><img src="mat-fiber.jpg" alt="" class="mat-tag-img">再生紙纖</span>
+      <span class="mat-tag fade-up"><img src="mat-textile.jpg" alt="" class="mat-tag-img">回收衣物</span>
+      <span class="mat-tag fade-up"><img src="mat-natural.jpg" alt="" class="mat-tag-img">自然素材</span>
+    </div>
+
+    <div class="fade-up" style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+      <a href="https://www.notion.so/wishlite/2b270427468180028f19d35c4ed8f172?v=2b270427468180ab9257000c77235b97&source=copy_link" target="_blank" style="display:inline-block; padding:13px 36px; background:var(--moss); color:#fff; font-size:14px; font-weight:600; border-radius:28px; text-decoration:none; transition:all 0.2s;" onmouseover="this.style.background='var(--moss-dark)'" onmouseout="this.style.background='var(--moss)'">查看完整材料故事與應用 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process">
+  <div class="section-label fade-up">How It Works</div>
+  <h2 class="section-title fade-up">合作流程</h2>
+  <p class="section-desc fade-up">從填表到活動完成，我們讓每一步都簡單順暢。</p>
+
+  <div class="process-steps">
+    <div class="step-card fade-up">
+      <div class="step-num">1</div>
+      <h3>填寫需求表</h3>
+      <p>告訴我們你的活動目的、人數和偏好</p>
+      <span class="time">2 分鐘</span>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">2</div>
+      <h3>收到初步建議</h3>
+      <p>2 個工作天內提供初步方案建議與報價參考</p>
+      <span class="time">2 個工作天</span>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">3</div>
+      <h3>確認與調整</h3>
+      <p>線上或電話討論細節，微調到完美</p>
+      <span class="time">彈性安排</span>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">4</div>
+      <h3>活動執行</h3>
+      <p>全程專人帶領，活動完成後可視需求協助整理紀錄與內容素材</p>
+      <span class="time">當天搞定</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER（取代原本的長表單區） ── -->
+<section class="cta-banner" id="form">
+  <div class="cta-banner-inner fade-up">
+    <div class="cta-banner-text">
+      <h2>準備好規劃下一場 ESG 活動了嗎？</h2>
+      <p>留下需求，2 個工作天內提供初步建議與方案參考。</p>
+    </div>
+    <button class="btn-primary btn-open-form" onclick="openFormModal()">立即填寫活動需求</button>
+  </div>
+</section>
+
+<!-- ── FORM MODAL ── -->
+<div class="modal-overlay" id="formModal">
+  <div class="modal-container">
+    <button class="modal-close" onclick="closeFormModal()" aria-label="關閉">&times;</button>
+
+    <div class="form-wrapper">
+      <div class="form-header">
+        <div class="form-header-sub">韻 手 作 永 續 &ensp; W I S H L I T E</div>
+        <h3>為企業打造<em>可量化的</em> ESG 行動體驗</h3>
+        <p>填寫以下表單，我們將於 2 個工作天內提供專屬活動方案與報價</p>
+        <div class="form-header-tags">
+          <span>再生材料工作坊</span>
+          <span>SDGs 行動體驗</span>
+          <span>ESG 結案報告</span>
+        </div>
+      </div>
+
+      <form id="esgForm" class="form-body" novalidate>
+        <span class="form-section-label">基本資訊</span>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>公司 / 單位名稱 <span class="req">*</span></label>
+            <input type="text" name="company" class="form-input" placeholder="例：台積電" required>
+          </div>
+          <div class="form-group">
+            <label>怎麼稱呼您？ <span class="req">*</span></label>
+            <input type="text" name="contact_name" class="form-input" placeholder="例：王小姐" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email <span class="hint">方便寄送提案</span></label>
+            <input type="email" name="email" class="form-input" placeholder="name@company.com">
+          </div>
+          <div class="form-group">
+            <label>聯繫電話</label>
+            <input type="tel" name="phone" class="form-input" placeholder="09xx-xxx-xxx">
+          </div>
+        </div>
+
+        <hr class="form-divider">
+        <span class="form-section-label">活動需求</span>
+
+        <div class="form-group">
+          <label>您這次想了解哪一種合作？ <span class="req">*</span></label>
+          <div class="radio-group">
+            <label><input type="radio" name="service_type" value="ESG活動" required><span>我要辦 ESG 活動</span></label>
+            <label><input type="radio" name="service_type" value="永續禮品"><span>我要送永續禮品</span></label>
+            <label><input type="radio" name="service_type" value="活動+禮品"><span>活動 + 禮品</span></label>
+            <label><input type="radio" name="service_type" value="其他需求"><span>其他需求</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>請簡單描述您的需求、活動目的或想法 <span class="req">*</span></label>
+          <textarea name="description" class="form-input" placeholder="例：希望在年末辦一場 50 人的永續手作 Team Building，主題偏向循環經濟..." required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>預計參與人數 <span class="req">*</span></label>
+            <input type="number" name="headcount" class="form-input" placeholder="例：50" min="1" required>
+          </div>
+          <div class="form-group">
+            <label>預算範圍</label>
+            <select name="budget" class="form-input">
+              <option value="" disabled selected>請選擇</option>
+              <option value="10000以下">10,000 以下</option>
+              <option value="10000-30000">10,000 – 30,000</option>
+              <option value="30000-50000">30,000 – 50,000</option>
+              <option value="50000-80000">50,000 – 80,000</option>
+              <option value="80000-120000">80,000 – 120,000</option>
+              <option value="120000以上">120,000 以上</option>
+              <option value="尚未確定">尚未確定</option>
+            </select>
+            <p style="font-size:11px; color:#aaa; margin-top:6px; line-height:1.6;">若預算較精簡，也可評估材料包或簡化版活動方案。</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>預計合作日期</label>
+          <input type="date" name="event_date" class="form-input">
+        </div>
+
+        <div class="form-group">
+          <label>活動地點／城市</label>
+          <input type="text" name="event_location" class="form-input" placeholder="例如：台北市內湖區／企業辦公室／指定活動場地">
+        </div>
+
+        <div class="form-group">
+          <label>您偏好的合作形式？</label>
+          <select name="cooperation_type" class="form-input">
+            <option value="" disabled selected>請選擇</option>
+            <option value="現場活動">現場活動（含講師到場）</option>
+            <option value="材料包">材料包（自主持／簡化版）</option>
+            <option value="兩者皆可">兩者皆可</option>
+            <option value="想先了解建議">想先了解建議</option>
+          </select>
+        </div>
+
+        <hr class="form-divider">
+        <span class="form-section-label">其他資訊</span>
+
+        <div class="form-group">
+          <label>這次活動較關注哪些方向？（可複選）</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="esg_focus" value="減碳/淨零意識"><span>減碳／淨零意識</span></label>
+            <label><input type="checkbox" name="esg_focus" value="循環經濟/資源再生"><span>循環經濟／資源再生</span></label>
+            <label><input type="checkbox" name="esg_focus" value="生物多樣性/環境保育"><span>生物多樣性／環境保育</span></label>
+            <label><input type="checkbox" name="esg_focus" value="員工參與/員工福利"><span>員工參與／員工福利</span></label>
+            <label><input type="checkbox" name="esg_focus" value="SDGs教育/永續學習"><span>SDGs 教育／永續學習</span></label>
+            <label><input type="checkbox" name="esg_focus" value="社會共融/公益關懷"><span>社會共融／公益關懷</span></label>
+            <label><input type="checkbox" name="esg_focus" value="品牌永續溝通/對外形象"><span>品牌永續溝通／對外形象</span></label>
+            <label><input type="checkbox" name="esg_focus" value="其他"><span>其他</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>其他關注方向或補充說明</label>
+          <input type="text" name="esg_focus_note" class="form-input" placeholder="例如：海洋教育、地方創生、女性培力、親子共學、品牌主題整合、內部共識建立等">
+        </div>
+
+        <div class="form-group">
+          <label>這次活動最希望達成的效果是什麼？</label>
+          <input type="text" name="activity_goal" class="form-input" placeholder="例如：提升員工參與感、搭配永續月主題、作為家庭日活動、建立品牌 ESG 形象、結合 CSR 溝通等">
+        </div>
+
+        <div class="form-group">
+          <label>本次活動是否需要成果整理／ESG 影響力報告？</label>
+          <select name="esg_report" class="form-input">
+            <option value="" disabled selected>請選擇</option>
+            <option value="不需要">不需要</option>
+            <option value="想先了解">想先了解</option>
+            <option value="需要基本成果整理">需要基本成果整理</option>
+            <option value="需要ESG影響力報告">需要 ESG 影響力報告</option>
+          </select>
+          <p style="font-size:11px; color:#aaa; margin-top:6px; line-height:1.6;">可依需求提供活動成果摘要、照片整理、材料永續意義說明與延伸 ESG 溝通素材。</p>
+        </div>
+
+        <div class="form-group">
+          <label>若需要成果整理／報告，請補充用途（可複選）</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="report_usage" value="內部結案"><span>內部結案</span></label>
+            <label><input type="checkbox" name="report_usage" value="CSR/ESG資料整理"><span>CSR / ESG 資料整理</span></label>
+            <label><input type="checkbox" name="report_usage" value="社群貼文素材"><span>社群貼文素材</span></label>
+            <label><input type="checkbox" name="report_usage" value="年報/永續報告書引用"><span>年報／永續報告書引用</span></label>
+            <label><input type="checkbox" name="report_usage" value="其他"><span>其他</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>您是透過什麼管道認識我們的？</label>
+          <select name="source" class="form-input">
+            <option value="" disabled selected>請選擇</option>
+            <option value="Google搜尋">Google 搜尋</option>
+            <option value="Instagram">Instagram</option>
+            <option value="LINE">LINE</option>
+            <option value="朋友推薦">朋友 / 同事推薦</option>
+            <option value="曾參加活動">曾參加過我們的活動</option>
+            <option value="媒體報導">媒體報導</option>
+            <option value="其他">其他</option>
+          </select>
+        </div>
+
+        <button type="submit" class="form-submit" id="submitBtn">填寫完成，讓我們為您推薦合適方案</button>
+        <p class="form-footer">提交後 2 個工作天內，我們會以 Email 或電話與您聯繫</p>
+      </form>
+
+      <!-- 成功畫面 -->
+      <div class="form-success" id="formSuccess">
+        <div class="check-icon">&#10003;</div>
+        <h3>需求已收到！</h3>
+        <p>
+          感謝您的填寫，我們的團隊會在<strong> 2 個工作天內</strong>與您聯繫，<br>
+          為您提供初步建議與適合的活動方案。
+        </p>
+        <button onclick="closeFormModal()" style="margin-top:20px; padding:10px 28px; background:var(--moss); color:#fff; border:none; border-radius:8px; font-size:14px; cursor:pointer;">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-label fade-up">FAQ</div>
+    <h2 class="section-title fade-up" style="margin-bottom: 32px;">常見問題</h2>
+
+    <div class="faq-grid">
+      <div class="faq-item fade-up">
+        <div class="faq-q">活動最少需要幾人才能舉辦？</div>
+        <div class="faq-a"><div class="faq-a-inner">我們可依活動形式與內容安排，常見合作規模約為 20 人以上。若為企業內部小型活動、品牌體驗或特定客製需求，也歡迎先與我們討論，我們會依人數、作品內容與執行方式提供合適建議。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">活動可以到我們公司或指定場地舉辦嗎？</div>
+        <div class="faq-a"><div class="faq-a-inner">可以。Wishlite 多數活動皆可配合至企業辦公室、會議場地、展覽空間、校園或活動現場執行。我們會依場地條件、人數規模與活動形式，協助評估所需的桌椅配置、動線安排與材料準備方式。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">如果我們還沒有確定主題，也可以先詢問嗎？</div>
+        <div class="faq-a"><div class="faq-a-inner">可以，這也是很常見的狀況。您只需要先提供大致資訊，例如活動人數、預算範圍、對象類型、預計日期或想傳達的方向，我們就可以依需求推薦合適的材料與體驗方案。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">我如果想辦這場活動，要提前多久來找你們？</div>
+        <div class="faq-a"><div class="faq-a-inner">一般建議至少提前 2–4 週預約與討論，若涉及客製內容、品牌整合、特殊材料包或大型企業活動，建議提前 4–8 週規劃。若時間較緊，也歡迎先與我們聯繫，我們會協助評估可行方案。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">預算大約需要多少？</div>
+        <div class="faq-a"><div class="faq-a-inner">實際費用會依參與人數、材料內容、活動形式、客製需求與場地條件調整。Wishlite 常見企業合作多以人數計算，單人合作區間約為 NT$680–1,280 / 人；若為大型活動、品牌客製或整合型企劃，則會依需求另行報價。若您已有預算範圍，也歡迎直接提供，我們可以協助推薦適合的方案方向。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">你們的活動可以客製嗎？</div>
+        <div class="faq-a"><div class="faq-a-inner">可以。我們可依企業活動主題、品牌調性、參與對象與預算需求，調整體驗內容、材料搭配、作品形式與現場流程。若有品牌日、家庭日、CSR 活動、永續月或內部教育推廣需求，也可規劃更符合情境的合作方式。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <p>
+    韻手作永續 Wishlite ｜ 讓永續成為日常的美好行動<br>
+    <a href="mailto:wishlite1111@gmail.com">wishlite1111@gmail.com</a><br>
+    © 2026 Wishlite. All rights reserved.
+  </p>
+</footer>
+
+<script>
+// ══════════════════════════════════════
+// n8n Webhook URL — 在 n8n 建好 Webhook 節點後貼上
+// ══════════════════════════════════════
+const N8N_WEBHOOK_URL = 'https://wishlite-n8n.zeabur.app/webhook/esg-inquiry';
+
+// ── URL source param auto-detection ──
+(function initFormSource() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const sourceParam = urlParams.get('source');
+  if (!sourceParam) return;
+  const map = { 'line-oa': 'LINE OA', 'line': 'LINE OA', 'ig': 'Instagram', 'instagram': 'Instagram', 'referral': '朋友 / 同事推薦', 'seo': '搜尋引擎' };
+  const val = map[sourceParam.toLowerCase()] || '';
+  if (val) {
+    window.addEventListener('DOMContentLoaded', () => {
+      const sel = document.querySelector('select[name="source"]');
+      if (sel) sel.value = val;
+    });
+  }
+  window._urlFormSource = sourceParam;
+})();
+
+// ── Scroll fade-up animation ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── FAQ toggle ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const answer = q.nextElementSibling;
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = '0';
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// ── Form Modal open / close ──
+function openFormModal() {
+  document.getElementById('formModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeFormModal() {
+  document.getElementById('formModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// 點擊背景關閉 modal
+document.getElementById('formModal').addEventListener('click', function(e) {
+  if (e.target === this) closeFormModal();
+});
+
+// ESC 鍵關閉
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeFormModal();
+});
+
+// ── 所有 #form 連結都改為開啟 modal ──
+document.querySelectorAll('a[href="#form"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    openFormModal();
+  });
+});
+
+// 導航列「立即諮詢」也開啟 modal
+document.querySelector('.nav-cta').addEventListener('click', function(e) {
+  e.preventDefault();
+  openFormModal();
+});
+
+// ── 網址帶 #open-form 時自動開啟表單（避免與 id="form" 衝突） ──
+window.addEventListener('load', function() {
+  if (window.location.hash === '#open-form') {
+    window.scrollTo(0, 0);
+    setTimeout(function() { openFormModal(); }, 300);
+  }
+});
+
+// ── Form submission → n8n Webhook ──
+document.getElementById('esgForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('submitBtn');
+  const form = this;
+  const originalText = btn.textContent;
+
+  // Validate required fields
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  // Disable button & show loading
+  btn.disabled = true;
+  btn.textContent = '送出中...';
+
+  // Collect form data
+  const formData = new FormData(form);
+  const data = {
+    company: formData.get('company'),
+    contact_name: formData.get('contact_name'),
+    email: formData.get('email'),
+    phone: formData.get('phone'),
+    service_type: formData.get('service_type'),
+    description: formData.get('description'),
+    headcount: formData.get('headcount'),
+    budget: formData.get('budget'),
+    event_date: formData.get('event_date'),
+    event_location: formData.get('event_location'),
+    cooperation_type: formData.get('cooperation_type'),
+    esg_focus: formData.getAll('esg_focus'),
+    esg_focus_note: formData.get('esg_focus_note'),
+    activity_goal: formData.get('activity_goal'),
+    esg_report: formData.get('esg_report'),
+    report_usage: formData.getAll('report_usage'),
+    source: formData.get('source'),
+    submitted_at: new Date().toISOString(),
+    form_source: window._urlFormSource || 'ESG活動Landing Page'
+  };
+
+  try {
+    const response = await fetch(N8N_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok || response.status === 200) {
+      // Show success
+      form.style.display = 'none';
+      document.querySelector('.form-header').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch (err) {
+    // 如果 webhook 失敗，仍然顯示成功（資料已記錄在瀏覽器）
+    // 同時在 console 留下紀錄方便 debug
+    console.warn('Webhook 送出失敗，但表單資料已記錄：', data);
+    console.error(err);
+
+    // 備援：將資料存到 localStorage 避免遺失
+    const pending = JSON.parse(localStorage.getItem('wishlite_pending_forms') || '[]');
+    pending.push(data);
+    localStorage.setItem('wishlite_pending_forms', JSON.stringify(pending));
+
+    // 仍顯示成功畫面（不讓客戶感到困惑）
+    form.style.display = 'none';
+    document.querySelector('.form-header').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "WF-Error｜錯誤通知處理器",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "wferr-0001",
+      "name": "⚠️ 錯誤觸發器",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "sendTo": "wishlite1111@gmail.com",
+        "subject": "⚠️ n8n 錯誤：{{ $json.workflow.name }}",
+        "emailType": "html",
+        "message": "<!DOCTYPE html>\n<html lang=\"zh-TW\">\n<body style=\"font-family: sans-serif; background: #fff5f5; padding: 20px;\">\n  <div style=\"max-width: 520px; margin: 0 auto; background: #fff; border-radius: 10px; padding: 28px; border-left: 4px solid #e53e3e;\">\n    <h2 style=\"color: #e53e3e; margin-top: 0;\">⚠️ n8n Workflow 錯誤</h2>\n    <table style=\"width: 100%; font-size: 14px; color: #333; border-collapse: collapse;\">\n      <tr style=\"border-bottom: 1px solid #eee;\"><td style=\"padding: 10px 0; color: #888; width: 120px;\">Workflow</td><td style=\"padding: 10px 0; font-weight: 600;\">{{ $json.workflow.name }}</td></tr>\n      <tr style=\"border-bottom: 1px solid #eee;\"><td style=\"padding: 10px 0; color: #888;\">失敗節點</td><td style=\"padding: 10px 0;\">{{ $json.execution.error.node?.name || '未知節點' }}</td></tr>\n      <tr style=\"border-bottom: 1px solid #eee;\"><td style=\"padding: 10px 0; color: #888;\">錯誤訊息</td><td style=\"padding: 10px 0; color: #e53e3e;\">{{ $json.execution.error.message }}</td></tr>\n      <tr style=\"border-bottom: 1px solid #eee;\"><td style=\"padding: 10px 0; color: #888;\">執行時間</td><td style=\"padding: 10px 0;\">{{ $now.format('yyyy-MM-dd HH:mm:ss') }}</td></tr>\n      <tr><td style=\"padding: 10px 0; color: #888;\">執行 ID</td><td style=\"padding: 10px 0; font-size: 12px; color: #999;\">{{ $json.execution.id }}</td></tr>\n    </table>\n    <div style=\"margin-top: 20px; text-align: center;\">\n      <a href=\"https://wishlite-n8n.zeabur.app\" style=\"display: inline-block; background: #e53e3e; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 13px;\">前往 n8n 查看詳情</a>\n    </div>\n  </div>\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "wferr-0002",
+      "name": "📧 錯誤通知Apple",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [420, 300],
+      "credentials": { "gmailOAuth2": { "name": "Gmail account" } }
+    }
+  ],
+  "connections": {
+    "⚠️ 錯誤觸發器": {
+      "main": [[{ "node": "📧 錯誤通知Apple", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "Wishlite" }]
+}

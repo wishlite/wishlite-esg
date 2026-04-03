@@ -1,0 +1,2554 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlite 韻手作 - ESG Sustainable Gifts 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* === Premium Dark + Light Palette === */
+            --gold: #c49a6c;
+            --gold-light: #d4b896;
+            --gold-dark: #a07844;
+            --gold-muted: rgba(196,154,108,0.25);
+
+            /* 深色系 */
+            --bg-deep: #1e2420;
+            --bg-dark: #263029;
+            --bg-warm-dark: #2e2722;
+            --night-forest: #1a2018;
+
+            /* 淺色系 */
+            --cream: #f7f3ec;
+            --cream-dark: #ede6da;
+            --cream-warm: #f5f0e8;
+
+            /* 文字 */
+            --charcoal: #2c2c2c;
+            --brown: #8b6f47;
+            --brown-dark: #5c4a2f;
+            --text-light: #f2ede6;
+            --text-light-secondary: #b0a89c;
+            --text-light-muted: #7a7269;
+
+            /* 玻璃效果 */
+            --glass-light: rgba(255,255,255,0.04);
+            --glass-light-hover: rgba(255,255,255,0.07);
+            --glass-blur: blur(16px);
+            --border-glass: rgba(196,154,108,0.13);
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--charcoal);
+            background: var(--bg-deep);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--gold-dark);
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 36, 32, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            z-index: 100;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(196,154,108,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-light-secondary);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(196,154,108,0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(196,154,108,0.45);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light-secondary);
+            border-radius: 2px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            margin-top: 80px;
+            padding: 5rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            /*
+             * TODO: 替換為你的山景背景圖 URL
+             * 例如: background-image: url('https://wishlite.github.io/assets/hero-bg.jpg');
+             */
+            background-image: url('hero-bg.png');
+            background-size: cover;
+            background-position: center 60%;
+            background-repeat: no-repeat;
+            background-color: #2a3a2e;
+        }
+
+        .hero::after {
+            content: '厚';
+            position: absolute;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: clamp(20rem, 45vw, 38rem);
+            font-weight: 900;
+            color: rgba(255,255,255,0.025);
+            left: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            line-height: 1;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(30, 42, 35, 0.70) 0%,
+                rgba(30, 42, 35, 0.60) 40%,
+                rgba(30, 42, 35, 0.65) 70%,
+                rgba(30, 42, 35, 0.82) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(196, 154, 108, 0.25);
+            color: var(--gold-light);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(196, 154, 108, 0.35);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #fff;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-philosophy {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 580px;
+            margin: 1rem auto 2.5rem;
+            line-height: 2;
+            font-weight: 300;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 540px;
+            margin: 0 auto 3rem;
+            line-height: 2;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .hero .cta-primary {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 4px 20px rgba(196,154,108,0.4);
+        }
+
+        .hero .cta-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero .cta-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        /* Three Pillars */
+        .hero-value-chips {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .hero-chip {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 40px;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.78);
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            letter-spacing: 0.02em;
+        }
+
+        .chip-zh {
+            color: var(--gold-light);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-primary {
+            background: var(--gold);
+            color: white;
+        }
+
+        .cta-primary:hover {
+            background: var(--gold-dark);
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 2px solid var(--gold);
+        }
+
+        .cta-secondary:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* ========== WHY WISHLITE ========== */
+        .why-wishlite {
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        .why-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .why-header .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .why-header p {
+            font-size: 1.05rem;
+            color: var(--brown);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .why-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(196, 154, 108, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(139,111,71,0.08);
+        }
+
+        .why-card-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .why-card-title {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.8rem;
+        }
+
+        .why-card-desc {
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 2.1;
+        }
+
+        /* ========== SOCIAL PROOF ========== */
+        .social-proof {
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-dark) 100%);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .proof-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .proof-desc {
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .partner-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .partner-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(196,154,108,0.65);
+            line-height: 1.8;
+        }
+
+        .partner-row span.dot {
+            opacity: 0.35;
+        }
+
+        .partner-row span.name {
+            white-space: nowrap;
+        }
+
+        /* ========== SECTIONS ========== */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Alternating section separation */
+        .why-wishlite,
+        .product-lines,
+        .material-story,
+        .customization,
+        .how-it-works,
+        .faq {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        /* Gold line separators between dark/light sections */
+        .why-wishlite::before,
+        .material-story::before,
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 10%, rgba(196,154,108,0.15) 50%, transparent 90%);
+            pointer-events: none;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 2;
+            margin-top: -1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ========== MATERIAL STORY ========== */
+        .material-story {
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        .material-story-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .material-story-subtitle {
+            font-size: 1.05rem;
+            color: var(--brown);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        .material-cards-grid,
+        .material-universe-cta {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Material cards grid — 2 columns, horizontal card (photo left, text right) */
+        .material-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+
+        .mat-card {
+            background: white;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(196,154,108,0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .mat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(196,154,108,0.15);
+            border-color: rgba(196,154,108,0.2);
+        }
+
+        .mat-card .mat-photo {
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .mat-card .mat-text {
+            padding: 1.2rem 1.4rem;
+            flex: 1;
+        }
+
+        .mat-card .mat-name-cn {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .mat-card .mat-name-en {
+            font-size: 0.72rem;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .mat-card .mat-story {
+            font-size: 0.87rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+            margin-bottom: 0.35rem;
+        }
+
+        .mat-card .mat-value {
+            font-size: 0.82rem;
+            color: var(--gold-dark);
+            line-height: 1.55;
+        }
+
+        .material-universe-cta {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .material-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .mat-card .mat-photo {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        .material-universe-cta a {
+            color: var(--gold-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(196,154,108,0.3);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .material-universe-cta a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .material-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .material-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== PRODUCT LINES (03) ========== */
+        .product-lines {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .product-lines .section-label {
+            color: var(--gold);
+        }
+
+        .product-lines .section-title {
+            color: var(--text-light);
+        }
+
+        .product-lines-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light-secondary);
+            max-width: 560px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid rgba(196,154,108,0.22);
+            padding: 0.65rem 1.3rem;
+            font-size: 0.85rem;
+            color: var(--text-light-secondary);
+            cursor: pointer;
+            border-radius: 40px;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            line-height: 1.5;
+        }
+
+        .tab-btn.active {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(196,154,108,0.09);
+        }
+
+        .tab-btn:hover {
+            color: var(--gold);
+            border-color: rgba(196,154,108,0.5);
+        }
+
+        .tab-hint {
+            display: inline;
+            font-size: 0.72rem;
+            color: var(--text-light-muted);
+            font-weight: 400;
+        }
+
+        .tab-btn.active .tab-hint {
+            color: #c4a882;
+            opacity: 0.65;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: var(--glass-light);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-img-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(26,32,24,0.6);
+            border-bottom: 1.5px dashed rgba(196,154,108,0.25);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(196,154,108,0.3);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+        }
+        .product-img-placeholder img {
+            object-position: center;
+        }
+
+        .product-card-body {
+            padding: 1.4rem 1.6rem 1.6rem;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(196, 154, 108, 0.15);
+        }
+
+        .product-material {
+            display: inline-block;
+            background: rgba(74,124,89,0.15);
+            color: #7db89a;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .product-highlight {
+            font-size: 0.85rem;
+            color: var(--text-light-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-specs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .product-moq {
+            font-size: 0.85rem;
+            color: var(--text-light-muted);
+            background: rgba(255,255,255,0.06);
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+        }
+
+        .product-badge {
+            font-size: 1.2rem;
+            margin-left: auto;
+        }
+
+        .tab-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ========== MATERIALS CTA ========== */
+        .material-universe-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .material-universe-cta a {
+            font-size: 0.9rem;
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(196, 154, 108, 0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .material-universe-cta a:hover {
+            color: var(--gold-dark);
+            border-color: var(--gold-dark);
+        }
+
+        /* ========== CUSTOMIZATION (05) ========== */
+        .customization {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .customization .section-label,
+        .customization .section-title {
+            color: var(--text-light);
+        }
+
+        .customization .section-label {
+            color: var(--gold);
+        }
+
+        .customization .section-subtitle {
+            color: var(--text-light-secondary);
+        }
+
+        .custom-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .custom-card {
+            background: var(--glass-light);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .custom-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .custom-img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+            background: rgba(255,255,255,0.05);
+        }
+        .custom-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .custom-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .custom-desc {
+            font-size: 0.95rem;
+            color: var(--text-light-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== HOW IT WORKS (06) ========== */
+        .how-it-works {
+            background: var(--cream-warm);
+            color: var(--charcoal);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(196,154,108,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-time {
+            font-size: 0.85rem;
+            color: var(--brown);
+            font-weight: 500;
+        }
+
+        .step-desc {
+            font-size: 0.88rem;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .steps-cta-bridge {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+        }
+
+        .steps-cta-bridge p {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 2;
+            max-width: 540px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(170deg, var(--bg-deep) 0%, var(--night-forest) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+            pointer-events: none;
+        }
+
+        .cta-section .section-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .section-title {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section-subtitle {
+            font-size: 1rem;
+            color: var(--text-light-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-note {
+            margin: 1.5rem 0;
+            font-size: 0.85rem;
+            color: var(--text-light-muted);
+        }
+
+        .contact-strip {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(196, 154, 108, 0.3);
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--moss, #3d5a3e);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: var(--moss-dark, #2e4630);
+        }
+
+        /* ========== FAQ ========== */
+        .faq {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .faq .section-title {
+            color: var(--text-light);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-header .section-label {
+            letter-spacing: 0.25em;
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .faq-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 2rem;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(196, 154, 108, 0.25);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+            line-height: 1.5;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            user-select: none;
+        }
+
+        .faq-question .faq-toggle {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(196, 154, 108, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: var(--gold);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .faq-item.open .faq-question .faq-toggle {
+            transform: rotate(180deg);
+            background: rgba(196, 154, 108, 0.22);
+        }
+
+        .faq-answer {
+            color: var(--text-light-secondary);
+            line-height: 1.8;
+            font-size: 0.93rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, margin-top 0.35s ease, opacity 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .faq-items {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--night-forest);
+            color: var(--text-light-muted);
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            font-size: 0.88rem;
+            opacity: 0.85;
+        }
+
+        footer .footer-contact span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        footer .footer-copyright {
+            font-size: 0.82rem;
+            opacity: 0.6;
+        }
+
+        /* ========== MODAL ========== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(20, 24, 20, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--cream);
+            border-radius: 18px;
+            padding: 0;
+            max-width: 640px;
+            width: 100%;
+            color: var(--charcoal);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: var(--bg-dark);
+            padding: 2rem 2.5rem 1.8rem;
+            border-radius: 18px 18px 0 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-brand-line {
+            font-size: 0.72rem;
+            letter-spacing: 0.35em;
+            color: rgba(196,154,108,0.5);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-light-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--gold-light);
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--text-light);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .modal-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-light-secondary);
+            margin: 0;
+        }
+
+        .modal-header-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .modal-header-tag {
+            border: 1px solid rgba(196,154,108,0.45);
+            color: rgba(196,154,108,0.85);
+            padding: 0.28rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            font-weight: 400;
+        }
+
+        .form-section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--brown);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 1.4rem 2.5rem 0.5rem;
+        }
+
+        .form-section-divider {
+            border: none;
+            border-top: 1px dashed rgba(139,111,71,0.2);
+            margin: 0.6rem 2.5rem 0;
+        }
+
+        .modal-form-body {
+            padding: 0;
+        }
+
+        /* Alternating row colors */
+        .form-field-row {
+            padding: 1.4rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .form-field-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-field-row:nth-child(odd) {
+            background: #ffffff;
+        }
+
+        .form-field-row:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.45rem;
+            font-size: 0.88rem;
+            letter-spacing: 0.01em;
+        }
+
+        .form-group label .required {
+            color: #c0694a;
+            margin-left: 2px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.7rem 0.9rem;
+            border: 1px solid rgba(196,154,108,0.2);
+            border-radius: 8px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.7);
+            color: var(--charcoal);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(196, 154, 108, 0.12);
+            background: #fff;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #b0a89c;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b6f47' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.9rem center;
+            padding-right: 2.2rem;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .radio-option input[type="radio"] {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--gold);
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--charcoal);
+            font-size: 0.9rem;
+        }
+
+        .form-footer {
+            padding: 1.5rem 2.5rem 2rem;
+            background: #ffffff;
+            border-radius: 0 0 18px 18px;
+            border-top: 1px solid rgba(196,154,108,0.1);
+        }
+
+        .form-submit {
+            background: var(--gold);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease, transform 0.15s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .form-submit:hover {
+            background: var(--gold-dark);
+            transform: translateY(-1px);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.82rem;
+            color: #8b8178;
+            margin-top: 0.8rem;
+        }
+
+        /* ========== SCROLL REVEAL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .material-story-desc {
+                font-size: 0.95rem;
+            }
+
+            .material-taglines {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem 2rem;
+            }
+
+            .hero::after {
+                font-size: 14rem;
+                left: -10%;
+                opacity: 0.6;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .proof-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+
+            .tab-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-strip {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            footer .footer-contact {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .why-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .why-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem 2rem;
+                margin-top: 70px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+
+            .hero-philosophy {
+                font-size: 0.9rem;
+            }
+
+            .hero-pillars {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pillar {
+                padding: 2rem 1.2rem 1.5rem;
+            }
+
+            .pillar-char {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-box {
+                margin: 0.5rem;
+            }
+
+            .modal-header {
+                padding: 1.5rem 1.5rem 1.2rem;
+            }
+
+            .form-field-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .form-footer {
+                padding: 1.2rem 1.5rem 1.5rem;
+            }
+
+            .emoji-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .value-pills {
+                flex-direction: column;
+            }
+
+            .value-pill {
+                width: 100%;
+                text-align: center;
+            }
+
+            .partner-strip {
+                gap: 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .proof-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .material-taglines {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem 1.5rem;
+            }
+
+            .custom-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-logo">WISH<span>LITE</span></div>
+        <ul class="nav-links">
+            <li><a href="#proof">ESG影響力</a></li>
+            <li><a href="#why">品牌故事</a></li>
+            <li><a href="#products">產品系列</a></li>
+            <li><a href="#custom">客製合作</a></li>
+            <li><a href="#process">合作流程</a></li>
+            <li><a href="#materials">材料宇宙</a></li>
+        </ul>
+        <button class="nav-cta" onclick="openModal()">填寫需求表</button>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero reveal">
+        <div class="hero-badge">Wishlite ESG Gifts</div>
+        <h1>讓每一份禮物，<br>都成為品牌實踐永續的方式。</h1>
+        <p class="hero-desc">以循環材料打造有溫度、有故事的 ESG 禮品——讓每一份品牌心意，不只被收到，也被記住。</p>
+        <div class="hero-ctas">
+            <a href="#products" class="cta-primary">查看永續禮品系列 →</a>
+        </div>
+        <div class="hero-value-chips">
+            <div class="hero-chip"><span class="chip-zh">厚實</span> 再生材料，廢棄物重新成為禮物</div>
+            <div class="hero-chip"><span class="chip-zh">厚工</span> 文化底蘊，刻入每件品牌禮品</div>
+            <div class="hero-chip"><span class="chip-zh">厚禮</span> 品牌心意，讓送禮被感受被記住</div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof reveal" id="proof">
+        <div class="section-container">
+            <div class="proof-stats">
+                <div class="stat">
+                    <div class="stat-number">80+</div>
+                    <div class="stat-label">家合作企業</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30,000+</div>
+                    <div class="stat-label">份禮品交付</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">再生材料來源</div>
+                </div>
+            </div>
+            <p class="proof-desc">涵蓋金融、科技、電信、製造與教育等產業。</p>
+            <div class="partner-grid">
+                <div class="partner-row">
+                    <span class="name">TSMC 台積電</span><span class="dot"> · </span><span class="name">Google</span><span class="dot"> · </span><span class="name">Microsoft</span><span class="dot"> · </span><span class="name">LINE</span><span class="dot"> · </span><span class="name">KPMG</span><span class="dot"> · </span><span class="name">BMW</span><span class="dot"> · </span><span class="name">MSI 微星</span><span class="dot"> · </span><span class="name">KINPO 金寶集團</span><span class="dot"> · </span><span class="name">L'Occitane 歐舒丹</span><span class="dot"> · </span><span class="name">誠品</span><span class="dot"> · </span><span class="name">行政院環境保護署</span><span class="dot"> · </span><span class="name">遠雄集團</span><span class="dot"> · </span><span class="name">台電</span><span class="dot"> · </span><span class="name">中油</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY WISHLITE -->
+    <section class="why-wishlite reveal" id="why">
+        <div class="section-container">
+            <div class="why-header">
+                <p class="section-label">WHY WISHLITE</p>
+                <h2 class="section-title">為什麼選擇 Wishlite</h2>
+                <p>不只是送禮，<br>而是把材料、文化與品牌心意，<br>轉化為值得被記住的永續禮物。</p>
+            </div>
+            <div class="why-cards">
+                <div class="why-card">
+                    <div class="why-card-number">01</div>
+                    <div class="why-card-title">有來源的永續材料</div>
+                    <div class="why-card-desc">牡蠣殼、咖啡渣、回收塑膠等在地循環材料，讓廢棄資源成為可被送出的禮物。</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-number">02</div>
+                    <div class="why-card-title">可客製的品牌表達</div>
+                    <div class="why-card-desc">從 Logo 客製到品牌故事卡，讓每一份禮物都能替企業說話。</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-number">03</div>
+                    <div class="why-card-title">可延伸為活動方案</div>
+                    <div class="why-card-desc">禮品可延伸為 ESG 工作坊或企業活動提案，讓送禮更有記憶點。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT LINES (03) -->
+    <section class="product-lines reveal" id="products">
+        <div class="section-container">
+            <p class="section-label">PRODUCT LINES</p>
+            <h2 class="section-title">五大產品系列</h2>
+            <p class="product-lines-subtitle">依不同送禮情境，找到最適合的永續禮品方案。</p>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab(0)">活動紀念品<span class="tab-hint">　｜　ESG 活動、展會、大量贈送</span></button>
+                <button class="tab-btn" onclick="switchTab(1)">辦公 / 日常實用<span class="tab-hint">　｜　員工禮、品牌曝光</span></button>
+                <button class="tab-btn" onclick="switchTab(2)">香氛療癒<span class="tab-hint">　｜　感謝禮、VIP 贈禮</span></button>
+                <button class="tab-btn" onclick="switchTab(3)">節慶禮盒<span class="tab-hint">　｜　中秋、春節、年度送禮</span></button>
+                <button class="tab-btn" onclick="switchTab(4)">DIY 體驗型禮品<span class="tab-hint">｜可參與的互動式禮盒</span></button>
+            </div>
+            <!-- Tab 0: 活動紀念品 -->
+            <div class="tab-content active">
+                <div class="products-grid">
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="course-seed-earth3.jpg" alt="地球種子" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">再生紙纖</div>
+                        <div class="product-name">地球種子（紙卡款）</div>
+                        <div class="product-highlight">可種植紙卡 × 地球日／活動限定首選</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 100</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="pen.JPG" alt="咖啡渣環保筆" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">咖啡渣</div>
+                        <div class="product-name">咖啡渣環保筆</div>
+                        <div class="product-highlight">展會 / 活動最熱門入門小禮</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 500</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="course-coffee-soap.jpg" alt="咖啡豆手工皂" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">咖啡渣</div>
+                        <div class="product-name">咖啡豆手工皂</div>
+                        <div class="product-highlight">咖啡香氣 × 活動贈送兼具實用</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 100</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tab 1: 辦公 / 日常實用 -->
+            <div class="tab-content">
+                <div class="products-grid">
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="ocean-card-holder.jpg" alt="海廢再生悠遊票卡夾" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">回收塑膠</div>
+                        <div class="product-name">海廢再生悠遊票卡夾</div>
+                        <div class="product-highlight">海廢再生 × 每日通勤高曝光率員工禮</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 100</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="coffee-cup-new.jpg" alt="咖啡渣隨身杯" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">咖啡渣</div>
+                        <div class="product-name">咖啡渣保溫杯</div>
+                        <div class="product-highlight">每天使用 × 高品牌曝光率</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 300</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="rpet-towel.JPG" alt="寶特瓶紗運動毛巾" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">rPET 再生寶特瓶</div>
+                        <div class="product-name">寶特瓶紗運動毛巾（rPET）</div>
+                        <div class="product-highlight">員工禮 × 減塑行動具體展現</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 300</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tab 2: 香氛療癒 -->
+            <div class="tab-content">
+                <div class="products-grid">
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="coconut-candle.jpg" alt="椰殼香氛蠟燭" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">椰子殼</div>
+                        <div class="product-name">椰殼香氛蠟燭</div>
+                        <div class="product-highlight">VIP 贈禮 × 天然容器再利用</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 30</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="coffee-diffuser.jpg" alt="咖啡杯擴香石" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">咖啡渣</div>
+                        <div class="product-name">咖啡杯擴香石（車夾／冰箱貼）</div>
+                        <div class="product-highlight">日常香氛 × 品牌感謝小禮</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 100</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="logo-diffuser.jpg" alt="客製 Logo 擴香石" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">牡蠣殼</div>
+                        <div class="product-name">客製 Logo 擴香石</div>
+                        <div class="product-highlight">企業品牌識別 × 可客製 Logo 香氛禮</div>
+                        <div class="product-specs">
+                            <div class="product-moq">MOQ 100</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tab 3: 節慶禮盒 -->
+            <div class="tab-content">
+                <div class="products-grid">
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="mooncake-diffuser.jpg" alt="月餅擴香石" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">牡蠣殼</div>
+                        <div class="product-name">月餅擴香石</div>
+                        <div class="product-highlight">中秋限定 × 不會過期的月餅</div>
+                        <div class="product-specs">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="ingot-diffuser.jpg" alt="元寶擴香石" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">牡蠣殼</div>
+                        <div class="product-name">元寶擴香石</div>
+                        <div class="product-highlight">春節應景 × 招財好兆頭永續禮</div>
+                        <div class="product-specs">
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="mullet-roe-soap.jpg" alt="烏魚子手工皂" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">植物皂基</div>
+                        <div class="product-name">烏魚子手工皂</div>
+                        <div class="product-highlight">年節限定 × 台灣在地風味永續禮</div>
+                        <div class="product-specs">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tab 4: DIY 體驗型禮品 -->
+            <div class="tab-content">
+                <div class="products-grid">
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="seedearth.jpg" alt="種子地球永續 DIY 材料包" style="width:100%; height:100%; object-fit:cover; object-position: center 60%; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">回收塑膠</div>
+                        <div class="product-name">種子地球永續 DIY 材料包</div>
+                        <div class="product-highlight">互動式共創小禮 × 家庭日 / 親子活動</div>
+                        <div class="product-specs">
+                            <div class="product-moq">可單獨採購寄送</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="coffee-art-kit.jpg" alt="咖啡渣肌理畫 DIY 永續體驗材料包" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">咖啡渣</div>
+                        <div class="product-name">咖啡渣肌理畫 DIY 永續體驗材料包</div>
+                        <div class="product-highlight">療癒手作體驗 × ESG 主題月首選</div>
+                        <div class="product-specs">
+                            <div class="product-moq">可搭配品牌故事卡</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="product-card reveal">
+                        <div class="product-img-placeholder" style="padding:0; overflow:hidden;"><img src="denim-coaster-kit.jpg" alt="牛仔布杯墊 DIY 永續體驗材料包" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+                        <div class="product-card-body">
+                        <div class="product-material">回收牛仔布</div>
+                        <div class="product-name">牛仔布杯墊 DIY 永續體驗材料包</div>
+                        <div class="product-highlight">循環時尚 × 可個人化的永續作品</div>
+                        <div class="product-specs">
+                            <div class="product-moq">可客製 Logo 包裝</div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:2rem;">
+                <a href="https://www.notion.so/e0eda41b0f484ea6bf3ef606c8701da0" target="_blank" style="font-size:0.9rem; font-weight:600; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(196,154,108,0.3); padding-bottom:2px; transition:all 0.2s;">探索更多永續禮品 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMIZATION -->
+    <section class="customization reveal" id="custom">
+        <div class="section-container">
+            <p class="section-label">CUSTOMIZATION</p>
+            <h2 class="section-title">客製合作</h2>
+            <p class="section-subtitle">從品牌識別到包裝細節，讓每一份禮物更貼近企業需求與送禮情境。</p>
+            <div class="custom-cards">
+                <div class="custom-card reveal">
+                    <div class="custom-img"><img src="custom-logo.jpg" alt="Logo 客製"></div>
+                    <div class="custom-title">Logo 客製</div>
+                    <div class="custom-desc">支援雷雕、壓印與印刷，適用多數品項<br>建議提前 3 週確認設計稿，部分品項可安排打樣</div>
+                </div>
+                <div class="custom-card reveal">
+                    <div class="custom-img"><img src="custom-storycard.JPG" alt="品牌故事卡 / ESG 說明卡"></div>
+                    <div class="custom-title">品牌故事卡 / ESG 說明卡</div>
+                    <div class="custom-desc">說明材料來源、SDGs 對應與品牌永續承諾<br>適合用於企業贈禮說明與永續成果溝通</div>
+                </div>
+                <div class="custom-card reveal">
+                    <div class="custom-img"><img src="custom-giftbox.JPG" alt="禮盒包裝"></div>
+                    <div class="custom-title">禮盒包裝</div>
+                    <div class="custom-desc">依送禮情境規劃包裝層級與整體呈現<br>含客製包裝之訂單建議提前 4 週洽詢</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (06) -->
+    <section class="how-it-works reveal" id="process">
+        <div class="section-container">
+            <p class="section-label">HOW IT WORKS</p>
+            <h2 class="section-title">合作流程</h2>
+            <p class="section-subtitle">從填寫需求到交付完成，用清楚的流程，讓企業送禮更安心。</p>
+            <div class="steps-grid">
+                <div class="step-card reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-title">填寫需求</div>
+                    <div class="step-desc">提供用途、數量、預算與交期</div>
+                    <div class="step-time">⏱ 約 2 分鐘</div>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-title">收到選品與報價建議</div>
+                    <div class="step-desc">依需求整理合適品項與初步報價方向</div>
+                    <div class="step-time">⏱ 約 2 個工作天</div>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-title">確認內容與打樣</div>
+                    <div class="step-desc">確認商品、客製方式與樣品安排</div>
+                    <div class="step-time">⏱ 視品項安排</div>
+                </div>
+                <div class="step-card reveal">
+                    <div class="step-number">4</div>
+                    <div class="step-title">製作與交付</div>
+                    <div class="step-desc">依數量與交期安排製作並完成出貨</div>
+                    <div class="step-time">⏱ 依排程執行</div>
+                </div>
+            </div>
+            <div class="steps-cta-bridge">
+                <p>填寫需求後，我們將依照用途、數量與預算，提供對應的禮品建議與報價方向。</p>
+                <button class="cta-primary" onclick="openModal()">填寫需求表</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq reveal">
+        <div class="section-container">
+            <div class="faq-header">
+                <p class="section-label">FREQUENTLY ASKED QUESTIONS</p>
+                <h2 class="section-title">常見問題 FAQ</h2>
+            </div>
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>還不確定要送什麼，可以請你們幫忙推薦嗎？</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">當然可以。填寫需求表告訴我們送禮場景、數量與預算區間，我們會在 2 個工作天內回覆 2–3 個建議方向，包含品項說明與初步報價，讓你有具體選項再做決定。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>預算有限，有沒有入門方案？</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">有的。我們有 NT$120 起的輕量禮品方案，MOQ 低至 100 個。預算有限時，我們會優先推薦性價比高的品項，並說明哪些客製選項會影響成本，讓你在預算內做出最好的選擇。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>是否可依企業活動需求整合提案？</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">可以。我們可依企業活動主題搭配商品、附上品牌故事卡說明材料來源與 ESG 對應目標（SDGs），也可延伸為完整的 ESG 工作坊提案。歡迎填寫需求表，我們會依您的情境提供整合建議。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>最低訂購量為多少？</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">依商品不同，一般最低起訂量為 30–100 個。輕量商品（如冰箱貼、種子地球）MOQ 100；工藝類禮品（如禮盒套組）MOQ 30 起。小量客製也歡迎先與我們討論。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>是否可客製 Logo、包裝或品牌卡？</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">可以。Logo 鐳刻、故事卡設計、禮盒包裝均可客製。建議提前 3 週確認設計稿以確保交期，部分品項可提供打樣確認。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>一般交期需要多久？</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">標準款現貨 2–3 個工作天可出貨；含 Logo 客製約 2 週；全客製方案 4–8 週。建議提早 6 週以上洽詢以確保品質與排程。</div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERIAL UNIVERSE -->
+    <section class="material-story reveal" id="materials">
+        <div class="section-container">
+            <div class="material-story-header">
+                <p class="section-label">MATERIAL UNIVERSE</p>
+                <h2 class="section-title">材料宇宙</h2>
+                <p style="font-size:0.95rem; color:var(--text-light-muted); margin-bottom:0.6rem; letter-spacing:0.3px;">每一份禮品背後，都有真實的材料來源與循環脈絡。</p>
+                <p class="material-story-subtitle">這些材料，原本不被看見。<br>現在，它們成為能被送出去的永續故事。</p>
+            </div>
+
+            <div class="material-cards-grid">
+                <div class="mat-card reveal">
+                    <img class="mat-photo" src="mat-coffee.jpg" alt="咖啡渣">
+                    <div class="mat-text">
+                        <div class="mat-name-cn">咖啡渣</div>
+                        <div class="mat-name-en">Coffee Grounds</div>
+                        <div class="mat-story">從咖啡館回收後重新賦予形體。</div>
+                        <div class="mat-value">轉化為手工皂、環保筆與香氛製品。</div>
+                    </div>
+                </div>
+                <div class="mat-card reveal">
+                    <img class="mat-photo" src="mat-fiber.jpg" alt="再生紙纖">
+                    <div class="mat-text">
+                        <div class="mat-name-cn">再生紙纖</div>
+                        <div class="mat-name-en">Recycled Fiber</div>
+                        <div class="mat-story">廢棄纖維經處理後重新成為創作媒材。</div>
+                        <div class="mat-value">製成種子紙、故事卡與品牌包裝。</div>
+                    </div>
+                </div>
+                <div class="mat-card reveal">
+                    <img class="mat-photo" src="mat-oyster.jpg" alt="牡蠣殼">
+                    <div class="mat-text">
+                        <div class="mat-name-cn">牡蠣殼</div>
+                        <div class="mat-name-en">Oyster Shell</div>
+                        <div class="mat-story">台灣海岸養殖產業的副產物，帶著海洋記憶被重新塑形。</div>
+                        <div class="mat-value">轉化為擴香石、杯墊與飾品。</div>
+                    </div>
+                </div>
+                <div class="mat-card reveal">
+                    <img class="mat-photo" src="mat-plastic.jpg" alt="PCR 再生塑膠">
+                    <div class="mat-text">
+                        <div class="mat-name-cn">PCR 再生塑膠</div>
+                        <div class="mat-name-en">Recycled Plastic</div>
+                        <div class="mat-story">消費後塑膠經分選與再造重獲新生。</div>
+                        <div class="mat-value">製成 DIY 體驗材料與生活配件。</div>
+                    </div>
+                </div>
+                <div class="mat-card reveal">
+                    <img class="mat-photo" src="mat-textile.jpg" alt="回收衣物">
+                    <div class="mat-text">
+                        <div class="mat-name-cn">回收衣物</div>
+                        <div class="mat-name-en">Recycled Textiles</div>
+                        <div class="mat-story">舊衣經裁剪與重組後重新被看見。</div>
+                        <div class="mat-value">成為布製品與拼貼創作的素材。</div>
+                    </div>
+                </div>
+                <div class="mat-card reveal">
+                    <img class="mat-photo" src="mat-natural.jpg" alt="自然素材">
+                    <div class="mat-text">
+                        <div class="mat-name-cn">自然素材</div>
+                        <div class="mat-name-en">Natural Materials</div>
+                        <div class="mat-story">葉片、果實與種子都是創作的起點。</div>
+                        <div class="mat-value">製成乾燥花飾、自然拼貼與手作體驗。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="material-universe-cta">
+                <a href="https://www.notion.so/e0eda41b0f484ea6bf3ef606c8701da0" target="_blank">探索全系列永續禮品 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section style="background:var(--bg-deep, #1e2420); padding:56px 20px; text-align:center;">
+        <div style="max-width:600px; margin:0 auto;">
+            <h2 style="font-family:var(--font-serif,serif); font-size:clamp(20px,3vw,26px); color:#fff; margin-bottom:14px; font-weight:700;">準備好規劃專屬的永續禮品了嗎？</h2>
+            <p style="font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:28px;">填寫約 2 分鐘，我們將依您的用途、預算與交期，提供建議禮品方向與初步報價。</p>
+            <button class="cta-primary" onclick="openModal()" style="font-size:15px; padding:14px 36px; border-radius:28px;">立即填寫需求表 →</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-contact">
+            <span>📧 wishlite1111@gmail.com</span>
+            <span>🌐 wishlite.com.tw</span>
+            <span>📍 桃園市桃園區介壽路392、394號</span>
+        </div>
+        <div class="footer-copyright">© 2026 Wishlite 韻手作 — ESG Sustainable Gifts.</div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <div class="modal-brand-line">韻 手 作 永 續　WISHLITE</div>
+                <h2 class="modal-title">永續禮品需求表</h2>
+                <p class="modal-subtitle">填寫約 2 分鐘，我們將依您的用途、預算與交期，提供建議禮品方向與初步報價。</p>
+                <div class="modal-header-tags">
+                    <span class="modal-header-tag">客製 Logo 禮品</span>
+                    <span class="modal-header-tag">永續 ESG 禮品</span>
+                    <span class="modal-header-tag">品牌故事包裝</span>
+                </div>
+            </div>
+            <form onsubmit="submitForm(event)">
+                <div class="modal-form-body">
+
+                    <div class="form-section-label">基本資訊</div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
+                            <label>公司／單位名稱 <span class="required">*</span></label>
+                            <input type="text" id="company" placeholder="例：台積電" required>
+                        </div>
+                        <div class="form-group">
+                            <label>怎麼稱呼您 <span class="required">*</span></label>
+                            <input type="text" id="name" placeholder="例：王小姐" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
+                            <label>Email <span class="required">*</span></label>
+                            <input type="email" id="email" placeholder="name@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>聯繫電話 <span class="required">*</span></label>
+                            <input type="tel" id="phone" placeholder="09xx-xxx-xxx" required>
+                        </div>
+                    </div>
+
+                    <hr class="form-section-divider">
+                    <div class="form-section-label">禮品需求</div>
+
+                    <div class="form-field-row full">
+                        <div class="form-group">
+                            <label>預計用途 <span class="required">*</span></label>
+                            <select id="usage" required>
+                                <option value="">請選擇用途類型</option>
+                                <option value="員工禮品(三節/生日/入職)">員工禮品（三節／生日／入職）</option>
+                                <option value="VIP貴賓禮">VIP 貴賓禮</option>
+                                <option value="活動紀念品(展覽/論壇/研討會)">活動紀念品（展覽／論壇／研討會）</option>
+                                <option value="節慶禮盒(春節/中秋/端午)">節慶禮盒（春節／中秋／端午）</option>
+                                <option value="ESG主題活動搭配禮品">ESG 主題活動搭配禮品</option>
+                                <option value="品牌聯名/行銷贈品">品牌聯名／行銷贈品</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
+                            <label>預計數量 <span class="required">*</span></label>
+                            <input type="text" id="quantity" placeholder="例：500" required>
+                        </div>
+                        <div class="form-group">
+                            <label>每份預算區間 <span class="required">*</span></label>
+                            <select id="budget" required>
+                                <option value="">請選擇預算範圍</option>
+                                <option value="$200以下/份">$200 以下／份</option>
+                                <option value="$200-$500/份">$200–$500／份</option>
+                                <option value="$500-$800/份">$500–$800／份</option>
+                                <option value="$800-$1200/份">$800–$1,200／份</option>
+                                <option value="$1200以上/份">$1,200 以上／份</option>
+                                <option value="尚未確定">尚未確定</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
+                            <label>希望交期 <span class="required">*</span></label>
+                            <input type="date" id="deadline" required>
+                        </div>
+                        <div class="form-group">
+                            <label>是否需要 Logo 客製？ <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="logo-yes" name="logo" value="需要" required>
+                                    <label for="logo-yes">需要</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="logo-no" name="logo" value="不需要">
+                                    <label for="logo-no">不需要</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="logo-learn" name="logo" value="想先了解">
+                                    <label for="logo-learn">想先了解</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="form-section-divider">
+                    <div class="form-section-label">客製與配送</div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
+                            <label>是否需要包裝／品牌故事卡／ESG 說明卡？</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="pkg-yes" name="packaging" value="需要">
+                                    <label for="pkg-yes">需要</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pkg-no" name="packaging" value="不需要">
+                                    <label for="pkg-no">不需要</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pkg-learn" name="packaging" value="想先了解">
+                                    <label for="pkg-learn">想先了解</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>預計交付地點／城市</label>
+                            <input type="text" id="delivery-location" placeholder="例：台北市內湖區 / 新竹科學園區">
+                        </div>
+                    </div>
+
+                    <div class="form-field-row full">
+                        <div class="form-group">
+                            <label>其他需求或想法（選填）</label>
+                            <textarea id="notes" placeholder="例：希望為年末尾牙準備 300 份員工禮品，需搭配品牌故事卡..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-field-row full">
+                        <div class="form-group">
+                            <label>您是透過什麼管道認識我們的？<span class="required">*</span></label>
+                            <select id="referral-source">
+                                <option value="" disabled selected>請選擇</option>
+                                <option value="Google 搜尋">Google 搜尋</option>
+                                <option value="Instagram">Instagram</option>
+                                <option value="LINE">LINE</option>
+                                <option value="朋友／同事推薦">朋友／同事推薦</option>
+                                <option value="曾參加過我們的活動">曾參加過我們的活動</option>
+                                <option value="媒體報導">媒體報導</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <button type="submit" class="form-submit">填寫完成，讓我們為您推薦合適方案</button>
+                    <p class="form-note">提交後 2 個工作天內，我們將依您的用途、預算與交期，回覆建議禮品方向與初步報價</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openModal() {
+            document.getElementById('modalOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on overlay click
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Form Submit
+        async function submitForm(event) {
+            event.preventDefault();
+
+            const company = document.getElementById('company').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const usage = document.getElementById('usage').value;
+            const quantity = document.getElementById('quantity').value;
+            const budget = document.getElementById('budget').value;
+            const deadline = document.getElementById('deadline').value;
+            const logoEl = document.querySelector('input[name="logo"]:checked');
+            const logo = logoEl ? logoEl.value : '';
+            const packagingEl = document.querySelector('input[name="packaging"]:checked');
+            const packaging = packagingEl ? packagingEl.value : '';
+            const deliveryLocation = document.getElementById('delivery-location').value || '';
+            const notes = document.getElementById('notes').value;
+            const referralSource = document.getElementById('referral-source').value || '';
+
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '送出中⋯';
+
+            const data = {
+                type: '永續禮品詢價（Landing Page）',
+                company, name, email, phone,
+                giftType: usage,
+                quantity,
+                budget,
+                deliveryDate: deadline,
+                logoCustom: logo,
+                occasions: packaging ? '包裝需求: ' + packaging : '',
+                notes: (deliveryLocation ? '交付地點: ' + deliveryLocation + '\n' : '') + (notes || ''),
+                referralSource,
+                source: 'landing-page'
+            };
+
+            try {
+                const resp = await fetch('https://wishlite-n8n.zeabur.app/webhook/gift-inquiry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (resp.ok) {
+                    closeModal();
+                    document.querySelector('form').reset();
+                    alert('✅ 感謝您的詢問！我們會在 48 小時內與您聯繫。');
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                alert('❌ 送出失敗，請稍後再試或直接聯繫我們。');
+                console.error('Submit error:', err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
+        }
+
+        // Tab Switching
+        function switchTab(index) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach((tab, i) => {
+                tab.classList.remove('active');
+                contents[i].classList.remove('active');
+            });
+
+            tabs[index].classList.add('active');
+            contents[index].classList.add('active');
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(el) {
+            const item = el.closest('.faq-item');
+            item.classList.toggle('open');
+        }
+
+        // Hamburger Menu
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks) {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            }
+        }
+
+        // Smooth Scroll for Links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            if (link.getAttribute('href') !== '#') {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#form' || href === '#products' || href === '#why' ||
+                        href === '#proof' || href === '#materials' || href === '#custom' || href === '#process') {
+                        e.preventDefault();
+
+                        if (href === '#form') {
+                            openModal();
+                        } else {
+                            const target = document.querySelector(href);
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    }
+                });
+            }
+        });
+
+        // Intersection Observer for Scroll Reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Prevent link navigation for modal triggers
+        document.querySelectorAll('a[onclick*="openModal"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
+    <script>
+        (function(){
+            var btn = document.getElementById('backToTop');
+            window.addEventListener('scroll', function(){
+                if(window.scrollY > 600){ btn.classList.add('visible'); }
+                else { btn.classList.remove('visible'); }
+            });
+        })();
+    </script>
+</body>
+</html>
