@@ -1466,19 +1466,34 @@
             gap: 0.45rem;
         }
 
-        .radio-option input[type="radio"] {
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
             cursor: pointer;
             width: 16px;
             height: 16px;
             accent-color: var(--gold);
         }
 
-        .radio-option label {
+        .radio-option label,
+        .checkbox-option label {
             margin: 0;
             cursor: pointer;
             font-weight: 500;
             color: var(--charcoal);
             font-size: 0.9rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+            margin-top: 0.4rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
         }
 
         .form-footer {
@@ -2222,7 +2237,7 @@
                 <button class="modal-close" onclick="closeModal()">×</button>
                 <div class="modal-brand-line">韻 手 作 永 續　WISHLITE</div>
                 <h2 class="modal-title">永續禮品需求表</h2>
-                <p class="modal-subtitle">填寫約 2 分鐘，我們將依您的用途、預算與交期，提供建議禮品方向與初步報價。</p>
+                <p class="modal-subtitle">填寫約 3 分鐘，我們將依您的用途、預算與交期，提供建議禮品方向與初步報價。</p>
                 <div class="modal-header-tags">
                     <span class="modal-header-tag">客製 Logo 禮品</span>
                     <span class="modal-header-tag">永續 ESG 禮品</span>
@@ -2300,6 +2315,13 @@
                             <input type="date" id="deadline" required>
                         </div>
                         <div class="form-group">
+                            <label>預計使用日期</label>
+                            <input type="date" id="use-date">
+                        </div>
+                    </div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
                             <label>是否需要 Logo 客製？ <span class="required">*</span></label>
                             <div class="radio-group">
                                 <div class="radio-option">
@@ -2318,12 +2340,52 @@
                         </div>
                     </div>
 
+                    <div class="form-field-row full">
+                        <div class="form-group">
+                            <label>偏好的商品類型（可複選）</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-diy" name="product-pref" value="DIY 材料包">
+                                    <label for="pref-diy">DIY 材料包</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-finished" name="product-pref" value="完成品禮品">
+                                    <label for="pref-finished">完成品禮品</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-diffuser" name="product-pref" value="擴香石／香氛類">
+                                    <label for="pref-diffuser">擴香石／香氛類</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-soap" name="product-pref" value="手工皂／清潔類">
+                                    <label for="pref-soap">手工皂／清潔類</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-desk" name="product-pref" value="桌上小物">
+                                    <label for="pref-desk">桌上小物</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-giftbox" name="product-pref" value="節慶禮盒">
+                                    <label for="pref-giftbox">節慶禮盒</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-edu" name="product-pref" value="永續教育搭配款">
+                                    <label for="pref-edu">永續教育搭配款</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="pref-undecided" name="product-pref" value="尚未確定">
+                                    <label for="pref-undecided">尚未確定</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <hr class="form-section-divider">
                     <div class="form-section-label">客製與配送</div>
 
                     <div class="form-field-row">
                         <div class="form-group">
-                            <label>是否需要包裝／品牌故事卡／ESG 說明卡？</label>
+                            <label>是否需要包裝／品牌故事卡？</label>
                             <div class="radio-group">
                                 <div class="radio-option">
                                     <input type="radio" id="pkg-yes" name="packaging" value="需要">
@@ -2338,6 +2400,35 @@
                                     <label for="pkg-learn">想先了解</label>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>是否希望搭配 ESG／永續說明內容？</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="esg-yes" name="esg-content" value="需要">
+                                    <label for="esg-yes">需要</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="esg-no" name="esg-content" value="不需要">
+                                    <label for="esg-no">不需要</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="esg-learn" name="esg-content" value="想先了解">
+                                    <label for="esg-learn">想先了解</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-field-row">
+                        <div class="form-group">
+                            <label>是否需分批配送／多點寄送？</label>
+                            <select id="batch-delivery">
+                                <option value="" disabled selected>請選擇</option>
+                                <option value="不需要">不需要</option>
+                                <option value="需要">需要</option>
+                                <option value="想先了解">想先了解</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>預計交付地點／城市</label>
@@ -2415,10 +2506,15 @@
             const quantity = document.getElementById('quantity').value;
             const budget = document.getElementById('budget').value;
             const deadline = document.getElementById('deadline').value;
+            const useDate = document.getElementById('use-date').value || '';
             const logoEl = document.querySelector('input[name="logo"]:checked');
             const logo = logoEl ? logoEl.value : '';
+            const productPref = Array.from(document.querySelectorAll('input[name="product-pref"]:checked')).map(el => el.value);
             const packagingEl = document.querySelector('input[name="packaging"]:checked');
             const packaging = packagingEl ? packagingEl.value : '';
+            const esgContentEl = document.querySelector('input[name="esg-content"]:checked');
+            const esgContent = esgContentEl ? esgContentEl.value : '';
+            const batchDelivery = document.getElementById('batch-delivery').value || '';
             const deliveryLocation = document.getElementById('delivery-location').value || '';
             const notes = document.getElementById('notes').value;
             const referralSource = document.getElementById('referral-source').value || '';
@@ -2435,9 +2531,14 @@
                 quantity,
                 budget,
                 deliveryDate: deadline,
+                useDate: useDate,
                 logoCustom: logo,
-                occasions: packaging ? '包裝需求: ' + packaging : '',
-                notes: (deliveryLocation ? '交付地點: ' + deliveryLocation + '\n' : '') + (notes || ''),
+                productPreference: productPref.length > 0 ? productPref.join('、') : '',
+                packaging: packaging,
+                esgContent: esgContent,
+                batchDelivery: batchDelivery,
+                deliveryLocation: deliveryLocation,
+                notes: notes || '',
                 referralSource,
                 source: 'landing-page'
             };

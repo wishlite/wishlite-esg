@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>延伸永續行動｜Explore More ESG Actions — 韻手作 Wishlite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --moss: #3d5a3e;
+      --moss-dark: #2e4630;
+      --sage: #7a9e7e;
+      --cream: #f5f0e8;
+      --sand: #e8dcc8;
+      --soft: #f9f6f0;
+      --gold: #c49a3c;
+      --gold-light: #d4b06a;
+      --mist: #d4e4d0;
+      --ink: #1e2a1e;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Banner 橫幅 2:1 ── */
+    .banner {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      max-height: 420px;
+      background: linear-gradient(135deg, var(--moss-dark) 0%, var(--moss) 55%, var(--sage) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(122,158,126,0.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 85% 20%, rgba(196,154,60,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .banner-label {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .banner-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.35;
+      position: relative;
+    }
+
+    .banner-title span {
+      display: block;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(14px, 2.2vw, 18px);
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 8px;
+    }
+
+    /* ── ① 上半段：信任定位 ── */
+    .section-trust {
+      background: var(--soft);
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+
+    .section-trust .inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section-trust p {
+      font-size: 16px;
+      line-height: 2;
+      color: var(--ink);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .trust-line {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+      border-radius: 1px;
+    }
+
+    /* ── ② 中間：兩個入口卡片 ── */
+    .section-cards {
+      background: var(--white);
+      padding: 56px 24px 64px;
+    }
+
+    .cards-wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .card {
+      background: var(--soft);
+      border-radius: 16px;
+      padding: 40px 32px 36px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border: 1px solid var(--sand);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(61,90,62,0.1);
+    }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--moss);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .card-subtitle {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 28px;
+    }
+
+    .card-btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .card:first-child .card-btn {
+      background: var(--moss);
+      color: var(--white);
+    }
+    .card:first-child .card-btn:hover {
+      background: var(--moss-dark);
+    }
+
+    .card:last-child .card-btn {
+      background: transparent;
+      color: var(--moss);
+      border: 1.5px solid var(--moss);
+    }
+    .card:last-child .card-btn:hover {
+      background: var(--moss);
+      color: var(--white);
+    }
+
+    .card-hint {
+      display: block;
+      font-size: 11px;
+      color: #999;
+      margin-top: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── ③ 底部收斂 CTA ── */
+    .section-closing {
+      background: var(--cream);
+      padding: 48px 24px 56px;
+      text-align: center;
+    }
+
+    .section-closing .inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .closing-divider {
+      width: 32px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+      border-radius: 1px;
+    }
+
+    .closing-main {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--moss);
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .closing-extra {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .closing-extra a {
+      color: var(--moss);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      font-weight: 500;
+    }
+    .closing-extra a:hover {
+      color: var(--gold);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--moss-dark);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+    }
+    .footer a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--gold-light);
+    }
+
+    /* ── RWD ── */
+    @media (max-width: 640px) {
+      .cards-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .card {
+        padding: 32px 24px 28px;
+      }
+      .banner {
+        aspect-ratio: auto;
+        min-height: 220px;
+        padding: 40px 20px;
+      }
+      .section-trust {
+        padding: 40px 20px 36px;
+      }
+      .section-cards {
+        padding: 40px 20px 48px;
+      }
+      .section-closing {
+        padding: 36px 20px 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Banner 橫幅 2:1 ── -->
+  <header class="banner">
+    <span class="banner-label">Wishlite × ESG Actions</span>
+    <h1 class="banner-title">
+      延伸永續行動
+      <span>Explore More ESG Actions</span>
+    </h1>
+  </header>
+
+  <!-- ── ① 上半段：信任＋定位 ── -->
+  <section class="section-trust">
+    <div class="inner">
+      <div class="trust-line"></div>
+      <p>
+        我們已將所有永續手作活動與企業合作成果，<br />
+        整理為完整的 ESG 行動資料庫，<br />
+        協助企業從單次活動延伸為可持續的永續行動方案。
+      </p>
+    </div>
+  </section>
+
+  <!-- ── ② 中間：兩個入口 ── -->
+  <section class="section-cards">
+    <div class="cards-wrapper">
+
+      <!-- 左：永續活動 × 材料方案 -->
+      <div class="card">
+        <span class="card-icon">🌱</span>
+        <h2 class="card-title">永續活動 × 材料方案</h2>
+        <p class="card-subtitle">ESG Activity Database</p>
+        <p class="card-desc">
+          探索 100+ ESG 手作活動與材料應用，<br />
+          可依人數、預算與主題彈性搭配。
+        </p>
+        <a href="https://wishlite.notion.site/esgdiy?v=2b2704274681819ea59c000cfd04a44c" target="_blank" rel="noopener" class="card-btn">
+          探索活動方案 →
+        </a>
+        <span class="card-hint">前往 Notion 活動資料庫</span>
+      </div>
+
+      <!-- 右：ESG 成果 × 合作案例 -->
+      <div class="card">
+        <span class="card-icon">🌍</span>
+        <h2 class="card-title">ESG 成果 × 合作案例</h2>
+        <p class="card-subtitle">ESG Impact & Case Studies</p>
+        <p class="card-desc">
+          從活動到成果，將 ESG 行動轉化為<br />
+          可被揭露的數據與企業故事。
+        </p>
+        <a href="https://www.notion.so/wishlite/ESG-2c5704274681800d8b90f045e1f6cf00?source=copy_link" target="_blank" rel="noopener" class="card-btn">
+          查看合作案例 →
+        </a>
+        <span class="card-hint">前往 Notion 案例資料庫</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ③ 底部收斂 CTA ── -->
+  <section class="section-closing">
+    <div class="inner">
+      <div class="closing-divider"></div>
+      <p class="closing-main">
+        我們也可依貴公司本次活動需求，<br />
+        協助規劃最適合的材料包與永續主題組合。
+      </p>
+      <p class="closing-extra">
+        歡迎進一步與我們討論客製方案與正式報價 →
+        <a href="https://wishlite.github.io/wishlite-esg/#form">立即諮詢</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <p>© 2026 <a href="https://wishlite.github.io/wishlite-esg/">韻手作 Wishlite</a> — 讓永續成為企業最美的行動</p>
+  </footer>
+
+</body>
+</html>
