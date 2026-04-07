@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咖啡渣超能力測驗 ☕</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #150c08;
+            --card: #231209;
+            --card2: #2d1b0e;
+            --accent: #c8983a;
+            --accent2: #e8b860;
+            --text: #f0e0c8;
+            --muted: #9a7a5a;
+            --correct: #2a6640;
+            --correct-text: #7ef0b0;
+            --wrong: #5c1a1a;
+            --wrong-text: #ff9090;
+            --border: rgba(200,152,58,0.25);
+        }
+
+        html, body {
+            height: 100%;
+            font-family: -apple-system, 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* ─── Floating beans ─── */
+        .beans-bg {
+            position: fixed; inset: 0;
+            pointer-events: none; z-index: 0;
+            overflow: hidden;
+        }
+        .bean {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0; }
+            10%  { opacity: 0.12; }
+            90%  { opacity: 0.08; }
+            100% { transform: translateY(-10vh) rotate(540deg); opacity: 0; }
+        }
+
+        /* ─── Layout ─── */
+        .page {
+            position: relative; z-index: 1;
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 24px 16px;
+        }
+        .card {
+            width: 100%; max-width: 460px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            box-shadow: 0 0 60px rgba(200,152,58,0.08);
+        }
+
+        /* ─── Screen transitions ─── */
+        .screen { display: none; }
+        .screen.active {
+            display: block;
+            animation: slideIn 0.4s cubic-bezier(.25,.8,.25,1);
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── INTRO ─── */
+        .intro-emoji {
+            font-size: 72px;
+            text-align: center;
+            margin-bottom: 16px;
+            display: block;
+            animation: bob 3s ease-in-out infinite;
+        }
+        @keyframes bob {
+            0%,100% { transform: translateY(0); }
+            50%      { transform: translateY(-10px); }
+        }
+        .intro-title {
+            font-size: 26px; font-weight: 900;
+            text-align: center; line-height: 1.3;
+            margin-bottom: 12px;
+        }
+        .intro-sub {
+            font-size: 14px; color: var(--muted);
+            text-align: center; line-height: 1.8;
+            margin-bottom: 28px;
+        }
+        .intro-meta {
+            text-align: center; color: var(--muted);
+            font-size: 12px; margin-top: 14px;
+        }
+
+        /* ─── Buttons ─── */
+        .btn {
+            display: block; width: 100%;
+            padding: 15px 20px;
+            border: none; border-radius: 14px;
+            font-size: 16px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent2), var(--accent));
+            color: #1a0c04;
+            box-shadow: 0 4px 24px rgba(200,152,58,0.35);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,152,58,0.45); }
+        .btn-primary:active { transform: translateY(0); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline:hover { background: rgba(200,152,58,0.1); }
+
+        /* ─── Progress ─── */
+        .progress-row {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            flex: 1; height: 6px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 99px; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: 99px;
+            transition: width 0.5s cubic-bezier(.25,.8,.25,1);
+        }
+        .progress-label {
+            font-size: 12px; color: var(--muted);
+            white-space: nowrap;
+        }
+
+        /* ─── Score dot row ─── */
+        .dots {
+            display: flex; gap: 6px; justify-content: center;
+            margin-bottom: 20px;
+        }
+        .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s;
+        }
+        .dot.done  { background: var(--accent); }
+        .dot.current { background: var(--accent2); box-shadow: 0 0 8px var(--accent2); }
+
+        /* ─── Question ─── */
+        .q-icon { font-size: 52px; text-align: center; margin-bottom: 14px; }
+        .q-text {
+            font-size: 17px; font-weight: 700;
+            text-align: center; line-height: 1.6;
+            margin-bottom: 6px;
+        }
+        .q-hint {
+            font-size: 12px; color: var(--muted);
+            text-align: center; margin-bottom: 20px;
+        }
+
+        /* ─── Options ─── */
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .opt {
+            background: var(--card2);
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 14px 10px;
+            color: var(--text);
+            font-size: 14px; font-weight: 500;
+            cursor: pointer;
+            transition: all 0.18s;
+            text-align: center; line-height: 1.4;
+            min-height: 60px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .opt:hover:not(:disabled) {
+            border-color: var(--accent);
+            background: rgba(200,152,58,0.12);
+            transform: scale(1.02);
+        }
+        .opt:disabled { cursor: default; }
+        .opt.correct {
+            background: var(--correct);
+            border-color: var(--correct-text);
+            color: var(--correct-text);
+        }
+        .opt.wrong {
+            background: var(--wrong);
+            border-color: var(--wrong-text);
+            color: var(--wrong-text);
+        }
+        .opt.shake {
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25%      { transform: translateX(-6px); }
+            75%      { transform: translateX(6px); }
+        }
+
+        /* ─── Fact card ─── */
+        .fact {
+            background: rgba(200,152,58,0.09);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 14px;
+            display: none;
+        }
+        .fact.show { display: block; animation: slideIn 0.3s ease; }
+        .fact-tag {
+            font-size: 11px; font-weight: 700; letter-spacing: 1px;
+            color: var(--accent); text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .fact-body {
+            font-size: 13px; color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ─── Next btn ─── */
+        #btn-next { display: none; }
+        #btn-next.show { display: block; }
+
+        /* ─── RESULT ─── */
+        .res-badge {
+            font-size: 64px; text-align: center;
+            margin-bottom: 8px;
+            animation: bob 3s ease-in-out infinite;
+            display: block;
+        }
+        .res-title {
+            font-size: 22px; font-weight: 900;
+            text-align: center; margin-bottom: 16px;
+        }
+        .res-score-box {
+            background: var(--card2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .res-score-num {
+            font-size: 56px; font-weight: 900;
+            color: var(--accent2);
+            line-height: 1;
+        }
+        .res-score-denom {
+            font-size: 18px; color: var(--muted);
+        }
+        .res-desc {
+            font-size: 13px; color: var(--muted);
+            text-align: center; line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .res-share {
+            background: rgba(200,152,58,0.1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+        .res-share p {
+            font-size: 13px; color: var(--muted);
+            margin-bottom: 6px;
+        }
+        .res-share-text {
+            font-size: 13px; color: var(--text);
+            line-height: 1.6; word-break: break-word;
+        }
+        .copy-row {
+            display: flex; gap: 8px; margin-top: 10px;
+        }
+        .btn-copy {
+            flex: 1; padding: 10px;
+            font-size: 13px; font-weight: 600;
+            border-radius: 10px;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 360px) {
+            .card { padding: 24px 16px; }
+            .opt  { font-size: 13px; padding: 12px 8px; }
+            .q-text { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Floating background particles -->
+<div class="beans-bg" id="beans-bg"></div>
+
+<div class="page">
+    <div class="card">
+
+        <!-- ── INTRO ── -->
+        <div class="screen active" id="s-intro">
+            <span class="intro-emoji">☕</span>
+            <div class="intro-title">咖啡渣<br>超能力測驗</div>
+            <div class="intro-sub">
+                你以為喝完咖啡就結束了嗎？<br>
+                咖啡渣其實擁有驚人的第二人生！<br>
+                來測測你對咖啡渣了解多少 👇
+            </div>
+            <button class="btn btn-primary" onclick="startGame()">開始挑戰 →</button>
+            <div class="intro-meta">共 5 題 · 約 2 分鐘 · 線上版</div>
+        </div>
+
+        <!-- ── QUESTION ── -->
+        <div class="screen" id="s-question">
+            <div class="progress-row">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+                </div>
+                <div class="progress-label" id="prog-label">1 / 5</div>
+            </div>
+            <div class="dots" id="dots"></div>
+
+            <div class="q-icon" id="q-icon"></div>
+            <div class="q-text" id="q-text"></div>
+            <div class="q-hint" id="q-hint"></div>
+
+            <div class="options" id="options"></div>
+
+            <div class="fact" id="fact">
+                <div class="fact-tag">☕ 咖啡渣知識 +1</div>
+                <div class="fact-body" id="fact-body"></div>
+            </div>
+
+            <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">繼續 →</button>
+        </div>
+
+        <!-- ── RESULT ── -->
+        <div class="screen" id="s-result">
+            <span class="res-badge" id="res-badge"></span>
+            <div class="res-title" id="res-title"></div>
+            <div class="res-score-box">
+                <div class="res-score-num" id="res-num"></div>
+                <div class="res-score-denom">/ 5 分</div>
+            </div>
+            <div class="res-desc" id="res-desc"></div>
+            <div class="res-share" id="res-share">
+                <p>複製分享給朋友：</p>
+                <div class="res-share-text" id="res-share-text"></div>
+                <div class="copy-row">
+                    <button class="btn btn-outline btn-copy" id="copy-btn" onclick="copyResult()">複製文字</button>
+                    <button class="btn btn-primary btn-copy" onclick="restartGame()">再玩一次 ↺</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* ── Data ── */
+const Q = [
+    {
+        icon: "🧴",
+        text: "咖啡渣加哪種油，可以做出天然去角質磨砂膏？",
+        hint: "提示：這種油在廚房和保養品都很常見",
+        opts: ["椰子油 🥥", "醬油 🫙", "苦茶油 🌿", "橄欖油也可以？"],
+        ans: 0,
+        fact: "咖啡渣 + 椰子油是天然磨砂膏的黃金配方！咖啡渣顆粒去除老廢角質，椰子油深層滋潤保濕，讓肌膚光滑有彈性，還能促進血液循環。"
+    },
+    {
+        icon: "🌹",
+        text: "咖啡渣稀釋後澆灌土壤，哪種植物喜歡最多？",
+        hint: "提示：咖啡渣偏酸性，有些植物特別愛",
+        opts: ["多肉植物 🌵", "玫瑰花 🌹", "蘭花 🌸", "竹子 🎋"],
+        ans: 1,
+        fact: "玫瑰、藍莓、茶花這類「嗜酸植物」超愛咖啡渣！能幫助植物吸收氮、鉀等養分，改善土壤結構，玫瑰花開得更豔麗、更香。"
+    },
+    {
+        icon: "🐜",
+        text: "咖啡渣灑在花盆邊緣，能驅趕哪種讓人頭痛的小生物？",
+        hint: "提示：牠們最討厭咖啡因的氣味",
+        opts: ["蜜蜂 🐝", "蝴蝶 🦋", "螞蟻 🐜", "蚊子 🦟"],
+        ans: 2,
+        fact: "咖啡渣的咖啡因氣味能有效驅趕螞蟻、蛞蝓和蝸牛！沿著植物根部撒一圈，就是零農藥的天然防蟲屏障，對蜜蜂和益蟲完全無害。"
+    },
+    {
+        icon: "🪵",
+        text: "咖啡渣有個冷知識用途——它能修復什麼東西的刮痕？",
+        hint: "提示：咖啡色天然上色，剛好掩飾傷口",
+        opts: ["手機螢幕 📱", "木頭家具 🪑", "皮鞋表面 👞", "陶瓷餐盤 🍽️"],
+        ans: 1,
+        fact: "把濃稠咖啡渣填入木頭刮痕，稍微乾燥後擦去多餘部分，咖啡色天然染色剛好填補傷口！這個老木匠秘技，完全不用化學填補劑。"
+    },
+    {
+        icon: "🌍",
+        text: "全球每年產生的咖啡渣，大約是多少公噸？",
+        hint: "提示：這個數字會讓你重新看待手上那杯咖啡",
+        opts: ["約 60 萬噸", "約 600 萬噸", "約 6,000 萬噸", "約 6 億噸"],
+        ans: 1,
+        fact: "全球每年產生約 600 萬公噸咖啡渣，大部分直接進垃圾桶或焚化爐。台灣一年也有數萬噸。如果每一包都能被再利用，對地球是巨大的禮物 ☕🌱"
+    }
+];
+
+const RESULTS = [
+    {
+        badge: "🌱",
+        title: "咖啡渣新手",
+        desc: "沒關係，現在你已經學到了！咖啡渣的世界超豐富，下次喝完咖啡，試著把渣留下來吧。",
+        shareTag: "原來咖啡渣這麼有用，我才知道 😅"
+    },
+    {
+        badge: "☕",
+        title: "咖啡渣達人",
+        desc: "不錯喔！你對咖啡渣有真材實料的了解，再學一點就是永續生活高手了！",
+        shareTag: "咖啡渣知識挑戰，我答對了一半以上！"
+    },
+    {
+        badge: "🏆",
+        title: "咖啡渣煉金師",
+        desc: "滿分！你深知咖啡渣的超能力，是真正的永續生活達人，快去教大家！",
+        shareTag: "咖啡渣超能力測驗，我全答對！☕🏆"
+    }
+];
+
+/* ── State ── */
+let cur = 0, score = 0, answered = false;
+
+/* ── Particles ── */
+(function() {
+    const c = document.getElementById('beans-bg');
+    ['☕','🫘','✨','🌿','☕','🫘'].forEach((e, i) => {
+        const d = document.createElement('div');
+        d.className = 'bean';
+        d.textContent = e;
+        d.style.left = (10 + i * 15 + Math.random() * 10) + 'vw';
+        d.style.fontSize = (14 + Math.random() * 18) + 'px';
+        d.style.animationDuration = (14 + Math.random() * 16) + 's';
+        d.style.animationDelay = (-Math.random() * 30) + 's';
+        c.appendChild(d);
+    });
+})();
+
+/* ── Screen helpers ── */
+function show(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+/* ── Dots ── */
+function renderDots() {
+    const el = document.getElementById('dots');
+    el.innerHTML = '';
+    Q.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i < cur ? ' done' : i === cur ? ' current' : '');
+        el.appendChild(d);
+    });
+}
+
+/* ── Game flow ── */
+function startGame() {
+    cur = 0; score = 0;
+    loadQuestion();
+    show('s-question');
+}
+
+function loadQuestion() {
+    answered = false;
+    const q = Q[cur];
+    const pct = (cur / Q.length) * 100;
+
+    document.getElementById('prog-fill').style.width = pct + '%';
+    document.getElementById('prog-label').textContent = `${cur + 1} / ${Q.length}`;
+    renderDots();
+
+    document.getElementById('q-icon').textContent = q.icon;
+    document.getElementById('q-text').textContent  = q.text;
+    document.getElementById('q-hint').textContent  = q.hint;
+
+    const box = document.getElementById('options');
+    box.innerHTML = '';
+    q.opts.forEach((o, i) => {
+        const b = document.createElement('button');
+        b.className = 'opt';
+        b.textContent = o;
+        b.onclick = () => pick(i);
+        box.appendChild(b);
+    });
+
+    document.getElementById('fact').classList.remove('show');
+    const nb = document.getElementById('btn-next');
+    nb.classList.remove('show');
+    nb.textContent = cur === Q.length - 1 ? '看結果 🎉' : '下一題 →';
+}
+
+function pick(i) {
+    if (answered) return;
+    answered = true;
+
+    const q = Q[cur];
+    const btns = document.querySelectorAll('.opt');
+    btns.forEach(b => b.disabled = true);
+
+    if (i === q.ans) {
+        btns[i].classList.add('correct');
+        score++;
+    } else {
+        btns[i].classList.add('wrong');
+        btns[i].classList.add('shake');
+        btns[q.ans].classList.add('correct');
+    }
+
+    document.getElementById('fact-body').textContent = q.fact;
+    document.getElementById('fact').classList.add('show');
+    document.getElementById('btn-next').classList.add('show');
+}
+
+function nextQuestion() {
+    cur++;
+    if (cur < Q.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    // update progress to 100%
+    document.getElementById('prog-fill').style.width = '100%';
+
+    const r = score <= 1 ? RESULTS[0] : score <= 3 ? RESULTS[1] : RESULTS[2];
+
+    document.getElementById('res-badge').textContent = r.badge;
+    document.getElementById('res-title').textContent = r.title;
+    document.getElementById('res-num').textContent   = score;
+    document.getElementById('res-desc').textContent  = r.desc;
+
+    const shareStr = `${r.badge} 咖啡渣超能力測驗：我得了 ${score}/5 分，稱號「${r.title}」！\n${r.shareTag}\n\n你也來挑戰看看 ☕`;
+    document.getElementById('res-share-text').textContent = shareStr;
+
+    show('s-result');
+}
+
+function restartGame() {
+    cur = 0; score = 0;
+    startGame();
+}
+
+function copyResult() {
+    const text = document.getElementById('res-share-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '已複製 ✓';
+        setTimeout(() => btn.textContent = '複製文字', 2000);
+    }).catch(() => {
+        // fallback: select text
+        const el = document.getElementById('res-share-text');
+        const sel = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        sel.removeAllRanges();
+        sel.addRange(range);
+    });
+}
+</script>
+</body>
+</html>
