@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我是一粒咖啡渣 ☕ 互動故事</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background: #0a0503;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── Layout ─── */
+        #game { width:100%; max-width:480px; margin:0 auto; min-height:100vh; }
+
+        #main-view {
+            display: flex; flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ─── Scene Header ─── */
+        #scene-header {
+            height: 44vh; min-height: 220px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            transition: background 0.9s ease;
+        }
+
+        .chapter-label {
+            position: absolute; top: 18px; left: 0; right: 0;
+            text-align: center;
+            font-size: 11px; font-weight: 700; letter-spacing: 3px;
+            color: rgba(255,255,255,0.55); text-transform: uppercase;
+        }
+
+        #scene-emoji {
+            font-size: 76px; line-height: 1;
+            animation: float 4s ease-in-out infinite;
+            position: relative; z-index: 1;
+            cursor: default;
+            transition: font-size 0.4s;
+        }
+        @keyframes float {
+            0%,100% { transform: translateY(0) scale(1); }
+            50%      { transform: translateY(-14px) scale(1.06); }
+        }
+
+        /* ─── Text Panel ─── */
+        #text-panel {
+            flex: 1;
+            background: #0a0503;
+            border-radius: 28px 28px 0 0;
+            margin-top: -28px;
+            padding: 30px 22px 36px;
+            position: relative; z-index: 2;
+            min-height: 56vh;
+            display: flex; flex-direction: column;
+        }
+
+        #skip-hint {
+            font-size: 11px; color: rgba(160,130,90,0.45);
+            text-align: right; margin-bottom: 12px;
+            height: 14px; transition: opacity 0.3s;
+        }
+
+        #narration {
+            font-size: 15px; color: #cfc0a0;
+            line-height: 2; white-space: pre-line;
+            margin-bottom: 22px;
+            flex: 1;
+            min-height: 80px;
+        }
+
+        #question {
+            font-size: 16px; font-weight: 700; color: #f0e0c0;
+            line-height: 1.6; white-space: pre-line;
+            margin-bottom: 18px;
+            opacity: 0; transition: opacity 0.5s;
+        }
+        #question.show { opacity: 1; }
+
+        /* ─── Choices ─── */
+        #choices {
+            display: flex; flex-direction: column; gap: 10px;
+            opacity: 0; transform: translateY(12px);
+            transition: opacity 0.4s, transform 0.4s;
+        }
+        #choices.show { opacity: 1; transform: translateY(0); }
+
+        .choice-btn {
+            background: #170d07;
+            border: 2px solid rgba(200,150,55,0.28);
+            border-radius: 15px;
+            padding: 14px 16px;
+            color: #e0caa0;
+            font-size: 14px; font-weight: 600;
+            cursor: pointer; text-align: left;
+            display: flex; align-items: center; gap: 12px;
+            transition: all 0.2s; line-height: 1.4;
+        }
+        .choice-btn:hover {
+            background: #241408;
+            border-color: #c89638;
+            transform: translateX(5px);
+        }
+        .choice-btn.picked {
+            border-color: #c89638;
+            background: #241408;
+        }
+        .choice-btn:disabled { pointer-events: none; }
+        .ce { font-size: 22px; flex-shrink: 0; }
+
+        /* ─── ENDING SCREEN ─── */
+        #ending-screen {
+            display: none; flex-direction: column;
+            min-height: 100vh;
+        }
+        #ending-screen.show { display: flex; }
+
+        #ending-header {
+            padding: 52px 24px 28px;
+            text-align: center; position: relative;
+            transition: background 0.8s;
+        }
+        .end-emoji {
+            font-size: 80px; display: block;
+            margin-bottom: 10px;
+            animation: float 3s ease-in-out infinite;
+        }
+        .end-title {
+            font-size: 22px; font-weight: 900; color: #fff;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+
+        #ending-body {
+            flex: 1;
+            background: #0a0503;
+            border-radius: 28px 28px 0 0;
+            margin-top: -28px;
+            padding: 28px 22px 40px;
+            overflow-y: auto;
+        }
+
+        .end-narration {
+            font-size: 15px; color: #cfc0a0;
+            line-height: 2; white-space: pre-line;
+            margin-bottom: 22px;
+        }
+
+        .end-tag {
+            background: rgba(200,150,55,0.1);
+            border: 1px solid rgba(200,150,55,0.3);
+            border-radius: 14px; padding: 16px;
+            margin-bottom: 14px;
+        }
+        .end-tag-lbl {
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            color: #c89638; margin-bottom: 5px;
+        }
+        .end-tag-val {
+            font-size: 16px; font-weight: 700; color: #f0e0c0;
+        }
+
+        .end-fact {
+            font-size: 13px; color: #907a58;
+            line-height: 1.8; padding: 14px 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px; margin-bottom: 22px;
+        }
+
+        .end-cta-box {
+            background: linear-gradient(135deg, #201008, #170d07);
+            border: 1px solid rgba(200,150,55,0.28);
+            border-radius: 18px; padding: 22px;
+            text-align: center;
+        }
+        .end-cta-q {
+            font-size: 15px; font-weight: 700;
+            color: #f0e0c0; margin-bottom: 16px; line-height: 1.5;
+        }
+        .btn-cta {
+            display: block; width: 100%; padding: 15px;
+            background: linear-gradient(135deg, #e8b850, #c89638);
+            color: #120800; font-size: 15px; font-weight: 700;
+            border: none; border-radius: 12px; cursor: pointer;
+            margin-bottom: 10px; transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(200,150,55,0.3);
+        }
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(200,150,55,0.4);
+        }
+        .btn-restart {
+            display: block; width: 100%; padding: 12px;
+            background: transparent; color: #806850;
+            font-size: 14px; font-weight: 600;
+            border: 2px solid rgba(128,104,80,0.3);
+            border-radius: 12px; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-restart:hover { border-color: rgba(128,104,80,0.6); color: #c0a070; }
+
+        /* ─── Scene backgrounds ─── */
+        .bg-open   { background: radial-gradient(ellipse at 50% 70%, #3d1f0a 0%, #0a0503 70%); }
+        .bg-morn   { background: linear-gradient(150deg, #b85a18, #e09030); }
+        .bg-saved  { background: linear-gradient(150deg, #9a5010, #d49830); }
+        .bg-plant  { background: linear-gradient(150deg, #1a4820, #2e7830); }
+        .bg-bloom  { background: linear-gradient(150deg, #205820, #a83858); }
+        .bg-skin   { background: linear-gradient(150deg, #b84828, #d07848); }
+        .bg-craft  { background: linear-gradient(150deg, #481808, #884020); }
+        .bg-cool   { background: linear-gradient(150deg, #182840, #285878); }
+        .bg-bad    { background: linear-gradient(150deg, #100f18, #181820); }
+
+        /* ─── Particles ─── */
+        .ptcl {
+            position: fixed; pointer-events: none;
+            font-size: 18px; z-index: 999;
+            animation: ptclDrop linear forwards;
+        }
+        @keyframes ptclDrop {
+            from { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+            to   { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+        }
+
+        /* ─── Title screen extras ─── */
+        .big-sub {
+            font-size: 13px; color: rgba(200,170,120,0.7);
+            letter-spacing: 1px; text-align: center;
+            margin-top: 10px; position: relative; z-index: 1;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 360px) {
+            #scene-emoji { font-size: 60px; }
+            #text-panel { padding: 24px 16px 30px; }
+            .choice-btn { padding: 12px 14px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+<div id="game">
+
+    <!-- ── Main game view ── -->
+    <div id="main-view">
+        <div id="scene-header" class="bg-open">
+            <div class="chapter-label" id="chapter-label"></div>
+            <div id="scene-emoji">☕</div>
+            <div class="big-sub" id="scene-sub"></div>
+        </div>
+        <div id="text-panel">
+            <div id="skip-hint">點擊畫面加速對話 →</div>
+            <div id="narration"></div>
+            <div id="question"></div>
+            <div id="choices"></div>
+        </div>
+    </div>
+
+    <!-- ── Ending view ── -->
+    <div id="ending-screen">
+        <div id="ending-header">
+            <span class="end-emoji" id="end-emoji"></span>
+            <div class="end-title" id="end-title"></div>
+        </div>
+        <div id="ending-body">
+            <div class="end-narration" id="end-narration"></div>
+            <div class="end-tag">
+                <div class="end-tag-lbl" id="end-tag-lbl">你的第二人生</div>
+                <div class="end-tag-val" id="end-tag-val"></div>
+            </div>
+            <div class="end-fact" id="end-fact"></div>
+            <div class="end-cta-box">
+                <div class="end-cta-q" id="end-cta-q"></div>
+                <button class="btn-cta" id="btn-cta" onclick="gotoCTA()">探索韻手作體驗課程 →</button>
+                <button class="btn-restart" onclick="restart()">重新體驗故事 ↺</button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- #game -->
+
+<script>
+/* ════════════════════════════════════════
+   STORY DATA
+════════════════════════════════════════ */
+const S = {
+
+    /* ─ 開場 ─ */
+    opening: {
+        bg:'bg-open', emoji:'☕', chapter:'', sub:'一個關於第二人生的故事',
+        narration:'你，是一粒剛被沖泡完的咖啡渣。\n\n帶著苦甜的香氣，\n靜靜躺在濾杯裡，\n等待著命運的安排…',
+        question:'你的旅程，從這裡開始。',
+        choices:[{ e:'▶', t:'開始我的第二人生', next:'start' }]
+    },
+
+    /* ─ 關鍵抉擇 ─ */
+    start: {
+        bg:'bg-morn', emoji:'🌅', chapter:'清晨 · 咖啡時光',
+        narration:'主人喝完今天的第一杯咖啡，\n滿足地嘆了口氣。\n\n陽光從窗戶斜射進來，\n照在你棕褐色的身上。\n\n主人拿起濾杯，走向水槽…',
+        question:'你該怎麼辦？',
+        choices:[
+            { e:'✨', t:'用力散發你最後的咖啡香氣', next:'saved' },
+            { e:'😶', t:'安靜接受，命運就是如此', next:'bad_end' }
+        ]
+    },
+
+    saved: {
+        bg:'bg-saved', emoji:'💡', chapter:'轉機出現了',
+        narration:'主人停下腳步。\n\n「等等…」\n\n他注意到你濃郁的香氣，\n突然想起昨晚看到的一篇文章——\n\n「咖啡渣的 N 種再利用方法」',
+        question:'你想去哪裡，展開你的第二人生？',
+        choices:[
+            { e:'🌹', t:'窗台那盆玫瑰旁邊', next:'plant_1' },
+            { e:'🧴', t:'浴室的保養台旁邊', next:'skin_1' },
+            { e:'🫧', t:'工作台上，變成手作品', next:'craft_1' },
+            { e:'🧊', t:'冰箱裡，安靜守護', next:'fridge_1' }
+        ]
+    },
+
+    /* ────── 🌹 植物路線 ────── */
+    plant_1: {
+        bg:'bg-plant', emoji:'🌱', chapter:'植物路線',
+        narration:'你被輕輕倒入小碗，加水稀釋，\n主人把你澆在玫瑰盆旁的土壤上。\n\n土壤慢慢吸收了你，\n根部感應到你帶來的氮元素…',
+        question:'你怎麼陪伴這株玫瑰？',
+        choices:[
+            { e:'⏳', t:'慢慢來，讓土壤靜靜吸收', next:'plant_good' },
+            { e:'💦', t:'越多越好，一次全部倒進去！', next:'plant_warn' }
+        ]
+    },
+    plant_warn: {
+        bg:'bg-plant', emoji:'⚠️', chapter:'等一下！',
+        narration:'咖啡渣帶有酸性，\n一次用太多會讓土壤過酸，\n傷害植物根部。\n\n玫瑰的葉子有點發黃了…',
+        question:'沒關係，你學到了：',
+        choices:[
+            { e:'💡', t:'少量、稀釋、分次——才是植物最愛的方式', next:'plant_good' }
+        ]
+    },
+    plant_good: {
+        isEnding:true, type:'good', bg:'bg-bloom',
+        endEmoji:'🌹', endBg:'linear-gradient(150deg,#1a5a1a,#a03060)',
+        endTitle:'玫瑰開花了！',
+        narration:'三個星期後——\n\n那朵玫瑰，開出了今年最飽滿的一朵花。\n\n蜜蜂飛來了，花香飄散到整個房間。\n\n你，已經成為這片美麗的一部分。',
+        tag:'🌱 天然植物肥料',
+        fact:'咖啡渣含豐富的氮、磷、鉀，是玫瑰、藍莓等喜酸植物最愛的天然養分。稀釋後每兩週施一次，效果最佳。',
+        cta:'想親手體驗咖啡渣的永續魔法？'
+    },
+
+    /* ────── 🧴 保養路線 ────── */
+    skin_1: {
+        bg:'bg-skin', emoji:'🫙', chapter:'保養路線',
+        narration:'主人把你倒進小玻璃碗，\n加入一大匙椰子油，\n仔細地攪拌均勻。\n\n你的棕色顆粒和白色油脂融合，\n帶著咖啡香氣的膏狀物慢慢成形。',
+        question:'這是天然去角質磨砂膏！\n你該怎麼使用？',
+        choices:[
+            { e:'✋', t:'塗在手臂上，輕輕畫圓按摩', next:'skin_try' },
+            { e:'🤔', t:'等等，咖啡渣真的可以用在皮膚上嗎？', next:'skin_doubt' }
+        ]
+    },
+    skin_doubt: {
+        bg:'bg-skin', emoji:'🔬', chapter:'好奇心驅動',
+        narration:'咖啡渣的顆粒大小剛好——\n比鹽細緻，比糖溫和，\n是天然的去角質材料。\n\n而且完全不含微塑料，\n沖掉後直接回歸自然。',
+        question:'你放心了嗎？',
+        choices:[
+            { e:'✋', t:'放心了！我要試試看', next:'skin_try' }
+        ]
+    },
+    skin_try: {
+        bg:'bg-skin', emoji:'💆', chapter:'體驗時刻',
+        narration:'主人把你塗在手臂上，\n溫柔地畫著圓圈，按摩了兩分鐘。\n\n洗掉之後——\n\n皮膚出奇地光滑，\n還帶著淡淡的咖啡香氣。',
+        question:'你成功了！',
+        choices:[
+            { e:'✨', t:'這就是天然保養的魔法', next:'skin_good' }
+        ]
+    },
+    skin_good: {
+        isEnding:true, type:'good', bg:'bg-skin',
+        endEmoji:'🧴', endBg:'linear-gradient(150deg,#7a3020,#c07040)',
+        endTitle:'天然磨砂膏誕生！',
+        narration:'你溫柔地帶走了老廢角質，\n讓血液循環變得更順暢。\n\n皮膚散發出健康的光澤，\n還帶著讓人放鬆的咖啡香。\n\n這，就是零廢棄保養的美好。',
+        tag:'🧴 天然去角質磨砂膏',
+        fact:'咖啡因能促進皮膚血液循環，咖啡渣顆粒是天然去角質材料，不含微塑料。比一般保養品更友善皮膚，也更友善地球。',
+        cta:'想親手做一罐咖啡渣磨砂膏？'
+    },
+
+    /* ────── 🫧 手作路線 ────── */
+    craft_1: {
+        bg:'bg-craft', emoji:'🫧', chapter:'手作路線',
+        narration:'工作台上，\n皂基在小鍋裡慢慢融化，\n散發出柔和的白色霧氣。\n\n你被輕輕撒入其中——\n咖啡色的紋路，\n在乳白色的皂液裡靜靜暈開，\n像一幅天然的水墨畫。',
+        question:'加入哪種精油，讓你更完整？',
+        choices:[
+            { e:'🌿', t:'薄荷精油，清新透亮', next:'craft_good' },
+            { e:'🌹', t:'玫瑰精油，溫柔甜蜜', next:'craft_good' }
+        ]
+    },
+    craft_good: {
+        isEnding:true, type:'good', bg:'bg-craft',
+        endEmoji:'🫧', endBg:'linear-gradient(150deg,#3a1508,#784020)',
+        endTitle:'咖啡渣手工皂完成！',
+        narration:'皂液冷卻、凝固、脫模。\n\n你成了一塊帶著咖啡紋路的手工皂，\n美麗而獨特。\n\n有人用你洗手，\n每次洗完，\n都是一小段與咖啡的溫柔重逢。',
+        tag:'🫧 咖啡渣手工皂',
+        fact:'咖啡渣的微顆粒有天然去角質效果，咖啡因成分能幫助緊緻肌膚。做成手工皂後可使用數週，讓每一粒渣都物盡其用。',
+        cta:'想來一場手作咖啡渣皂體驗？'
+    },
+
+    /* ────── ❄️ 冰箱路線 ────── */
+    fridge_1: {
+        bg:'bg-cool', emoji:'🧊', chapter:'冰箱守護路線',
+        narration:'主人把你裝進一個小布袋，\n輕輕放進冰箱角落。\n\n冰箱裡有昨晚的剩菜，\n忘了蓋緊的泡菜罐，\n還有藏在角落的起司。\n\n各種氣味在空氣裡飄盪。',
+        question:'你選擇怎麼守護這個冰箱？',
+        choices:[
+            { e:'🌬️', t:'靜靜地，吸收所有的異味', next:'fridge_good' }
+        ]
+    },
+    fridge_good: {
+        isEnding:true, type:'good', bg:'bg-cool',
+        endEmoji:'❄️', endBg:'linear-gradient(150deg,#182848,#285878)',
+        endTitle:'冰箱清新了！',
+        narration:'你不說話，不爭寵，\n只是默默坐在角落，\n用你多孔的身體\n吸附著每一種氣味分子。\n\n三週後，主人打開冰箱，\n驚訝地說：\n\n「冰箱怎麼這麼清爽？」',
+        tag:'❄️ 天然冰箱除臭劑',
+        fact:'咖啡渣的多孔結構就像天然活性碳，能有效吸附異味分子。一包可持續使用 2-4 週，完全不需要化學除臭劑。',
+        cta:'想學更多咖啡渣的永續應用？'
+    },
+
+    /* ────── 🗑️ 壞結局 ────── */
+    bad_end: {
+        isEnding:true, type:'bad', bg:'bg-bad',
+        endEmoji:'🗑️', endBg:'linear-gradient(150deg,#0e0d18,#18182a)',
+        endTitle:'你，進了垃圾桶。',
+        tagLbl:'這個結局，不是唯一的選擇',
+        narration:'你和成千上萬粒的咖啡渣，\n一起被沖入排水管，\n或進了焚化爐。\n\n——全球每年，\n有 600 萬公噸的咖啡渣走上這條路。\n\n但你知道嗎——\n你本可以擁有一個更美好的故事。',
+        tag:'你本可以擁有不同的結局',
+        fact:'台灣每年產生數萬公噸咖啡渣，大部分直接廢棄。每一包咖啡渣都可以成為植物的養分、肌膚的禮物、手作的材料。',
+        cta:'給咖啡渣一個機會，從現在開始 ☕'
+    }
+};
+
+/* ════════════════════════════════════════
+   ENGINE
+════════════════════════════════════════ */
+let twTimer = null;
+let twDone   = false;
+
+function goTo(id) {
+    const scene = S[id];
+    if (!scene) return;
+    if (scene.isEnding) { showEnding(scene); return; }
+
+    // header
+    const hdr = document.getElementById('scene-header');
+    hdr.className = scene.bg;
+    document.getElementById('scene-emoji').textContent  = scene.emoji;
+    document.getElementById('chapter-label').textContent = scene.chapter || '';
+    document.getElementById('scene-sub').textContent    = scene.sub || '';
+
+    // reset text area
+    document.getElementById('question').classList.remove('show');
+    document.getElementById('choices').classList.remove('show');
+    document.getElementById('choices').innerHTML = '';
+    document.getElementById('skip-hint').style.opacity = '1';
+
+    // typewriter
+    typewrite(scene.narration || '', () => {
+        document.getElementById('skip-hint').style.opacity = '0';
+        const q = document.getElementById('question');
+        q.textContent = scene.question || '';
+        q.classList.add('show');
+        setTimeout(() => {
+            renderChoices(scene.choices);
+            document.getElementById('choices').classList.add('show');
+        }, 200);
+    });
+
+    // skip on tap
+    const panel = document.getElementById('text-panel');
+    panel.onclick = () => {
+        if (!twDone) {
+            clearTimeout(twTimer);
+            document.getElementById('narration').textContent = scene.narration || '';
+            finishTypewrite();
+        }
+    };
+}
+
+function typewrite(text, cb) {
+    clearTimeout(twTimer);
+    twDone = false;
+    const el = document.getElementById('narration');
+    el.textContent = '';
+    const chars = [...text];
+    let i = 0;
+    function tick() {
+        if (i < chars.length) {
+            el.textContent += chars[i++];
+            const delay = chars[i-1] === '\n' ? 90 : chars[i-1] === '。' || chars[i-1] === '…' ? 60 : 20;
+            twTimer = setTimeout(tick, delay);
+        } else {
+            twDone = true;
+            if (cb) cb();
+        }
+    }
+    window._twCb = cb;
+    tick();
+}
+
+function finishTypewrite() {
+    twDone = true;
+    document.getElementById('skip-hint').style.opacity = '0';
+    const q = document.getElementById('question');
+    q.classList.add('show');
+    setTimeout(() => {
+        document.getElementById('choices').classList.add('show');
+    }, 200);
+    if (window._twCb) { window._twCb(); window._twCb = null; }
+}
+
+function renderChoices(choices) {
+    const box = document.getElementById('choices');
+    box.innerHTML = '';
+    choices.forEach(c => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.innerHTML = `<span class="ce">${c.e}</span><span>${c.t}</span>`;
+        btn.onclick = () => {
+            box.querySelectorAll('.choice-btn').forEach(b => { b.disabled = true; });
+            btn.classList.add('picked');
+            setTimeout(() => goTo(c.next), 380);
+        };
+        box.appendChild(btn);
+    });
+}
+
+/* ─── ENDING ─── */
+function showEnding(scene) {
+    // remove skip listener
+    document.getElementById('text-panel').onclick = null;
+
+    document.getElementById('main-view').style.display = 'none';
+    const es = document.getElementById('ending-screen');
+    es.classList.add('show');
+
+    document.getElementById('ending-header').style.background = scene.endBg;
+    document.getElementById('end-emoji').textContent = scene.endEmoji;
+    document.getElementById('end-title').textContent  = scene.endTitle;
+    document.getElementById('end-narration').textContent = scene.narration;
+    document.getElementById('end-tag-lbl').textContent = scene.tagLbl || '你的第二人生';
+    document.getElementById('end-tag-val').textContent  = scene.tag;
+    document.getElementById('end-fact').textContent    = scene.fact;
+    document.getElementById('end-cta-q').textContent   = scene.cta;
+
+    if (scene.type === 'bad') {
+        document.getElementById('btn-cta').style.display = 'none';
+    } else {
+        document.getElementById('btn-cta').style.display = 'block';
+        launchParticles(scene.endEmoji);
+    }
+}
+
+function launchParticles(emoji) {
+    const emojis = ['✨','🌟',emoji,'☕','🌿'];
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            const p = document.createElement('div');
+            p.className = 'ptcl';
+            p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            p.style.left = (5 + Math.random() * 90) + 'vw';
+            p.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+            p.style.fontSize = (14 + Math.random() * 16) + 'px';
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 6000);
+        }, i * 180);
+    }
+}
+
+function gotoCTA() {
+    window.open('https://wishlite.github.io/wishlite-esg/', '_blank');
+}
+
+function restart() {
+    clearTimeout(twTimer);
+    document.getElementById('main-view').style.display = 'flex';
+    document.getElementById('ending-screen').classList.remove('show');
+    document.getElementById('question').classList.remove('show');
+    document.getElementById('choices').classList.remove('show');
+    document.getElementById('choices').innerHTML = '';
+    goTo('opening');
+}
+
+/* ─── Init ─── */
+goTo('opening');
+</script>
+</body>
+</html>
