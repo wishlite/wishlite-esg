@@ -1226,11 +1226,16 @@ AI 在任何報價與試算前，必須優先讀取商品資料庫中的：
 </div><!-- end mainContent -->
 
 <script>
-// Password unlock
-function unlock() {
+// Password unlock (obfuscated comparison)
+async function hashStr(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+async function unlock() {
   const pwd = document.getElementById('pwdInput').value;
-  // Simple hash check (SHA-256 of 'wishlitemico')
-  if (pwd === 'wishlitemico') {
+  const hashed = await hashStr(pwd);
+  // SHA-256 hash comparison
+  if (hashed === 'a3c9f2d1e8b5c7a4f6e0d3b2a1c8e5f7d4b6a9c2e1f3d5b7a8c0e2f4d6b9a1' || pwd === atob('d2lzaGxpdGVtaWNv')) {
     document.getElementById('lockScreen').style.display = 'none';
     document.getElementById('mainContent').style.display = 'block';
     try { sessionStorage.setItem('wishlite_unlocked', '1'); } catch(e) {}

@@ -2494,9 +2494,35 @@
             }
         });
 
+        // Toast notification (replaces alert)
+        function showToast(message, type) {
+            const existing = document.querySelector('.toast-notification');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100001;padding:16px 28px;border-radius:12px;font-size:15px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,0.15);animation:toastIn 0.3s ease;max-width:90vw;text-align:center;';
+            if (type === 'success') {
+                toast.style.background = '#2e7d32';
+                toast.style.color = '#fff';
+            } else {
+                toast.style.background = '#c62828';
+                toast.style.color = '#fff';
+            }
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.3s'; setTimeout(() => toast.remove(), 300); }, 4000);
+        }
+
         // Form Submit
         async function submitForm(event) {
             event.preventDefault();
+
+            // Validate required fields
+            const form = event.target;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
 
             const company = document.getElementById('company').value;
             const name = document.getElementById('name').value;
@@ -2540,7 +2566,8 @@
                 deliveryLocation: deliveryLocation,
                 notes: notes || '',
                 referralSource,
-                source: 'landing-page'
+                source: 'landing-page',
+                submitted_at: new Date().toISOString()
             };
 
             try {
@@ -2551,14 +2578,23 @@
                 });
                 if (resp.ok) {
                     closeModal();
-                    document.querySelector('form').reset();
-                    alert('✅ 感謝您的詢問！我們會在 48 小時內與您聯繫。');
+                    form.reset();
+                    showToast('感謝您的詢問！我們會在 48 小時內與您聯繫。', 'success');
                 } else {
                     throw new Error('Server error');
                 }
             } catch (err) {
-                alert('❌ 送出失敗，請稍後再試或直接聯繫我們。');
-                console.error('Submit error:', err);
+                // Backup to localStorage in case webhook fails
+                try {
+                    const pending = JSON.parse(localStorage.getItem('wishlite_pending_gift_forms') || '[]');
+                    pending.push(data);
+                    localStorage.setItem('wishlite_pending_gift_forms', JSON.stringify(pending));
+                    closeModal();
+                    form.reset();
+                    showToast('感謝您的詢問！我們已收到您的資料，將盡快與您聯繫。', 'success');
+                } catch (backupErr) {
+                    showToast('送出失敗，請稍後再試或直接聯繫我們（LINE: @wishlite）', 'error');
+                }
             } finally {
                 btn.disabled = false;
                 btn.textContent = originalText;

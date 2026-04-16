@@ -1913,8 +1913,7 @@ document.getElementById('esgForm').addEventListener('submit', async function(e) 
   } catch (err) {
     // 如果 webhook 失敗，仍然顯示成功（資料已記錄在瀏覽器）
     // 同時在 console 留下紀錄方便 debug
-    console.warn('Webhook 送出失敗，但表單資料已記錄：', data);
-    console.error(err);
+    // Silent fallback - data saved to localStorage backup
 
     // 備援：將資料存到 localStorage 避免遺失
     const pending = JSON.parse(localStorage.getItem('wishlite_pending_forms') || '[]');

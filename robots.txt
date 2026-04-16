@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /pricing-system.html
+Disallow: /n8n-workflows/
+Disallow: /ai-health-check-wishlite.html
+Disallow: /wishlite-deep-audit-report.html
+
+Sitemap: https://wishlite.github.io/wishlite-esg/sitemap.xml

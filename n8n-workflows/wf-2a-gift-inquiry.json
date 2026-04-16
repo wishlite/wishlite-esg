@@ -234,7 +234,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-6\",\n  \"max_tokens\": 1024,\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"你是韻手作永續的業務助理 Apple。請根據以下禮品詢價資訊，用繁體中文寫一段初步回覆草稿（200字內），語氣親切專業，強調永續禮品的質感、碳足跡數據、LOGO客製服務。\\n\\n企業：{{ $('🔄 整理禮品資料').item.json.company }}\\n禮品類型：{{ $('🔄 整理禮品資料').item.json.theme }}\\n數量：{{ $('🔄 整理禮品資料').item.json.headcount || '未填' }}件\\n預算：{{ $('🔄 整理禮品資料').item.json.budget }}\\n\\n請直接輸出草稿內容，不要加標題。\"\n  }]\n}",
+        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-5-20250514\",\n  \"max_tokens\": 1024,\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"你是韻手作永續的業務助理 Apple。請根據以下禮品詢價資訊，用繁體中文寫一段初步回覆草稿（200字內），語氣親切專業，強調永續禮品的質感、碳足跡數據、LOGO客製服務。\\n\\n企業：{{ $('🔄 整理禮品資料').item.json.company }}\\n禮品類型：{{ $('🔄 整理禮品資料').item.json.theme }}\\n數量：{{ $('🔄 整理禮品資料').item.json.headcount || '未填' }}件\\n預算：{{ $('🔄 整理禮品資料').item.json.budget }}\\n\\n請直接輸出草稿內容，不要加標題。\"\n  }]\n}",
         "options": {}
       },
       "id": "wf2a-0012",

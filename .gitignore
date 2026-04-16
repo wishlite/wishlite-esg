@@ -1,0 +1,10 @@
+# 敏感檔案 — 不要推到 GitHub Pages
+n8n-workflows/
+ai-health-check-wishlite.html
+wishlite-deep-audit-report.html
+lazyoffice-ai-consultant.skill
+*.skill
+
+# 系統檔案
+.DS_Store
+Thumbs.db

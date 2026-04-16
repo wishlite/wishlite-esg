@@ -245,7 +245,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-6\",\n  \"max_tokens\": 1024,\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"你是韻手作永續的業務助理 Apple。請根據以下詢價資訊，用繁體中文寫一段初步回覆草稿（200字內），語氣親切專業，強調永續與手作體驗的價值。\\n\\n企業：{{ $('🔄 整理ESG資料').item.json.company }}\\n服務類型：{{ $('🔄 整理ESG資料').item.json.orderType }}\\n人數：{{ $('🔄 整理ESG資料').item.json.headcount || '未填' }}人\\n預算：{{ $('🔄 整理ESG資料').item.json.budget }}\\n需求說明：{{ $('🔄 整理ESG資料').item.json.theme }}\\n\\n請直接輸出草稿內容，不要加標題。\"\n  }]\n}",
+        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-5-20250514\",\n  \"max_tokens\": 1024,\n  \"messages\": [{\n    \"role\": \"user\",\n    \"content\": \"你是韻手作永續的業務助理 Apple。請根據以下詢價資訊，用繁體中文寫一段初步回覆草稿（200字內），語氣親切專業，強調永續與手作體驗的價值。\\n\\n企業：{{ $('🔄 整理ESG資料').item.json.company }}\\n服務類型：{{ $('🔄 整理ESG資料').item.json.orderType }}\\n人數：{{ $('🔄 整理ESG資料').item.json.headcount || '未填' }}人\\n預算：{{ $('🔄 整理ESG資料').item.json.budget }}\\n需求說明：{{ $('🔄 整理ESG資料').item.json.theme }}\\n\\n請直接輸出草稿內容，不要加標題。\"\n  }]\n}",
         "options": {}
       },
       "id": "wf1a-0012",
