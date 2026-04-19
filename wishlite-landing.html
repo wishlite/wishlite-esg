@@ -2686,6 +2686,14 @@
                 else { btn.classList.remove('visible'); }
             });
         })();
+
+        // ── 網址帶 #open-form 時自動開啟填單 Modal（給外部連結用，如 Module B 提案右鈕） ──
+        window.addEventListener('load', function() {
+            if (window.location.hash === '#open-form' && typeof openModal === 'function') {
+                window.scrollTo(0, 0);
+                setTimeout(function() { openModal(); }, 300);
+            }
+        });
     </script>
 </body>
 </html>
