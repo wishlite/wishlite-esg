@@ -115,6 +115,22 @@
       font-weight: 500;
       margin-top: 26px;
     }
+    /* Quiz 回灌輕量連結（搬上 Hero 後使用）*/
+    .hero-quiz-link {
+      display: inline-block;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      padding: 4px 0;
+      opacity: 0.7;
+      transition: opacity 0.25s ease, color 0.25s ease;
+      letter-spacing: 0.02em;
+    }
+    .hero-quiz-link:hover {
+      opacity: 1;
+      color: var(--moss);
+    }
     /* Hero 微提示（往下看，非按鈕） */
     .hero-hint {
       margin-top: 44px;
@@ -479,10 +495,13 @@
           接下來，<br class="br-desktop">你可以選擇一條更靠近自己的路
         </h1>
         <div class="hero-sub">
-          <p>也許你想先看看，有沒有人真的這樣開始。</p>
-          <p>也許你已經想知道，自己可以怎麼把這份喜歡，變成一場可以被交付的行動。</p>
-          <p class="closing">這裡不用急著決定。先選一條你現在最想靠近的方向。</p>
+          <p>每個人靠近永續的速度都不一樣。</p>
+          <p>有人先從故事開始，有人先從方法開始。</p>
+          <p class="closing">不管你現在選哪一條，都只是下一步而已。</p>
         </div>
+        <a href="https://wishlite.github.io/wishlite-proposals/quiz/" class="hero-quiz-link" target="_blank" rel="noopener">
+          還沒找到自己的方式？可以先回到測驗看看你的永續起點
+        </a>
         <p class="hero-hint">慢慢往下，選一條你現在想靠近的路</p>
       </div>
     </div>
@@ -526,22 +545,6 @@
           </a>
         </article>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ────────── SECTION 3 ｜ 溫柔收束 ────────── -->
-  <section class="closing-section" aria-label="收束">
-    <div class="container">
-      <div class="closing-inner">
-        <div class="closing-text">
-          <p>每個人靠近永續的速度都不一樣。</p>
-          <p>有人先從故事開始，有人先從方法開始。</p>
-          <p>不管你現在選哪一條，都只是下一步而已。</p>
-        </div>
-        <a href="https://wishlite.github.io/wishlite-proposals/quiz/" class="quiz-link" target="_blank" rel="noopener">
-          還沒找到自己的方式？可以先回到測驗看看你的永續起點
-        </a>
       </div>
     </div>
   </section>
