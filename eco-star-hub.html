@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="你已經看見了一種靠近永續的方式。接下來，可以選擇一條更靠近自己的路。">
+  <meta property="og:title" content="ECO STAR｜接下來，你可以選擇一條更靠近自己的路">
+  <meta property="og:description" content="不用急著決定。先選一條你現在最想靠近的方向。">
+  <meta property="og:type" content="website">
+  <title>ECO STAR｜接下來，你可以選擇一條更靠近自己的路</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Wishlite 色票（沿用 trust-wall.html）── */
+    :root {
+      --gold: #c49a6c;
+      --gold-light: #d4b896;
+      --gold-dark: #a07844;
+      --moss: #3d5a3e;
+      --moss-dark: #2e4630;
+      --moss-soft: #7a9e7e;
+      --mist: #d4e4d0;
+      --mist-soft: #e6efe3;
+      --cream: #f7f3ec;
+      --paper: #f5f2ea;
+      --paper-warm: #efe7da;
+      --paper-soft: #faf7f0;
+      --charcoal: #2c2c2c;
+      --brown: #8b6f47;
+      --brown-warm: #a08665;
+      --muted: #766d62;
+      --line: rgba(92, 74, 47, 0.12);
+      --shadow-soft: 0 8px 24px rgba(32, 39, 34, 0.06);
+      --shadow-lift: 0 18px 42px rgba(32, 39, 34, 0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    /* 中文斷行防護：CJK 需要 line-break: anywhere 才能任意斷字 */
+    h1, h2, p, a {
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+      line-break: anywhere;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      width: 100%;
+      min-width: 0;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    /* flex child 預設 min-width: auto 會阻止內容 shrink，要強制設 0 */
+    .hero, .paths, .closing-section { min-width: 0; }
+    .hero-inner, .closing-inner, .paths-grid { min-width: 0; }
+
+    /* ──────────────────────────────────
+       SECTION 1 ｜ HERO（約 30vh）
+       小芽：右下角 / 偏側、120-160px、opacity 0.9
+       文字：置中、最大寬 640px
+       ────────────────────────────────── */
+    .hero {
+      min-height: 30vh;
+      padding: 80px 0 60px;
+      background: linear-gradient(180deg, var(--paper-warm) 0%, var(--paper) 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-kicker {
+      color: var(--moss);
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+    .hero-title {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4.2vw, 40px);
+      line-height: 1.5;
+      color: var(--moss-dark);
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.95;
+      color: var(--charcoal);
+    }
+    .hero-sub p { margin-bottom: 18px; }
+    .hero-sub p:last-child { margin-bottom: 0; }
+    .hero-sub .closing {
+      color: var(--brown);
+      font-weight: 500;
+      margin-top: 26px;
+    }
+    /* Hero 微提示（往下看，非按鈕） */
+    .hero-hint {
+      margin-top: 44px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      animation: hintBob 2.4s ease-in-out infinite;
+    }
+    .hero-hint::after {
+      content: " ↓";
+      margin-left: 4px;
+      opacity: 0.6;
+    }
+    @keyframes hintBob {
+      0%, 100% { transform: translateY(0); opacity: 0.7; }
+      50% { transform: translateY(3px); opacity: 0.9; }
+    }
+
+    /* 六友環繞地球收尾：頭尾呼應（六友手牽手=我們一起 / 六友環繞地球=我們一起守護一件事）*/
+    .mascot-closing {
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding: 0 24px;
+    }
+    .mascot-closing img {
+      width: 340px;
+      max-width: 88%;
+      height: auto;
+      opacity: 0.95;
+    }
+    @media (max-width: 768px) {
+      .mascot-closing { margin-top: 28px; margin-bottom: 10px; padding: 0 16px; }
+      .mascot-closing img { width: 240px; }
+    }
+
+    /* ──────────────────────────────────
+       六友手牽手：情緒延伸（不主導畫面）
+       桌機 420px / 手機 260px / opacity 0.9
+       無陰影、無動畫、無 hover
+       ────────────────────────────────── */
+    .hero-friends {
+      text-align: center;
+      margin: 24px auto 8px;
+      padding: 0 24px;
+    }
+    .hero-friends img {
+      display: inline-block;
+      width: 420px;
+      max-width: 90%;
+      height: auto;
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+      .hero-friends { margin: 20px auto 4px; padding: 0 16px; }
+      .hero-friends img { width: 260px; }
+    }
+
+    /* ──────────────────────────────────
+       SECTION 2 ｜ 分流卡（約 50vh）
+       桌機：A 55% / B 45%
+       A 暖棕自然色 / B 微霧綠
+       Mascot 小圖點綴在右下角 40-60px
+       ────────────────────────────────── */
+    .paths {
+      min-height: 50vh;
+      padding: 70px 0 80px;
+      background: var(--paper);
+      display: flex;
+      align-items: center;
+    }
+    .paths-grid {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: 28px;
+      width: 100%;
+    }
+    .path-card {
+      background: var(--paper-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 44px 40px 38px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+    .path-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lift);
+    }
+
+    /* 卡 A：暖棕 / 自然色 / 故事感 */
+    .path-card-a {
+      background: linear-gradient(180deg, #fbf6ec 0%, var(--paper-warm) 100%);
+    }
+    /* 卡 B：微霧綠 / 理性方向感 */
+    .path-card-b {
+      background: linear-gradient(180deg, #f3f7f0 0%, var(--mist-soft) 100%);
+    }
+
+    .path-title {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--moss-dark);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .path-card-a .path-title { color: #6e5436; }
+    .path-card-b .path-title { color: var(--moss-dark); }
+
+    .path-body {
+      font-size: 15.5px;
+      line-height: 1.95;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+      flex-grow: 1;
+      opacity: 0.92;
+    }
+
+    .path-button {
+      display: inline-block;
+      padding: 0 26px;
+      height: 46px;
+      line-height: 46px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 15px;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.25s ease;
+      letter-spacing: 0.04em;
+      align-self: flex-start;
+    }
+    .path-card-a .path-button {
+      background: var(--brown-warm);
+      color: var(--paper-soft);
+    }
+    .path-card-a .path-button:hover {
+      background: var(--brown);
+      transform: translateY(-1px);
+    }
+    /* B 按鈕：清楚但不強迫，比 A 略柔（用 moss-soft 而非 moss-dark） */
+    .path-card-b .path-button {
+      background: var(--moss-soft);
+      color: var(--paper-soft);
+    }
+    .path-card-b .path-button:hover {
+      background: var(--moss);
+      transform: translateY(-1px);
+    }
+
+    /* （A/B 卡角落 mascot 已移除：2026-05-03 Apple 拍板，把 IP 集中在六友合照頭尾呼應，
+        其他角色留給招生頁與案例頁繼續發揮）*/
+
+    /* ──────────────────────────────────
+       SECTION 3 ｜ 溫柔收束（約 20vh）
+       字體變小、opacity 降低、行距寬、輕量連結（無底線/極淡）
+       ────────────────────────────────── */
+    .closing-section {
+      min-height: 20vh;
+      padding: 70px 0 60px;
+      background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+      text-align: center;
+      display: flex;
+      align-items: center;
+    }
+    .closing-inner { width: 100%; }
+    .closing-text {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      line-height: 2.1;
+      color: var(--moss-dark);
+      max-width: 480px;
+      margin: 0 auto 36px;
+      font-weight: 500;
+      opacity: 0.85;
+    }
+    .closing-text p { margin-bottom: 12px; }
+    .closing-text p:last-child { margin-bottom: 0; }
+
+    .quiz-link {
+      display: inline-block;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      padding: 4px 0;
+      opacity: 0.7;
+      transition: opacity 0.25s ease, color 0.25s ease;
+      letter-spacing: 0.02em;
+    }
+    .quiz-link:hover {
+      opacity: 1;
+      color: var(--moss);
+    }
+
+    /* ──────────────────────────────────
+       FOOTER ｜ 山脈地平線（約 10vh）
+       opacity 10-20%、霧綠/淡棕、輕微 blur
+       看得到感覺、看不到細節
+       ────────────────────────────────── */
+    footer {
+      position: relative;
+      min-height: 14vh;
+      background: linear-gradient(180deg, var(--paper-warm) 0%, #ece2d0 100%);
+      padding: 130px 0 40px;
+      overflow: hidden;
+    }
+    /* Wishlite 提案級山脈（hero-mountain-warm.jpg）— 沿用葉脈拾光封面血統 */
+    .horizon-photo {
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 220px;
+      background-image: url('https://wishlite.github.io/wishlite-proposals/assets/hero-mountain-warm.jpg');
+      background-size: cover;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      opacity: 0.48;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* 上緣漸層遮罩：山脈淡入紙感、不要硬切（較輕的遮罩，讓山的輪廓更明顯）*/
+    .horizon-photo::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 100%;
+      background: linear-gradient(180deg,
+        var(--paper-warm) 0%,
+        rgba(239, 231, 218, 0.70) 14%,
+        rgba(239, 231, 218, 0.30) 32%,
+        rgba(239, 231, 218, 0.08) 58%,
+        transparent 85%);
+      pointer-events: none;
+    }
+    .footer-inner {
+      position: relative;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      padding-top: 50px;
+      opacity: 0.75;
+    }
+    .footer-brand {
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 600;
+      color: var(--moss-dark);
+      font-size: 15px;
+      margin-bottom: 6px;
+      opacity: 0.85;
+    }
+
+    /* ──────────────────────────────────
+       手機版（768px 以下）
+       小芽：移到 Hero 下方居中、不卡角落
+       卡片：直式 / A 在上 B 在下
+       ────────────────────────────────── */
+    /* 桌機才用的 br，手機隱藏避免破版 */
+    .br-desktop { display: inline; }
+
+    /* 手機統一拿掉 path-body 的 br，讓中文自然斷行 */
+    @media (max-width: 768px) {
+      .path-body br { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding: 56px 0 44px;
+        display: block;
+      }
+      .paths { display: block; }
+      .closing-section { display: block; }
+      .hero-inner {
+        max-width: 100%;
+      }
+      .hero-title {
+        font-size: 23px;
+        line-height: 1.55;
+        margin-bottom: 26px;
+        letter-spacing: 0;
+        word-break: break-all;
+      }
+      .hero-sub { font-size: 15px; line-height: 1.95; word-break: break-all; }
+      .hero-kicker { letter-spacing: 0.06em; word-break: keep-all; }
+      .hero-sub p { margin-bottom: 14px; }
+      .hero-hint { margin-top: 32px; font-size: 12.5px; }
+
+      .paths {
+        min-height: auto;
+        padding: 44px 0 60px;
+      }
+      .paths-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        width: 100%;
+      }
+      .path-card {
+        padding: 32px 24px 28px;
+        width: 100%;
+      }
+      .path-title { font-size: 20px; line-height: 1.5; margin-bottom: 16px; }
+      .path-body { font-size: 14.5px; margin-bottom: 24px; line-height: 1.9; }
+      .path-button { font-size: 14.5px; padding: 0 22px; height: 44px; line-height: 44px; }
+      .path-mascot { width: 46px; height: 46px; right: 16px; bottom: 16px; }
+
+      .closing-section { min-height: auto; padding: 52px 0 44px; }
+      .closing-text { font-size: 16px; line-height: 1.95; }
+
+      .container { padding: 0 20px; max-width: 100%; }
+
+      /* 手機隱藏桌機才用的 br */
+      .br-desktop { display: none; }
+    }
+
+    /* 進場淡入（極輕） */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 0.92; transform: translateY(0); }
+    }
+    .hero-kicker, .hero-title, .hero-sub { animation: fadeUp 0.6s ease-out both; }
+    .hero-title { animation-delay: 0.1s; }
+    .hero-sub { animation-delay: 0.2s; }
+    .path-card-a { animation: fadeUp 0.7s 0.05s ease-out both; opacity: 1; }
+    .path-card-b { animation: fadeUp 0.7s 0.18s ease-out both; opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!--
+    ╔═══════════════════════════════════════════════════════════╗
+    ║ 🌱 IP 視覺原則（Tony 2026-05-03 拍板）：                    ║
+    ║                                                            ║
+    ║    IP 延續情緒，不主導畫面。                                ║
+    ║                                                            ║
+    ║ 規則 v3（2026-05-03 Apple 拍板：頭尾六友合照雙呼應）：     ║
+    ║  ✅ 六友手牽手（Hero 下方）= 「我們一起」                  ║
+    ║  ✅ 六友環繞地球（Footer 山脈上方）= 「把行動帶回世界」    ║
+    ║  ❌ A/B 卡片角落 mascot 已移除（IP 集中在頭尾）            ║
+    ║  ❌ Hero 不放小芽單體                                      ║
+    ║  ❌ Footer 山脈不放角色                                    ║
+    ║  ❌ 不做角色介紹 / 不放 IP 當主視覺                        ║
+    ║  📌 其他角色（小渣/小蠔/小棉/小塑/小仔）保留給招生頁/案例頁║
+    ║                                                            ║
+    ║ 等六友 PNG 路徑確認後一次處理。現狀為 ship-ready 凍結版。  ║
+    ╚═══════════════════════════════════════════════════════════╝
+  -->
+
+  <!-- ────────── SECTION 1 ｜ HERO ────────── -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero-inner">
+        <p class="hero-kicker">你已經看見了一種靠近永續的方式</p>
+        <h1 id="hero-title" class="hero-title">
+          接下來，<br class="br-desktop">你可以選擇一條更靠近自己的路
+        </h1>
+        <div class="hero-sub">
+          <p>也許你想先看看，有沒有人真的這樣開始。</p>
+          <p>也許你已經想知道，自己可以怎麼把這份喜歡，變成一場可以被交付的行動。</p>
+          <p class="closing">這裡不用急著決定。先選一條你現在最想靠近的方向。</p>
+        </div>
+        <p class="hero-hint">慢慢往下，選一條你現在想靠近的路</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────── 六友手牽手：情緒延伸（IP 延續情緒，不主導畫面）────────── -->
+  <section class="hero-friends" aria-hidden="true">
+    <img src="https://wishlite.github.io/wishlite-proposals/assets/mascots/six_friends.png" alt="" loading="lazy">
+  </section>
+
+  <!-- ────────── SECTION 2 ｜ 分流卡 ────────── -->
+  <section class="paths" aria-label="兩條路分流">
+    <div class="container">
+      <div class="paths-grid">
+
+        <!-- 卡 A｜真人案例館（55%，暖棕自然色） -->
+        <article class="path-card path-card-a">
+          <h2 class="path-title">先看看別人怎麼開始</h2>
+          <p class="path-body">
+            有些人一開始也只是喜歡手作、在乎環境，<br>
+            或想把自己的經驗變成更有意義的行動。<br class="br-desktop"><br class="br-desktop">
+            在這裡，你可以看見幾個真實故事：<br>
+            他們如何從原本的角色，慢慢走向永續行動的現場。
+          </p>
+          <a href="eco-star-cases.html" class="path-button" aria-label="前往真人案例館">
+            看看他們怎麼開始 →
+          </a>
+        </article>
+
+        <!-- 卡 B｜ECO STAR 招生頁（45%，微霧綠） -->
+        <article class="path-card path-card-b">
+          <h2 class="path-title">我想知道怎麼開始這條路</h2>
+          <p class="path-body">
+            如果你已經感覺到，<br>
+            自己不只是想「了解永續」，<br>
+            而是想學會把材料、體驗與人串成一場真正會發生的行動，<br>
+            可以從這裡了解 ECO STAR 永續行動設計師系統。
+          </p>
+          <a href="eco-star-designer.html" class="path-button" aria-label="前往 ECO STAR 招生頁">
+            了解 ECO STAR 系統 →
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────── SECTION 3 ｜ 溫柔收束 ────────── -->
+  <section class="closing-section" aria-label="收束">
+    <div class="container">
+      <div class="closing-inner">
+        <div class="closing-text">
+          <p>每個人靠近永續的速度都不一樣。</p>
+          <p>有人先從故事開始，有人先從方法開始。</p>
+          <p>不管你現在選哪一條，都只是下一步而已。</p>
+        </div>
+        <a href="https://wishlite.github.io/wishlite-proposals/quiz/" class="quiz-link" target="_blank" rel="noopener">
+          還沒找到自己的方式？可以先回到測驗看看你的永續起點
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────────── 六友環繞地球收尾：頭尾呼應（六友手牽手=我們一起 / 六友環繞地球=我們一起守護地球）────────── -->
+  <section class="mascot-closing" aria-hidden="true">
+    <img src="https://wishlite.github.io/wishlite-proposals/assets/mascots/six_friends_earth.png" alt="" loading="lazy">
+  </section>
+
+  <!-- ────────── FOOTER ｜ Wishlite 提案級山脈（葉脈拾光血統） ────────── -->
+  <footer>
+    <div class="horizon-photo" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+      <p>把永續手作帶進企業需要的永續行動方案</p>
+    </div>
+  </footer>
+
+</body>
+</html>
