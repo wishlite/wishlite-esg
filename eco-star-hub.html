@@ -299,8 +299,15 @@
       margin-bottom: 18px;
       line-height: 1.5;
     }
-    .path-card-a .path-title { color: #6e5436; }
-    .path-card-b .path-title { color: var(--moss-dark); }
+    /* 標題陰影：A 卡極淡、B 卡略強 +10% 提注意力 */
+    .path-card-a .path-title {
+      color: #6e5436;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+    .path-card-b .path-title {
+      color: var(--moss-dark);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+    }
 
     .path-body {
       font-size: 15.5px;
@@ -618,7 +625,7 @@
         -->
         <!-- 卡 A｜永續案例館（45%，暖棕自然色 / 品牌案例敘事）-->
         <article class="path-card path-card-a">
-          <h2 class="path-title">我們做過的永續案例</h2>
+          <h2 class="path-title">看看我們做過的永續案例</h2>
           <p class="path-body">
             和企業、校園一起完成的行動，<br><br>
             把材料、設計與現場，<br>
@@ -631,7 +638,7 @@
 
         <!-- 卡 B｜ECO STAR 招生頁（45%，微霧綠） -->
         <article class="path-card path-card-b">
-          <h2 class="path-title">我想把永續變成一場行動</h2>
+          <h2 class="path-title">了解怎麼把永續變成一場行動</h2>
           <p class="path-body">
             一種把永續帶進現場的方式，<br><br>
             從材料、體驗到帶領他人，<br>
