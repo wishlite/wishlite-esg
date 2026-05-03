@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ECO STAR 永續行動設計師系統｜Wishlite 韻手作永續｜把你對永續的喜歡，變成一場可以被交付的行動。">
+  <meta property="og:title" content="ECO STAR｜永續行動設計師系統">
+  <meta property="og:description" content="把你對永續的喜歡，變成一場可以被交付的行動。">
+  <meta property="og:type" content="website">
+  <title>ECO STAR｜永續行動設計師系統 — Wishlite 韻手作永續</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c49a6c;
+      --gold-dark: #a07844;
+      --moss: #3d5a3e;
+      --moss-dark: #2e4630;
+      --moss-soft: #7a9e7e;
+      --mist: #d4e4d0;
+      --mist-soft: #e6efe3;
+      --cream: #f7f3ec;
+      --paper: #f5f2ea;
+      --paper-warm: #efe7da;
+      --paper-soft: #faf7f0;
+      --charcoal: #2c2c2c;
+      --brown: #8b6f47;
+      --brown-warm: #a08665;
+      --muted: #766d62;
+      --line: rgba(92, 74, 47, 0.12);
+      --shadow-soft: 0 8px 24px rgba(32, 39, 34, 0.06);
+      --shadow-lift: 0 18px 42px rgba(32, 39, 34, 0.10);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    h1, h2, h3, p, a, li { word-break: break-word; overflow-wrap: anywhere; }
+    img { max-width: 100%; height: auto; display: block; }
+    .serif { font-family: 'Noto Serif TC', serif; }
+    .container { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+    /* === 通用 Section === */
+    section { padding: 72px 0; position: relative; }
+    .section-kicker {
+      font-size: 13px; letter-spacing: 0.18em; color: var(--moss); margin-bottom: 18px;
+      text-transform: uppercase; font-weight: 500; text-align: center;
+    }
+    .section-title {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(26px, 3.4vw, 34px); color: var(--moss-dark);
+      line-height: 1.5; text-align: center; margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 16px; line-height: 1.95; color: var(--charcoal); opacity: 0.88;
+      text-align: center; max-width: 620px; margin: 0 auto 36px;
+    }
+
+    /* === Hero === */
+    .hero {
+      padding: 100px 0 70px;
+      background: linear-gradient(180deg, var(--paper-warm) 0%, var(--paper) 100%);
+      text-align: center;
+    }
+    .hero-kicker { font-size: 14px; letter-spacing: 0.14em; color: var(--moss); margin-bottom: 22px; font-weight: 500; }
+    .hero-title {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(30px, 4.6vw, 46px); line-height: 1.45;
+      color: var(--moss-dark); margin-bottom: 28px; letter-spacing: 0.02em;
+    }
+    .hero-sub { font-size: 17px; line-height: 2; color: var(--charcoal); max-width: 620px; margin: 0 auto 18px; }
+    .hero-quote {
+      font-family: 'Noto Serif TC', serif; font-style: italic; color: var(--brown);
+      font-size: 16px; margin-top: 32px; opacity: 0.88;
+    }
+    .hero-ctas { margin-top: 44px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block; padding: 0 30px; height: 52px; line-height: 50px;
+      border-radius: 100px; font-weight: 500; font-size: 16px;
+      text-decoration: none; text-align: center; letter-spacing: 0.04em;
+      transition: all 0.25s ease; cursor: pointer; border: 1.5px solid transparent;
+    }
+    .btn-primary {
+      background: var(--moss); color: var(--paper-soft);
+      border-color: var(--moss);
+      box-shadow: 0 5px 18px rgba(61, 90, 62, 0.22);
+    }
+    .btn-primary:hover {
+      background: var(--moss-dark); border-color: var(--moss-dark);
+      box-shadow: 0 8px 24px rgba(61, 90, 62, 0.32);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--brown); border: 1.5px solid var(--brown-warm);
+    }
+    .btn-secondary:hover {
+      background: rgba(160, 134, 101, 0.10); border-color: var(--brown);
+    }
+
+    /* === SECTION 2 痛點 === */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 28px;
+    }
+    .pain-card {
+      background: var(--paper-soft); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 30px 26px;
+    }
+    .pain-num {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: 28px; color: var(--gold-dark); margin-bottom: 8px;
+    }
+    .pain-title { font-weight: 600; color: var(--moss-dark); font-size: 17px; margin-bottom: 10px; }
+    .pain-body { font-size: 15px; color: var(--charcoal); opacity: 0.88; line-height: 1.85; }
+
+    /* === SECTION 3 轉折 === */
+    .pivot { background: var(--paper-warm); }
+    .pivot-list {
+      list-style: none; padding: 0; max-width: 600px; margin: 24px auto 0;
+      font-size: 17px; line-height: 2.2; color: var(--moss-dark); text-align: center;
+    }
+    .pivot-list li::before { content: "→ "; color: var(--moss-soft); margin-right: 6px; }
+
+    /* === SECTION 4 方法論流程 === */
+    .method-flow {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      flex-wrap: wrap; margin-top: 36px; max-width: 880px; margin-left: auto; margin-right: auto;
+    }
+    .method-step {
+      flex: 0 0 auto; min-width: 130px; text-align: center;
+      padding: 22px 18px; background: var(--cream); border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+    .method-step-icon {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: 22px; color: var(--moss); margin-bottom: 8px;
+    }
+    .method-step-text { font-size: 14px; color: var(--charcoal); opacity: 0.85; line-height: 1.6; }
+    .method-arrow { color: var(--moss-soft); font-size: 22px; opacity: 0.7; }
+
+    /* === SECTION 5 信任 === */
+    .trust { background: var(--paper-warm); }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 36px;
+      max-width: 820px; margin-left: auto; margin-right: auto;
+    }
+    .trust-item { text-align: center; }
+    .trust-num {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(28px, 3.6vw, 38px); color: var(--moss-dark); line-height: 1.2;
+    }
+    .trust-label { font-size: 13.5px; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+    .trust-quote {
+      font-family: 'Noto Serif TC', serif; text-align: center; max-width: 540px; margin: 36px auto 0;
+      font-style: italic; color: var(--brown); font-size: 16px; line-height: 1.9;
+    }
+
+    /* === SECTION 6 五種能力 === */
+    .abilities {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 28px;
+    }
+    .ability {
+      background: var(--paper-soft); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 26px 24px;
+    }
+    .ability-num {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: 13px; letter-spacing: 0.18em; color: var(--moss-soft); margin-bottom: 10px;
+    }
+    .ability-title { font-weight: 600; font-size: 18px; color: var(--moss-dark); margin-bottom: 8px; }
+    .ability-body { font-size: 14.5px; color: var(--charcoal); opacity: 0.88; line-height: 1.85; }
+
+    /* === SECTION 7 三階段 === */
+    .stages { background: var(--paper-warm); }
+    .stage-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px;
+    }
+    .stage {
+      background: var(--paper-soft); border-radius: var(--radius); padding: 30px 26px;
+      border: 1px solid var(--line);
+    }
+    .stage-num {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--moss);
+      color: var(--cream); display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 16px; margin-bottom: 16px;
+    }
+    .stage-title { font-weight: 600; color: var(--moss-dark); font-size: 17px; margin-bottom: 8px; }
+    .stage-body { font-size: 14.5px; color: var(--charcoal); opacity: 0.88; line-height: 1.85; }
+
+    /* === SECTION 8 適合誰 === */
+    .fit-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 28px;
+    }
+    .fit-col {
+      background: var(--paper-soft); border-radius: var(--radius); padding: 32px 28px;
+      border: 1px solid var(--line);
+    }
+    .fit-col h3 {
+      font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 19px;
+      color: var(--moss-dark); margin-bottom: 16px;
+    }
+    .fit-col.fit-no h3 { color: var(--brown); }
+    .fit-list { list-style: none; padding: 0; }
+    .fit-list li {
+      font-size: 15px; line-height: 1.85; color: var(--charcoal); opacity: 0.9;
+      padding-left: 20px; position: relative; margin-bottom: 8px;
+    }
+    .fit-yes .fit-list li::before { content: "✓"; position: absolute; left: 0; color: var(--moss-soft); }
+    .fit-no .fit-list li::before { content: "—"; position: absolute; left: 0; color: var(--brown-warm); opacity: 0.6; }
+
+    /* === SECTION 9 課程資訊（24,800 區）=== */
+    .course { background: var(--cream); }
+    .course-card {
+      background: var(--paper-soft); border-radius: 24px; padding: 48px 40px;
+      max-width: 640px; margin: 0 auto;
+      border: 1.5px solid rgba(122, 158, 126, 0.30);
+      box-shadow: 0 18px 48px rgba(61, 90, 62, 0.08);
+    }
+    .course-name {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: 22px; color: var(--moss-dark); text-align: center; margin-bottom: 4px;
+    }
+    .course-sub-name {
+      text-align: center; color: var(--muted); font-size: 13.5px; letter-spacing: 0.1em; margin-bottom: 28px;
+    }
+    .course-info {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; margin-bottom: 32px;
+    }
+    .course-row { padding: 14px 0; border-bottom: 1px dashed var(--line); }
+    .course-row:last-child, .course-row:nth-last-child(2) { border-bottom: none; }
+    .course-label { font-size: 12.5px; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+    .course-value { font-size: 16px; color: var(--moss-dark); font-weight: 600; }
+    .course-price-block {
+      text-align: center; padding: 24px 0; margin-top: 8px;
+      background: rgba(122, 158, 126, 0.08); border-radius: 14px;
+    }
+    .course-price-label { font-size: 13px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 4px; }
+    .course-price {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: 32px; color: var(--moss-dark); letter-spacing: 0.02em;
+    }
+    .course-price-note { font-size: 12.5px; color: var(--muted); margin-top: 4px; opacity: 0.8; }
+
+    /* === SECTION 10 報名表單 === */
+    .signup { background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%); }
+    .signup-form {
+      max-width: 560px; margin: 36px auto 0; background: var(--paper-soft);
+      border-radius: var(--radius); padding: 40px 36px; border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+    .form-row { margin-bottom: 22px; }
+    .form-label {
+      display: block; font-size: 14px; color: var(--moss-dark); margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .form-label .required { color: var(--gold-dark); margin-left: 3px; }
+    .form-input, .form-radio-group {
+      width: 100%; padding: 12px 16px; border: 1px solid var(--line);
+      border-radius: 10px; background: var(--paper); color: var(--charcoal);
+      font-size: 15px; font-family: inherit; transition: border-color 0.2s ease;
+    }
+    .form-input:focus { outline: none; border-color: var(--moss-soft); background: #fff; }
+    .form-radio-group {
+      padding: 8px 12px; display: flex; flex-direction: column; gap: 4px; background: transparent; border: none;
+    }
+    .form-radio-option {
+      display: flex; align-items: flex-start; padding: 8px 12px; border-radius: 8px;
+      cursor: pointer; transition: background 0.2s ease;
+    }
+    .form-radio-option:hover { background: rgba(122, 158, 126, 0.08); }
+    .form-radio-option input { margin-right: 10px; margin-top: 4px; accent-color: var(--moss); }
+    .form-radio-option span { font-size: 14.5px; color: var(--charcoal); line-height: 1.7; }
+
+    .form-checkbox-row {
+      display: flex; align-items: flex-start; padding: 14px 16px;
+      background: rgba(122, 158, 126, 0.10); border-radius: 10px; margin-bottom: 22px;
+    }
+    .form-checkbox-row input { margin-right: 12px; margin-top: 4px; accent-color: var(--moss); width: 16px; height: 16px; }
+    .form-checkbox-row label { font-size: 14.5px; color: var(--moss-dark); line-height: 1.6; cursor: pointer; }
+
+    .form-submit {
+      width: 100%; padding: 0; height: 54px; line-height: 54px;
+      border: none; border-radius: 100px; background: var(--moss); color: var(--paper-soft);
+      font-size: 16px; font-weight: 500; letter-spacing: 0.04em; cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 5px 18px rgba(61, 90, 62, 0.22);
+    }
+    .form-submit:hover { background: var(--moss-dark); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(61, 90, 62, 0.32); }
+    .form-submit:disabled { background: var(--muted); cursor: not-allowed; transform: none; }
+
+    /* Thank-you state */
+    .signup-thanks {
+      text-align: center; padding: 48px 32px; max-width: 560px; margin: 36px auto 0;
+      background: var(--paper-soft); border-radius: var(--radius); border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+    .signup-thanks-icon { font-size: 46px; margin-bottom: 12px; }
+    .signup-thanks h3 {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      color: var(--moss-dark); font-size: 22px; margin-bottom: 16px;
+    }
+    .signup-thanks p { color: var(--charcoal); opacity: 0.88; line-height: 1.95; margin-bottom: 12px; }
+
+    /* === Closing CTA === */
+    .closing-cta {
+      text-align: center; padding: 72px 0 48px;
+      background: var(--paper);
+    }
+    .closing-cta h2 {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(22px, 3vw, 28px); color: var(--moss-dark); line-height: 1.65;
+      max-width: 520px; margin: 0 auto 32px;
+    }
+    .closing-quiet-link {
+      display: inline-block; margin-top: 32px; font-size: 13px;
+      color: var(--muted); text-decoration: none; opacity: 0.7;
+      border-bottom: 1px dashed var(--muted); padding-bottom: 2px;
+      letter-spacing: 0.02em;
+    }
+    .closing-quiet-link:hover { opacity: 1; color: var(--moss); }
+
+    /* === Footer：山脈 + 標語 === */
+    footer {
+      position: relative; background: linear-gradient(180deg, var(--paper-warm) 0%, #ece2d0 100%);
+      padding: 50px 0 32px; overflow: hidden;
+    }
+    .horizon-photo {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 220px;
+      background-image: url('https://wishlite.github.io/wishlite-proposals/assets/hero-mountain-warm.jpg');
+      background-size: cover; background-position: center bottom; background-repeat: no-repeat;
+      opacity: 0.48; pointer-events: none; z-index: 0;
+    }
+    .horizon-photo::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 100%;
+      background: linear-gradient(180deg,
+        var(--paper-warm) 0%,
+        rgba(239, 231, 218, 0.70) 14%,
+        rgba(239, 231, 218, 0.30) 32%,
+        rgba(239, 231, 218, 0.08) 58%,
+        transparent 85%);
+      pointer-events: none;
+    }
+    .footer-inner {
+      position: relative; text-align: center; color: var(--muted);
+      font-size: 12px; padding-top: 50px; opacity: 0.85;
+    }
+    .footer-brand {
+      font-family: 'Noto Serif TC', serif; font-weight: 600;
+      color: var(--moss-dark); font-size: 15px; margin-bottom: 6px; opacity: 0.92;
+    }
+
+    /* === RWD === */
+    @media (max-width: 768px) {
+      .container { padding: 0 22px; }
+      section { padding: 56px 0; }
+      .hero { padding: 70px 0 50px; }
+      .hero-title { font-size: 28px; line-height: 1.55; }
+      .hero-sub { font-size: 15.5px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { width: 100%; }
+      .pain-grid { grid-template-columns: 1fr; gap: 16px; }
+      .method-flow { gap: 8px; }
+      .method-step { min-width: 110px; padding: 18px 14px; }
+      .method-arrow { font-size: 16px; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 22px 18px; }
+      .abilities { grid-template-columns: 1fr; gap: 14px; }
+      .stage-grid { grid-template-columns: 1fr; gap: 16px; }
+      .fit-grid { grid-template-columns: 1fr; gap: 18px; }
+      .course-card { padding: 36px 26px; }
+      .course-info { grid-template-columns: 1fr; }
+      .course-price { font-size: 28px; }
+      .signup-form { padding: 32px 24px; }
+      .closing-cta { padding: 56px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== SECTION 1 ｜ HERO ========== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <p class="hero-kicker">ECO STAR ｜ 永續行動設計師系統</p>
+      <h1 id="hero-title" class="hero-title">
+        把你對永續的喜歡，<br>
+        變成一場可以被交付的行動
+      </h1>
+      <div class="hero-sub">
+        <p>不是再多學一門課，<br>而是學會把材料、體驗與人，串成一個真正會發生的現場。</p>
+      </div>
+      <p class="hero-quote">你會用什麼方式，靠近一件你在乎的事？</p>
+      <div class="hero-ctas">
+        <a href="#signup" class="btn btn-primary">報名 5/21 線上說明會</a>
+        <a href="https://wishlite.github.io/wishlite-proposals/quiz/" class="btn btn-secondary" target="_blank" rel="noopener">先做永續行動測驗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2 ｜ 痛點 ========== -->
+  <section aria-labelledby="pain-title">
+    <div class="container">
+      <p class="section-kicker">為什麼是現在</p>
+      <h2 id="pain-title" class="section-title">你不是沒有能力，<br>只是還沒有一套方法</h2>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-num">01</div>
+          <div class="pain-title">不知道怎麼開始</div>
+          <div class="pain-body">想做永續，但不知道第一步在哪裡。</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num">02</div>
+          <div class="pain-title">做了很多但沒有系統</div>
+          <div class="pain-body">活動、手作、教學都有，但沒有變成可複製的流程。</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num">03</div>
+          <div class="pain-title">不知道怎麼進企業或校園</div>
+          <div class="pain-body">不知道怎麼把這件事說清楚、被採用。</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-num">04</div>
+          <div class="pain-title">喜歡，但沒有位置</div>
+          <div class="pain-body">不知道自己可以在這個領域扮演什麼角色。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3 ｜ 轉折 ========== -->
+  <section class="pivot" aria-labelledby="pivot-title">
+    <div class="container">
+      <p class="section-kicker">這裡不一樣</p>
+      <h2 id="pivot-title" class="section-title">多數課程，教你怎麼做<br>ECO STAR，帶你進入現場</h2>
+      <p class="section-sub">我們不只教你永續是什麼，而是帶你學會：</p>
+      <ul class="pivot-list">
+        <li>怎麼讓一場體驗真的發生</li>
+        <li>怎麼讓一群人理解材料</li>
+        <li>怎麼讓企業願意採用這件事</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4 ｜ 方法論流程 ========== -->
+  <section aria-labelledby="method-title">
+    <div class="container">
+      <p class="section-kicker">方法論</p>
+      <h2 id="method-title" class="section-title">從一個材料，<br>到一場可以被看見的行動</h2>
+      <div class="method-flow" aria-hidden="false">
+        <div class="method-step">
+          <div class="method-step-icon">材料</div>
+          <div class="method-step-text">理解材料的故事與來源</div>
+        </div>
+        <span class="method-arrow">→</span>
+        <div class="method-step">
+          <div class="method-step-icon">體驗</div>
+          <div class="method-step-text">設計可以參與的過程</div>
+        </div>
+        <span class="method-arrow">→</span>
+        <div class="method-step">
+          <div class="method-step-icon">行動</div>
+          <div class="method-step-text">讓人願意動手與思考</div>
+        </div>
+        <span class="method-arrow">→</span>
+        <div class="method-step">
+          <div class="method-step-icon">交付</div>
+          <div class="method-step-text">變成完整可複製的活動</div>
+        </div>
+        <span class="method-arrow">→</span>
+        <div class="method-step">
+          <div class="method-step-icon">成果</div>
+          <div class="method-step-text">被企業與社會看見</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 5 ｜ 信任區 ========== -->
+  <section class="trust" aria-labelledby="trust-title">
+    <div class="container">
+      <p class="section-kicker">不是紙上談兵</p>
+      <h2 id="trust-title" class="section-title">這套方法，<br>來自真實的現場</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-num">300+</div>
+          <div class="trust-label">場永續活動</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-num">10,000+</div>
+          <div class="trust-label">位參與者</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-num">100+</div>
+          <div class="trust-label">家合作單位</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-num">133+</div>
+          <div class="trust-label">噸再生材料轉化</div>
+        </div>
+      </div>
+      <p class="trust-quote">「我們不是在教一個理想，<br>我們是在整理一條已經走過的路。」</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 6 ｜ 五種能力 ========== -->
+  <section aria-labelledby="abilities-title">
+    <div class="container">
+      <p class="section-kicker">你會帶走的</p>
+      <h2 id="abilities-title" class="section-title">五種能力，<br>讓永續真的能發生</h2>
+      <div class="abilities">
+        <div class="ability">
+          <div class="ability-num">— 能力 01 —</div>
+          <div class="ability-title">材料敘事力</div>
+          <div class="ability-body">把咖啡渣、再生塑膠、牡蠣殼、紙纖、舊衣與自然素材，轉化成能被人理解與感受的故事。</div>
+        </div>
+        <div class="ability">
+          <div class="ability-num">— 能力 02 —</div>
+          <div class="ability-title">體驗設計力</div>
+          <div class="ability-body">把一個永續概念，設計成有人願意參與、願意完成、願意分享的體驗。</div>
+        </div>
+        <div class="ability">
+          <div class="ability-num">— 能力 03 —</div>
+          <div class="ability-title">課程交付力</div>
+          <div class="ability-body">控制時間、引導現場、處理不同年齡與場域的參與者，讓活動穩定落地。</div>
+        </div>
+        <div class="ability">
+          <div class="ability-num">— 能力 04 —</div>
+          <div class="ability-title">場域轉譯力</div>
+          <div class="ability-body">同樣一個永續主題，在企業、校園、社區、親子場域，能轉換成不同的語言。</div>
+        </div>
+        <div class="ability">
+          <div class="ability-num">— 能力 05 —</div>
+          <div class="ability-title">行動成果整理力</div>
+          <div class="ability-body">讓一場活動不只是結束，而是可以被記錄、被回顧、被放進 ESG 溝通裡。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 7 ｜ 三階段 ========== -->
+  <section class="stages" aria-labelledby="stages-title">
+    <div class="container">
+      <p class="section-kicker">你會經歷的</p>
+      <h2 id="stages-title" class="section-title">三個階段，<br>慢慢走進永續行動的現場</h2>
+      <div class="stage-grid">
+        <div class="stage">
+          <div class="stage-num">1</div>
+          <div class="stage-title">理解材料與自己</div>
+          <div class="stage-body">先看見自己最自然的永續行動方式，學會用材料打開一場體驗的入口。</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">2</div>
+          <div class="stage-title">練習設計與交付</div>
+          <div class="stage-body">拆解真實案例，練習設計流程、開場語、引導語與收束方式。</div>
+        </div>
+        <div class="stage">
+          <div class="stage-num">3</div>
+          <div class="stage-title">進入合作評估</div>
+          <div class="stage-body">完成訓練後，符合條件者可申請進入合作評估與實習觀察，未來有機會參與真實專案支援。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 8 ｜ 適合誰 ========== -->
+  <section aria-labelledby="fit-title">
+    <div class="container">
+      <p class="section-kicker">這個系統適合誰</p>
+      <h2 id="fit-title" class="section-title">如果你是這樣的人，<br>歡迎走進來</h2>
+      <div class="fit-grid">
+        <div class="fit-col fit-yes">
+          <h3>適合你，如果你是 ──</h3>
+          <ul class="fit-list">
+            <li>手作老師、體驗引導者、教育工作者</li>
+            <li>對永續材料、環境教育、ESG 活動有興趣的人</li>
+            <li>想把自己的創作能力，轉化成更有社會價值的行動者</li>
+            <li>想進入企業、校園、社區永續現場，但不知道從哪裡開始的人</li>
+            <li>不想只學知識，而是想練出一套可以交付的能力的人</li>
+          </ul>
+        </div>
+        <div class="fit-col fit-no">
+          <h3>可能不適合，如果你是 ──</h3>
+          <ul class="fit-list">
+            <li>只是想學一個手作品就好</li>
+            <li>只想拿一份教材，自己自由接案</li>
+            <li>不想跟其他永續行動者一起共學</li>
+            <li>期待立刻成為很厲害的人</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 9 ｜ 課程資訊（24,800 區）========== -->
+  <section class="course" aria-labelledby="course-title">
+    <div class="container">
+      <p class="section-kicker">首屆共創梯</p>
+      <h2 id="course-title" class="section-title">和我們一起，<br>把永續變成可被交付的行動</h2>
+      <div class="course-card">
+        <div class="course-name">ECO STAR 永續行動設計師系統</div>
+        <div class="course-sub-name">FIRST FOUNDING COHORT ｜ 2026</div>
+        <div class="course-info">
+          <div class="course-row">
+            <div class="course-label">訓練形式</div>
+            <div class="course-value">三日核心訓練・18 小時</div>
+          </div>
+          <div class="course-row">
+            <div class="course-label">名額</div>
+            <div class="course-value">首屆限額共創梯</div>
+          </div>
+          <div class="course-row">
+            <div class="course-label">適合對象</div>
+            <div class="course-value">手作老師、教育工作者、永續行動者</div>
+          </div>
+          <div class="course-row">
+            <div class="course-label">完成後</div>
+            <div class="course-value">可申請進入合作評估</div>
+          </div>
+        </div>
+        <div class="course-price-block">
+          <div class="course-price-label">創始行動者價</div>
+          <div class="course-price">NT$ 24,800</div>
+          <div class="course-price-note">方法論可以帶走，完訓後可申請實習與合作評估</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 10 ｜ 報名表單 ========== -->
+  <section id="signup" class="signup" aria-labelledby="signup-title">
+    <div class="container">
+      <p class="section-kicker">下一步</p>
+      <h2 id="signup-title" class="section-title">先一起走 5/21 那一天<br>看看這條路長什麼樣子</h2>
+      <p class="section-sub">5/21 線上說明會免費參加，認識 ECO STAR 系統、首屆共創梯、合作評估流程。<br>填完下面就好，後續我們會把細節寄給你。</p>
+
+      <form class="signup-form" id="signupForm" novalidate>
+        <div class="form-row">
+          <label class="form-label" for="f-name">姓名 <span class="required">*</span></label>
+          <input class="form-input" type="text" id="f-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-email">Email <span class="required">*</span></label>
+          <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="例如：you@example.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID</label>
+          <input class="form-input" type="text" id="f-line" name="line" placeholder="方便我們提醒你說明會時間">
+        </div>
+        <div class="form-row">
+          <label class="form-label">你目前比較接近哪一種狀態？</label>
+          <div class="form-radio-group" role="radiogroup">
+            <label class="form-radio-option">
+              <input type="radio" name="status" value="creator" required>
+              <span>手作老師／創作者</span>
+            </label>
+            <label class="form-radio-option">
+              <input type="radio" name="status" value="educator">
+              <span>教育工作者／活動引導者</span>
+            </label>
+            <label class="form-radio-option">
+              <input type="radio" name="status" value="learner">
+              <span>喜歡永續與材料，想進一步學習</span>
+            </label>
+            <label class="form-radio-option">
+              <input type="radio" name="status" value="other">
+              <span>其他</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-checkbox-row">
+          <input type="checkbox" id="f-confirm" name="confirm" required>
+          <label for="f-confirm">我想參加 5/21 線上說明會</label>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">送出報名</button>
+      </form>
+
+      <div class="signup-thanks" id="signupThanks" style="display:none;">
+        <div class="signup-thanks-icon">🌱</div>
+        <h3>謝謝你願意走到這裡</h3>
+        <p>我們已經把你的報名收下了。<br>說明會的時間與連結會在 5/21 前透過 Email 寄給你。</p>
+        <p style="margin-top:18px; opacity:0.7; font-size:14px;">那天見。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Closing CTA ========== -->
+  <section class="closing-cta">
+    <div class="container">
+      <h2>如果你也想把喜歡，<br>變成一場可以被交付的行動。</h2>
+      <a href="#signup" class="btn btn-primary">報名 5/21 線上說明會</a>
+      <br>
+      <a href="https://wishlite.github.io/wishlite-proposals/quiz/" class="closing-quiet-link" target="_blank" rel="noopener">
+        還沒找到自己的方式？可以先從這裡開始
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== Footer ｜ Wishlite 山脈 ========== -->
+  <footer>
+    <div class="horizon-photo" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+      <p>讓永續成為日常的選擇</p>
+    </div>
+  </footer>
+
+  <script>
+    // 簡易表單 thank-you 狀態切換（5/21 前先做前端，之後接 Notion / n8n）
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = '送出中…';
+      // 暫時：直接顯示 thank-you（沒有後端，未來接 n8n webhook）
+      setTimeout(() => {
+        form.style.display = 'none';
+        document.getElementById('signupThanks').style.display = 'block';
+        // 滾到 thank-you 訊息
+        document.getElementById('signupThanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 600);
+      // TODO 接 n8n webhook：
+      // fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
+      //   method: 'POST',
+      //   headers: {'Content-Type':'application/json'},
+      //   body: JSON.stringify({
+      //     name: form.name.value, email: form.email.value, line: form.line.value,
+      //     status: form.status.value, source: 'eco-star-designer', date: new Date().toISOString()
+      //   })
+      // });
+    });
+  </script>
+
+</body>
+</html>
