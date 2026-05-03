@@ -261,6 +261,7 @@
       transition: box-shadow 0.32s ease, background 0.32s ease, border-color 0.32s ease;
       overflow: hidden;
       cursor: pointer; /* 整張可點 */
+      /* 標題+內文於上半、CTA 由 margin-top:auto 推至底（兩卡同水平線）*/
     }
 
     /* 卡 A：暖棕 / 安心探索 / 視覺較淡（明度 +8%）*/
@@ -298,6 +299,10 @@
       color: var(--moss-dark);
       margin-bottom: 18px;
       line-height: 1.5;
+      /* 確保兩張卡標題區塊等高（容納 2 行）*/
+      min-height: calc(24px * 1.5 * 2);
+      display: flex;
+      align-items: flex-start;
     }
     /* 標題陰影：A 卡極淡、B 卡略強 +10% 提注意力 */
     .path-card-a .path-title {
@@ -314,8 +319,9 @@
       line-height: 1.95;
       color: var(--charcoal);
       margin-bottom: 32px;
-      flex-grow: 1;
       opacity: 0.92;
+      /* 統一單行內文高度 */
+      min-height: calc(15.5px * 1.95);
     }
 
     .path-button {
@@ -330,7 +336,8 @@
       text-align: center;
       transition: all 0.25s ease;
       letter-spacing: 0.04em;
-      align-self: flex-start;
+      align-self: center; /* CTA 置中對齊 */
+      margin-top: auto;   /* 推到底部、兩卡同水平線 */
     }
     /* A 按鈕：咖啡色實心、飽和度略低於 B、陰影輕量 */
     .path-card-a .path-button {
