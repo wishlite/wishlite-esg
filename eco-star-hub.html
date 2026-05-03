@@ -332,31 +332,32 @@
       letter-spacing: 0.04em;
       align-self: flex-start;
     }
-    /* A 按鈕：outline 低對比樣式（hover 才略加深）*/
+    /* A 按鈕：咖啡色實心、飽和度略低於 B、陰影輕量 */
     .path-card-a .path-button {
-      background: transparent;
-      color: var(--brown);
-      border: 1.5px solid var(--brown-warm);
+      background: #a08665;       /* 咖啡棕（brown-warm，飽和度低於 B 的苔綠）*/
+      color: var(--paper-soft);
+      border: 1.5px solid #a08665;
+      box-shadow: 0 3px 10px rgba(139, 111, 71, 0.14);
     }
     .path-card-a .path-button:hover {
-      background: rgba(160, 134, 101, 0.10);
-      color: var(--brown);
-      border-color: var(--brown);
+      background: #8b6f47;       /* hover 略加深到 brown */
+      border-color: #8b6f47;
       transform: none;
+      box-shadow: 0 4px 12px rgba(139, 111, 71, 0.20);
     }
 
-    /* B 按鈕：實心、比霧綠背景再深、hover 微提亮 */
+    /* B 按鈕：實心苔綠（主色）/ 陰影 +12% / hover 反應更明顯 */
     .path-card-b .path-button {
       background: var(--moss);
       color: var(--paper-soft);
       border: 1.5px solid var(--moss);
-      box-shadow: 0 4px 14px rgba(61, 90, 62, 0.18);
+      box-shadow: 0 5px 16px rgba(61, 90, 62, 0.22);
     }
     .path-card-b .path-button:hover {
-      background: var(--moss-soft);
-      border-color: var(--moss-soft);
+      background: var(--moss-dark);    /* hover 加深而非變淡，行動感更強 */
+      border-color: var(--moss-dark);
       transform: none;
-      box-shadow: 0 6px 18px rgba(61, 90, 62, 0.24);
+      box-shadow: 0 8px 22px rgba(61, 90, 62, 0.32);
     }
 
     /* （A/B 卡角落 mascot 已移除：2026-05-03 Apple 拍板，把 IP 集中在六友合照頭尾呼應，
@@ -641,7 +642,7 @@
             一種從材料到現場的實踐方式
           </p>
           <a href="eco-star-designer.html" class="path-button" aria-label="前往 ECO STAR 永續行動介紹">
-            看看我可以怎麼開始 →
+            帶我看看怎麼開始 →
           </a>
         </article>
 
