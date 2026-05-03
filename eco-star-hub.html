@@ -299,10 +299,13 @@
       color: var(--moss-dark);
       margin-bottom: 18px;
       line-height: 1.5;
-      /* 確保兩張卡標題區塊等高（容納 2 行）*/
+      /* 確保兩張卡標題區塊等高（容納 2 行）+ 置中 */
       min-height: calc(24px * 1.5 * 2);
       display: flex;
       align-items: flex-start;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
     }
     /* 標題陰影：A 卡極淡、B 卡略強 +10% 提注意力 */
     .path-card-a .path-title {
@@ -314,14 +317,16 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
     }
 
+    /* 中段標籤：輕量分類提示（非完整句子）*/
     .path-body {
-      font-size: 15.5px;
-      line-height: 1.95;
-      color: var(--charcoal);
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--muted);
+      letter-spacing: 0.05em;
       margin-bottom: 32px;
-      opacity: 0.92;
-      /* 統一單行內文高度 */
-      min-height: calc(15.5px * 1.95);
+      opacity: 0.85;
+      text-align: center;
+      min-height: calc(13.5px * 1.6);
     }
 
     .path-button {
@@ -635,7 +640,7 @@
         <article class="path-card path-card-a">
           <h2 class="path-title">看看我們做過的永續案例</h2>
           <p class="path-body">
-            來自企業與不同現場的真實行動
+            企業 × 校園 × 真實現場
           </p>
           <a href="eco-star-cases.html" class="path-button" aria-label="前往永續案例館">
             這些行動是怎麼發生的 →
@@ -646,7 +651,7 @@
         <article class="path-card path-card-b">
           <h2 class="path-title">了解怎麼把永續變成一場行動</h2>
           <p class="path-body">
-            一種從材料到現場的實踐方式
+            材料 × 體驗 × 現場帶領
           </p>
           <a href="eco-star-designer.html" class="path-button" aria-label="前往 ECO STAR 永續行動介紹">
             帶我看看怎麼開始 →
