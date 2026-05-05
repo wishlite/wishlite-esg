@@ -831,9 +831,15 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why Wishlite</span></div>
       <h2 id="why-title" class="section-title">我們不是只在談永續，<br>而是一直在真實場域裡<br>把這些事情一場一場做出來</h2>
-      <div class="section-body" style="text-align:center;">
-        <p>從企業 ESG、品牌日，到校園與社區，<br>我們一直在做同一件事：讓永續，被親手感受。</p>
-      </div>
+
+      <!-- v3.2 trust proof：logo 牆 → 活動拼貼 → 數字 → 收尾 -->
+      <figure class="trust-logo">
+        <img src="assets/logo-wall-clients.jpg" alt="Wishlite 合作品牌與企業 logo 牆" loading="lazy">
+      </figure>
+      <figure class="trust-collage">
+        <img src="assets/esg-cases-collage.jpg" alt="Wishlite 在企業、校園、社區舉辦的永續體驗活動真實現場拼貼" loading="lazy">
+      </figure>
+
       <div class="why-numbers">
         <div class="why-num"><div class="why-num-val">300+</div><div class="why-num-label">場永續活動</div></div>
         <div class="why-num"><div class="why-num-val">10,000+</div><div class="why-num-label">位參與者</div></div>
@@ -841,6 +847,28 @@
         <div class="why-num"><div class="why-num-val">133+</div><div class="why-num-label">噸再生材料</div></div>
       </div>
       <p class="why-tail">ECO STAR，就是從這些經驗長出來的。</p>
+
+      <style>
+        .trust-logo,.trust-collage{
+          max-width:1100px;margin:0 auto 28px;
+        }
+        .trust-logo img{
+          width:100%;height:auto;display:block;
+          opacity:.78;
+        }
+        .trust-collage{
+          border-radius:12px;overflow:hidden;
+          box-shadow:0 8px 22px -16px rgba(126,90,53,.22);
+          margin-bottom:36px;
+        }
+        .trust-collage img{
+          width:100%;height:auto;display:block;
+        }
+        @media(max-width:720px){
+          .trust-logo,.trust-collage{margin-bottom:20px}
+          .trust-collage{border-radius:8px;margin-bottom:28px}
+        }
+      </style>
     </div>
   </section>
 
