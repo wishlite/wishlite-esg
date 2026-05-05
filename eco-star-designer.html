@@ -300,7 +300,100 @@
     }
     .btn-soft-link:hover .arrow { transform: translateX(3px); }
 
-    /* Why ECO STAR｜左側（小芽 + 標題） + 右側（支持與成長圖）並排 */
+    /* Why ECO STAR v2｜圖像主導 + 浮標文字（取代左右並排） */
+    .pain-section-v2 { padding: 88px 0; }
+    .pain-kicker-soft {
+      text-align: center;
+      margin-bottom: 28px;
+      opacity: 0.6;
+    }
+    .pain-kicker-soft .section-kicker {
+      font-size: 11px;
+      letter-spacing: 4px;
+      padding: 4px 14px;
+      background: transparent;
+      border: 1px solid rgba(166, 124, 82, 0.28);
+    }
+    /* 小芽 + 引導文字｜放在主圖上方/外側 */
+    .pain-prelude {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      max-width: 880px;
+      margin: 0 auto 36px;
+    }
+    .pain-mascot-aside {
+      margin: 0;
+      width: 130px; height: 130px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pain-mascot-aside img {
+      display: block; width: 100%; height: auto;
+      object-fit: contain;
+    }
+    .pain-quote-card {
+      background: rgba(253, 250, 244, 0.92);
+      border: 1px solid rgba(166, 124, 82, 0.18);
+      border-radius: 12px;
+      padding: 22px 28px;
+      box-shadow: 0 6px 18px -14px rgba(126, 90, 53, 0.22);
+    }
+    .pain-quote-card h2 {
+      margin: 0;
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 700;
+      line-height: 1.85;
+      letter-spacing: 1.5px;
+      color: #5C4830;
+    }
+    /* 主圖｜完整呈現、不被任何元素覆蓋 */
+    .pain-image-wrap {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    .pain-illus-v2 {
+      margin: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px -22px rgba(126, 90, 53, 0.32);
+      background: var(--card);
+    }
+    .pain-illus-v2 img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .pain-caption-soft {
+      text-align: center;
+      margin: 22px auto 0;
+      color: rgba(95, 90, 80, 0.55);
+      font-size: 13px;
+      letter-spacing: 1.5px;
+    }
+    @media (max-width: 720px) {
+      .pain-section-v2 { padding: 64px 0; }
+      .pain-prelude {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+      .pain-mascot-aside {
+        width: 96px; height: 96px;
+        margin: 0 auto;
+      }
+      .pain-quote-card {
+        padding: 18px 20px;
+        text-align: center;
+      }
+      .pain-quote-card h2 { font-size: 16px; line-height: 1.85; letter-spacing: 1px; }
+      .pain-image-wrap { max-width: 100%; }
+      .pain-illus-v2 { border-radius: 12px; }
+      .pain-caption-soft { font-size: 12.5px; margin-top: 18px; }
+    }
+
+    /* Why ECO STAR｜左側（小芽 + 標題） + 右側（支持與成長圖）並排（v1，已棄用） */
     .pain-combined {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
@@ -348,6 +441,46 @@
       .pain-header-text { text-align: center; }
       .pain-header-text .section-kicker-wrap { justify-content: center; }
       .pain-header-text .section-title { text-align: center; }
+    }
+
+    /* Why this matters｜4 場域圖（取代原本長文） */
+    .market-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 36px auto 0;
+    }
+    .market-field-card {
+      margin: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--card, #fff);
+      box-shadow: 0 12px 28px -22px rgba(126, 90, 53, 0.32);
+      border: 1px solid var(--line);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .market-field-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.6s ease;
+    }
+    .market-field-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px -22px rgba(126, 90, 53, 0.4);
+    }
+    .market-field-card:hover img { transform: scale(1.02); }
+    @media (max-width: 720px) {
+      .market-fields {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .market-field-card {
+        border-radius: 14px;
+        box-shadow: 0 8px 20px -18px rgba(126, 90, 53, 0.28);
+      }
     }
 
     /* What is ECO STAR｜這是什麼橫式圖（取代原本長文） */
@@ -711,11 +844,40 @@
       font-size: 13px; letter-spacing: 1px;
     }
     /* CTA 下方降壓小字 */
+    .info-session-cta-wrap {
+      max-width: 540px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .info-session-cta-btn {
+      display: inline-block;
+      padding: 18px 56px;
+      border-radius: 100px;
+      background: var(--gold-light, #D4B06A);
+      color: #2C3120;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-decoration: none;
+      box-shadow: 0 12px 28px -14px rgba(216, 155, 92, 0.55),
+                  0 4px 14px -10px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .info-session-cta-btn:hover {
+      transform: translateY(-2px);
+      background: #E5C079;
+      box-shadow: 0 18px 36px -14px rgba(216, 155, 92, 0.65),
+                  0 6px 16px -10px rgba(0, 0, 0, 0.30);
+    }
     .info-session-after-cta {
-      margin: 16px 0 0;
-      color: rgba(95, 90, 80, 0.6);
+      margin: 18px 0 0;
+      color: rgba(255, 255, 255, 0.62);
       font-size: 12.5px; letter-spacing: 0.5px;
       line-height: 1.7;
+    }
+    @media (max-width: 720px) {
+      .info-session-cta-btn { padding: 16px 36px; font-size: 16px; letter-spacing: 1.5px; }
     }
     @media (max-width: 720px) {
       .info-session-intro { font-size: 14.5px; margin-bottom: 14px; }
@@ -1104,26 +1266,31 @@
     </div>
   </section>
 
-  <!-- 02 痛點（FAQ 卡片感）-->
-  <section aria-labelledby="pain-title">
+  <!-- 02 痛點 v3｜小芽 + 引導文字（在主圖外側）+ 完整主圖 -->
+  <section aria-labelledby="pain-title" class="pain-section-v2">
     <div class="container">
-      <div class="pain-combined">
-        <div class="pain-header">
-          <figure class="pain-mascot" aria-hidden="false">
-            <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="永續六友｜小芽，整合策劃力" loading="lazy">
-          </figure>
-          <div class="pain-header-text">
-            <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
-            <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
-          </div>
-        </div>
+      <div class="pain-kicker-soft">
+        <span class="section-kicker">Why ECO STAR</span>
+      </div>
 
-        <div class="pain-illus-scroll" aria-label="ECO STAR 陪你走過的距離｜可橫向滑動查看">
-          <figure class="pain-illus">
-            <img src="assets/eco-star-support-growth.png" alt="你不是不夠好，只是還需要對的支持與陪伴，ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy" decoding="async">
-          </figure>
+      <!-- 小芽 + 引導文字｜放在主圖上方／外側，不蓋圖 -->
+      <div class="pain-prelude">
+        <figure class="pain-mascot-aside" aria-hidden="false">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="永續六友｜小芽，整合策劃力" loading="lazy">
+        </figure>
+        <div class="pain-quote-card">
+          <h2 id="pain-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
         </div>
       </div>
+
+      <!-- 主圖｜完整呈現，不被覆蓋 -->
+      <div class="pain-image-wrap">
+        <figure class="pain-illus-v2">
+          <img src="assets/eco-star-support-growth.png" alt="你不是不夠好，只是還需要對的支持與陪伴，ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <p class="pain-caption-soft">你可能也在這些狀態裡</p>
     </div>
   </section>
 
@@ -1139,11 +1306,20 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why this matters</span></div>
       <h2 id="market-title" class="section-title">這些行動，<br>正在不同的地方發生</h2>
-      <div class="section-body">
-        <p>這幾年，我們慢慢看到，<br>越來越多企業、學校與社區，<br>都在尋找一種更靠近人的方式，談永續這件事。</p>
-        <p>但一場真的留得下來的永續體驗，<br>不只是把材料放上桌、照著步驟完成作品。</p>
-        <p>它需要有人能把材料說成故事，<br>設計一段讓人願意參與的過程，<br>陪不同年齡、不同背景的人，<br>慢慢理解自己和永續的關係。</p>
-        <p class="accent">這，就是 ECO STAR 想慢慢長出來的人。</p>
+
+      <div class="market-fields">
+        <figure class="market-field-card">
+          <img src="assets/field-enterprise-esg.jpg" alt="企業 ESG 體驗：把永續材料變成員工能參與、能理解、能帶走的 ESG 行動" loading="lazy" decoding="async">
+        </figure>
+        <figure class="market-field-card">
+          <img src="assets/field-school-edu.jpg" alt="校園永續教育：讓學生從材料故事與實作中，理解循環、環境與行動的關係" loading="lazy" decoding="async">
+        </figure>
+        <figure class="market-field-card">
+          <img src="assets/field-community-cocreate.jpg" alt="社區共創工作坊：陪不同年齡與背景的人，在共同創作中靠近永續" loading="lazy" decoding="async">
+        </figure>
+        <figure class="market-field-card">
+          <img src="assets/field-brand-family.jpg" alt="品牌日／親子活動：把永續做成親近、好參與，也能留下記憶的體驗" loading="lazy" decoding="async">
+        </figure>
       </div>
     </div>
   </section>
@@ -1408,53 +1584,9 @@
 
       <p class="info-session-proof-tiny">（已經有一群人，從這裡開始）</p>
 
-      <form class="signup-form" id="signupForm" novalidate>
-        <div class="form-row">
-          <label class="form-label" for="f-name">姓名 <span class="required">*</span></label>
-          <input class="form-input" type="text" id="f-name" name="name" required autocomplete="name">
-        </div>
-        <div class="form-row">
-          <label class="form-label" for="f-email">Email <span class="required">*</span></label>
-          <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="例如：you@example.com">
-        </div>
-        <div class="form-row">
-          <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID</label>
-          <input class="form-input" type="text" id="f-line" name="line" placeholder="方便我們提醒你說明會時間">
-        </div>
-        <div class="form-row">
-          <label class="form-label">你目前比較接近哪一種狀態？</label>
-          <div class="form-radio-group" role="radiogroup">
-            <label class="form-radio-option">
-              <input type="radio" name="status" value="creator" required>
-              <span>手作老師／創作者</span>
-            </label>
-            <label class="form-radio-option">
-              <input type="radio" name="status" value="educator">
-              <span>教育工作者／活動引導者</span>
-            </label>
-            <label class="form-radio-option">
-              <input type="radio" name="status" value="learner">
-              <span>喜歡永續與材料，想進一步學習</span>
-            </label>
-            <label class="form-radio-option">
-              <input type="radio" name="status" value="other">
-              <span>其他</span>
-            </label>
-          </div>
-        </div>
-        <div class="form-checkbox-row">
-          <input type="checkbox" id="f-confirm" name="confirm" required>
-          <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
-        </div>
-        <button type="submit" class="form-submit" id="submitBtn">登記線上說明會</button>
+      <div class="info-session-cta-wrap">
+        <a href="eco-star-info-session.html" class="info-session-cta-btn">登記線上說明會</a>
         <p class="info-session-after-cta">填寫資料後，我們會寄送說明會時間與觀看方式給你。</p>
-      </form>
-
-      <div class="signup-thanks" id="signupThanks" style="display:none;">
-        <div class="signup-thanks-icon">🌱</div>
-        <h3>謝謝你願意走到這裡</h3>
-        <p>我們已經把你的登記收下了。<br>最新一場說明會的時間、觀看方式或回放連結，會透過 Email 寄給你。</p>
-        <p style="margin-top:18px; opacity:0.7; font-size:14px;">那天見。</p>
       </div>
     </div>
   </section>
@@ -1468,29 +1600,7 @@
     </div>
   </footer>
 
-  <script>
-    // 表單 thank-you 切換（前端模擬，TODO 接 n8n webhook）
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true; btn.textContent = '送出中…';
-      setTimeout(() => {
-        form.style.display = 'none';
-        document.getElementById('signupThanks').style.display = 'block';
-        document.getElementById('signupThanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 600);
-      // TODO 接 n8n webhook：
-      // fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
-      //   method: 'POST', headers: {'Content-Type':'application/json'},
-      //   body: JSON.stringify({
-      //     name: form.name.value, email: form.email.value, line: form.line.value,
-      //     status: form.status.value, source: 'eco-star-designer', date: new Date().toISOString()
-      //   })
-      // });
-    });
-  </script>
+  <!-- 表單已搬到獨立頁 eco-star-info-session.html，原 inline form JS 已移除 -->
 
 </body>
 </html>

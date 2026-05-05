@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登記線上說明會｜ECO STAR 永續行動設計師</title>
+<meta name="description" content="登記 ECO STAR 永續行動設計師線上說明會。我們會寄送最新場次時間、觀看方式或回放連結。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF6EE;
+    --card: #FFFCF5;
+    --ink: #3C342A;
+    --sub: #6B6359;
+    --line: #E8DCC4;
+    --brown: #A67C52;
+    --brown-deep: #7E5A35;
+    --green-deep: #566448;
+    --gold-light: #D4B06A;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--green-deep); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .top-nav {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(250, 246, 238, 0.92);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .top-nav-inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13.5px;
+  }
+  .top-brand {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    color: var(--brown-deep);
+    letter-spacing: 1px;
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--sub);
+    transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--green-deep); text-decoration: none; }
+  .back-link::before { content: "←"; font-size: 14px; }
+
+  main { max-width: 640px; margin: 0 auto; padding: 56px 24px 96px; }
+  .page-kicker {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 4px;
+    color: var(--brown-deep);
+    background: rgba(212, 176, 106, 0.14);
+    border: 1px solid rgba(212, 176, 106, 0.32);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 22px;
+  }
+  .page-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--ink);
+    letter-spacing: 1.5px;
+    margin: 0 0 16px;
+  }
+  .page-lead {
+    color: var(--sub);
+    font-size: 15.5px;
+    line-height: 1.95;
+    margin: 0 0 36px;
+  }
+
+  /* —— 表單 —— */
+  .signup-form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 36px 32px;
+    box-shadow: 0 16px 36px -28px rgba(126, 90, 53, 0.32);
+  }
+  .form-row { margin-bottom: 22px; }
+  .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--brown-deep);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .form-label .required { color: #C25E4A; }
+  .form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--brown);
+    box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.14);
+  }
+  .form-radio-group { display: grid; gap: 4px; }
+  .form-radio-option {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .form-radio-option:hover { background: rgba(166, 124, 82, 0.08); }
+  .form-radio-option input { margin-top: 4px; accent-color: var(--brown); }
+  .form-radio-option span { font-size: 14.5px; color: var(--ink); line-height: 1.7; }
+  .form-checkbox-row {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px;
+    background: rgba(125, 143, 114, 0.10);
+    border-radius: 10px;
+    margin-bottom: 22px;
+  }
+  .form-checkbox-row input { margin-top: 4px; accent-color: var(--green-deep); width: 16px; height: 16px; }
+  .form-checkbox-row label {
+    font-size: 14.5px; color: var(--green-deep); line-height: 1.6; cursor: pointer;
+  }
+  .form-submit {
+    width: 100%; height: 54px;
+    border: none; border-radius: 100px;
+    background: var(--green-deep); color: var(--card);
+    font-family: inherit;
+    font-size: 16px; font-weight: 500; letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 22px -8px rgba(86, 100, 72, 0.5);
+  }
+  .form-submit:hover { background: #65745C; transform: translateY(-1px); }
+  .form-submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+  .form-after-note {
+    text-align: center;
+    margin: 18px 0 0;
+    color: var(--sub);
+    font-size: 12.5px; letter-spacing: 0.5px;
+    line-height: 1.7;
+  }
+
+  .signup-thanks {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 56px 32px;
+    text-align: center;
+    box-shadow: 0 16px 36px -28px rgba(126, 90, 53, 0.32);
+  }
+  .signup-thanks-icon { font-size: 44px; margin-bottom: 14px; }
+  .signup-thanks h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--brown-deep);
+    margin: 0 0 16px;
+    letter-spacing: 1px;
+  }
+  .signup-thanks p {
+    color: var(--ink);
+    font-size: 15px; line-height: 1.95;
+    margin: 0 0 8px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 24px;
+    text-align: center;
+    color: var(--sub);
+    font-size: 12.5px; letter-spacing: 0.5px;
+  }
+  footer .footer-brand {
+    font-family: 'Noto Serif TC', serif;
+    color: var(--brown-deep);
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 720px) {
+    main { padding: 36px 18px 64px; }
+    .signup-form { padding: 28px 22px; border-radius: 14px; }
+    .signup-thanks { padding: 44px 22px; border-radius: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav" aria-label="頁面導覽">
+  <div class="top-nav-inner">
+    <span class="top-brand">ECO STAR ｜ Wishlite</span>
+    <a href="eco-star-designer.html" class="back-link">回到介紹頁</a>
+  </div>
+</nav>
+
+<main>
+  <span class="page-kicker">ECO STAR INFO SESSION</span>
+  <h1 class="page-title">登記線上說明會</h1>
+  <p class="page-lead">
+    填好下面的資料，<br>
+    我們會把最新一場說明會的時間、觀看方式或回放連結，<br>
+    透過 Email 寄給你。
+  </p>
+
+  <form class="signup-form" id="signupForm" novalidate>
+    <div class="form-row">
+      <label class="form-label" for="f-name">姓名 <span class="required">*</span></label>
+      <input class="form-input" type="text" id="f-name" name="name" required autocomplete="name">
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="f-email">Email <span class="required">*</span></label>
+      <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="例如：you@example.com">
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID</label>
+      <input class="form-input" type="text" id="f-line" name="line" placeholder="方便我們提醒你說明會時間">
+    </div>
+    <div class="form-row">
+      <label class="form-label">你目前比較接近哪一種狀態？</label>
+      <div class="form-radio-group" role="radiogroup">
+        <label class="form-radio-option">
+          <input type="radio" name="status" value="creator" required>
+          <span>手作老師／創作者</span>
+        </label>
+        <label class="form-radio-option">
+          <input type="radio" name="status" value="educator">
+          <span>教育工作者／活動引導者</span>
+        </label>
+        <label class="form-radio-option">
+          <input type="radio" name="status" value="learner">
+          <span>喜歡永續與材料，想進一步學習</span>
+        </label>
+        <label class="form-radio-option">
+          <input type="radio" name="status" value="other">
+          <span>其他</span>
+        </label>
+      </div>
+    </div>
+    <div class="form-checkbox-row">
+      <input type="checkbox" id="f-confirm" name="confirm" required>
+      <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
+    </div>
+    <button type="submit" class="form-submit" id="submitBtn">送出登記</button>
+    <p class="form-after-note">填好之後，我們會寄送說明會時間與觀看方式給你。</p>
+  </form>
+
+  <div class="signup-thanks" id="signupThanks" style="display:none;" role="status" aria-live="polite">
+    <div class="signup-thanks-icon" aria-hidden="true">🌱</div>
+    <h3>謝謝你願意走到這裡</h3>
+    <p>我們已經把你的登記收下了。</p>
+    <p>最新一場說明會的時間、觀看方式或回放連結，<br>會透過 Email 寄給你。</p>
+    <p style="margin-top:22px; opacity:0.7; font-size:14px;">那天見。</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+  <div>讓永續成為日常的選擇</div>
+</footer>
+
+<script>
+  // 表單 thank-you 切換（前端模擬，TODO 接 n8n webhook）
+  document.getElementById('signupForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = '送出中…';
+    setTimeout(() => {
+      form.style.display = 'none';
+      const thanks = document.getElementById('signupThanks');
+      thanks.style.display = 'block';
+      thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 600);
+    // TODO 接 n8n webhook：
+    // fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
+    //   method: 'POST', headers: {'Content-Type':'application/json'},
+    //   body: JSON.stringify({
+    //     name: form.name.value, email: form.email.value, line: form.line.value,
+    //     status: form.status.value, source: 'eco-star-info-session', date: new Date().toISOString()
+    //   })
+    // });
+  });
+</script>
+
+</body>
+</html>
