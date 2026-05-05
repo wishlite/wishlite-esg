@@ -133,7 +133,7 @@
     }
     .hero-ctas { margin-top: 44px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .hero-mascot {
-      position: absolute; right: 5%; bottom: 6%; width: 130px; height: 130px;
+      position: absolute; left: 5%; bottom: 6%; width: 130px; height: 130px;
       opacity: 0.78; pointer-events: none; z-index: 1;
     }
     .hero-mascot img { width: 100%; height: 100%; object-fit: contain; }
@@ -415,8 +415,9 @@
     <div class="hero-inner">
       <span class="hero-kicker">ECO STAR ｜ Designer System</span>
       <h1 id="hero-title" class="hero-title">
-        把你在乎的永續，<br>
-        變成一場真的行動。
+        很多人其實在乎這些事，<br>
+        只是一直沒有一個<br>
+        可以開始的地方。
       </h1>
       <p class="hero-sub">從喜歡開始，慢慢長出能被信任交付的能力。</p>
       <div class="hero-divider"></div>
@@ -436,6 +437,40 @@
     <div class="hero-mascot" aria-hidden="true">
       <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
     </div>
+  </section>
+
+  <!-- 🆕 ② 早期 CTA（先收有感的人）-->
+  <section id="early-cta" aria-label="早期 CTA">
+    <div class="container">
+      <div class="early-cta-card">
+        <p class="early-cta-text">
+          如果你也在找一個開始的方式，<br>
+          可以先來聽一場說明會。
+        </p>
+        <a href="#info-session" class="btn btn-primary">了解說明會</a>
+      </div>
+    </div>
+    <style>
+      #early-cta{padding:48px 0}
+      .early-cta-card{
+        max-width:560px;margin:0 auto;text-align:center;
+        padding:36px 28px;
+        background:rgba(125,143,114,.06);
+        border:1px solid rgba(125,143,114,.22);
+        border-radius:18px;
+      }
+      .early-cta-text{
+        margin:0 0 22px;
+        font-family:'Noto Serif TC',serif;
+        font-size:18px;line-height:2;
+        color:var(--green-deep);letter-spacing:.5px;
+      }
+      @media(max-width:720px){
+        #early-cta{padding:36px 0}
+        .early-cta-card{padding:28px 20px;border-radius:14px}
+        .early-cta-text{font-size:15.5px}
+      }
+    </style>
   </section>
 
   <section aria-labelledby="pain-title">
