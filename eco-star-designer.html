@@ -224,6 +224,25 @@
     /* ═══ 04 / 05 / 06 ═══ */
     /* （使用通用 .section-body / 已在上方定義）*/
 
+    /* ═══ 07 四能力區｜上方視覺總覽圖 ═══ */
+    .learn-overview {
+      margin: 32px auto 40px;
+      max-width: 960px;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -20px rgba(126, 90, 53, 0.32);
+      background: var(--card, #fff);
+    }
+    .learn-overview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 720px) {
+      .learn-overview { margin: 24px auto 28px; border-radius: 16px; }
+    }
+
     /* ═══ 07 四能力卡（吸收 A 紙卡層次 + 暖棕小標籤）═══ */
     .abilities {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
@@ -567,70 +586,20 @@
     }
     .journey-icon{width:78px;height:78px;margin:0 0 6px 18px}
 
-    /* 完整圖預覽：lightbox / modal */
-    .journey-cta-row{text-align:center;margin-top:30px}
-    .journey-lightbox-trigger{
-      display:inline-flex;align-items:center;gap:6px;
-      padding:4px 2px;border:0;background:transparent;
-      color:var(--green-deep);
-      font-family:inherit;font-size:14px;font-weight:500;letter-spacing:1px;
-      cursor:pointer;
-      border-bottom:1px solid rgba(125,143,114,.32);
-      border-radius:0;
-      transition:border-color .25s ease,opacity .25s ease;
+    /* 完整行動路徑收束圖（直接內嵌，不再用 modal） */
+    .journey-full{
+      display:block;margin:48px auto 32px;
+      max-width:980px;width:100%;
+      border-radius:24px;overflow:hidden;
+      box-shadow:0 14px 32px -22px rgba(126,90,53,.32);
+      background:var(--card);
     }
-    .journey-lightbox-trigger:hover{
-      border-bottom-color:var(--green-deep);
-      opacity:.92;
-    }
-    .journey-lightbox-trigger .arrow{
-      display:inline-block;transition:transform .25s ease;
-      font-size:15px;line-height:1;
-    }
-    .journey-lightbox-trigger:hover .arrow{transform:translateX(3px)}
-    .journey-modal{
-      position:fixed;inset:0;z-index:9999;
-      display:none;align-items:center;justify-content:center;padding:24px;
-      background:rgba(30,40,30,.78);
-      -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-      opacity:0;transition:opacity .25s ease;
-    }
-    .journey-modal.is-open{display:flex;opacity:1}
-    .journey-modal-inner{
-      position:relative;
-      max-width:min(900px,95vw);max-height:92vh;
-      display:flex;flex-direction:column;align-items:center;
-      background:var(--card);border-radius:14px;padding:18px;
-      box-shadow:0 30px 80px -30px rgba(0,0,0,.55);
-      overflow:hidden;
-    }
-    .journey-modal-inner img{
-      display:block;max-width:100%;
-      max-height:calc(92vh - 80px);
-      width:auto;height:auto;
-      object-fit:contain;border-radius:8px;
-    }
-    .journey-modal-close{
-      position:absolute;top:10px;right:10px;
-      width:34px;height:34px;border-radius:50%;
-      background:rgba(255,255,255,.95);
-      border:1px solid var(--line);
-      color:var(--ink);
-      font-size:20px;line-height:1;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      transition:all .2s ease;z-index:2;
-      font-family:inherit;
-    }
-    .journey-modal-close:hover{background:#fff;transform:scale(1.08)}
-    .journey-modal-cap{
-      margin-top:10px;
-      font-size:12px;color:var(--sub);
-      letter-spacing:1.5px;text-align:center;
-    }
-    @media (max-width:560px){
-      .journey-modal{padding:12px}
-      .journey-modal-inner{padding:10px}
-      .journey-modal-close{top:6px;right:6px;width:30px;height:30px;font-size:18px}
+    .journey-full img{display:block;width:100%;height:auto}
+    @media (max-width:720px){
+      .journey-full{
+        margin:36px auto 24px;border-radius:18px;
+        box-shadow:0 8px 20px -18px rgba(126,90,53,.28);
+      }
     }
 
     /* —— v3 旅程節點：左主文 / 右輔助小圖 / 左側貫穿時間軸 —— */
@@ -944,54 +913,14 @@
         </li>
       </ol>
 
-      <!-- 舊 SVG icon 版已於 2026-05-05 完整移除，改用上方 journey-scenes 水彩情境圖 -->
+      <!-- 完整行動路徑圖：作為 Journey 收束圖（取代原本 modal） -->
+      <figure class="journey-full">
+        <img src="assets/eco-star-journey-full.png" alt="ECO STAR 從學習旅程圖到正式進入場域執行任務的完整行動路徑圖" loading="lazy" decoding="async">
+      </figure>
 
       <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
-
-      <div class="journey-cta-row">
-        <button type="button" class="journey-lightbox-trigger" id="journey-modal-trigger" aria-haspopup="dialog" aria-controls="journey-modal" data-journey-modal-open>
-          展開完整行動路徑圖<span class="arrow" aria-hidden="true">→</span>
-        </button>
-      </div>
     </div>
   </section>
-
-  <!-- 完整行動路徑圖 lightbox / modal -->
-  <div id="journey-modal" class="journey-modal" data-journey-modal role="dialog" aria-modal="true" aria-labelledby="journey-modal-title" aria-hidden="true">
-    <div class="journey-modal-inner">
-      <button type="button" class="journey-modal-close" data-journey-modal-close aria-label="關閉完整行動路徑圖">×</button>
-      <h3 id="journey-modal-title" class="visually-hidden" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;">完整行動路徑圖</h3>
-      <img src="assets/eco-star-journey-full.png" alt="ECO STAR 行動路徑與完訓後下一步圖解">
-      <p class="journey-modal-cap">完整版視覺 ｜ 從學習旅程圖到正式進入場域執行任務</p>
-    </div>
-  </div>
-
-  <script>
-  (function(){
-    var trigger = document.getElementById('journey-modal-trigger');
-    var modal = document.getElementById('journey-modal');
-    if(!trigger || !modal) return;
-    var closeBtn = modal.querySelector('[data-journey-modal-close]');
-    function open(){
-      modal.classList.add('is-open');
-      modal.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
-      setTimeout(function(){ closeBtn.focus(); }, 50);
-    }
-    function close(){
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
-      trigger.focus();
-    }
-    trigger.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
-    document.addEventListener('keydown', function(e){
-      if(e.key==='Escape' && modal.classList.contains('is-open')) close();
-    });
-  })();
-  </script>
 
   <!-- 06 適合誰 -->
   <section aria-labelledby="fit-title">
@@ -1011,6 +940,9 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">What you'll learn</span></div>
       <h2 id="learn-title" class="section-title">你會慢慢長出<br>四個能力</h2>
+      <figure class="learn-overview">
+        <img src="assets/what-youll-learn-four-abilities.png" alt="ECO STAR 你會學到的四大能力：材料敘事力、體驗設計力、課程交付力、場域溝通力" loading="lazy" decoding="async">
+      </figure>
       <div class="abilities">
         <div class="ability">
           <span class="ability-tag">ABILITY 01</span>
