@@ -348,28 +348,68 @@
     .journey-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%); padding: 80px 0; }
     .journey-section .container { max-width: 1000px; }
     .journey-intro { font-size: 15.5px; color: var(--sub); line-height: 2; max-width: 620px; margin: 6px auto 44px; text-align: center; }
-    /* v3.3.1 journey image fix：圖片完整顯示、縮小不裁切 */
-    .journey-scenes { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-direction: column; gap: 36px; }
-    .journey-scene-card {
-      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 36px; align-items: center;
+    /* v3.4 journey flow：流動 timeline，左線右步驟 */
+    .journey-scenes {
+      list-style: none; padding: 0; margin: 28px auto 0; max-width: 760px;
+      display: flex; flex-direction: column; gap: 28px;
+      position: relative;
     }
-    .journey-scene-card .journey-scene-image { order: 2; }
+    /* 左側淡線（從第一個圓點到最後） */
+    .journey-scenes::before {
+      content: '';
+      position: absolute;
+      left: 11px; top: 12px; bottom: 12px;
+      width: 2px;
+      background: linear-gradient(180deg,
+        rgba(166,124,82,0) 0%,
+        rgba(166,124,82,.32) 8%,
+        rgba(166,124,82,.32) 92%,
+        rgba(166,124,82,0) 100%);
+    }
+    .journey-scene-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 28px;
+      align-items: center;
+      padding-left: 44px;
+    }
+    /* 圓點 */
+    .journey-scene-card::before {
+      content: '';
+      position: absolute;
+      left: 4px; top: 14px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--brown);
+      box-shadow: 0 0 0 4px rgba(166,124,82,.08);
+      z-index: 1;
+    }
     .journey-scene-card.flip .journey-scene-image { order: 0; }
     .journey-scene-image {
-      border-radius: 14px; overflow: hidden; background: var(--card);
-      box-shadow: 0 10px 26px -18px rgba(126,90,53,.28); border: 1px solid var(--line);
-      max-width: 240px; margin: 0 auto;
+      max-width: 200px; margin: 0;
+      border-radius: 12px; overflow: hidden;
+      background: var(--card);
+      box-shadow: 0 8px 22px -16px rgba(126,90,53,.22);
+      border: 1px solid var(--line);
     }
-    .journey-scene-image img { display: block; width: 100%; height: auto; transition: transform .6s ease; }
+    .journey-scene-image img {
+      display: block; width: 100%; height: auto;
+      object-fit: contain;
+      transition: transform .6s ease;
+    }
     .journey-scene-card:hover .journey-scene-image img { transform: scale(1.02); }
     .journey-scene-num {
-      display: inline-block; font-family: "Noto Serif TC", serif; font-size: 12.5px; letter-spacing: 3px;
-      color: var(--brown-deep); font-weight: 700; background: var(--bg-cream);
-      border: 1px solid rgba(166,124,82,.3); border-radius: 20px; padding: 5px 14px; margin-bottom: 18px;
+      display: inline-block; font-family: "Noto Serif TC", serif;
+      font-size: 11.5px; letter-spacing: 2.5px;
+      color: var(--brown-deep); font-weight: 700;
+      background: transparent;
+      border: none; padding: 0; margin-bottom: 6px;
     }
-    .journey-scene-title { font-family: "Noto Serif TC", serif; font-size: 26px; font-weight: 700; color: var(--ink); margin: 0 0 12px; line-height: 1.4; letter-spacing: 1.5px; }
-    .journey-scene-lead { font-size: 15px; color: var(--brown-deep); font-weight: 600; letter-spacing: .5px; margin: 0 0 14px; line-height: 1.75; }
-    .journey-scene-desc { font-size: 14.5px; color: var(--sub); line-height: 2; margin: 0; }
+    .journey-scene-title { font-family: "Noto Serif TC", serif; font-size: 19px; font-weight: 700; color: var(--ink); margin: 0 0 8px; line-height: 1.5; letter-spacing: .8px; }
+    .journey-scene-lead { font-size: 14.5px; color: var(--sub); font-weight: 400; letter-spacing: .4px; margin: 0; line-height: 1.85; }
+    .journey-scene-desc { font-size: 14px; color: var(--sub); line-height: 1.95; margin: 8px 0 0; }
     .journey-coda { text-align: center; margin: 36px 0 0; font-size: 13.5px; color: var(--sub); letter-spacing: 3px; opacity: .82; }
     .journey-cta-row { text-align: center; margin-top: 30px; }
     .journey-lightbox-trigger {
@@ -398,13 +438,21 @@
     .journey-modal-close:hover { background: #fff; transform: scale(1.08); }
     .journey-modal-cap { margin-top: 10px; font-size: 12px; color: var(--sub); letter-spacing: 1.5px; text-align: center; }
     @media (max-width: 720px) {
-      .journey-scenes { gap: 28px; margin-top: 30px; }
-      .journey-scene-card, .journey-scene-card.flip { grid-template-columns: 1fr; gap: 14px; }
-      .journey-scene-card .journey-scene-image, .journey-scene-card.flip .journey-scene-image { order: 0; max-width: 200px; }
-      .journey-scene-card .journey-scene-text, .journey-scene-card.flip .journey-scene-text { order: 1; }
-      .journey-scene-title { font-size: 21px; letter-spacing: 1px; }
-      .journey-scene-lead { font-size: 14px; }
-      .journey-scene-desc { font-size: 14px; line-height: 1.95; }
+      /* v3.4 journey flow 手機：單欄 timeline，圖小、文字主 */
+      .journey-scenes { gap: 22px; margin-top: 24px; }
+      .journey-scene-card, .journey-scene-card.flip {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-left: 36px;
+      }
+      .journey-scene-card::before { left: 2px; top: 10px; width: 14px; height: 14px; }
+      .journey-scenes::before { left: 9px; }
+      .journey-scene-image, .journey-scene-card.flip .journey-scene-image {
+        order: 1; max-width: 180px; margin: 4px 0 0;
+      }
+      .journey-scene-card .journey-scene-text { order: 0; }
+      .journey-scene-title { font-size: 17px; letter-spacing: .6px; }
+      .journey-scene-lead { font-size: 13.5px; line-height: 1.85; }
     }
   </style>
 </head>
