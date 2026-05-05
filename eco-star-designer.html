@@ -420,9 +420,14 @@
       </h1>
       <p class="hero-sub">從喜歡開始，慢慢長出能被信任交付的能力。</p>
       <div class="hero-divider"></div>
-      <div class="hero-body">
-        <p>你也許在乎永續，也喜歡手作、教學或陪伴。<br>只是還不知道，怎麼把這份在乎，<br>變成一場可以被帶進現場的行動。</p>
-      </div>
+
+      <!-- 🆕 Tony CRO 第一刀：場景畫面（等 Apple 補圖） -->
+      <figure class="hero-scene" aria-label="ECO STAR 行動者在企業 / 校園 / 社區帶領永續體驗的真實場景">
+        <img src="assets/hero-scene-collage.jpg" alt="ECO STAR 行動者在真實場域中帶領永續體驗" loading="lazy"
+             onerror="this.parentElement.classList.add('hero-scene-placeholder');this.style.display='none'">
+        <figcaption class="hero-scene-cap">這不是理念，<br>是現場真的在發生的事。</figcaption>
+      </figure>
+
       <div class="hero-ctas">
         <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
         <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
@@ -437,18 +442,89 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
       <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
-      <figure class="pain-mirror">
-        <img src="assets/eco-star-support-growth.png" alt="你不是不夠好，只是還需要對的支持與陪伴，ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy">
-      </figure>
+
+      <!-- 🆕 Tony CRO 第二刀：共鳴三段（從 Hero body 搬來，不再說明痛點細項）-->
+      <div class="resonance-body">
+        <p>你也許在乎永續，<br>也喜歡手作、教學或陪伴。</p>
+        <p class="resonance-tail">只是還不知道，<br>怎麼把這份在乎，<br>變成一場可以被帶進現場的行動。</p>
+      </div>
+
+      <!-- 🆕 Apple 痛點卡 v2（2 張上下堆疊；圖本身就是內容，不加說明文字）-->
+      <div class="pain-cards">
+        <figure class="pain-card-img">
+          <img src="assets/pain-care.png" alt="很在乎，卻不知道怎麼開始 — 你其實很在乎這些事，卻不知道怎麼開始，才不會走錯。" loading="lazy"
+               onerror="this.parentElement.classList.add('pain-card-placeholder');this.parentElement.dataset.label='圖｜很在乎，卻不知道怎麼開始';this.style.display='none'">
+        </figure>
+        <figure class="pain-card-img">
+          <img src="assets/pain-stuck.png" alt="站在現場，還是會卡住 — 你知道不同場域要說不同的話，但一站到現場，還是會緊張。" loading="lazy"
+               onerror="this.parentElement.classList.add('pain-card-placeholder');this.parentElement.dataset.label='圖｜站在現場，還是會卡住';this.style.display='none'">
+        </figure>
+      </div>
       <style>
-        .pain-mirror{
-          max-width:1100px;margin:32px auto 0;
-          border-radius:18px;overflow:hidden;
-          box-shadow:0 8px 22px -18px rgba(126,90,53,.22);
-          background:var(--card);
+        .resonance-body{
+          max-width:560px;margin:0 auto 32px;
+          font-family:'Noto Serif TC',serif;
+          font-size:17.5px;line-height:2.1;
+          color:var(--brown-deep);text-align:center;letter-spacing:.5px;
         }
-        .pain-mirror img{display:block;width:100%;height:auto}
-        @media(max-width:720px){.pain-mirror{border-radius:12px}}
+        .resonance-body p{margin-bottom:18px}
+        .resonance-body p:last-child{margin-bottom:0}
+        .resonance-tail{font-weight:600;color:var(--brown-deep)}
+        /* 🆕 痛點卡 v2：上下堆疊 / 圖本身就是內容 */
+        .pain-cards{
+          max-width:540px;margin:0 auto;
+          display:flex;flex-direction:column;gap:36px;
+        }
+        .pain-card-img{
+          margin:0;border-radius:18px;overflow:hidden;
+          background:var(--card);
+          box-shadow:0 10px 28px -18px rgba(126,90,53,.22);
+        }
+        .pain-card-img img{display:block;width:100%;height:auto}
+        .pain-card-placeholder{
+          position:relative;min-height:300px;
+          background:linear-gradient(135deg,#FAF5E8 0%,#F0E5CC 100%);
+          border:1px dashed rgba(166,124,82,.35);
+        }
+        .pain-card-placeholder::before{
+          content:attr(data-label) ' ｜ 待 Apple 補圖';
+          position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+          color:#A67C52;font-family:'Noto Serif TC',serif;
+          font-size:15px;letter-spacing:1.5px;opacity:.7;text-align:center;padding:20px;
+        }
+        @media(max-width:720px){
+          .resonance-body{font-size:15.5px}
+          .pain-cards{gap:24px;max-width:100%}
+          .pain-card-img{border-radius:14px}
+        }
+        /* Hero 場景圖區 */
+        .hero-scene{
+          max-width:760px;margin:32px auto 36px;
+          border-radius:18px;overflow:hidden;
+          background:var(--card);
+          box-shadow:0 12px 28px -18px rgba(126,90,53,.25);
+        }
+        .hero-scene img{display:block;width:100%;height:auto}
+        .hero-scene-cap{
+          padding:14px 18px;text-align:center;
+          font-family:'Noto Serif TC',serif;
+          font-size:14.5px;line-height:1.85;
+          color:var(--brown-deep);letter-spacing:.5px;opacity:.78;
+        }
+        /* 圖未上載時的 placeholder（紙感漸層 + 文字提示）*/
+        .hero-scene-placeholder{
+          position:relative;min-height:200px;
+          background:linear-gradient(135deg,#F5E8D5 0%,#EAD8BC 100%);
+        }
+        .hero-scene-placeholder::before{
+          content:'場景圖｜待補（企業 × 校園 × 社區 × 親子）';
+          position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+          color:#A67C52;font-size:14px;letter-spacing:2px;opacity:.7;
+        }
+        @media(max-width:720px){
+          .hero-scene{max-width:100%;border-radius:12px;margin:24px 0 28px}
+          .hero-scene-cap{font-size:13.5px}
+        }
       </style>
     </div>
   </section>
@@ -463,39 +539,25 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why this matters</span></div>
       <h2 id="market-title" class="section-title">這些行動，<br>正在不同的地方發生</h2>
-      <div class="section-body" style="text-align:center;margin-bottom:36px;">
-        <p>企業、校園、社區與品牌活動，<br>都正在尋找更靠近人的永續體驗。</p>
-        <p class="accent">ECO STAR 想培養的，<br>就是能把材料、故事與現場連起來的人。</p>
-      </div>
+      <!-- 🆕 Tony CRO 第三刀：場景證明圖，不要長文，只留標籤 -->
       <div class="field-cards">
         <div class="field-card">
-          <img src="assets/field-enterprise-esg.jpg" alt="企業 ESG 體驗工作坊現場" loading="lazy">
-          <div class="field-card-label">企業 ESG 體驗</div>
-          <p class="field-card-desc">把永續材料變成員工能參與、能理解、能帶走的 ESG 行動。</p>
+          <img src="assets/field-enterprise-esg.jpg" alt="企業 ESG 體驗現場" loading="lazy">
+          <div class="field-card-label">企業</div>
         </div>
         <div class="field-card">
-          <img src="assets/field-school-edu.jpg" alt="校園永續教育活動現場" loading="lazy">
-          <div class="field-card-label">校園永續教育</div>
-          <p class="field-card-desc">讓學生從材料故事與實作中，理解循環、環境與行動的關係。</p>
+          <img src="assets/field-school-edu.jpg" alt="校園永續教育現場" loading="lazy">
+          <div class="field-card-label">校園</div>
         </div>
         <div class="field-card">
           <img src="assets/field-community-cocreate.jpg" alt="社區共創工作坊現場" loading="lazy">
-          <div class="field-card-label">社區共創工作坊</div>
-          <p class="field-card-desc">陪不同年齡與背景的人，在共同創作中靠近永續。</p>
+          <div class="field-card-label">社區</div>
         </div>
         <div class="field-card">
           <img src="assets/field-brand-family.jpg" alt="品牌日與親子活動現場" loading="lazy">
-          <div class="field-card-label">品牌日／親子活動</div>
-          <p class="field-card-desc">把永續做成親近、好參與，也能留下記憶的體驗。</p>
+          <div class="field-card-label">親子</div>
         </div>
       </div>
-      <style>
-        .field-card-desc{
-          padding:0 18px 18px;margin:0;
-          font-size:13.5px;line-height:1.85;
-          color:var(--sub);text-align:center;letter-spacing:.3px;
-        }
-      </style>
     </div>
   </section>
 
@@ -510,7 +572,8 @@
       <div class="section-kicker-wrap"><span class="section-kicker">What is ECO STAR</span></div>
       <h2 id="what-title" class="section-title">這不是一堂普通課程</h2>
       <div class="section-body">
-        <p>它不是一堂單純的課。<br>而是一條陪你從「喜歡」出發，<br>逐步練習、理解現場，<br>最後走向可被交付行動的路。</p>
+        <p>它不是一堂單純的課。</p>
+        <p class="accent">而是一條從「喜歡」出發，<br>慢慢走到能帶一場行動的路。</p>
       </div>
     </div>
   </section>
@@ -540,9 +603,7 @@
         <li class="journey-scene-card flip">
           <div class="journey-scene-text">
             <span class="journey-scene-num">02｜理解方法</span>
-            <h3 class="journey-scene-title">慢慢建立方法感</h3>
-            <p class="journey-scene-lead">看見材料、理解場域、學會設計體驗</p>
-            <p class="journey-scene-desc">你會開始知道，一份材料不只是材料——<br>它可以被說成故事、被設計成體驗，<br>也可以連結到企業、校園與社區的真實需求。</p>
+            <h3 class="journey-scene-title">你會慢慢發現，<br>一份材料，<br>可以變成一段被記住的體驗。</h3>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：材料如何進入各場域的地圖" loading="lazy" decoding="async">
@@ -642,25 +703,24 @@
         <div class="ability">
           <span class="ability-tag">ABILITY 01</span>
           <div class="ability-title">材料敘事力</div>
-          <div class="ability-body">把咖啡渣、再生塑膠、牡蠣殼、紙纖、舊衣與自然素材，轉化成能被人理解與感受的故事。</div>
+          <div class="ability-body">把材料說成一個會被記住的故事。</div>
         </div>
         <div class="ability">
           <span class="ability-tag">ABILITY 02</span>
           <div class="ability-title">體驗設計力</div>
-          <div class="ability-body">把一個永續概念，設計成有人願意參與、願意完成、願意分享的體驗。</div>
+          <div class="ability-body">把一個概念，變成有人想參與的現場。</div>
         </div>
         <div class="ability">
           <span class="ability-tag">ABILITY 03</span>
           <div class="ability-title">現場交付力</div>
-          <div class="ability-body">控制時間、引導現場、處理不同年齡與場域的參與者，讓活動穩定落地。</div>
+          <div class="ability-body">讓一場活動穩穩落地、被人感受到。</div>
         </div>
         <div class="ability">
           <span class="ability-tag">ABILITY 04</span>
           <div class="ability-title">場域轉譯力</div>
-          <div class="ability-body">同樣一個永續主題，在企業、校園、社區、親子場域，能轉換成不同的語言。</div>
+          <div class="ability-body">在不同場域，找到屬於那一場的語氣。</div>
         </div>
       </div>
-      <p class="learn-tail">這些能力，最後都會回到一個真實現場裡。</p>
     </div>
   </section>
 
@@ -819,14 +879,14 @@
 
   <section class="closing" aria-labelledby="closing-title">
     <div class="container">
-      <h2 id="closing-title" class="section-title">首屆共創梯說明會</h2>
-      <div class="section-body" style="text-align:center;">
-        <p>如果你正在想，自己是不是也能把喜歡的事，<br>變成一場可以發生的永續行動，</p>
-        <p>這場說明會會陪你看見 ECO STAR 的<br>完整路徑、訓練方式與未來合作可能。</p>
-        <p class="accent">你不需要現在就做決定。<br>先來聽懂這條路，再決定自己要不要往前走一步。</p>
-      </div>
+      <h2 id="closing-title" class="closing-text">
+        如果你也在想，<br>
+        能不能把喜歡的事，<br>
+        走成一條新的路。<br><br>
+        <span class="lead">這場說明會，<br>會陪你看見第一步。</span>
+      </h2>
       <div class="closing-ctas">
-        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
+        <a href="#info-session" class="btn btn-primary">報名首屆共創梯說明會</a>
         <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
