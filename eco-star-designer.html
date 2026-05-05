@@ -494,6 +494,77 @@
       .closing-ctas { flex-direction: column; align-items: stretch; }
       .closing-ctas .btn { width: 100%; }
     }
+
+    /* ===== 溫柔路徑圖 Gentle Journey Map ===== */
+    .journey-section{
+      background:linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);
+      padding:80px 0;
+    }
+    .journey-section .container{max-width:760px;margin:0 auto;padding:0 24px}
+    .journey-section .section-title{text-align:left}
+    .journey-intro{
+      font-size:15.5px;color:var(--sub);line-height:2;
+      max-width:620px;margin:6px 0 44px;
+    }
+    .journey-list{
+      list-style:none;padding:0;margin:0;
+      display:flex;flex-direction:column;
+    }
+    .journey-card{
+      display:flex;gap:20px;align-items:flex-start;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:24px 26px;
+      box-shadow:0 8px 22px -16px rgba(126,90,53,.32);
+    }
+    .journey-badge{
+      flex-shrink:0;width:44px;height:44px;border-radius:50%;
+      background:var(--bg-cream);
+      border:1px solid rgba(166,124,82,.28);
+      display:flex;align-items:center;justify-content:center;
+      font-family:"Noto Serif TC",serif;
+      font-size:15px;font-weight:700;
+      color:var(--brown-deep);letter-spacing:.5px;
+    }
+    .journey-body{flex:1;min-width:0;overflow:hidden}
+    .journey-icon{
+      float:right;width:42px;height:42px;
+      margin:0 0 6px 14px;
+      color:var(--green-deep);opacity:.72;
+    }
+    .journey-title{
+      font-family:"Noto Serif TC",serif;
+      font-size:19px;font-weight:700;
+      color:var(--ink);letter-spacing:1px;
+      margin-bottom:6px;line-height:1.4;
+    }
+    .journey-sub{
+      font-size:14px;color:var(--brown-deep);font-weight:600;
+      letter-spacing:.5px;margin-bottom:10px;line-height:1.6;
+    }
+    .journey-text{
+      font-size:14.5px;color:var(--sub);line-height:1.95;margin:0;
+    }
+    .journey-arrow{
+      list-style:none;
+      display:flex;justify-content:center;align-items:center;
+      padding:10px 0;color:var(--brown);opacity:.42;
+    }
+    .journey-arrow svg{width:16px;height:16px}
+    .journey-coda{
+      text-align:center;margin:36px 0 0;
+      font-size:13.5px;color:var(--sub);
+      letter-spacing:3px;opacity:.82;
+    }
+    @media (max-width:560px){
+      .journey-card{padding:20px 18px;gap:14px}
+      .journey-badge{width:38px;height:38px;font-size:13.5px}
+      .journey-icon{width:36px;height:36px;margin-left:10px}
+      .journey-title{font-size:17px}
+      .journey-sub{font-size:13.5px}
+      .journey-text{font-size:14px;line-height:1.9}
+    }
   </style>
 </head>
 <body>
@@ -606,6 +677,134 @@
         <p>我們會陪你理解材料、設計體驗、練習表達，<br>也陪你走到現場那一刻，<br>看見一場永續行動，<br>是怎麼真的被帶進生活裡。</p>
         <p class="accent">把一份在乎，變成別人也能參與的行動。</p>
       </div>
+    </div>
+  </section>
+
+  <!-- 05.5 溫柔路徑圖 Gentle Journey Map（理念長文之後 → 課程模組之前）-->
+  <section class="journey-section" aria-labelledby="journey-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Your Journey</span></div>
+      <h2 id="journey-title" class="section-title">從喜歡永續，<br>到能把一場行動帶進現場</h2>
+      <p class="journey-intro">
+        這不是要你一開始就很專業，<br>
+        而是陪你把原本的喜歡，慢慢整理成可以被交付的能力。
+      </p>
+
+      <ol class="journey-list" aria-label="ECO STAR 五段學習旅程">
+        <!-- 01 起點 ｜ 小芽 -->
+        <li class="journey-card">
+          <div class="journey-badge">01</div>
+          <div class="journey-body">
+            <svg class="journey-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 40V22"/>
+              <path d="M24 22C24 16 19 12 14 12C14 18 19 22 24 22Z" fill="currentColor" fill-opacity=".14"/>
+              <path d="M24 22C24 17 28 13 33 13C33 19 28 22 24 22Z" fill="currentColor" fill-opacity=".14"/>
+              <path d="M14 40H34"/>
+            </svg>
+            <div class="journey-title">起點</div>
+            <div class="journey-sub">你喜歡永續、手作、陪伴或教學</div>
+            <p class="journey-text">
+              也許你已經在生活裡關心環境，<br>
+              也許你喜歡創作、喜歡陪人一起完成一件事。<br>
+              這些，都是靠近永續行動的起點。
+            </p>
+          </div>
+        </li>
+        <li class="journey-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </li>
+
+        <!-- 02 理解方法 ｜ 地圖+指南針 -->
+        <li class="journey-card">
+          <div class="journey-badge">02</div>
+          <div class="journey-body">
+            <svg class="journey-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 12L18 9L30 13L40 10V36L30 39L18 35L8 38Z" fill="currentColor" fill-opacity=".08"/>
+              <path d="M18 9V35M30 13V39"/>
+              <circle cx="24" cy="22" r="2.5" fill="currentColor" fill-opacity=".3"/>
+              <path d="M24 24.5V28"/>
+            </svg>
+            <div class="journey-title">理解方法</div>
+            <div class="journey-sub">看見材料、理解場域、學會設計體驗</div>
+            <p class="journey-text">
+              你會開始知道，<br>
+              一份材料不只是材料，<br>
+              它可以被說成故事、被設計成體驗，<br>
+              也可以連結到企業、校園與社區的真實需求。
+            </p>
+          </div>
+        </li>
+        <li class="journey-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </li>
+
+        <!-- 03 開始實作 ｜ 剪刀+畫筆 -->
+        <li class="journey-card">
+          <div class="journey-badge">03</div>
+          <div class="journey-body">
+            <svg class="journey-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="13" cy="14" r="4"/>
+              <circle cx="13" cy="28" r="4"/>
+              <path d="M16 16L38 32M16 26L30 16"/>
+              <path d="M30 38L36 32L42 38L36 44Z" fill="currentColor" fill-opacity=".18"/>
+              <path d="M36 32L40 28"/>
+            </svg>
+            <div class="journey-title">開始實作</div>
+            <div class="journey-sub">練習帶領、整理流程，建立自己的交付感</div>
+            <p class="journey-text">
+              透過實作與演練，<br>
+              你會慢慢知道一場活動怎麼開始、怎麼引導、怎麼收尾，<br>
+              也練習把自己的溫度放進一套穩定的流程裡。
+            </p>
+          </div>
+        </li>
+        <li class="journey-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </li>
+
+        <!-- 04 走進現場 ｜ 人群 -->
+        <li class="journey-card">
+          <div class="journey-badge">04</div>
+          <div class="journey-body">
+            <svg class="journey-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="16" cy="17" r="4" fill="currentColor" fill-opacity=".12"/>
+              <circle cx="32" cy="17" r="4" fill="currentColor" fill-opacity=".12"/>
+              <path d="M8 36C8 30 11.5 26 16 26C20.5 26 24 30 24 36"/>
+              <path d="M24 36C24 30 27.5 26 32 26C36.5 26 40 30 40 36"/>
+            </svg>
+            <div class="journey-title">走進現場</div>
+            <div class="journey-sub">有機會進入企業、校園、社區等真實場域</div>
+            <p class="journey-text">
+              ECO STAR 不是只停在學習。<br>
+              完成訓練後，未來可依平台需求與合作評估，<br>
+              有機會參與真實永續活動的現場交付。
+            </p>
+          </div>
+        </li>
+        <li class="journey-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </li>
+
+        <!-- 05 下一步 ｜ 星星 -->
+        <li class="journey-card">
+          <div class="journey-badge">05</div>
+          <div class="journey-body">
+            <svg class="journey-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M24 6L28 18L40 19L31 27L34 39L24 33L14 39L17 27L8 19L20 18Z" fill="currentColor" fill-opacity=".2"/>
+            </svg>
+            <div class="journey-title">下一步</div>
+            <div class="journey-sub">申請合作評估，成為可被交付的永續行動者</div>
+            <p class="journey-text">
+              當你準備好了，<br>
+              就不只是「喜歡永續的人」，<br>
+              而是有機會成為能把永續帶到現場、<br>
+              讓更多人一起參與的人。
+            </p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
     </div>
   </section>
 
