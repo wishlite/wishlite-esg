@@ -164,6 +164,102 @@
         linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
     }
     .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+    /* 模組 A｜Hero 痛點 narrative（讓讀者狀態具體化） */
+    .hero-pain-narrative {
+      max-width: 540px;
+      margin: 0 auto 36px;
+      text-align: center;
+      color: var(--sub);
+      font-family: 'Noto Serif TC', serif;
+      line-height: 2;
+      letter-spacing: 0.5px;
+    }
+    .pain-narrative-lead {
+      font-size: 14px;
+      margin: 0 0 8px;
+      opacity: 0.78;
+    }
+    .pain-narrative-quote {
+      font-size: clamp(16px, 1.6vw, 19px);
+      color: var(--brown-deep);
+      font-weight: 500;
+      margin: 0 0 22px;
+      letter-spacing: 1px;
+    }
+    .pain-narrative-list {
+      list-style: none; padding: 0;
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.95;
+      letter-spacing: 0.5px;
+    }
+    .pain-narrative-list li {
+      padding: 10px 0;
+      border-top: 1px dashed rgba(166, 124, 82, 0.18);
+    }
+    .pain-narrative-list li:first-child { border-top: 0; }
+    @media (max-width: 720px) {
+      .hero-pain-narrative { margin-bottom: 28px; }
+      .pain-narrative-quote { font-size: 15.5px; }
+      .pain-narrative-list { font-size: 13.5px; }
+    }
+
+    /* 模組 B / D｜頁中敘事橋接（narrative bridge） */
+    .narrative-bridge {
+      padding: 56px 24px;
+      background: rgba(166, 124, 82, 0.04);
+    }
+    .narrative-bridge .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      font-family: 'Noto Serif TC', serif;
+      color: var(--ink);
+      line-height: 2;
+      letter-spacing: 0.5px;
+    }
+    .narrative-bridge p {
+      margin: 0 0 16px;
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: var(--sub);
+    }
+    .narrative-bridge p:last-child { margin-bottom: 0; }
+    .narrative-bridge .bridge-accent {
+      color: var(--brown-deep);
+      font-weight: 600;
+      font-size: clamp(17px, 1.8vw, 21px);
+      letter-spacing: 1px;
+      line-height: 1.85;
+    }
+    .bridge-pivot { background: rgba(166, 124, 82, 0.05); }
+    .bridge-final { background: rgba(125, 143, 114, 0.06); }
+    @media (max-width: 720px) {
+      .narrative-bridge { padding: 44px 20px; }
+      .narrative-bridge p { font-size: 14.5px; line-height: 1.95; }
+      .narrative-bridge .bridge-accent { font-size: 16.5px; line-height: 1.85; }
+    }
+
+    /* What is ECO STAR v2 prelude：兩段式 lead + sub */
+    .what-prelude-v2 {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 14px;
+    }
+    .what-prelude-v2 .what-lead {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 600;
+      color: var(--brown-deep);
+      letter-spacing: 1.5px;
+    }
+    .what-prelude-v2 .what-sub {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(15px, 1.5vw, 18px);
+      font-weight: 400;
+      line-height: 1.95;
+      color: var(--sub);
+      letter-spacing: 0.5px;
+    }
+
     /* Hero 開場：小芽 + 痛點 hook（先接住讀者，層級低於主標） */
     .hero-mascot-lead {
       margin: 0 auto 14px;
@@ -573,6 +669,22 @@
       .pain-header-text { text-align: center; }
       .pain-header-text .section-kicker-wrap { justify-content: center; }
       .pain-header-text .section-title { text-align: center; }
+    }
+
+    /* 4 場域圖下方收束句 */
+    .market-coda {
+      max-width: 600px;
+      margin: 36px auto 0;
+      text-align: center;
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(15.5px, 1.6vw, 19px);
+      font-weight: 500;
+      line-height: 2;
+      color: var(--brown-deep);
+      letter-spacing: 1px;
+    }
+    @media (max-width: 720px) {
+      .market-coda { margin-top: 28px; font-size: 15px; line-height: 1.95; }
     }
 
     /* Why this matters｜4 場域圖（取代原本長文） */
@@ -1027,6 +1139,55 @@
       font-size: 13px; letter-spacing: 1px;
     }
     /* CTA 下方降壓小字 */
+    /* Info Session 邀請文案 v2 */
+    .info-session-invitation {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(20px, 2.2vw, 28px);
+      font-weight: 500;
+      line-height: 1.95;
+      color: var(--card);
+      letter-spacing: 1.5px;
+      margin: 28px auto 22px;
+      max-width: 600px;
+    }
+    .info-session-invitation-tail {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(16px, 1.7vw, 19px);
+      font-weight: 400;
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.82);
+      letter-spacing: 1px;
+      margin: 0 auto 12px;
+      max-width: 540px;
+    }
+    .info-session-invitation-final {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(18px, 1.9vw, 22px);
+      font-weight: 600;
+      line-height: 1.85;
+      color: var(--gold-light, #D4B06A);
+      letter-spacing: 1.5px;
+      margin: 0 auto 36px;
+    }
+    .info-session-invite-image {
+      max-width: 600px;
+      margin: 0 auto 36px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 14px 32px -22px rgba(0, 0, 0, 0.45);
+    }
+    .info-session-invite-image img {
+      display: block; width: 100%; height: auto;
+      opacity: 0.96;
+    }
+    @media (max-width: 720px) {
+      .info-session-invitation { font-size: 19px; line-height: 1.85; letter-spacing: 1px; }
+      .info-session-invitation-tail { font-size: 15.5px; }
+      .info-session-invitation-final { font-size: 17.5px; margin-bottom: 28px; }
+      .info-session-invite-image { border-radius: 14px; margin-bottom: 28px; }
+    }
+
     .info-session-cta-wrap {
       max-width: 540px;
       margin: 0 auto;
@@ -1451,6 +1612,17 @@
         而是不知道怎麼開始。
       </p>
 
+      <!-- 模組 A｜痛點 narrative，把讀者狀態具體化 -->
+      <div class="hero-pain-narrative">
+        <p class="pain-narrative-lead">很多人會跟我們說：</p>
+        <p class="pain-narrative-quote">「我其實很在意永續，可是⋯⋯」</p>
+        <ul class="pain-narrative-list">
+          <li>知道很多議題，<br>但不知道怎麼開始行動；</li>
+          <li>想把手作或課程變得更有意義，<br>卻不知道怎麼結合永續；</li>
+          <li>也想把這些東西帶進企業或校園，<br>但總覺得還少了一點什麼。</li>
+        </ul>
+      </div>
+
       <!-- 銜接到 ECO STAR 主張 -->
       <span class="hero-kicker">ECO STAR ｜ Designer System</span>
       <h1 id="hero-title" class="hero-title">
@@ -1460,8 +1632,7 @@
       <div class="hero-divider"></div>
       <p class="hero-subtitle">從喜歡開始，<br>慢慢長出可以被交付的能力。</p>
       <div class="hero-ctas">
-        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
-        <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
+        <a href="#info-session" class="btn btn-primary">先了解這場說明會</a>
       </div>
     </div>
   </section>
@@ -1499,8 +1670,23 @@
           <figcaption>把永續做成可以被記住的體驗。</figcaption>
         </figure>
       </div>
+
+      <p class="market-coda">
+        我們不是只在談永續，<br>
+        而是把材料、故事與體驗，<br>
+        一場一場帶進真實現場。
+      </p>
     </div>
   </section>
+
+  <!-- 模組 B｜轉折：把 4 場域圖從「好看」變成「證據」 -->
+  <aside class="narrative-bridge bridge-pivot" aria-label="轉折">
+    <div class="container">
+      <p>這一年，<br>我們在企業、校園、社區，<br>一場一場做永續體驗的時候，</p>
+      <p>慢慢發現一件事：</p>
+      <p class="bridge-accent">不是大家不在乎，<br>而是缺一條可以走的路。</p>
+    </div>
+  </aside>
 
   <!-- 04.5 Why Wishlite｜真實場域 × 信任證明（從原本底部上移） -->
   <section aria-labelledby="why-title">
@@ -1544,7 +1730,10 @@
   <section aria-labelledby="what-title">
     <div class="container">
       <div class="section-kicker-wrap what-kicker-soft"><span class="section-kicker">What is ECO STAR</span></div>
-      <h2 id="what-title" class="what-prelude">這不是一堂課，<br>而是一條慢慢走出來的行動路徑。</h2>
+      <h2 id="what-title" class="what-prelude what-prelude-v2">
+        <span class="what-lead">所以我們做了 ECO STAR。</span>
+        <span class="what-sub">不是一堂課，<br>而是一條從「喜歡」走到「能夠帶領一場行動」的路。</span>
+      </h2>
 
       <div class="what-illus-scroll" aria-label="ECO STAR 是什麼｜可橫向滑動查看">
         <figure class="what-illus">
@@ -1679,9 +1868,7 @@
         </li>
       </ul>
 
-      <figure class="who-fits-illus fit-soft-illus">
-        <img src="assets/who-fits-six-friends-earth.png" alt="永續六友與地球：陪伴每一個願意靠近永續的人，慢慢開始" loading="lazy" decoding="async">
-      </figure>
+      <!-- 六友圖已移出（Apple 將提供「六友邀請圖｜小芽拿卡那張」用於最終 CTA 區） -->
     </div>
   </section>
 
@@ -1749,31 +1936,34 @@
     </div>
   </section>
 
-  <!-- 10 說明會｜唯一轉換區（吸收 cohort + closing） -->
+  <!-- 模組 D 已移除：內容已吸收進下方新版 Info Session 的開場 -->
+
+  <!-- 10 說明會｜情緒邀請版（簡潔，只做一件事：點 CTA） -->
   <section id="info-session" class="info-session" aria-labelledby="session-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">ECO STAR INFO SESSION</span></div>
-      <h2 id="session-title" class="section-title">先來聽懂這條路，<br>再決定要不要走</h2>
 
-      <p class="info-session-intro">你會在這場說明會裡看見：</p>
-      <ul class="info-session-bullets">
-        <li>這是不是適合你的路</li>
-        <li>這條路，會怎麼走</li>
-        <li>以及，怎麼走進真實場域</li>
-      </ul>
+      <h2 id="session-title" class="info-session-invitation">
+        如果你也在想，<br>
+        能不能把喜歡的事，<br>
+        走成一條自己的路，
+      </h2>
+      <p class="info-session-invitation-tail">
+        也許，<br>
+        你可以先來看看，
+      </p>
+      <p class="info-session-invitation-final">
+        這條路是怎麼開始的。
+      </p>
 
-      <p class="info-session-relief">你不需要現在就決定要不要加入。</p>
-
-      <div class="info-session-emotional">
-        <p>如果你心裡也有一點點想法，<br>想把喜歡、材料、故事與人連在一起，</p>
-        <p class="emotional-final">也許這一次，<br>就是你開始的地方。</p>
-      </div>
-
-      <p class="info-session-proof-tiny">（已經有一群人，從這裡開始）</p>
+      <!-- 六友邀請圖｜小芽拿邀請卡 + 5 友陪伴 -->
+      <figure class="info-session-invite-image">
+        <img src="assets/eco-star-info-invitation.png" alt="永續六友｜小芽拿著邀請卡，邀請你來看看這條路怎麼開始" loading="lazy" decoding="async">
+      </figure>
 
       <div class="info-session-cta-wrap">
-        <a href="eco-star-info-session.html" class="info-session-cta-btn">登記線上說明會</a>
-        <p class="info-session-after-cta">填寫資料後，我們會寄送說明會時間與觀看方式給你。</p>
+        <a href="eco-star-info-session.html" class="info-session-cta-btn">先了解這場說明會</a>
+        <p class="info-session-after-cta">你可以先聽懂，<br>再決定要不要往前走一步。</p>
       </div>
     </div>
   </section>
