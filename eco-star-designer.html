@@ -560,30 +560,34 @@
     @media (max-width:560px){
       .journey-card{padding:20px 18px;gap:14px}
       .journey-badge{width:38px;height:38px;font-size:13.5px}
-      .journey-icon{width:42px;height:42px;margin-left:10px}
+      .journey-icon{width:64px;height:64px;margin:0 0 4px 12px}
       .journey-title{font-size:17px}
       .journey-sub{font-size:13.5px}
       .journey-text{font-size:14px;line-height:1.9}
     }
-    .journey-icon{width:50px;height:50px}
+    .journey-icon{width:78px;height:78px;margin:0 0 6px 18px}
 
     /* 完整圖預覽：lightbox / modal */
     .journey-cta-row{text-align:center;margin-top:30px}
     .journey-lightbox-trigger{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 22px;border-radius:24px;
-      background:transparent;
-      border:1px solid rgba(125,143,114,.45);
+      display:inline-flex;align-items:center;gap:6px;
+      padding:4px 2px;border:0;background:transparent;
       color:var(--green-deep);
-      font-family:inherit;font-size:13.5px;font-weight:600;letter-spacing:1.5px;
-      cursor:pointer;transition:all .25s ease;
+      font-family:inherit;font-size:14px;font-weight:500;letter-spacing:1px;
+      cursor:pointer;
+      border-bottom:1px solid rgba(125,143,114,.32);
+      border-radius:0;
+      transition:border-color .25s ease,opacity .25s ease;
     }
     .journey-lightbox-trigger:hover{
-      background:rgba(125,143,114,.09);
-      border-color:var(--green-deep);
-      transform:translateY(-1px);
+      border-bottom-color:var(--green-deep);
+      opacity:.92;
     }
-    .journey-lightbox-trigger svg{width:14px;height:14px;flex-shrink:0}
+    .journey-lightbox-trigger .arrow{
+      display:inline-block;transition:transform .25s ease;
+      font-size:15px;line-height:1;
+    }
+    .journey-lightbox-trigger:hover .arrow{transform:translateX(3px)}
     .journey-modal{
       position:fixed;inset:0;z-index:9999;
       display:none;align-items:center;justify-content:center;padding:24px;
@@ -627,6 +631,111 @@
       .journey-modal{padding:12px}
       .journey-modal-inner{padding:10px}
       .journey-modal-close{top:6px;right:6px;width:30px;height:30px;font-size:18px}
+    }
+
+    /* —— v3 旅程節點：左主文 / 右輔助小圖 / 左側貫穿時間軸 —— */
+    .journey-section .container{max-width:880px}
+    .journey-scenes{
+      list-style:none;padding:0;margin:36px 0 0;
+      display:flex;flex-direction:column;gap:36px;
+      position:relative;
+    }
+    /* 左側貫穿垂直線（從第一個編號中心到最後一個編號中心） */
+    .journey-scenes::before{
+      content:"";position:absolute;
+      left:18px;top:18px;bottom:18px;
+      width:1px;
+      background:linear-gradient(180deg,
+        rgba(166,124,82,0) 0%,
+        rgba(166,124,82,.32) 8%,
+        rgba(166,124,82,.32) 92%,
+        rgba(166,124,82,0) 100%);
+      z-index:0;
+    }
+    .journey-scene-card{
+      display:grid;
+      grid-template-columns:36px minmax(0,1fr) 220px;
+      gap:24px 28px;align-items:start;
+      position:relative;
+    }
+    /* 左欄：步驟圓點（取代原本 num pill） */
+    .journey-scene-card::before{
+      content:counter(step,decimal-leading-zero);
+      counter-increment:step;
+      grid-row:1 / span 3;
+      grid-column:1;
+      width:36px;height:36px;border-radius:50%;
+      background:var(--bg-cream,#FAF6EE);
+      border:1px solid rgba(166,124,82,.45);
+      color:var(--brown-deep);
+      font-family:"Noto Serif TC",serif;
+      font-size:12px;font-weight:700;letter-spacing:1px;
+      display:flex;align-items:center;justify-content:center;
+      margin-top:4px;
+      position:relative;z-index:1;
+    }
+    .journey-scenes{counter-reset:step}
+    .journey-scene-text{grid-column:2;order:0}
+    .journey-scene-image{
+      grid-column:3;grid-row:1 / span 3;order:0;
+      width:220px;max-width:220px;align-self:start;
+      border-radius:12px;overflow:hidden;
+      background:var(--card);
+      box-shadow:0 8px 22px -18px rgba(126,90,53,.32);
+      border:1px solid var(--line);
+      margin-top:2px;
+    }
+    .journey-scene-image img{
+      display:block;width:100%;height:auto;
+      transition:transform .6s ease;
+    }
+    .journey-scene-card:hover .journey-scene-image img{transform:scale(1.02)}
+    /* 隱藏原本的編號 pill — 步驟改由 ::before 圓點呈現 */
+    .journey-scene-num{
+      display:inline-block;
+      font-family:"Noto Serif TC",serif;
+      font-size:11.5px;letter-spacing:2.5px;
+      color:var(--brown-deep);font-weight:700;
+      background:transparent;
+      border:0;
+      padding:0;
+      margin-bottom:8px;opacity:.78;
+    }
+    .journey-scene-title{
+      font-family:"Noto Serif TC",serif;
+      font-size:21px;font-weight:700;color:var(--ink);
+      margin:0 0 8px;line-height:1.5;letter-spacing:1px;
+    }
+    .journey-scene-lead{
+      font-size:14.5px;color:var(--brown-deep);font-weight:600;
+      letter-spacing:.5px;margin:0 0 10px;line-height:1.7;
+    }
+    .journey-scene-desc{
+      font-size:14px;color:var(--sub);
+      line-height:1.95;margin:0;
+    }
+    @media (max-width:720px){
+      .journey-scenes{gap:28px;margin-top:30px}
+      .journey-scenes::before{left:14px;top:14px;bottom:14px}
+      .journey-scene-card,
+      .journey-scene-card.flip{
+        grid-template-columns:30px minmax(0,1fr);
+        gap:14px 14px;
+      }
+      .journey-scene-card::before{
+        width:30px;height:30px;font-size:11px;margin-top:2px;
+        grid-row:1 / span 4;
+      }
+      .journey-scene-text{grid-column:2;order:0}
+      .journey-scene-image,
+      .journey-scene-card.flip .journey-scene-image{
+        grid-column:2;grid-row:auto;order:1;
+        width:100%;max-width:none;
+        margin-top:8px;
+      }
+      .journey-scene-title{font-size:18px;letter-spacing:.5px}
+      .journey-scene-lead{font-size:13.5px}
+      .journey-scene-desc{font-size:13.5px;line-height:1.9}
     }
   </style>
 </head>
@@ -713,12 +822,12 @@
   <section aria-labelledby="market-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why this matters</span></div>
-      <h2 id="market-title" class="section-title">越來越多企業、學校與社區，<br>都希望用更容易靠近的方式談永續</h2>
+      <h2 id="market-title" class="section-title">這些行動，<br>正在不同的地方發生</h2>
       <div class="section-body">
-        <p>這幾年，我們發現越來越多企業、學校與社區，<br>都希望用更容易靠近的方式談永續。</p>
-        <p>但一場好的永續體驗，<br>不只是把材料放到桌上，<br>也不是照著步驟完成作品。</p>
-        <p>它需要有人能說出材料的故事，<br>設計一段讓人願意參與的過程，<br>也能在現場陪伴不同年齡、不同背景的人，<br>慢慢理解自己和永續的關係。</p>
-        <p class="accent">這就是 ECO STAR 想培養的人。</p>
+        <p>這幾年，我們慢慢看到，<br>越來越多企業、學校與社區，<br>都在尋找一種更靠近人的方式，談永續這件事。</p>
+        <p>但一場真的留得下來的永續體驗，<br>不只是把材料放上桌、照著步驟完成作品。</p>
+        <p>它需要有人能把材料說成故事，<br>設計一段讓人願意參與的過程，<br>陪不同年齡、不同背景的人，<br>慢慢理解自己和永續的關係。</p>
+        <p class="accent">這，就是 ECO STAR 想慢慢長出來的人。</p>
       </div>
     </div>
   </section>
@@ -753,185 +862,95 @@
         而是陪你把原本的喜歡，慢慢整理成可以被交付的能力。
       </p>
 
-      <ol class="journey-list" aria-label="ECO STAR 五段學習旅程">
-        <!-- 01 起點 ｜ 嫩芽（水彩繪本風） -->
-        <li class="journey-card">
-          <div class="journey-badge">01</div>
-          <div class="journey-body">
-            <svg class="journey-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="32" cy="54" rx="20" ry="3" fill="#A67C52" opacity=".22"/>
-              <path d="M14 50 Q22 46 32 47 Q42 46 50 50 L50 56 Q32 60 14 56 Z" fill="#8B6F47" opacity=".55"/>
-              <path d="M18 51 Q26 49 32 49 Q40 49 46 51" stroke="#5C4830" stroke-width=".5" fill="none" opacity=".5"/>
-              <circle cx="20" cy="58" r=".8" fill="#5C4830" opacity=".55"/>
-              <circle cx="44" cy="58" r=".7" fill="#5C4830" opacity=".55"/>
-              <path d="M32 49 Q31.5 38 32 28" stroke="#7D8F72" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-              <path d="M32 35 Q22 32 18 22 Q26 22 32 30 Z" fill="#9DB089" opacity=".82"/>
-              <path d="M32 35 Q22 32 18 22 Q26 22 32 30 Z" fill="#566448" opacity=".25"/>
-              <path d="M32 33 Q26 28 21 24" stroke="#566448" stroke-width=".5" fill="none" opacity=".55"/>
-              <path d="M32 32 Q42 28 48 18 Q40 18 32 27 Z" fill="#B8C9A4" opacity=".82"/>
-              <path d="M32 32 Q42 28 48 18 Q40 18 32 27 Z" fill="#7D8F72" opacity=".22"/>
-              <path d="M32 30 Q38 25 44 21" stroke="#566448" stroke-width=".5" fill="none" opacity=".55"/>
-            </svg>
-            <div class="journey-title">起點</div>
-            <div class="journey-sub">你喜歡永續、手作、陪伴或教學</div>
-            <p class="journey-text">
-              也許你已經在生活裡關心環境，<br>
-              也許你喜歡創作、喜歡陪人一起完成一件事。<br>
-              這些，都是靠近永續行動的起點。
+      <ol class="journey-scenes" aria-label="ECO STAR 五段學習旅程">
+        <!-- 01 起點 ｜ 文字左 / 圖右 -->
+        <li class="journey-scene-card">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">01｜起點</span>
+            <h3 class="journey-scene-title">從你本來就在乎的事開始</h3>
+            <p class="journey-scene-lead">你喜歡永續、手作、陪伴或教學</p>
+            <p class="journey-scene-desc">
+              你關心環境、喜歡創作，也願意陪人一起完成一件事。<br>
+              這些，就是你靠近永續行動的起點。
             </p>
           </div>
-        </li>
-        <li class="journey-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-01-start.jpg" alt="雙手捧著小苗與多種永續材料：紙纖、再生塑料、布料的水彩情境圖" loading="lazy" decoding="async">
+          </figure>
         </li>
 
-        <!-- 02 理解方法 ｜ 地圖+指南針（水彩繪本風） -->
-        <li class="journey-card">
-          <div class="journey-badge">02</div>
-          <div class="journey-body">
-            <svg class="journey-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M6 16 L24 12 L42 16 L56 12 L56 44 L42 48 L24 44 L6 48 Z" fill="#F5E8D0" stroke="#A67C52" stroke-width=".7" opacity=".88"/>
-              <path d="M24 12 L24 44 M42 16 L42 48" stroke="#A67C52" stroke-width=".5" fill="none" opacity=".5" stroke-dasharray="1.5,1.5"/>
-              <path d="M10 22 Q14 24 16 28 Q14 32 10 30 Z" fill="#A8C8D8" opacity=".55"/>
-              <path d="M10 30 Q14 33 14 38" stroke="#6B8FA8" stroke-width=".7" fill="none" opacity=".55"/>
-              <path d="M30 28 L34 22 L38 28 Z" fill="#9DB089" opacity=".7"/>
-              <path d="M44 32 L48 26 L52 32 Z" fill="#B8C9A4" opacity=".65"/>
-              <path d="M14 38 Q22 30 30 34 Q36 38 44 30" stroke="#C25E4A" stroke-width="1" fill="none" opacity=".55" stroke-linecap="round" stroke-dasharray="1.5,2"/>
-              <path d="M20 32 C20 29 24 28 24 32 C24 35 22 38 22 40 C22 38 20 35 20 32 Z" fill="#C25E4A" opacity=".85"/>
-              <circle cx="22" cy="32" r="1" fill="#FDFBF5"/>
-              <circle cx="46" cy="42" r="9" fill="#FDFBF5" stroke="#A67C52" stroke-width=".8" opacity=".95"/>
-              <circle cx="46" cy="42" r="6.5" fill="none" stroke="#D89B5C" stroke-width=".4" opacity=".55"/>
-              <path d="M46 35 L48.2 42 L46 49 L43.8 42 Z" fill="#C25E4A" opacity=".82"/>
-              <path d="M46 35 L48.2 42 L46 42 Z" fill="#7E5A35" opacity=".55"/>
-              <circle cx="46" cy="42" r=".9" fill="#5C4830"/>
-              <text x="46" y="34" font-family="serif" font-size="3" fill="#7E5A35" text-anchor="middle" opacity=".7">N</text>
-            </svg>
-            <div class="journey-title">理解方法</div>
-            <div class="journey-sub">看見材料、理解場域、學會設計體驗</div>
-            <p class="journey-text">
-              你會開始知道，<br>
-              一份材料不只是材料，<br>
-              它可以被說成故事、被設計成體驗，<br>
-              也可以連結到企業、校園與社區的真實需求。
+        <!-- 02 理解方法 ｜ 圖左 / 文字右 -->
+        <li class="journey-scene-card flip">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">02｜理解方法</span>
+            <h3 class="journey-scene-title">慢慢建立方法感</h3>
+            <p class="journey-scene-lead">看見材料、理解場域、學會設計體驗</p>
+            <p class="journey-scene-desc">
+              一份材料不只是材料——<br>
+              它可以被說成故事、被設計成體驗，連結到企業、校園與社區的真實需求。
             </p>
           </div>
-        </li>
-        <li class="journey-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：咖啡渣、牡蠣殼、紙纖等材料如何進入企業、校園、社區的場域地圖" loading="lazy" decoding="async">
+          </figure>
         </li>
 
-        <!-- 03 開始實作 ｜ 剪刀+畫筆+線卷（水彩繪本風） -->
-        <li class="journey-card">
-          <div class="journey-badge">03</div>
-          <div class="journey-body">
-            <svg class="journey-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <g transform="translate(6 14) rotate(-12 14 14)">
-                <circle cx="6" cy="7" r="4.5" fill="#E6E0D2" stroke="#7E5A35" stroke-width="1.2" opacity=".9"/>
-                <circle cx="6" cy="21" r="4.5" fill="#E6E0D2" stroke="#7E5A35" stroke-width="1.2" opacity=".9"/>
-                <path d="M10 9 L28 22 M10 19 L24 8" stroke="#A67C52" stroke-width="1.6" stroke-linecap="round" opacity=".88"/>
-                <path d="M27 21 L31 24 L29 26 Z" fill="#7E5A35" opacity=".75"/>
-              </g>
-              <g transform="translate(40 6) rotate(22 2 16)">
-                <rect x="0" y="0" width="3.2" height="22" fill="#A67C52" rx=".8" opacity=".9"/>
-                <rect x="-1" y="20" width="5.2" height="3.5" fill="#7E5A35" opacity=".9"/>
-                <path d="M-1.5 23.5 Q1.6 33 4.5 23.5 Z" fill="#566448" opacity=".85"/>
-                <ellipse cx="1.6" cy="35" rx="3.5" ry="1.2" fill="#9DB089" opacity=".55"/>
-                <ellipse cx="0" cy="36" rx="1.5" ry=".5" fill="#7D8F72" opacity=".5"/>
-              </g>
-              <g transform="translate(36 38)">
-                <ellipse cx="10" cy="10" rx="10" ry="10" fill="#C49A6C" opacity=".82"/>
-                <path d="M2 10 Q10 5.5 18 10 M2 10 Q10 14.5 18 10" stroke="#7E5A35" stroke-width=".5" fill="none" opacity=".6"/>
-                <path d="M10 1 Q12 10 10 19 M10 1 Q8 10 10 19" stroke="#7E5A35" stroke-width=".5" fill="none" opacity=".6"/>
-                <path d="M18 10 Q24 13 23 19" stroke="#C25E4A" stroke-width="1" fill="none" opacity=".75" stroke-linecap="round"/>
-                <circle cx="23" cy="20" r="1" fill="#C25E4A" opacity=".7"/>
-              </g>
-            </svg>
-            <div class="journey-title">開始實作</div>
-            <div class="journey-sub">練習帶領、整理流程，建立自己的交付感</div>
-            <p class="journey-text">
-              透過實作與演練，<br>
-              你會慢慢知道一場活動怎麼開始、怎麼引導、怎麼收尾，<br>
-              也練習把自己的溫度放進一套穩定的流程裡。
+        <!-- 03 開始實作 ｜ 文字左 / 圖右 -->
+        <li class="journey-scene-card">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">03｜開始實作</span>
+            <h3 class="journey-scene-title">把想法做成可被帶領的內容</h3>
+            <p class="journey-scene-lead">練習帶領、整理流程，建立自己的交付感</p>
+            <p class="journey-scene-desc">
+              一場活動怎麼開始、怎麼引導、怎麼收尾，<br>
+              你會練習把自己的溫度，放進一套穩定的流程。
             </p>
           </div>
-        </li>
-        <li class="journey-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-03-practice.jpg" alt="桌面上的設計卡與材料：從聆聽、觀察、引導到整合的四階段流程，搭配剪刀、畫筆與水彩紙樣" loading="lazy" decoding="async">
+          </figure>
         </li>
 
-        <!-- 04 走進現場 ｜ 人群（水彩繪本風） -->
-        <li class="journey-card">
-          <div class="journey-badge">04</div>
-          <div class="journey-body">
-            <svg class="journey-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="32" cy="56" rx="26" ry="2.5" fill="#A67C52" opacity=".18"/>
-              <circle cx="14" cy="22" r="5" fill="#D4B896" opacity=".82"/>
-              <path d="M14 25 Q9 26 8 30 L6 52 Q14 54 22 52 L20 30 Q19 26 14 25 Z" fill="#E5B883" opacity=".82"/>
-              <circle cx="14" cy="22" r="5" fill="none" stroke="#7E5A35" stroke-width=".4" opacity=".5"/>
-              <circle cx="26" cy="20" r="5" fill="#C49A6C" opacity=".82"/>
-              <path d="M26 23 Q21 24 20 28 L18 52 Q26 54 34 52 L32 28 Q31 24 26 23 Z" fill="#7D8F72" opacity=".82"/>
-              <circle cx="26" cy="20" r="5" fill="none" stroke="#7E5A35" stroke-width=".4" opacity=".5"/>
-              <circle cx="38" cy="22" r="5" fill="#D4B896" opacity=".82"/>
-              <path d="M38 25 Q33 26 32 30 L30 52 Q38 54 46 52 L44 30 Q43 26 38 25 Z" fill="#A8C8D8" opacity=".82"/>
-              <path d="M32 33 L44 33 M32 38 L44 38 M32 43 L44 43 M32 48 L44 48" stroke="#FDFBF5" stroke-width=".7" opacity=".75"/>
-              <circle cx="38" cy="22" r="5" fill="none" stroke="#7E5A35" stroke-width=".4" opacity=".5"/>
-              <circle cx="50" cy="20" r="5" fill="#A67C52" opacity=".82"/>
-              <path d="M50 23 Q45 24 44 28 L42 52 Q50 54 58 52 L56 28 Q55 24 50 23 Z" fill="#7E5A35" opacity=".82"/>
-              <path d="M55 30 L57 36" stroke="#5C4830" stroke-width=".5" opacity=".5"/>
-              <circle cx="50" cy="20" r="5" fill="none" stroke="#5C4830" stroke-width=".4" opacity=".5"/>
-            </svg>
-            <div class="journey-title">走進現場</div>
-            <div class="journey-sub">有機會進入企業、校園、社區等真實場域</div>
-            <p class="journey-text">
-              ECO STAR 不是只停在學習。<br>
-              完成訓練後，未來可依平台需求與合作評估，<br>
-              有機會參與真實永續活動的現場交付。
+        <!-- 04 走進現場 ｜ 圖左 / 文字右 -->
+        <li class="journey-scene-card flip">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">04｜走進現場</span>
+            <h3 class="journey-scene-title">在真實場域，帶領一場真的行動</h3>
+            <p class="journey-scene-lead">站到參與者面前，把材料說成體驗</p>
+            <p class="journey-scene-desc">
+              完成訓練後，依平台需求與合作評估，<br>
+              你會有機會走進企業、校園與社區，帶領一場屬於自己的永續行動。
             </p>
           </div>
-        </li>
-        <li class="journey-arrow" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-04-field.jpg" alt="ECO STAR 行動者在真實場域中帶領參與者體驗永續材料，象徵走進企業、校園與社區現場。" loading="lazy" decoding="async">
+          </figure>
         </li>
 
-        <!-- 05 下一步 ｜ 星星（水彩繪本風） -->
-        <li class="journey-card">
-          <div class="journey-badge">05</div>
-          <div class="journey-body">
-            <svg class="journey-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <ellipse cx="32" cy="56" rx="20" ry="2" fill="#D89B5C" opacity=".18"/>
-              <path d="M32 8 L37.5 24 L54 26 L41 38 L45 56 L32 47 L19 56 L23 38 L10 26 L26.5 24 Z" fill="#E5B883" opacity=".95"/>
-              <path d="M32 8 L37.5 24 L54 26 L41 38 L45 56 L32 47 L19 56 L23 38 L10 26 L26.5 24 Z" fill="#D89B5C" opacity=".5"/>
-              <path d="M32 14 Q34 22 32 30 Q30 22 32 14 Z" fill="#FDFBF5" opacity=".55"/>
-              <path d="M32 8 L37.5 24 L54 26" fill="none" stroke="#7E5A35" stroke-width=".4" opacity=".4"/>
-              <circle cx="10" cy="14" r="1.4" fill="#E5B883" opacity=".85"/>
-              <path d="M8 14 L12 14 M10 12 L10 16" stroke="#D89B5C" stroke-width=".5" opacity=".7"/>
-              <circle cx="56" cy="12" r="1.2" fill="#E5B883" opacity=".85"/>
-              <path d="M54 12 L58 12 M56 10 L56 14" stroke="#D89B5C" stroke-width=".5" opacity=".7"/>
-              <circle cx="14" cy="48" r="1" fill="#E5B883" opacity=".75"/>
-              <circle cx="52" cy="46" r="1.1" fill="#E5B883" opacity=".75"/>
-              <path d="M50 46 L54 46" stroke="#D89B5C" stroke-width=".4" opacity=".6"/>
-            </svg>
-            <div class="journey-title">下一步</div>
-            <div class="journey-sub">申請合作評估，成為可被交付的永續行動者</div>
-            <p class="journey-text">
-              當你準備好了，<br>
-              就不只是「喜歡永續的人」，<br>
-              而是有機會成為能把永續帶到現場、<br>
-              讓更多人一起參與的人。
+        <!-- 05 下一步 ｜ 文字左 / 圖右 -->
+        <li class="journey-scene-card">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">05｜下一步</span>
+            <h3 class="journey-scene-title">從學習者，走向可被交付任務的夥伴</h3>
+            <p class="journey-scene-lead">接下下一步任務卡，準備出發</p>
+            <p class="journey-scene-desc">
+              通過合作評估，<br>
+              你會以 ECO STAR 行動者的身份，走進企業、校園與社區，承接一份真正屬於你的永續任務。
             </p>
           </div>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-05-next-step.jpg" alt="ECO STAR 行動者接下下一步任務卡與合作資料夾，象徵完成訓練後進入合作評估與場域任務。" loading="lazy" decoding="async">
+          </figure>
         </li>
       </ol>
+
+      <!-- 舊 SVG icon 版已於 2026-05-05 完整移除，改用上方 journey-scenes 水彩情境圖 -->
 
       <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
 
       <div class="journey-cta-row">
         <button type="button" class="journey-lightbox-trigger" id="journey-modal-trigger" aria-haspopup="dialog" aria-controls="journey-modal" data-journey-modal-open>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7"/>
-            <path d="M21 21L16 16"/>
-          </svg>
-          看完整行動路徑圖
+          展開完整行動路徑圖<span class="arrow" aria-hidden="true">→</span>
         </button>
       </div>
     </div>
@@ -996,22 +1015,22 @@
         <div class="ability">
           <span class="ability-tag">ABILITY 01</span>
           <div class="ability-title">材料敘事力</div>
-          <div class="ability-body">把咖啡渣、再生塑膠、牡蠣殼、紙纖、舊衣與自然素材，轉化成能被人理解與感受的故事。</div>
+          <div class="ability-body">在這個過程中，慢慢會把咖啡渣、再生塑膠、牡蠣殼、紙纖、舊衣與自然素材，說成讓人聽得懂、感受得到的故事。</div>
         </div>
         <div class="ability">
           <span class="ability-tag">ABILITY 02</span>
           <div class="ability-title">體驗設計力</div>
-          <div class="ability-body">把一個永續概念，設計成有人願意參與、願意完成、願意分享的體驗。</div>
+          <div class="ability-body">不只是做作品，而是慢慢長出設計一段讓人願意參與、願意完成、願意分享的體驗。</div>
         </div>
         <div class="ability">
           <span class="ability-tag">ABILITY 03</span>
           <div class="ability-title">現場交付力</div>
-          <div class="ability-body">控制時間、引導現場、處理不同年齡與場域的參與者，讓活動穩定落地。</div>
+          <div class="ability-body">從一場活動的開場、引導到收束，慢慢會發現，自己能讓現場真的穩定發生。</div>
         </div>
         <div class="ability">
           <span class="ability-tag">ABILITY 04</span>
           <div class="ability-title">場域轉譯力</div>
-          <div class="ability-body">同樣一個永續主題，在企業、校園、社區、親子場域，能轉換成不同的語言。</div>
+          <div class="ability-body">在不同場域之間慢慢移動，會發現對企業、校園、社區、親子，要用的是不一樣的語氣。</div>
         </div>
       </div>
       <p class="learn-tail">這些能力，不只是學會，<br>而是真的會用在一個現場裡。</p>
