@@ -365,6 +365,38 @@
       max-width: 480px; margin-left: auto; margin-right: auto; font-style: italic;
     }
 
+    /* ═══ 09.5 Why Wishlite｜真實案例證據 ═══ */
+    .why-evidence {
+      max-width: 1100px;
+      margin: 40px auto 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .why-evidence figure {
+      margin: 0;
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--card, #fff);
+      box-shadow: 0 12px 28px -22px rgba(126, 90, 53, 0.32);
+    }
+    .why-evidence figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 720px) {
+      .why-evidence {
+        margin: 28px auto 28px;
+        gap: 16px;
+      }
+      .why-evidence figure {
+        border-radius: 16px;
+        box-shadow: 0 8px 20px -18px rgba(126, 90, 53, 0.28);
+      }
+    }
+
     /* ═══ 10 說明會（深苔綠強轉換）═══ */
     .info-session {
       background:
@@ -1047,6 +1079,17 @@
         <div class="why-num"><div class="why-num-val">100+</div><div class="why-num-label">家合作單位</div></div>
         <div class="why-num"><div class="why-num-val">133+</div><div class="why-num-label">噸再生材料</div></div>
       </div>
+
+      <!-- 真實案例證據：活動現場拼圖 + 合作品牌 Logo 牆 -->
+      <div class="why-evidence">
+        <figure class="why-evidence-collage">
+          <img src="assets/esg-cases-collage.jpg" alt="ECO STAR 與 Wishlite 在企業、校園、社區舉辦的永續活動現場拼圖" loading="lazy" decoding="async">
+        </figure>
+        <figure class="why-evidence-logos">
+          <img src="assets/logo-wall-clients.jpg" alt="Wishlite 合作過的企業、政府、品牌與校園 Logo 牆" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
       <p class="why-tail">ECO STAR，<br>就是從這些經驗長出來的。</p>
     </div>
   </section>
