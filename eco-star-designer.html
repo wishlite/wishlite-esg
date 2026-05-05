@@ -217,10 +217,175 @@
       font-family: 'Noto Serif TC', serif; font-weight: 500;
       text-align: center;
     }
-    /* Why ECO STAR｜支持與成長橫式圖（取代痛點翻卡） */
-    .pain-illus-scroll {
+    /* Hero｜定位釘子（取代詩意三段 body） */
+    .hero-pin-major {
+      max-width: 600px;
+      margin: 0 auto 18px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(17px, 2.2vw, 21px);
+      font-weight: 600;
+      line-height: 1.85;
+      color: var(--brown-deep);
+      letter-spacing: 0.5px;
+    }
+    .hero-pin-what {
+      max-width: 580px;
+      margin: 0 auto;
+      font-size: 15.5px;
+      line-height: 2;
+      color: var(--sub);
+      letter-spacing: 0.3px;
+    }
+    @media (max-width: 720px) {
+      .hero-pin-major { font-size: 16.5px; line-height: 1.85; }
+      .hero-pin-what { font-size: 14.5px; line-height: 1.95; }
+    }
+
+    /* Journey 前置句 */
+    .journey-prelude {
+      max-width: 560px;
+      margin: 0 0 14px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--brown-deep);
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 720px) {
+      .journey-prelude { font-size: 14.5px; line-height: 1.85; }
+    }
+
+    /* Who fits 前置對號入座句 */
+    .fit-prelude {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 18px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15.5px;
+      line-height: 2;
+      color: var(--brown-deep);
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 720px) {
+      .fit-prelude { font-size: 14px; line-height: 1.95; }
+    }
+
+    /* Journey 後中段 CTA（輕量文字連結，不是大按鈕） */
+    .journey-mid-cta {
+      text-align: center;
+      margin: 32px auto 0;
+    }
+    .btn-soft-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border: 1px solid rgba(125, 143, 114, 0.35);
+      border-radius: 100px;
+      color: var(--green-deep);
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 14.5px;
+      letter-spacing: 0.5px;
+      transition: all 0.25s ease;
+    }
+    .btn-soft-link:hover {
+      background: rgba(125, 143, 114, 0.08);
+      border-color: var(--green-deep);
+    }
+    .btn-soft-link .arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    .btn-soft-link:hover .arrow { transform: translateX(3px); }
+
+    /* Why ECO STAR｜左側（小芽 + 標題） + 右側（支持與成長圖）並排 */
+    .pain-combined {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 40px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pain-header {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      max-width: none;
+      margin: 0;
+    }
+    .pain-mascot {
+      margin: 0;
+      width: 110px; height: 110px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pain-mascot img {
+      display: block; width: 100%; height: auto;
+      object-fit: contain;
+    }
+    .pain-header-text { text-align: left; }
+    .pain-header-text .section-kicker-wrap { justify-content: flex-start; }
+    .pain-header-text .section-title { text-align: left; margin-top: 8px; }
+    @media (max-width: 900px) {
+      .pain-combined {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+    @media (max-width: 720px) {
+      .pain-header {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        text-align: center;
+      }
+      .pain-mascot {
+        width: 96px; height: 96px;
+        margin: 0 auto;
+      }
+      .pain-header-text { text-align: center; }
+      .pain-header-text .section-kicker-wrap { justify-content: center; }
+      .pain-header-text .section-title { text-align: center; }
+    }
+
+    /* What is ECO STAR｜這是什麼橫式圖（取代原本長文） */
+    .what-illus-scroll {
       max-width: 1100px;
       margin: 32px auto 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 22px;
+      box-shadow: 0 12px 28px -22px rgba(126, 90, 53, 0.32);
+      background: var(--card);
+    }
+    .what-illus { margin: 0; }
+    .what-illus img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: none;
+    }
+    @media (max-width: 720px) {
+      .what-illus-scroll {
+        margin: 24px -8px 0;
+        max-width: none;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px -18px rgba(126, 90, 53, 0.28);
+      }
+      .what-illus img {
+        width: auto;
+        height: auto;
+        min-width: 800px;
+      }
+    }
+
+    /* Why ECO STAR｜支持與成長橫式圖（取代痛點翻卡） */
+    .pain-illus-scroll {
+      max-width: none;
+      width: 100%;
+      margin: 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       border-radius: 22px;
@@ -488,73 +653,77 @@
       border-color: rgba(216, 155, 92, 0.30);
     }
     .info-session .section-title { color: var(--card); }
-    .info-session-body {
-      font-size: 16.5px; line-height: 2.1; color: rgba(255, 255, 255, 0.92);
-      max-width: 540px; margin: 0 auto 12px;
-    }
-    .info-session-body p { margin-bottom: 20px; }
-    .info-session-list {
-      list-style: none; padding: 0; max-width: 480px; margin: 12px auto 28px;
-      text-align: left;
-    }
-    .info-session-list li {
-      padding: 10px 0 10px 24px; position: relative;
-      color: rgba(255, 255, 255, 0.92); font-size: 15.5px; line-height: 1.85;
-    }
-    .info-session-list li::before {
-      content: "·"; position: absolute; left: 6px; top: 6px;
-      color: var(--gold-light); font-size: 22px; line-height: 1;
-    }
-    .info-session-soft {
-      color: rgba(255, 255, 255, 0.78); font-size: 14.5px; margin: 8px 0 24px;
-      line-height: 1.85;
-    }
-
-    /* 三件事卡 */
-    .info-session-three {
-      list-style: none; padding: 0;
-      max-width: 720px; margin: 32px auto 28px;
-      display: grid; gap: 18px;
-    }
-    .info-session-three li {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 16px;
-      padding: 22px 24px;
-      text-align: left;
-    }
-    .info-three-num {
-      display: inline-block;
-      font-family: 'Noto Serif TC', serif;
-      font-size: 12.5px; letter-spacing: 3px;
-      color: var(--gold-light, #D4B06A);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .info-three-title {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 18px; font-weight: 700;
-      color: var(--card);
-      margin: 0 0 8px; line-height: 1.5; letter-spacing: 0.5px;
-    }
-    .info-three-desc {
-      margin: 0;
+    /* 簡介句（你會在這場說明會裡看見：） */
+    .info-session-intro {
+      max-width: 520px; margin: 36px auto 18px;
       color: rgba(255, 255, 255, 0.82);
-      font-size: 14.5px; line-height: 1.9;
+      font-size: 15px; letter-spacing: 0.5px;
     }
-    .info-session-notice {
-      max-width: 540px; margin: 16px auto 0;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 13.5px; letter-spacing: 0.5px;
-      padding: 10px 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.18);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    /* 三件事極簡 bullet（不放長解釋） */
+    .info-session-bullets {
+      list-style: none; padding: 0;
+      max-width: 460px; margin: 0 auto 44px;
+      text-align: left;
+    }
+    .info-session-bullets li {
+      padding: 12px 0 12px 26px;
+      position: relative;
+      color: rgba(255, 255, 255, 0.94);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16.5px;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+    }
+    .info-session-bullets li::before {
+      content: "·";
+      position: absolute; left: 8px; top: 6px;
+      color: var(--gold-light); font-size: 26px; line-height: 1;
+    }
+    /* 降壓單行（單獨一行 + 大量留白） */
+    .info-session-relief {
+      max-width: 540px; margin: 0 auto 56px;
+      color: rgba(255, 255, 255, 0.86);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 17px; line-height: 1.85;
+      letter-spacing: 0.5px;
+    }
+    /* 情緒收尾 */
+    .info-session-emotional {
+      max-width: 560px; margin: 0 auto 36px;
+    }
+    .info-session-emotional p {
+      color: rgba(255, 255, 255, 0.92);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 17px; line-height: 2;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+    .info-session-emotional .emotional-final {
+      color: var(--gold-light);
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    /* 輕量社會證明（CTA 上方） */
+    .info-session-proof-tiny {
+      margin: 0 auto 20px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 13px; letter-spacing: 1px;
+    }
+    /* CTA 下方降壓小字 */
+    .info-session-after-cta {
+      margin: 16px 0 0;
+      color: rgba(95, 90, 80, 0.6);
+      font-size: 12.5px; letter-spacing: 0.5px;
+      line-height: 1.7;
     }
     @media (max-width: 720px) {
-      .info-session-three li { padding: 18px 18px; border-radius: 14px; }
-      .info-three-title { font-size: 16.5px; }
-      .info-three-desc { font-size: 14px; }
+      .info-session-intro { font-size: 14.5px; margin-bottom: 14px; }
+      .info-session-bullets { margin-bottom: 36px; }
+      .info-session-bullets li { font-size: 15.5px; }
+      .info-session-relief { font-size: 15.5px; margin-bottom: 44px; }
+      .info-session-emotional p { font-size: 15.5px; line-height: 1.95; }
+      .info-session-emotional .emotional-final { font-size: 17.5px; }
     }
 
     /* ═══ 報名表單 ═══ */
@@ -925,30 +1094,35 @@
       </h1>
       <div class="hero-divider"></div>
       <div class="hero-body">
-        <p class="lead">如果你曾經想把喜歡的事，<br>變成一個可以帶給別人的體驗，</p>
-        <p>ECO STAR 會陪你慢慢把這件事長出來。</p>
-        <p>從材料故事、體驗設計到現場帶領，<br>一步步走到「真的可以發生」的那一刻。</p>
+        <p class="hero-pin-major">把你在乎的永續，<br>變成一場可以被帶進現場的行動。</p>
+        <p class="hero-pin-what">ECO STAR 是一套<br>陪你從「喜歡」走到「可以帶領一場行動」的系統。</p>
       </div>
       <div class="hero-ctas">
         <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
         <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
-    <div class="hero-mascot" aria-hidden="true">
-      <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
-    </div>
   </section>
 
   <!-- 02 痛點（FAQ 卡片感）-->
   <section aria-labelledby="pain-title">
     <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
-      <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
+      <div class="pain-combined">
+        <div class="pain-header">
+          <figure class="pain-mascot" aria-hidden="false">
+            <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="永續六友｜小芽，整合策劃力" loading="lazy">
+          </figure>
+          <div class="pain-header-text">
+            <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
+            <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
+          </div>
+        </div>
 
-      <div class="pain-illus-scroll" aria-label="ECO STAR 陪你走過的距離｜可橫向滑動查看">
-        <figure class="pain-illus">
-          <img src="assets/eco-star-support-growth.png" alt="你不是不夠好，只是還需要對的支持與陪伴，ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy" decoding="async">
-        </figure>
+        <div class="pain-illus-scroll" aria-label="ECO STAR 陪你走過的距離｜可橫向滑動查看">
+          <figure class="pain-illus">
+            <img src="assets/eco-star-support-growth.png" alt="你不是不夠好，只是還需要對的支持與陪伴，ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy" decoding="async">
+          </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -986,10 +1160,11 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">What is ECO STAR</span></div>
       <h2 id="what-title" class="section-title">這不是一堂普通課程</h2>
-      <div class="section-body">
-        <p>而是一套把「在乎」變成<br><span class="accent">「可以被交付的行動」</span>的方法。</p>
-        <p>我們會陪你理解材料、設計體驗、練習表達，<br>也陪你走到現場那一刻，<br>看見一場永續行動，<br>是怎麼真的被帶進生活裡。</p>
-        <p class="accent">把一份在乎，變成別人也能參與的行動。</p>
+
+      <div class="what-illus-scroll" aria-label="ECO STAR 是什麼｜可橫向滑動查看">
+        <figure class="what-illus">
+          <img src="assets/eco-star-what-is.png" alt="ECO STAR 不是一堂課，而是一條讓你把喜歡的事，慢慢變成可被交付行動的路。從起點（你的喜歡與關心），經過中段（學習×練習×理解：方法、練習、實作、理解場域），到後段（行動×參與×連結：說明會、共創梯、合作評估、行動機會），一步步累積能力與自信。" loading="lazy" decoding="async">
+        </figure>
       </div>
     </div>
   </section>
@@ -998,6 +1173,7 @@
   <section class="journey-section" aria-labelledby="journey-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Your Journey</span></div>
+      <p class="journey-prelude">你不是在學一堂課，<br>而是在長出一種可以被交付的能力。</p>
       <h2 id="journey-title" class="section-title">從喜歡永續，<br>到能把一場行動帶進現場</h2>
       <p class="journey-intro">
         這不是要你一開始就很專業，<br>
@@ -1092,6 +1268,10 @@
       </figure>
 
       <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
+
+      <div class="journey-mid-cta">
+        <a href="#info-session" class="btn-soft-link">我想了解更多 <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
     </div>
   </section>
 
@@ -1099,6 +1279,7 @@
   <section aria-labelledby="fit-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
+      <p class="fit-prelude">如果你看到這裡，<br>有一點點覺得「這在講我」，<br>那你很可能就在這條路上。</p>
       <h2 id="fit-title" class="section-title">這條路，<br>也許適合這樣的你</h2>
       <div class="who-fits-layout">
         <div class="section-body">
@@ -1151,25 +1332,8 @@
 
   <div class="group-divider" aria-hidden="true"></div>
 
-  <!-- ═══════════ 段落 4：行動路徑 ═══════════ -->
+  <!-- ═══════════ 段落 4：信任 + 行動路徑 ═══════════ -->
   <div class="group-path">
-
-  <!-- 08 Path｜行動路徑橫式圖 -->
-  <section aria-labelledby="path-title">
-    <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">Step by step</span></div>
-      <h2 id="path-title" class="section-title">從零開始，<br>走出屬於你的行動路徑</h2>
-      <p class="path-lead">這不是一堂課，而是一條陪伴你成長的路。</p>
-
-      <div class="path-illus-scroll" aria-label="ECO STAR 行動路徑圖｜可橫向滑動查看">
-        <figure class="path-illus">
-          <img src="assets/eco-star-action-path.png" alt="ECO STAR 從認識自己、參與共創梯、完成核心訓練、申請合作評估到進入行動路徑的圖解" loading="lazy" decoding="async">
-        </figure>
-      </div>
-
-      <p class="path-tail">你不需要一開始就準備好，<br>只要願意靠近，路就會慢慢長出來。</p>
-    </div>
-  </section>
 
   <!-- 09 Why Wishlite -->
   <section aria-labelledby="why-title">
@@ -1205,33 +1369,44 @@
 
   <!-- ═══════════ 段落 5：轉換 ═══════════ -->
 
-  <!-- 10 說明會（深苔綠強轉換點）+ 表單 -->
+  <!-- 08 Path｜行動路徑橫式圖（移到 info-session 前作為轉換鋪墊） -->
+  <section aria-labelledby="path-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Step by step</span></div>
+      <h2 id="path-title" class="section-title">從零開始，<br>走出屬於你的行動路徑</h2>
+      <p class="path-lead">這不是一堂課，而是一條陪伴你成長的路。</p>
+
+      <div class="path-illus-scroll" aria-label="ECO STAR 行動路徑圖｜可橫向滑動查看">
+        <figure class="path-illus">
+          <img src="assets/eco-star-action-path.png" alt="ECO STAR 從認識自己、參與共創梯、完成核心訓練、申請合作評估到進入行動路徑的圖解" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <p class="path-tail">你不需要一開始就準備好，<br>只要願意靠近，路就會慢慢長出來。</p>
+    </div>
+  </section>
+
+  <!-- 10 說明會｜唯一轉換區（吸收 cohort + closing） -->
   <section id="info-session" class="info-session" aria-labelledby="session-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">ECO STAR INFO SESSION</span></div>
-      <h2 id="session-title" class="section-title">這場說明會，<br>會陪你釐清三件事</h2>
+      <h2 id="session-title" class="section-title">先來聽懂這條路，<br>再決定要不要走</h2>
 
-      <ol class="info-session-three">
-        <li>
-          <span class="info-three-num">01</span>
-          <h3 class="info-three-title">這是不是適合你的路</h3>
-          <p class="info-three-desc">你會看見 ECO STAR 適合什麼樣的人，也看見它不是單純的手作課、講師課或證書課。</p>
-        </li>
-        <li>
-          <span class="info-three-num">02</span>
-          <h3 class="info-three-title">首屆共創梯會怎麼走</h3>
-          <p class="info-three-desc">從認識自己、參與核心訓練，到完成任務與申請合作評估，我們會把整條路講清楚。</p>
-        </li>
-        <li>
-          <span class="info-three-num">03</span>
-          <h3 class="info-three-title">完訓後，如何走向真實場域</h3>
-          <p class="info-three-desc">你會理解未來如何依平台需求、合作評估與任務媒合，逐步進入企業、校園與社區的永續行動現場。</p>
-        </li>
-      </ol>
+      <p class="info-session-intro">你會在這場說明會裡看見：</p>
+      <ul class="info-session-bullets">
+        <li>這是不是適合你的路</li>
+        <li>這條路，會怎麼走</li>
+        <li>以及，怎麼走進真實場域</li>
+      </ul>
 
-      <p class="info-session-soft">你不需要現在就決定要不要加入。<br>先來聽懂這條路，再決定自己要不要往前走一步。</p>
+      <p class="info-session-relief">你不需要現在就決定要不要加入。</p>
 
-      <p class="info-session-notice">這不是正式報名共創梯，而是先登記說明會資訊。<br>我們會寄送最新說明會安排、觀看方式或回放連結給你。</p>
+      <div class="info-session-emotional">
+        <p>如果你心裡也有一點點想法，<br>想把喜歡、材料、故事與人連在一起，</p>
+        <p class="emotional-final">也許這一次，<br>就是你開始的地方。</p>
+      </div>
+
+      <p class="info-session-proof-tiny">（已經有一群人，從這裡開始）</p>
 
       <form class="signup-form" id="signupForm" novalidate>
         <div class="form-row">
@@ -1272,6 +1447,7 @@
           <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
         </div>
         <button type="submit" class="form-submit" id="submitBtn">登記線上說明會</button>
+        <p class="info-session-after-cta">填寫資料後，我們會寄送說明會時間與觀看方式給你。</p>
       </form>
 
       <div class="signup-thanks" id="signupThanks" style="display:none;">
@@ -1279,44 +1455,6 @@
         <h3>謝謝你願意走到這裡</h3>
         <p>我們已經把你的登記收下了。<br>最新一場說明會的時間、觀看方式或回放連結，會透過 Email 寄給你。</p>
         <p style="margin-top:18px; opacity:0.7; font-size:14px;">那天見。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11 ECO STAR 首屆共創梯 說明會（取代原價格區） -->
-  <section style="background: var(--bg);" aria-labelledby="cohort-title">
-    <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">First founding cohort</span></div>
-      <h2 id="cohort-title" class="section-title">
-        <a href="#info-session" class="cohort-title-link">首屆共創梯說明會</a>
-      </h2>
-      <div class="cohort-body">
-        <p>如果你正在想，自己是不是也能把喜歡的事，<br>變成一場可以發生的永續行動，</p>
-        <p>這場說明會會陪你看見<br>ECO STAR 的完整路徑、訓練方式與未來合作可能。</p>
-        <p class="cohort-soft">
-          你不需要現在就做決定。<br>
-          先來聽懂這條路，再決定自己要不要往前走一步。
-        </p>
-      </div>
-      <div class="cohort-cta">
-        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 12 Closing -->
-  <section class="closing" aria-labelledby="closing-title">
-    <div class="container">
-      <h2 id="closing-title" class="closing-text">
-        永續不是一開始就很完整，<br>
-        而是從願意靠近的那一刻開始。<br><br>
-        如果你心裡也有一點點想法，<br>
-        想把喜歡、材料、故事與人連在一起，<br><br>
-        <span class="lead">也許這一次，<br>就是你開始的地方。</span>
-      </h2>
-      <div class="closing-ctas">
-        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
-        <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
   </section>
