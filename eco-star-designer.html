@@ -913,24 +913,50 @@
         <img src="assets/eco-star-info-invitation.png" alt="ECO STAR 說明會邀請卡" loading="lazy">
       </div>
 
-      <h2 id="session-title" class="section-title">這場說明會，<br>會陪你釐清三件事</h2>
-      <ul class="info-session-list info-clarify">
-        <li>
-          <strong>01｜這是不是適合你的路</strong>
-          <span>你會看見 ECO STAR 適合什麼樣的人，也看見它不是單純的手作課、講師課或證書課。</span>
-        </li>
-        <li>
-          <strong>02｜首屆共創梯會怎麼走</strong>
-          <span>從認識自己、參與核心訓練，到完成任務與申請合作評估，我們會把整條路講清楚。</span>
-        </li>
-        <li>
-          <strong>03｜完訓後，如何走向真實場域</strong>
-          <span>你會理解未來如何依平台需求、合作評估與任務媒合，逐步進入企業、校園與社區的永續行動現場。</span>
-        </li>
+      <h2 id="session-title" class="section-title">先來聽懂這條路，<br>再決定要不要走。</h2>
+      <p class="final-cta-soft">你不需要現在就做決定，<br>這場說明會，只是幫你看清楚。</p>
+      <p class="final-cta-intro">你會在這場說明會裡看見：</p>
+      <ul class="final-cta-list">
+        <li>這是不是適合你的路</li>
+        <li>這條路，會怎麼開始</li>
+        <li>以及，真實場域長什麼樣子</li>
       </ul>
-      <p class="info-session-soft">你不需要現在就決定要不要加入。<br>先來聽懂這條路，再決定自己要不要往前走一步。</p>
+      <div class="final-cta-btn-row">
+        <a href="#signupForm" class="btn btn-primary final-cta-btn">我要先了解這條路</a>
+      </div>
 
-      <p class="info-session-pre">這不是正式報名共創梯，而是先登記說明會資訊。<br>我們會寄送最新說明會安排、觀看方式或回放連結給你。</p>
+      <style>
+        .final-cta-soft{
+          text-align:center;max-width:480px;margin:0 auto 28px;
+          color:rgba(255,255,255,.85);
+          font-family:'Noto Serif TC',serif;font-size:16.5px;line-height:1.95;letter-spacing:.4px;
+        }
+        .final-cta-intro{
+          text-align:center;max-width:480px;margin:0 auto 14px;
+          color:rgba(255,255,255,.7);
+          font-size:14.5px;letter-spacing:1px;
+        }
+        .final-cta-list{
+          list-style:none;padding:0;max-width:380px;margin:0 auto 32px;
+          color:rgba(255,255,255,.92);
+        }
+        .final-cta-list li{
+          font-size:16px;line-height:2;letter-spacing:.4px;text-align:center;
+          padding:6px 0;
+        }
+        .final-cta-list li::before{content:'・';margin-right:4px;opacity:.6;}
+        .final-cta-btn-row{
+          text-align:center;margin-bottom:36px;
+        }
+        .final-cta-btn{
+          background:var(--brown)!important;
+          border-color:var(--brown)!important;
+        }
+        @media(max-width:720px){
+          .final-cta-soft{font-size:15px}
+          .final-cta-list li{font-size:15px}
+        }
+      </style>
 
       <form class="signup-form" id="signupForm" novalidate>
         <div class="form-row">
