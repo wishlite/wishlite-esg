@@ -478,14 +478,15 @@
       }
       /* 蓋掉舊 .hero-mascot 規則（已移除元素）*/
       .hero-final .hero-mascot{display:none}
-      /* 手機：上小芽，下文字 */
-      @media(max-width:780px){
+      /* 手機：上小芽，下文字（順序：小芽 → h1 → lead → CTA，kicker 隱藏）*/
+      @media(max-width:720px){
         .hero-final{padding:64px 22px 56px}
         .hero-grid{grid-template-columns:1fr;gap:32px}
         .hero-figure{order:-1;max-width:280px;margin:0 auto}
         .hero-figure img{max-width:280px}
         .hero-final .hero-title{font-size:28px;line-height:1.55}
         .hero-lead{font-size:15px}
+        .hero-final .hero-kicker{display:none}
       }
     </style>
   </section>
@@ -529,28 +530,48 @@
       <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
       <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
 
-      <!-- 🆕 Tony CRO 第二刀：共鳴三段（從 Hero body 搬來，不再說明痛點細項）-->
-      <div class="resonance-body">
-        <p>你也許在乎永續，<br>也喜歡手作、教學或陪伴。</p>
-        <p class="resonance-tail">只是還不知道，<br>怎麼把這份在乎，<br>變成一場可以被帶進現場的行動。</p>
-      </div>
-
-      <!-- 🆕 ④ 痛點卡 v3（4 張全部，這是成交段；順序：上課→作品→現場→很在乎）-->
-      <div class="pain-cards" id="pain">
-        <figure class="pain-card-img">
-          <img src="assets/pain-class.png" alt="一開口，就變成像在上課 — 你有很多想說的，卻不知道怎麼說，別人才聽得進去。" loading="lazy">
-        </figure>
-        <figure class="pain-card-img">
-          <img src="assets/pain-art.png" alt="做了作品，卻說不進人心 — 你做了作品，卻不知道怎麼讓別人真的在意。" loading="lazy">
-        </figure>
-        <figure class="pain-card-img">
-          <img src="assets/pain-stuck.png" alt="站在現場，還是會卡住 — 你知道不同場域要說不同的話，但一站到現場，還是會緊張。" loading="lazy">
-        </figure>
-        <figure class="pain-card-img">
-          <img src="assets/pain-care.png" alt="很在乎，卻不知道怎麼開始 — 你其實很在乎這些事，卻不知道怎麼開始，才不會走錯。" loading="lazy">
-        </figure>
+      <!-- 🆕 v2.7 痛點卡（2×2 grid 文字版，極簡）-->
+      <div class="pain-cards-v3" id="pain">
+        <article class="pain-card-v3">
+          <p>你有很多想說的，<br>但一開口，就變成像在上課。</p>
+        </article>
+        <article class="pain-card-v3">
+          <p>你做了作品，<br>卻不知道怎麼讓別人真的在意。</p>
+        </article>
+        <article class="pain-card-v3">
+          <p>你知道不同場域要說不同的話，<br>但站在現場，還是會卡住。</p>
+        </article>
+        <article class="pain-card-v3">
+          <p>你其實很在乎這些事，<br>但不知道要怎麼開始。</p>
+        </article>
       </div>
       <style>
+        /* v2.7 痛點卡：2×2 grid 文字極簡版 */
+        .pain-cards-v3{
+          max-width:880px;margin:48px auto 0;
+          display:grid;grid-template-columns:repeat(2,1fr);gap:22px;
+        }
+        .pain-card-v3{
+          background:var(--card);
+          border:1px solid var(--line);
+          border-radius:16px;
+          padding:28px 26px;
+          box-shadow:0 4px 14px -10px rgba(126,90,53,.18);
+          display:flex;align-items:center;justify-content:center;
+          min-height:140px;
+        }
+        .pain-card-v3 p{
+          margin:0;text-align:center;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:17px;line-height:1.95;
+          color:#5C4830;letter-spacing:.5px;
+        }
+        @media(max-width:720px){
+          .pain-cards-v3{grid-template-columns:1fr;gap:16px;margin-top:32px}
+          .pain-card-v3{padding:24px 22px;min-height:0}
+          .pain-card-v3 p{font-size:15.5px;line-height:1.9}
+        }
+
         .resonance-body{
           max-width:560px;margin:0 auto 32px;
           font-family:'Noto Serif TC',serif;
