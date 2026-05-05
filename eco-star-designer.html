@@ -411,31 +411,83 @@
   <!-- ═══════════ 段落 1：共鳴 ═══════════ -->
   <div class="group-resonance">
 
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-inner">
-      <span class="hero-kicker">ECO STAR ｜ Designer System</span>
-      <h1 id="hero-title" class="hero-title">
-        很多人其實在乎這些事，<br>
-        只是一直沒有一個<br>
-        可以開始的地方。
-      </h1>
-      <p class="hero-sub">從喜歡開始，慢慢長出能被信任交付的能力。</p>
-      <div class="hero-divider"></div>
-
-      <!-- Hero 場景圖（Apple 指定真實活動拼貼）-->
-      <figure class="hero-scene" aria-label="Wishlite 在企業、校園、社區舉辦的永續體驗真實現場">
-        <img src="assets/esg-cases-collage.jpg" alt="Wishlite 在企業、校園、社區舉辦的永續體驗真實現場拼貼" loading="lazy">
-        <figcaption class="hero-scene-cap">這不是理念，<br>是現場真的在發生的事。</figcaption>
-      </figure>
-
-      <div class="hero-ctas">
-        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
-        <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
+  <!-- 🆕 v2.6 hero final（左文字 / 右小芽，乾淨留白、無拼貼圖）-->
+  <section class="hero hero-final" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-kicker">ECO STAR ｜ Designer System</span>
+        <h1 id="hero-title" class="hero-title">
+          從喜歡開始，<br>
+          慢慢長出一條<br>
+          可以走的路。
+        </h1>
+        <p class="hero-lead">
+          很多人其實在乎這些事，<br>
+          只是一直沒有一個<br>
+          可以開始的地方。
+        </p>
+        <div class="hero-cta-row">
+          <a href="#info-session" class="btn btn-primary">了解說明會</a>
+        </div>
+      </div>
+      <div class="hero-figure" aria-hidden="true">
+        <img src="assets/hero-mascot-xiaoya.png" alt="" loading="lazy">
       </div>
     </div>
-    <div class="hero-mascot" aria-hidden="true">
-      <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
-    </div>
+    <style>
+      .hero-final{
+        padding:104px 32px 88px;
+        background:#F5F2EA;
+        position:relative;overflow:hidden;
+      }
+      .hero-final::before{
+        content:'';position:absolute;inset:0;
+        background:
+          radial-gradient(ellipse 420px 280px at 8% 22%, rgba(125,143,114,.10), transparent 60%),
+          radial-gradient(ellipse 380px 260px at 92% 78%, rgba(216,155,92,.08), transparent 60%);
+        pointer-events:none;z-index:0;
+      }
+      .hero-grid{
+        max-width:1120px;margin:0 auto;position:relative;z-index:1;
+        display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;
+      }
+      .hero-final .hero-kicker{
+        display:inline-block;
+        font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;
+        color:var(--brown-deep);font-weight:600;
+        padding:5px 14px;background:rgba(166,124,82,.08);
+        border:1px solid rgba(166,124,82,.25);border-radius:100px;
+        margin-bottom:28px;
+      }
+      .hero-final .hero-title{
+        font-family:'Noto Serif TC',serif;font-weight:500;
+        font-size:clamp(30px,4.4vw,44px);line-height:1.5;
+        color:#5C4830;letter-spacing:.04em;margin:0 0 24px;
+      }
+      .hero-lead{
+        font-family:'Noto Sans TC',sans-serif;
+        font-size:clamp(15px,1.5vw,17px);line-height:1.85;
+        color:rgba(92,72,48,.7);letter-spacing:.04em;
+        margin:0 0 32px;
+      }
+      .hero-cta-row{margin-top:8px}
+      .hero-figure{display:flex;align-items:center;justify-content:center}
+      .hero-figure img{
+        max-width:100%;width:100%;height:auto;display:block;
+        max-width:420px;
+      }
+      /* 蓋掉舊 .hero-mascot 規則（已移除元素）*/
+      .hero-final .hero-mascot{display:none}
+      /* 手機：上小芽，下文字 */
+      @media(max-width:780px){
+        .hero-final{padding:64px 22px 56px}
+        .hero-grid{grid-template-columns:1fr;gap:32px}
+        .hero-figure{order:-1;max-width:280px;margin:0 auto}
+        .hero-figure img{max-width:280px}
+        .hero-final .hero-title{font-size:28px;line-height:1.55}
+        .hero-lead{font-size:15px}
+      }
+    </style>
   </section>
 
   <!-- 🆕 ② 早期 CTA（先收有感的人）-->
@@ -936,7 +988,6 @@
       </h2>
       <div class="closing-ctas">
         <a href="#info-session" class="btn btn-primary">報名首屆共創梯說明會</a>
-        <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
   </section>
