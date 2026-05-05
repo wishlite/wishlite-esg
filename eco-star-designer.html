@@ -449,7 +449,7 @@
       }
       .hero-grid{
         max-width:1120px;margin:0 auto;position:relative;z-index:1;
-        display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;
+        display:grid;grid-template-columns:1.7fr 1fr;gap:56px;align-items:center;
       }
       .hero-final .hero-kicker{
         display:inline-block;
@@ -471,10 +471,10 @@
         margin:0 0 32px;
       }
       .hero-cta-row{margin-top:8px}
-      .hero-figure{display:flex;align-items:center;justify-content:center}
+      .hero-figure{display:flex;align-items:center;justify-content:flex-end}
       .hero-figure img{
         max-width:100%;width:100%;height:auto;display:block;
-        max-width:420px;
+        max-width:300px;
       }
       /* 蓋掉舊 .hero-mascot 規則（已移除元素）*/
       .hero-final .hero-mascot{display:none}
@@ -616,8 +616,11 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why this matters</span></div>
       <h2 id="market-title" class="section-title">這些行動，<br>正在不同地方發生</h2>
-      <!-- v2.7.1 場域水彩橫圖（順序：校園→社區→企業→品牌親子；圖內已含標題與短文，不重複加文字）-->
-      <div class="field-cards">
+      <!-- v2.7.2 場域水彩橫圖（順序：企業→校園→社區→品牌親子；商業信任感優先）-->
+      <div class="field-cards field-cards-wide">
+        <div class="field-card field-card-wide">
+          <img src="assets/field-enterprise.png" alt="企業 ESG 體驗：把永續變成員工能參與、能理解、能帶走的 ESG 行動" loading="lazy">
+        </div>
         <div class="field-card field-card-wide">
           <img src="assets/field-school.png" alt="校園永續教育：讓學生在材料裡，認識循環" loading="lazy">
         </div>
@@ -625,14 +628,15 @@
           <img src="assets/field-community.png" alt="社區共創工作坊：陪不同年齡與背景的人，在共同創作中靠近永續" loading="lazy">
         </div>
         <div class="field-card field-card-wide">
-          <img src="assets/field-enterprise.png" alt="企業 ESG 體驗：把永續變成員工能參與、能理解、能帶走的 ESG 行動" loading="lazy">
-        </div>
-        <div class="field-card field-card-wide">
           <img src="assets/field-brand.png" alt="品牌日／親子活動：把永續做成親近、好參與，也能留下記憶的體驗" loading="lazy">
         </div>
       </div>
       <style>
-        /* v2.7.1 橫圖卡樣式 */
+        /* v2.7.2 橫圖卡：桌機 2×2 / 手機單欄、圖寬 100% 放大確保中文可讀 */
+        .field-cards-wide{
+          max-width:1040px;
+          grid-template-columns:repeat(2,1fr);gap:24px;
+        }
         .field-card-wide{
           background:var(--card);
           border:1px solid var(--line);
@@ -643,6 +647,11 @@
         .field-card-wide:hover{transform:translateY(-3px);box-shadow:0 14px 32px -14px rgba(126,90,53,.28)}
         .field-card-wide img{
           width:100%;height:auto;display:block;
+          object-fit:contain;
+        }
+        @media(max-width:720px){
+          .field-cards-wide{grid-template-columns:1fr;gap:18px;max-width:100%}
+          .field-card-wide{border-radius:12px}
         }
       </style>
     </div>
