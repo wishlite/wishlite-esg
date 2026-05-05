@@ -468,13 +468,14 @@
         font-family:'Noto Sans TC',sans-serif;
         font-size:clamp(15px,1.5vw,17px);line-height:1.85;
         color:rgba(92,72,48,.7);letter-spacing:.04em;
-        margin:0 0 32px;
+        margin:0 0 16px;
       }
       .hero-cta-row{margin-top:8px}
       .hero-figure{display:flex;align-items:center;justify-content:flex-end}
       .hero-figure img{
         max-width:100%;width:100%;height:auto;display:block;
         max-width:300px;
+        transform:scaleX(-1); /* v2.11 視線導引：水平翻轉，面向左側文字 */
       }
       /* 蓋掉舊 .hero-mascot 規則（已移除元素）*/
       .hero-final .hero-mascot{display:none}
@@ -674,6 +675,19 @@
     </div>
   </section>
 
+  <section aria-labelledby="fit-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
+      <h2 id="fit-title" class="section-title">這條路，<br>也許適合這樣的你</h2>
+      <div class="section-body">
+        <p>你不是不夠好，只是還需要一個可以練習、被陪伴、慢慢長出方法的地方。</p>
+        <p>如果你是手作老師、教育工作者或活動引導者，<br>想讓自己的課程多一層永續價值。</p>
+        <p>如果你喜歡材料、創作與環境議題，<br>想把這份關心變成可以被實際執行的行動。</p>
+        <p>如果你一直很擅長陪伴人、整理想法、帶動現場，<br>也許你已經具備成為永續行動設計師的起點。</p>
+      </div>
+    </div>
+  </section>
+
   <section class="journey-section" aria-labelledby="journey-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Your Journey</span></div>
@@ -778,19 +792,6 @@
   })();
   </script>
 
-  <section aria-labelledby="fit-title">
-    <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
-      <h2 id="fit-title" class="section-title">這條路，<br>也許適合這樣的你</h2>
-      <div class="section-body">
-        <p>你不是不夠好，只是還需要一個可以練習、被陪伴、慢慢長出方法的地方。</p>
-        <p>如果你是手作老師、教育工作者或活動引導者，<br>想讓自己的課程多一層永續價值。</p>
-        <p>如果你喜歡材料、創作與環境議題，<br>想把這份關心變成可以被實際執行的行動。</p>
-        <p>如果你一直很擅長陪伴人、整理想法、帶動現場，<br>也許你已經具備成為永續行動設計師的起點。</p>
-      </div>
-    </div>
-  </section>
-
   <section aria-labelledby="learn-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">What you'll learn</span></div>
@@ -825,42 +826,6 @@
 
   <!-- ═══════════ 段落 4：行動路徑 ═══════════ -->
   <div class="group-path">
-
-  <section aria-labelledby="path-title">
-    <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">Step by step</span></div>
-      <h2 id="path-title" class="section-title">從零開始，<br>走出屬於你的行動路徑</h2>
-      <p class="path-subtitle">這不是一堂課，而是一條陪伴你成長的路。</p>
-      <figure class="path-image">
-        <img src="assets/eco-star-action-path.png" alt="ECO STAR 從認識自己、參與共創梯、完成核心訓練、申請合作評估到進入行動路徑的圖解" loading="lazy">
-      </figure>
-      <p class="path-tail">你不需要一開始就準備好，<br>只要願意靠近，路就會慢慢長出來。</p>
-      <style>
-        .path-subtitle{
-          text-align:center;color:var(--sub);
-          font-size:16px;line-height:1.9;margin:-12px auto 32px;max-width:560px;
-          letter-spacing:.4px;
-        }
-        .path-image{
-          max-width:1100px;margin:0 auto 28px;
-          border-radius:18px;overflow:hidden;
-          box-shadow:0 8px 22px -18px rgba(126,90,53,.22);
-          background:var(--card);
-        }
-        .path-image img{display:block;width:100%;height:auto}
-        .path-tail{
-          text-align:center;max-width:540px;margin:0 auto;
-          font-family:'Noto Serif TC',serif;font-size:17px;line-height:2;
-          color:var(--brown-deep);letter-spacing:1px;
-        }
-        @media(max-width:720px){
-          .path-image{border-radius:12px;overflow-x:auto}
-          .path-image img{min-width:720px}
-          .path-tail{font-size:15.5px}
-        }
-      </style>
-    </div>
-  </section>
 
   <section aria-labelledby="why-title">
     <div class="container">
@@ -970,20 +935,6 @@
           font-size:14px;line-height:1.9;color:var(--green-deep);letter-spacing:.3px;
         }
       </style>
-    </div>
-  </section>
-
-  <section class="closing" aria-labelledby="closing-title">
-    <div class="container">
-      <h2 id="closing-title" class="closing-text">
-        如果你也在想，<br>
-        能不能把喜歡的事，<br>
-        走成一條新的路。<br><br>
-        <span class="lead">這場說明會，<br>會陪你看見第一步。</span>
-      </h2>
-      <div class="closing-ctas">
-        <a href="#info-session" class="btn btn-primary">報名首屆共創梯說明會</a>
-      </div>
     </div>
   </section>
 
