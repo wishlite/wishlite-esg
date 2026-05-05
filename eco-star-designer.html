@@ -348,7 +348,7 @@
     .journey-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%); padding: 80px 0; }
     .journey-section .container { max-width: 1000px; }
     .journey-intro { font-size: 15.5px; color: var(--sub); line-height: 2; max-width: 620px; margin: 6px auto 44px; text-align: center; }
-    /* v3.3 journey compress：縮小圖片高度，整段壓到 1.5-2 屏 */
+    /* v3.3.1 journey image fix：圖片完整顯示、縮小不裁切 */
     .journey-scenes { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-direction: column; gap: 36px; }
     .journey-scene-card {
       display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 36px; align-items: center;
@@ -358,9 +358,9 @@
     .journey-scene-image {
       border-radius: 14px; overflow: hidden; background: var(--card);
       box-shadow: 0 10px 26px -18px rgba(126,90,53,.28); border: 1px solid var(--line);
-      max-height: 260px;
+      max-width: 240px; margin: 0 auto;
     }
-    .journey-scene-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .journey-scene-image img { display: block; width: 100%; height: auto; transition: transform .6s ease; }
     .journey-scene-card:hover .journey-scene-image img { transform: scale(1.02); }
     .journey-scene-num {
       display: inline-block; font-family: "Noto Serif TC", serif; font-size: 12.5px; letter-spacing: 3px;
@@ -398,9 +398,9 @@
     .journey-modal-close:hover { background: #fff; transform: scale(1.08); }
     .journey-modal-cap { margin-top: 10px; font-size: 12px; color: var(--sub); letter-spacing: 1.5px; text-align: center; }
     @media (max-width: 720px) {
-      .journey-scenes { gap: 44px; margin-top: 30px; }
-      .journey-scene-card, .journey-scene-card.flip { grid-template-columns: 1fr; gap: 18px; }
-      .journey-scene-card .journey-scene-image, .journey-scene-card.flip .journey-scene-image { order: 0; }
+      .journey-scenes { gap: 28px; margin-top: 30px; }
+      .journey-scene-card, .journey-scene-card.flip { grid-template-columns: 1fr; gap: 14px; }
+      .journey-scene-card .journey-scene-image, .journey-scene-card.flip .journey-scene-image { order: 0; max-width: 200px; }
       .journey-scene-card .journey-scene-text, .journey-scene-card.flip .journey-scene-text { order: 1; }
       .journey-scene-title { font-size: 21px; letter-spacing: 1px; }
       .journey-scene-lead { font-size: 14px; }
@@ -499,8 +499,11 @@
       <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
       <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
 
-      <!-- 🆕 v2.7 痛點卡（2×2 grid 文字版，極簡）-->
+      <!-- v3.5 痛點卡邏輯重排（最在乎→開口→作品→現場）-->
       <div class="pain-cards-v3" id="pain">
+        <article class="pain-card-v3">
+          <p>你其實很在乎這些事，<br>只是一直不知道，該從哪裡開始。</p>
+        </article>
         <article class="pain-card-v3">
           <p>你有很多想說的，<br>但一開口，就變成像在上課。</p>
         </article>
@@ -509,9 +512,6 @@
         </article>
         <article class="pain-card-v3">
           <p>你知道不同場域要說不同的話，<br>但站在現場，還是會卡住。</p>
-        </article>
-        <article class="pain-card-v3">
-          <p>你其實很在乎這些事，<br>但不知道要怎麼開始。</p>
         </article>
       </div>
       <style>
