@@ -348,17 +348,19 @@
     .journey-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%); padding: 80px 0; }
     .journey-section .container { max-width: 1000px; }
     .journey-intro { font-size: 15.5px; color: var(--sub); line-height: 2; max-width: 620px; margin: 6px auto 44px; text-align: center; }
-    .journey-scenes { list-style: none; padding: 0; margin: 36px 0 0; display: flex; flex-direction: column; gap: 64px; }
+    /* v3.3 journey compress：縮小圖片高度，整段壓到 1.5-2 屏 */
+    .journey-scenes { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-direction: column; gap: 36px; }
     .journey-scene-card {
-      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 48px; align-items: center;
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 36px; align-items: center;
     }
     .journey-scene-card .journey-scene-image { order: 2; }
     .journey-scene-card.flip .journey-scene-image { order: 0; }
     .journey-scene-image {
-      border-radius: 16px; overflow: hidden; background: var(--card);
-      box-shadow: 0 14px 36px -22px rgba(126,90,53,.32); border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden; background: var(--card);
+      box-shadow: 0 10px 26px -18px rgba(126,90,53,.28); border: 1px solid var(--line);
+      max-height: 260px;
     }
-    .journey-scene-image img { display: block; width: 100%; height: auto; transition: transform .6s ease; }
+    .journey-scene-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
     .journey-scene-card:hover .journey-scene-image img { transform: scale(1.02); }
     .journey-scene-num {
       display: inline-block; font-family: "Noto Serif TC", serif; font-size: 12.5px; letter-spacing: 3px;
@@ -702,8 +704,7 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">01｜起點</span>
             <h3 class="journey-scene-title">從你本來就在乎的事開始</h3>
-            <p class="journey-scene-lead">你喜歡永續、手作、陪伴或教學</p>
-            <p class="journey-scene-desc">也許你已經在生活裡關心環境，<br>也許你喜歡創作、喜歡陪人一起完成一件事。<br>這些，都是靠近永續行動的起點。</p>
+            <p class="journey-scene-lead">把喜歡的事，整理成可以被看見的方向。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-01-start.jpg" alt="雙手捧著小苗與多種永續材料的水彩情境圖" loading="lazy" decoding="async">
@@ -713,7 +714,8 @@
         <li class="journey-scene-card flip">
           <div class="journey-scene-text">
             <span class="journey-scene-num">02｜理解方法</span>
-            <h3 class="journey-scene-title">你會慢慢發現，<br>一份材料，<br>可以變成一段被記住的體驗。</h3>
+            <h3 class="journey-scene-title">看懂材料如何變成體驗</h3>
+            <p class="journey-scene-lead">讓一份材料，不只是材料，而是一段能被記住的行動。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：材料如何進入各場域的地圖" loading="lazy" decoding="async">
@@ -723,9 +725,8 @@
         <li class="journey-scene-card">
           <div class="journey-scene-text">
             <span class="journey-scene-num">03｜開始實作</span>
-            <h3 class="journey-scene-title">把想法做成可被帶領的內容</h3>
-            <p class="journey-scene-lead">練習帶領、整理流程，建立自己的交付感</p>
-            <p class="journey-scene-desc">透過實作與演練，<br>你會慢慢知道一場活動怎麼開始、怎麼引導、怎麼收尾，<br>也練習把自己的溫度放進一套穩定的流程裡。</p>
+            <h3 class="journey-scene-title">把想法做成可帶領的內容</h3>
+            <p class="journey-scene-lead">練習把故事、流程與現場引導，整理成一場體驗。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-03-practice.jpg" alt="桌面上的設計卡與材料：從聆聽到整合的四階段流程" loading="lazy" decoding="async">
@@ -735,9 +736,8 @@
         <li class="journey-scene-card flip">
           <div class="journey-scene-text">
             <span class="journey-scene-num">04｜走進現場</span>
-            <h3 class="journey-scene-title">在真實場域，帶領一場真的行動</h3>
-            <p class="journey-scene-lead">站到參與者面前，把材料說成體驗。</p>
-            <p class="journey-scene-desc">你會練習開場、引導與收束，<br>讓一場永續體驗真的被人感受到。</p>
+            <h3 class="journey-scene-title">在真實場域帶領行動</h3>
+            <p class="journey-scene-lead">從企業、校園到社區，學會把話說給不同的人聽。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-04-field.jpg" alt="ECO STAR 行動者在真實場域中帶領參與者體驗永續材料，象徵走進企業、校園與社區現場。" loading="lazy" decoding="async">
@@ -747,9 +747,8 @@
         <li class="journey-scene-card">
           <div class="journey-scene-text">
             <span class="journey-scene-num">05｜下一步</span>
-            <h3 class="journey-scene-title">從學習者，走向可被交付任務的夥伴</h3>
-            <p class="journey-scene-lead">接下第一張任務卡，準備進入合作評估。</p>
-            <p class="journey-scene-desc">完成訓練與實作後，<br>你會開始走向可以被信任交付的位置。</p>
+            <h3 class="journey-scene-title">從學習者走向合作夥伴</h3>
+            <p class="journey-scene-lead">通過評估後，才有機會走進真實任務。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-05-next-step.png" alt="ECO STAR 行動者帶領永續體驗工作坊，從學習者走向可被交付任務的夥伴。" loading="lazy" decoding="async">
@@ -832,41 +831,71 @@
       <div class="section-kicker-wrap"><span class="section-kicker">Why Wishlite</span></div>
       <h2 id="why-title" class="section-title">我們不是只在談永續，<br>而是一直在真實場域裡<br>把這些事情一場一場做出來</h2>
 
-      <!-- v3.2 trust proof：logo 牆 → 活動拼貼 → 數字 → 收尾 -->
+      <!-- v3.2 trust compress：logo → 數字 2×2 → 活動拼貼 → 收尾 -->
       <figure class="trust-logo">
         <img src="assets/logo-wall-clients.jpg" alt="Wishlite 合作品牌與企業 logo 牆" loading="lazy">
       </figure>
+
+      <p class="trust-numbers-intro">這些不是課堂，<br>是已經發生過的行動。</p>
+      <div class="trust-numbers">
+        <div class="trust-num-item"><div class="trust-number">300+</div><div class="trust-label">場企業與校園行動</div></div>
+        <div class="trust-num-item"><div class="trust-number">10,000+</div><div class="trust-label">人次實際參與</div></div>
+        <div class="trust-num-item"><div class="trust-number">100+</div><div class="trust-label">品牌與組織合作</div></div>
+        <div class="trust-num-item"><div class="trust-number">133+</div><div class="trust-label">噸再生材料被重新使用</div></div>
+      </div>
+
       <figure class="trust-collage">
         <img src="assets/esg-cases-collage.jpg" alt="Wishlite 在企業、校園、社區舉辦的永續體驗活動真實現場拼貼" loading="lazy">
       </figure>
 
-      <div class="why-numbers">
-        <div class="why-num"><div class="why-num-val">300+</div><div class="why-num-label">場永續活動</div></div>
-        <div class="why-num"><div class="why-num-val">10,000+</div><div class="why-num-label">位參與者</div></div>
-        <div class="why-num"><div class="why-num-val">100+</div><div class="why-num-label">家合作單位</div></div>
-        <div class="why-num"><div class="why-num-val">133+</div><div class="why-num-label">噸再生材料</div></div>
-      </div>
-      <p class="why-tail">ECO STAR，就是從這些經驗長出來的。</p>
+      <p class="why-tail">ECO STAR，<br>就是從這些經驗長出來的。</p>
 
       <style>
-        .trust-logo,.trust-collage{
-          max-width:1100px;margin:0 auto 28px;
+        .trust-logo{
+          max-width:1100px;margin:0 auto 32px;
         }
         .trust-logo img{
           width:100%;height:auto;display:block;
           opacity:.78;
         }
+        /* v3.3 trust numbers upgrade（Apple spec）*/
+        .trust-numbers-intro{
+          text-align:center;max-width:480px;margin:0 auto 24px;
+          font-family:'Noto Serif TC',serif;
+          font-size:17px;line-height:1.85;color:var(--green-deep);letter-spacing:.4px;
+        }
+        .trust-numbers{
+          display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+          max-width:560px;margin:0 auto 36px;
+        }
+        .trust-num-item{text-align:center}
+        .trust-number{
+          font-family:'Noto Serif TC',serif;
+          font-size:32px;font-weight:600;color:#5C4830;
+          line-height:1.2;
+        }
+        .trust-label{
+          font-size:14px;color:rgba(92,72,48,.7);margin-top:6px;
+          line-height:1.6;
+        }
+        @media(max-width:720px){
+          .trust-numbers{gap:18px 14px}
+          .trust-number{font-size:28px}
+          .trust-label{font-size:13px}
+          .trust-numbers-intro{font-size:15px}
+        }
         .trust-collage{
+          max-width:1100px;margin:0 auto 28px;
           border-radius:12px;overflow:hidden;
           box-shadow:0 8px 22px -16px rgba(126,90,53,.22);
-          margin-bottom:36px;
         }
         .trust-collage img{
           width:100%;height:auto;display:block;
         }
         @media(max-width:720px){
-          .trust-logo,.trust-collage{margin-bottom:20px}
-          .trust-collage{border-radius:8px;margin-bottom:28px}
+          .trust-logo{margin-bottom:24px}
+          .why-numbers-2x2{gap:18px 14px}
+          .trust-collage{border-radius:8px;margin-bottom:24px}
         }
       </style>
     </div>
