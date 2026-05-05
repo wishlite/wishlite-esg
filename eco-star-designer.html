@@ -224,6 +224,41 @@
     /* ═══ 04 / 05 / 06 ═══ */
     /* （使用通用 .section-body / 已在上方定義）*/
 
+    /* ═══ 06 適合誰｜文字左 + IP 圖右（並排） ═══ */
+    .who-fits-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 36px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 28px auto 12px;
+    }
+    .who-fits-layout .section-body { margin: 0; }
+    .who-fits-illus {
+      margin: 0;
+      width: 100%;
+      max-width: 560px;
+      justify-self: end;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px -22px rgba(126, 90, 53, 0.32);
+      background: var(--card, #fff);
+    }
+    .who-fits-illus img { display: block; width: 100%; height: auto; }
+    @media (max-width: 760px) {
+      .who-fits-layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        margin: 20px auto 8px;
+      }
+      .who-fits-illus {
+        max-width: none;
+        justify-self: stretch;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px -18px rgba(126, 90, 53, 0.28);
+      }
+    }
+
     /* ═══ 07 四能力區｜上方視覺總覽圖 ═══ */
     .learn-overview {
       margin: 32px auto 40px;
@@ -927,10 +962,15 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
       <h2 id="fit-title" class="section-title">這條路，<br>也許適合這樣的你</h2>
-      <div class="section-body">
-        <p>如果你是手作老師、教育工作者或活動引導者，<br>想讓自己的課程多一層永續價值。</p>
-        <p>如果你喜歡材料、創作與環境議題，<br>想把這份關心變成可以被實際執行的行動。</p>
-        <p>如果你一直很擅長陪伴人、整理想法、帶動現場，<br>也許你已經具備成為永續行動設計師的起點。</p>
+      <div class="who-fits-layout">
+        <div class="section-body">
+          <p>如果你是手作老師、教育工作者或活動引導者，<br>想讓自己的課程多一層永續價值。</p>
+          <p>如果你喜歡材料、創作與環境議題，<br>想把這份關心變成可以被實際執行的行動。</p>
+          <p>如果你一直很擅長陪伴人、整理想法、帶動現場，<br>也許你已經具備成為永續行動設計師的起點。</p>
+        </div>
+        <figure class="who-fits-illus">
+          <img src="assets/who-fits-six-friends-earth.png" alt="如果你一直很擅長陪伴人、整理想法、帶動現場，也許你已經具備成為永續行動設計師的起點" loading="lazy" decoding="async">
+        </figure>
       </div>
     </div>
   </section>
