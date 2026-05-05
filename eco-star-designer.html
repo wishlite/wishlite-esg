@@ -1,2228 +1,867 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ECO STAR 永續行動設計師系統｜把你在乎的永續，變成一場真的行動｜Wishlite 韻手作</title>
-<meta name="description" content="ECO STAR 是 Wishlite 韻手作為未來合作夥伴建立的培育路徑。從材料故事、體驗設計到現場帶領，陪你一步步學會把永續帶進真實場域。" />
-<meta name="keywords" content="ECO STAR, 永續行動設計師, 永續培訓, 體驗設計, Wishlite, 韻手作" />
-
-<!-- ============================================
-     Open Graph
-     ============================================ -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="ECO STAR 永續行動設計師系統｜Wishlite 韻手作" />
-<meta property="og:description" content="把你在乎的永續，變成一場真的行動。從材料、體驗到現場，一步步長出你的行動能力。" />
-
-<style>
-  /* ============================================
-     0｜色彩系統（沿用 designer.html 暖紙色/苔綠/金色）
-     ============================================ */
-  :root{
-    --bg:#F5F2EA;          /* 暖紙色主背景 */
-    --bg-soft:#FAF6EA;     /* 更淺米色（區塊交替） */
-    --bg-cream:#F0E9D8;    /* 米卡其（少量重點） */
-    --ink:#2F2A24;         /* 主文字（深暖棕） */
-    --sub:#7A6F61;         /* 次文字 */
-    --brown:#A67C52;       /* 暖棕（裝飾） */
-    --brown-deep:#7E5A35;  /* 深棕（標題重點） */
-    --green:#7D8F72;       /* 苔綠 */
-    --green-deep:#566448;  /* 深苔綠（深色區塊背景） */
-    --gold:#D89B5C;        /* 暖金（細節高光） */
-    --gold-light:#E5B883;  /* 淺金 */
-    --line:#E6E0D2;        /* 邊框／分隔線 */
-    --card:#FDFBF5;        /* 卡片底 */
-  }
-
-  /* ============================================
-     1｜全域 reset 與基礎排版
-     ============================================ */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:"PingFang TC","Noto Serif TC","Noto Sans TC","Helvetica Neue",sans-serif;
-    -webkit-font-smoothing:antialiased;
-    line-height:1.85;
-    font-size:16px;
-  }
-  img{max-width:100%;height:auto;display:block}
-  a{color:var(--brown-deep);text-decoration:none}
-  a:hover{color:var(--brown)}
-
-  /* 共用容器：對齊 designer.html 的 720 寬度，溫柔讀感 */
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
-
-  /* ============================================
-     2｜共用元件
-     ============================================ */
-
-  /* —— 葉脈分隔線（section 之間，沿用視覺聖經自然元素） —— */
-  .leaf-divider{
-    display:flex;align-items:center;justify-content:center;gap:14px;
-    margin:0 auto;max-width:380px;opacity:.55;padding:8px 0;
-  }
-  .leaf-divider .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--brown),transparent)}
-  .leaf-divider svg{width:26px;height:26px;color:var(--green-deep);flex-shrink:0}
-
-  /* —— Section 通用 —— */
-  section{padding:80px 0;position:relative}
-  section.cream{background:var(--bg-soft)}
-  section.dark{background:var(--green-deep);color:#fff}
-  section.dark .sec-kicker{color:var(--gold-light)}
-  section.dark .sec-title{
-    background:none;-webkit-text-fill-color:#fff;color:#fff;
-  }
-  section.dark .sec-lead{color:rgba(255,255,255,.78)}
-
-  /* —— Section 標題群 —— */
-  .sec-kicker{
-    display:inline-block;
-    font-size:12px;letter-spacing:4px;text-transform:uppercase;
-    color:var(--brown-deep);font-weight:600;
-    padding:5px 14px;background:rgba(166,124,82,.08);
-    border:1px solid rgba(166,124,82,.25);border-radius:20px;
-    margin-bottom:18px;
-  }
-  .sec-title{
-    font-family:"Noto Serif TC",serif;
-    font-size:30px;line-height:1.45;letter-spacing:1px;
-    font-weight:700;color:var(--ink);
-    margin-bottom:18px;
-  }
-  .sec-lead{
-    font-size:15.5px;color:var(--sub);line-height:2;
-  }
-  @media (max-width:560px){
-    .sec-title{font-size:24px;letter-spacing:.5px}
-    section{padding:60px 0}
-  }
-
-  /* —— 主／副 CTA 按鈕 —— */
-  .btn{
-    display:inline-block;padding:16px 30px;border-radius:32px;
-    font-size:15px;font-weight:600;letter-spacing:1.5px;
-    text-align:center;text-decoration:none;cursor:pointer;
-    transition:all .22s ease;font-family:inherit;
-    border:1.5px solid transparent;
-  }
-  .btn-primary{
-    background:var(--brown-deep);color:#fff;
-    box-shadow:0 14px 32px -16px rgba(126,90,53,.55);
-  }
-  .btn-primary:hover{background:var(--brown);transform:translateY(-2px);color:#fff}
-  .btn-secondary{
-    background:transparent;color:var(--brown-deep);
-    border-color:var(--brown);
-  }
-  .btn-secondary:hover{background:rgba(166,124,82,.08);color:var(--brown-deep)}
-  /* 深色背景上的副 CTA */
-  section.dark .btn-secondary{
-    color:#fff;border-color:rgba(255,255,255,.6);
-  }
-  section.dark .btn-secondary:hover{background:rgba(255,255,255,.08);color:#fff}
-  .btn-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:28px}
-  .btn-row.left{justify-content:flex-start}
-
-  /* —— 輕量文字連結（底部小提示用） —— */
-  .soft-link{
-    display:inline-block;margin-top:20px;
-    font-size:13.5px;color:var(--sub);
-    border-bottom:1px dashed rgba(126,111,97,.5);
-    padding-bottom:2px;letter-spacing:.5px;
-  }
-  .soft-link:hover{color:var(--brown-deep);border-bottom-color:var(--brown)}
-
-  /* ============================================
-     3｜SECTION 1 Hero 首屏
-     ============================================ */
-  .hero{
-    text-align:center;padding:96px 24px 80px;
-    position:relative;overflow:hidden;
-    background:
-      radial-gradient(ellipse 320px 220px at 12% 18%, rgba(125,143,114,.18), transparent 60%),
-      radial-gradient(ellipse 280px 200px at 88% 22%, rgba(216,155,92,.16), transparent 60%),
-      radial-gradient(ellipse 300px 220px at 18% 92%, rgba(180,200,180,.12), transparent 60%),
-      radial-gradient(ellipse 280px 200px at 86% 88%, rgba(225,180,120,.14), transparent 60%),
-      radial-gradient(120% 80% at 50% 0%, #FBF6E6 0%, var(--bg) 70%);
-  }
-  .hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:1}
-  .hero-kicker{
-    display:inline-block;font-size:12px;letter-spacing:5px;
-    color:var(--brown-deep);text-transform:uppercase;font-weight:600;
-    margin-bottom:24px;padding:6px 18px;
-    background:rgba(166,124,82,.10);border:1px solid rgba(166,124,82,.30);
-    border-radius:24px;
-  }
-  .hero h1{
-    font-family:"Noto Serif TC",serif;
-    font-size:42px;font-weight:700;line-height:1.4;letter-spacing:1.5px;
-    margin-bottom:22px;
-    background:linear-gradient(135deg,var(--brown-deep) 0%,var(--ink) 60%,var(--green-deep) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .hero h1 .ln{display:block}
-  .hero .sub{
-    font-size:16.5px;color:var(--sub);line-height:2;margin:0 auto 18px;max-width:560px;
-  }
-  .hero-divider{
-    width:64px;height:2px;margin:30px auto 22px;
-    background:linear-gradient(90deg,transparent,var(--brown),transparent);
-  }
-  /* 小芽輕放於 hero 下方，不壓主標 */
-  .hero-mascot{
-    margin:36px auto 0;max-width:160px;opacity:.92;
-  }
-  .hero-mascot img{filter:drop-shadow(0 12px 24px rgba(126,90,53,.18))}
-  .hero-mascot-cap{
-    text-align:center;font-size:12px;color:var(--brown-deep);
-    margin-top:10px;letter-spacing:2px;font-weight:500;
-  }
-  @media (max-width:560px){
-    .hero{padding:64px 18px 56px}
-    .hero h1{font-size:28px;letter-spacing:.5px}
-    .hero .sub{font-size:15px}
-    .hero-mascot{max-width:128px}
-  }
-
-  /* ============================================
-     4｜SECTION 2 為什麼需要這套系統｜痛點清單
-     ============================================ */
-  .pain-list{
-    margin-top:32px;display:grid;gap:16px;
-  }
-  .pain-item{
-    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
-    border-radius:10px;padding:20px 24px;
-    font-size:15px;line-height:1.95;color:var(--ink);
-  }
-  .pain-after{
-    margin-top:32px;padding:24px 26px;
-    background:rgba(125,143,114,.08);border:1px dashed rgba(125,143,114,.35);
-    border-radius:12px;font-size:15.5px;line-height:2;color:var(--ink);
-    text-align:center;
-  }
-  .pain-after strong{color:var(--green-deep);font-weight:600}
-
-  /* ============================================
-     5｜SECTION 3 ECO STAR 是什麼
-     ============================================ */
-  .what-card{
-    background:rgba(255,255,255,.72);border:1px solid var(--line);
-    border-radius:18px;padding:36px 32px;margin-top:30px;
-    box-shadow:0 18px 50px -28px rgba(126,90,53,.22);
-  }
-  .what-card p{font-size:15.5px;line-height:2.05;color:var(--ink);margin-bottom:14px}
-  .what-card p:last-child{margin-bottom:0}
-  .what-quote{
-    margin-top:24px;padding-left:18px;border-left:3px solid var(--brown);
-    font-size:16px;color:var(--brown-deep);line-height:1.95;font-weight:500;
-  }
-
-  /* ============================================
-     6｜SECTION 4 你會學到什麼｜四能力模組
-     ============================================ */
-  /* 視覺總覽圖（不取代能力卡） */
-  .learn-overview{
-    margin:32px auto 40px;max-width:960px;width:100%;
-    border-radius:24px;overflow:hidden;
-    box-shadow:0 12px 28px -20px rgba(126,90,53,.32);
-    background:var(--card);
-  }
-  .learn-overview img{display:block;width:100%;height:auto}
-  @media (max-width:720px){
-    .learn-overview{margin:24px auto 28px;border-radius:16px}
-  }
-  .ability-grid{
-    margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;
-  }
-  @media (max-width:640px){.ability-grid{grid-template-columns:1fr}}
-  .ability-card{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:28px 26px;position:relative;transition:all .22s ease;
-  }
-  .ability-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 20px 40px -24px rgba(126,90,53,.28);
-    border-color:var(--brown);
-  }
-  .ability-num{
-    font-family:"Noto Serif TC",serif;font-size:13px;letter-spacing:3px;
-    color:var(--gold);font-weight:600;margin-bottom:10px;display:block;
-  }
-  .ability-name{
-    font-size:18px;color:var(--brown-deep);font-weight:700;margin-bottom:12px;
-    letter-spacing:1px;
-  }
-  .ability-desc{font-size:14.5px;line-height:1.95;color:var(--ink)}
-
-  /* ============================================
-     7｜SECTION 5 這適合誰｜適合對象 list
-     ============================================ */
-  .fit-list{
-    margin-top:30px;display:grid;gap:14px;
-  }
-  .fit-item{
-    display:flex;align-items:flex-start;gap:14px;
-    padding:14px 18px;background:var(--card);border:1px solid var(--line);
-    border-radius:10px;font-size:15px;line-height:1.85;
-  }
-  .fit-icon{
-    flex-shrink:0;width:22px;height:22px;border-radius:50%;
-    background:rgba(125,143,114,.18);color:var(--green-deep);
-    display:flex;align-items:center;justify-content:center;
-    font-size:12px;font-weight:700;margin-top:3px;
-  }
-  .fit-foot{
-    margin-top:30px;padding:22px 24px;background:var(--bg-cream);
-    border-radius:12px;font-size:15px;line-height:2;color:var(--ink);
-  }
-  .fit-foot strong{color:var(--brown-deep)}
-
-  /* ============================================
-     8｜SECTION 6 路徑 5 steps
-     ============================================ */
-  .step-list{
-    margin-top:36px;display:grid;gap:18px;position:relative;
-  }
-  .step-card{
-    display:grid;grid-template-columns:48px 1fr;gap:18px;
-    background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:22px 24px;align-items:start;
-  }
-  .step-num{
-    width:42px;height:42px;border-radius:50%;
-    background:var(--brown-deep);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-family:"Noto Serif TC",serif;
-    font-size:18px;font-weight:600;letter-spacing:.5px;
-    flex-shrink:0;
-  }
-  .step-body{padding-top:4px}
-  .step-name{
-    font-size:16px;color:var(--brown-deep);font-weight:700;
-    margin-bottom:6px;letter-spacing:.5px;
-  }
-  .step-desc{font-size:14.5px;line-height:1.95;color:var(--ink)}
-
-  /* ============================================
-     9｜SECTION 7 為什麼是 Wishlite
-     ============================================ */
-  .why-card{
-    margin-top:30px;padding:36px 32px;
-    background:linear-gradient(135deg,rgba(125,143,114,.08),rgba(216,155,92,.06));
-    border:1px solid var(--line);border-radius:16px;
-  }
-  .why-card p{font-size:15.5px;line-height:2.05;color:var(--ink);margin-bottom:14px}
-  .why-card p:last-child{margin-bottom:0}
-
-  /* ============================================
-     10｜SECTION 8 真實開始的樣子｜全家福
-     ============================================ */
-  .start-mascot{
-    margin:36px auto 0;max-width:520px;
-  }
-  .start-mascot img{
-    border-radius:14px;
-    filter:drop-shadow(0 16px 36px rgba(126,90,53,.16));
-  }
-  .start-text{
-    margin-top:30px;font-size:15.5px;line-height:2.1;color:var(--ink);
-  }
-  .start-text p{margin-bottom:14px}
-  .start-text p:last-child{margin-bottom:0}
-
-  /* ============================================
-     11｜SECTION 9 說明會邀請（深色 CTA 區塊）
-     ============================================ */
-  .signup-card{
-    margin-top:32px;padding:36px 32px;
-    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
-    border-radius:18px;backdrop-filter:blur(2px);
-  }
-  .signup-list{
-    list-style:none;padding:0;margin:18px 0 22px;
-    display:grid;gap:10px;
-  }
-  .signup-list li{
-    padding-left:22px;position:relative;
-    font-size:15px;line-height:1.9;color:rgba(255,255,255,.88);
-  }
-  .signup-list li::before{
-    content:"";position:absolute;left:0;top:12px;
-    width:8px;height:8px;border-radius:50%;
-    background:var(--gold-light);
-  }
-  .signup-foot{
-    font-size:14.5px;color:rgba(255,255,255,.65);
-    margin-top:12px;line-height:1.95;
-  }
-
-  /* ============================================
-     12｜SECTION 10 Footer 收束
-     ============================================ */
-  .closing{
-    text-align:center;padding:96px 24px 64px;
-    background:
-      radial-gradient(ellipse 280px 200px at 18% 22%, rgba(125,143,114,.14), transparent 60%),
-      radial-gradient(ellipse 280px 200px at 82% 78%, rgba(216,155,92,.14), transparent 60%),
-      var(--bg);
-  }
-  .closing-inner{max-width:680px;margin:0 auto}
-  .closing h2{
-    font-family:"Noto Serif TC",serif;
-    font-size:28px;line-height:1.55;font-weight:700;
-    color:var(--ink);margin-bottom:18px;letter-spacing:1px;
-  }
-  .closing p{
-    font-size:15.5px;color:var(--sub);line-height:2.05;
-    margin-bottom:8px;
-  }
-  .horizon{
-    margin:48px auto 36px;width:80%;height:1px;
-    background:linear-gradient(90deg,transparent,var(--brown),transparent);
-    opacity:.6;
-  }
-  .footer{
-    text-align:center;padding:32px 24px 56px;
-    font-size:12.5px;color:var(--sub);letter-spacing:1.5px;
-  }
-  .footer-brand{
-    font-weight:600;color:var(--brown-deep);
-    letter-spacing:2px;margin-bottom:6px;
-  }
-
-  @media (max-width:560px){
-    .closing{padding:72px 18px 48px}
-    .closing h2{font-size:22px}
-    .what-card,.why-card,.signup-card{padding:28px 22px}
-  }
-
-  /* ============================================
-     13｜Footer 弱化 Quiz 連結（給沒做過測驗的少數人退路）
-     ============================================ */
-  .footer-quiz-soft{
-    margin-top:18px;font-size:12px;letter-spacing:.5px;
-    color:rgba(122,111,97,.7);
-  }
-  .footer-quiz-soft a{
-    color:rgba(122,111,97,.85);
-    border-bottom:1px dotted rgba(166,124,82,.35);
-    padding-bottom:1px;
-  }
-  .footer-quiz-soft a:hover{color:var(--brown-deep);border-bottom-color:var(--brown)}
-
-  /* ============================================
-     14｜翻卡共用（Section 2 痛點 + Section 4 四能力）
-     - hover / focus / .is-flipped 三種狀態觸發
-     - 0.4s ease，輕量、不誇張
-     - 手機點擊：JS toggle .is-flipped（不靠 hover）
-     ============================================ */
-  .flip-grid{perspective:1200px}
-  .flip-card{
-    position:relative;cursor:pointer;
-    border-radius:12px;
-    -webkit-tap-highlight-color:transparent;
-    outline:none;
-  }
-  .flip-card:focus-visible{
-    box-shadow:0 0 0 2px rgba(166,124,82,.45);
-  }
-  .flip-card-inner{
-    position:relative;width:100%;height:100%;
-    transition:transform .4s ease;
-    transform-style:preserve-3d;
-  }
-  .flip-card-face{
-    position:absolute;inset:0;
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-    border-radius:inherit;
-    display:flex;flex-direction:column;justify-content:center;
-  }
-  .flip-card-back{transform:rotateY(180deg)}
-  /* 桌機 hover 翻；點擊或 focus 也翻（手機由 JS 加 .is-flipped） */
-  .flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg)}
-  @media (hover:hover) and (pointer:fine){
-    .flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
-  }
-
-  /* —— Section 2 痛點翻卡尺寸 —— */
-  .pain-flip{min-height:96px}
-  .pain-flip .flip-card-front{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-left:3px solid var(--gold);
-    padding:22px 24px;
-    font-size:15px;line-height:1.95;color:var(--ink);
-  }
-  .pain-flip .flip-card-back{
-    background:linear-gradient(135deg,rgba(125,143,114,.14),rgba(216,155,92,.08));
-    border:1px solid rgba(125,143,114,.30);
-    border-left:3px solid var(--green);
-    padding:22px 24px;
-    font-size:15px;line-height:1.95;color:var(--green-deep);
-    font-weight:500;
-  }
-
-  /* —— 翻卡輕提示（grid 上方提示） —— */
-  .flip-grid::before{
-    content:attr(data-flip-hint);
-    display:block;
-    font-size:12.5px;color:var(--sub);letter-spacing:1px;
-    margin-bottom:14px;text-align:right;
-    opacity:.75;
-  }
-  @media (max-width:560px){
-    .flip-grid::before{text-align:center}
-  }
-
-  /* —— 翻卡右下角小提示：很輕、不像按鈕、桌機與手機都看得到。
-       Section 2 用「點一下，看回應」；Section 4 用「點一下，看畫面」。
-       貼在前面那一面，翻到背面就跟著消失（backface-visibility 處理）。 —— */
-  .pain-flip .flip-card-front,
-  .ability-flip .flip-card-front{
-    /* 預留右下角空間，避免與內容重疊 */
-    padding-bottom:30px;
-  }
-  .pain-flip .flip-card-front::after,
-  .ability-flip .flip-card-front::after{
-    position:absolute;
-    right:16px;bottom:9px;
-    font-size:10.5px;
-    letter-spacing:1.2px;
-    color:rgba(122,111,97,.55);
-    font-weight:400;
-    font-family:"PingFang TC","Noto Sans TC",sans-serif;
-    pointer-events:none;
-    /* 一個淡淡的箭頭符號暗示可互動，不像按鈕 */
-    white-space:nowrap;
-  }
-  .pain-flip .flip-card-front::after{content:"↻ 點一下，看回應"}
-  .ability-flip .flip-card-front::after{content:"↻ 點一下，看畫面"}
-  /* hover/focus 時輕輕加深，但不誇張 */
-  @media (hover:hover) and (pointer:fine){
-    .flip-card:hover .flip-card-front::after{
-      color:rgba(126,90,53,.85);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ECO STAR 永續行動設計師系統｜把你在乎的永續，變成一場真的行動。">
+  <meta property="og:title" content="ECO STAR｜永續行動設計師系統">
+  <meta property="og:description" content="把你在乎的永續，變成一場真的行動。">
+  <meta property="og:type" content="website">
+  <title>ECO STAR｜永續行動設計師系統 — Wishlite 韻手作永續</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F5F2EA;
+      --bg-soft: #FAF6EA;
+      --bg-cream: #F0E9D8;
+      --ink: #2F2A24;
+      --sub: #7A6F61;
+      --brown: #A67C52;
+      --brown-deep: #7E5A35;
+      --green: #7D8F72;
+      --green-deep: #566448;
+      --gold: #D89B5C;
+      --gold-light: #E5B883;
+      --line: #E6E0D2;
+      --card: #FDFBF5;
+      --shadow-soft: 0 18px 50px -28px rgba(126, 90, 53, 0.22);
+      --radius: 18px;
+      --radius-card: 14px;
     }
-  }
-
-  /* —— Section 4 能力翻卡尺寸（保持原本 grid 高度感） —— */
-  .ability-flip{min-height:200px}
-  .ability-flip .ability-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    padding:28px 26px;
-    transition:none; /* 翻卡接管動畫，原 hover transform 取消避免衝突 */
-  }
-  .ability-flip:hover .ability-card{
-    transform:none;box-shadow:none;border-color:var(--line);
-  }
-  .ability-flip .ability-card-back{
-    background:linear-gradient(135deg,rgba(125,143,114,.10),rgba(216,155,92,.10));
-    border:1px solid rgba(125,143,114,.28);
-    border-left:3px solid var(--green);
-  }
-  .ability-flip .ability-card-back .ability-num{color:var(--green-deep)}
-  .ability-vivid{
-    font-family:"Noto Serif TC",serif;
-    font-size:15.5px;line-height:2;color:var(--brown-deep);
-    font-weight:500;letter-spacing:.5px;
-  }
-
-  /* ============================================
-     15｜Section 6 Step Reveal + 虛線時間軸
-     - IntersectionObserver 進視窗時加 .is-visible
-     - 每張 stagger 0.1s
-     - .step-trail 虛線貫穿 step-num 中心軸
-     ============================================ */
-  .step-reveal{position:relative}
-  /* —— 走路感虛線：
-       不用實心 dashed（太像 SOP 流程線）。
-       用 background-image 仿手繪小點，間距較鬆＋兩端 mask 淡出，
-       像「慢慢走過去留下的腳印」而不是企業簡報線。 —— */
-  .step-trail{
-    position:absolute;
-    left:45.5px;          /* step-card padding-left 24 + step-num 寬 42 / 2 ≈ 45.5 */
-    top:24px;bottom:24px;
-    width:1.5px;
-    /* 仿腳印的小圓點：每 9px 一顆，圓點本身只 1.6px */
-    background-image:radial-gradient(circle, rgba(166,124,82,.32) 0.8px, transparent 1.4px);
-    background-size:1.5px 9px;
-    background-repeat:repeat-y;
-    /* 兩端淡出，像線慢慢出現／慢慢消失 */
-    -webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-            mask-image:linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-    z-index:0;
-    border-left:none;
-    /* 進視窗時慢慢拉出（節奏比原本更慢，有走路感） */
-    transform:scaleY(0);transform-origin:top;
-    transition:transform 1.2s ease .2s;
-  }
-  .step-reveal.is-walking .step-trail{transform:scaleY(1)}
-  .step-card.step-item{
-    position:relative;z-index:1;
-    opacity:0;transform:translateY(18px);
-    transition:opacity .5s ease, transform .5s ease;
-  }
-  .step-item.is-visible{opacity:1;transform:translateY(0)}
-  /* stagger */
-  .step-item[data-step-index="0"]{transition-delay:.05s}
-  .step-item[data-step-index="1"]{transition-delay:.18s}
-  .step-item[data-step-index="2"]{transition-delay:.31s}
-  .step-item[data-step-index="3"]{transition-delay:.44s}
-  .step-item[data-step-index="4"]{transition-delay:.57s}
-
-  @media (max-width:560px){
-    .step-trail{left:37.5px;top:20px;bottom:20px}
-  }
-
-  /* —— Reduced motion 尊重使用者偏好 —— */
-  @media (prefers-reduced-motion: reduce){
-    .flip-card-inner,
-    .step-item,
-    .step-trail{transition:none !important}
-    .step-item{opacity:1;transform:none}
-    .step-trail{transform:scaleY(1)}
-  }
-
-  /* ============================================
-     16｜轉換版新增樣式
-     ============================================ */
-
-  /* —— Hero TA 對號入座句：稍微凸顯但不搶主標 —— */
-  .hero-ta{
-    color:var(--ink);
-    font-size:16.5px;
-    font-weight:500;
-    max-width:520px;margin-left:auto;margin-right:auto;
-  }
-
-  /* —— Stories 中段 anchor 句：「沒有一種標準的開始。」 —— */
-  .stories-anchor{
-    text-align:center;
-    color:var(--brown-deep);
-    font-family:"Noto Serif TC",serif;
-    font-weight:600;
-    font-size:17px;letter-spacing:1px;
-    margin:26px 0 !important;
-    position:relative;padding:8px 0;
-  }
-  .stories-anchor::before,
-  .stories-anchor::after{
-    content:"";display:inline-block;
-    width:36px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--brown));
-    vertical-align:middle;margin:0 14px 4px;
-  }
-  .stories-anchor::after{
-    background:linear-gradient(90deg,var(--brown),transparent);
-  }
-
-  /* —— CTA 區 Apple 拍板 softer hook —— */
-  .signup-hook{
-    margin-top:0;margin-bottom:16px;
-    font-family:"Noto Serif TC",serif;
-    font-size:17px;line-height:1.85;
-    color:#fff;font-weight:500;letter-spacing:1px;
-    padding-bottom:14px;
-    border-bottom:1px dashed rgba(255,255,255,.22);
-  }
-
-  @media (max-width:560px){
-    .hero-ta{font-size:15px}
-    .stories-anchor{font-size:15.5px}
-    .stories-anchor::before,.stories-anchor::after{width:24px;margin:0 8px 4px}
-    .signup-hook{font-size:15.5px}
-  }
-
-  /* ============================================
-     17｜四能力卡片 UI 升級（Tony spec, scope 限 .ability-flip）
-     - 不動 Section 2 痛點翻卡（兩區互動風格保持分層）
-     - 微微空氣感、人格色 stripe、溫柔聚光、放大畫面句
-     ============================================ */
-
-  /* —— 卡片基礎：很淡的空氣感 + 圓角 16px —— */
-  .ability-flip{
-    border-radius:16px;
-    transition:transform .35s ease, box-shadow .35s ease;
-    box-shadow:0 4px 12px rgba(92,72,48,.05);
-  }
-  /* 桌機 hover 才浮起；手機不要 */
-  @media (hover:hover) and (pointer:fine){
-    .ability-flip:hover{
-      transform:translateY(-4px);
-      box-shadow:0 8px 20px rgba(92,72,48,.08);
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.85;
+      overflow-x: hidden;
+      width: 100%;
     }
-  }
+    h1, h2, h3, p, a, li { word-break: break-word; overflow-wrap: anywhere; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { width: 100%; max-width: 920px; margin: 0 auto; padding: 0 32px; }
 
-  /* —— Faces 圓角同步 —— */
-  .ability-flip .flip-card-face{border-radius:16px}
+    .group-resonance { background: var(--bg); }
+    .group-trust { background: var(--bg-soft); }
+    .group-understand { background: var(--bg); }
+    .group-path { background: var(--bg-soft); }
 
-  /* —— 把 ability-card 既有底色 + Tony 暖光聚光疊在一起；
-       padding 改成 28 24 32 32（Tony 規格 + 預留左側 stripe 空間） —— */
-  .ability-flip .ability-card{
-    border-radius:16px;
-    padding:28px 24px 32px 32px;
-    background:
-      radial-gradient(circle at 50% 40%, rgba(166,124,82,0.08), rgba(166,124,82,0.03) 40%, transparent 70%),
-      var(--card);
-  }
-  /* 背面：人格色接管左邊；不再用苔綠 border-left。
-     底色仍維持淡苔綠暖金漸層，但聚光疊上去更柔。 */
-  .ability-flip .ability-card-back{
-    border-left:none;
-    background:
-      radial-gradient(circle at 50% 40%, rgba(166,124,82,0.08), rgba(166,124,82,0.03) 40%, transparent 70%),
-      linear-gradient(135deg, rgba(125,143,114,.10), rgba(216,155,92,.10));
-  }
-
-  /* —— 六友導引色：左側 4px 直條，opacity 0.35（兩面都有，IP 一致）—— */
-  .ability-flip .flip-card-face::before{
-    content:"";
-    position:absolute;
-    left:14px; top:18px; bottom:18px;
-    width:4px;
-    border-radius:2px;
-    background:var(--mascot, var(--brown));
-    opacity:.35;
-    z-index:1;
-    pointer-events:none;
-  }
-
-  /* 4 種人格色（依 Tony spec） */
-  .ability-flip.card-01{--mascot:#A67C52} /* 小渣 咖啡棕 */
-  .ability-flip.card-02{--mascot:#8FA8B3} /* 小塑 淡藍灰 */
-  .ability-flip.card-03{--mascot:#B7A89A} /* 小蠔 灰棕   */
-  .ability-flip.card-04{--mascot:#7D8F72} /* 小芽 霧綠   */
-
-  /* —— 翻卡 transition 0.4s → 0.45s（更自然，不像 gimmick）—— */
-  .ability-flip .flip-card-inner{transition:transform .45s ease}
-
-  /* —— 「畫面句」放大：轉換關鍵句，比一般正面敘述多一點重量 —— */
-  .ability-vivid{
-    font-size:16.5px;
-    line-height:1.85;
-    color:#5C4830;
-    font-weight:500;
-  }
-
-  /* —— 手機微調（padding 收一點、畫面句字級 -1） —— */
-  @media (max-width:768px){
-    .ability-flip .ability-card{
-      padding:22px 18px 28px 28px;
+    .group-divider {
+      width: 80px; height: 1.5px; margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--brown), transparent);
+      opacity: 0.45;
     }
-    .ability-flip .flip-card-face::before{
-      left:11px;top:14px;bottom:14px;
+
+    section { padding: 72px 0; position: relative; }
+    .section-kicker {
+      display: inline-block;
+      font-size: 11.5px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--brown-deep); font-weight: 600;
+      padding: 5px 14px;
+      background: rgba(166, 124, 82, 0.08);
+      border: 1px solid rgba(166, 124, 82, 0.25);
+      border-radius: 100px;
+      margin-bottom: 20px;
     }
-    .ability-vivid{font-size:15.5px}
-  }
-
-  /* ============================================
-     18｜Footer 山脈 + 遠方 IP（地平線語言升級）
-     - 山脈是 closing 主體；不搶 CTA
-     - IP 1-2 隻 silhouette，opacity 0.2-0.30，遠方感
-     - 不互動、不排整排
-     ============================================ */
-  .closing-mountain{
-    position:relative;
-    width:100%;
-    height:170px;
-    margin-top:8px;
-    overflow:hidden;
-    pointer-events:none;
-  }
-  .closing-mountain svg{
-    position:absolute;inset:0;
-    width:100%;height:100%;
-    display:block;
-  }
-  .mountain-mascot{
-    position:absolute;
-    width:auto;height:auto;
-    filter:saturate(.65);
-    pointer-events:none;
-  }
-  /* 左側小芽：稍大、稍清楚（仍很淡） */
-  .mountain-mascot.mascot-left{
-    left:18%;
-    bottom:32px;
-    height:56px;
-    opacity:.30;
-  }
-  /* 右側小渣：再小、再遠 */
-  .mountain-mascot.mascot-right{
-    right:22%;
-    bottom:22px;
-    height:42px;
-    opacity:.22;
-  }
-
-  @media (max-width:560px){
-    .closing-mountain{height:120px}
-    .mountain-mascot.mascot-left{height:40px;left:12%;bottom:22px;opacity:.28}
-    .mountain-mascot.mascot-right{height:30px;right:14%;bottom:14px;opacity:.20}
-  }
-
-  /* ============================================
-     19｜圖文並列佈局（What/Path/Why Wishlite）
-     - 桌機：左文右圖 1.05:1
-     - 手機：自動 stack，文字在上、圖在下（依 source order）
-     - 圖像走 inline SVG，紙感／低飽和／不放角色
-     ============================================ */
-  .split-layout{
-    display:grid;
-    grid-template-columns:1.05fr 1fr;
-    gap:44px;
-    align-items:center;
-    margin-top:30px;
-  }
-  .split-text{min-width:0}
-  .split-illus{
-    min-width:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .split-illus svg{
-    width:100%;
-    height:auto;
-    max-width:360px;
-    display:block;
-  }
-  @media (max-width:768px){
-    .split-layout{
-      grid-template-columns:1fr;
-      gap:28px;
+    .section-kicker-wrap { text-align: center; }
+    .section-title {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(26px, 3.3vw, 34px); color: var(--brown-deep);
+      line-height: 1.55; text-align: center; margin-bottom: 28px; letter-spacing: 0.02em;
     }
-    .split-illus svg{max-width:280px;margin:0 auto}
-  }
-
-  /* —— Materials banner（Section 5 Learn 上方拼貼）—— */
-  .materials-banner-wrap{
-    margin:22px auto 6px;
-    max-width:620px;
-    opacity:.88;
-  }
-  .materials-banner{width:100%;height:auto;display:block}
-
-  /* —— 各圖的微調 —— */
-  /* What 紙卡：略寬一點，三張錯位疊放需要呼吸空間 */
-  .illus-what{max-width:380px}
-  /* Path 地圖：直立長型 */
-  .illus-path{max-width:300px}
-  /* Why Wishlite 場域：較寬 */
-  .illus-wishlite{max-width:380px}
-
-  /* 圖文輔助文字（圖下方的小註解）— 不依賴，輕量提示 */
-  .illus-cap{
-    text-align:center;
-    font-size:11.5px;
-    color:var(--sub);
-    letter-spacing:1.5px;
-    margin-top:14px;
-    opacity:.7;
-  }
-
-  /* ============================================
-     4.5｜SECTION 4.5 溫柔路徑圖 Gentle Journey Map
-     從喜歡 → 可交付，5 段卡片直立串接，手機友善
-     ============================================ */
-  .journey-section{
-    background:linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 100%);
-  }
-  .journey-section .sec-title{text-align:left}
-  .journey-intro{
-    font-size:15.5px;color:var(--sub);line-height:2;
-    max-width:620px;margin:6px 0 44px;
-  }
-  .journey-list{
-    list-style:none;padding:0;margin:0;
-    display:flex;flex-direction:column;
-  }
-  .journey-card{
-    display:flex;gap:20px;align-items:flex-start;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:24px 26px;
-    box-shadow:0 8px 22px -16px rgba(126,90,53,.32);
-  }
-  .journey-badge{
-    flex-shrink:0;width:44px;height:44px;border-radius:50%;
-    background:var(--bg-cream);
-    border:1px solid rgba(166,124,82,.28);
-    display:flex;align-items:center;justify-content:center;
-    font-family:"Noto Serif TC",serif;
-    font-size:15px;font-weight:700;
-    color:var(--brown-deep);letter-spacing:.5px;
-  }
-  .journey-body{flex:1;min-width:0;overflow:hidden}
-  .journey-icon{
-    float:right;width:42px;height:42px;
-    margin:0 0 6px 14px;
-    color:var(--green-deep);opacity:.72;
-  }
-  .journey-title{
-    font-family:"Noto Serif TC",serif;
-    font-size:19px;font-weight:700;
-    color:var(--ink);letter-spacing:1px;
-    margin-bottom:6px;line-height:1.4;
-  }
-  .journey-sub{
-    font-size:14px;color:var(--brown-deep);font-weight:600;
-    letter-spacing:.5px;margin-bottom:10px;line-height:1.6;
-  }
-  .journey-text{
-    font-size:14.5px;color:var(--sub);line-height:1.95;margin:0;
-  }
-  .journey-arrow{
-    list-style:none;
-    display:flex;justify-content:center;align-items:center;
-    padding:10px 0;color:var(--brown);opacity:.42;
-  }
-  .journey-arrow svg{width:16px;height:16px}
-  .journey-coda{
-    text-align:center;margin:36px 0 0;
-    font-size:13.5px;color:var(--sub);
-    letter-spacing:3px;opacity:.82;
-  }
-  @media (max-width:560px){
-    .journey-card{padding:20px 18px;gap:14px}
-    .journey-badge{width:38px;height:38px;font-size:13.5px}
-    .journey-icon{width:64px;height:64px;margin:0 0 4px 12px}
-    .journey-title{font-size:17px}
-    .journey-sub{font-size:13.5px}
-    .journey-text{font-size:14px;line-height:1.9}
-  }
-  .journey-icon{width:78px;height:78px;margin:0 0 6px 18px}
-
-  /* —— 完整行動路徑收束圖（直接內嵌，不再用 modal） —— */
-  .journey-full{
-    display:block;margin:48px auto 32px;
-    max-width:980px;width:100%;
-    border-radius:24px;overflow:hidden;
-    box-shadow:0 14px 32px -22px rgba(126,90,53,.32);
-    background:var(--card);
-  }
-  .journey-full img{display:block;width:100%;height:auto}
-  @media (max-width:720px){
-    .journey-full{
-      margin:36px auto 24px;border-radius:18px;
-      box-shadow:0 8px 20px -18px rgba(126,90,53,.28);
+    .section-body {
+      font-size: 16.5px; line-height: 2.1; color: var(--ink); opacity: 0.92;
+      max-width: 600px; margin: 0 auto;
     }
-  }
+    .section-body p { margin-bottom: 20px; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body .accent { color: var(--brown-deep); font-weight: 500; font-family: 'Noto Serif TC', serif; }
 
-  /* —— v3 旅程節點：左主文 / 右輔助小圖 / 左側貫穿時間軸 —— */
-  .journey-section .wrap{max-width:880px}
-  .journey-scenes{
-    list-style:none;padding:0;margin:36px 0 0;
-    display:flex;flex-direction:column;gap:36px;
-    position:relative;
-    counter-reset:step;
-  }
-  /* 左側貫穿垂直線（從第一個編號中心到最後一個編號中心） */
-  .journey-scenes::before{
-    content:"";position:absolute;
-    left:18px;top:18px;bottom:18px;
-    width:1px;
-    background:linear-gradient(180deg,
-      rgba(166,124,82,0) 0%,
-      rgba(166,124,82,.32) 8%,
-      rgba(166,124,82,.32) 92%,
-      rgba(166,124,82,0) 100%);
-    z-index:0;
-  }
-  .journey-scene-card{
-    display:grid;
-    grid-template-columns:36px minmax(0,1fr) 220px;
-    gap:24px 28px;align-items:start;
-    position:relative;
-  }
-  /* 左欄：步驟圓點（取代原本 num pill） */
-  .journey-scene-card::before{
-    content:counter(step,decimal-leading-zero);
-    counter-increment:step;
-    grid-row:1 / span 3;
-    grid-column:1;
-    width:36px;height:36px;border-radius:50%;
-    background:var(--bg-cream,#FAF6EE);
-    border:1px solid rgba(166,124,82,.45);
-    color:var(--brown-deep);
-    font-family:"Noto Serif TC",serif;
-    font-size:12px;font-weight:700;letter-spacing:1px;
-    display:flex;align-items:center;justify-content:center;
-    margin-top:4px;
-    position:relative;z-index:1;
-  }
-  .journey-scene-text{grid-column:2;order:0}
-  .journey-scene-image{
-    grid-column:3;grid-row:1 / span 3;order:0;
-    width:220px;max-width:220px;align-self:start;
-    border-radius:12px;overflow:hidden;
-    background:var(--card);
-    box-shadow:0 8px 22px -18px rgba(126,90,53,.32);
-    border:1px solid var(--line);
-    margin-top:2px;
-  }
-  .journey-scene-image img{
-    display:block;width:100%;height:auto;
-    transition:transform .6s ease;
-  }
-  .journey-scene-card:hover .journey-scene-image img{transform:scale(1.02)}
-  /* 原本的編號 pill 改為輕量 kicker — 步驟主視覺由左側 ::before 圓點承擔 */
-  .journey-scene-num{
-    display:inline-block;
-    font-family:"Noto Serif TC",serif;
-    font-size:11.5px;letter-spacing:2.5px;
-    color:var(--brown-deep);font-weight:700;
-    background:transparent;
-    border:0;
-    padding:0;
-    margin-bottom:8px;opacity:.78;
-  }
-  .journey-scene-title{
-    font-family:"Noto Serif TC",serif;
-    font-size:21px;font-weight:700;color:var(--ink);
-    margin:0 0 8px;line-height:1.5;letter-spacing:1px;
-  }
-  .journey-scene-lead{
-    font-size:14.5px;color:var(--brown-deep);font-weight:600;
-    letter-spacing:.5px;margin:0 0 10px;line-height:1.7;
-  }
-  .journey-scene-desc{
-    font-size:14px;color:var(--sub);
-    line-height:1.95;margin:0;
-  }
-  @media (max-width:720px){
-    .journey-scenes{gap:28px;margin-top:30px}
-    .journey-scenes::before{left:14px;top:14px;bottom:14px}
-    .journey-scene-card,
-    .journey-scene-card.flip{
-      grid-template-columns:30px minmax(0,1fr);
-      gap:14px 14px;
+    .btn {
+      display: inline-block; padding: 0 32px; height: 54px; line-height: 52px;
+      border-radius: 100px; font-weight: 500; font-size: 16px;
+      text-decoration: none; text-align: center; letter-spacing: 0.04em;
+      transition: all 0.28s ease; cursor: pointer; border: 1.5px solid transparent;
     }
-    .journey-scene-card::before{
-      width:30px;height:30px;font-size:11px;margin-top:2px;
-      grid-row:1 / span 4;
+    .btn-primary {
+      background: var(--brown); color: var(--card); border-color: var(--brown);
+      box-shadow: 0 8px 22px -8px rgba(126, 90, 53, 0.42);
     }
-    .journey-scene-text{grid-column:2;order:0}
-    .journey-scene-image,
-    .journey-scene-card.flip .journey-scene-image{
-      grid-column:2;grid-row:auto;order:1;
-      width:100%;max-width:none;
-      margin-top:8px;
+    .btn-primary:hover {
+      background: var(--brown-deep); border-color: var(--brown-deep);
+      box-shadow: 0 12px 28px -8px rgba(126, 90, 53, 0.55);
+      transform: translateY(-1px);
     }
-    .journey-scene-title{font-size:18px;letter-spacing:.5px}
-    .journey-scene-lead{font-size:13.5px}
-    .journey-scene-desc{font-size:13.5px;line-height:1.9}
-  }
-</style>
+    .btn-secondary {
+      background: transparent; color: var(--brown-deep);
+      border: 1.5px solid rgba(166, 124, 82, 0.45);
+    }
+    .btn-secondary:hover { background: rgba(166, 124, 82, 0.08); border-color: var(--brown); }
+
+    /* HERO */
+    .hero {
+      padding: 120px 24px 88px; text-align: center; position: relative; overflow: hidden;
+      background:
+        radial-gradient(ellipse 360px 240px at 12% 18%, rgba(125, 143, 114, 0.18), transparent 60%),
+        radial-gradient(ellipse 320px 220px at 88% 22%, rgba(216, 155, 92, 0.16), transparent 60%),
+        linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+    }
+    .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-kicker {
+      display: inline-block; font-size: 11.5px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--brown-deep); font-weight: 600; padding: 5px 14px;
+      background: rgba(166, 124, 82, 0.08); border: 1px solid rgba(166, 124, 82, 0.25);
+      border-radius: 100px; margin-bottom: 26px;
+    }
+    .hero-title {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(30px, 4.6vw, 46px); line-height: 1.5;
+      color: var(--brown-deep); margin-bottom: 14px; letter-spacing: 0.04em;
+    }
+    .hero-sub { font-size: 17px; color: var(--sub); line-height: 1.9; }
+    .hero-divider {
+      width: 64px; height: 1.5px; margin: 28px auto 26px;
+      background: linear-gradient(90deg, transparent, var(--brown), transparent); opacity: 0.55;
+    }
+    .hero-body {
+      font-size: 17px; line-height: 2.15; color: var(--ink);
+      max-width: 560px; margin: 0 auto; opacity: 0.92;
+    }
+    .hero-ctas { margin-top: 44px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-mascot {
+      position: absolute; right: 5%; bottom: 6%; width: 130px; height: 130px;
+      opacity: 0.78; pointer-events: none; z-index: 1;
+    }
+    .hero-mascot img { width: 100%; height: 100%; object-fit: contain; }
+
+    /* 痛點卡 */
+    .pain-list { max-width: 580px; margin: 32px auto 0; display: flex; flex-direction: column; gap: 14px; }
+    .pain-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-card);
+      padding: 22px 26px; box-shadow: 0 4px 14px -8px rgba(126, 90, 53, 0.10);
+      transition: box-shadow 0.25s ease; font-size: 16px; line-height: 1.95; color: var(--ink);
+    }
+    .pain-card:hover { box-shadow: 0 8px 22px -10px rgba(126, 90, 53, 0.18); }
+    .pain-card.lead {
+      background: rgba(125, 143, 114, 0.08); border-color: rgba(125, 143, 114, 0.30);
+      color: var(--green-deep); font-family: 'Noto Serif TC', serif; font-weight: 500; text-align: center;
+    }
+
+    /* Stories */
+    .stories-image { max-width: 480px; margin: 28px auto 32px; opacity: 0.92; }
+
+    /* 四場域卡 */
+    .field-cards {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      margin-top: 36px; max-width: 760px; margin-left: auto; margin-right: auto;
+    }
+    .field-card {
+      border-radius: 14px; overflow: hidden; background: var(--card);
+      border: 1px solid var(--line); box-shadow: 0 8px 22px -14px rgba(126, 90, 53, .18);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .field-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px -14px rgba(126, 90, 53, .28); }
+    .field-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .field-card-label {
+      padding: 14px 18px; font-family: 'Noto Serif TC', serif; font-weight: 600;
+      font-size: 15px; color: var(--brown-deep); text-align: center;
+    }
+
+    /* 四能力卡 */
+    .abilities {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      margin-top: 32px; max-width: 720px; margin-left: auto; margin-right: auto;
+    }
+    .ability {
+      background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--brown);
+      border-radius: var(--radius-card); padding: 28px 26px;
+      box-shadow: 0 8px 22px -14px rgba(126, 90, 53, 0.18); transition: all 0.25s ease;
+    }
+    .ability:hover { box-shadow: 0 14px 32px -14px rgba(126, 90, 53, 0.28); transform: translateY(-2px); }
+    .ability-tag {
+      display: inline-block; font-size: 10.5px; letter-spacing: 0.18em; color: var(--brown); font-weight: 600;
+      padding: 3px 10px; background: rgba(166, 124, 82, 0.10); border-radius: 100px; margin-bottom: 12px;
+    }
+    .ability-title { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 19px; color: var(--brown-deep); margin-bottom: 8px; }
+    .ability-body { font-size: 14.5px; line-height: 1.85; color: var(--ink); opacity: 0.85; }
+    .learn-tail {
+      max-width: 520px; margin: 36px auto 0; text-align: center;
+      font-size: 16px; line-height: 2; color: var(--brown-deep);
+      font-family: 'Noto Serif TC', serif; font-style: italic;
+    }
+
+    /* 步驟 */
+    .path-steps {
+      max-width: 540px; margin: 32px auto 0; background: var(--card);
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 28px;
+      box-shadow: var(--shadow-soft);
+    }
+    .path-step { display: flex; align-items: center; gap: 18px; padding: 18px 0; border-bottom: 1px dashed var(--line); }
+    .path-step:last-child { border-bottom: none; }
+    .path-step-num {
+      flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%;
+      background: var(--green); color: var(--card);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 15px;
+    }
+    .path-step-text { font-size: 16.5px; line-height: 1.6; color: var(--brown-deep); font-weight: 500; }
+
+    /* Why Wishlite */
+    .why-numbers {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+      max-width: 740px; margin: 36px auto 0;
+    }
+    .why-num { text-align: center; }
+    .why-num-val {
+      font-family: 'Noto Serif TC', serif; font-weight: 700;
+      font-size: clamp(28px, 3.6vw, 38px); color: var(--brown-deep); line-height: 1.2; letter-spacing: 0.02em;
+    }
+    .why-num-label { font-size: 12.5px; color: var(--sub); margin-top: 6px; letter-spacing: 0.04em; }
+    .why-tail {
+      text-align: center; margin-top: 36px; font-family: 'Noto Serif TC', serif;
+      font-size: 18px; color: var(--green-deep);
+      max-width: 480px; margin-left: auto; margin-right: auto; font-style: italic;
+    }
+
+    /* 說明會 */
+    .info-session {
+      background:
+        radial-gradient(ellipse 400px 280px at 20% 20%, rgba(216, 155, 92, 0.10), transparent 65%),
+        linear-gradient(180deg, var(--green-deep) 0%, #4a5840 100%);
+      color: var(--card); text-align: center; position: relative;
+    }
+    .info-session .section-kicker { color: var(--gold-light); background: rgba(216, 155, 92, 0.12); border-color: rgba(216, 155, 92, 0.30); }
+    .info-session .section-title { color: var(--card); }
+    .info-session-body { font-size: 16.5px; line-height: 2.1; color: rgba(255,255,255,0.92); max-width: 540px; margin: 0 auto 12px; }
+    .info-session-body p { margin-bottom: 20px; }
+    .info-session-list { list-style: none; padding: 0; max-width: 480px; margin: 12px auto 28px; text-align: left; }
+    .info-session-list li { padding: 10px 0 10px 24px; position: relative; color: rgba(255,255,255,0.92); font-size: 15.5px; line-height: 1.85; }
+    .info-session-list li::before { content: "·"; position: absolute; left: 6px; top: 6px; color: var(--gold-light); font-size: 22px; line-height: 1; }
+    .info-session-soft { color: rgba(255,255,255,0.78); font-size: 14.5px; margin: 8px 0 24px; line-height: 1.85; }
+    .info-invite-img { max-width: 420px; margin: 0 auto 36px; }
+    .info-invite-img img { border-radius: 14px; width: 100%; }
+
+    /* 表單 */
+    .signup-form {
+      max-width: 540px; margin: 36px auto 0; background: var(--card); color: var(--ink);
+      border-radius: var(--radius); padding: 40px 36px; box-shadow: 0 24px 60px rgba(0,0,0,0.22); text-align: left;
+    }
+    .form-row { margin-bottom: 22px; }
+    .form-label { display: block; font-size: 14px; color: var(--brown-deep); margin-bottom: 8px; font-weight: 500; }
+    .form-label .required { color: var(--gold); margin-left: 3px; }
+    .form-input {
+      width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 10px;
+      background: var(--bg-soft); color: var(--ink); font-size: 15px; font-family: inherit; transition: border-color 0.2s ease;
+    }
+    .form-input:focus { outline: none; border-color: var(--brown); background: #fff; }
+    .form-radio-group { padding: 8px 0; display: flex; flex-direction: column; gap: 4px; }
+    .form-radio-option { display: flex; align-items: flex-start; padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: background 0.2s ease; }
+    .form-radio-option:hover { background: rgba(166, 124, 82, 0.08); }
+    .form-radio-option input { margin-right: 10px; margin-top: 4px; accent-color: var(--brown); }
+    .form-radio-option span { font-size: 14.5px; color: var(--ink); line-height: 1.7; }
+    .form-checkbox-row { display: flex; align-items: flex-start; padding: 14px 16px; background: rgba(125,143,114,0.10); border-radius: 10px; margin-bottom: 22px; }
+    .form-checkbox-row input { margin-right: 12px; margin-top: 4px; accent-color: var(--green-deep); width: 16px; height: 16px; }
+    .form-checkbox-row label { font-size: 14.5px; color: var(--green-deep); line-height: 1.6; cursor: pointer; }
+    .form-submit {
+      width: 100%; padding: 0; height: 54px; line-height: 54px; border: none;
+      border-radius: 100px; background: var(--green-deep); color: var(--card);
+      font-size: 16px; font-weight: 500; letter-spacing: 0.04em; cursor: pointer;
+      transition: all 0.25s ease; box-shadow: 0 8px 22px -8px rgba(86,100,72,0.5);
+    }
+    .form-submit:hover { background: #4a5840; transform: translateY(-1px); }
+    .form-submit:disabled { background: var(--sub); cursor: not-allowed; transform: none; }
+    .signup-thanks {
+      text-align: center; padding: 48px 32px; max-width: 540px; margin: 36px auto 0;
+      background: var(--card); color: var(--ink); border-radius: var(--radius);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+    }
+    .signup-thanks-icon { font-size: 46px; margin-bottom: 12px; }
+    .signup-thanks h3 { font-family: 'Noto Serif TC', serif; font-weight: 700; color: var(--brown-deep); font-size: 22px; margin-bottom: 16px; }
+    .signup-thanks p { color: var(--ink); opacity: 0.88; line-height: 1.95; margin-bottom: 12px; }
+
+    /* 價格 */
+    .price-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      max-width: 540px; margin: 32px auto 0; padding: 38px 34px; text-align: center; box-shadow: var(--shadow-soft);
+    }
+    .price-card-name { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 19px; color: var(--brown-deep); margin-bottom: 14px; }
+    .price-card-num { font-family: 'Noto Serif TC', serif; font-weight: 700; font-size: 32px; color: var(--brown-deep); margin-bottom: 18px; letter-spacing: 0.04em; }
+    .price-card-detail { font-size: 14.5px; line-height: 1.95; color: var(--ink); opacity: 0.85; margin-bottom: 20px; }
+    .price-card-tail { font-size: 13.5px; color: var(--sub); line-height: 1.85; padding-top: 18px; border-top: 1px dashed var(--line); font-style: italic; }
+
+    /* Closing */
+    .closing { background: var(--bg); padding: 88px 0 56px; }
+    .closing-text {
+      font-family: 'Noto Serif TC', serif; font-size: clamp(19px, 2.4vw, 23px); color: var(--brown-deep);
+      line-height: 2.1; max-width: 520px; margin: 0 auto 36px; text-align: center;
+    }
+    .closing-text .lead { color: var(--brown); font-style: italic; }
+    .closing-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .closing-note { text-align: center; margin-top: 24px; color: var(--sub); font-size: 14.5px; line-height: 1.9; }
+
+    /* Footer */
+    footer {
+      position: relative; background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-cream) 100%);
+      padding: 80px 0 36px; overflow: hidden;
+    }
+    .horizon-photo {
+      position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 260px;
+      background-image: url('https://wishlite.github.io/wishlite-proposals/assets/hero-mountain-warm.jpg');
+      background-size: cover; background-position: center bottom; background-repeat: no-repeat;
+      opacity: 0.32; pointer-events: none; z-index: 0;
+    }
+    .horizon-photo::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 100%;
+      background: linear-gradient(180deg, var(--bg-soft) 0%, rgba(250,246,234,0.78) 14%, rgba(250,246,234,0.38) 32%, rgba(250,246,234,0.10) 58%, transparent 88%);
+      pointer-events: none;
+    }
+    .footer-inner { position: relative; text-align: center; color: var(--sub); font-size: 12px; padding-top: 60px; opacity: 0.85; }
+    .footer-brand { font-family: 'Noto Serif TC', serif; font-weight: 600; color: var(--brown-deep); font-size: 15px; margin-bottom: 6px; opacity: 0.92; }
+
+    /* RWD */
+    @media (max-width: 768px) {
+      .container { padding: 0 22px; }
+      section { padding: 56px 0; }
+      .hero { padding: 80px 22px 60px; }
+      .hero-title { font-size: 26px; line-height: 1.6; }
+      .hero-body { font-size: 15.5px; line-height: 1.95; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { width: 100%; }
+      .hero-mascot { position: relative; right: auto; bottom: auto; margin: 28px auto 0; width: 92px; height: 92px; }
+      .pain-card { font-size: 15.5px; padding: 18px 20px; }
+      .section-body { font-size: 15.5px; line-height: 1.95; }
+      .field-cards { grid-template-columns: 1fr; gap: 14px; }
+      .field-card img { height: 140px; }
+      .abilities { grid-template-columns: 1fr; gap: 14px; }
+      .why-numbers { grid-template-columns: repeat(2, 1fr); gap: 22px 18px; }
+      .info-session-list { padding: 0 14px; }
+      .signup-form, .price-card { padding: 32px 22px; }
+      .closing-ctas { flex-direction: column; align-items: stretch; }
+      .closing-ctas .btn { width: 100%; }
+    }
+
+    /* Journey Map */
+    .journey-section { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%); padding: 80px 0; }
+    .journey-section .container { max-width: 1000px; }
+    .journey-intro { font-size: 15.5px; color: var(--sub); line-height: 2; max-width: 620px; margin: 6px auto 44px; text-align: center; }
+    .journey-scenes { list-style: none; padding: 0; margin: 36px 0 0; display: flex; flex-direction: column; gap: 64px; }
+    .journey-scene-card {
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 48px; align-items: center;
+    }
+    .journey-scene-card .journey-scene-image { order: 2; }
+    .journey-scene-card.flip .journey-scene-image { order: 0; }
+    .journey-scene-image {
+      border-radius: 16px; overflow: hidden; background: var(--card);
+      box-shadow: 0 14px 36px -22px rgba(126,90,53,.32); border: 1px solid var(--line);
+    }
+    .journey-scene-image img { display: block; width: 100%; height: auto; transition: transform .6s ease; }
+    .journey-scene-card:hover .journey-scene-image img { transform: scale(1.02); }
+    .journey-scene-num {
+      display: inline-block; font-family: "Noto Serif TC", serif; font-size: 12.5px; letter-spacing: 3px;
+      color: var(--brown-deep); font-weight: 700; background: var(--bg-cream);
+      border: 1px solid rgba(166,124,82,.3); border-radius: 20px; padding: 5px 14px; margin-bottom: 18px;
+    }
+    .journey-scene-title { font-family: "Noto Serif TC", serif; font-size: 26px; font-weight: 700; color: var(--ink); margin: 0 0 12px; line-height: 1.4; letter-spacing: 1.5px; }
+    .journey-scene-lead { font-size: 15px; color: var(--brown-deep); font-weight: 600; letter-spacing: .5px; margin: 0 0 14px; line-height: 1.75; }
+    .journey-scene-desc { font-size: 14.5px; color: var(--sub); line-height: 2; margin: 0; }
+    .journey-coda { text-align: center; margin: 36px 0 0; font-size: 13.5px; color: var(--sub); letter-spacing: 3px; opacity: .82; }
+    .journey-cta-row { text-align: center; margin-top: 30px; }
+    .journey-lightbox-trigger {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 24px;
+      background: transparent; border: 1px solid rgba(125,143,114,.45); color: var(--green-deep);
+      font-family: inherit; font-size: 13.5px; font-weight: 600; letter-spacing: 1.5px; cursor: pointer; transition: all .25s ease;
+    }
+    .journey-lightbox-trigger:hover { background: rgba(125,143,114,.09); border-color: var(--green-deep); transform: translateY(-1px); }
+    .journey-lightbox-trigger svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .journey-modal {
+      position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px;
+      background: rgba(30,40,30,.78); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); opacity: 0; transition: opacity .25s ease;
+    }
+    .journey-modal.is-open { display: flex; opacity: 1; }
+    .journey-modal-inner {
+      position: relative; max-width: min(900px,95vw); max-height: 92vh; display: flex; flex-direction: column; align-items: center;
+      background: var(--card); border-radius: 14px; padding: 18px; box-shadow: 0 30px 80px -30px rgba(0,0,0,.55); overflow: hidden;
+    }
+    .journey-modal-inner img { display: block; max-width: 100%; max-height: calc(92vh - 80px); width: auto; height: auto; object-fit: contain; border-radius: 8px; }
+    .journey-modal-close {
+      position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,.95); border: 1px solid var(--line); color: var(--ink);
+      font-size: 20px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .2s ease; z-index: 2; font-family: inherit;
+    }
+    .journey-modal-close:hover { background: #fff; transform: scale(1.08); }
+    .journey-modal-cap { margin-top: 10px; font-size: 12px; color: var(--sub); letter-spacing: 1.5px; text-align: center; }
+    @media (max-width: 720px) {
+      .journey-scenes { gap: 44px; margin-top: 30px; }
+      .journey-scene-card, .journey-scene-card.flip { grid-template-columns: 1fr; gap: 18px; }
+      .journey-scene-card .journey-scene-image, .journey-scene-card.flip .journey-scene-image { order: 0; }
+      .journey-scene-card .journey-scene-text, .journey-scene-card.flip .journey-scene-text { order: 1; }
+      .journey-scene-title { font-size: 21px; letter-spacing: 1px; }
+      .journey-scene-lead { font-size: 14px; }
+      .journey-scene-desc { font-size: 14px; line-height: 1.95; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ============================================
-     SECTION 1 ｜ Hero 首屏（轉換版：加 TA 對號入座鉤子）
-     決策張力 ①「這跟我有關嗎？」 — 一進場就讓 TA 心裡說「在說我」
-     ============================================ -->
-<section class="hero">
-  <div class="hero-inner">
-    <span class="hero-kicker">ECO STAR 永續行動設計師系統</span>
+  <!-- ═══════════ 段落 1：共鳴 ═══════════ -->
+  <div class="group-resonance">
 
-    <h1>
-      <span class="ln">把你在乎的永續，</span>
-      <span class="ln">變成一場可以被帶進現場的行動。</span>
-    </h1>
-
-    <p class="sub hero-ta">
-      從喜歡開始，<br/>
-      慢慢長出能被信任交付的能力。
-    </p>
-
-    <div class="hero-divider"></div>
-
-    <div class="btn-row">
-      <a href="#signup" class="btn btn-primary">先了解這場說明會</a>
-    </div>
-
-    <!-- 小芽：輕量、不壓主標。視覺聖經設定為 Wishlite 品牌代言核心 -->
-    <div class="hero-mascot">
-      <img
-        src="../專案-IP-永續六友/去背-商用/小芽商用去背.png"
-        alt="永續六友：小芽（整合策劃力）"
-        loading="lazy"
-      />
-      <div class="hero-mascot-cap">小芽 ｜ 整合策劃力</div>
-    </div>
-  </div>
-</section>
-
-<!-- 葉脈分隔線 -->
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 2 ｜ 為什麼需要這套系統
-     任務：先承接讀者「想做但不知道怎麼開始」的情緒，再帶出 ECO STAR 的存在
-     ============================================ -->
-<section>
-  <div class="wrap">
-    <span class="sec-kicker">Why ECO STAR</span>
-    <h2 class="sec-title">很多人不是不在乎永續，<br/>而是不知道怎麼開始。</h2>
-    <!-- 決策張力 ②「你真的懂我嗎？」 — 從外部問題改成「內在卡住」 -->
-    <p class="sec-lead">
-      你也許在乎永續，<br/>
-      也喜歡手作、教學或陪伴。<br/><br/>
-      只是還不知道，<br/>
-      怎麼把這份在乎，<br/>
-      變成一場可以被帶進現場的行動。
-    </p>
-
-    <!-- 痛點翻卡：正面＝刺到「內在卡住」、背面＝溫柔回應 -->
-    <div class="pain-list flip-grid" data-flip-hint="點一下，看看我們怎麼接住這個問題">
-      <div class="flip-card pain-flip" tabindex="0" role="button" aria-label="翻面看回應">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front">你有很多想說的，<br/>但一開口，就變成像在上課。</div>
-          <div class="flip-card-face flip-card-back">
-            我們會陪你練習，<br/>把材料說成日常裡的故事，<br/>讓人先被感動，再被理解。
-          </div>
-        </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <span class="hero-kicker">ECO STAR ｜ Designer System</span>
+      <h1 id="hero-title" class="hero-title">
+        把你在乎的永續，<br>
+        變成一場真的行動。
+      </h1>
+      <p class="hero-sub">從喜歡開始，慢慢長出能被信任交付的能力。</p>
+      <div class="hero-divider"></div>
+      <div class="hero-body">
+        <p>你也許在乎永續，也喜歡手作、教學或陪伴。<br>只是還不知道，怎麼把這份在乎，<br>變成一場可以被帶進現場的行動。</p>
       </div>
-      <div class="flip-card pain-flip" tabindex="0" role="button" aria-label="翻面看回應">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front">你做了作品，<br/>但不知道怎麼讓別人真的在意。</div>
-          <div class="flip-card-face flip-card-back">
-            完成只是開頭，<br/>我們陪你看見：<br/>真正留下的，是參與者離開時帶走的那一個轉念。
-          </div>
-        </div>
-      </div>
-      <div class="flip-card pain-flip" tabindex="0" role="button" aria-label="翻面看回應">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front">你知道不同場域要說不同的話，<br/>但站在現場，還是會卡住。</div>
-          <div class="flip-card-face flip-card-back">
-            每個場域都有它自己的聽法，<br/>我們會陪你聽見不同的人，<br/>找到屬於那一場的語氣。
-          </div>
-        </div>
-      </div>
-      <div class="flip-card pain-flip" tabindex="0" role="button" aria-label="翻面看回應">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front">你其實很在乎這些事，<br/>但不知道要怎麼開始，才不會走錯。</div>
-          <div class="flip-card-face flip-card-back">
-            你不會一個人站在現場。<br/>我們會陪你走一段，<br/>慢慢長出可以被信任的節奏。
-          </div>
-        </div>
+      <div class="hero-ctas">
+        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
+        <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
-
-    <div class="pain-after">
-      ECO STAR 想陪你走過的，<strong>就是這一段距離</strong>。
+    <div class="hero-mascot" aria-hidden="true">
+      <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
     </div>
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 3 ｜ Stories 真實開始的樣子（轉換版：提前到第 3 位）
-     決策張力 ③ social proof — 「他們可以 → 那我好像也可以」
-     ============================================ -->
-<section class="cream">
-  <div class="wrap" style="text-align:center">
-    <span class="sec-kicker">Stories so far</span>
-    <h2 class="sec-title">有人已經從不同的起點，<br/>慢慢走進這條路。</h2>
-
-    <!-- 全家福：群像呈現「不同位置一起靠近」的氣氛，不替真人說話、不揭露派案 -->
-    <div class="start-mascot">
-      <img
-        src="../專案-IP-永續六友/全家福/六友手牽手.png"
-        alt="永續六友｜不同的材料，不同的入口，一起朝永續走去"
-        loading="lazy"
-      />
-    </div>
-
-    <div class="start-text" style="text-align:left">
-      <p>
-        有的人從手作開始，<br/>
-        有的人先從協助一場活動開始，<br/>
-        也有人只是先相信：<br/>
-        自己也許可以把喜歡的事，<br/>
-        做得更有意義。
-      </p>
-      <p>
-        有些人先從整理材料與流程開始，<br/>
-        有些人先站在現場，試著帶一小段。
-      </p>
-      <p class="stories-anchor">沒有一種標準的開始。</p>
-      <p>
-        但只要願意練習，<br/>
-        那條路就會慢慢長出來。
-      </p>
-    </div>
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 4 ｜ What ECO STAR 是什麼（轉換版：收斂為一句核心理解）
-     讓「在乎」變成「可以被交付的行動」 — 不再贅述系統定義
-     ============================================ -->
-<section>
-  <div class="wrap">
-    <span class="sec-kicker">What is ECO STAR</span>
-    <h2 class="sec-title">所以我們做了 ECO STAR。</h2>
-
-    <div class="split-layout">
-      <div class="split-text">
-        <div class="what-card">
-          <p>它不是一堂單純的課。</p>
-          <p>
-            而是一條陪你從「喜歡」出發，<br/>
-            逐步練習、理解現場，<br/>
-            最後走向可被交付行動的路。
-          </p>
-        </div>
-      </div>
-
-      <div class="split-illus">
-        <!-- 三張紙卡錯位疊放：材料／體驗／現場。紙膠帶感、手繪元素，不放角色本體 -->
-        <svg class="illus-what" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- 卡 1：材料（最下、左下） -->
-          <g transform="rotate(-5 130 240)">
-            <rect x="40" y="170" width="220" height="140" rx="6" fill="#F5E8D5" stroke="#A67C52" stroke-width="0.8" opacity="0.9"/>
-            <!-- 紙膠帶 -->
-            <rect x="55" y="165" width="56" height="12" fill="#D4B06A" opacity="0.5"/>
-            <text x="60" y="210" font-family="'Noto Serif TC', serif" font-size="15" fill="#7E5A35" font-weight="600" letter-spacing="2">材料</text>
-            <text x="60" y="234" font-family="'Noto Sans TC', sans-serif" font-size="10.5" fill="#5C4830" letter-spacing="1.5">咖啡渣 · 牡蠣殼 · 紙纖</text>
-            <!-- 咖啡豆紋理 -->
-            <g opacity="0.45">
-              <ellipse cx="200" cy="265" rx="5" ry="3.5" fill="#A67C52"/>
-              <path d="M195,265 Q200,263.5 205,265" stroke="#7E5A35" stroke-width="0.5" fill="none"/>
-              <ellipse cx="218" cy="275" rx="4" ry="2.8" fill="#A67C52"/>
-              <path d="M214,275 Q218,273.5 222,275" stroke="#7E5A35" stroke-width="0.4" fill="none"/>
-              <ellipse cx="190" cy="285" rx="3.5" ry="2.5" fill="#A67C52"/>
-            </g>
-          </g>
-
-          <!-- 卡 2：體驗（中、左上） -->
-          <g transform="rotate(2 200 180)">
-            <rect x="100" y="100" width="220" height="140" rx="6" fill="#E8E5D2" stroke="#7D8F72" stroke-width="0.8" opacity="0.92"/>
-            <text x="120" y="142" font-family="'Noto Serif TC', serif" font-size="15" fill="#566448" font-weight="600" letter-spacing="2">體驗</text>
-            <text x="120" y="166" font-family="'Noto Sans TC', sans-serif" font-size="10.5" fill="#5C4830" letter-spacing="1.5">流程 · 互動 · 對話</text>
-            <!-- 葉脈 -->
-            <g opacity="0.5" stroke="#566448" stroke-width="0.8" fill="none" stroke-linecap="round">
-              <path d="M250,180 Q270,190 280,210"/>
-              <path d="M258,184 L264,194"/>
-              <path d="M267,194 L274,204"/>
-              <path d="M276,205 L284,212"/>
-            </g>
-          </g>
-
-          <!-- 卡 3：現場（最上、右上） -->
-          <g transform="rotate(-3 280 70)">
-            <rect x="160" y="30" width="210" height="135" rx="6" fill="#FDFBF5" stroke="#D89B5C" stroke-width="0.9" opacity="0.96"/>
-            <rect x="180" y="25" width="48" height="11" fill="#A67C52" opacity="0.4"/>
-            <text x="180" y="72" font-family="'Noto Serif TC', serif" font-size="15" fill="#7E5A35" font-weight="600" letter-spacing="2">現場</text>
-            <text x="180" y="96" font-family="'Noto Sans TC', sans-serif" font-size="10.5" fill="#5C4830" letter-spacing="1.5">企業 · 校園 · 社區</text>
-            <!-- 手繪小流程點：表示「真的被帶進去」 -->
-            <g opacity="0.4" stroke="#A67C52" stroke-width="1.2" fill="none">
-              <circle cx="200" cy="125" r="3"/>
-              <path d="M205,125 L235,125" stroke-dasharray="2,3"/>
-              <circle cx="240" cy="125" r="3"/>
-              <path d="M245,125 L275,125" stroke-dasharray="2,3"/>
-              <circle cx="280" cy="125" r="3" fill="#D89B5C" stroke="none" opacity="0.6"/>
-            </g>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 4.6 ｜ Who fits in（重建自 commit 2b98f1c）
-     新 prelude：你不是不夠好，只是還需要一個可以練習、被陪伴、慢慢長出方法的地方
-     ============================================ -->
-<section class="cream" aria-labelledby="fit-title">
-  <div class="wrap">
-    <span class="sec-kicker">Who fits in</span>
-    <h2 id="fit-title" class="sec-title fit-prelude">
-      你不是不夠好，<br/>
-      只是還需要一個可以練習、<br/>
-      被陪伴、慢慢長出方法的地方。
-    </h2>
-
-    <figure class="fit-mirror-image">
-      <img src="assets/eco-star-support-growth.png" alt="ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy" decoding="async" />
-    </figure>
-    <p class="fit-mirror-caption">你可能也在這些狀態裡</p>
-
-    <ul class="fit-three">
-      <li class="fit-card">
-        <h3 class="fit-card-title">如果你是手作老師／創作者</h3>
-        <p class="fit-card-desc">想讓自己的課程，<br/>多一層永續價值。</p>
-      </li>
-      <li class="fit-card">
-        <h3 class="fit-card-title">如果你是教育工作者／活動引導者</h3>
-        <p class="fit-card-desc">想把材料、故事與體驗，<br/>帶進更有意義的現場。</p>
-      </li>
-      <li class="fit-card">
-        <h3 class="fit-card-title">如果你喜歡永續與材料</h3>
-        <p class="fit-card-desc">想把這份關心，<br/>慢慢變成可以被實際執行的行動。</p>
-      </li>
-    </ul>
-  </div>
-
-  <style>
-    .fit-prelude{
-      max-width:600px;margin:0 auto 44px;
-      font-size:clamp(17px,1.8vw,22px);
-      font-weight:500;line-height:1.95;letter-spacing:1px;
-    }
-    .fit-mirror-image{
-      max-width:1100px;margin:0 auto 14px;
-      border-radius:18px;overflow:hidden;
-      box-shadow:0 8px 22px -18px rgba(126,90,53,.22);
-      background:#FDFBF5;
-    }
-    .fit-mirror-image img{display:block;width:100%;height:auto}
-    .fit-mirror-caption{
-      text-align:center;max-width:540px;margin:0 auto 56px;
-      color:rgba(95,90,80,.55);font-size:13px;letter-spacing:1.5px;
-    }
-    .fit-three{
-      list-style:none;padding:0;
-      max-width:1100px;margin:0 auto 8px;
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;
-    }
-    .fit-card{
-      background:#FDFBF5;
-      border:1px solid rgba(126,90,53,.18);
-      border-radius:14px;padding:28px 24px;
-      box-shadow:0 6px 18px -16px rgba(126,90,53,.18);
-      transition:transform .25s ease,box-shadow .25s ease;
-    }
-    .fit-card:hover{
-      transform:translateY(-2px);
-      box-shadow:0 12px 26px -18px rgba(126,90,53,.28);
-    }
-    .fit-card-title{
-      font-family:'Noto Serif TC',serif;
-      font-size:16px;font-weight:700;color:#5C4830;
-      margin:0 0 12px;line-height:1.6;letter-spacing:.8px;
-    }
-    .fit-card-desc{
-      margin:0;font-size:14.5px;line-height:1.95;
-      color:#7E5A35;letter-spacing:.3px;
-    }
-    @media(max-width:720px){
-      .fit-prelude{font-size:16px;line-height:1.95;margin-bottom:32px;letter-spacing:.5px}
-      .fit-mirror-image{border-radius:12px}
-      .fit-mirror-caption{margin-bottom:40px;font-size:12.5px}
-      .fit-three{grid-template-columns:1fr;gap:16px}
-      .fit-card{padding:22px 20px;border-radius:12px}
-      .fit-card-title{font-size:15.5px}
-      .fit-card-desc{font-size:14px}
-    }
-  </style>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 4.5 ｜ 溫柔路徑圖 Gentle Journey Map
-     位置：What ECO STAR（理念長文）之後 → 四能力／三日訓練 之前
-     功能：先讓讀者理解「我會怎麼從喜歡走到能交付」，再進細節
-     ============================================ -->
-<section class="journey-section" aria-labelledby="journey-title">
-  <div class="wrap">
-    <span class="sec-kicker">Your Journey</span>
-    <h2 class="sec-title" id="journey-title">從喜歡永續，<br/>到能把一場行動帶進現場</h2>
-    <p class="journey-intro">
-      這不是要你一開始就很專業，<br/>
-      而是陪你把原本的喜歡，慢慢整理成可以被交付的能力。
-    </p>
-
-    <ol class="journey-scenes" aria-label="ECO STAR 五段學習旅程">
-      <!-- 01 起點 ｜ 文字左 / 圖右 -->
-      <li class="journey-scene-card">
-        <div class="journey-scene-text">
-          <span class="journey-scene-num">01｜起點</span>
-          <h3 class="journey-scene-title">從你本來就在乎的事開始</h3>
-          <p class="journey-scene-lead">你喜歡永續、手作、陪伴或教學</p>
-          <p class="journey-scene-desc">
-            你關心環境、喜歡創作，也願意陪人一起完成一件事。<br>
-            這些，就是你靠近永續行動的起點。
-          </p>
-        </div>
-        <figure class="journey-scene-image">
-          <img src="assets/journey-scene-01-start.jpg" alt="雙手捧著小苗與多種永續材料：紙纖、再生塑料、布料的水彩情境圖" loading="lazy" decoding="async">
-        </figure>
-      </li>
-
-      <!-- 02 理解方法 ｜ 圖左 / 文字右 -->
-      <li class="journey-scene-card flip">
-        <div class="journey-scene-text">
-          <span class="journey-scene-num">02｜理解方法</span>
-          <h3 class="journey-scene-title">慢慢建立方法感</h3>
-          <p class="journey-scene-lead">看見材料、理解場域、學會設計體驗</p>
-          <p class="journey-scene-desc">
-            一份材料不只是材料——<br>
-            它可以被說成故事、被設計成體驗，連結到企業、校園與社區的真實需求。
-          </p>
-        </div>
-        <figure class="journey-scene-image">
-          <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：咖啡渣、牡蠣殼、紙纖等材料如何進入企業、校園、社區的場域地圖" loading="lazy" decoding="async">
-        </figure>
-      </li>
-
-      <!-- 03 開始實作 ｜ 文字左 / 圖右 -->
-      <li class="journey-scene-card">
-        <div class="journey-scene-text">
-          <span class="journey-scene-num">03｜開始實作</span>
-          <h3 class="journey-scene-title">把想法做成可被帶領的內容</h3>
-          <p class="journey-scene-lead">練習帶領、整理流程，建立自己的交付感</p>
-          <p class="journey-scene-desc">
-            一場活動怎麼開始、怎麼引導、怎麼收尾，<br>
-            你會練習把自己的溫度，放進一套穩定的流程。
-          </p>
-        </div>
-        <figure class="journey-scene-image">
-          <img src="assets/journey-scene-03-practice.jpg" alt="桌面上的設計卡與材料：從聆聽、觀察、引導到整合的四階段流程，搭配剪刀、畫筆與水彩紙樣" loading="lazy" decoding="async">
-        </figure>
-      </li>
-
-      <!-- 04 走進現場 ｜ 圖左 / 文字右 -->
-      <li class="journey-scene-card flip">
-        <div class="journey-scene-text">
-          <span class="journey-scene-num">04｜走進現場</span>
-          <h3 class="journey-scene-title">有一天，<br/>你會站在一群人面前，<br/>帶一場真的行動。</h3>
-        </div>
-        <figure class="journey-scene-image">
-          <img src="assets/journey-scene-04-field.jpg" alt="ECO STAR 行動者在真實場域中帶領參與者體驗永續材料，象徵走進企業、校園與社區現場。" loading="lazy" decoding="async">
-        </figure>
-      </li>
-
-      <!-- 05 下一步 ｜ 文字左 / 圖右 -->
-      <li class="journey-scene-card">
-        <div class="journey-scene-text">
-          <span class="journey-scene-num">05｜下一步</span>
-          <h3 class="journey-scene-title">從學習者，走向可被交付任務的夥伴</h3>
-          <p class="journey-scene-lead">接下第一張任務卡，開始走進真實場域</p>
-          <p class="journey-scene-desc">
-            完成訓練與實作後，<br>
-            你會開始走向可以被信任交付的位置。
-          </p>
-        </div>
-        <figure class="journey-scene-image">
-          <img src="assets/journey-scene-05-next-step.jpg" alt="ECO STAR 行動者接下任務卡與合作資料夾，象徵完成訓練後進入合作評估與下一步任務。" loading="lazy" decoding="async">
-        </figure>
-      </li>
-    </ol>
-
-    <!-- 完整行動路徑圖：作為 Journey 收束圖（取代原本 modal） -->
-    <figure class="journey-full">
-      <img src="assets/eco-star-journey-full.png" alt="ECO STAR 從學習旅程圖到正式進入場域執行任務的完整行動路徑圖" loading="lazy" decoding="async">
-    </figure>
-
-    <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 5 ｜ Learn 你會學到什麼（轉換版：補「做得到」的感覺）
-     決策張力 ③「這東西真的有用嗎？」 — 把抽象 → 落地
-     ============================================ -->
-<section class="cream">
-  <div class="wrap">
-    <span class="sec-kicker">What you'll learn</span>
-    <h2 class="sec-title">從材料、體驗到現場，<br/>一步步長出你的行動能力。</h2>
-
-    <!-- 補一句「做得到」 — 不是課綱、是落地保證 -->
-    <p class="sec-lead" style="margin-top:8px">
-      在這個過程中，<br/>
-      這些能力會慢慢長出來，<br/>
-      不是停在筆記裡，而是真的會用在一個現場。
-    </p>
-
-    <!-- 材料元素拼貼 banner：讓「能力區」不像純文字卡片區。
-         咖啡豆／葉片／紙片／布片／石頭／種子，全部低飽和、紙感、不放角色 -->
-    <div class="materials-banner-wrap">
-      <svg class="materials-banner" viewBox="0 0 800 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- 水彩底色 -->
-        <ellipse cx="400" cy="42" rx="380" ry="28" fill="#F5E8D5" opacity="0.35"/>
-        <ellipse cx="200" cy="40" rx="120" ry="22" fill="#7D8F72" opacity="0.06"/>
-        <ellipse cx="600" cy="42" rx="120" ry="22" fill="#A67C52" opacity="0.06"/>
-
-        <!-- 咖啡豆 ×2 -->
-        <g opacity="0.5">
-          <ellipse cx="100" cy="42" rx="6" ry="4" fill="#A67C52"/>
-          <path d="M94,42 Q100,40 106,42" stroke="#7E5A35" stroke-width="0.6" fill="none"/>
-          <ellipse cx="118" cy="48" rx="4.5" ry="3" fill="#A67C52"/>
-          <path d="M113.5,48 Q118,46.5 122.5,48" stroke="#7E5A35" stroke-width="0.5" fill="none"/>
-        </g>
-
-        <!-- 葉片 ×1（左中段） -->
-        <g opacity="0.55" transform="translate(200, 42) rotate(-15)">
-          <path d="M-12,0 Q0,-10 14,0 Q0,10 -12,0 Z" fill="#7D8F72"/>
-          <line x1="-10" y1="0" x2="12" y2="0" stroke="#566448" stroke-width="0.6"/>
-          <line x1="-4" y1="0" x2="-2" y2="-4" stroke="#566448" stroke-width="0.4"/>
-          <line x1="2" y1="0" x2="4" y2="-4" stroke="#566448" stroke-width="0.4"/>
-        </g>
-
-        <!-- 紙片（撕邊） -->
-        <g opacity="0.7">
-          <path d="M310,28 L368,30 L370,38 L366,42 L370,52 L308,50 L312,40 Z"
-                fill="#FDFBF5" stroke="#A67C52" stroke-width="0.5"/>
-          <line x1="320" y1="40" x2="358" y2="40" stroke="#A67C52" stroke-width="0.4" opacity="0.5"/>
-          <line x1="320" y1="46" x2="350" y2="46" stroke="#A67C52" stroke-width="0.4" opacity="0.4"/>
-        </g>
-
-        <!-- 布片（縫線紋理） -->
-        <g opacity="0.5" transform="translate(440, 32)">
-          <rect width="50" height="18" rx="2" fill="#8FA8B3"/>
-          <line x1="0" y1="9" x2="50" y2="9" stroke="#566448" stroke-width="0.5" stroke-dasharray="2.5,2"/>
-          <circle cx="6" cy="3" r="0.8" fill="#566448" opacity="0.6"/>
-          <circle cx="44" cy="3" r="0.8" fill="#566448" opacity="0.6"/>
-          <circle cx="6" cy="15" r="0.8" fill="#566448" opacity="0.6"/>
-          <circle cx="44" cy="15" r="0.8" fill="#566448" opacity="0.6"/>
-        </g>
-
-        <!-- 小石頭 ×2 -->
-        <g opacity="0.5">
-          <ellipse cx="555" cy="44" rx="6" ry="3.5" fill="#B7A89A"/>
-          <ellipse cx="568" cy="46" rx="3.5" ry="2.2" fill="#B7A89A"/>
-        </g>
-
-        <!-- 種子 -->
-        <g opacity="0.5" transform="translate(640, 40) rotate(25)">
-          <ellipse rx="3.5" ry="6" fill="#7E5A35"/>
-          <line x1="0" y1="-5" x2="0" y2="5" stroke="#5C4830" stroke-width="0.4"/>
-        </g>
-
-        <!-- 葉片 ×2（右段） -->
-        <g opacity="0.5" transform="translate(720, 42) rotate(20)">
-          <path d="M-13,0 Q0,-11 15,0 Q0,11 -13,0 Z" fill="#7D8F72"/>
-          <line x1="-11" y1="0" x2="13" y2="0" stroke="#566448" stroke-width="0.6"/>
-        </g>
-      </svg>
-    </div>
-
-    <!-- 四能力視覺總覽圖（不取代能力卡，作為視覺引導） -->
-    <figure class="learn-overview">
-      <img src="assets/what-youll-learn-four-abilities.png" alt="ECO STAR 你會學到的四大能力：材料敘事力、體驗設計力、課程交付力、場域溝通力" loading="lazy" decoding="async">
-    </figure>
-
-    <!-- 四能力翻卡：正面＝能力名+敘述、背面＝一句畫面感的具體場景。
-         背面只放一句，不變課綱、不列條列。手機點擊 toggle. -->
-    <div class="ability-grid flip-grid" data-flip-hint="點一下，看看這個能力會長成什麼畫面">
-      <!-- 01 材料敘事力 ｜ 人格色：小渣 咖啡棕 #A67C52 -->
-      <div class="flip-card ability-flip card-01" tabindex="0" role="button" aria-label="翻面看具體畫面">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front ability-card">
-            <span class="ability-num">01</span>
-            <div class="ability-name">材料敘事力</div>
-            <p class="ability-desc">
-              在這個過程中，慢慢會把再生材料與資源循環，<br/>
-              說成讓人聽得懂、感受得到的故事。
-            </p>
-          </div>
-          <div class="flip-card-face flip-card-back ability-card ability-card-back">
-            <span class="ability-num">01｜畫面是這樣</span>
-            <p class="ability-vivid">
-              像在咖啡香裡，<br/>
-              把一顆原本要被丟掉的咖啡渣，<br/>
-              重新介紹一次。
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 02 體驗設計力 ｜ 人格色：小塑 淡藍灰 #8FA8B3 -->
-      <div class="flip-card ability-flip card-02" tabindex="0" role="button" aria-label="翻面看具體畫面">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front ability-card">
-            <span class="ability-num">02</span>
-            <div class="ability-name">體驗設計力</div>
-            <p class="ability-desc">
-              不只是做作品，<br/>
-              而是慢慢長出設計一段讓人願意投入、理解與回應的體驗的能力。
-            </p>
-          </div>
-          <div class="flip-card-face flip-card-back ability-card ability-card-back">
-            <span class="ability-num">02｜畫面是這樣</span>
-            <p class="ability-vivid">
-              讓參與者離開時，<br/>
-              記得的不只是手中的作品，<br/>
-              而是一個轉念的瞬間。
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 03 現場交付力 ｜ 人格色：小蠔 灰棕 #B7A89A -->
-      <div class="flip-card ability-flip card-03" tabindex="0" role="button" aria-label="翻面看具體畫面">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front ability-card">
-            <span class="ability-num">03</span>
-            <div class="ability-name">現場交付力</div>
-            <p class="ability-desc">
-              從一場活動的開場、引導到收束，<br/>
-              慢慢會發現，自己能把永續真的帶進現場。
-            </p>
-          </div>
-          <div class="flip-card-face flip-card-back ability-card ability-card-back">
-            <span class="ability-num">03｜畫面是這樣</span>
-            <p class="ability-vivid">
-              站在現場那一刻，<br/>
-              知道下一句要說什麼，<br/>
-              也知道何時該安靜。
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 04 場域轉譯力 ｜ 人格色：小芽 霧綠 #7D8F72 -->
-      <div class="flip-card ability-flip card-04" tabindex="0" role="button" aria-label="翻面看具體畫面">
-        <div class="flip-card-inner">
-          <div class="flip-card-face flip-card-front ability-card">
-            <span class="ability-num">04</span>
-            <div class="ability-name">場域轉譯力</div>
-            <p class="ability-desc">
-              在不同場域之間慢慢移動，<br/>
-              會發現對企業、校園、社區、親子，要用的是不一樣的語氣。
-            </p>
-          </div>
-          <div class="flip-card-face flip-card-back ability-card ability-card-back">
-            <span class="ability-num">04｜畫面是這樣</span>
-            <p class="ability-vivid">
-              在企業會議室、校園教室、<br/>
-              社區廣場，<br/>
-              都能找到對的那一種語氣。
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 6 ｜ Path 怎麼走（轉換版：補一句落地感）
-     決策張力 ③ 持續落地 — 不是只在學習裡完成，而是真的走到現場
-     ============================================ -->
-<section>
-  <div class="wrap">
-    <span class="sec-kicker">The path</span>
-    <h2 class="sec-title">不是一次變厲害，<br/>而是一步步被帶進來。</h2>
-
-    <!-- 落地感小句：把抽象 → 具體 -->
-    <p class="sec-lead" style="margin-top:8px">
-      不是只在學習裡完成，<br/>
-      而是會慢慢走到一個現場，<br/>
-      試著帶出一段真正的體驗。
-    </p>
-
-    <!-- 圖文並列：左 step-list 路徑文字／右 手繪小徑 SVG。
-         不畫箭頭流程線、不像企業流程圖；要像「慢慢走一段路」 -->
-    <div class="split-layout">
-      <div class="split-text">
-
-    <!-- Step reveal：每張卡 scroll 進來時依序淡入 + 上滑（stagger 0.1s）。
-         背景一條虛線貫穿 step-num 中軸，視覺上給「走一段路」感。 -->
-    <div class="step-list step-reveal" data-step-walk>
-      <span class="step-trail" aria-hidden="true"></span>
-
-      <!-- Step 1 -->
-      <div class="step-card step-item" data-step-index="0">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <div class="step-name">登記說明會</div>
-          <p class="step-desc">先一起看看，這條路是什麼樣子、適不適合你。</p>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step-card step-item" data-step-index="1">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <div class="step-name">申請加入首屆培育</div>
-          <p class="step-desc">在這個階段，慢慢確認彼此是不是合適，也讓我們更認識你。</p>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step-card step-item" data-step-index="2">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <div class="step-name">參與核心訓練</div>
-          <p class="step-desc">從材料、教案到現場，這裡會帶你看到一場永續行動是怎麼長出來的。</p>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="step-card step-item" data-step-index="3">
-        <div class="step-num">4</div>
-        <div class="step-body">
-          <div class="step-name">完成任務與評估</div>
-          <p class="step-desc">不是只聽完課，而是透過實作與任務，看見自己可以交付什麼。</p>
-        </div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="step-card step-item" data-step-index="4">
-        <div class="step-num">5</div>
-        <div class="step-body">
-          <div class="step-name">進入合作評估</div>
-          <p class="step-desc">完成培育後，會有機會慢慢走進 Wishlite 的合作池，承接屬於你的場域任務。</p>
-        </div>
-      </div>
-    </div>
-
-      </div><!-- /.split-text 結束 step-list -->
-
-      <div class="split-illus">
-        <!-- 手繪小徑：5 個圓點呼應 5 步、零散葉片小石頭、角落小山丘。
-             不畫箭頭，路徑用 dashed 虛線，像慢慢走 -->
-        <svg class="illus-path" viewBox="0 0 320 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- 紙感底色 -->
-          <ellipse cx="160" cy="210" rx="155" ry="200" fill="#F5E8D5" opacity="0.18"/>
-
-          <!-- 蜿蜒小徑：dashed 路徑，慢慢走的感覺 -->
-          <path d="M70,40 Q140,90 90,150 Q40,210 110,260 Q170,300 130,360"
-                stroke="#A67C52" stroke-width="2" fill="none"
-                stroke-dasharray="4,5" stroke-linecap="round" opacity="0.55"/>
-
-          <!-- 5 個停頓點（呼應 5 個 step）-->
-          <g font-family="'Noto Serif TC', serif" font-weight="600">
-            <!-- 1 -->
-            <circle cx="70" cy="40" r="9" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.5"/>
-            <text x="70" y="44" text-anchor="middle" font-size="11" fill="#7E5A35">1</text>
-            <!-- 2 -->
-            <circle cx="113" cy="123" r="9" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.5"/>
-            <text x="113" y="127" text-anchor="middle" font-size="11" fill="#7E5A35">2</text>
-            <!-- 3 -->
-            <circle cx="68" cy="200" r="9" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.5"/>
-            <text x="68" y="204" text-anchor="middle" font-size="11" fill="#7E5A35">3</text>
-            <!-- 4 -->
-            <circle cx="125" cy="285" r="9" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.5"/>
-            <text x="125" y="289" text-anchor="middle" font-size="11" fill="#7E5A35">4</text>
-            <!-- 5（終點，暖金底） -->
-            <circle cx="130" cy="360" r="11" fill="#D89B5C" stroke="#7E5A35" stroke-width="1.5" opacity="0.8"/>
-            <text x="130" y="365" text-anchor="middle" font-size="12" fill="#FDFBF5">5</text>
-          </g>
-
-          <!-- 散落葉子 -->
-          <g opacity="0.4">
-            <path d="M195,75 Q207,65 218,75 Q207,85 195,75 Z" fill="#7D8F72"/>
-            <line x1="199" y1="75" x2="215" y2="75" stroke="#566448" stroke-width="0.5"/>
-            <path d="M30,180 Q40,170 50,180 Q40,190 30,180 Z" fill="#7D8F72"/>
-            <path d="M230,250 Q241,240 252,250 Q241,260 230,250 Z" fill="#7D8F72"/>
-            <line x1="234" y1="250" x2="248" y2="250" stroke="#566448" stroke-width="0.4"/>
-          </g>
-
-          <!-- 小石頭 -->
-          <g opacity="0.38">
-            <ellipse cx="180" cy="155" rx="6" ry="3.5" fill="#B7A89A"/>
-            <ellipse cx="190" cy="158" rx="4" ry="2.5" fill="#B7A89A"/>
-            <ellipse cx="35" cy="295" rx="5" ry="3" fill="#B7A89A"/>
-            <ellipse cx="225" cy="195" rx="4" ry="2.5" fill="#B7A89A"/>
-          </g>
-
-          <!-- 起點小標記：「從這裡開始」 -->
-          <text x="88" y="32" font-family="'Noto Sans TC', sans-serif" font-size="9" fill="#7E5A35" opacity="0.55" letter-spacing="1">START</text>
-
-          <!-- 終點：小山丘輪廓（對應 footer 山脈，不是企業流程圖的「目標」icon） -->
-          <g opacity="0.18">
-            <path d="M180,400 Q220,355 260,400 L180,400 Z" fill="#566448"/>
-            <path d="M230,400 Q265,360 300,400 L230,400 Z" fill="#566448"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 7 ｜ Why Wishlite（轉換版：強化「真實場域、一場一場」的信任感）
-     任務：建立母品牌信任感，但不曬數字／不曬 logo 牆（那留給 trust-wall）
-     ============================================ -->
-<section class="cream">
-  <div class="wrap">
-    <span class="sec-kicker">Why this matters</span>
-    <h2 class="sec-title">這些行動，<br/>已經在不同地方發生。</h2>
-
-    <!-- 4 張場域短卡（圖片之後再補；先用紙感佔位） -->
-    <div class="why-fields">
-      <article class="why-field-card">
-        <div class="why-field-img" data-placeholder="企業 ESG"></div>
-        <h3 class="why-field-title">企業 ESG 體驗</h3>
-        <p class="why-field-desc">把永續變成員工能參與的行動。</p>
-      </article>
-      <article class="why-field-card">
-        <div class="why-field-img" data-placeholder="校園永續"></div>
-        <h3 class="why-field-title">校園永續教育</h3>
-        <p class="why-field-desc">讓學生在材料裡，認識循環。</p>
-      </article>
-      <article class="why-field-card">
-        <div class="why-field-img" data-placeholder="社區共創"></div>
-        <h3 class="why-field-title">社區共創工作坊</h3>
-        <p class="why-field-desc">陪不同年齡的人，一起靠近永續。</p>
-      </article>
-      <article class="why-field-card">
-        <div class="why-field-img" data-placeholder="品牌日"></div>
-        <h3 class="why-field-title">品牌日／親子活動</h3>
-        <p class="why-field-desc">把永續做成可以被記住的體驗。</p>
-      </article>
-    </div>
-
-    <style>
-      .why-fields{
-        display:grid;
-        grid-template-columns:repeat(4,1fr);
-        gap:22px;
-        margin-top:36px;
-      }
-      .why-field-card{
-        background:#FDFBF5;
-        border:1px solid rgba(126,90,53,.18);
-        border-radius:10px;
-        padding:18px 18px 22px;
-        box-shadow:0 2px 8px rgba(126,90,53,.06);
-      }
-      .why-field-img{
-        aspect-ratio:4/3;
-        background:linear-gradient(135deg,#F5E8D5 0%,#EAD8BC 100%);
-        border-radius:6px;
-        margin-bottom:14px;
-        display:flex;align-items:center;justify-content:center;
-        color:#A67C52;font-size:13px;letter-spacing:2px;opacity:.6;
-      }
-      .why-field-img::before{content:attr(data-placeholder)}
-      .why-field-title{
-        font-family:'Noto Serif TC',serif;
-        font-size:17px;color:#5C4830;
-        margin:0 0 6px;letter-spacing:.5px;
-      }
-      .why-field-desc{
-        font-size:14px;color:#7E5A35;
-        line-height:1.65;margin:0;
-      }
-      @media(max-width:880px){
-        .why-fields{grid-template-columns:repeat(2,1fr);gap:16px}
-      }
-      @media(max-width:480px){
-        .why-fields{grid-template-columns:1fr}
-      }
-    </style>
-
-    <div class="split-illus" style="display:none">
-        <!-- 三場域抽象拼貼：企業大樓 + 校園鐘樓 + 社區廣場。
-             手繪線條、低飽和、紙感底色，不是 PowerPoint icon 風格 -->
-        <svg class="illus-wishlite" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- 紙感底色 -->
-          <ellipse cx="200" cy="170" rx="200" ry="155" fill="#F5E8D5" opacity="0.22"/>
-
-          <!-- 連接線：「一場一場做出來」的串連感 -->
-          <g opacity="0.35" stroke="#A67C52" stroke-width="0.9" fill="none" stroke-dasharray="2,3">
-            <path d="M115,265 Q155,275 175,260"/>
-            <path d="M255,260 Q285,275 315,265"/>
-          </g>
-
-          <!-- 企業：左側矩形大樓 -->
-          <g opacity="0.65">
-            <rect x="40" y="115" width="80" height="160" rx="2" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.2"/>
-            <!-- 窗戶網格 -->
-            <g stroke="#A67C52" stroke-width="0.5" fill="none" opacity="0.5">
-              <line x1="55" y1="135" x2="105" y2="135"/>
-              <line x1="55" y1="160" x2="105" y2="160"/>
-              <line x1="55" y1="185" x2="105" y2="185"/>
-              <line x1="55" y1="210" x2="105" y2="210"/>
-              <line x1="55" y1="235" x2="105" y2="235"/>
-              <line x1="80" y1="120" x2="80" y2="270"/>
-            </g>
-            <!-- 大門 -->
-            <rect x="72" y="245" width="16" height="30" fill="#A67C52" opacity="0.3"/>
-            <text x="80" y="298" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#7E5A35" letter-spacing="2">企業</text>
-          </g>
-
-          <!-- 校園：中間屋頂 + 鐘樓 -->
-          <g opacity="0.65" transform="translate(140, 0)">
-            <!-- 主體 -->
-            <rect x="20" y="155" width="120" height="120" rx="2" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.2"/>
-            <!-- 屋頂三角 -->
-            <path d="M10,155 L80,95 L150,155 Z" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1.2" stroke-linejoin="round"/>
-            <!-- 鐘樓 -->
-            <rect x="70" y="75" width="20" height="35" fill="#FDFBF5" stroke="#7E5A35" stroke-width="1"/>
-            <circle cx="80" cy="92" r="4" stroke="#A67C52" stroke-width="0.8" fill="none"/>
-            <line x1="80" y1="89" x2="80" y2="92" stroke="#A67C52" stroke-width="0.6"/>
-            <line x1="80" y1="92" x2="83" y2="92" stroke="#A67C52" stroke-width="0.6"/>
-            <!-- 屋頂下方裝飾 -->
-            <line x1="20" y1="170" x2="140" y2="170" stroke="#A67C52" stroke-width="0.5" opacity="0.5"/>
-            <!-- 大門 -->
-            <rect x="68" y="225" width="24" height="50" fill="#A67C52" opacity="0.3"/>
-            <!-- 兩側窗戶 -->
-            <rect x="32" y="190" width="20" height="22" fill="none" stroke="#A67C52" stroke-width="0.6" opacity="0.5"/>
-            <rect x="108" y="190" width="20" height="22" fill="none" stroke="#A67C52" stroke-width="0.6" opacity="0.5"/>
-            <text x="80" y="298" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#7E5A35" letter-spacing="2">校園</text>
-          </g>
-
-          <!-- 社區：右側圓形廣場 + 樹 + 帳篷 -->
-          <g opacity="0.7" transform="translate(290, 0)">
-            <!-- 樹 -->
-            <ellipse cx="40" cy="200" rx="22" ry="28" fill="#7D8F72" opacity="0.55"/>
-            <rect x="36" y="222" width="8" height="32" fill="#7E5A35" opacity="0.7"/>
-            <!-- 廣場圓圈（dashed 表示開放空間） -->
-            <ellipse cx="55" cy="270" rx="58" ry="11" fill="none" stroke="#7E5A35" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
-            <!-- 小帳篷 -->
-            <path d="M70,250 L85,232 L100,250 Z" fill="#D89B5C" opacity="0.55" stroke="#7E5A35" stroke-width="0.8" stroke-linejoin="round"/>
-            <line x1="85" y1="232" x2="85" y2="250" stroke="#7E5A35" stroke-width="0.5" opacity="0.6"/>
-            <!-- 小花草 -->
-            <g opacity="0.5" stroke="#566448" stroke-width="0.6" fill="none">
-              <line x1="20" y1="270" x2="20" y2="262"/>
-              <circle cx="20" cy="261" r="1.2" fill="#D89B5C" stroke="none"/>
-              <line x1="105" y1="272" x2="105" y2="265"/>
-              <circle cx="105" cy="264" r="1" fill="#D89B5C" stroke="none"/>
-            </g>
-            <text x="55" y="298" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-size="11" fill="#7E5A35" letter-spacing="2">社區</text>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 7.5 ｜ Why Wishlite（信任區）
-     任務：用品牌定位 + 4 數字 + 真實照片 + Logo 牆建立信任，收尾接回 ECO STAR
-     ============================================ -->
-<section class="cream">
-  <div class="wrap">
-    <span class="sec-kicker">Why Wishlite</span>
-    <h2 class="sec-title">Wishlite，<br/>不是只談永續。</h2>
-    <p class="sec-lead" style="text-align:center">
-      我們把材料、故事與體驗，<br/>
-      一場一場帶進真實現場。
-    </p>
-
-    <p class="trust-bridge">
-      從企業 ESG、品牌日，<br/>
-      到校園與社區，<br/>
-      我們一直在做同一件事：<br/><br/>
-      <strong>讓永續，被親手感受。</strong>
-    </p>
-
-    <!-- 數字區 -->
-    <div class="trust-stats">
-      <div class="trust-stat"><span class="num">300+</span><span class="lbl">場 永續手作工作坊</span></div>
-      <div class="trust-stat"><span class="num">10,000+</span><span class="lbl">位 親手做過的參與者</span></div>
-      <div class="trust-stat"><span class="num">100+</span><span class="lbl">家 累積合作對象</span></div>
-      <div class="trust-stat"><span class="num">123</span><span class="lbl">場（2025 單年）</span></div>
-    </div>
-
-    <!-- 活動現場拼圖 -->
-    <figure class="trust-figure">
-      <img src="assets/esg-cases-collage.jpg" alt="Wishlite 在企業、校園、社區的真實現場拼圖" loading="lazy" />
-    </figure>
-
-    <!-- Logo 牆 -->
-    <figure class="trust-figure trust-figure-logo">
-      <img src="assets/logo-wall-clients.jpg" alt="Wishlite 合作品牌 logo 牆" loading="lazy" />
-    </figure>
-
-    <p class="trust-closing">
-      ECO STAR，<br/>
-      <strong>就是從這些經驗長出來的。</strong>
-    </p>
-  </div>
-
-  <style>
-    .trust-bridge{
-      max-width:520px;margin:28px auto 40px;
-      text-align:center;font-size:17px;line-height:2;
-      color:#5C4830;letter-spacing:.5px;
-    }
-    .trust-bridge strong{color:#7E5A35;font-size:19px}
-    .trust-stats{
-      display:grid;grid-template-columns:repeat(4,1fr);
-      gap:18px;max-width:780px;margin:0 auto 44px;
-    }
-    .trust-stat{
-      text-align:center;padding:22px 12px;
-      background:#FDFBF5;border:1px solid rgba(126,90,53,.18);
-      border-radius:10px;
-    }
-    .trust-stat .num{
-      display:block;font-family:'Noto Serif TC',serif;
-      font-size:30px;color:#7E5A35;font-weight:600;
-      letter-spacing:1px;margin-bottom:4px;
-    }
-    .trust-stat .lbl{
-      display:block;font-size:13px;color:#A67C52;letter-spacing:1.5px;
-    }
-    .trust-figure{
-      max-width:880px;margin:0 auto 28px;
-    }
-    .trust-figure img{
-      width:100%;height:auto;display:block;
-      border-radius:8px;
-      box-shadow:0 4px 16px rgba(126,90,53,.12);
-    }
-    .trust-figure-logo{max-width:780px;margin-bottom:40px}
-    .trust-closing{
-      text-align:center;font-size:17px;line-height:2;
-      color:#5C4830;letter-spacing:.5px;margin:8px auto 0;
-    }
-    .trust-closing strong{color:#7E5A35;font-size:19px}
-    @media(max-width:680px){
-      .trust-stats{grid-template-columns:repeat(2,1fr);gap:12px}
-      .trust-stat .num{font-size:26px}
-    }
-  </style>
-</section>
-
-<div class="leaf-divider" aria-hidden="true">
-  <span class="line"></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2C8 6 6 10 12 22C18 10 16 6 12 2Z"/>
-    <path d="M12 6V20"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ============================================
-     SECTION 8 ｜ CTA 說明會邀請（轉換版）
-     決策張力 ④「我現在要不要行動？」
-     - 用 Apple 拍板的 softer hook（不踩 FOMO 邊界）
-     - 收斂 bullet 為 3 條：是什麼／適合誰／怎麼判斷
-     - 結尾允許「不需要現在就做決定」，降低決策壓力
-     原 Section 8 Stories 已移至第 3 位（提前做 social proof）
-     ============================================ -->
-<section class="dark" id="signup">
-  <div class="wrap">
-    <span class="sec-kicker">Briefing session</span>
-    <h2 class="sec-title">如果你正在想：<br/>「我是不是也可以開始？」</h2>
-
-    <div class="signup-card">
-      <!-- Apple 拍板的 hook：softer 版，避開稀缺感邊界 -->
-      <p class="signup-hook">
-        這一場說明會，<br/>
-        會是最適合的第一步。
-      </p>
-
-      <p class="signup-foot">我們會完整說明：</p>
-      <ul class="signup-list">
-        <li>這條路是什麼</li>
-        <li>什麼樣的人，會比較適合這條路</li>
-        <li>你可以怎麼判斷自己適不適合</li>
-      </ul>
-
-      <p class="signup-foot">
-        你不需要現在就做決定。<br/>
-        先來聽聽看，<br/>
-        也許你會更清楚下一步在哪裡。
-      </p>
-    </div>
-
-    <div class="btn-row">
-      <a href="#" class="btn btn-primary" data-cta="briefing-signup">登記說明會，了解這條路怎麼開始</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
-     SECTION 9 ｜ Footer 收束（地平線語言）
-     任務：不要再推第三次，而是讓人帶著一個小小的方向感離開
-     （原 Section 10；總 section 數從 10 → 9，因 Section 5 Who 拿掉、Stories 提前）
-     ============================================ -->
-<section class="closing">
-  <div class="closing-inner">
-    <h2>永續不是一開始就很完整，<br/>而是從願意靠近的那一刻開始。</h2>
-
-    <p>如果你心裡也有一點點想法，<br/>
-       想把喜歡、材料、故事與人連在一起，<br/>
-       也許這一次，就是你開始的地方。</p>
-
-    <div class="btn-row">
-      <a href="#signup" class="btn btn-primary">登記說明會，了解這條路怎麼開始</a>
-      <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
-     Footer 山脈視覺（地平線語言升級｜2026-05-04）
-     - 山脈為主體（兩層水彩遠/近山，極淡 fill）
-     - IP：左側小芽 + 右側小渣 silhouette，opacity 低、無互動
-     - 「像遠方存在，不是主視覺」
-     - 山脈不搶 CTA：放在 closing 收尾與 footer brand 之間
-     ============================================ -->
-<div class="closing-mountain" aria-hidden="true">
-  <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- 遠山：較平緩、棕色暖調 -->
-    <path
-      d="M0,140 L130,95 L260,125 L400,80 L540,115 L690,85 L840,105 L990,80 L1130,108 L1200,95 L1200,200 L0,200 Z"
-      fill="#7E5A35"
-      opacity="0.10" />
-    <!-- 近山：較有起伏、苔綠調 -->
-    <path
-      d="M0,180 L150,130 L300,160 L470,115 L640,150 L800,125 L1000,160 L1200,140 L1200,200 L0,200 Z"
-      fill="#566448"
-      opacity="0.18" />
-  </svg>
-
-  <!-- 遠方的 IP：小芽（品牌核心）稍大、稍清楚；小渣再小、再遠 -->
-  <img class="mountain-mascot mascot-left"
-       src="../專案-IP-永續六友/去背-商用/小芽商用去背.png"
-       alt="" loading="lazy" />
-  <img class="mountain-mascot mascot-right"
-       src="../專案-IP-永續六友/去背-商用/小渣商用去背.png"
-       alt="" loading="lazy" />
-</div>
-
-<!-- 地平線收尾線（Wishlite Footer 地平線語言）：山脈下方再加一條極淡橫線 -->
-<div class="horizon" aria-hidden="true"></div>
-
-<footer class="footer">
-  <div class="footer-brand">WISHLITE 韻手作永續</div>
-  <div>ECO STAR 永續行動設計師系統｜2026</div>
-  <!-- Quiz 軟連結弱化到最底部：給少數沒做過 Quiz 的人退路，但不打擾主轉換路徑 -->
-  <div class="footer-quiz-soft">
-    <a href="../專案-Quiz/index.html">還沒做過永續行動者測驗？可以先從這裡開始</a>
-  </div>
-</footer>
-
-<!-- ============================================
-     Inline scripts：保持極簡。
-     1. 翻卡：點擊 / Enter / Space toggle .is-flipped（覆蓋手機沒 hover 的情況）
-     2. Step reveal：IntersectionObserver 進視窗時 stagger 淡入 + 虛線拉出
-     若日後接入說明會表單，把 #signup 換成實際表單 anchor 或 form embed。
-     ============================================ -->
-<script>
-  (function(){
-    'use strict';
-
-    // —— 1. 翻卡互動：點擊與鍵盤 —— //
-    var flipCards = document.querySelectorAll('.flip-card');
-    flipCards.forEach(function(card){
-      card.addEventListener('click', function(e){
-        // 若點擊到內部連結，不攔截
-        if (e.target.closest('a')) return;
-        card.classList.toggle('is-flipped');
-      });
-      card.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar'){
-          e.preventDefault();
-          card.classList.toggle('is-flipped');
+  </section>
+
+  <section aria-labelledby="pain-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
+      <h2 id="pain-title" class="section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
+      <figure class="pain-mirror">
+        <img src="assets/eco-star-support-growth.png" alt="你不是不夠好，只是還需要對的支持與陪伴，ECO STAR 陪你從釐清想法、找到策略、練習表達，到走進現場，把在乎的事轉化為有影響力的行動。" loading="lazy">
+      </figure>
+      <style>
+        .pain-mirror{
+          max-width:1100px;margin:32px auto 0;
+          border-radius:18px;overflow:hidden;
+          box-shadow:0 8px 22px -18px rgba(126,90,53,.22);
+          background:var(--card);
         }
-      });
-    });
+        .pain-mirror img{display:block;width:100%;height:auto}
+        @media(max-width:720px){.pain-mirror{border-radius:12px}}
+      </style>
+    </div>
+  </section>
 
-    // —— 2. Step reveal：IntersectionObserver —— //
-    var stepWrap = document.querySelector('[data-step-walk]');
-    if (stepWrap && 'IntersectionObserver' in window){
-      var stepItems = stepWrap.querySelectorAll('.step-item');
-      // 整體拉出虛線：當第一張卡進視窗就觸發
-      var trailObserver = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting){
-            stepWrap.classList.add('is-walking');
-            trailObserver.disconnect();
-          }
-        });
-      }, { threshold: 0.15 });
-      trailObserver.observe(stepWrap);
+  </div><!-- /段落 1 -->
+  <div class="group-divider" aria-hidden="true"></div>
 
-      // 每張卡個別淡入
-      var itemObserver = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting){
-            entry.target.classList.add('is-visible');
-            itemObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
-      stepItems.forEach(function(item){ itemObserver.observe(item); });
-    } else if (stepWrap){
-      // 不支援 IO 的舊瀏覽器：直接顯示
-      stepWrap.classList.add('is-walking');
-      stepWrap.querySelectorAll('.step-item').forEach(function(i){ i.classList.add('is-visible'); });
-    }
+  <!-- ═══════════ 段落 2：信任 ═══════════ -->
+  <div class="group-trust">
+
+  <section aria-labelledby="market-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Why this matters</span></div>
+      <h2 id="market-title" class="section-title">這些行動，<br>正在不同的地方發生</h2>
+      <div class="section-body" style="text-align:center;margin-bottom:36px;">
+        <p>企業、校園、社區與品牌活動，<br>都正在尋找更靠近人的永續體驗。</p>
+        <p class="accent">ECO STAR 想培養的，<br>就是能把材料、故事與現場連起來的人。</p>
+      </div>
+      <div class="field-cards">
+        <div class="field-card">
+          <img src="assets/field-enterprise-esg.jpg" alt="企業 ESG 體驗工作坊現場" loading="lazy">
+          <div class="field-card-label">企業 ESG 體驗</div>
+          <p class="field-card-desc">把永續材料變成員工能參與、能理解、能帶走的 ESG 行動。</p>
+        </div>
+        <div class="field-card">
+          <img src="assets/field-school-edu.jpg" alt="校園永續教育活動現場" loading="lazy">
+          <div class="field-card-label">校園永續教育</div>
+          <p class="field-card-desc">讓學生從材料故事與實作中，理解循環、環境與行動的關係。</p>
+        </div>
+        <div class="field-card">
+          <img src="assets/field-community-cocreate.jpg" alt="社區共創工作坊現場" loading="lazy">
+          <div class="field-card-label">社區共創工作坊</div>
+          <p class="field-card-desc">陪不同年齡與背景的人，在共同創作中靠近永續。</p>
+        </div>
+        <div class="field-card">
+          <img src="assets/field-brand-family.jpg" alt="品牌日與親子活動現場" loading="lazy">
+          <div class="field-card-label">品牌日／親子活動</div>
+          <p class="field-card-desc">把永續做成親近、好參與，也能留下記憶的體驗。</p>
+        </div>
+      </div>
+      <style>
+        .field-card-desc{
+          padding:0 18px 18px;margin:0;
+          font-size:13.5px;line-height:1.85;
+          color:var(--sub);text-align:center;letter-spacing:.3px;
+        }
+      </style>
+    </div>
+  </section>
+
+  </div><!-- /段落 2 -->
+  <div class="group-divider" aria-hidden="true"></div>
+
+  <!-- ═══════════ 段落 3：理解產品 ═══════════ -->
+  <div class="group-understand">
+
+  <section aria-labelledby="what-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">What is ECO STAR</span></div>
+      <h2 id="what-title" class="section-title">這不是一堂普通課程</h2>
+      <div class="section-body">
+        <p>它不是一堂單純的課。<br>而是一條陪你從「喜歡」出發，<br>逐步練習、理解現場，<br>最後走向可被交付行動的路。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey-section" aria-labelledby="journey-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Your Journey</span></div>
+      <h2 id="journey-title" class="section-title">從喜歡永續，<br>到能把一場行動帶進現場</h2>
+      <p class="journey-intro">
+        這不是要你一開始就很專業，<br>
+        而是陪你把原本的喜歡，慢慢整理成可以被交付的能力。
+      </p>
+
+      <ol class="journey-scenes" aria-label="ECO STAR 五段學習旅程">
+        <li class="journey-scene-card">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">01｜起點</span>
+            <h3 class="journey-scene-title">從你本來就在乎的事開始</h3>
+            <p class="journey-scene-lead">你喜歡永續、手作、陪伴或教學</p>
+            <p class="journey-scene-desc">也許你已經在生活裡關心環境，<br>也許你喜歡創作、喜歡陪人一起完成一件事。<br>這些，都是靠近永續行動的起點。</p>
+          </div>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-01-start.jpg" alt="雙手捧著小苗與多種永續材料的水彩情境圖" loading="lazy" decoding="async">
+          </figure>
+        </li>
+
+        <li class="journey-scene-card flip">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">02｜理解方法</span>
+            <h3 class="journey-scene-title">慢慢建立方法感</h3>
+            <p class="journey-scene-lead">看見材料、理解場域、學會設計體驗</p>
+            <p class="journey-scene-desc">你會開始知道，一份材料不只是材料——<br>它可以被說成故事、被設計成體驗，<br>也可以連結到企業、校園與社區的真實需求。</p>
+          </div>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：材料如何進入各場域的地圖" loading="lazy" decoding="async">
+          </figure>
+        </li>
+
+        <li class="journey-scene-card">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">03｜開始實作</span>
+            <h3 class="journey-scene-title">把想法做成可被帶領的內容</h3>
+            <p class="journey-scene-lead">練習帶領、整理流程，建立自己的交付感</p>
+            <p class="journey-scene-desc">透過實作與演練，<br>你會慢慢知道一場活動怎麼開始、怎麼引導、怎麼收尾，<br>也練習把自己的溫度放進一套穩定的流程裡。</p>
+          </div>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-03-practice.jpg" alt="桌面上的設計卡與材料：從聆聽到整合的四階段流程" loading="lazy" decoding="async">
+          </figure>
+        </li>
+
+        <li class="journey-scene-card flip">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">04｜走進現場</span>
+            <h3 class="journey-scene-title">在真實場域，帶領一場真的行動</h3>
+            <p class="journey-scene-lead">站到參與者面前，把材料說成體驗。</p>
+            <p class="journey-scene-desc">你會練習開場、引導與收束，<br>讓一場永續體驗真的被人感受到。</p>
+          </div>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-04-field.jpg" alt="ECO STAR 行動者在真實場域中帶領參與者體驗永續材料，象徵走進企業、校園與社區現場。" loading="lazy" decoding="async">
+          </figure>
+        </li>
+
+        <li class="journey-scene-card">
+          <div class="journey-scene-text">
+            <span class="journey-scene-num">05｜下一步</span>
+            <h3 class="journey-scene-title">從學習者，走向可被交付任務的夥伴</h3>
+            <p class="journey-scene-lead">接下第一張任務卡，準備進入合作評估。</p>
+            <p class="journey-scene-desc">完成訓練與實作後，<br>你會開始走向可以被信任交付的位置。</p>
+          </div>
+          <figure class="journey-scene-image">
+            <img src="assets/journey-scene-05-next-step.jpg" alt="ECO STAR 行動者接下任務卡與合作資料夾，象徵完成訓練後進入合作評估與下一步任務。" loading="lazy" decoding="async">
+          </figure>
+        </li>
+      </ol>
+
+      <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
+
+      <div class="journey-cta-row">
+        <button type="button" class="journey-lightbox-trigger" id="journey-modal-trigger" aria-haspopup="dialog" aria-controls="journey-modal" data-journey-modal-open>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21L16 16"/></svg>
+          看完整行動路徑圖
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div id="journey-modal" class="journey-modal" data-journey-modal role="dialog" aria-modal="true" aria-labelledby="journey-modal-title" aria-hidden="true">
+    <div class="journey-modal-inner">
+      <button type="button" class="journey-modal-close" data-journey-modal-close aria-label="關閉完整行動路徑圖">×</button>
+      <h3 id="journey-modal-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;">完整行動路徑圖</h3>
+      <img src="assets/eco-star-journey-full.png" alt="ECO STAR 行動路徑與完訓後下一步圖解">
+      <p class="journey-modal-cap">完整版視覺 ｜ 從學習旅程圖到正式進入場域執行任務</p>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var trigger = document.getElementById('journey-modal-trigger');
+    var modal = document.getElementById('journey-modal');
+    if(!trigger || !modal) return;
+    var closeBtn = modal.querySelector('[data-journey-modal-close]');
+    function open(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; setTimeout(function(){ closeBtn.focus(); }, 50); }
+    function close(){ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; trigger.focus(); }
+    trigger.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('is-open')) close(); });
   })();
-</script>
+  </script>
+
+  <section aria-labelledby="fit-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
+      <h2 id="fit-title" class="section-title">這條路，<br>也許適合這樣的你</h2>
+      <div class="section-body">
+        <p>你不是不夠好，只是還需要一個可以練習、被陪伴、慢慢長出方法的地方。</p>
+        <p>如果你是手作老師、教育工作者或活動引導者，<br>想讓自己的課程多一層永續價值。</p>
+        <p>如果你喜歡材料、創作與環境議題，<br>想把這份關心變成可以被實際執行的行動。</p>
+        <p>如果你一直很擅長陪伴人、整理想法、帶動現場，<br>也許你已經具備成為永續行動設計師的起點。</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="learn-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">What you'll learn</span></div>
+      <h2 id="learn-title" class="section-title">你會慢慢長出<br>四個能力</h2>
+      <div class="abilities">
+        <div class="ability">
+          <span class="ability-tag">ABILITY 01</span>
+          <div class="ability-title">材料敘事力</div>
+          <div class="ability-body">把咖啡渣、再生塑膠、牡蠣殼、紙纖、舊衣與自然素材，轉化成能被人理解與感受的故事。</div>
+        </div>
+        <div class="ability">
+          <span class="ability-tag">ABILITY 02</span>
+          <div class="ability-title">體驗設計力</div>
+          <div class="ability-body">把一個永續概念，設計成有人願意參與、願意完成、願意分享的體驗。</div>
+        </div>
+        <div class="ability">
+          <span class="ability-tag">ABILITY 03</span>
+          <div class="ability-title">現場交付力</div>
+          <div class="ability-body">控制時間、引導現場、處理不同年齡與場域的參與者，讓活動穩定落地。</div>
+        </div>
+        <div class="ability">
+          <span class="ability-tag">ABILITY 04</span>
+          <div class="ability-title">場域轉譯力</div>
+          <div class="ability-body">同樣一個永續主題，在企業、校園、社區、親子場域，能轉換成不同的語言。</div>
+        </div>
+      </div>
+      <p class="learn-tail">這些能力，最後都會回到一個真實現場裡。</p>
+    </div>
+  </section>
+
+  </div><!-- /段落 3 -->
+  <div class="group-divider" aria-hidden="true"></div>
+
+  <!-- ═══════════ 段落 4：行動路徑 ═══════════ -->
+  <div class="group-path">
+
+  <section aria-labelledby="path-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Step by step</span></div>
+      <h2 id="path-title" class="section-title">從零開始，<br>走出屬於你的行動路徑</h2>
+      <p class="path-subtitle">這不是一堂課，而是一條陪伴你成長的路。</p>
+      <figure class="path-image">
+        <img src="assets/eco-star-action-path.png" alt="ECO STAR 從認識自己、參與共創梯、完成核心訓練、申請合作評估到進入行動路徑的圖解" loading="lazy">
+      </figure>
+      <p class="path-tail">你不需要一開始就準備好，<br>只要願意靠近，路就會慢慢長出來。</p>
+      <style>
+        .path-subtitle{
+          text-align:center;color:var(--sub);
+          font-size:16px;line-height:1.9;margin:-12px auto 32px;max-width:560px;
+          letter-spacing:.4px;
+        }
+        .path-image{
+          max-width:1100px;margin:0 auto 28px;
+          border-radius:18px;overflow:hidden;
+          box-shadow:0 8px 22px -18px rgba(126,90,53,.22);
+          background:var(--card);
+        }
+        .path-image img{display:block;width:100%;height:auto}
+        .path-tail{
+          text-align:center;max-width:540px;margin:0 auto;
+          font-family:'Noto Serif TC',serif;font-size:17px;line-height:2;
+          color:var(--brown-deep);letter-spacing:1px;
+        }
+        @media(max-width:720px){
+          .path-image{border-radius:12px;overflow-x:auto}
+          .path-image img{min-width:720px}
+          .path-tail{font-size:15.5px}
+        }
+      </style>
+    </div>
+  </section>
+
+  <section aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Why Wishlite</span></div>
+      <h2 id="why-title" class="section-title">我們不是只在談永續，<br>而是一直在真實場域裡<br>把這些事情一場一場做出來</h2>
+      <div class="section-body" style="text-align:center;">
+        <p>從企業 ESG、品牌日，到校園與社區，<br>我們一直在做同一件事：讓永續，被親手感受。</p>
+      </div>
+      <div class="why-numbers">
+        <div class="why-num"><div class="why-num-val">300+</div><div class="why-num-label">場永續活動</div></div>
+        <div class="why-num"><div class="why-num-val">10,000+</div><div class="why-num-label">位參與者</div></div>
+        <div class="why-num"><div class="why-num-val">100+</div><div class="why-num-label">家合作單位</div></div>
+        <div class="why-num"><div class="why-num-val">133+</div><div class="why-num-label">噸再生材料</div></div>
+      </div>
+      <p class="why-tail">ECO STAR，就是從這些經驗長出來的。</p>
+    </div>
+  </section>
+
+  </div><!-- /段落 4 -->
+
+  <!-- ═══════════ 段落 5：轉換 ═══════════ -->
+
+  <section id="info-session" class="info-session" aria-labelledby="session-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">ECO STAR INFO SESSION</span></div>
+
+      <div class="info-invite-img">
+        <img src="assets/eco-star-info-invitation.png" alt="ECO STAR 說明會邀請卡" loading="lazy">
+      </div>
+
+      <h2 id="session-title" class="section-title">這場說明會，<br>會陪你釐清三件事</h2>
+      <ul class="info-session-list info-clarify">
+        <li>
+          <strong>01｜這是不是適合你的路</strong>
+          <span>你會看見 ECO STAR 適合什麼樣的人，也看見它不是單純的手作課、講師課或證書課。</span>
+        </li>
+        <li>
+          <strong>02｜首屆共創梯會怎麼走</strong>
+          <span>從認識自己、參與核心訓練，到完成任務與申請合作評估，我們會把整條路講清楚。</span>
+        </li>
+        <li>
+          <strong>03｜完訓後，如何走向真實場域</strong>
+          <span>你會理解未來如何依平台需求、合作評估與任務媒合，逐步進入企業、校園與社區的永續行動現場。</span>
+        </li>
+      </ul>
+      <p class="info-session-soft">你不需要現在就決定要不要加入。<br>先來聽懂這條路，再決定自己要不要往前走一步。</p>
+
+      <p class="info-session-pre">這不是正式報名共創梯，而是先登記說明會資訊。<br>我們會寄送最新說明會安排、觀看方式或回放連結給你。</p>
+
+      <form class="signup-form" id="signupForm" novalidate>
+        <div class="form-row">
+          <label class="form-label" for="f-name">姓名 <span class="required">*</span></label>
+          <input class="form-input" type="text" id="f-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-email">Email <span class="required">*</span></label>
+          <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="例如：you@example.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID</label>
+          <input class="form-input" type="text" id="f-line" name="line" placeholder="方便我們提醒你說明會時間">
+        </div>
+        <div class="form-row">
+          <label class="form-label">你目前比較接近哪一種狀態？</label>
+          <div class="form-radio-group" role="radiogroup">
+            <label class="form-radio-option"><input type="radio" name="status" value="creator" required><span>手作老師／創作者</span></label>
+            <label class="form-radio-option"><input type="radio" name="status" value="educator"><span>教育工作者／活動引導者</span></label>
+            <label class="form-radio-option"><input type="radio" name="status" value="learner"><span>喜歡永續與材料，想進一步學習</span></label>
+            <label class="form-radio-option"><input type="radio" name="status" value="other"><span>其他</span></label>
+          </div>
+        </div>
+        <div class="form-checkbox-row">
+          <input type="checkbox" id="f-confirm" name="confirm" required>
+          <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">登記線上說明會</button>
+      </form>
+
+      <div class="signup-thanks" id="signupThanks" style="display:none;">
+        <div class="signup-thanks-icon">🌱</div>
+        <h3>謝謝你願意走到這裡</h3>
+        <p>我們已經把你的登記收下了。<br>說明會的時間與連結會透過 Email 寄給你。</p>
+        <p style="margin-top:18px; opacity:0.7; font-size:14px;">那天見。</p>
+      </div>
+
+      <style>
+        .info-clarify li{
+          display:block;padding:18px 22px;margin:0 0 14px;
+          background:var(--card);border:1px solid var(--line);
+          border-radius:12px;list-style:none;
+        }
+        .info-clarify li strong{
+          display:block;font-family:'Noto Serif TC',serif;
+          font-size:16px;color:var(--brown-deep);font-weight:700;
+          margin-bottom:8px;letter-spacing:.5px;
+        }
+        .info-clarify li span{
+          display:block;font-size:14.5px;line-height:1.95;
+          color:var(--ink);opacity:.88;
+        }
+        .info-session-pre{
+          text-align:center;max-width:560px;margin:32px auto 22px;
+          padding:16px 22px;
+          background:rgba(125,143,114,.08);
+          border:1px dashed rgba(125,143,114,.35);
+          border-radius:12px;
+          font-size:14px;line-height:1.9;color:var(--green-deep);letter-spacing:.3px;
+        }
+      </style>
+    </div>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-title">
+    <div class="container">
+      <h2 id="closing-title" class="section-title">首屆共創梯說明會</h2>
+      <div class="section-body" style="text-align:center;">
+        <p>如果你正在想，自己是不是也能把喜歡的事，<br>變成一場可以發生的永續行動，</p>
+        <p>這場說明會會陪你看見 ECO STAR 的<br>完整路徑、訓練方式與未來合作可能。</p>
+        <p class="accent">你不需要現在就做決定。<br>先來聽懂這條路，再決定自己要不要往前走一步。</p>
+      </div>
+      <div class="closing-ctas">
+        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
+        <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="horizon-photo" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+      <p>讓永續成為日常的選擇</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true; btn.textContent = '送出中…';
+      setTimeout(() => {
+        form.style.display = 'none';
+        document.getElementById('signupThanks').style.display = 'block';
+        document.getElementById('signupThanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 600);
+      // TODO 接 n8n webhook：
+      // fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
+      //   method: 'POST', headers: {'Content-Type':'application/json'},
+      //   body: JSON.stringify({
+      //     name: form.name.value, email: form.email.value, line: form.line.value,
+      //     status: form.status.value, source: 'eco-star-designer', date: new Date().toISOString()
+      //   })
+      // });
+    });
+  </script>
+
 </body>
 </html>
