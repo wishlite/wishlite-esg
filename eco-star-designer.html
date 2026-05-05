@@ -343,6 +343,41 @@
       text-align: center; margin-top: 32px; color: var(--sub);
       font-style: italic; font-size: 16px;
       font-family: 'Noto Serif TC', serif;
+      line-height: 1.85;
+    }
+    /* Step by step｜行動路徑橫式圖（取代原本 1-5 文字列表） */
+    .path-lead {
+      text-align: center; max-width: 640px; margin: 8px auto 0;
+      color: var(--sub); font-size: 15.5px; line-height: 1.95;
+    }
+    .path-illus-scroll {
+      max-width: 1100px;
+      margin: 32px auto 28px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 22px;
+      box-shadow: 0 12px 28px -22px rgba(126, 90, 53, 0.32);
+      background: var(--card);
+    }
+    .path-illus { margin: 0; }
+    .path-illus img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: none;
+    }
+    @media (max-width: 720px) {
+      .path-illus-scroll {
+        margin: 24px -8px 22px;
+        max-width: none;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px -18px rgba(126, 90, 53, 0.28);
+      }
+      .path-illus img {
+        width: auto;
+        height: auto;
+        min-width: 720px;
+      }
     }
 
     /* ═══ 09 Why Wishlite（信任數字）═══ */
@@ -434,6 +469,53 @@
       line-height: 1.85;
     }
 
+    /* 三件事卡 */
+    .info-session-three {
+      list-style: none; padding: 0;
+      max-width: 720px; margin: 32px auto 28px;
+      display: grid; gap: 18px;
+    }
+    .info-session-three li {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 22px 24px;
+      text-align: left;
+    }
+    .info-three-num {
+      display: inline-block;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 12.5px; letter-spacing: 3px;
+      color: var(--gold-light, #D4B06A);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .info-three-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--card);
+      margin: 0 0 8px; line-height: 1.5; letter-spacing: 0.5px;
+    }
+    .info-three-desc {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 14.5px; line-height: 1.9;
+    }
+    .info-session-notice {
+      max-width: 540px; margin: 16px auto 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 13.5px; letter-spacing: 0.5px;
+      padding: 10px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    @media (max-width: 720px) {
+      .info-session-three li { padding: 18px 18px; border-radius: 14px; }
+      .info-three-title { font-size: 16.5px; }
+      .info-three-desc { font-size: 14px; }
+    }
+
     /* ═══ 報名表單 ═══ */
     .signup-form {
       max-width: 540px; margin: 36px auto 0; background: var(--card);
@@ -490,30 +572,31 @@
     }
     .signup-thanks p { color: var(--ink); opacity: 0.88; line-height: 1.95; margin-bottom: 12px; }
 
-    /* ═══ 11 價格（輕卡片）═══ */
-    .price-card {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); max-width: 540px; margin: 32px auto 0;
-      padding: 38px 34px; text-align: center;
-      box-shadow: var(--shadow-soft);
+    /* ═══ 11 ECO STAR 首屆共創梯 說明會（取代原價格區） ═══ */
+    .cohort-title-link {
+      color: inherit; text-decoration: none;
+      transition: color 0.2s ease;
     }
-    .price-card-name {
-      font-family: 'Noto Serif TC', serif; font-weight: 700;
-      font-size: 19px; color: var(--brown-deep); margin-bottom: 14px;
+    .cohort-title-link:hover { color: var(--green-deep); }
+    .cohort-body {
+      max-width: 600px; margin: 22px auto 32px;
+      text-align: center;
     }
-    .price-card-num {
-      font-family: 'Noto Serif TC', serif; font-weight: 700;
-      font-size: 32px; color: var(--brown-deep); margin-bottom: 18px;
-      letter-spacing: 0.04em;
+    .cohort-body p {
+      font-size: 15.5px; line-height: 2;
+      color: var(--ink); margin-bottom: 18px;
     }
-    .price-card-detail {
-      font-size: 14.5px; line-height: 1.95; color: var(--ink); opacity: 0.85;
-      margin-bottom: 20px;
-    }
-    .price-card-tail {
-      font-size: 13.5px; color: var(--sub); line-height: 1.85;
-      padding-top: 18px; border-top: 1px dashed var(--line);
+    .cohort-body p:last-child { margin-bottom: 0; }
+    .cohort-soft {
+      margin-top: 24px !important;
+      padding-top: 22px;
+      border-top: 1px dashed var(--line);
+      color: var(--sub) !important;
+      font-size: 14.5px !important;
       font-style: italic;
+    }
+    .cohort-cta {
+      text-align: center; margin-top: 8px;
     }
 
     /* ═══ 12 Closing ═══ */
@@ -806,7 +889,7 @@
         <p>從材料故事、體驗設計到現場帶領，<br>一步步走到「真的可以發生」的那一刻。</p>
       </div>
       <div class="hero-ctas">
-        <a href="#info-session" class="btn btn-primary">登記 5/21 線上說明會</a>
+        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
         <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
@@ -952,10 +1035,10 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">04｜走進現場</span>
             <h3 class="journey-scene-title">在真實場域，帶領一場真的行動</h3>
-            <p class="journey-scene-lead">站到參與者面前，把材料說成體驗</p>
+            <p class="journey-scene-lead">站到參與者面前，把材料說成體驗。</p>
             <p class="journey-scene-desc">
-              完成訓練後，依平台需求與合作評估，<br>
-              你會有機會走進企業、校園與社區，帶領一場屬於自己的永續行動。
+              你會練習開場、引導與收束，<br>
+              讓一場永續體驗真的被人感受到。
             </p>
           </div>
           <figure class="journey-scene-image">
@@ -968,14 +1051,14 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">05｜下一步</span>
             <h3 class="journey-scene-title">從學習者，走向可被交付任務的夥伴</h3>
-            <p class="journey-scene-lead">接下下一步任務卡，準備出發</p>
+            <p class="journey-scene-lead">接下第一張任務卡，開始走進真實場域</p>
             <p class="journey-scene-desc">
-              通過合作評估，<br>
-              你會以 ECO STAR 行動者的身份，走進企業、校園與社區，承接一份真正屬於你的永續任務。
+              完成訓練與實作後，<br>
+              你會開始走向可以被信任交付的位置。
             </p>
           </div>
           <figure class="journey-scene-image">
-            <img src="assets/journey-scene-05-next-step.jpg" alt="ECO STAR 行動者接下下一步任務卡與合作資料夾，象徵完成訓練後進入合作評估與場域任務。" loading="lazy" decoding="async">
+            <img src="assets/journey-scene-05-next-step.jpg" alt="ECO STAR 行動者接下任務卡與合作資料夾，象徵完成訓練後進入合作評估與下一步任務。" loading="lazy" decoding="async">
           </figure>
         </li>
       </ol>
@@ -1048,19 +1131,20 @@
   <!-- ═══════════ 段落 4：行動路徑 ═══════════ -->
   <div class="group-path">
 
-  <!-- 08 Path -->
+  <!-- 08 Path｜行動路徑橫式圖 -->
   <section aria-labelledby="path-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Step by step</span></div>
-      <h2 id="path-title" class="section-title">不是一次變厲害，<br>而是一步步被帶進來</h2>
-      <div class="path-steps">
-        <div class="path-step"><span class="path-step-num">1</span><span class="path-step-text">登記說明會</span></div>
-        <div class="path-step"><span class="path-step-num">2</span><span class="path-step-text">申請加入培育</span></div>
-        <div class="path-step"><span class="path-step-num">3</span><span class="path-step-text">參與核心訓練</span></div>
-        <div class="path-step"><span class="path-step-num">4</span><span class="path-step-text">完成任務與評估</span></div>
-        <div class="path-step"><span class="path-step-num">5</span><span class="path-step-text">進入合作評估</span></div>
+      <h2 id="path-title" class="section-title">從零開始，<br>走出屬於你的行動路徑</h2>
+      <p class="path-lead">這不是一堂課，而是一條陪伴你成長的路。</p>
+
+      <div class="path-illus-scroll" aria-label="ECO STAR 行動路徑圖｜可橫向滑動查看">
+        <figure class="path-illus">
+          <img src="assets/eco-star-action-path.png" alt="ECO STAR 從認識自己、參與共創梯、完成核心訓練、申請合作評估到進入行動路徑的圖解" loading="lazy" decoding="async">
+        </figure>
       </div>
-      <p class="path-tail">你不需要一開始就準備好。</p>
+
+      <p class="path-tail">你不需要一開始就準備好，<br>只要願意靠近，路就會慢慢長出來。</p>
     </div>
   </section>
 
@@ -1101,19 +1185,30 @@
   <!-- 10 說明會（深苔綠強轉換點）+ 表單 -->
   <section id="info-session" class="info-session" aria-labelledby="session-title">
     <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">5/21 INFO SESSION</span></div>
-      <h2 id="session-title" class="section-title">如果你正在想：<br>「我是不是也可以開始？」</h2>
-      <div class="info-session-body">
-        <p>這一場說明會，<br>會是最適合的第一步。</p>
-        <p>我們會分享：</p>
-      </div>
-      <ul class="info-session-list">
-        <li>ECO STAR 是什麼，不是什麼</li>
-        <li>這條路實際怎麼走</li>
-        <li>你可以怎麼判斷適不適合</li>
-        <li>未來可能的合作方式</li>
-      </ul>
-      <p class="info-session-soft">你不需要現在就做決定。<br>先來聽聽看，也許你會更清楚下一步在哪裡。</p>
+      <div class="section-kicker-wrap"><span class="section-kicker">ECO STAR INFO SESSION</span></div>
+      <h2 id="session-title" class="section-title">這場說明會，<br>會陪你釐清三件事</h2>
+
+      <ol class="info-session-three">
+        <li>
+          <span class="info-three-num">01</span>
+          <h3 class="info-three-title">這是不是適合你的路</h3>
+          <p class="info-three-desc">你會看見 ECO STAR 適合什麼樣的人，也看見它不是單純的手作課、講師課或證書課。</p>
+        </li>
+        <li>
+          <span class="info-three-num">02</span>
+          <h3 class="info-three-title">首屆共創梯會怎麼走</h3>
+          <p class="info-three-desc">從認識自己、參與核心訓練，到完成任務與申請合作評估，我們會把整條路講清楚。</p>
+        </li>
+        <li>
+          <span class="info-three-num">03</span>
+          <h3 class="info-three-title">完訓後，如何走向真實場域</h3>
+          <p class="info-three-desc">你會理解未來如何依平台需求、合作評估與任務媒合，逐步進入企業、校園與社區的永續行動現場。</p>
+        </li>
+      </ol>
+
+      <p class="info-session-soft">你不需要現在就決定要不要加入。<br>先來聽懂這條路，再決定自己要不要往前走一步。</p>
+
+      <p class="info-session-notice">這不是正式報名共創梯，而是先登記說明會資訊。<br>我們會寄送最新說明會安排、觀看方式或回放連結給你。</p>
 
       <form class="signup-form" id="signupForm" novalidate>
         <div class="form-row">
@@ -1151,36 +1246,37 @@
         </div>
         <div class="form-checkbox-row">
           <input type="checkbox" id="f-confirm" name="confirm" required>
-          <label for="f-confirm">我想參加 5/21 線上說明會</label>
+          <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
         </div>
-        <button type="submit" class="form-submit" id="submitBtn">我要報名 5/21 說明會</button>
+        <button type="submit" class="form-submit" id="submitBtn">登記線上說明會</button>
       </form>
 
       <div class="signup-thanks" id="signupThanks" style="display:none;">
         <div class="signup-thanks-icon">🌱</div>
         <h3>謝謝你願意走到這裡</h3>
-        <p>我們已經把你的報名收下了。<br>說明會的時間與連結會在 5/21 前透過 Email 寄給你。</p>
+        <p>我們已經把你的登記收下了。<br>最新一場說明會的時間、觀看方式或回放連結，會透過 Email 寄給你。</p>
         <p style="margin-top:18px; opacity:0.7; font-size:14px;">那天見。</p>
       </div>
     </div>
   </section>
 
-  <!-- 11 價格 -->
-  <section style="background: var(--bg);" aria-labelledby="price-title">
+  <!-- 11 ECO STAR 首屆共創梯 說明會（取代原價格區） -->
+  <section style="background: var(--bg);" aria-labelledby="cohort-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">First founding cohort</span></div>
-      <h2 id="price-title" class="section-title">首屆共創梯</h2>
-      <div class="price-card">
-        <div class="price-card-name">ECO STAR 永續行動設計師系統</div>
-        <div class="price-card-num">NT$ 24,800</div>
-        <div class="price-card-detail">
-          包含 18 小時核心訓練、材料敘事方法、<br>
-          體驗設計練習、教案交付訓練與完訓評估。
-        </div>
-        <div class="price-card-tail">
-          這不是單堂課費用，<br>
-          而是一段進入 Wishlite 永續行動系統的共創旅程。
-        </div>
+      <h2 id="cohort-title" class="section-title">
+        <a href="#info-session" class="cohort-title-link">首屆共創梯說明會</a>
+      </h2>
+      <div class="cohort-body">
+        <p>如果你正在想，自己是不是也能把喜歡的事，<br>變成一場可以發生的永續行動，</p>
+        <p>這場說明會會陪你看見<br>ECO STAR 的完整路徑、訓練方式與未來合作可能。</p>
+        <p class="cohort-soft">
+          你不需要現在就做決定。<br>
+          先來聽懂這條路，再決定自己要不要往前走一步。
+        </p>
+      </div>
+      <div class="cohort-cta">
+        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
       </div>
     </div>
   </section>
@@ -1196,7 +1292,7 @@
         <span class="lead">也許這一次，<br>就是你開始的地方。</span>
       </h2>
       <div class="closing-ctas">
-        <a href="#info-session" class="btn btn-primary">報名 5/21 說明會</a>
+        <a href="#info-session" class="btn btn-primary">登記線上說明會</a>
         <a href="eco-star-cases.html" class="btn btn-secondary">先看看別人是怎麼開始的</a>
       </div>
     </div>
