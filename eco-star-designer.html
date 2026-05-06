@@ -954,7 +954,44 @@
   <section aria-labelledby="market-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">REAL PLACES · REAL PEOPLE</span></div>
-      <h2 id="market-title" class="section-title">永續，<br>其實正在很多地方慢慢發生。</h2>
+      <!-- v3.54 主標升級為「真實落地現場」（從案例展示 → 真實需求現場）-->
+      <h2 id="market-title" class="section-title market-title-v54">
+        <span class="market-title-line1">永續材料的</span>
+        <span class="market-title-line2">真實落地現場</span>
+      </h2>
+      <p class="market-coda">
+        當熱情遇上結構，<br>
+        影響力，<span class="market-coda-pause">　</span>就能慢慢被放大。
+      </p>
+      <style>
+        .market-title-v54{
+          font-family:'Noto Serif TC',serif;font-weight:600;
+          text-align:center;line-height:1.55;letter-spacing:.06em;
+          margin:0 auto 24px;
+        }
+        .market-title-line1{
+          display:block;
+          font-size:clamp(22px,2.6vw,28px);color:#5C4830;
+        }
+        .market-title-line2{
+          display:block;margin-top:10px;
+          font-size:clamp(28px,3.4vw,38px);
+          font-weight:700;letter-spacing:.08em;color:#5C4830;
+        }
+        .market-coda{
+          max-width:520px;margin:0 auto 48px;padding:0 24px;
+          text-align:center;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:16.5px;line-height:2.05;
+          color:rgba(92,72,48,.78);letter-spacing:.06em;
+        }
+        .market-coda-pause{
+          display:inline-block;width:.4em;
+        }
+        @media(max-width:720px){
+          .market-coda{font-size:15px;line-height:1.95;}
+        }
+      </style>
       <!-- v2.7.2 場域水彩橫圖（順序：企業→校園→社區→品牌親子；商業信任感優先）-->
       <!-- v3.48 四大場域改為單一視覺圖（企業 ESG / 品牌日家庭日 / 永續禮贈 / 校園社區）-->
       <figure class="four-fields-figure">
@@ -991,38 +1028,22 @@
         }
       </style>
 
-      <!-- v3.42 真實世界信任段（5/6 Apple 校正）：3 張真實片段 → 淡 logo → 一句收尾
-           原則：不證明厲害、只讓人感覺「這條路真的存在」；保留呼吸感、不做成果牆 -->
-
-      <!-- ① 真實場域 3 張（教學瞬間 / B2B 場域 / 企業共創）-->
-      <div class="life-strip life-strip--3" aria-label="真實場域片段">
-        <figure class="life-photo life-photo--a">
-          <img src="assets/real-scene-yuanta-kids.jpg" alt="教學瞬間：孩子們圍著木盒專注看著手作材料，老師俯身講解" loading="lazy">
-        </figure>
-        <figure class="life-photo life-photo--b">
-          <img src="assets/real-scene-101-yushan.jpg" alt="台北 101 證券公司高樓會議室手作現場，窗外是玉山稜線" loading="lazy">
-        </figure>
-        <figure class="life-photo life-photo--c">
-          <img src="assets/real-scene-innodisk-cocreate.jpg" alt="宜鼎企業員工圍桌挑選永續材料，共同完成手作小海龜" loading="lazy">
-        </figure>
+      <!-- v3.55 移除 3 張真實照片 + logo wall + 收尾文字 — 改為單顆柔和 CTA 替代（不再做作品集堆疊）-->
+      <div class="market-cta">
+        <a href="esg-explore-more.html" class="btn-soft btn-soft--market">更多 ESG 合作案例</a>
       </div>
-
-      <!-- ② Logo air strip — 彩色 / 低透明 / 四邊 fade 進空氣 / 無邊框感 -->
-      <div class="logo-air" aria-label="這些事情已經在很多地方發生過">
-        <img src="assets/logo-wall-clients.jpg" alt="這些事曾經在很多品牌、校園與企業場域慢慢發生" loading="lazy">
-      </div>
-
-      <!-- ③ 一句輕量收尾（取代原 300+/100+/10000+/133+ KPI）-->
-      <p class="real-closing">已在超過 100+ 品牌、校園與企業場域，<br>慢慢發生。</p>
-
-      <!-- v3.47 輕量輔助 CTA：給還沒準備報名的人一條建立信任的 backup path -->
-      <div class="real-soft-cta">
-        <p class="real-soft-cta-lead">
-          如果你想先看看這些行動，曾經怎麼發生在真實場域裡，<br>
-          可以先閱讀 Wishlite 的 ESG 合作案例。
-        </p>
-        <a href="esg-explore-more.html" class="btn-soft">先看看 ESG 合作案例</a>
-      </div>
+      <style>
+        .market-cta{
+          max-width:520px;margin:48px auto 0;
+          text-align:center;
+        }
+        .btn-soft--market{
+          padding:13px 32px;font-size:15px;letter-spacing:.08em;
+        }
+        @media(max-width:720px){
+          .market-cta{margin-top:36px;}
+        }
+      </style>
 
       <style>
         /* v3.40 真實照片流：安靜流動 / 微不規則 / 呼吸空間 */
