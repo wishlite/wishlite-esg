@@ -1485,10 +1485,58 @@
   <section aria-labelledby="why-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why Wishlite</span></div>
-      <h2 id="why-title" class="section-title">我們不是只在談永續，<br>而是一直在真實場域裡<br>把這些事情一場一場做出來</h2>
+      <!-- v3.58 主標 + 副文重構，信任牆放回作為「真實性證據」核心主視覺 -->
+      <h2 id="why-title" class="section-title">為什麼跟著 Wishlite 一起走？</h2>
+      <div class="why-lead-wrap">
+        <p class="why-lead">
+          我們不是只在談永續，<br>
+          而是一直在真實場域裡，<br>
+          把這些事情一場一場做出來。
+        </p>
+        <p class="why-lead why-lead--coda">
+          ECO STAR，<br>
+          就是從這些真實經驗裡，<br>
+          慢慢長出來的系統。
+        </p>
+      </div>
 
-      <!-- v3.40 信任元素已上移至段落 2 Market，此段保留為敘事承接 -->
-      <p class="why-tail">ECO STAR，<br>就是從這些經驗長出來的。</p>
+      <!-- v3.58 信任牆 — 不是 KPI 區，是「這套系統是從很多真實場域長出來的」證據 -->
+      <figure class="trust-wall-figure">
+        <img src="assets/v4-trust-wall.png" alt="信任牆：100+ 合作企業與單位（含證交所、緯穎、微星等）/ 300+ 累積活動場次 / 10,000+ 參與人次 / 133+ 噸再生材料轉化" loading="lazy">
+      </figure>
+
+      <style>
+        .why-lead-wrap{
+          max-width:560px;margin:0 auto 64px;
+          padding:0 24px;
+          text-align:center;
+        }
+        .why-lead{
+          margin:0;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:16.5px;line-height:2.05;
+          color:rgba(92,72,48,.78);letter-spacing:.06em;
+        }
+        .why-lead--coda{
+          margin-top:24px;
+          font-size:15.5px;
+          color:rgba(92,72,48,.62);
+        }
+        .trust-wall-figure{
+          max-width:1180px;margin:0 auto;
+          padding:0 16px;
+          background:transparent;
+        }
+        .trust-wall-figure img{
+          display:block;width:100%;height:auto;
+        }
+        @media(max-width:720px){
+          .why-lead-wrap{margin-bottom:48px;}
+          .why-lead{font-size:15px;line-height:1.95;}
+          .why-lead--coda{font-size:14px;margin-top:18px;}
+          .trust-wall-figure{padding:0 8px;}
+        }
+      </style>
 
       <style>
         .trust-logo{
@@ -1562,7 +1610,8 @@
       </figure>
     </div>
     <style>
-      .collab-path{padding:80px 0 64px;background:#F5F2EA;}
+      /* v3.58 與信任牆拉開呼吸（信任牆=真實性證據，合作路徑=未來可能性，心理功能不同）*/
+      .collab-path{padding:120px 0 64px;background:#F5F2EA;}
       .collab-title{
         font-size:clamp(22px,2.6vw,28px);font-weight:600;
         letter-spacing:.04em;line-height:1.65;
