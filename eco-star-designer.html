@@ -596,15 +596,24 @@
         margin:0 0 16px;text-align:center;
       }
       .hero-cta-row{margin-top:8px}
-      /* v3.16 hero figure：六友手牽手往前走（延續橋頁 Hub IP 語言）*/
+      /* v3.16 hero figure + v3.22 邊界融化：六友融進頁面世界 */
       .hero-figure{
         position:relative;text-align:center;
-        margin:40px auto 0;padding:0 24px;
+        margin:40px auto 0;padding:0;
         z-index:1;pointer-events:none;
       }
       .hero-figure img{
-        display:inline-block;width:420px;max-width:90%;height:auto;
-        opacity:.9;
+        display:inline-block;width:520px;max-width:96%;height:auto;
+        opacity:1;
+        /* 左右 + 下方邊緣融進米白底（top 保留乾淨）*/
+        -webkit-mask-image:
+          linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%),
+          linear-gradient(to bottom, #000 0%, #000 65%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+          linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%),
+          linear-gradient(to bottom, #000 0%, #000 65%, transparent 100%);
+        mask-composite: intersect;
       }
       .hero-final .hero-mascot{display:none}
       @media(max-width:720px){
