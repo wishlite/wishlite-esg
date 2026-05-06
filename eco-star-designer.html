@@ -553,38 +553,48 @@
         變成一場真的能發生的行動。
       </p>
 
-      <!-- v3.10 痛點互動卡：3+2 grid / 三層結構（num + title + lead + sub）-->
-      <div class="pain-cards-v3" id="pain">
-        <article class="pain-card-v3">
-          <span class="pain-num">01</span>
-          <h3 class="pain-title">不知道怎麼開始</h3>
-          <p class="pain-lead">你其實很在乎這些事，</p>
-          <p class="pain-sub">只是一直缺少一個可以練習的起點。</p>
-        </article>
-        <article class="pain-card-v3">
-          <span class="pain-num">02</span>
-          <h3 class="pain-title">說不出真正的價值</h3>
-          <p class="pain-lead">你有很多想說的，</p>
-          <p class="pain-sub">但一開口，就容易變成像在上課。</p>
-        </article>
-        <article class="pain-card-v3">
-          <span class="pain-num">03</span>
-          <h3 class="pain-title">作品很美，卻不容易被理解</h3>
-          <p class="pain-lead">你做了作品，</p>
-          <p class="pain-sub">卻不知道怎麼讓別人真的在意。</p>
-        </article>
-        <article class="pain-card-v3">
-          <span class="pain-num">04</span>
-          <h3 class="pain-title">進到不同場域就會卡住</h3>
-          <p class="pain-lead">你知道不同對象要說不同的話，</p>
-          <p class="pain-sub">但站在現場，還是會緊張。</p>
-        </article>
-        <article class="pain-card-v3">
-          <span class="pain-num">05</span>
-          <h3 class="pain-title">想走得更遠，卻缺少被信任的路徑</h3>
-          <p class="pain-lead">你不是沒有能力，</p>
-          <p class="pain-sub">只是還需要一套方法，<br>讓自己慢慢被看見、被交付。</p>
-        </article>
+      <!-- v3.11 pain grouping + v3.12 color hierarchy：入門 01-03 / 進階 04-05 兩層 -->
+      <div id="pain">
+        <div class="pain-group pain-group-1">
+          <article class="pain-card-v3">
+            <span class="pain-num">01</span>
+            <h3 class="pain-title">不知道怎麼開始</h3>
+            <p class="pain-lead">你其實很在乎這些事，</p>
+            <p class="pain-sub">只是一直缺少一個可以練習的起點。</p>
+          </article>
+          <article class="pain-card-v3">
+            <span class="pain-num">02</span>
+            <h3 class="pain-title">說不出真正的價值</h3>
+            <p class="pain-lead">你有很多想說的，</p>
+            <p class="pain-sub">但一開口，就容易變成像在上課。</p>
+          </article>
+          <article class="pain-card-v3">
+            <span class="pain-num">03</span>
+            <h3 class="pain-title">作品很美，卻不容易被理解</h3>
+            <p class="pain-lead">你做了作品，</p>
+            <p class="pain-sub">卻不知道怎麼讓別人真的在意。</p>
+          </article>
+        </div>
+
+        <p class="pain-bridge">
+          如果你已經走到這一步，<br>
+          你可能也會開始遇到：
+        </p>
+
+        <div class="pain-group pain-group-2">
+          <article class="pain-card-v3 pain-card--advanced">
+            <span class="pain-num">04</span>
+            <h3 class="pain-title">進到不同場域就會卡住</h3>
+            <p class="pain-lead">你知道不同對象要說不同的話，</p>
+            <p class="pain-sub">但站在現場，還是會緊張。</p>
+          </article>
+          <article class="pain-card-v3 pain-card--advanced">
+            <span class="pain-num">05</span>
+            <h3 class="pain-title">想走得更遠，卻缺少被信任的路徑</h3>
+            <p class="pain-lead">你不是沒有能力，</p>
+            <p class="pain-sub">只是還需要一套方法，<br>讓自己慢慢被看見、被交付。</p>
+          </article>
+        </div>
       </div>
       <style>
         .pain-intro{
@@ -593,10 +603,21 @@
           font-size:16.5px;line-height:2;
           color:var(--brown-deep);text-align:center;letter-spacing:.5px;
         }
-        /* v3.10 痛點互動卡：3+2 grid + 三層結構 */
-        .pain-cards-v3{
+        /* v3.11 grouping + v3.12 color hierarchy：入門 3 欄 / 進階 2 欄獨立列 */
+        .pain-group{
           max-width:1080px;margin:48px auto 0;
-          display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+          display:grid;gap:22px;
+        }
+        .pain-group-1{grid-template-columns:repeat(3,1fr);}
+        .pain-group-2{
+          grid-template-columns:repeat(2,1fr);
+          max-width:720px;margin-top:24px;
+        }
+        .pain-bridge{
+          max-width:520px;margin:56px auto 0;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:15.5px;line-height:1.95;
+          color:rgba(92,72,48,.72);text-align:center;letter-spacing:.5px;
         }
         .pain-card-v3{
           background:var(--card);
@@ -610,6 +631,15 @@
         .pain-card-v3:hover{
           transform:translateY(-4px);
           box-shadow:0 14px 32px -16px rgba(126,90,53,.28);
+        }
+        /* v3.12 進階卡：背景略深、border 略深、shadow 略重 */
+        .pain-card--advanced{
+          background:#EFEAE0;
+          border-color:rgba(166,124,82,.22);
+          box-shadow:0 6px 18px -10px rgba(126,90,53,.24);
+        }
+        .pain-card--advanced .pain-num{
+          background:rgba(125,143,114,.14);
         }
         .pain-num{
           display:inline-flex;align-items:center;justify-content:center;
@@ -638,16 +668,14 @@
           font-size:14px;line-height:1.85;
           color:rgba(92,72,48,0.6);letter-spacing:.04em;
         }
-        /* 桌機 3+2：第 4、5 張置中 */
-        .pain-cards-v3 .pain-card-v3:nth-child(4){grid-column:1 / span 1;margin-left:calc(50% / 3 + 11px);}
-        .pain-cards-v3 .pain-card-v3:nth-child(5){grid-column:2 / span 1;margin-left:calc(50% / 3 + 11px);}
         @media(max-width:720px){
           .pain-intro{font-size:15px;line-height:1.95}
-          .pain-cards-v3{grid-template-columns:1fr;gap:16px;margin-top:32px}
+          .pain-group{grid-template-columns:1fr;gap:16px;margin-top:32px}
+          .pain-group-2{margin-top:16px}
+          .pain-bridge{margin-top:40px;font-size:14.5px}
           .pain-card-v3{padding:26px 24px}
           .pain-card-v3:hover{transform:none;box-shadow:0 4px 14px -10px rgba(126,90,53,.18);}
-          .pain-cards-v3 .pain-card-v3:nth-child(4),
-          .pain-cards-v3 .pain-card-v3:nth-child(5){grid-column:auto;margin-left:0}
+          .pain-card--advanced:hover{box-shadow:0 6px 18px -10px rgba(126,90,53,.24);}
           .pain-title{font-size:17.5px}
           .pain-lead{font-size:14.5px}
           .pain-sub{font-size:13.5px}
