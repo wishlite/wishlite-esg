@@ -553,9 +553,9 @@
     <div class="hero-text">
       <span class="hero-kicker">ECO STAR ｜ Designer System</span>
       <h1 id="hero-title" class="hero-title">
-        很多人其實不是不在乎永續，<br>
-        只是一直沒有一個<br>
-        可以開始的地方。
+        <span class="hero-line hero-line--1">把你對永續的喜歡，</span>
+        <span class="hero-line hero-line--2">變成一場：</span>
+        <span class="hero-line hero-line--3">可以被<strong class="hero-emphasis">帶出去</strong>的行動。</span>
       </h1>
       <!-- v3.56 hero-lead 移除（情緒重複 → CORE SYSTEM/Pain/REAL PLACES 已承擔安撫，Hero 改更乾淨的世界觀入口）-->
       <div class="hero-cta-row">
@@ -595,11 +595,30 @@
       }
       .hero-final .hero-title{
         font-family:'Noto Serif TC',serif;font-weight:500;
-        font-size:clamp(30px,4.4vw,44px);line-height:1.5;
-        color:#5C4830;letter-spacing:.04em;
+        line-height:1.55;letter-spacing:.06em;
+        color:#5C4830;
         /* v3.56 移除 hero-lead 後，title→CTA 多留呼吸空間 */
-        margin:0 0 44px;
+        margin:0 0 48px;
         text-align:center;
+      }
+      /* v3.60 hero h1 三段層級 — 喜歡 → 變成 → 行動（最重） */
+      .hero-line{display:block;}
+      .hero-line--1{
+        font-size:clamp(26px,3.2vw,34px);
+        color:#5C4830;margin-bottom:14px;
+      }
+      .hero-line--2{
+        font-size:clamp(22px,2.8vw,28px);
+        color:rgba(92,72,48,.78);margin-bottom:14px;
+      }
+      .hero-line--3{
+        font-size:clamp(30px,4.2vw,44px);
+        color:#5C4830;font-weight:600;letter-spacing:.08em;
+      }
+      .hero-emphasis{
+        font-weight:700;
+        color:var(--brown-deep);
+        letter-spacing:.1em;
       }
       .hero-lead{
         font-family:'Noto Sans TC',sans-serif;
