@@ -557,11 +557,7 @@
         只是一直沒有一個<br>
         可以開始的地方。
       </h1>
-      <p class="hero-lead">
-        你不需要一開始就很厲害，<br>
-        只要願意，<br>
-        就能把喜歡慢慢走成行動。
-      </p>
+      <!-- v3.56 hero-lead 移除（情緒重複 → CORE SYSTEM/Pain/REAL PLACES 已承擔安撫，Hero 改更乾淨的世界觀入口）-->
       <div class="hero-cta-row">
         <a href="#info-session" class="btn btn-primary">了解 ECO STAR</a>
         <a href="esg-explore-more.html" class="btn-soft">先看看 ESG 合作案例</a>
@@ -600,7 +596,9 @@
       .hero-final .hero-title{
         font-family:'Noto Serif TC',serif;font-weight:500;
         font-size:clamp(30px,4.4vw,44px);line-height:1.5;
-        color:#5C4830;letter-spacing:.04em;margin:0 0 24px;
+        color:#5C4830;letter-spacing:.04em;
+        /* v3.56 移除 hero-lead 後，title→CTA 多留呼吸空間 */
+        margin:0 0 44px;
         text-align:center;
       }
       .hero-lead{
