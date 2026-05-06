@@ -753,14 +753,12 @@
       <figure class="pain-figure">
         <img src="assets/v4-three-pains.png" alt="三大痛點：會說但怕像說教 / 會做但缺乏連結 / 會在但容易卡關" loading="lazy">
       </figure>
+      <!-- v3.71 簡化收尾：移除「ECO STAR 想陪你走過⋯」coda（解釋感/品牌自白/情緒重複），主文字級放大、行距拉開、與下方 REAL PLACES 距離拉大 -->
       <p class="pain-aftercopy">
-        你其實很在乎這件事，<br>
+        你其實很在乎這件事。<br>
         只是需要一套：<br>
-        <strong>能把喜歡穩穩帶進現場的方法。</strong>
-      </p>
-      <p class="pain-aftercopy pain-aftercopy--coda">
-        ECO STAR 想陪你走過的，<br>
-        其實就是這一段距離。
+        <strong>能把喜歡，<br>
+        穩健帶進現場的方法。</strong>
       </p>
       <style>
         .pain-figure{
@@ -768,27 +766,21 @@
           background:transparent;
         }
         .pain-figure img{display:block;width:100%;height:auto;}
-        /* v3.51 副文：被理解感，與圖之間留呼吸 */
+        /* v3.71 副文：字級 17→19、行距 2.05→2.3、margin-top 72→104、margin-bottom 0→112（拉開到 REAL PLACES）*/
         .pain-aftercopy{
-          max-width:520px;margin:72px auto 0;
+          max-width:560px;margin:104px auto 112px;
           padding:0 24px;
           text-align:center;
           font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:17px;line-height:2.05;
-          color:rgba(92,72,48,.78);letter-spacing:.06em;
+          font-size:19px;line-height:2.3;
+          color:rgba(92,72,48,.78);letter-spacing:.08em;
         }
         .pain-aftercopy strong{
-          font-weight:600;color:#5C4830;letter-spacing:.08em;
-        }
-        .pain-aftercopy--coda{
-          margin-top:32px;
-          font-size:15.5px;
-          color:rgba(92,72,48,.62);
+          font-weight:600;color:#5C4830;letter-spacing:.1em;
         }
         @media(max-width:720px){
           .pain-figure{margin-top:48px;padding:0 8px}
-          .pain-aftercopy{font-size:15.5px;line-height:1.95;margin-top:56px}
-          .pain-aftercopy--coda{font-size:14px;margin-top:24px}
+          .pain-aftercopy{font-size:16.5px;line-height:2.1;margin:72px auto 80px}
         }
       </style>
       <style>
