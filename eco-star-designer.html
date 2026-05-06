@@ -101,6 +101,23 @@
       border: 1.5px solid rgba(166, 124, 82, 0.45);
     }
     .btn-secondary:hover { background: rgba(166, 124, 82, 0.08); border-color: var(--brown); }
+    /* v3.64 .btn-soft 全域統一 — 與 .btn-primary 同一套 component（同尺寸/同 transition），層級較輕 */
+    .btn-soft {
+      display: inline-block; padding: 0 32px; height: 54px; line-height: 50px;
+      border-radius: 100px; font-weight: 500; font-size: 16px;
+      text-decoration: none; text-align: center; letter-spacing: 0.04em;
+      transition: all 0.28s ease; cursor: pointer;
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--brown-deep);
+      border: 1.5px solid rgba(166, 124, 82, 0.35);
+    }
+    .btn-soft:hover {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: var(--brown);
+      color: #5C4830;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px -10px rgba(126, 90, 53, 0.30);
+    }
 
     /* HERO */
     .hero {
@@ -1059,15 +1076,12 @@
 
       <!-- v3.55 移除 3 張真實照片 + logo wall + 收尾文字 — 改為單顆柔和 CTA 替代（不再做作品集堆疊）-->
       <div class="market-cta">
-        <a href="esg-explore-more.html" class="btn-soft btn-soft--market">更多 ESG 合作案例</a>
+        <a href="esg-explore-more.html" class="btn-soft">更多 ESG 合作案例</a>
       </div>
       <style>
         .market-cta{
           max-width:520px;margin:48px auto 0;
           text-align:center;
-        }
-        .btn-soft--market{
-          padding:13px 32px;font-size:15px;letter-spacing:.08em;
         }
         @media(max-width:720px){
           .market-cta{margin-top:36px;}
@@ -1270,13 +1284,11 @@
       <h2 id="real-partners-title" class="section-title real-partners-title">
         有些人，<br>也是這樣慢慢開始的。
       </h2>
+      <!-- v3.65 lead 簡化 — 從前言式變情緒 opening -->
       <p class="real-partners-lead">
-        她們原本也不是：<br>
-        很會教學的人、<br>
-        很懂永續的人、<br>
-        或很擅長站上台的人。<br><br>
-        只是慢慢在一次次參與裡，<br>
-        長出了屬於自己的行動方式。
+        她們原本也只是：<br>
+        慢慢把喜歡，<br>
+        走成了自己的行動方式。
       </p>
       <figure class="v4-fig real-partners-figure">
         <img src="assets/v4-real-partners.png" alt="真實夥伴故事：Mico 從種子講師到專案執行夥伴 / 婷婷 從手作愛好者到永續參與者 / 阿寶 把生命經驗轉成陪伴他人的力量" loading="lazy">
@@ -1285,15 +1297,16 @@
     <style>
       .real-partners{padding:80px 0 72px;background:#FAF6EE;}
       .real-partners-title{
-        font-size:clamp(24px,2.8vw,30px);font-weight:600;
-        letter-spacing:.04em;line-height:1.55;
+        font-size:clamp(26px,3.0vw,34px);font-weight:600;
+        letter-spacing:.06em;line-height:1.55;
+        margin-bottom:32px;
       }
       .real-partners-lead{
-        max-width:520px;margin:0 auto 40px;
+        max-width:520px;margin:0 auto 72px;
         text-align:center;
-        font-family:'Noto Serif TC',serif;
-        font-size:15.5px;line-height:2.0;
-        color:rgba(92,72,48,.72);letter-spacing:.04em;
+        font-family:'Noto Serif TC',serif;font-weight:500;
+        font-size:16px;line-height:2.05;
+        color:rgba(92,72,48,.7);letter-spacing:.06em;
       }
       .real-partners-figure{
         max-width:1180px;
