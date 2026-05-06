@@ -624,94 +624,130 @@
       <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
       <h2 id="pain-title" class="section-title">為什麼需要 ECO STAR？</h2>
 
-      <!-- v3.11 pain grouping + v3.12 color hierarchy：入門 01-03 / 進階 04-05 兩層 -->
+      <!-- v3.17 pain three-tier：輕共鳴 → 呼吸 → 中等 → 收斂 -->
       <div id="pain">
-        <div class="pain-group pain-group-1">
-          <article class="pain-card-v3">
-            <span class="pain-num">01</span>
-            <h3 class="pain-title">不知道怎麼開始</h3>
-            <p class="pain-lead">你其實很在乎這些事，</p>
-            <p class="pain-sub">只是一直缺少一個可以練習的起點。</p>
+        <!-- Layer 1：輕共鳴（兩張） -->
+        <div class="pain-tier pain-tier--light">
+          <article class="pain-card-v4">
+            <h3 class="pain-card-title">很在乎，<br>卻不知道怎麼開始</h3>
+            <p class="pain-card-sub">你其實一直很在乎這些事，<br>只是一直缺少一個<br>可以慢慢開始的地方。</p>
           </article>
-          <article class="pain-card-v3">
-            <span class="pain-num">02</span>
-            <h3 class="pain-title">說不出真正的價值</h3>
-            <p class="pain-lead">你有很多想說的，</p>
-            <p class="pain-sub">但一開口，就容易變成像在上課。</p>
-          </article>
-          <article class="pain-card-v3">
-            <span class="pain-num">03</span>
-            <h3 class="pain-title">作品很美，卻不容易被理解</h3>
-            <p class="pain-lead">你做了作品，</p>
-            <p class="pain-sub">卻不知道怎麼讓別人真的在意。</p>
+          <article class="pain-card-v4">
+            <h3 class="pain-card-title">做了很多東西，<br>卻不知道怎麼被看見</h3>
+            <p class="pain-card-sub">你做了作品，<br>卻不知道怎麼讓別人真的理解、<br>真的在意。</p>
           </article>
         </div>
 
-        <p class="pain-bridge">
-          如果你已經走到這一步，<br>
-          你可能也會開始遇到：
-        </p>
+        <!-- Breath：情緒陪伴 -->
+        <div class="pain-breath">
+          <img class="pain-breath-mascot" src="assets/mascots/xiaoya/xiaoya-planting.png" alt="" aria-hidden="true" loading="lazy">
+          <p class="pain-breath-lead">你可能也有其中幾種感覺。</p>
+          <p class="pain-breath-body">
+            很多人其實不是沒有能力，<br>
+            只是走到某一步後，<br>
+            開始不知道怎麼繼續。
+          </p>
+        </div>
 
-        <div class="pain-group pain-group-2">
-          <article class="pain-card-v3 pain-card--advanced">
-            <span class="pain-num">04</span>
-            <h3 class="pain-title">進到不同場域就會卡住</h3>
-            <p class="pain-lead">你知道不同對象要說不同的話，</p>
-            <p class="pain-sub">但站在現場，還是會緊張。</p>
+        <!-- Layer 2：中等（兩張） -->
+        <div class="pain-tier pain-tier--medium">
+          <article class="pain-card-v4 pain-card-v4--medium">
+            <h3 class="pain-card-title">進到不同場域，<br>就開始卡住</h3>
+            <p class="pain-card-sub">你知道不同對象要說不同的話，<br>但站在現場，<br>還是會開始緊張。</p>
           </article>
-          <article class="pain-card-v3 pain-card--advanced">
-            <span class="pain-num">05</span>
-            <h3 class="pain-title">想走得更遠，卻缺少被信任的路徑</h3>
-            <p class="pain-lead">你不是沒有能力，</p>
-            <p class="pain-sub">只是還需要一套方法，<br>讓自己慢慢被看見、被交付。</p>
+          <article class="pain-card-v4 pain-card-v4--medium">
+            <h3 class="pain-card-title">很想分享，<br>卻一開口就像在上課</h3>
+            <p class="pain-card-sub">你有很多想說的，<br>但總覺得：<br>好像很難真正被聽進去。</p>
           </article>
         </div>
+
+        <!-- Layer 3：收斂（單一大卡） -->
+        <article class="pain-card-heavy">
+          <p>有時候，<br>不是不想往前。</p>
+          <p>只是很怕走錯，<br>所以一直沒有開始。</p>
+        </article>
       </div>
       <style>
-        .pain-intro{
-          max-width:560px;margin:24px auto 0;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:16.5px;line-height:2;
-          color:var(--brown-deep);text-align:center;letter-spacing:.5px;
+        /* v3.17 pain three-tier */
+        .pain-tier{
+          max-width:880px;margin:48px auto 0;
+          display:grid;grid-template-columns:repeat(2,1fr);gap:22px;
         }
-        /* v3.11 grouping + v3.12 color hierarchy：入門 3 欄 / 進階 2 欄獨立列 */
-        .pain-group{
-          max-width:1080px;margin:48px auto 0;
-          display:grid;gap:22px;
-        }
-        .pain-group-1{grid-template-columns:repeat(3,1fr);}
-        .pain-group-2{
-          grid-template-columns:repeat(2,1fr);
-          max-width:720px;margin-top:24px;
-        }
-        .pain-bridge{
-          max-width:520px;margin:56px auto 0;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:15.5px;line-height:1.95;
-          color:rgba(92,72,48,.72);text-align:center;letter-spacing:.5px;
-        }
-        .pain-card-v3{
+        .pain-tier--medium{margin-top:0;}
+        .pain-card-v4{
           background:var(--card);
           border:1px solid var(--line);
           border-radius:16px;
-          padding:32px 28px;
+          padding:36px 32px;
           box-shadow:0 4px 14px -10px rgba(126,90,53,.18);
           display:flex;flex-direction:column;align-items:flex-start;
           transition:transform .25s ease, box-shadow .25s ease;
         }
-        .pain-card-v3:hover{
+        .pain-card-v4:hover{
           transform:translateY(-4px);
           box-shadow:0 14px 32px -16px rgba(126,90,53,.28);
         }
-        /* v3.12 進階卡：背景略深、border 略深、shadow 略重 */
-        .pain-card--advanced{
-          background:#EFEAE0;
-          border-color:rgba(166,124,82,.22);
+        .pain-card-v4--medium{
+          background:#EDE7DD;
+          border-color:rgba(166,124,82,.26);
           box-shadow:0 6px 18px -10px rgba(126,90,53,.24);
         }
-        .pain-card--advanced .pain-num{
-          background:rgba(125,143,114,.14);
+        .pain-card-title{
+          margin:0 0 14px;
+          font-family:'Noto Serif TC',serif;font-weight:600;
+          font-size:21px;line-height:1.55;
+          color:#5C4830;letter-spacing:.04em;
         }
+        .pain-card-sub{
+          margin:0;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:14.5px;line-height:1.95;
+          color:rgba(92,72,48,.72);letter-spacing:.04em;
+        }
+        /* Breath 呼吸段：情緒陪伴 */
+        .pain-breath{
+          max-width:560px;margin:64px auto;
+          padding:48px 32px;
+          background:#F8F5EE;
+          border-radius:18px;
+          text-align:center;
+        }
+        .pain-breath-mascot{
+          display:block;width:88px;height:auto;
+          margin:0 auto 24px;
+          opacity:.95;
+        }
+        .pain-breath-lead{
+          margin:0 0 22px;
+          font-family:'Noto Serif TC',serif;font-weight:600;
+          font-size:18px;line-height:1.85;
+          color:var(--brown-deep);letter-spacing:.04em;
+        }
+        .pain-breath-body{
+          margin:0;
+          font-family:'Noto Serif TC',serif;
+          font-size:16px;line-height:2.1;
+          color:rgba(92,72,48,.78);letter-spacing:.04em;
+        }
+        /* Heavy 收斂大卡：留白 + 字大 + 重量 */
+        .pain-card-heavy{
+          max-width:640px;margin:64px auto 0;
+          padding:64px 48px;
+          background:#E8E1D5;
+          border:1px solid rgba(166,124,82,.28);
+          border-radius:20px;
+          text-align:center;
+          box-shadow:0 14px 36px -22px rgba(126,90,53,.30);
+        }
+        .pain-card-heavy p{
+          margin:0 0 24px;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:22px;line-height:2.0;
+          color:#4A3A24;letter-spacing:.06em;
+        }
+        .pain-card-heavy p:last-child{margin-bottom:0;}
+        /* Why ECO STAR 段隱藏 v3.12 listening 浮標（呼吸段已有 mascot）*/
+        section[aria-labelledby="pain-title"] .section-mascot--listening{display:none;}
         .pain-num{
           display:inline-flex;align-items:center;justify-content:center;
           width:34px;height:34px;border-radius:50%;
@@ -740,16 +776,19 @@
           color:rgba(92,72,48,0.6);letter-spacing:.04em;
         }
         @media(max-width:720px){
-          .pain-intro{font-size:15px;line-height:1.95}
-          .pain-group{grid-template-columns:1fr;gap:16px;margin-top:32px}
-          .pain-group-2{margin-top:16px}
-          .pain-bridge{margin-top:40px;font-size:14.5px}
-          .pain-card-v3{padding:26px 24px}
-          .pain-card-v3:hover{transform:none;box-shadow:0 4px 14px -10px rgba(126,90,53,.18);}
-          .pain-card--advanced:hover{box-shadow:0 6px 18px -10px rgba(126,90,53,.24);}
-          .pain-title{font-size:17.5px}
-          .pain-lead{font-size:14.5px}
-          .pain-sub{font-size:13.5px}
+          .pain-tier{grid-template-columns:1fr;gap:16px;margin-top:32px}
+          .pain-tier--medium{margin-top:0}
+          .pain-card-v4{padding:28px 24px}
+          .pain-card-v4:hover{transform:none;box-shadow:0 4px 14px -10px rgba(126,90,53,.18);}
+          .pain-card-v4--medium:hover{box-shadow:0 6px 18px -10px rgba(126,90,53,.24);}
+          .pain-card-title{font-size:18.5px}
+          .pain-card-sub{font-size:14px}
+          .pain-breath{margin:48px 16px;padding:36px 24px}
+          .pain-breath-mascot{width:76px;margin-bottom:18px}
+          .pain-breath-lead{font-size:16.5px}
+          .pain-breath-body{font-size:15px;line-height:1.95}
+          .pain-card-heavy{margin:48px 16px 0;padding:44px 28px;}
+          .pain-card-heavy p{font-size:18px;line-height:1.9}
         }
 
         .resonance-body{
