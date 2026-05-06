@@ -564,7 +564,8 @@
     <style>
       .hero-final{
         padding:104px 32px 96px;
-        background:#F5F2EA;
+        /* v3.24.4 整段融合：底 15% 漸入下一段（pain section #F2EFE9）色，消除水平切線 */
+        background:linear-gradient(to bottom, #F5F2EA 0%, #F5F2EA 85%, #F2EFE9 100%);
         position:relative;overflow:hidden;
         text-align:center;
       }
