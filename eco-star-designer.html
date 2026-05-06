@@ -556,7 +556,7 @@
       </div>
     </div>
     <div class="hero-figure" aria-hidden="true">
-      <img src="https://wishlite.github.io/wishlite-proposals/assets/mascots/six_friends.png" alt="" loading="lazy">
+      <img src="assets/hero-six-friends-scene.png" alt="" loading="lazy">
     </div>
     <style>
       .hero-final{
@@ -604,16 +604,18 @@
         z-index:1;pointer-events:none;
       }
       .hero-figure img{
-        display:inline-block;width:520px;max-width:96%;height:auto;
+        display:inline-block;width:800px;max-width:92vw;height:auto;
         opacity:1;
+        /* v3.24 場景圖對比微降 8%（避免左右場景搶 hero 文字注意力）*/
+        filter:contrast(.92);
         /* 左右 + 下方邊緣融進米白底（top 保留乾淨）*/
         -webkit-mask-image:
-          linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%),
-          linear-gradient(to bottom, #000 0%, #000 65%, transparent 100%);
+          linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%),
+          linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
         -webkit-mask-composite: source-in;
         mask-image:
-          linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%),
-          linear-gradient(to bottom, #000 0%, #000 65%, transparent 100%);
+          linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%),
+          linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
         mask-composite: intersect;
       }
       .hero-final .hero-mascot{display:none}
@@ -622,8 +624,8 @@
         .hero-final .hero-title{font-size:24px;line-height:1.6}
         .hero-lead{font-size:15px}
         .hero-final .hero-kicker{display:none}
-        .hero-figure{margin:32px auto 0;padding:0 16px}
-        .hero-figure img{width:260px}
+        .hero-figure{margin:32px auto 0;padding:0 12px}
+        .hero-figure img{width:92vw;max-width:92vw}
       }
     </style>
   </section>
