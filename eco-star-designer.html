@@ -459,6 +459,7 @@
     /* v3.13 page color rhythm — 從 Hero → CTA 的情緒流動 */
     /* Hero (#F5F2EA) 已在 .hero-final 定義 */
     section[aria-labelledby="pain-title"]{background:#F2EFE9;}
+    section[aria-labelledby="market-title"]{background:#F6F3EC;padding-top:96px;}
     .pain-card--advanced{background:#EDE7DD!important;border-color:rgba(166,124,82,.26)!important;}
     section[aria-labelledby="what-title"]{
       background:#F8F6F1;position:relative;
@@ -749,8 +750,9 @@
           color:rgba(92,72,48,.78);letter-spacing:.04em;
         }
         /* v3.21 pain-flow：收斂 → 轉折 → 看見可能性，無框無卡無陰影 */
+        /* v3.23 微調：收窄 + 第一段一口氣 + pivot 縮短 margin */
         .pain-flow{
-          max-width:600px;margin:80px auto 0;
+          max-width:640px;margin:80px auto 0;
           padding:0 24px;
           text-align:center;
           background:transparent;
@@ -761,8 +763,13 @@
           font-size:22px;line-height:2.0;
           color:#5C4830;letter-spacing:.08em;
         }
+        /* 第一段「有時候，/不是不想往前。」一口氣說出 */
+        .pain-flow-quiet:first-of-type{
+          line-height:1.75;
+          margin-bottom:20px;
+        }
         .pain-flow-pivot{
-          margin:56px 0 40px;
+          margin:36px 0 28px;
           font-family:'Noto Serif TC',serif;font-weight:500;
           font-size:15.5px;line-height:1.9;
           color:rgba(92,72,48,.55);letter-spacing:.25em;
@@ -927,6 +934,12 @@
           transition:transform .25s ease,box-shadow .25s ease;
         }
         .field-card-wide:hover{transform:translateY(-3px);box-shadow:0 14px 32px -14px rgba(126,90,53,.28)}
+        /* v3.23 第一張（企業 ESG 體驗）略放大 7% — 整頁場域感主視覺 */
+        .field-cards-wide .field-card-wide:first-child{
+          transform:scale(1.07);transform-origin:center;
+          box-shadow:0 14px 32px -14px rgba(126,90,53,.26);
+        }
+        .field-cards-wide .field-card-wide:first-child:hover{transform:scale(1.07) translateY(-3px);}
         .field-card-wide img{
           width:100%;height:auto;display:block;
           object-fit:contain;
