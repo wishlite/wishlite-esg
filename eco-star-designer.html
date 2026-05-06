@@ -1699,330 +1699,56 @@
 
   <!-- ═══════════ 段落 5：轉換 ═══════════ -->
 
-  <section id="info-session" class="info-session has-mascot has-mascot--cta" aria-labelledby="session-title">
-    <img class="section-mascot section-mascot--waving" data-mascot src="assets/mascots/xiaoya/xiaoya-waving.png" alt="" aria-hidden="true" loading="lazy">
-    <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">ECO STAR INFO SESSION</span></div>
-
-      <div class="info-invite-img">
-        <img src="assets/eco-star-info-invitation.png" alt="ECO STAR 說明會邀請卡" loading="lazy">
-      </div>
-
-      <h2 id="session-title" class="section-title">先來聽懂這條路，<br>再決定要不要走。</h2>
-      <p class="final-cta-soft">你不需要現在就做決定，<br>這場說明會，只是幫你看清楚。</p>
-      <p class="final-cta-intro">你會慢慢看見：</p>
-      <ul class="final-cta-list">
-        <li>有些人，是怎麼開始的</li>
-        <li>真實場域裡，發生著什麼</li>
-        <li>以及，<br>這條路是不是也和你有一點關係</li>
-      </ul>
-      <div class="final-cta-btn-row">
-        <a href="#signupForm" class="btn btn-primary final-cta-btn">我想先了解看看</a>
-      </div>
-
-      <style>
-        .final-cta-soft{
-          text-align:center;max-width:480px;margin:0 auto 28px;
-          color:rgba(255,255,255,.85);
-          font-family:'Noto Serif TC',serif;font-size:16.5px;line-height:1.95;letter-spacing:.4px;
-        }
-        .final-cta-intro{
-          text-align:center;max-width:480px;margin:0 auto 14px;
-          color:rgba(255,255,255,.7);
-          font-size:14.5px;letter-spacing:1px;
-        }
-        .final-cta-list{
-          list-style:none;padding:0;max-width:380px;margin:0 auto 32px;
-          color:rgba(255,255,255,.92);
-        }
-        .final-cta-list li{
-          font-size:16px;line-height:2;letter-spacing:.4px;text-align:center;
-          padding:6px 0;
-        }
-        .final-cta-list li::before{content:'・';margin-right:4px;opacity:.6;}
-        .final-cta-btn-row{
-          text-align:center;margin-bottom:36px;
-        }
-        .final-cta-btn{
-          background:var(--brown)!important;
-          border-color:var(--brown)!important;
-        }
-        /* v3.47 輔助 / 輕量 CTA：副按鈕、Real Places 後 CTA、Form 後分享列 */
-        .hero-cta-row{
-          display:flex;flex-direction:column;align-items:center;gap:14px;
-        }
-        .btn-soft{
-          display:inline-block;
-          padding:11px 26px;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:14.5px;letter-spacing:.06em;
-          color:rgba(92,72,48,.8);
-          background:transparent;
-          border:1px solid rgba(166,124,82,.30);
-          border-radius:100px;
-          text-decoration:none;
-          transition:background .25s ease,color .25s ease,border-color .25s ease;
-        }
-        .btn-soft:hover{
-          background:rgba(166,124,82,.08);
-          color:#5C4830;
-          border-color:rgba(166,124,82,.50);
-        }
-        .btn-soft--small{
-          padding:9px 22px;font-size:13.5px;
-        }
-        .real-soft-cta{
-          max-width:520px;margin:36px auto 0;
-          text-align:center;
-          padding:0 24px;
-        }
-        .real-soft-cta-lead{
-          margin:0 0 18px;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:14.5px;line-height:1.95;letter-spacing:.04em;
-          color:rgba(92,72,48,.7);
-        }
-        .form-aftermath{
-          max-width:540px;margin:32px auto 0;
-          text-align:center;
-          display:flex;flex-direction:column;align-items:center;gap:14px;
-        }
-        .form-aftermath-lead{
-          margin:0;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:14px;line-height:1.85;letter-spacing:.04em;
-          color:rgba(92,72,48,.65);
-        }
-        .btn-share{
-          margin-top:6px;padding:8px 18px;
-          font-family:'Noto Sans TC',sans-serif;
-          font-size:13px;letter-spacing:.06em;
-          color:rgba(92,72,48,.65);
-          background:transparent;
-          border:none;
-          cursor:pointer;
-          text-decoration:underline;text-underline-offset:4px;
-          transition:color .25s ease;
-        }
-        .btn-share:hover{color:#5C4830;}
-        .share-feedback{
-          display:block;min-height:18px;
-          font-size:12.5px;color:rgba(125,143,114,.85);letter-spacing:.05em;
-        }
-        @media(max-width:720px){
-          .final-cta-soft{font-size:15px}
-          .final-cta-list li{font-size:15px}
-        }
-      </style>
-
-      <!-- v3.46 表單區塊標題 -->
-      <div class="form-section-heading">
-        <span class="form-section-eyebrow">SIGN UP</span>
-        <h3 class="form-section-title">首屆共創梯｜線上說明會</h3>
-      </div>
-
-      <!-- v3.50 說明會資訊卡 — 縮 20%：移除與 form-section-title 重複的 lead，list 與 tail 精簡 -->
-      <div class="session-info-card">
-        <p class="session-info-sub">在這場說明會，你會看見：</p>
-        <ul class="session-info-list">
-          <li>18 小時核心訓練如何進行</li>
-          <li>四大能力模組學到什麼</li>
-          <li>完訓與合作評估怎麼運作</li>
-          <li>這條路，是否適合你現在的狀態</li>
-        </ul>
-
-        <dl class="session-info-meta">
-          <div><dt>時間</dt><dd>5/21（四）20:00–21:00</dd></div>
-          <div><dt>形式</dt><dd>線上進行</dd></div>
-          <div><dt>名額</dt><dd>每場限 30 位</dd></div>
-          <div><dt>報名截止</dt><dd>5/20（三）23:59 或額滿為止</dd></div>
-        </dl>
-
-        <p class="session-info-soft">
-          為了保留互動與提問時間，本場說明會採小人數進行。
-        </p>
-
-        <p class="session-info-tail">
-          填寫後，你會收到登記確認與線上連結提醒。
-        </p>
-      </div>
-
-      <form class="signup-form" id="signupForm" novalidate>
-        <div class="form-row">
-          <label class="form-label" for="f-name">姓名 <span class="required">*</span></label>
-          <input class="form-input" type="text" id="f-name" name="name" required autocomplete="name">
-        </div>
-        <div class="form-row">
-          <label class="form-label" for="f-email">Email <span class="required">*</span></label>
-          <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="例如：you@example.com">
-        </div>
-        <div class="form-row">
-          <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID <span class="required">*</span></label>
-          <input class="form-input" type="text" id="f-line" name="line" required placeholder="方便我們透過 LINE 傳送說明會連結與提醒">
-        </div>
-        <div class="form-row">
-          <label class="form-label">你目前比較接近哪一種狀態？ <span class="required">*</span></label>
-          <div class="form-radio-group" role="radiogroup">
-            <label class="form-radio-option"><input type="radio" name="status" value="creator" required><span>手作老師／創作者</span></label>
-            <label class="form-radio-option"><input type="radio" name="status" value="educator"><span>教育工作者／活動引導者</span></label>
-            <label class="form-radio-option"><input type="radio" name="status" value="learner"><span>喜歡永續與材料，想進一步學習</span></label>
-            <label class="form-radio-option"><input type="radio" name="status" value="transition"><span>正在轉換人生或工作方向</span></label>
-            <label class="form-radio-option"><input type="radio" name="status" value="other"><span>其他</span></label>
-          </div>
-        </div>
-        <div class="form-row">
-          <label class="form-label" for="f-reason">你為什麼想來聽這場說明會？<span class="form-label-soft">（選填）</span></label>
-          <textarea class="form-input form-textarea" id="f-reason" name="reason" rows="3" placeholder="任何想說的都可以"></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submitBtn">報名線上說明會</button>
-      </form>
-
-      <!-- v3.47 form 下方 backup CTA + 分享 -->
-      <div class="form-aftermath">
-        <p class="form-aftermath-lead">還想再多了解一些真實合作現場？</p>
-        <a href="esg-explore-more.html" class="btn-soft btn-soft--small">先看看 ESG 合作案例</a>
-        <button type="button" class="btn-share" id="shareBtn" data-share-url data-share-title="ECO STAR ｜ 永續行動設計師系統">
-          分享給一位也在尋找下一步的朋友
-        </button>
-        <span class="share-feedback" id="shareFeedback" aria-live="polite"></span>
-      </div>
-
-      <div class="signup-thanks" id="signupThanks" style="display:none;">
-        <div class="signup-thanks-icon">🌱</div>
-        <h3>謝謝你完成登記。</h3>
-        <p>我們會透過 Email 或 LINE 傳送說明會連結與提醒通知。</p>
-        <p style="margin-top:22px;font-size:15px;line-height:1.95;color:rgba(92,72,48,.78);">
-          這不是要你立刻決定是否加入，<br>
-          而是先陪你完整聽懂這條路，<br>
-          再判斷它是否適合現在的你。
-        </p>
-      </div>
-
-      <style>
-        .info-clarify li{
-          display:block;padding:18px 22px;margin:0 0 14px;
-          background:var(--card);border:1px solid var(--line);
-          border-radius:12px;list-style:none;
-        }
-        .info-clarify li strong{
-          display:block;font-family:'Noto Serif TC',serif;
-          font-size:16px;color:var(--brown-deep);font-weight:700;
-          margin-bottom:8px;letter-spacing:.5px;
-        }
-        .info-clarify li span{
-          display:block;font-size:14.5px;line-height:1.95;
-          color:var(--ink);opacity:.88;
-        }
-        .info-session-pre{
-          text-align:center;max-width:560px;margin:32px auto 22px;
-          padding:16px 22px;
-          background:rgba(125,143,114,.08);
-          border:1px dashed rgba(125,143,114,.35);
-          border-radius:12px;
-          font-size:14px;line-height:1.9;color:var(--green-deep);letter-spacing:.3px;
-        }
-
-        /* v3.46 表單區塊標題 + 說明會資訊卡 */
-        .form-section-heading{
-          max-width:540px;margin:60px auto 24px;
-          text-align:center;
-        }
-        .form-section-eyebrow{
-          display:inline-block;
-          font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;
-          color:rgba(92,72,48,.62);font-weight:600;
-          padding:5px 14px;background:rgba(166,124,82,.08);
-          border:1px solid rgba(166,124,82,.22);border-radius:100px;
-          margin-bottom:18px;
-        }
-        .form-section-title{
-          margin:0;
-          font-family:'Noto Serif TC',serif;font-weight:600;
-          font-size:24px;line-height:1.55;letter-spacing:.05em;
-          color:#5C4830;
-        }
-        .session-info-card{
-          max-width:540px;margin:0 auto 36px;
-          padding:36px 32px;
-          background:#FAF6EE;
-          border:1px solid rgba(166,124,82,.14);
-          border-radius:18px;
-        }
-        .session-info-lead{
-          margin:0 0 22px;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:16.5px;line-height:1.95;
-          color:#5C4830;letter-spacing:.04em;text-align:center;
-        }
-        .session-info-sub{
-          margin:0 0 12px;
-          font-family:'Noto Sans TC',sans-serif;
-          font-size:14.5px;line-height:1.85;letter-spacing:.04em;
-          color:rgba(92,72,48,.7);
-        }
-        .session-info-list{
-          list-style:none;padding:0;margin:0 0 28px;
-        }
-        .session-info-list li{
-          position:relative;padding:6px 0 6px 22px;
-          font-family:'Noto Sans TC',sans-serif;
-          font-size:15px;line-height:1.85;color:#5C4830;letter-spacing:.04em;
-        }
-        .session-info-list li::before{
-          content:'·';position:absolute;left:8px;top:2px;
-          color:rgba(166,124,82,.65);font-size:18px;line-height:1;
-        }
-        .session-info-meta{
-          display:grid;grid-template-columns:auto 1fr;gap:10px 18px;
-          margin:0 0 22px;padding:18px 0;
-          border-top:1px solid rgba(166,124,82,.16);
-          border-bottom:1px solid rgba(166,124,82,.16);
-        }
-        .session-info-meta > div{display:contents;}
-        .session-info-meta dt{
-          font-family:'Noto Sans TC',sans-serif;font-weight:600;
-          font-size:13.5px;color:rgba(92,72,48,.62);letter-spacing:.1em;
-        }
-        .session-info-meta dd{
-          margin:0;
-          font-family:'Noto Sans TC',sans-serif;
-          font-size:14.5px;color:#5C4830;letter-spacing:.04em;
-        }
-        .session-info-soft{
-          margin:0 0 18px;padding:12px 16px;
-          background:rgba(125,143,114,.08);
-          border-radius:10px;
-          font-family:'Noto Sans TC',sans-serif;
-          font-size:13.5px;line-height:1.85;color:rgba(92,72,48,.78);
-          letter-spacing:.04em;text-align:center;
-        }
-        .session-info-tail{
-          margin:0;
-          font-family:'Noto Sans TC',sans-serif;
-          font-size:13.5px;line-height:1.95;
-          color:rgba(92,72,48,.65);letter-spacing:.04em;text-align:center;
-        }
-        .form-textarea{
-          font-family:'Noto Sans TC',sans-serif;
-          resize:vertical;min-height:80px;
-        }
-        .form-label-soft{
-          color:rgba(92,72,48,.55);font-weight:400;
-          margin-left:6px;font-size:13px;
-        }
-        @media(max-width:720px){
-          .form-section-heading{margin:48px auto 20px}
-          .form-section-title{font-size:21px}
-          .session-info-card{padding:28px 22px;border-radius:14px;margin-bottom:28px}
-          .session-info-lead{font-size:15.5px}
-          .session-info-list li{font-size:14.5px}
-          .session-info-meta{grid-template-columns:auto 1fr;gap:8px 14px}
-          .session-info-meta dt{font-size:12.5px}
-          .session-info-meta dd{font-size:13.5px}
-        }
-      </style>
+  <!-- v3.61 INFO SESSION 重構為「最後一個世界入口」— 整段表單/CTA/分享移除，改 v4-signup-hero.png + 兩個透明 anchor 熱區（保持原始水彩視覺）-->
+  <section id="info-session" class="signup-hero-section" aria-label="ECO STAR 最後邀請">
+    <div class="signup-hero-wrap">
+      <img class="signup-hero-img" src="assets/v4-signup-hero.png" alt="永續不是一開始就很完整，而是從願意靠近的那一刻開始。如果你心裡也有一點點想法，想把喜歡、材料、故事與人連在一起，也許這一次，就是你開始的地方。" loading="lazy">
+      <a class="signup-hero-hotspot signup-hero-hotspot--primary" href="#signup-form" aria-label="我要報名 5/21 說明會"></a>
+      <a class="signup-hero-hotspot signup-hero-hotspot--secondary" href="esg-explore-more.html" aria-label="洽詢企業合作"></a>
     </div>
+    <style>
+      .signup-hero-section{
+        background:#F5F2EA;
+        padding:88px 24px 96px;
+      }
+      .signup-hero-wrap{
+        max-width:1180px;margin:0 auto;
+        position:relative;
+      }
+      .signup-hero-img{
+        display:block;width:100%;height:auto;
+      }
+      /* 透明熱區：座標基於 1672×941 圖內按鈕位置（百分比，圖縮放仍對齊）*/
+      .signup-hero-hotspot{
+        position:absolute;
+        display:block;
+        background:transparent;
+        border-radius:8px;
+        text-indent:-9999px;
+        cursor:pointer;
+        transition:background .25s ease, transform .25s ease, box-shadow .25s ease;
+      }
+      .signup-hero-hotspot:hover{
+        background:rgba(166,124,82,.08);
+        transform:translateY(-2px);
+        box-shadow:0 8px 22px -14px rgba(126,90,53,.30);
+      }
+      .signup-hero-hotspot:focus-visible{
+        outline:2px solid var(--brown-deep);outline-offset:3px;
+      }
+      .signup-hero-hotspot--primary{
+        top:74%;left:21.5%;width:23%;height:11%;
+      }
+      .signup-hero-hotspot--secondary{
+        top:74%;left:55%;width:23.5%;height:11%;
+      }
+      @media(max-width:720px){
+        .signup-hero-section{padding:56px 16px 64px;}
+        .signup-hero-hotspot{border-radius:5px;}
+      }
+    </style>
   </section>
+  <!-- v3.61 LEGACY DELETED 舊 info-session（form + 資訊卡 + 三層 CTA + share + thanks）-->
 
   <footer>
     <div class="horizon-photo" aria-hidden="true"></div>
@@ -2032,55 +1758,6 @@
     </div>
   </footer>
 
-  <script>
-    // v3.47 share CTA — navigator.share with clipboard fallback
-    (function(){
-      var btn = document.getElementById('shareBtn');
-      var fb = document.getElementById('shareFeedback');
-      if (!btn) return;
-      btn.addEventListener('click', async function(){
-        var url = window.location.href;
-        var title = btn.getAttribute('data-share-title') || document.title;
-        var text = '陪你把原本的喜歡，整理成可以被交付的能力。';
-        try {
-          if (navigator.share) {
-            await navigator.share({ title: title, text: text, url: url });
-            fb.textContent = '謝謝你願意傳遞 🌱';
-          } else if (navigator.clipboard) {
-            await navigator.clipboard.writeText(url);
-            fb.textContent = '連結已複製，可以分享給朋友了 🌱';
-          } else {
-            fb.textContent = '請手動複製此頁網址：' + url;
-          }
-        } catch(err) {
-          if (err && err.name === 'AbortError') return;
-          fb.textContent = '分享暫時無法使用，請手動複製網址。';
-        }
-        setTimeout(function(){ fb.textContent = ''; }, 4500);
-      });
-    })();
-
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true; btn.textContent = '送出中…';
-      setTimeout(() => {
-        form.style.display = 'none';
-        document.getElementById('signupThanks').style.display = 'block';
-        document.getElementById('signupThanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 600);
-      // TODO 接 n8n webhook：
-      // fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
-      //   method: 'POST', headers: {'Content-Type':'application/json'},
-      //   body: JSON.stringify({
-      //     name: form.name.value, email: form.email.value, line: form.line.value,
-      //     status: form.status.value, source: 'eco-star-designer', date: new Date().toISOString()
-      //   })
-      // });
-    });
-  </script>
 
   <script>
   (function(){
