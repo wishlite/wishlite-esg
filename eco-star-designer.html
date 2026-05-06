@@ -977,7 +977,7 @@
         慢慢整理成可以被帶進現場的行動。
       </p>
       <figure class="what-flow">
-        <img src="assets/eco-star-journey-watercolor.png" alt="從喜歡出發的四段水彩旅程：1 起點（你原本喜歡的事）→ 2 練習（把喜歡慢慢整理成方法）→ 3 走進場域（第一次把行動帶出去）→ 4 下一步（世界開始慢慢打開）" loading="lazy">
+        <img src="assets/eco-star-journey-full.png" alt="ECO STAR 五階段結構：從學習旅程到正式進入場域執行任務的完整路徑圖" loading="lazy">
       </figure>
       <style>
         .what-lead{
@@ -1014,97 +1014,27 @@
         而是陪你把原本的喜歡，慢慢整理成可以被交付的能力。
       </p>
 
-      <ol class="journey-scenes" aria-label="ECO STAR 五段學習旅程">
-        <li class="journey-scene-card">
-          <div class="journey-scene-text">
-            <span class="journey-scene-num">01｜起點</span>
-            <h3 class="journey-scene-title">從你本來就在乎的事開始</h3>
-            <p class="journey-scene-lead">把喜歡的事，整理成可以被看見的方向。</p>
-          </div>
-          <figure class="journey-scene-image">
-            <img src="assets/journey-scene-01-start.jpg" alt="雙手捧著小苗與多種永續材料的水彩情境圖" loading="lazy" decoding="async">
-          </figure>
-        </li>
-
-        <li class="journey-scene-card flip">
-          <div class="journey-scene-text">
-            <span class="journey-scene-num">02｜理解方法</span>
-            <h3 class="journey-scene-title">看懂材料如何變成體驗</h3>
-            <p class="journey-scene-lead">讓一份材料，不只是材料，而是一段能被記住的行動。</p>
-          </div>
-          <figure class="journey-scene-image">
-            <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：材料如何進入各場域的地圖" loading="lazy" decoding="async">
-          </figure>
-        </li>
-
-        <li class="journey-scene-card">
-          <div class="journey-scene-text">
-            <span class="journey-scene-num">03｜開始實作</span>
-            <h3 class="journey-scene-title">把想法做成可帶領的內容</h3>
-            <p class="journey-scene-lead">練習把故事、流程與現場引導，整理成一場體驗。</p>
-          </div>
-          <figure class="journey-scene-image">
-            <img src="assets/journey-scene-03-practice.jpg" alt="桌面上的設計卡與材料：從聆聽到整合的四階段流程" loading="lazy" decoding="async">
-          </figure>
-        </li>
-
-        <li class="journey-scene-card flip">
-          <div class="journey-scene-text">
-            <span class="journey-scene-num">04｜走進現場</span>
-            <h3 class="journey-scene-title">在真實場域帶領行動</h3>
-            <p class="journey-scene-lead">從企業、校園到社區，學會把話說給不同的人聽。</p>
-          </div>
-          <figure class="journey-scene-image">
-            <img src="assets/journey-scene-04-field.jpg" alt="ECO STAR 行動者在真實場域中帶領參與者體驗永續材料，象徵走進企業、校園與社區現場。" loading="lazy" decoding="async">
-          </figure>
-        </li>
-
-        <li class="journey-scene-card">
-          <div class="journey-scene-text">
-            <span class="journey-scene-num">05｜下一步</span>
-            <h3 class="journey-scene-title">從學習者走向合作夥伴</h3>
-            <p class="journey-scene-lead">通過評估後，才有機會走進真實任務。</p>
-          </div>
-          <figure class="journey-scene-image">
-            <img src="assets/journey-scene-05-next-step.png" alt="ECO STAR 行動者帶領永續體驗工作坊，從學習者走向可被交付任務的夥伴。" loading="lazy" decoding="async">
-          </figure>
-        </li>
-      </ol>
+      <!-- v3.30 Journey 圖像替換為水彩人物流程圖（投射感）-->
+      <figure class="journey-flow">
+        <img src="assets/eco-star-journey-watercolor.png" alt="從喜歡出發的四段水彩旅程：1 起點（你原本喜歡的事）→ 2 練習（把喜歡慢慢整理成方法）→ 3 走進場域（第一次把行動帶出去）→ 4 下一步（世界開始慢慢打開）" loading="lazy">
+      </figure>
 
       <p class="journey-coda">每一步，都是把喜歡慢慢走成行動。</p>
 
-      <div class="journey-cta-row">
-        <button type="button" class="journey-lightbox-trigger" id="journey-modal-trigger" aria-haspopup="dialog" aria-controls="journey-modal" data-journey-modal-open>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21L16 16"/></svg>
-          看完整行動路徑圖
-        </button>
-      </div>
+      <style>
+        .journey-flow{
+          max-width:1180px;margin:0 auto;
+          background:transparent;
+        }
+        .journey-flow img{
+          display:block;width:100%;height:auto;
+          object-fit:contain;
+        }
+      </style>
     </div>
   </section>
 
-  <div id="journey-modal" class="journey-modal" data-journey-modal role="dialog" aria-modal="true" aria-labelledby="journey-modal-title" aria-hidden="true">
-    <div class="journey-modal-inner">
-      <button type="button" class="journey-modal-close" data-journey-modal-close aria-label="關閉完整行動路徑圖">×</button>
-      <h3 id="journey-modal-title" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;">完整行動路徑圖</h3>
-      <img src="assets/eco-star-journey-full.png" alt="ECO STAR 行動路徑與完訓後下一步圖解">
-      <p class="journey-modal-cap">完整版視覺 ｜ 從學習旅程圖到正式進入場域執行任務</p>
-    </div>
-  </div>
-
-  <script>
-  (function(){
-    var trigger = document.getElementById('journey-modal-trigger');
-    var modal = document.getElementById('journey-modal');
-    if(!trigger || !modal) return;
-    var closeBtn = modal.querySelector('[data-journey-modal-close]');
-    function open(){ modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; setTimeout(function(){ closeBtn.focus(); }, 50); }
-    function close(){ modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; trigger.focus(); }
-    trigger.addEventListener('click', open);
-    closeBtn.addEventListener('click', close);
-    modal.addEventListener('click', function(e){ if(e.target===modal) close(); });
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('is-open')) close(); });
-  })();
-  </script>
+  <!-- v3.30 journey-modal 移除：eco-star-journey-full.png 已直接顯示在 What is ECO STAR 段，不再需要 lightbox -->
 
   <!-- v3.27 Who fits in：移到 Journey 後面 / 改為「從喜歡出發，走出屬於你的永續行動路。」+ 移除副標 -->
   <section aria-labelledby="fit-title">
