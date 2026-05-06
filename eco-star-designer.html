@@ -1373,6 +1373,44 @@
         }
       </style>
 
+      <!-- v3.46 表單區塊標題 -->
+      <div class="form-section-heading">
+        <span class="form-section-eyebrow">SIGN UP</span>
+        <h3 class="form-section-title">首屆共創梯｜線上說明會</h3>
+      </div>
+
+      <!-- v3.46 說明會資訊卡 -->
+      <div class="session-info-card">
+        <p class="session-info-lead">
+          如果你想更完整聽懂這條路，<br>
+          歡迎登記 ECO STAR 首屆共創梯線上說明會。
+        </p>
+
+        <p class="session-info-sub">我們會在這場說明會中，陪你看見：</p>
+        <ul class="session-info-list">
+          <li>18 小時核心訓練會如何進行</li>
+          <li>四大能力模組會學到什麼</li>
+          <li>完訓評估與後續合作評估怎麼理解</li>
+          <li>這條路，是否適合你現在的狀態</li>
+        </ul>
+
+        <dl class="session-info-meta">
+          <div><dt>時間</dt><dd>5/21（四）20:00–21:00</dd></div>
+          <div><dt>形式</dt><dd>線上進行</dd></div>
+          <div><dt>名額</dt><dd>每場限 30 位</dd></div>
+          <div><dt>報名截止</dt><dd>5/20（三）23:59 或額滿為止</dd></div>
+        </dl>
+
+        <p class="session-info-soft">
+          為了保留互動與提問時間，本場說明會採小人數進行。
+        </p>
+
+        <p class="session-info-tail">
+          填寫後，你會收到說明會登記確認，<br>
+          以及後續線上連結與提醒通知。
+        </p>
+      </div>
+
       <form class="signup-form" id="signupForm" novalidate>
         <div class="form-row">
           <label class="form-label" for="f-name">姓名 <span class="required">*</span></label>
@@ -1383,30 +1421,35 @@
           <input class="form-input" type="email" id="f-email" name="email" required autocomplete="email" placeholder="例如：you@example.com">
         </div>
         <div class="form-row">
-          <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID</label>
-          <input class="form-input" type="text" id="f-line" name="line" placeholder="方便我們提醒你說明會時間">
+          <label class="form-label" for="f-line">LINE 顯示名稱或 LINE ID <span class="required">*</span></label>
+          <input class="form-input" type="text" id="f-line" name="line" required placeholder="方便我們透過 LINE 傳送說明會連結與提醒">
         </div>
         <div class="form-row">
-          <label class="form-label">你目前比較接近哪一種狀態？</label>
+          <label class="form-label">你目前比較接近哪一種狀態？ <span class="required">*</span></label>
           <div class="form-radio-group" role="radiogroup">
             <label class="form-radio-option"><input type="radio" name="status" value="creator" required><span>手作老師／創作者</span></label>
             <label class="form-radio-option"><input type="radio" name="status" value="educator"><span>教育工作者／活動引導者</span></label>
             <label class="form-radio-option"><input type="radio" name="status" value="learner"><span>喜歡永續與材料，想進一步學習</span></label>
+            <label class="form-radio-option"><input type="radio" name="status" value="transition"><span>正在轉換人生或工作方向</span></label>
             <label class="form-radio-option"><input type="radio" name="status" value="other"><span>其他</span></label>
           </div>
         </div>
-        <div class="form-checkbox-row">
-          <input type="checkbox" id="f-confirm" name="confirm" required>
-          <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
+        <div class="form-row">
+          <label class="form-label" for="f-reason">你為什麼想來聽這場說明會？<span class="form-label-soft">（選填）</span></label>
+          <textarea class="form-input form-textarea" id="f-reason" name="reason" rows="3" placeholder="任何想說的都可以"></textarea>
         </div>
-        <button type="submit" class="form-submit" id="submitBtn">登記線上說明會</button>
+        <button type="submit" class="form-submit" id="submitBtn">登記 5/21 線上說明會</button>
       </form>
 
       <div class="signup-thanks" id="signupThanks" style="display:none;">
         <div class="signup-thanks-icon">🌱</div>
-        <h3>謝謝你願意走到這裡</h3>
-        <p>我們已經把你的登記收下了。<br>說明會的時間與連結會透過 Email 寄給你。</p>
-        <p style="margin-top:18px; opacity:0.7; font-size:14px;">那天見。</p>
+        <h3>謝謝你完成登記。</h3>
+        <p>我們會透過 Email 或 LINE 傳送說明會連結與提醒通知。</p>
+        <p style="margin-top:22px;font-size:15px;line-height:1.95;color:rgba(92,72,48,.78);">
+          這不是要你立刻決定是否加入，<br>
+          而是先陪你完整聽懂這條路，<br>
+          再判斷它是否適合現在的你。
+        </p>
       </div>
 
       <style>
@@ -1431,6 +1474,105 @@
           border:1px dashed rgba(125,143,114,.35);
           border-radius:12px;
           font-size:14px;line-height:1.9;color:var(--green-deep);letter-spacing:.3px;
+        }
+
+        /* v3.46 表單區塊標題 + 說明會資訊卡 */
+        .form-section-heading{
+          max-width:540px;margin:60px auto 24px;
+          text-align:center;
+        }
+        .form-section-eyebrow{
+          display:inline-block;
+          font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;
+          color:rgba(92,72,48,.62);font-weight:600;
+          padding:5px 14px;background:rgba(166,124,82,.08);
+          border:1px solid rgba(166,124,82,.22);border-radius:100px;
+          margin-bottom:18px;
+        }
+        .form-section-title{
+          margin:0;
+          font-family:'Noto Serif TC',serif;font-weight:600;
+          font-size:24px;line-height:1.55;letter-spacing:.05em;
+          color:#5C4830;
+        }
+        .session-info-card{
+          max-width:540px;margin:0 auto 36px;
+          padding:36px 32px;
+          background:#FAF6EE;
+          border:1px solid rgba(166,124,82,.14);
+          border-radius:18px;
+        }
+        .session-info-lead{
+          margin:0 0 22px;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:16.5px;line-height:1.95;
+          color:#5C4830;letter-spacing:.04em;text-align:center;
+        }
+        .session-info-sub{
+          margin:0 0 12px;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:14.5px;line-height:1.85;letter-spacing:.04em;
+          color:rgba(92,72,48,.7);
+        }
+        .session-info-list{
+          list-style:none;padding:0;margin:0 0 28px;
+        }
+        .session-info-list li{
+          position:relative;padding:6px 0 6px 22px;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:15px;line-height:1.85;color:#5C4830;letter-spacing:.04em;
+        }
+        .session-info-list li::before{
+          content:'·';position:absolute;left:8px;top:2px;
+          color:rgba(166,124,82,.65);font-size:18px;line-height:1;
+        }
+        .session-info-meta{
+          display:grid;grid-template-columns:auto 1fr;gap:10px 18px;
+          margin:0 0 22px;padding:18px 0;
+          border-top:1px solid rgba(166,124,82,.16);
+          border-bottom:1px solid rgba(166,124,82,.16);
+        }
+        .session-info-meta > div{display:contents;}
+        .session-info-meta dt{
+          font-family:'Noto Sans TC',sans-serif;font-weight:600;
+          font-size:13.5px;color:rgba(92,72,48,.62);letter-spacing:.1em;
+        }
+        .session-info-meta dd{
+          margin:0;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:14.5px;color:#5C4830;letter-spacing:.04em;
+        }
+        .session-info-soft{
+          margin:0 0 18px;padding:12px 16px;
+          background:rgba(125,143,114,.08);
+          border-radius:10px;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:13.5px;line-height:1.85;color:rgba(92,72,48,.78);
+          letter-spacing:.04em;text-align:center;
+        }
+        .session-info-tail{
+          margin:0;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:13.5px;line-height:1.95;
+          color:rgba(92,72,48,.65);letter-spacing:.04em;text-align:center;
+        }
+        .form-textarea{
+          font-family:'Noto Sans TC',sans-serif;
+          resize:vertical;min-height:80px;
+        }
+        .form-label-soft{
+          color:rgba(92,72,48,.55);font-weight:400;
+          margin-left:6px;font-size:13px;
+        }
+        @media(max-width:720px){
+          .form-section-heading{margin:48px auto 20px}
+          .form-section-title{font-size:21px}
+          .session-info-card{padding:28px 22px;border-radius:14px;margin-bottom:28px}
+          .session-info-lead{font-size:15.5px}
+          .session-info-list li{font-size:14.5px}
+          .session-info-meta{grid-template-columns:auto 1fr;gap:8px 14px}
+          .session-info-meta dt{font-size:12.5px}
+          .session-info-meta dd{font-size:13.5px}
         }
       </style>
     </div>
