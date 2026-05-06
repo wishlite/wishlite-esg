@@ -919,7 +919,7 @@
   <section aria-labelledby="market-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">REAL PLACES · REAL PEOPLE</span></div>
-      <h2 id="market-title" class="section-title">這些事，<br>其實正在很多地方慢慢發生。</h2>
+      <h2 id="market-title" class="section-title">永續，<br>其實正在很多地方慢慢發生。</h2>
       <!-- v2.7.2 場域水彩橫圖（順序：企業→校園→社區→品牌親子；商業信任感優先）-->
       <div class="field-cards field-cards-wide">
         <div class="field-card field-card-wide">
@@ -1005,71 +1005,6 @@
     </div>
   </section>
 
-  <section aria-labelledby="fit-title">
-    <div class="container">
-      <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
-      <h2 id="fit-title" class="section-title">很多真正開始的人，<br>其實本來也只是這樣開始的。</h2>
-      <p class="fit-intro">你不需要一開始就有完整答案。<br>只要有一點在乎，<br>就可以慢慢練習，<br>把它變成能被交付的行動。</p>
-
-      <!-- v3.19 fit cards：重寫三張卡（情境化、低壓力）-->
-      <div class="fit-cards">
-        <article class="fit-card">
-          <p class="fit-card-desc">你很喜歡帶人一起做些什麼，<br>也希望自己的課程，<br>不只是「做作品」而已。</p>
-        </article>
-        <article class="fit-card">
-          <p class="fit-card-desc">你其實一直很在乎環境、<br>材料與生活裡的很多事情。<br>只是還不知道，<br>可以怎麼開始。</p>
-        </article>
-        <article class="fit-card">
-          <p class="fit-card-desc">你很擅長陪伴、<br>整理想法、<br>讓現場變得安心。<br>也許你已經有了<br>成為行動引導者的起點。</p>
-        </article>
-      </div>
-
-      <style>
-        .fit-intro{
-          max-width:560px;margin:0 auto 36px;
-          text-align:center;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:16.5px;line-height:1.95;color:var(--brown-deep);letter-spacing:.4px;
-        }
-        .fit-cards{
-          display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
-          max-width:1040px;margin:0 auto;
-        }
-        .fit-card{
-          background:var(--card);
-          border:1px solid var(--line);
-          border-radius:14px;
-          padding:26px 22px;
-          box-shadow:0 6px 18px -14px rgba(126,90,53,.18);
-          transition:transform .25s ease,box-shadow .25s ease;
-          display:flex;flex-direction:column;
-        }
-        .fit-card:hover{
-          transform:translateY(-3px);
-          box-shadow:0 14px 28px -18px rgba(126,90,53,.28);
-        }
-        .fit-card-title{
-          font-family:'Noto Serif TC',serif;font-weight:700;
-          font-size:15.5px;line-height:1.6;color:var(--brown-deep);
-          margin:0 0 12px;letter-spacing:.5px;
-        }
-        .fit-card-desc{
-          margin:0;font-size:14px;line-height:1.95;
-          color:var(--sub);letter-spacing:.3px;
-        }
-        @media(max-width:880px){
-          .fit-cards{grid-template-columns:repeat(2,1fr);gap:18px}
-          .fit-card:nth-child(3){grid-column:1/-1;max-width:480px;margin:0 auto}
-        }
-        @media(max-width:560px){
-          .fit-cards{grid-template-columns:1fr;gap:14px;max-width:100%}
-          .fit-card{padding:22px 20px}
-          .fit-card:nth-child(3){max-width:100%}
-          .fit-intro{font-size:15px}
-        }
-      </style>
-    </div>
-  </section>
 
   <section class="journey-section" aria-labelledby="journey-title">
     <div class="container">
@@ -1171,6 +1106,59 @@
     document.addEventListener('keydown', function(e){ if(e.key==='Escape' && modal.classList.contains('is-open')) close(); });
   })();
   </script>
+
+  <!-- v3.27 Who fits in：移到 Journey 後面 / 改為「從喜歡出發，走出屬於你的永續行動路。」+ 移除副標 -->
+  <section aria-labelledby="fit-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">Who fits in</span></div>
+      <h2 id="fit-title" class="section-title">從喜歡出發，<br>走出屬於你的永續行動路。</h2>
+
+      <div class="fit-cards">
+        <article class="fit-card">
+          <p class="fit-card-desc">你很喜歡帶人一起做些什麼，<br>也希望自己的課程，<br>不只是「做作品」而已。</p>
+        </article>
+        <article class="fit-card">
+          <p class="fit-card-desc">你其實一直很在乎環境、<br>材料與生活裡的很多事情。<br>只是還不知道，<br>可以怎麼開始。</p>
+        </article>
+        <article class="fit-card">
+          <p class="fit-card-desc">你很擅長陪伴、<br>整理想法、<br>讓現場變得安心。<br>也許你已經有了<br>成為行動引導者的起點。</p>
+        </article>
+      </div>
+
+      <style>
+        .fit-cards{
+          display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+          max-width:1040px;margin:0 auto;
+        }
+        .fit-card{
+          background:var(--card);
+          border:1px solid var(--line);
+          border-radius:14px;
+          padding:26px 22px;
+          box-shadow:0 6px 18px -14px rgba(126,90,53,.18);
+          transition:transform .25s ease,box-shadow .25s ease;
+          display:flex;flex-direction:column;
+        }
+        .fit-card:hover{
+          transform:translateY(-3px);
+          box-shadow:0 14px 28px -18px rgba(126,90,53,.28);
+        }
+        .fit-card-desc{
+          margin:0;font-size:14px;line-height:1.95;
+          color:var(--sub);letter-spacing:.3px;
+        }
+        @media(max-width:880px){
+          .fit-cards{grid-template-columns:repeat(2,1fr);gap:18px}
+          .fit-card:nth-child(3){grid-column:1/-1;max-width:480px;margin:0 auto}
+        }
+        @media(max-width:560px){
+          .fit-cards{grid-template-columns:1fr;gap:14px;max-width:100%}
+          .fit-card{padding:22px 20px}
+          .fit-card:nth-child(3){max-width:100%}
+        }
+      </style>
+    </div>
+  </section>
 
   <section aria-labelledby="learn-title">
     <div class="container">
