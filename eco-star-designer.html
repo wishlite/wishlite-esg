@@ -459,7 +459,10 @@
     /* v3.13 page color rhythm — 從 Hero → CTA 的情緒流動 */
     /* Hero (#F5F2EA) 已在 .hero-final 定義 */
     section[aria-labelledby="pain-title"]{background:#F2EFE9;}
-    section[aria-labelledby="market-title"]{background:#F6F3EC;padding-top:96px;}
+    section[aria-labelledby="market-title"]{
+      background:linear-gradient(to bottom,#F2EFE9 0px,#F6F3EC 80px) #F6F3EC;
+      padding-top:80px;
+    }
     .pain-card--advanced{background:#EDE7DD!important;border-color:rgba(166,124,82,.26)!important;}
     section[aria-labelledby="what-title"]{
       background:#F8F6F1;position:relative;
@@ -771,16 +774,17 @@
           margin-bottom:20px;
         }
         .pain-flow-pivot{
-          margin:36px 0 28px;
+          margin:36px 0 20px;
           font-family:'Noto Serif TC',serif;font-weight:500;
           font-size:15.5px;line-height:1.9;
           color:rgba(92,72,48,.55);letter-spacing:.25em;
         }
+        /* v3.25 bright 降重量為轉場句，避免與 Why this matters 主標互搶 */
         .pain-flow-bright{
           margin:0;
           font-family:'Noto Serif TC',serif;font-weight:400;
-          font-size:25px;line-height:1.9;
-          color:#5C4830;letter-spacing:.04em;
+          font-size:22px;line-height:1.9;
+          color:rgba(92,72,48,.85);letter-spacing:.02em;
         }
         /* Why ECO STAR 段隱藏 v3.12 listening 浮標（呼吸段已有 mascot）*/
         section[aria-labelledby="pain-title"] .section-mascot--listening{display:none;}
