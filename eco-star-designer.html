@@ -461,32 +461,31 @@
   <!-- ═══════════ 段落 1：共鳴 ═══════════ -->
   <div class="group-resonance">
 
-  <!-- 🆕 v2.6 hero final（左文字 / 右小芽，乾淨留白、無拼貼圖）-->
+  <!-- 🆕 v3.11 hero center flow（置中敘事版 / 小芽改漂浮式右下角）-->
   <section class="hero hero-final" aria-labelledby="hero-title">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <span class="hero-kicker">ECO STAR ｜ Designer System</span>
-        <h1 id="hero-title" class="hero-title">
-          從喜歡開始，<br>
-          慢慢長出一條可以走的路。
-        </h1>
-        <p class="hero-lead">
-          很多人其實在乎這些事，<br>
-          只是一直沒有一個可以開始的地方。
-        </p>
-        <div class="hero-cta-row">
-          <a href="#info-session" class="btn btn-primary">了解說明會</a>
-        </div>
+    <div class="hero-text">
+      <span class="hero-kicker">ECO STAR ｜ Designer System</span>
+      <h1 id="hero-title" class="hero-title">
+        從喜歡開始，<br>
+        慢慢長出一條可以走的路。
+      </h1>
+      <p class="hero-lead">
+        很多人其實在乎這些事，<br>
+        只是一直沒有一個可以開始的地方。
+      </p>
+      <div class="hero-cta-row">
+        <a href="#info-session" class="btn btn-primary">了解說明會</a>
       </div>
-      <div class="hero-figure" aria-hidden="true">
-        <img src="assets/hero-mascot-xiaoya.png" alt="" loading="lazy">
-      </div>
+    </div>
+    <div class="hero-figure" aria-hidden="true">
+      <img src="assets/hero-mascot-xiaoya.png" alt="" loading="lazy">
     </div>
     <style>
       .hero-final{
-        padding:104px 32px 88px;
+        padding:104px 32px 96px;
         background:#F5F2EA;
         position:relative;overflow:hidden;
+        text-align:center;
       }
       .hero-final::before{
         content:'';position:absolute;inset:0;
@@ -495,9 +494,9 @@
           radial-gradient(ellipse 380px 260px at 92% 78%, rgba(216,155,92,.08), transparent 60%);
         pointer-events:none;z-index:0;
       }
-      .hero-grid{
-        max-width:1120px;margin:0 auto;position:relative;z-index:1;
-        display:grid;grid-template-columns:1.7fr 1fr;gap:56px;align-items:center;
+      .hero-text{
+        max-width:760px;margin:0 auto;position:relative;z-index:1;
+        display:flex;flex-direction:column;align-items:center;
       }
       .hero-final .hero-kicker{
         display:inline-block;
@@ -511,31 +510,35 @@
         font-family:'Noto Serif TC',serif;font-weight:500;
         font-size:clamp(30px,4.4vw,44px);line-height:1.5;
         color:#5C4830;letter-spacing:.04em;margin:0 0 24px;
+        text-align:center;
       }
       .hero-lead{
         font-family:'Noto Sans TC',sans-serif;
         font-size:clamp(15px,1.5vw,17px);line-height:1.85;
         color:rgba(92,72,48,.7);letter-spacing:.04em;
-        margin:0 0 16px;
+        margin:0 0 16px;text-align:center;
       }
       .hero-cta-row{margin-top:8px}
-      .hero-figure{display:flex;align-items:center;justify-content:flex-end}
-      .hero-figure img{
-        max-width:100%;width:100%;height:auto;display:block;
-        max-width:130px;
-        transform:scaleX(-1); /* v2.11 視線導引：水平翻轉，面向左側文字 */
+      /* 小芽：漂浮式右下角 */
+      .hero-figure{
+        position:absolute;right:5%;bottom:24px;z-index:1;
+        pointer-events:none;
       }
-      /* 蓋掉舊 .hero-mascot 規則（已移除元素）*/
+      .hero-figure img{
+        display:block;width:100%;height:auto;
+        max-width:180px;
+        transform:scaleX(-1);
+        opacity:.95;
+      }
       .hero-final .hero-mascot{display:none}
-      /* 手機：上小芽，下文字（順序：小芽 → h1 → lead → CTA，kicker 隱藏）*/
+      /* 手機：小芽放在 CTA 下方靠右 */
       @media(max-width:720px){
         .hero-final{padding:64px 22px 56px}
-        .hero-grid{grid-template-columns:1fr;gap:32px}
-        .hero-figure{order:-1;max-width:250px;margin:0 auto}
-        .hero-figure img{max-width:250px}
         .hero-final .hero-title{font-size:28px;line-height:1.55}
         .hero-lead{font-size:15px}
         .hero-final .hero-kicker{display:none}
+        .hero-figure{position:relative;right:auto;bottom:auto;margin:32px auto 0;display:flex;justify-content:center}
+        .hero-figure img{max-width:140px}
       }
     </style>
   </section>
