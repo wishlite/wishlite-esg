@@ -1594,38 +1594,44 @@
   <!-- v3.48 合作路徑 — 「未來可能性」非「保證」（鐵律 7.7）-->
   <section class="collab-path" aria-labelledby="collab-title">
     <div class="container">
+      <!-- v3.59 簡化主標 + 移除制度說明 lead，讓圖自己說話 -->
       <h2 id="collab-title" class="section-title collab-title">
-        合作評估，<br>
-        是慢慢被打開的舞台。
+        <span class="collab-line collab-line--1">完訓不是結束，</span>
+        <span class="collab-line collab-line--2">而是：</span>
+        <span class="collab-line collab-line--3">進入<strong class="collab-emphasis">真實現場</strong>的起點。</span>
       </h2>
-      <p class="collab-lead">
-        通過完訓評估後，<br>
-        我們會依不同場域與專案，<br>
-        慢慢與你討論可能合作的方式。<br><br>
-        這不是保證接案，<br>
-        而是一條：被陪著走進真實任務的路徑。
-      </p>
-      <figure class="v4-fig">
-        <img src="assets/v4-collab-path.png" alt="ECO STAR 合作路徑：完訓評估 → 合作評估 → 真實任務" loading="lazy">
+      <figure class="v4-fig collab-fig">
+        <img src="assets/v4-collab-path.png" alt="ECO STAR 合作路徑：登記說明會 → 申請加入 → 完成任務 → 合作評估 → 未來舞台" loading="lazy">
       </figure>
     </div>
     <style>
       /* v3.58 與信任牆拉開呼吸（信任牆=真實性證據，合作路徑=未來可能性，心理功能不同）*/
-      .collab-path{padding:120px 0 64px;background:#F5F2EA;}
+      .collab-path{padding:120px 0 80px;background:#F5F2EA;}
       .collab-title{
-        font-size:clamp(22px,2.6vw,28px);font-weight:600;
-        letter-spacing:.04em;line-height:1.65;
+        font-family:'Noto Serif TC',serif;font-weight:500;
+        text-align:center;letter-spacing:.06em;
+        margin:0 auto 64px;line-height:1.65;
       }
-      .collab-lead{
-        max-width:540px;margin:0 auto 36px;
-        text-align:center;
-        font-family:'Noto Serif TC',serif;
-        font-size:16px;line-height:2.0;
-        color:rgba(92,72,48,.78);letter-spacing:.04em;
+      .collab-line{display:block;}
+      .collab-line--1{
+        font-size:clamp(22px,2.6vw,28px);
+        color:#5C4830;margin-bottom:14px;
       }
+      .collab-line--2{
+        font-size:clamp(20px,2.4vw,26px);
+        color:rgba(92,72,48,.78);margin-bottom:14px;
+      }
+      .collab-line--3{
+        font-size:clamp(26px,3.2vw,36px);
+        color:#5C4830;font-weight:600;letter-spacing:.08em;
+      }
+      .collab-emphasis{
+        font-weight:700;color:var(--brown-deep);letter-spacing:.1em;
+      }
+      .collab-fig{margin-top:0;}
       @media(max-width:720px){
-        .collab-path{padding:64px 0 48px;}
-        .collab-lead{font-size:14.5px;}
+        .collab-path{padding:80px 0 56px;}
+        .collab-title{margin-bottom:48px;padding:0 18px;}
       }
     </style>
   </section>
