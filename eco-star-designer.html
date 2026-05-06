@@ -458,7 +458,10 @@
   <style>
     /* v3.13 page color rhythm — 從 Hero → CTA 的情緒流動 */
     /* Hero (#F5F2EA) 已在 .hero-final 定義 */
-    section[aria-labelledby="pain-title"]{background:#F2EFE9;}
+    /* v3.28 pain section：頂 #F5F2EA 接 hero、底 #F2EFE9 接 market，過渡發生在段落內部 */
+    section[aria-labelledby="pain-title"]{
+      background:linear-gradient(to bottom, #F5F2EA 0px, #F2EFE9 240px) #F2EFE9;
+    }
     /* v3.26 pain section title 略小：情緒入口非招生章節 */
     .pain-section-title{
       font-size:clamp(23px,2.8vw,29px);
@@ -570,8 +573,8 @@
     <style>
       .hero-final{
         padding:104px 32px 96px;
-        /* v3.24.4 整段融合：底 15% 漸入下一段（pain section #F2EFE9）色，消除水平切線 */
-        background:linear-gradient(to bottom, #F5F2EA 0%, #F5F2EA 85%, #F2EFE9 100%);
+        /* v3.28 hero 純 #F5F2EA（圖內 bg 與 hero bg 完全一致，無色帶）*/
+        background:#F5F2EA;
         position:relative;overflow:hidden;
         text-align:center;
       }
