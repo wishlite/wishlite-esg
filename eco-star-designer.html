@@ -456,6 +456,46 @@
     }
   </style>
   <style>
+    /* v3.13 page color rhythm — 從 Hero → CTA 的情緒流動 */
+    /* Hero (#F5F2EA) 已在 .hero-final 定義 */
+    section[aria-labelledby="pain-title"]{background:#F2EFE9;}
+    .pain-card--advanced{background:#EDE7DD!important;border-color:rgba(166,124,82,.26)!important;}
+    section[aria-labelledby="what-title"]{
+      background:#F8F6F1;position:relative;
+    }
+    section[aria-labelledby="what-title"]::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 360px 240px at 88% 18%, rgba(125,143,114,.10), transparent 65%),
+        radial-gradient(ellipse 320px 220px at 8% 82%, rgba(125,143,114,.07), transparent 65%);
+      z-index:0;
+    }
+    section[aria-labelledby="what-title"] > *{position:relative;z-index:1;}
+    .journey-section{background:#F4F1EA;}
+    section[aria-labelledby="why-title"]{background:#FFFFFF;}
+    /* CTA / 說明會：dark → light cream override */
+    .info-session{
+      background:#F3EFE7!important;
+      color:var(--brown-deep)!important;
+    }
+    .info-session .section-kicker{
+      color:var(--brown-deep)!important;
+      background:rgba(166,124,82,.10)!important;
+      border-color:rgba(166,124,82,.30)!important;
+    }
+    .info-session .section-title{color:#5C4830!important;}
+    .info-session-body,
+    .info-session-list li{color:var(--brown-deep)!important;}
+    .info-session-soft{color:rgba(92,72,48,.72)!important;}
+    .info-session .final-cta-soft{color:rgba(92,72,48,.85)!important;}
+    .info-session .final-cta-intro{color:rgba(92,72,48,.7)!important;}
+    .info-session .final-cta-list{color:#5C4830!important;}
+    .info-session .final-cta-list li{color:#5C4830!important;}
+    .info-session .final-cta-btn{
+      background:#A67C52!important;border-color:#A67C52!important;color:#fff!important;
+    }
+    /* Fit / Learn 等中段保留紙感 */
+
     /* v3.12 mascot mapping final — 段落小芽陪伴腳本 */
     .has-mascot{position:relative;}
     .section-mascot{
