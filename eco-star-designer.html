@@ -455,6 +455,40 @@
       .journey-scene-lead { font-size: 13.5px; line-height: 1.85; }
     }
   </style>
+  <style>
+    /* v3.12 mascot mapping final — 段落小芽陪伴腳本 */
+    .has-mascot{position:relative;}
+    .section-mascot{
+      position:absolute;width:130px;height:auto;
+      pointer-events:none;z-index:2;
+      opacity:0;transform:translateY(8px);
+      transition:opacity .55s ease, transform .55s ease;
+    }
+    .section-mascot.is-visible{opacity:.95;transform:translateY(0);}
+    /* Why ECO STAR：右下角傾聽 */
+    .section-mascot--listening{right:6%;bottom:24px;width:130px;}
+    /* What is ECO STAR：右上角拿筆記本（指向流程圖）*/
+    .section-mascot--notebook{right:5%;top:32px;width:130px;}
+    /* Journey：左下角種苗（行動起點）*/
+    .section-mascot--planting{left:5%;bottom:32px;width:130px;}
+    /* CTA / Info session：右下角揮手陪伴（最小）*/
+    .section-mascot--waving{right:5%;bottom:32px;width:90px;}
+    /* 手機：只保留 Hero + CTA（揮手），其餘隱藏 */
+    @media(max-width:720px){
+      .section-mascot--listening,
+      .section-mascot--notebook,
+      .section-mascot--planting{display:none;}
+      .section-mascot--waving{
+        position:relative;display:block;margin:0 auto 18px;right:auto;bottom:auto;
+        width:80px;
+      }
+    }
+    /* 系統不喜動畫者：直接顯示，不做 transform */
+    @media (prefers-reduced-motion: reduce){
+      .section-mascot{transition:opacity .25s ease;transform:none;}
+      .section-mascot.is-visible{transform:none;}
+    }
+  </style>
 </head>
 <body>
 
@@ -543,7 +577,8 @@
     </style>
   </section>
 
-  <section aria-labelledby="pain-title">
+  <section class="has-mascot" aria-labelledby="pain-title">
+    <img class="section-mascot section-mascot--listening" data-mascot src="assets/mascots/xiaoya/xiaoya-listening.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Why ECO STAR</span></div>
       <h2 id="pain-title" class="section-title">為什麼需要 ECO STAR？</h2>
@@ -806,7 +841,8 @@
   <!-- ═══════════ 段落 3：理解產品 ═══════════ -->
   <div class="group-understand">
 
-  <section aria-labelledby="what-title">
+  <section class="has-mascot" aria-labelledby="what-title">
+    <img class="section-mascot section-mascot--notebook" data-mascot src="assets/mascots/xiaoya/xiaoya-notebook.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">What is ECO STAR</span></div>
       <h2 id="what-title" class="section-title">ECO STAR 是什麼？</h2>
@@ -912,7 +948,8 @@
     </div>
   </section>
 
-  <section class="journey-section" aria-labelledby="journey-title">
+  <section class="journey-section has-mascot" aria-labelledby="journey-title">
+    <img class="section-mascot section-mascot--planting" data-mascot src="assets/mascots/xiaoya/xiaoya-planting.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Your Journey</span></div>
       <h2 id="journey-title" class="section-title">從喜歡永續，<br>到能把一場行動帶進現場</h2>
@@ -1127,7 +1164,8 @@
 
   <!-- ═══════════ 段落 5：轉換 ═══════════ -->
 
-  <section id="info-session" class="info-session" aria-labelledby="session-title">
+  <section id="info-session" class="info-session has-mascot has-mascot--cta" aria-labelledby="session-title">
+    <img class="section-mascot section-mascot--waving" data-mascot src="assets/mascots/xiaoya/xiaoya-waving.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">ECO STAR INFO SESSION</span></div>
 
@@ -1274,5 +1312,22 @@
     });
   </script>
 
+  <script>
+  (function(){
+    var mascots = document.querySelectorAll('[data-mascot]');
+    if(!mascots.length) return;
+    if(!('IntersectionObserver' in window)){
+      mascots.forEach(function(m){m.classList.add('is-visible');});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) e.target.classList.add('is-visible');
+        else e.target.classList.remove('is-visible');
+      });
+    },{threshold:.15, rootMargin:'0px 0px -10% 0px'});
+    mascots.forEach(function(m){io.observe(m);});
+  })();
+  </script>
 </body>
 </html>
