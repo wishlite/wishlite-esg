@@ -647,9 +647,9 @@
     <img class="section-mascot section-mascot--listening" data-mascot src="assets/mascots/xiaoya/xiaoya-listening.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">SOMEWHERE ALONG THE WAY</span></div>
-      <h2 id="pain-title" class="section-title pain-section-title">很多人，<br>其實都曾經卡在這裡。</h2>
+      <h2 id="pain-title" class="section-title pain-section-title">也許你也有過這種感覺。</h2>
 
-      <!-- v3.17 pain three-tier：輕共鳴 → 呼吸 → 中等 → 收斂 -->
+      <!-- v3.40 pain：h2 改情緒邀請 + 移除 breath（內容已上 h2，不再解釋）；4 卡承接 -->
       <div id="pain">
         <!-- Layer 1：輕共鳴（兩張） -->
         <div class="pain-tier pain-tier--light">
@@ -661,16 +661,6 @@
             <h3 class="pain-card-title">做了很多東西，<br>卻不知道怎麼被看見</h3>
             <p class="pain-card-sub">你做了作品，<br>卻不知道怎麼讓別人真的理解、<br>真的在意。</p>
           </article>
-        </div>
-
-        <!-- Breath：情緒陪伴（v3.20 移除 mascot，只留文字呼吸感）-->
-        <div class="pain-breath pain-breath--text-only">
-          <p class="pain-breath-lead">也許你也有過這種感覺。</p>
-          <p class="pain-breath-body">
-            很多人其實不是沒有能力，<br>
-            只是走到某一步後，<br>
-            開始不知道怎麼繼續。
-          </p>
         </div>
 
         <!-- Layer 2：中等（兩張） -->
@@ -708,7 +698,8 @@
           max-width:880px;margin:48px auto 0;
           display:grid;grid-template-columns:repeat(2,1fr);gap:22px;
         }
-        .pain-tier--medium{margin-top:0;}
+        /* v3.40 breath 移除後，Layer 1 → Layer 2 間距用 margin-top 維持呼吸 */
+        .pain-tier--medium{margin-top:48px;}
         .pain-card-v4{
           background:var(--card);
           border:1px solid var(--line);
@@ -958,6 +949,123 @@
           .field-card-wide{border-radius:12px}
         }
       </style>
+
+      <!-- v3.42 真實世界信任段（5/6 Apple 校正）：3 張真實片段 → 淡 logo → 一句收尾
+           原則：不證明厲害、只讓人感覺「這條路真的存在」；保留呼吸感、不做成果牆 -->
+
+      <!-- ① 真實場域 3 張（教學瞬間 / B2B 場域 / 企業共創）-->
+      <div class="life-strip life-strip--3" aria-label="真實場域片段">
+        <figure class="life-photo life-photo--a">
+          <img src="assets/real-scene-yuanta-kids.jpg" alt="教學瞬間：孩子們圍著木盒專注看著手作材料，老師俯身講解" loading="lazy">
+        </figure>
+        <figure class="life-photo life-photo--b">
+          <img src="assets/real-scene-101-yushan.jpg" alt="台北 101 證券公司高樓會議室手作現場，窗外是玉山稜線" loading="lazy">
+        </figure>
+        <figure class="life-photo life-photo--c">
+          <img src="assets/real-scene-innodisk-cocreate.jpg" alt="宜鼎企業員工圍桌挑選永續材料，共同完成手作小海龜" loading="lazy">
+        </figure>
+      </div>
+
+      <!-- ② Logo air strip — 彩色 / 低透明 / 四邊 fade 進空氣 / 無邊框感 -->
+      <div class="logo-air" aria-label="這些事情已經在很多地方發生過">
+        <img src="assets/logo-wall-clients.jpg" alt="這些事曾經在很多品牌、校園與企業場域慢慢發生" loading="lazy">
+      </div>
+
+      <!-- ③ 一句輕量收尾（取代原 300+/100+/10000+/133+ KPI）-->
+      <p class="real-closing">已在超過 100+ 品牌、校園與企業場域，<br>慢慢發生。</p>
+
+      <style>
+        /* v3.40 真實照片流：安靜流動 / 微不規則 / 呼吸空間 */
+        .life-strip{
+          max-width:1040px;margin:64px auto 56px;
+          display:grid;
+          grid-template-columns:repeat(12,1fr);
+          gap:20px 18px;
+          align-items:start;
+        }
+        .life-photo{
+          margin:0;border-radius:10px;overflow:hidden;
+          background:rgba(255,253,247,.7);
+          box-shadow:0 6px 18px -14px rgba(126,90,53,.22);
+        }
+        .life-photo img{width:100%;height:100%;display:block;object-fit:cover}
+        /* v3.42 三張真實片段：5-4-3 不規則跨欄 + 上下偏移，保留手作便箋感與呼吸 */
+        .life-strip--3{max-width:980px;gap:22px 20px;}
+        .life-photo--a{grid-column:span 5;aspect-ratio:4/3;}
+        .life-photo--b{grid-column:span 4;aspect-ratio:4/3;margin-top:32px;}
+        .life-photo--c{grid-column:span 3;aspect-ratio:3/4;margin-top:-8px;}
+        .life-photo--d{grid-column:span 4;aspect-ratio:5/4;margin-top:-6px;}
+        .life-photo--e{grid-column:span 5;aspect-ratio:4/3;margin-top:18px;}
+        .life-photo__placeholder{
+          width:100%;height:100%;
+          display:flex;flex-direction:column;align-items:center;justify-content:center;
+          background:repeating-linear-gradient(45deg,
+            rgba(166,124,82,.14) 0,rgba(166,124,82,.14) 12px,
+            rgba(166,124,82,.22) 12px,rgba(166,124,82,.22) 24px);
+          color:rgba(92,72,48,.78);
+          font-family:'Noto Serif TC',serif;font-size:14px;text-align:center;
+          letter-spacing:.05em;line-height:1.6;
+          border:1px dashed rgba(166,124,82,.4);
+        }
+        .life-photo__placeholder small{font-size:11px;opacity:.7;margin-top:4px}
+        @media(max-width:720px){
+          .life-strip{
+            grid-template-columns:repeat(6,1fr);gap:14px 12px;
+            margin:48px auto 40px;
+          }
+          .life-photo--a,
+          .life-photo--e{grid-column:span 6;aspect-ratio:5/3;margin-top:0;}
+          .life-photo--b,
+          .life-photo--d{grid-column:span 3;margin-top:0;}
+          .life-photo--c{grid-column:span 6;aspect-ratio:5/3;margin-top:0;}
+          /* v3.42 三張版手機：a 全寬主圖 / b+c 並排 */
+          .life-strip--3 .life-photo--a{grid-column:span 6;}
+          .life-strip--3 .life-photo--b{grid-column:span 3;aspect-ratio:4/3;}
+          .life-strip--3 .life-photo--c{grid-column:span 3;aspect-ratio:3/4;}
+        }
+        /* v3.41 Logo air strip — 彩色 / 低透明 / 四邊 fade 進米色空氣 / 無邊框感
+           不要 banner、不要矩形邊界、不要卡片陰影 — 只是空氣中的 logo 痕跡 */
+        .logo-air{
+          max-width:1080px;margin:0 auto 32px;
+          background:transparent;border:none;box-shadow:none;
+          padding:0;
+        }
+        .logo-air img{
+          width:100%;height:auto;display:block;
+          opacity:.55;
+          mix-blend-mode:multiply;
+          /* 左右強 fade（6/94），上下 subtle（保留 88% 中段）*/
+          -webkit-mask-image:
+            linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          -webkit-mask-composite: source-in;
+          mask-image:
+            linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%),
+            linear-gradient(to bottom, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          mask-composite: intersect;
+        }
+        @media(max-width:720px){
+          .logo-air{max-width:100%;margin-bottom:28px}
+          .logo-air img{
+            opacity:.62;
+            -webkit-mask-image:
+              linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+            mask-image:
+              linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+          }
+        }
+        /* 一句收尾：取代 KPI 展板 */
+        .real-closing{
+          text-align:center;max-width:520px;margin:0 auto 16px;
+          font-family:'Noto Serif TC',serif;
+          font-size:16.5px;line-height:2;
+          color:rgba(92,72,48,.62);letter-spacing:.5px;
+          font-weight:400;
+        }
+        @media(max-width:720px){
+          .real-closing{font-size:15px;line-height:1.95}
+        }
+      </style>
     </div>
   </section>
 
@@ -1158,23 +1266,7 @@
       <div class="section-kicker-wrap"><span class="section-kicker">Why Wishlite</span></div>
       <h2 id="why-title" class="section-title">我們不是只在談永續，<br>而是一直在真實場域裡<br>把這些事情一場一場做出來</h2>
 
-      <!-- v3.2 trust compress：logo → 數字 2×2 → 活動拼貼 → 收尾 -->
-      <figure class="trust-logo">
-        <img src="assets/logo-wall-clients.jpg" alt="Wishlite 合作品牌與企業 logo 牆" loading="lazy">
-      </figure>
-
-      <p class="trust-numbers-intro">這些不是課堂，<br>是已經發生過的行動。</p>
-      <div class="trust-numbers">
-        <div class="trust-num-item"><div class="trust-number">300+</div><div class="trust-label">場企業與校園行動</div></div>
-        <div class="trust-num-item"><div class="trust-number">10,000+</div><div class="trust-label">人次實際參與</div></div>
-        <div class="trust-num-item"><div class="trust-number">100+</div><div class="trust-label">品牌與組織合作</div></div>
-        <div class="trust-num-item"><div class="trust-number">133+</div><div class="trust-label">噸再生材料被重新使用</div></div>
-      </div>
-
-      <figure class="trust-collage">
-        <img src="assets/esg-cases-collage.jpg" alt="Wishlite 在企業、校園、社區舉辦的永續體驗活動真實現場拼貼" loading="lazy">
-      </figure>
-
+      <!-- v3.40 信任元素已上移至段落 2 Market，此段保留為敘事承接 -->
       <p class="why-tail">ECO STAR，<br>就是從這些經驗長出來的。</p>
 
       <style>
