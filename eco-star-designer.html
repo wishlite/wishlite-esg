@@ -485,6 +485,14 @@
       font-weight:600;
       letter-spacing:.04em;
     }
+    /* v3.66 SOMEWHERE ALONG THE WAY kicker 再小再淡 — 讓主標成為真正視覺焦點 */
+    section[aria-labelledby="pain-title"] .section-kicker{
+      font-size:10px;
+      letter-spacing:.4em;
+      color:rgba(92,72,48,.42);
+      background:rgba(166,124,82,.04);
+      border-color:rgba(166,124,82,.16);
+    }
     section[aria-labelledby="market-title"]{
       background:linear-gradient(to bottom,#F2EFE9 0px,#F6F3EC 140px) #F6F3EC;
       padding-top:140px;
@@ -534,7 +542,7 @@
       opacity:0;transform:translateY(8px);
       transition:opacity .55s ease, transform .55s ease;
     }
-    .section-mascot.is-visible{opacity:.95;transform:translateY(0);}
+    .section-mascot.is-visible{opacity:.62;transform:translateY(0);}
     /* Why ECO STAR：右下角傾聽 */
     .section-mascot--listening{right:6%;bottom:24px;width:130px;}
     /* What is ECO STAR：右上角拿筆記本（指向流程圖）*/
@@ -694,7 +702,8 @@
     <style>
       .core-system{
         background:#F2EFE9;
-        padding:96px 0 88px;
+        /* v3.66 圖下方留白拉大（96→136），讓 CORE SYSTEM → SOMEWHERE 有世界觀完成 → 慢慢走進內心的呼吸 */
+        padding:96px 0 136px;
       }
       .core-system-title{
         font-family:'Noto Serif TC',serif;font-weight:500;
