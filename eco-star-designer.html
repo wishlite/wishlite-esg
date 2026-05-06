@@ -645,12 +645,12 @@
   <section class="core-system" aria-labelledby="core-system-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">CORE SYSTEM</span></div>
-      <h2 id="core-system-title" class="section-title core-system-title">ECO STAR<br>永續行動設計師系統</h2>
-      <p class="core-system-lead">
-        不是一堂手作課。<br>
-        而是一套：把「在乎永續的人」，<br>
-        慢慢陪到能真正帶領行動的系統。
-      </p>
+      <!-- v3.57 主標精簡：刪「ECO STAR 永續行動設計師系統」+ 長 lead，改三段短句 + 強調「交付行動」-->
+      <h2 id="core-system-title" class="section-title core-system-title">
+        <span class="cs-line cs-line--1">這不是一堂普通的課程，</span>
+        <span class="cs-line cs-line--2">而是一套：</span>
+        <span class="cs-line cs-line--3"><strong class="cs-emphasis">「交付行動」</strong>的方法。</span>
+      </h2>
       <figure class="core-system-figure">
         <img src="assets/v4-core-system.png" alt="ECO STAR 永續行動設計師系統 — 把一份在乎，變成別人也能參與的行動" loading="lazy">
       </figure>
@@ -661,15 +661,27 @@
         padding:96px 0 88px;
       }
       .core-system-title{
-        font-size:clamp(26px,3.4vw,34px);font-weight:600;
-        letter-spacing:.04em;line-height:1.5;
-      }
-      .core-system-lead{
-        max-width:560px;margin:0 auto 40px;
-        text-align:center;
         font-family:'Noto Serif TC',serif;font-weight:500;
-        font-size:16.5px;line-height:2;
-        color:rgba(92,72,48,.78);letter-spacing:.04em;
+        text-align:center;letter-spacing:.06em;
+        margin:0 auto 56px;line-height:1.65;
+      }
+      .cs-line{display:block;}
+      .cs-line--1{
+        font-size:clamp(22px,2.6vw,28px);
+        color:#5C4830;margin-bottom:14px;
+      }
+      .cs-line--2{
+        font-size:clamp(20px,2.4vw,26px);
+        color:rgba(92,72,48,.78);margin-bottom:14px;
+      }
+      .cs-line--3{
+        font-size:clamp(26px,3.2vw,36px);
+        color:#5C4830;font-weight:600;letter-spacing:.08em;
+      }
+      .cs-emphasis{
+        font-weight:700;
+        color:var(--brown-deep);
+        letter-spacing:.1em;
       }
       .core-system-figure{
         max-width:1100px;margin:0 auto;
@@ -681,7 +693,7 @@
       }
       @media(max-width:720px){
         .core-system{padding:72px 0 64px;}
-        .core-system-lead{font-size:15px;line-height:1.95;margin-bottom:28px;padding:0 18px;}
+        .core-system-title{margin-bottom:40px;padding:0 18px;}
       }
     </style>
   </section>
