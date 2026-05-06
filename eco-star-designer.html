@@ -558,10 +558,9 @@
         可以開始的地方。
       </h1>
       <p class="hero-lead">
-        你不需要一開始就很厲害。<br>
-        只要願意開始，<br>
-        就有機會把喜歡的事，<br>
-        慢慢走成真正的行動。
+        你不需要一開始就很厲害，<br>
+        只要願意，<br>
+        就能把喜歡慢慢走成行動。
       </p>
       <div class="hero-cta-row">
         <a href="#info-session" class="btn btn-primary">了解 ECO STAR</a>
@@ -644,50 +643,71 @@
     </style>
   </section>
 
+  <!-- v3.48 CORE SYSTEM 世界觀 — 「這是一套系統」-->
+  <section class="core-system" aria-labelledby="core-system-title">
+    <div class="container">
+      <div class="section-kicker-wrap"><span class="section-kicker">CORE SYSTEM</span></div>
+      <h2 id="core-system-title" class="section-title core-system-title">ECO STAR<br>永續行動設計師系統</h2>
+      <p class="core-system-lead">
+        不是一堂手作課。<br>
+        而是一套：把「在乎永續的人」，<br>
+        慢慢陪到能真正帶領行動的系統。
+      </p>
+      <figure class="core-system-figure">
+        <img src="assets/v4-core-system.png" alt="ECO STAR 永續行動設計師系統 — 把一份在乎，變成別人也能參與的行動" loading="lazy">
+      </figure>
+    </div>
+    <style>
+      .core-system{
+        background:#F2EFE9;
+        padding:96px 0 88px;
+      }
+      .core-system-title{
+        font-size:clamp(26px,3.4vw,34px);font-weight:600;
+        letter-spacing:.04em;line-height:1.5;
+      }
+      .core-system-lead{
+        max-width:560px;margin:0 auto 40px;
+        text-align:center;
+        font-family:'Noto Serif TC',serif;font-weight:500;
+        font-size:16.5px;line-height:2;
+        color:rgba(92,72,48,.78);letter-spacing:.04em;
+      }
+      .core-system-figure{
+        max-width:1100px;margin:0 auto;
+        background:transparent;
+      }
+      .core-system-figure img{
+        display:block;width:100%;height:auto;
+        opacity:.97;
+      }
+      @media(max-width:720px){
+        .core-system{padding:72px 0 64px;}
+        .core-system-lead{font-size:15px;line-height:1.95;margin-bottom:28px;padding:0 18px;}
+      }
+    </style>
+  </section>
+
   <section class="has-mascot" aria-labelledby="pain-title">
     <img class="section-mascot section-mascot--listening" data-mascot src="assets/mascots/xiaoya/xiaoya-listening.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">SOMEWHERE ALONG THE WAY</span></div>
-      <h2 id="pain-title" class="section-title pain-section-title">也許你也有過這種感覺。</h2>
+      <h2 id="pain-title" class="section-title pain-section-title">很多人其實不是不在乎。<br>只是卡在：不知道怎麼把喜歡，<br>變成真正能被帶進現場的行動。</h2>
 
-      <!-- v3.40 pain：h2 改情緒邀請 + 移除 breath（內容已上 h2，不再解釋）；4 卡承接 -->
-      <div id="pain">
-        <!-- Layer 1：輕共鳴（兩張） -->
-        <div class="pain-tier pain-tier--light">
-          <article class="pain-card-v4">
-            <h3 class="pain-card-title">很在乎，<br>卻不知道怎麼開始</h3>
-            <p class="pain-card-sub">你其實一直很在乎這些事，<br>只是一直缺少一個<br>可以慢慢開始的地方。</p>
-          </article>
-          <article class="pain-card-v4">
-            <h3 class="pain-card-title">做了很多東西，<br>卻不知道怎麼被看見</h3>
-            <p class="pain-card-sub">你做了作品，<br>卻不知道怎麼讓別人真的理解、<br>真的在意。</p>
-          </article>
-        </div>
-
-        <!-- Layer 2：中等（兩張） -->
-        <div class="pain-tier pain-tier--medium">
-          <article class="pain-card-v4 pain-card-v4--medium">
-            <h3 class="pain-card-title">進到不同場域，<br>就開始卡住</h3>
-            <p class="pain-card-sub">你知道不同對象要說不同的話，<br>但站在現場，<br>還是會開始緊張。</p>
-          </article>
-          <article class="pain-card-v4 pain-card-v4--medium">
-            <h3 class="pain-card-title">很想分享，<br>卻一開口就像在上課</h3>
-            <p class="pain-card-sub">你有很多想說的，<br>但總覺得：<br>好像很難真正被聽進去。</p>
-          </article>
-        </div>
-
-        <!-- v3.45 pain-flow 只留「停一下」段 — 後續「世界正在發生」交給 REAL PLACES 段 -->
-        <div class="pain-flow" aria-hidden="true">
-          <p class="pain-flow-quiet">
-            有時候，<br>
-            不是不想往前。
-          </p>
-          <p class="pain-flow-quiet">
-            只是很怕走錯，<br>
-            所以一直沒有開始。
-          </p>
-        </div>
-      </div>
+      <!-- v3.48 pain — 改用 v4-three-pains 圖像承擔理解（取代原 4 cards + pain-flow）-->
+      <figure class="pain-figure">
+        <img src="assets/v4-three-pains.png" alt="三大痛點：會說但怕像說教 / 會做但缺乏連結 / 會在但容易卡關" loading="lazy">
+      </figure>
+      <style>
+        .pain-figure{
+          max-width:1180px;margin:48px auto 0;
+          background:transparent;
+        }
+        .pain-figure img{display:block;width:100%;height:auto;}
+        @media(max-width:720px){
+          .pain-figure{margin-top:32px;padding:0 8px}
+        }
+      </style>
       <style>
         /* v3.17 pain three-tier */
         .pain-tier{
@@ -908,20 +928,17 @@
       <div class="section-kicker-wrap"><span class="section-kicker">REAL PLACES · REAL PEOPLE</span></div>
       <h2 id="market-title" class="section-title">永續，<br>其實正在很多地方慢慢發生。</h2>
       <!-- v2.7.2 場域水彩橫圖（順序：企業→校園→社區→品牌親子；商業信任感優先）-->
-      <div class="field-cards field-cards-wide">
-        <div class="field-card field-card-wide">
-          <img src="assets/field-enterprise.png" alt="企業 ESG 體驗：把永續變成員工能參與、能理解、能帶走的 ESG 行動" loading="lazy">
-        </div>
-        <div class="field-card field-card-wide">
-          <img src="assets/field-school.png" alt="校園永續教育：讓學生在材料裡，認識循環" loading="lazy">
-        </div>
-        <div class="field-card field-card-wide">
-          <img src="assets/field-community.png" alt="社區共創工作坊：陪不同年齡與背景的人，在共同創作中靠近永續" loading="lazy">
-        </div>
-        <div class="field-card field-card-wide">
-          <img src="assets/field-brand.png" alt="品牌日／親子活動：把永續做成親近、好參與，也能留下記憶的體驗" loading="lazy">
-        </div>
-      </div>
+      <!-- v3.48 四大場域改為單一視覺圖（企業 ESG / 品牌日家庭日 / 永續禮贈 / 校園社區）-->
+      <figure class="four-fields-figure">
+        <img src="assets/v4-four-fields.png" alt="四大場域：企業 ESG 工作坊 / 品牌日家庭日體驗 / 永續禮贈與客製 / 校園社區永續教育" loading="lazy">
+      </figure>
+      <style>
+        .four-fields-figure{
+          max-width:1180px;margin:0 auto;
+          background:transparent;
+        }
+        .four-fields-figure img{display:block;width:100%;height:auto;}
+      </style>
       <style>
         /* v2.7.2 橫圖卡：桌機 2×2 / 手機單欄、圖寬 100% 放大確保中文可讀 */
         .field-cards-wide{
@@ -1090,7 +1107,7 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">01｜起點</span>
             <h3 class="journey-scene-title">從你本來就在乎的事開始</h3>
-            <p class="journey-scene-lead">把喜歡的事，整理成可以被看見的方向。</p>
+            <p class="journey-scene-lead">從你本來就在乎的事，慢慢整理成方向。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-01-start.jpg" alt="雙手捧著小苗與多種永續材料的水彩情境圖" loading="lazy" decoding="async">
@@ -1101,7 +1118,7 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">02｜理解方法</span>
             <h3 class="journey-scene-title">看懂材料如何變成體驗</h3>
-            <p class="journey-scene-lead">讓一份材料，不只是材料，而是一段能被記住的行動。</p>
+            <p class="journey-scene-lead">看懂材料怎麼變成體驗。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-02-method.jpg" alt="翻開的旅人筆記：材料如何進入各場域的地圖" loading="lazy" decoding="async">
@@ -1112,7 +1129,7 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">03｜開始實作</span>
             <h3 class="journey-scene-title">把想法做成可帶領的內容</h3>
-            <p class="journey-scene-lead">練習把故事、流程與現場引導，整理成一場體驗。</p>
+            <p class="journey-scene-lead">把想法練習成可帶領的內容。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-03-practice.jpg" alt="桌面上的設計卡與材料：從聆聽到整合的四階段流程" loading="lazy" decoding="async">
@@ -1123,7 +1140,7 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">04｜走進現場</span>
             <h3 class="journey-scene-title">在真實場域帶領行動</h3>
-            <p class="journey-scene-lead">從企業、校園到社區，學會把話說給不同的人聽。</p>
+            <p class="journey-scene-lead">在真實場域裡帶領一場行動。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-04-field.jpg" alt="ECO STAR 行動者在真實場域中帶領參與者體驗永續材料，象徵走進企業、校園與社區現場。" loading="lazy" decoding="async">
@@ -1134,7 +1151,7 @@
           <div class="journey-scene-text">
             <span class="journey-scene-num">05｜下一步</span>
             <h3 class="journey-scene-title">從學習者走向合作夥伴</h3>
-            <p class="journey-scene-lead">通過評估後，才有機會走進真實任務。</p>
+            <p class="journey-scene-lead">從學習者，走向合作夥伴。</p>
           </div>
           <figure class="journey-scene-image">
             <img src="assets/journey-scene-05-next-step.png" alt="ECO STAR 行動者帶領永續體驗工作坊，從學習者走向可被交付任務的夥伴。" loading="lazy" decoding="async">
@@ -1171,10 +1188,7 @@
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">Your Journey</span></div>
       <h2 id="journey-title" class="section-title">從喜歡永續，<br>到能把一場行動帶進現場</h2>
-      <p class="journey-intro">
-        陪你把原本的喜歡，<br>
-        整理成可以被交付的能力。
-      </p>
+      <p class="journey-intro">陪你把原本的喜歡，整理成可以被交付的能力。</p>
 
       <!-- v3.30 Journey 圖像替換為水彩人物流程圖（投射感）-->
       <figure class="journey-flow">
@@ -1231,33 +1245,100 @@
     </style>
   </aside>
 
+  <!-- v3.48 好的永續體驗 — 在 What you'll learn 前建立「Wishlite 不只是手作課」-->
+  <section class="good-exp" aria-labelledby="good-exp-title">
+    <div class="container">
+      <h2 id="good-exp-title" class="section-title good-exp-title">
+        我們想帶你學的，<br>不是怎麼完成一個作品。<br>
+        而是：怎麼讓一場體驗，<br>真正被人記住。
+      </h2>
+      <figure class="v4-fig">
+        <img src="assets/v4-good-experience.png" alt="一般的永續手作 vs 一場好的永續體驗 — 從把材料放在桌上、照步驟完成、帶走實體物件，到說出材料的故事與生命週期、設計願意主動參與的流程、帶走對永續的全新理解" loading="lazy">
+      </figure>
+    </div>
+    <style>
+      .good-exp{padding:80px 0 64px;}
+      .good-exp-title{
+        font-size:clamp(22px,2.6vw,28px);font-weight:600;
+        letter-spacing:.04em;line-height:1.65;
+      }
+      .v4-fig{max-width:1180px;margin:32px auto 0;background:transparent;}
+      .v4-fig img{display:block;width:100%;height:auto;}
+      @media(max-width:720px){
+        .good-exp{padding:64px 0 48px;}
+      }
+    </style>
+  </section>
+
   <section aria-labelledby="learn-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">What you'll learn</span></div>
       <h2 id="learn-title" class="section-title">ECO STAR 陪你慢慢長出<br>四個能力</h2>
-      <div class="abilities">
-        <div class="ability">
-          <span class="ability-tag">ABILITY 01</span>
-          <div class="ability-title">材料敘事力</div>
-          <div class="ability-body">把材料說成一個會被記住的故事。</div>
-        </div>
-        <div class="ability">
-          <span class="ability-tag">ABILITY 02</span>
-          <div class="ability-title">體驗設計力</div>
-          <div class="ability-body">把一個概念，變成有人想參與的現場。</div>
-        </div>
-        <div class="ability">
-          <span class="ability-tag">ABILITY 03</span>
-          <div class="ability-title">現場交付力</div>
-          <div class="ability-body">讓一場活動穩穩落地、被人感受到。</div>
-        </div>
-        <div class="ability">
-          <span class="ability-tag">ABILITY 04</span>
-          <div class="ability-title">場域轉譯力</div>
-          <div class="ability-body">在不同場域，找到屬於那一場的語氣。</div>
-        </div>
-      </div>
+      <!-- v3.48 四大核心能力改用單一視覺圖（M1 材料敘事 / M2 體驗設計 / M3 現場交付 / M4 場域轉譯）-->
+      <figure class="v4-fig">
+        <img src="assets/v4-four-abilities.png" alt="四大核心能力：M1 材料敘事力 / M2 體驗設計力 / M3 現場交付力 / M4 場域轉譯力" loading="lazy">
+      </figure>
     </div>
+  </section>
+
+  <!-- v3.48 永續行動鍊金術 — 「為什麼是你們」-->
+  <section class="alchemy" aria-labelledby="alchemy-title">
+    <div class="container">
+      <h2 id="alchemy-title" class="section-title alchemy-title">
+        真正能被交付的永續行動，<br>不是只靠熱情。
+      </h2>
+      <p class="alchemy-lead">
+        而是：當材料敘事、<br>
+        體驗設計、<br>
+        與教案交付，<br>
+        開始被整理成系統。<br>
+        影響力才會真的被放大。
+      </p>
+      <figure class="v4-fig">
+        <img src="assets/v4-action-alchemy.png" alt="永續行動鍊金術：把材料敘事、體驗設計、教案交付整理成系統" loading="lazy">
+      </figure>
+    </div>
+    <style>
+      .alchemy{padding:80px 0 64px;background:#F5F2EA;}
+      .alchemy-title{
+        font-size:clamp(22px,2.6vw,28px);font-weight:600;
+        letter-spacing:.04em;line-height:1.65;
+      }
+      .alchemy-lead{
+        max-width:520px;margin:0 auto 36px;
+        text-align:center;
+        font-family:'Noto Serif TC',serif;
+        font-size:16px;line-height:2.0;
+        color:rgba(92,72,48,.78);letter-spacing:.04em;
+      }
+      @media(max-width:720px){
+        .alchemy{padding:64px 0 48px;}
+        .alchemy-lead{font-size:14.5px;}
+      }
+    </style>
+  </section>
+
+  <!-- v3.48 培育計畫輪廓 -->
+  <section class="program-outline" aria-labelledby="program-title">
+    <div class="container">
+      <h2 id="program-title" class="section-title program-title">
+        這不是一堂單次課程。<br>
+        而是一段：慢慢進入系統的共創旅程。
+      </h2>
+      <figure class="v4-fig">
+        <img src="assets/v4-program-outline.png" alt="ECO STAR 培育計畫輪廓 — 慢慢進入系統的共創旅程" loading="lazy">
+      </figure>
+    </div>
+    <style>
+      .program-outline{padding:80px 0 64px;}
+      .program-title{
+        font-size:clamp(22px,2.6vw,28px);font-weight:600;
+        letter-spacing:.04em;line-height:1.65;
+      }
+      @media(max-width:720px){
+        .program-outline{padding:64px 0 48px;}
+      }
+    </style>
   </section>
 
   </div><!-- /段落 3 -->
