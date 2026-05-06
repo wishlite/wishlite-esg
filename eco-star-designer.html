@@ -565,6 +565,7 @@
       </p>
       <div class="hero-cta-row">
         <a href="#info-session" class="btn btn-primary">了解 ECO STAR</a>
+        <a href="esg-explore-more.html" class="btn-soft">先看看 ESG 合作案例</a>
       </div>
     </div>
     <div class="hero-figure" aria-hidden="true">
@@ -969,6 +970,15 @@
       <!-- ③ 一句輕量收尾（取代原 300+/100+/10000+/133+ KPI）-->
       <p class="real-closing">已在超過 100+ 品牌、校園與企業場域，<br>慢慢發生。</p>
 
+      <!-- v3.47 輕量輔助 CTA：給還沒準備報名的人一條建立信任的 backup path -->
+      <div class="real-soft-cta">
+        <p class="real-soft-cta-lead">
+          如果你想先看看這些行動，曾經怎麼發生在真實場域裡，<br>
+          可以先閱讀 Wishlite 的 ESG 合作案例。
+        </p>
+        <a href="esg-explore-more.html" class="btn-soft">先看看 ESG 合作案例</a>
+      </div>
+
       <style>
         /* v3.40 真實照片流：安靜流動 / 微不規則 / 呼吸空間 */
         .life-strip{
@@ -1367,6 +1377,68 @@
           background:var(--brown)!important;
           border-color:var(--brown)!important;
         }
+        /* v3.47 輔助 / 輕量 CTA：副按鈕、Real Places 後 CTA、Form 後分享列 */
+        .hero-cta-row{
+          display:flex;flex-direction:column;align-items:center;gap:14px;
+        }
+        .btn-soft{
+          display:inline-block;
+          padding:11px 26px;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:14.5px;letter-spacing:.06em;
+          color:rgba(92,72,48,.8);
+          background:transparent;
+          border:1px solid rgba(166,124,82,.30);
+          border-radius:100px;
+          text-decoration:none;
+          transition:background .25s ease,color .25s ease,border-color .25s ease;
+        }
+        .btn-soft:hover{
+          background:rgba(166,124,82,.08);
+          color:#5C4830;
+          border-color:rgba(166,124,82,.50);
+        }
+        .btn-soft--small{
+          padding:9px 22px;font-size:13.5px;
+        }
+        .real-soft-cta{
+          max-width:520px;margin:36px auto 0;
+          text-align:center;
+          padding:0 24px;
+        }
+        .real-soft-cta-lead{
+          margin:0 0 18px;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:14.5px;line-height:1.95;letter-spacing:.04em;
+          color:rgba(92,72,48,.7);
+        }
+        .form-aftermath{
+          max-width:540px;margin:32px auto 0;
+          text-align:center;
+          display:flex;flex-direction:column;align-items:center;gap:14px;
+        }
+        .form-aftermath-lead{
+          margin:0;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:14px;line-height:1.85;letter-spacing:.04em;
+          color:rgba(92,72,48,.65);
+        }
+        .btn-share{
+          margin-top:6px;padding:8px 18px;
+          font-family:'Noto Sans TC',sans-serif;
+          font-size:13px;letter-spacing:.06em;
+          color:rgba(92,72,48,.65);
+          background:transparent;
+          border:none;
+          cursor:pointer;
+          text-decoration:underline;text-underline-offset:4px;
+          transition:color .25s ease;
+        }
+        .btn-share:hover{color:#5C4830;}
+        .share-feedback{
+          display:block;min-height:18px;
+          font-size:12.5px;color:rgba(125,143,114,.85);letter-spacing:.05em;
+        }
         @media(max-width:720px){
           .final-cta-soft{font-size:15px}
           .final-cta-list li{font-size:15px}
@@ -1438,8 +1510,18 @@
           <label class="form-label" for="f-reason">你為什麼想來聽這場說明會？<span class="form-label-soft">（選填）</span></label>
           <textarea class="form-input form-textarea" id="f-reason" name="reason" rows="3" placeholder="任何想說的都可以"></textarea>
         </div>
-        <button type="submit" class="form-submit" id="submitBtn">登記 5/21 線上說明會</button>
+        <button type="submit" class="form-submit" id="submitBtn">報名線上說明會</button>
       </form>
+
+      <!-- v3.47 form 下方 backup CTA + 分享 -->
+      <div class="form-aftermath">
+        <p class="form-aftermath-lead">還想再多了解一些真實合作現場？</p>
+        <a href="esg-explore-more.html" class="btn-soft btn-soft--small">先看看 ESG 合作案例</a>
+        <button type="button" class="btn-share" id="shareBtn" data-share-url data-share-title="ECO STAR ｜ 永續行動設計師系統">
+          分享給一位也在尋找下一步的朋友
+        </button>
+        <span class="share-feedback" id="shareFeedback" aria-live="polite"></span>
+      </div>
 
       <div class="signup-thanks" id="signupThanks" style="display:none;">
         <div class="signup-thanks-icon">🌱</div>
@@ -1587,6 +1669,33 @@
   </footer>
 
   <script>
+    // v3.47 share CTA — navigator.share with clipboard fallback
+    (function(){
+      var btn = document.getElementById('shareBtn');
+      var fb = document.getElementById('shareFeedback');
+      if (!btn) return;
+      btn.addEventListener('click', async function(){
+        var url = window.location.href;
+        var title = btn.getAttribute('data-share-title') || document.title;
+        var text = '陪你把原本的喜歡，整理成可以被交付的能力。';
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: title, text: text, url: url });
+            fb.textContent = '謝謝你願意傳遞 🌱';
+          } else if (navigator.clipboard) {
+            await navigator.clipboard.writeText(url);
+            fb.textContent = '連結已複製，可以分享給朋友了 🌱';
+          } else {
+            fb.textContent = '請手動複製此頁網址：' + url;
+          }
+        } catch(err) {
+          if (err && err.name === 'AbortError') return;
+          fb.textContent = '分享暫時無法使用，請手動複製網址。';
+        }
+        setTimeout(function(){ fb.textContent = ''; }, 4500);
+      });
+    })();
+
     document.getElementById('signupForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const form = e.target;
