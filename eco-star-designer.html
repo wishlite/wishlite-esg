@@ -638,9 +638,8 @@
           </article>
         </div>
 
-        <!-- Breath：情緒陪伴 -->
-        <div class="pain-breath">
-          <img class="pain-breath-mascot" src="assets/mascots/xiaoya/xiaoya-planting.png" alt="" aria-hidden="true" loading="lazy">
+        <!-- Breath：情緒陪伴（v3.20 移除 mascot，只留文字呼吸感）-->
+        <div class="pain-breath pain-breath--text-only">
           <p class="pain-breath-lead">你可能也有其中幾種感覺。</p>
           <p class="pain-breath-body">
             很多人其實不是沒有能力，<br>
@@ -661,11 +660,22 @@
           </article>
         </div>
 
-        <!-- Layer 3：收斂（單一大卡） -->
-        <article class="pain-card-heavy">
-          <p>有時候，<br>不是不想往前。</p>
-          <p>只是很怕走錯，<br>所以一直沒有開始。</p>
-        </article>
+        <!-- v3.21 收斂段 → 情緒流動化（heavy + pivot 合併為一條情緒河道，無框無卡無陰影）-->
+        <div class="pain-flow" aria-hidden="true">
+          <p class="pain-flow-quiet">
+            有時候，<br>
+            不是不想往前。
+          </p>
+          <p class="pain-flow-quiet">
+            只是很怕走錯，<br>
+            所以一直沒有開始。
+          </p>
+          <p class="pain-flow-pivot">但其實，</p>
+          <p class="pain-flow-bright">
+            很多人正在不同地方，<br>
+            慢慢把這些事變成真的行動。
+          </p>
+        </div>
       </div>
       <style>
         /* v3.17 pain three-tier */
@@ -729,23 +739,31 @@
           font-size:16px;line-height:2.1;
           color:rgba(92,72,48,.78);letter-spacing:.04em;
         }
-        /* Heavy 收斂大卡：留白 + 字大 + 重量 */
-        .pain-card-heavy{
-          max-width:640px;margin:64px auto 0;
-          padding:64px 48px;
-          background:#E8E1D5;
-          border:1px solid rgba(166,124,82,.28);
-          border-radius:20px;
+        /* v3.21 pain-flow：收斂 → 轉折 → 看見可能性，無框無卡無陰影 */
+        .pain-flow{
+          max-width:600px;margin:80px auto 0;
+          padding:0 24px;
           text-align:center;
-          box-shadow:0 14px 36px -22px rgba(126,90,53,.30);
+          background:transparent;
         }
-        .pain-card-heavy p{
-          margin:0 0 24px;
+        .pain-flow-quiet{
+          margin:0 0 32px;
           font-family:'Noto Serif TC',serif;font-weight:500;
           font-size:22px;line-height:2.0;
-          color:#4A3A24;letter-spacing:.06em;
+          color:#5C4830;letter-spacing:.08em;
         }
-        .pain-card-heavy p:last-child{margin-bottom:0;}
+        .pain-flow-pivot{
+          margin:56px 0 40px;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:15.5px;line-height:1.9;
+          color:rgba(92,72,48,.55);letter-spacing:.25em;
+        }
+        .pain-flow-bright{
+          margin:0;
+          font-family:'Noto Serif TC',serif;font-weight:400;
+          font-size:25px;line-height:1.9;
+          color:#5C4830;letter-spacing:.04em;
+        }
         /* Why ECO STAR 段隱藏 v3.12 listening 浮標（呼吸段已有 mascot）*/
         section[aria-labelledby="pain-title"] .section-mascot--listening{display:none;}
         .pain-num{
@@ -787,8 +805,10 @@
           .pain-breath-mascot{width:76px;margin-bottom:18px}
           .pain-breath-lead{font-size:16.5px}
           .pain-breath-body{font-size:15px;line-height:1.95}
-          .pain-card-heavy{margin:48px 16px 0;padding:44px 28px;}
-          .pain-card-heavy p{font-size:18px;line-height:1.9}
+          .pain-flow{margin:56px auto 0;padding:0 20px;}
+          .pain-flow-quiet{font-size:18.5px;line-height:1.95;letter-spacing:.06em;margin-bottom:28px;}
+          .pain-flow-pivot{margin:40px 0 28px;font-size:14.5px;}
+          .pain-flow-bright{font-size:21px;line-height:1.85;}
         }
 
         .resonance-body{
@@ -858,39 +878,6 @@
       </style>
     </div>
   </section>
-
-  <!-- v3.18 pain → market 轉場：把使用者從「我卡住」拉向「可能性」 -->
-  <aside class="pain-pivot" aria-hidden="true">
-    <p class="pain-pivot-kicker">但其實，</p>
-    <p class="pain-pivot-body">
-      很多人正在不同地方，<br>
-      慢慢把這些事變成真的行動。
-    </p>
-  </aside>
-  <style>
-    .pain-pivot{
-      max-width:560px;margin:0 auto;
-      padding:56px 32px 64px;
-      text-align:center;
-      background:#F2EFE9;
-    }
-    .pain-pivot-kicker{
-      margin:0 0 18px;
-      font-family:'Noto Serif TC',serif;font-weight:500;
-      font-size:16px;letter-spacing:.2em;
-      color:rgba(92,72,48,.55);
-    }
-    .pain-pivot-body{
-      margin:0;
-      font-family:'Noto Serif TC',serif;font-weight:600;
-      font-size:20px;line-height:2.0;
-      color:#5C4830;letter-spacing:.06em;
-    }
-    @media(max-width:720px){
-      .pain-pivot{padding:44px 24px 48px;}
-      .pain-pivot-body{font-size:17px;line-height:1.95;}
-    }
-  </style>
 
   </div><!-- /段落 1 -->
   <div class="group-divider" aria-hidden="true"></div>
