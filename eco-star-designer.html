@@ -692,20 +692,48 @@
     <img class="section-mascot section-mascot--listening" data-mascot src="assets/mascots/xiaoya/xiaoya-listening.png" alt="" aria-hidden="true" loading="lazy">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">SOMEWHERE ALONG THE WAY</span></div>
-      <h2 id="pain-title" class="section-title pain-section-title">很多人其實不是不在乎。<br>只是卡在：不知道怎麼把喜歡，<br>變成真正能被帶進現場的行動。</h2>
+      <h2 id="pain-title" class="section-title pain-section-title">很多人不是不在乎永續，<br>而是不知道怎麼開始。</h2>
 
-      <!-- v3.48 pain — 改用 v4-three-pains 圖像承擔理解（取代原 4 cards + pain-flow）-->
+      <!-- v3.48 pain — 改用 v4-three-pains 圖像承擔理解 / v3.51 加副文（被理解感）-->
       <figure class="pain-figure">
         <img src="assets/v4-three-pains.png" alt="三大痛點：會說但怕像說教 / 會做但缺乏連結 / 會在但容易卡關" loading="lazy">
       </figure>
+      <p class="pain-aftercopy">
+        你其實很在乎這件事，<br>
+        只是需要一套：<br>
+        <strong>能把喜歡穩穩帶進現場的方法。</strong>
+      </p>
+      <p class="pain-aftercopy pain-aftercopy--coda">
+        ECO STAR 想陪你走過的，<br>
+        其實就是這一段距離。
+      </p>
       <style>
         .pain-figure{
-          max-width:1180px;margin:48px auto 0;
+          max-width:1180px;margin:64px auto 0;
           background:transparent;
         }
         .pain-figure img{display:block;width:100%;height:auto;}
+        /* v3.51 副文：被理解感，與圖之間留呼吸 */
+        .pain-aftercopy{
+          max-width:520px;margin:72px auto 0;
+          padding:0 24px;
+          text-align:center;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:17px;line-height:2.05;
+          color:rgba(92,72,48,.78);letter-spacing:.06em;
+        }
+        .pain-aftercopy strong{
+          font-weight:600;color:#5C4830;letter-spacing:.08em;
+        }
+        .pain-aftercopy--coda{
+          margin-top:32px;
+          font-size:15.5px;
+          color:rgba(92,72,48,.62);
+        }
         @media(max-width:720px){
-          .pain-figure{margin-top:32px;padding:0 8px}
+          .pain-figure{margin-top:48px;padding:0 8px}
+          .pain-aftercopy{font-size:15.5px;line-height:1.95;margin-top:56px}
+          .pain-aftercopy--coda{font-size:14px;margin-top:24px}
         }
       </style>
       <style>
