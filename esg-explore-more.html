@@ -289,12 +289,31 @@
         transparent 85%);
       pointer-events: none;
     }
+    /* 六友地球版：footer 山脈上方居中守護 */
+    .footer-mascots {
+      position: relative;
+      text-align: center;
+      margin: 0 auto 18px;
+      z-index: 1;
+    }
+    .footer-mascots img {
+      display: inline-block;
+      width: 300px;
+      max-width: 80%;
+      height: auto;
+      opacity: 0.88;
+    }
+    @media (max-width: 768px) {
+      .footer-mascots { margin-bottom: 14px; }
+      .footer-mascots img { width: 210px; }
+    }
+
     .footer-inner {
       position: relative;
       text-align: center;
       color: var(--muted);
       font-size: 12px;
-      padding-top: 50px;
+      padding-top: 12px;
       opacity: 0.85;
       z-index: 1;
     }
@@ -412,9 +431,12 @@
     </div>
   </section>
 
-  <!-- ── Footer｜Wishlite 提案級山脈（葉脈拾光血統）── -->
+  <!-- ── Footer｜Wishlite 提案級山脈（葉脈拾光血統）+ 永續六友地球版守護 ── -->
   <footer>
     <div class="horizon-photo" aria-hidden="true"></div>
+    <div class="footer-mascots">
+      <img src="https://wishlite.github.io/wishlite-proposals/assets/mascots/six_friends_earth.png" alt="永續六友守護地球" loading="lazy">
+    </div>
     <div class="footer-inner">
       <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
       <p class="footer-tagline">讓永續成為日常的選擇</p>
