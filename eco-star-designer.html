@@ -1001,20 +1001,17 @@
   <section aria-labelledby="market-title">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">REAL PLACES · REAL PEOPLE</span></div>
-      <!-- v3.54 主標升級為「真實落地現場」（從案例展示 → 真實需求現場）-->
-      <h2 id="market-title" class="section-title market-title-v54">
-        <span class="market-title-line1">永續材料的</span>
-        <span class="market-title-line2">真實落地現場</span>
+      <!-- v3.75 主標改自然敘事：從「永續材料的真實落地現場」+「當熱情遇上結構」（slogan + 與 alchemy 圖重複）→ 單句「永續，正在慢慢走進真實現場。」（真實世界的入口語感） -->
+      <h2 id="market-title" class="section-title market-title-v75">
+        <span class="market-title-line1">永續，</span>
+        <span class="market-title-line2">正在慢慢走進真實現場。</span>
       </h2>
-      <p class="market-coda">
-        當熱情遇上結構，<br>
-        影響力，<span class="market-coda-pause">　</span>就能慢慢被放大。
-      </p>
       <style>
-        .market-title-v54{
+        /* v3.75 主標單句敘事：第一行小、第二行大且加重，整體放大進入真實世界感 */
+        .market-title-v75{
           font-family:'Noto Serif TC',serif;font-weight:600;
-          text-align:center;line-height:1.55;letter-spacing:.06em;
-          margin:0 auto 24px;
+          text-align:center;line-height:1.6;letter-spacing:.06em;
+          margin:0 auto 56px;
         }
         .market-title-line1{
           display:block;
@@ -1022,21 +1019,11 @@
         }
         .market-title-line2{
           display:block;margin-top:10px;
-          font-size:clamp(28px,3.4vw,38px);
+          font-size:clamp(30px,3.8vw,42px);
           font-weight:700;letter-spacing:.08em;color:#5C4830;
         }
-        .market-coda{
-          max-width:520px;margin:0 auto 48px;padding:0 24px;
-          text-align:center;
-          font-family:'Noto Serif TC',serif;font-weight:500;
-          font-size:16.5px;line-height:2.05;
-          color:rgba(92,72,48,.78);letter-spacing:.06em;
-        }
-        .market-coda-pause{
-          display:inline-block;width:.4em;
-        }
         @media(max-width:720px){
-          .market-coda{font-size:15px;line-height:1.95;}
+          .market-title-v75{margin-bottom:40px;}
         }
       </style>
       <!-- v2.7.2 場域水彩橫圖（順序：企業→校園→社區→品牌親子；商業信任感優先）-->
@@ -1075,17 +1062,50 @@
         }
       </style>
 
+      <!-- v3.75 四大場域圖下方加敘事段落 — 越來越多企業/校園/社區⋯ + ECO STAR 想培養的人（建立「真實世界正在發生」的入口感）-->
+      <p class="market-after-copy">
+        越來越多企業、校園與社區，<br>
+        開始希望用：<br>
+        更容易參與、<br>
+        更願意靠近的方式談永續。
+      </p>
+      <p class="market-after-copy market-after-copy--tail">
+        而這其實就是：<br>
+        <strong>ECO STAR 想培養的人。</strong>
+      </p>
+      <style>
+        .market-after-copy{
+          max-width:540px;margin:56px auto 0;padding:0 24px;
+          text-align:center;
+          font-family:'Noto Serif TC',serif;font-weight:500;
+          font-size:16.5px;line-height:2.05;
+          color:rgba(92,72,48,.78);letter-spacing:.06em;
+        }
+        .market-after-copy--tail{
+          margin-top:32px;
+          font-size:15.5px;
+          color:rgba(92,72,48,.62);
+        }
+        .market-after-copy--tail strong{
+          font-weight:600;color:#5C4830;letter-spacing:.08em;
+        }
+        @media(max-width:720px){
+          .market-after-copy{font-size:15px;line-height:1.95;margin-top:40px;}
+          .market-after-copy--tail{font-size:14px;margin-top:24px;}
+        }
+      </style>
+
       <!-- v3.55 移除 3 張真實照片 + logo wall + 收尾文字 — 改為單顆柔和 CTA 替代（不再做作品集堆疊）-->
       <div class="market-cta">
         <a href="esg-explore-more.html" class="btn-soft">更多 ESG 合作案例</a>
       </div>
       <style>
         .market-cta{
-          max-width:520px;margin:48px auto 0;
+          max-width:520px;margin:56px auto 0;
           text-align:center;
         }
         @media(max-width:720px){
-          .market-cta{margin-top:36px;}
+          .market-cta{margin-top:40px;}
         }
       </style>
 
@@ -1330,17 +1350,15 @@
       <figure class="v4-fig">
         <img src="assets/v4-good-experience.png" alt="一般的永續手作 vs 一場好的永續體驗 — 從把材料放在桌上、照步驟完成、帶走實體物件，到說出材料的故事與生命週期、設計願意主動參與的流程、帶走對永續的全新理解" loading="lazy">
       </figure>
-      <p class="good-exp-coda">
-        這幾年，<br>
-        越來越多企業、校園與社區，<br>
-        開始希望用：<br>
-        更容易靠近、<br>
-        更願意參與、<br>
-        也更能被記住的方式談永續。
-      </p>
+      <!-- v3.75 砍重複段：「越來越多企業、校園與社區⋯」已搬到 REAL PLACES（避免兩區重複）-->
+      <!-- v3.74 改寫 tail：從「ECO STAR 想培養的人」→「未來真正被需要的人」，建立因果接 WHAT YOU'LL LEARN（這個需求下誕生的能力地圖）-->
       <p class="good-exp-coda good-exp-coda--tail">
-        而這其實就是：<br>
-        ECO STAR 想慢慢培養的人。
+        而這也代表：<br>
+        未來真正被需要的，<br>
+        不只是會做手作的人。<br>
+        而是：<br>
+        <strong>能把永續，<br>
+        真正帶進現場的人。</strong>
       </p>
     </div>
     <style>
@@ -1363,6 +1381,10 @@
         margin-top:32px;
         font-size:15.5px;
         color:rgba(92,72,48,.62);
+      }
+      /* v3.74 tail strong：「能把永續，真正帶進現場的人」加重，承接到 WHAT YOU'LL LEARN */
+      .good-exp-coda--tail strong{
+        font-weight:600;color:#5C4830;letter-spacing:.08em;
       }
       @media(max-width:720px){
         .good-exp{padding:64px 0 56px;}
