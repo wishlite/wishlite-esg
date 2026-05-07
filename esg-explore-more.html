@@ -255,27 +255,63 @@
       border-bottom-color: var(--moss);
     }
 
-    /* ────────── Footer：紙感地平線（與品牌系統對齊）────────── */
-    .footer {
-      padding: 32px 24px 36px;
+    /* ────────── Footer：Wishlite 提案級山脈（地平線語言 v6.3 / 葉脈拾光血統）────────── */
+    footer {
+      position: relative;
+      min-height: auto;
+      background: linear-gradient(180deg, var(--paper-warm) 0%, #ece2d0 100%);
+      padding: 50px 0 32px;
+      overflow: hidden;
+    }
+    .horizon-photo {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      width: 100%;
+      height: 220px;
+      background-image: url('https://wishlite.github.io/wishlite-proposals/assets/hero-mountain-warm.jpg');
+      background-size: cover;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      opacity: 0.48;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .horizon-photo::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 100%;
+      background: linear-gradient(180deg,
+        var(--paper-warm) 0%,
+        rgba(239, 231, 218, 0.70) 14%,
+        rgba(239, 231, 218, 0.30) 32%,
+        rgba(239, 231, 218, 0.08) 58%,
+        transparent 85%);
+      pointer-events: none;
+    }
+    .footer-inner {
+      position: relative;
       text-align: center;
-      background: var(--paper-warm);
-      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      padding-top: 50px;
+      opacity: 0.85;
+      z-index: 1;
     }
     .footer-brand {
       font-family: 'Noto Serif TC', serif;
-      font-size: 14px;
-      color: var(--moss-dark);
-      letter-spacing: 0.08em;
-      margin-bottom: 6px;
       font-weight: 600;
+      color: var(--moss-dark);
+      font-size: 15px;
+      margin-bottom: 6px;
+      letter-spacing: 0.08em;
     }
     .footer-tagline {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--muted);
       letter-spacing: 0.1em;
     }
-    .footer a { color: inherit; text-decoration: none; }
+    footer a { color: inherit; text-decoration: none; }
 
     /* ────────── RWD ────────── */
     @media (max-width: 768px) {
@@ -376,10 +412,13 @@
     </div>
   </section>
 
-  <!-- ── Footer ── -->
-  <footer class="footer">
-    <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
-    <p class="footer-tagline">讓永續成為日常的選擇</p>
+  <!-- ── Footer｜Wishlite 提案級山脈（葉脈拾光血統）── -->
+  <footer>
+    <div class="horizon-photo" aria-hidden="true"></div>
+    <div class="footer-inner">
+      <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+      <p class="footer-tagline">讓永續成為日常的選擇</p>
+    </div>
   </footer>
 
 </body>
