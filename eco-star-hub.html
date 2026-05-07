@@ -100,7 +100,7 @@
       font-size: clamp(28px, 4.2vw, 40px);
       line-height: 1.5;
       color: var(--moss-dark);
-      margin-bottom: 32px;
+      margin-bottom: 0;
       letter-spacing: 0.02em;
     }
     .hero-sub {
@@ -216,7 +216,7 @@
        ────────────────────────────────── */
     .hero-friends {
       text-align: center;
-      margin: 8px auto 4px;
+      margin: 32px auto 12px;
       padding: 0 24px;
     }
     .hero-friends img {
@@ -239,7 +239,7 @@
        ────────────────────────────────── */
     .paths {
       min-height: auto;
-      padding: 28px 0 36px;
+      padding: 56px 0 64px;
       background: var(--paper);
       display: flex;
       align-items: center;
@@ -248,7 +248,7 @@
       display: grid;
       /* A 安心探索 45% / B 主要行動 55%（B 視覺權重略高 10-20%） */
       grid-template-columns: 45fr 55fr;
-      gap: 28px;
+      gap: 56px;
       width: 100%;
       align-items: stretch;
     }
@@ -512,11 +512,11 @@
 
       .paths {
         min-height: auto;
-        padding: 22px 0 28px;
+        padding: 40px 0 48px;
       }
       .paths-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 28px;
         width: 100%;
       }
       /* 手機版 B 卡在上、A 卡在下（B 是主要行動入口）*/
@@ -577,18 +577,10 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="container">
       <div class="hero-inner">
-        <p class="hero-kicker">你已經看見了一種靠近永續的方式</p>
+        <p class="hero-kicker">你已經看見了一種，靠近永續的方式。</p>
         <h1 id="hero-title" class="hero-title">
-          接下來，<br class="br-desktop">你可以選擇一條更靠近自己的路
+          接下來，<br class="br-desktop">看看這條路會走向哪裡。
         </h1>
-        <div class="hero-sub">
-          <p>每個人靠近永續的速度都不一樣。</p>
-          <p>有人先從故事開始，有人先從方法開始。</p>
-          <p class="closing">不管你現在選哪一條，都只是下一步而已。</p>
-        </div>
-        <a href="https://wishlite.github.io/wishlite-proposals/quiz/" class="hero-quiz-link" target="_blank" rel="noopener">
-          還沒找到自己的方式？可以先回到測驗看看你的永續起點
-        </a>
       </div>
     </div>
   </section>
@@ -600,7 +592,7 @@
 
   <!-- ────────── 分流 CTA Hint：六友下方、卡片之前 ────────── -->
   <section class="paths-cta-hint" aria-hidden="true">
-    <span class="cta-text">你想先靠近哪一條？</span>
+    <span class="cta-text">你現在想先靠近哪一邊？</span>
     <span class="cta-arrow">↓</span>
   </section>
 
@@ -638,23 +630,23 @@
         -->
         <!-- 卡 A｜永續案例館（45%，暖棕自然色 / 品牌案例敘事）-->
         <article class="path-card path-card-a">
-          <h2 class="path-title">看看我們做過的永續案例</h2>
+          <h2 class="path-title">看看這些真實行動，<br class="br-desktop">是怎麼真的發生的。</h2>
           <p class="path-body">
             企業 × 校園 × 真實現場
           </p>
           <a href="https://wishlite.notion.site/esg-records" class="path-button" aria-label="前往永續案例館" target="_blank" rel="noopener">
-            這些行動是怎麼發生的 →
+            先看看 ESG 合作案例 →
           </a>
         </article>
 
         <!-- 卡 B｜ECO STAR 招生頁（45%，微霧綠） -->
         <article class="path-card path-card-b">
-          <h2 class="path-title">了解怎麼把永續變成一場行動</h2>
+          <h2 class="path-title">看看普通人，<br class="br-desktop">是怎麼慢慢走進現場的。</h2>
           <p class="path-body">
-            材料 × 體驗 × 現場帶領
+            材料 × 體驗 × 真實帶領
           </p>
           <a href="eco-star-designer.html" class="path-button" aria-label="前往 ECO STAR 永續行動介紹">
-            帶我看看怎麼開始 →
+            我想走走看這條路 →
           </a>
         </article>
 
