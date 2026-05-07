@@ -4,337 +4,334 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>延伸永續行動｜Explore More ESG Actions — 韻手作 Wishlite</title>
+  <meta name="description" content="從 ECO STAR 世界往外延伸，看見 Wishlite 已經累積的企業 ESG 行動資料庫：永續活動 × 材料方案、ESG 成果 × 合作案例。" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
+    /* ────────── Wishlite 紙感色板（與 eco-star-hub / eco-star-designer 對齊）────────── */
     :root {
-      --moss: #3d5a3e;
-      --moss-dark: #2e4630;
-      --sage: #7a9e7e;
-      --cream: #f5f0e8;
-      --sand: #e8dcc8;
-      --soft: #f9f6f0;
-      --gold: #c49a3c;
-      --gold-light: #d4b06a;
-      --mist: #d4e4d0;
-      --ink: #1e2a1e;
-      --white: #ffffff;
+      --paper:        #faf7f1;
+      --paper-warm:   #f5efe2;
+      --paper-soft:   #fdfaf3;
+      --moss:         #6b8b6f;
+      --moss-dark:    #3d5a3e;
+      --moss-soft:    #a8bfa9;
+      --brown:        #a08665;
+      --brown-deep:   #6e5436;
+      --gold-light:   #d4b06a;
+      --line:         rgba(160, 134, 101, 0.22);
+      --muted:        #7a6f5e;
+      --charcoal:     #3a3328;
+      --radius:       18px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { background: var(--paper); }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      color: var(--ink);
-      background: var(--white);
+      color: var(--charcoal);
       -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
     }
 
-    /* ── Banner 橫幅 2:1 ── */
-    .banner {
-      width: 100%;
-      aspect-ratio: 2 / 1;
-      max-height: 420px;
-      background: linear-gradient(135deg, var(--moss-dark) 0%, var(--moss) 55%, var(--sage) 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    /* ────────── HERO（紙感、低飽和、與 hub 一致）────────── */
+    .hero {
+      background: linear-gradient(180deg, var(--paper-warm) 0%, var(--paper) 100%);
+      padding: 88px 24px 48px;
       text-align: center;
-      padding: 48px 24px;
       position: relative;
       overflow: hidden;
     }
-
-    .banner::before {
+    .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(122,158,126,0.25) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 85% 20%, rgba(196,154,60,0.1) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 55% at 18% 82%, rgba(168, 191, 169, 0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 84% 18%, rgba(212, 176, 106, 0.10) 0%, transparent 60%);
       pointer-events: none;
     }
-
-    .banner-label {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-size: 12px;
+    .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
+    .hero-kicker {
+      color: var(--moss);
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      margin-bottom: 18px;
       font-weight: 500;
-      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-      position: relative;
     }
-
-    .banner-title {
+    .hero-title {
       font-family: 'Noto Serif TC', serif;
-      font-size: clamp(28px, 5vw, 44px);
       font-weight: 700;
-      color: var(--white);
-      line-height: 1.35;
-      position: relative;
+      font-size: clamp(28px, 4.2vw, 40px);
+      line-height: 1.5;
+      color: var(--moss-dark);
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
     }
-
-    .banner-title span {
-      display: block;
+    .hero-sub {
       font-family: 'Noto Sans TC', sans-serif;
-      font-size: clamp(14px, 2.2vw, 18px);
+      font-size: 14.5px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
       font-weight: 400;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 8px;
     }
 
-    /* ── ① 上半段：信任定位 ── */
-    .section-trust {
-      background: var(--soft);
-      padding: 56px 24px 48px;
+    /* ────────── 信任段（一句話定位）────────── */
+    .trust {
+      padding: 48px 24px 28px;
       text-align: center;
     }
-
-    .section-trust .inner {
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .section-trust p {
-      font-size: 16px;
-      line-height: 2;
-      color: var(--ink);
-      font-weight: 400;
-      letter-spacing: 0.5px;
-    }
-
+    .trust-inner { max-width: 620px; margin: 0 auto; }
     .trust-line {
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 28px;
-      border-radius: 1px;
+      width: 36px; height: 1.5px;
+      background: var(--brown); opacity: 0.55;
+      margin: 0 auto 26px; border-radius: 1px;
+    }
+    .trust p {
+      font-size: 15.5px;
+      line-height: 2;
+      color: var(--charcoal);
+      font-weight: 400;
     }
 
-    /* ── ② 中間：兩個入口卡片 ── */
-    .section-cards {
-      background: var(--white);
-      padding: 56px 24px 64px;
+    /* ────────── 兩張入口卡（左霧綠／右暖棕）────────── */
+    .cards {
+      padding: 36px 24px 72px;
     }
-
-    .cards-wrapper {
-      max-width: 880px;
+    .cards-grid {
+      max-width: 920px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 48px;
     }
-
     .card {
-      background: var(--soft);
-      border-radius: 16px;
-      padding: 40px 32px 36px;
+      border-radius: var(--radius);
+      padding: 48px 36px 42px;
       text-align: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      border: 1px solid var(--sand);
+      border: 1px solid var(--line);
+      transition: box-shadow 0.32s ease, background 0.32s ease, border-color 0.32s ease, transform 0.32s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(61,90,62,0.1);
+    /* 左卡：霧綠／奶茶 — 材料、工作坊感 */
+    .card-activity {
+      background: linear-gradient(180deg, #ecf3e8 0%, #d8e8d3 100%);
+      box-shadow: 0 8px 24px rgba(61, 90, 62, 0.10);
     }
-
-    .card-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
-      display: block;
+    .card-activity:hover {
+      background: linear-gradient(180deg, #e6eee0 0%, #cde0c5 100%);
+      box-shadow: 0 14px 32px rgba(61, 90, 62, 0.16);
+      border-color: rgba(122, 158, 126, 0.40);
+      transform: translateY(-2px);
+    }
+    /* 右卡：暖棕／淡藍綠 — 案例、影響力感 */
+    .card-impact {
+      background: linear-gradient(180deg, #fdfaf3 0%, #f0e6d2 100%);
+      box-shadow: 0 8px 24px rgba(139, 111, 71, 0.10);
+    }
+    .card-impact:hover {
+      background: linear-gradient(180deg, #fcf7ec 0%, #ebdec5 100%);
+      box-shadow: 0 14px 32px rgba(139, 111, 71, 0.16);
+      border-color: rgba(160, 134, 101, 0.42);
+      transform: translateY(-2px);
     }
 
     .card-title {
       font-family: 'Noto Serif TC', serif;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
-      color: var(--moss);
+      line-height: 1.5;
       margin-bottom: 8px;
-      line-height: 1.4;
     }
+    .card-activity .card-title { color: var(--moss-dark); text-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+    .card-impact .card-title   { color: var(--brown-deep); text-shadow: 0 1px 2px rgba(0,0,0,0.06); }
 
     .card-subtitle {
-      font-family: 'Noto Sans TC', sans-serif;
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 2px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
+      color: var(--gold-light);
+      margin-bottom: 22px;
     }
 
     .card-desc {
-      font-size: 14px;
-      line-height: 1.85;
-      color: #555;
-      margin-bottom: 28px;
+      font-size: 14.5px;
+      line-height: 1.95;
+      color: var(--charcoal);
+      opacity: 0.85;
+      margin-bottom: 32px;
+      flex: 1;
     }
 
+    /* 按鈕：與 hub .path-button 同系統，圓角實心、紙感陰影、hover 加深 */
     .card-btn {
       display: inline-block;
-      padding: 12px 32px;
-      border-radius: 28px;
-      font-size: 14px;
+      padding: 0 28px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 100px;
       font-weight: 500;
+      font-size: 15px;
       text-decoration: none;
-      transition: all 0.2s ease;
+      letter-spacing: 0.05em;
+      transition: all 0.28s ease;
+      align-self: center;
+      border: 1.5px solid transparent;
     }
-
-    .card:first-child .card-btn {
+    .card-activity .card-btn {
       background: var(--moss);
-      color: var(--white);
+      color: var(--paper-soft);
+      border-color: var(--moss);
+      box-shadow: 0 5px 16px rgba(61, 90, 62, 0.22);
     }
-    .card:first-child .card-btn:hover {
+    .card-activity .card-btn:hover {
       background: var(--moss-dark);
+      border-color: var(--moss-dark);
+      box-shadow: 0 8px 22px rgba(61, 90, 62, 0.32);
+      transform: translateY(-1px);
     }
-
-    .card:last-child .card-btn {
-      background: transparent;
-      color: var(--moss);
-      border: 1.5px solid var(--moss);
+    .card-impact .card-btn {
+      background: var(--brown);
+      color: var(--paper-soft);
+      border-color: var(--brown);
+      box-shadow: 0 5px 16px rgba(139, 111, 71, 0.20);
     }
-    .card:last-child .card-btn:hover {
-      background: var(--moss);
-      color: var(--white);
+    .card-impact .card-btn:hover {
+      background: var(--brown-deep);
+      border-color: var(--brown-deep);
+      box-shadow: 0 8px 22px rgba(139, 111, 71, 0.30);
+      transform: translateY(-1px);
     }
 
     .card-hint {
       display: block;
-      font-size: 11px;
-      color: #999;
-      margin-top: 12px;
-      letter-spacing: 0.3px;
+      font-size: 11.5px;
+      color: var(--muted);
+      opacity: 0.7;
+      margin-top: 14px;
+      letter-spacing: 0.05em;
     }
 
-    /* ── ③ 底部收斂 CTA ── */
-    .section-closing {
-      background: var(--cream);
-      padding: 48px 24px 56px;
+    /* ────────── 收斂段 ────────── */
+    .closing {
+      padding: 56px 24px 72px;
       text-align: center;
+      background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
     }
-
-    .section-closing .inner {
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
+    .closing-inner { max-width: 600px; margin: 0 auto; }
     .closing-divider {
-      width: 32px;
-      height: 2px;
-      background: var(--gold);
-      margin: 0 auto 28px;
-      border-radius: 1px;
+      width: 32px; height: 1.5px;
+      background: var(--brown); opacity: 0.5;
+      margin: 0 auto 26px; border-radius: 1px;
     }
-
     .closing-main {
       font-family: 'Noto Serif TC', serif;
       font-size: 17px;
       font-weight: 600;
-      color: var(--moss);
+      color: var(--moss-dark);
       line-height: 2;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
-
     .closing-extra {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.8;
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.85;
     }
-
     .closing-extra a {
-      color: var(--moss);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1.5px;
+      color: var(--brown-deep);
+      text-decoration: none;
+      border-bottom: 1.5px solid rgba(160, 134, 101, 0.45);
+      padding-bottom: 1px;
       font-weight: 500;
+      transition: all 0.2s ease;
     }
     .closing-extra a:hover {
-      color: var(--gold);
+      color: var(--moss-dark);
+      border-bottom-color: var(--moss);
     }
 
-    /* ── Footer ── */
+    /* ────────── Footer：紙感地平線（與品牌系統對齊）────────── */
     .footer {
-      background: var(--moss-dark);
-      padding: 28px 24px;
+      padding: 32px 24px 36px;
       text-align: center;
+      background: var(--paper-warm);
+      border-top: 1px solid var(--line);
+    }
+    .footer-brand {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      color: var(--moss-dark);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .footer-tagline {
+      font-size: 12.5px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .footer a { color: inherit; text-decoration: none; }
+
+    /* ────────── RWD ────────── */
+    @media (max-width: 768px) {
+      .hero { padding: 64px 20px 36px; }
+      .trust { padding: 36px 20px 20px; }
+      .cards { padding: 28px 20px 56px; }
+      .cards-grid { grid-template-columns: 1fr; gap: 28px; }
+      .card { padding: 36px 26px 32px; }
+      .card-title { font-size: 20px; }
+      .card-desc { font-size: 14px; margin-bottom: 26px; }
+      .card-btn { font-size: 14.5px; padding: 0 24px; height: 46px; line-height: 46px; }
+      .closing { padding: 44px 20px 56px; }
+      .closing-main { font-size: 16px; }
     }
 
-    .footer p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.5px;
+    /* 進場 fade */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .footer a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-    }
-    .footer a:hover {
-      color: var(--gold-light);
-    }
-
-    /* ── RWD ── */
-    @media (max-width: 640px) {
-      .cards-wrapper {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .card {
-        padding: 32px 24px 28px;
-      }
-      .banner {
-        aspect-ratio: auto;
-        min-height: 220px;
-        padding: 40px 20px;
-      }
-      .section-trust {
-        padding: 40px 20px 36px;
-      }
-      .section-cards {
-        padding: 40px 20px 48px;
-      }
-      .section-closing {
-        padding: 36px 20px 44px;
-      }
-    }
+    .hero-kicker, .hero-title, .hero-sub { animation: fadeUp 0.6s ease-out both; }
+    .hero-title { animation-delay: 0.08s; }
+    .hero-sub { animation-delay: 0.16s; }
+    .card-activity { animation: fadeUp 0.7s 0.1s ease-out both; }
+    .card-impact   { animation: fadeUp 0.7s 0.22s ease-out both; }
   </style>
 </head>
 <body>
 
-  <!-- ── Banner 橫幅 2:1 ── -->
-  <header class="banner">
-    <span class="banner-label">Wishlite × ESG Actions</span>
-    <h1 class="banner-title">
-      延伸永續行動
-      <span>Explore More ESG Actions</span>
-    </h1>
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">Wishlite × ESG Actions</p>
+      <h1 class="hero-title">延伸永續行動</h1>
+      <p class="hero-sub">Explore More ESG Actions</p>
+    </div>
   </header>
 
-  <!-- ── ① 上半段：信任＋定位 ── -->
-  <section class="section-trust">
-    <div class="inner">
+  <!-- ── 信任段 ── -->
+  <section class="trust">
+    <div class="trust-inner">
       <div class="trust-line"></div>
       <p>
         我們已將所有永續手作活動與企業合作成果，<br />
         整理為完整的 ESG 行動資料庫，<br />
-        協助企業從單次活動延伸為可持續的永續行動方案。
+        協助企業從單次活動，延伸為可持續的永續行動方案。
       </p>
     </div>
   </section>
 
-  <!-- ── ② 中間：兩個入口 ── -->
-  <section class="section-cards">
-    <div class="cards-wrapper">
+  <!-- ── 兩張入口卡 ── -->
+  <section class="cards">
+    <div class="cards-grid">
 
-      <!-- 左：永續活動 × 材料方案 -->
-      <div class="card">
-        <span class="card-icon">🌱</span>
+      <!-- 左卡｜永續活動 × 材料方案（霧綠／奶茶）-->
+      <article class="card card-activity">
         <h2 class="card-title">永續活動 × 材料方案</h2>
         <p class="card-subtitle">ESG Activity Database</p>
         <p class="card-desc">
@@ -345,13 +342,12 @@
           探索活動方案 →
         </a>
         <span class="card-hint">前往 Notion 活動資料庫</span>
-      </div>
+      </article>
 
-      <!-- 右：ESG 成果 × 合作案例 -->
-      <div class="card">
-        <span class="card-icon">🌍</span>
+      <!-- 右卡｜ESG 成果 × 合作案例（暖棕／淡藍綠）-->
+      <article class="card card-impact">
         <h2 class="card-title">ESG 成果 × 合作案例</h2>
-        <p class="card-subtitle">ESG Impact & Case Studies</p>
+        <p class="card-subtitle">ESG Impact &amp; Case Studies</p>
         <p class="card-desc">
           從活動到成果，將 ESG 行動轉化為<br />
           可被揭露的數據與企業故事。
@@ -360,29 +356,30 @@
           查看合作案例 →
         </a>
         <span class="card-hint">前往 Notion 案例資料庫</span>
-      </div>
+      </article>
 
     </div>
   </section>
 
-  <!-- ── ③ 底部收斂 CTA ── -->
-  <section class="section-closing">
-    <div class="inner">
+  <!-- ── 收斂段 ── -->
+  <section class="closing">
+    <div class="closing-inner">
       <div class="closing-divider"></div>
       <p class="closing-main">
         我們也可依貴公司本次活動需求，<br />
         協助規劃最適合的材料包與永續主題組合。
       </p>
       <p class="closing-extra">
-        歡迎進一步與我們討論客製方案與正式報價 →
-        <a href="https://wishlite.github.io/wishlite-esg/#form">立即諮詢</a>
+        歡迎進一步與我們討論客製方案與正式報價
+        <a href="https://wishlite.github.io/wishlite-esg/#form">立即諮詢 →</a>
       </p>
     </div>
   </section>
 
   <!-- ── Footer ── -->
   <footer class="footer">
-    <p>© 2026 <a href="https://wishlite.github.io/wishlite-esg/">韻手作 Wishlite</a> — 讓永續成為企業最美的行動</p>
+    <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+    <p class="footer-tagline">讓永續成為日常的選擇</p>
   </footer>
 
 </body>
