@@ -1186,9 +1186,13 @@ select.form-input {
 
 /* ══════════════ FOOTER — v6.3 地平線語言 ══════════════ */
 .footer { background: transparent; padding: 0; text-align: center; }
+.footer-fade-in {
+  height: 90px;
+  background: linear-gradient(to bottom, var(--moss) 0%, rgba(61,90,62,0.55) 35%, rgba(245,242,234,0.85) 80%, #F5F2EA 100%);
+}
 .cta-footer-system {
   position: relative;
-  height: 300px;
+  height: 340px;
   background-image: url('hero-mountain-warm.jpg');
   background-size: cover;
   background-position: center bottom;
@@ -1200,11 +1204,12 @@ select.form-input {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 95px;
+  height: 180px;
   background: linear-gradient(to bottom,
     #F5F2EA 0%,
-    rgba(245,242,234,0.68) 25%,
-    rgba(245,242,234,0.22) 60%,
+    rgba(245,242,234,0.92) 18%,
+    rgba(245,242,234,0.55) 48%,
+    rgba(245,242,234,0.18) 78%,
     transparent 100%);
   z-index: 1;
   pointer-events: none;
@@ -1915,6 +1920,7 @@ select.form-input {
 
 <!-- ── FOOTER 地平線 v6.3 ── -->
 <footer class="footer">
+  <div class="footer-fade-in" aria-hidden="true"></div>
   <div class="cta-footer-system">
     <div class="cta-footer-text">
       <div class="cta-footer-brand">Wishlite 韻手作永續</div>
