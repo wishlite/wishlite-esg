@@ -1290,79 +1290,116 @@
         }
 
         /* ========== FOOTER ========== */
-        /* ========== FOOTER｜地平線語言 v6.3 Landing 輕量版 ========== */
+        /* ========== FOOTER｜地平線語言 v6.3 Landing 輕量版 ==========
+           沿用 v6.3 官方規範（hero-mountain-warm.jpg + 三刀漸層 + 38px 金線印章 + 品牌字落款）
+           Landing 輕量版差異：高度 300px → 220px（-25%），其他 DNA 全保留 */
         footer.horizon-footer {
             position: relative;
-            background: linear-gradient(180deg, #f5f2ea 0%, #efe8da 65%, #e8dfca 100%);
-            color: #6b5840;
-            text-align: center;
-            padding: 4.5rem 1.5rem 2rem;
+            height: 220px;
+            background-image: url('hero-mountain-warm.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
             overflow: hidden;
-            font-size: 0.9rem;
+            isolation: isolate;
+            color: #ffffff;
+            text-align: center;
+            padding: 0;
         }
-        .horizon-coda {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 0.95rem;
-            line-height: 2.1;
-            color: rgba(107,88,64,0.78);
-            font-weight: 300;
-            letter-spacing: 0.06em;
-            margin: 0 auto 3rem;
-            max-width: 520px;
+        /* 第一刀：上緣米白漸層遮罩（山從霧中浮出）*/
+        footer.horizon-footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 70px;
+            background: linear-gradient(to bottom,
+                #f5f2ea 0%,
+                rgba(245,242,234,0.68) 25%,
+                rgba(245,242,234,0.22) 60%,
+                transparent 100%);
+            z-index: 1;
+            pointer-events: none;
         }
-        .horizon-svg {
+        /* 第三刀：底部 grounding（暖棕落地感）*/
+        footer.horizon-footer::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                transparent 0%,
+                transparent 55%,
+                rgba(60,40,20,0.22) 78%,
+                rgba(60,40,20,0.52) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .horizon-text {
+            position: absolute;
+            bottom: 42px;
+            left: 0; right: 0;
+            text-align: center;
+            z-index: 3;
+        }
+        /* 38px × 1px 淡金細線（v6.3 品牌印章）*/
+        .horizon-text::before {
+            content: '';
             display: block;
-            width: 100%;
-            height: 110px;
-            margin: 0 auto 2rem;
-            opacity: 0.55;
-        }
-        .horizon-seal {
             width: 38px;
             height: 1px;
-            background: rgba(196,154,108,0.7);
-            margin: 0 auto 1.4rem;
-            box-shadow: 0 0 6px rgba(196,154,108,0.25);
+            background: rgba(212,176,106,0.88);
+            margin: 0 auto 16px;
+            box-shadow: 0 0 6px rgba(212,176,106,0.35);
         }
         .horizon-brand {
             font-family: 'Noto Serif TC', serif;
             font-size: 17px;
             font-weight: 600;
-            color: #4a3a26;
+            color: #ffffff;
             letter-spacing: 3px;
-            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 4px rgba(40,25,10,0.65), 0 0 14px rgba(40,25,10,0.45);
+            margin-bottom: 8px;
         }
         .horizon-tagline {
             font-family: 'Noto Serif TC', serif;
-            font-size: 14px;
-            color: rgba(74,58,38,0.7);
-            letter-spacing: 0.08em;
-            margin-bottom: 2.4rem;
+            font-size: 12px;
+            color: rgba(255,255,255,0.86);
+            letter-spacing: 0.18em;
+            text-shadow: 0 1px 3px rgba(40,25,10,0.5), 0 0 8px rgba(40,25,10,0.3);
         }
-        footer.horizon-footer .footer-contact {
+        /* 山下落地資訊條（聯絡方式 + copyright）*/
+        .horizon-meta {
+            background: #2a1f12;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 1.4rem 1.5rem 1.5rem;
+            font-size: 0.82rem;
+        }
+        .horizon-meta .footer-contact {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.8rem;
             flex-wrap: wrap;
-            margin-bottom: 1.2rem;
-            font-size: 0.82rem;
-            color: rgba(107,88,64,0.7);
+            margin-bottom: 0.7rem;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.6);
         }
-        footer.horizon-footer .footer-contact span {
+        .horizon-meta .footer-contact span {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
         }
-        footer.horizon-footer .footer-copyright {
-            font-size: 0.74rem;
-            color: rgba(107,88,64,0.45);
+        .horizon-meta .footer-copyright {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
             letter-spacing: 0.04em;
         }
         @media (max-width: 640px) {
-            footer.horizon-footer { padding: 3.5rem 1.2rem 2rem; }
-            .horizon-svg { height: 80px; }
-            .horizon-coda { font-size: 0.88rem; margin-bottom: 2.2rem; }
-            footer.horizon-footer .footer-contact { gap: 1rem 1.6rem; font-size: 0.78rem; }
+            footer.horizon-footer { height: 180px; }
+            .horizon-text { bottom: 32px; }
+            .horizon-brand { font-size: 15px; letter-spacing: 2.4px; }
+            .horizon-tagline { font-size: 11px; letter-spacing: 0.16em; }
+            .horizon-meta { padding: 1.2rem 1rem 1.3rem; }
+            .horizon-meta .footer-contact { gap: 0.7rem 1.4rem; font-size: 0.72rem; }
         }
 
         /* ========== MODAL ========== */
@@ -2336,32 +2373,21 @@
         </div>
     </section>
 
-    <!-- FOOTER｜地平線語言 v6.3 Landing 輕量版 -->
-    <footer class="horizon-footer">
-        <p class="horizon-coda">謝謝您讀到這裡。<br>願這份心意，慢慢成為日常的一部分。</p>
-        <svg class="horizon-svg" viewBox="0 0 1200 110" preserveAspectRatio="none" aria-hidden="true">
-            <!-- 遠山（最淡） -->
-            <path d="M0,72 L90,52 L180,64 L280,40 L380,58 L470,46 L560,62 L660,42 L760,56 L860,38 L960,54 L1060,44 L1140,58 L1200,50 L1200,110 L0,110 Z"
-                  fill="rgba(168,140,104,0.18)" stroke="rgba(139,111,71,0.32)" stroke-width="0.6"/>
-            <!-- 中景山 -->
-            <path d="M0,86 L70,68 L160,78 L250,58 L350,76 L440,64 L540,80 L640,60 L740,76 L830,62 L930,80 L1030,66 L1120,78 L1200,70 L1200,110 L0,110 Z"
-                  fill="rgba(155,124,86,0.24)" stroke="rgba(122,94,58,0.4)" stroke-width="0.7"/>
-            <!-- 近山（最深） -->
-            <path d="M0,98 L60,84 L150,92 L240,76 L330,90 L420,82 L520,94 L620,80 L720,92 L820,82 L920,94 L1020,84 L1110,92 L1200,88 L1200,110 L0,110 Z"
-                  fill="rgba(139,111,71,0.32)" stroke="rgba(107,82,48,0.52)" stroke-width="0.8"/>
-            <!-- 地平線 -->
-            <line x1="0" y1="108" x2="1200" y2="108" stroke="rgba(107,82,48,0.35)" stroke-width="0.6"/>
-        </svg>
-        <div class="horizon-seal" aria-hidden="true"></div>
-        <div class="horizon-brand">Wishlite 韻手作永續</div>
-        <div class="horizon-tagline">讓永續成為日常的選擇</div>
+    <!-- FOOTER｜地平線語言 v6.3 Landing 輕量版（沿用官方 hero-mountain-warm.jpg） -->
+    <footer class="horizon-footer" aria-label="Wishlite 地平線收尾">
+        <div class="horizon-text">
+            <div class="horizon-brand">Wishlite 韻手作永續</div>
+            <div class="horizon-tagline">讓永續成為日常的選擇</div>
+        </div>
+    </footer>
+    <div class="horizon-meta">
         <div class="footer-contact">
             <span>📧 wishlite1111@gmail.com</span>
             <span>🌐 wishlite.com.tw</span>
             <span>📍 桃園市桃園區介壽路392、394號</span>
         </div>
         <div class="footer-copyright">© 2026 Wishlite 韻手作 — ESG Sustainable Gifts.</div>
-    </footer>
+    </div>
 
     <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
