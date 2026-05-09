@@ -383,10 +383,12 @@
 
         .why-card-number {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
             color: var(--gold-light);
-            margin-bottom: 1rem;
+            opacity: 0.55;
+            margin-bottom: 1.4rem;
             line-height: 1;
         }
 
@@ -661,6 +663,60 @@
             .material-cards-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* ========== EXPLORE MORE CARD ========== */
+        .explore-more-card {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 1.6rem 2.6rem;
+            background: #fdfaf4;
+            border: 1px solid rgba(196,154,108,0.22);
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(139,111,71,0.04);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+        }
+        .explore-more-card:hover {
+            transform: translateY(-3px);
+            background: #fffdf7;
+            border-color: rgba(196,154,108,0.42);
+            box-shadow: 0 14px 32px rgba(139,111,71,0.08);
+        }
+        .explore-more-hint {
+            font-size: 0.78rem;
+            color: #a48d6f;
+            letter-spacing: 0.04em;
+            line-height: 1.6;
+        }
+        .explore-more-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .explore-more-arrow {
+            display: inline-block;
+            transition: transform 0.35s ease;
+        }
+        .explore-more-card:hover .explore-more-arrow {
+            transform: translateX(3px);
+        }
+        .explore-more-title { white-space: nowrap; }
+        @media (max-width: 640px) {
+            .explore-more-card { padding: 1.3rem 1.6rem; max-width: 92vw; }
+            .explore-more-hint { font-size: 0.74rem; }
+            .explore-more-title { font-size: 0.95rem; }
+            .why-card-number { opacity: 0.65; font-size: 0.78rem; }
+        }
+        @media (hover: none) {
+            .explore-more-card:hover { transform: none; background: #fdfaf4; border-color: rgba(196,154,108,0.22); box-shadow: 0 2px 10px rgba(139,111,71,0.04); }
+            .explore-more-card:hover .explore-more-arrow { transform: none; }
         }
 
         /* ========== PRODUCT LINES (03) ========== */
@@ -966,19 +1022,17 @@
         }
 
         .step-number {
-            display: inline-block;
-            background: var(--gold);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            background: transparent;
+            color: var(--gold-light);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            opacity: 0.5;
+            margin-bottom: 1.4rem;
+            line-height: 1;
         }
+        .step-number::before { content: 'STEP '; }
 
         .step-title {
             font-size: 1.1rem;
@@ -1787,23 +1841,23 @@
             <div class="why-header">
                 <p class="section-label">WHY WISHLITE</p>
                 <h2 class="section-title">為什麼選擇 Wishlite</h2>
-                <p>不只是送禮，<br>而是把材料、文化與品牌心意，<br>轉化為值得被記住的永續禮物。</p>
+                <p>不只是送禮，<br>而是把材料、文化與品牌心意，<br>慢慢變成一份會被記住的永續行動。</p>
             </div>
             <div class="why-cards">
                 <div class="why-card">
                     <div class="why-card-number">01</div>
                     <div class="why-card-title">有來源的永續材料</div>
-                    <div class="why-card-desc">牡蠣殼、咖啡渣、回收塑膠等在地循環材料，讓廢棄資源成為可被送出的禮物。</div>
+                    <div class="why-card-desc">牡蠣殼、咖啡渣、回收塑膠等在地循環材料，<br>讓每一份禮物背後，都有真實的材料故事。</div>
                 </div>
                 <div class="why-card">
                     <div class="why-card-number">02</div>
                     <div class="why-card-title">可客製的品牌表達</div>
-                    <div class="why-card-desc">從 Logo 客製到品牌故事卡，讓每一份禮物都能替企業說話。</div>
+                    <div class="why-card-desc">不只是放上 Logo。<br>而是讓品牌想傳達的價值，自然地留在禮物裡。</div>
                 </div>
                 <div class="why-card">
                     <div class="why-card-number">03</div>
                     <div class="why-card-title">可延伸為活動方案</div>
-                    <div class="why-card-desc">禮品可延伸為 ESG 工作坊或企業活動提案，讓送禮更有記憶點。</div>
+                    <div class="why-card-desc">從禮品到 ESG 體驗活動，<br>讓參與者不只是收到，而是真正留下記憶。</div>
                 </div>
             </div>
         </div>
@@ -2011,8 +2065,11 @@
                 </div>
             </div>
 
-            <div style="text-align:center; margin-top:2rem;">
-                <a href="https://www.notion.so/e0eda41b0f484ea6bf3ef606c8701da0" target="_blank" style="font-size:0.9rem; font-weight:600; color:var(--gold); text-decoration:none; border-bottom:1px solid rgba(196,154,108,0.3); padding-bottom:2px; transition:all 0.2s;">探索更多永續禮品 →</a>
+            <div style="text-align:center; margin-top:3.5rem;">
+                <a href="https://www.notion.so/e0eda41b0f484ea6bf3ef606c8701da0" target="_blank" class="explore-more-card">
+                    <span class="explore-more-hint">查看更多材料、節慶禮盒與 ESG 禮贈提案</span>
+                    <span class="explore-more-title">進入永續禮品資料庫<span class="explore-more-arrow">→</span></span>
+                </a>
             </div>
         </div>
     </section>
@@ -2048,7 +2105,7 @@
         <div class="section-container">
             <p class="section-label">HOW IT WORKS</p>
             <h2 class="section-title">合作流程</h2>
-            <p class="section-subtitle">從填寫需求到交付完成，用清楚的流程，讓企業送禮更安心。</p>
+            <p class="section-subtitle">從需求整理到交付完成，<br>我們會依照預算、用途與送禮情境，<br>陪您慢慢找到適合的永續禮品方案。</p>
             <div class="steps-grid">
                 <div class="step-card reveal">
                     <div class="step-number">1</div>
@@ -2076,8 +2133,8 @@
                 </div>
             </div>
             <div class="steps-cta-bridge">
-                <p>填寫需求後，我們將依照用途、數量與預算，提供對應的禮品建議與報價方向。</p>
-                <button class="cta-primary" onclick="openModal()">填寫需求表</button>
+                <p>不確定適合什麼也沒關係。<br>我們會依照送禮情境與預算，<br>協助整理適合的方向與搭配方式。</p>
+                <button class="cta-primary" onclick="openModal()">讓我們幫您整理適合的方向 →</button>
             </div>
         </div>
     </section>
