@@ -737,7 +737,7 @@
       <!-- v3.57 主標精簡：刪「ECO STAR 永續行動設計師系統」+ 長 lead，改三段短句 + 強調「交付行動」-->
       <h2 id="core-system-title" class="section-title core-system-title">
         <span class="cs-line cs-line--1">這不只是學會一場活動。</span>
-        <span class="cs-line cs-line--2">而是慢慢把：<br>材料、故事與人，</span>
+        <span class="cs-line cs-line--2">而是慢慢把：<br>喜歡的事，</span>
         <span class="cs-line cs-line--3">整理成能被帶進現場的方法。</span>
       </h2>
       <figure class="core-system-figure">
@@ -1114,8 +1114,8 @@
       <p class="market-after-copy">
         越來越多企業、校園與社區，<br>
         開始希望用：<br>
-        更容易參與、<br>
-        更願意靠近的方式談永續。
+        更容易參與的方式，<br>
+        讓更多人願意靠近永續。
       </p>
       <!-- v3.76 砍 tail：「而這其實就是 ECO STAR 想培養的人」搬給新增的「適合誰」身份投射區塊承擔（更有力量）-->
       <style>
@@ -1496,9 +1496,9 @@
       <p class="learn-coda">
         這些能力，<br>
         不是只停留在課堂裡。<br><br>
-        而是為了讓你有一天，<br>
-        能把材料、故事與體驗，<br>
-        穩穩帶進不同的現場。
+        而是讓你有一天，<br>
+        能把喜歡的事，<br>
+        穩穩帶進真實現場。
       </p>
     </div>
     <style>
@@ -1631,7 +1631,7 @@
       <figure class="trust-wall-figure trust-wall-figure--kpi">
         <img src="assets/v4-trust-wall.png" alt="信任牆：100+ 合作企業與單位（含證交所、緯穎、微星等）/ 300+ 累積活動場次 / 10,000+ 參與人次 / 133+ 噸再生材料轉化" loading="lazy">
       </figure>
-      <figure class="trust-wall-figure">
+      <figure class="trust-wall-figure trust-wall-figure--logos">
         <img src="assets/logo-wall-clients.jpg" alt="Wishlite 合作品牌與企業 logo 牆 — 證交所、緯穎、微星、玉山銀行、KPMG、IKEA、Microsoft、Meta、Google、Deloitte、AVEDA 等" loading="lazy">
         <figcaption class="trust-wall-cap">
           這些事，<br>
@@ -1675,6 +1675,15 @@
             linear-gradient(to right, transparent 0%, #000 5%, #000 95%, transparent 100%),
             linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
           mask-composite: intersect;
+        }
+        /* v3.91 logo wall 視覺權重降低 — 不比 KPI trust wall 搶 */
+        .trust-wall-figure--logos{
+          max-width:920px;  /* 1080 -> 920，~85% */
+          margin-top:36px;
+        }
+        .trust-wall-figure--logos img{
+          opacity:.58;
+          filter:saturate(.82) contrast(.92);
         }
         .trust-wall-cap{
           margin:32px auto 0;max-width:520px;
