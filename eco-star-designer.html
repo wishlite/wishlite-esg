@@ -583,6 +583,20 @@
         <span class="hero-line hero-line--3">可以被<strong class="hero-emphasis">帶出去</strong>的行動。</span>
       </h1>
       <!-- v3.56 hero-lead 移除（情緒重複 → CORE SYSTEM/Pain/REAL PLACES 已承擔安撫，Hero 改更乾淨的世界觀入口）-->
+
+      <!-- 🆕 v3.78 從測驗延續的熟悉感 banner（小字 + 六友頭像橫排，定位「不是主視覺、是回憶」）-->
+      <div class="hero-from-quiz" aria-label="從永續行動測驗延續而來">
+        <p class="hero-from-quiz-note">如果你是從永續行動測驗來到這裡，也許你已經看見自己靠近永續的方式。</p>
+        <div class="hero-mascot-row" aria-hidden="true">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozha_transparent_v1.png" alt="" loading="lazy">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaohao_transparent_v1.png" alt="" loading="lazy">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaomian_transparent_v1.png" alt="" loading="lazy">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaosu_transparent_v1.png" alt="" loading="lazy">
+          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozi_transparent_v1.png" alt="" loading="lazy">
+        </div>
+      </div>
+
       <div class="hero-cta-row">
         <a href="#info-session" class="btn btn-primary">了解 ECO STAR</a>
         <a href="esg-explore-more.html" class="btn-soft">先看看 ESG 合作案例</a>
@@ -652,6 +666,37 @@
         margin:0 0 16px;text-align:center;
       }
       .hero-cta-row{margin-top:8px}
+
+      /* v3.78 quiz 延續 banner — 小字 + 六友頭像橫排（定位「熟悉感不是主視覺」）*/
+      .hero-from-quiz{
+        margin: 0 auto 36px;
+        max-width: 620px;
+        opacity: 0.95;
+      }
+      .hero-from-quiz-note{
+        font-family:'Noto Sans TC',sans-serif;
+        font-size: 13.5px; line-height: 1.85;
+        color: rgba(92,72,48,.62);
+        letter-spacing: .04em;
+        margin: 0 0 16px;
+        font-weight: 400;
+        text-align: center;
+      }
+      .hero-mascot-row{
+        display: flex; justify-content: center; align-items: center;
+        gap: 14px; flex-wrap: nowrap;
+      }
+      .hero-mascot-row img{
+        width: 56px; height: 56px;
+        object-fit: contain;
+        opacity: 0.78;
+      }
+      @media(max-width:720px){
+        .hero-from-quiz{margin: 0 auto 26px}
+        .hero-from-quiz-note{font-size: 12.5px; margin: 0 0 12px; padding: 0 6px; line-height: 1.75}
+        .hero-mascot-row{gap: 8px}
+        .hero-mascot-row img{width: 36px; height: 36px}
+      }
       /* v3.16 hero figure + v3.22 邊界融化：六友融進頁面世界 */
       .hero-figure{
         position:relative;text-align:center;
