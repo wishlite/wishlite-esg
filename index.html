@@ -457,6 +457,47 @@ body {
   .mat-tag-img { width: 24px; height: 24px; }
 }
 
+/* ══════════════ MATERIAL STORY CARDS ══════════════ */
+.mat-story {
+  background: var(--white);
+  border: 1.5px solid var(--sand);
+  border-radius: 16px;
+  padding: 24px 18px 22px;
+  transition: all 0.25s ease;
+}
+.mat-story:hover {
+  border-color: var(--sage);
+  box-shadow: 0 6px 20px rgba(100,120,80,0.08);
+  transform: translateY(-2px);
+}
+.mat-story-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+.mat-story-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.mat-story-desc {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #9a8f80;
+  margin: 0;
+}
+@media(max-width: 768px) {
+  .mat-story-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
+  .mat-story { padding: 20px 14px 18px; }
+  .mat-story-img { width: 54px; height: 54px; }
+  .mat-story-name { font-size: 14px; }
+  .mat-story-desc { font-size: 11.5px; }
+}
+
 /* ══════════════ PRICING ══════════════ */
 .pricing {
   background: var(--soft);
@@ -1402,34 +1443,34 @@ select.form-input {
       <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
         <img src="扁平畫1.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
         <div>
-          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">企業 ESG × 永續行動實踐</div>
-          <p style="font-size:12px; color:#777; line-height:1.7;">員工活動、ESG 主題月、CSR 參與式設計、ESG 報告素材產出</p>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">企業 ESG × 員工參與</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">ESG 主題月、員工工作坊、CSR 參與式活動、永續教育推廣</p>
         </div>
       </div>
       <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
         <img src="扁平畫2.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
         <div>
-          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">品牌共創 × 綠色行銷</div>
-          <p style="font-size:12px; color:#777; line-height:1.7;">品牌聯名活動、綠色行銷體驗、永續品牌日、客戶答謝活動</p>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">品牌共創 × 永續溝通</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">品牌日、客戶答謝、綠色行銷體驗、聯名活動與永續禮贈</p>
         </div>
       </div>
       <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
         <img src="扁平畫3.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
         <div>
-          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">校外循環教育 × 技職探索</div>
-          <p style="font-size:12px; color:#777; line-height:1.7;">國中小校外教學、大專永續課程、教師研習、SDGs 主題學習</p>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">校園教育 × 循環學習</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">國中小校外教學、大專永續課程、教師研習、SDGs 主題活動</p>
         </div>
       </div>
       <div class="fade-up" style="background:var(--white); border:1.5px solid var(--sand); border-radius:14px; padding:20px 22px; display:flex; align-items:center; gap:16px;">
         <img src="扁平畫4.jpg" alt="" style="width:64px; height:64px; object-fit:contain; flex-shrink:0;">
         <div>
-          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">親子教育 × 資源活化</div>
-          <p style="font-size:12px; color:#777; line-height:1.7;">企業家庭日、親子共創體驗、員工日、大型互動闖關活動</p>
+          <div style="font-weight:700; color:var(--ink); font-size:14px; margin-bottom:6px;">親子活動 × 資源活化</div>
+          <p style="font-size:12px; color:#777; line-height:1.7;">企業家庭日、親子共創體驗、員工日、節慶與大型闖關活動</p>
         </div>
       </div>
     </div>
 
-    <p class="fade-up" style="text-align:center; margin-top:24px; font-size:13px; color:var(--sage); letter-spacing:0.3px;">每場活動皆可依人數、主題、材料內容與品牌需求客製規劃。</p>
+    <p class="fade-up" style="text-align:center; margin-top:24px; font-size:13px; color:var(--sage); letter-spacing:0.3px;">每一種合作形式，都可以依人數、場域、材料內容與品牌需求，規劃成適合企業現場的永續行動。</p>
   </div>
 </section>
 
@@ -1441,24 +1482,24 @@ select.form-input {
     <p class="section-desc fade-up">300+ 場 ESG 專案背後，是一套可量化、可擴展、可交付的執行體系。</p>
 
     <div class="fade-up" style="margin-top:32px; margin-bottom:32px; text-align:center;">
-      <img src="esg-impact-dashboard.png" alt="韻手作行動成果與執行績效" style="max-width:100%; border-radius:12px; mix-blend-mode:multiply;">
+      <img src="impact-v2.png" alt="韻手作累積成果一覽" style="max-width:100%; border-radius:12px;">
     </div>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:32px;">
       <div class="why-card fade-up" style="text-align:center;">
         <div style="font-size:32px; margin-bottom:12px;">📈</div>
-        <h3 style="font-size:17px;">可量化的 ESG 成果</h3>
-        <p>每場活動產出減碳數據與 SROI 報告——ESG 不只是感覺，而是可直接對接 CSR 年報的數字。</p>
+        <h3 style="font-size:17px;">成果看得見</h3>
+        <p>每場活動都能整理參與人次、材料轉化、減碳數據與活動紀錄，讓 ESG 不只停留在口號，而是成為可被呈報的成果。</p>
       </div>
       <div class="why-card fade-up" style="text-align:center;">
         <div style="font-size:32px; margin-bottom:12px;">🧩</div>
-        <h3 style="font-size:17px;">模組化彈性組合</h3>
-        <p>活動、禮品、報告可獨立或打包，依企業需求靈活配置、分場次或分部門執行。</p>
+        <h3 style="font-size:17px;">方案可彈性搭配</h3>
+        <p>從員工工作坊、永續禮品到成果報告，都可以依人數、預算、場域與品牌需求，單獨規劃或整合執行。</p>
       </div>
       <div class="why-card fade-up" style="text-align:center;">
         <div style="font-size:32px; margin-bottom:12px;">🎯</div>
-        <h3 style="font-size:17px;">一站式穩定交付</h3>
-        <p>場地、材料、講師、紀錄、報告全程包辦——企業只需讓團隊出席，其餘我們負責。</p>
+        <h3 style="font-size:17px;">執行交給我們</h3>
+        <p>從材料、講師、流程、現場帶領到活動後紀錄整理，Wishlite 協助企業把一場 ESG 活動穩穩落地。</p>
       </div>
     </div>
   </div>
@@ -1469,15 +1510,39 @@ select.form-input {
   <div class="fade-up" style="text-align:center; max-width:720px; margin:0 auto;">
     <div class="section-label" style="margin-bottom:10px;">Materials We Use</div>
     <h3 style="font-family:'Noto Serif TC', serif; font-size:22px; font-weight:700; color:var(--ink); margin-bottom:10px;">每一場活動的材料，都來自真實的循環故事。</h3>
-    <p style="font-size:14px; color:#888; margin-bottom:32px; line-height:1.7;">六種在地循環材料，轉化為可被體驗、可被記住的 ESG 行動。</p>
+    <p style="font-size:14px; color:#888; margin-bottom:32px; line-height:1.9;">六種循環材料，<br>慢慢被重新整理成<br>能被參與、被感受、<br>也被真正記住的 ESG 行動。</p>
 
-    <div style="display:flex; flex-wrap:nowrap; justify-content:center; gap:10px; margin-bottom:36px;">
-      <span class="mat-tag fade-up"><img src="mat-coffee.jpg" alt="" class="mat-tag-img">咖啡渣</span>
-      <span class="mat-tag fade-up"><img src="mat-oyster.jpg" alt="" class="mat-tag-img">牡蠣殼</span>
-      <span class="mat-tag fade-up"><img src="mat-plastic.jpg" alt="" class="mat-tag-img">再生塑膠</span>
-      <span class="mat-tag fade-up"><img src="mat-fiber.jpg" alt="" class="mat-tag-img">再生紙纖</span>
-      <span class="mat-tag fade-up"><img src="mat-textile.jpg" alt="" class="mat-tag-img">回收衣物</span>
-      <span class="mat-tag fade-up"><img src="mat-natural.jpg" alt="" class="mat-tag-img">自然素材</span>
+    <div class="mat-story-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-bottom:36px; text-align:center;">
+      <div class="mat-story fade-up">
+        <img src="mat-coffee.jpg" alt="" class="mat-story-img">
+        <div class="mat-story-name">咖啡渣</div>
+        <p class="mat-story-desc">把日常留下的氣味，<br>重新變成可以被記住的體驗。</p>
+      </div>
+      <div class="mat-story fade-up">
+        <img src="mat-oyster.jpg" alt="" class="mat-story-img">
+        <div class="mat-story-name">牡蠣殼</div>
+        <p class="mat-story-desc">來自海邊被遺留下的資源，<br>重新回到生活裡。</p>
+      </div>
+      <div class="mat-story fade-up">
+        <img src="mat-plastic.jpg" alt="" class="mat-story-img">
+        <div class="mat-story-name">再生塑膠</div>
+        <p class="mat-story-desc">那些曾經被使用過的材料，<br>也能重新被接住。</p>
+      </div>
+      <div class="mat-story fade-up">
+        <img src="mat-fiber.jpg" alt="" class="mat-story-img">
+        <div class="mat-story-name">再生紙纖</div>
+        <p class="mat-story-desc">讓原本即將被丟棄的纖維，<br>重新長出新的故事。</p>
+      </div>
+      <div class="mat-story fade-up">
+        <img src="mat-textile.jpg" alt="" class="mat-story-img">
+        <div class="mat-story-name">回收衣物</div>
+        <p class="mat-story-desc">把穿過的生活痕跡，<br>重新拼成另一段記憶。</p>
+      </div>
+      <div class="mat-story fade-up">
+        <img src="mat-natural.jpg" alt="" class="mat-story-img">
+        <div class="mat-story-name">自然素材</div>
+        <p class="mat-story-desc">從土地與植物出發，<br>慢慢理解永續的另一種溫度。</p>
+      </div>
     </div>
 
     <div class="fade-up" style="display:flex; flex-direction:column; align-items:center; gap:12px;">
@@ -1490,32 +1555,32 @@ select.form-input {
 <section class="process">
   <div class="section-label fade-up">How It Works</div>
   <h2 class="section-title fade-up">合作流程</h2>
-  <p class="section-desc fade-up">從填表到活動完成，我們讓每一步都簡單順暢。</p>
+  <p class="section-desc fade-up">從初步想法到活動落地，<br>我們會陪你把每一步慢慢整理清楚。</p>
 
   <div class="process-steps">
     <div class="step-card fade-up">
       <div class="step-num">1</div>
-      <h3>填寫需求表</h3>
-      <p>告訴我們你的活動目的、人數和偏好</p>
-      <span class="time">2 分鐘</span>
+      <h3>01｜填寫需求表</h3>
+      <p>告訴我們活動方向、人數與初步想法，即使還不確定內容也沒關係。</p>
+      <span class="time">約 2 分鐘</span>
     </div>
     <div class="step-card fade-up">
       <div class="step-num">2</div>
-      <h3>收到初步建議</h3>
-      <p>2 個工作天內提供初步方案建議與報價參考</p>
-      <span class="time">2 個工作天</span>
+      <h3>02｜收到初步建議</h3>
+      <p>我們會依照需求，提供適合的活動方向與報價參考。</p>
+      <span class="time">約 2 個工作天</span>
     </div>
     <div class="step-card fade-up">
       <div class="step-num">3</div>
-      <h3>確認與調整</h3>
-      <p>線上或電話討論細節，微調到完美</p>
+      <h3>03｜一起確認細節</h3>
+      <p>透過 LINE、電話或線上討論，慢慢調整成適合你們的活動形式。</p>
       <span class="time">彈性安排</span>
     </div>
     <div class="step-card fade-up">
       <div class="step-num">4</div>
-      <h3>活動執行</h3>
-      <p>全程專人帶領，活動完成後可視需求協助整理紀錄與內容素材</p>
-      <span class="time">當天搞定</span>
+      <h3>04｜活動現場執行</h3>
+      <p>從材料、流程到現場帶領，Wishlite 會協助企業把整場活動穩穩完成。</p>
+      <span class="time">活動當天</span>
     </div>
   </div>
 </section>
