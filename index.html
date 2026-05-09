@@ -801,16 +801,10 @@ body {
 
 /* ══════════════ CTA BANNER ══════════════ */
 .cta-banner {
-  background: var(--moss);
+  background: var(--soft);
   padding: 56px 20px;
   position: relative;
   overflow: hidden;
-}
-.cta-banner::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 80% 30%, rgba(196,154,60,0.12) 0%, transparent 50%);
-  pointer-events: none;
 }
 .cta-banner-inner {
   position: relative;
@@ -825,13 +819,13 @@ body {
 .cta-banner-text h2 {
   font-family: 'Noto Serif TC', serif;
   font-size: clamp(20px, 3vw, 26px);
-  color: #fff;
+  color: var(--ink);
   font-weight: 700;
   margin-bottom: 6px;
 }
 .cta-banner-text p {
   font-size: 13px;
-  color: rgba(255,255,255,0.6);
+  color: #888;
 }
 .cta-banner .btn-primary {
   flex-shrink: 0;
