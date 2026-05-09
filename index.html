@@ -1184,60 +1184,94 @@ select.form-input {
   line-height: 1.8;
 }
 
-/* ══════════════ FOOTER ══════════════ */
-.footer {
+/* ══════════════ FOOTER — v6.3 地平線語言 ══════════════ */
+.footer { background: transparent; padding: 0; text-align: center; }
+.cta-footer-system {
   position: relative;
-  background: var(--soft);
-  padding: 0 20px 36px;
-  text-align: center;
+  height: 300px;
+  background-image: url('hero-mountain-warm.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
   overflow: hidden;
+  isolation: isolate;
 }
-.footer-horizon {
-  position: relative;
-  width: 100%;
-  height: 140px;
-  margin-bottom: 28px;
-  pointer-events: none;
-}
-.footer-horizon::before {
+.cta-footer-system::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 60px;
-  background: linear-gradient(to bottom, var(--white) 0%, var(--soft) 100%);
+  height: 95px;
+  background: linear-gradient(to bottom,
+    #F5F2EA 0%,
+    rgba(245,242,234,0.68) 25%,
+    rgba(245,242,234,0.22) 60%,
+    transparent 100%);
   z-index: 1;
+  pointer-events: none;
 }
-.footer-horizon svg {
+.cta-footer-system::after {
+  content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.footer-content {
-  position: relative;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    transparent 55%,
+    rgba(60,40,20,0.22) 78%,
+    rgba(60,40,20,0.52) 100%);
   z-index: 2;
+  pointer-events: none;
 }
-.footer-logo { height: 80px; margin-bottom: 20px; opacity: 0.85; }
-.footer p {
-  font-size: 12px;
-  color: #9a8f80;
-  line-height: 1.95;
-  letter-spacing: 0.3px;
+.cta-footer-system .cta-footer-text {
+  position: absolute;
+  bottom: 58px;
+  left: 0; right: 0;
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
 }
-.footer .footer-tagline {
+.cta-footer-system .cta-footer-text::before {
+  content: '';
+  display: block;
+  width: 38px;
+  height: 1px;
+  background: rgba(212,176,106,0.88);
+  margin: 0 auto 20px;
+  box-shadow: 0 0 6px rgba(212,176,106,0.35);
+}
+.cta-footer-brand {
   font-family: 'Noto Serif TC', serif;
-  font-size: 14px;
-  color: var(--ink);
-  margin-bottom: 14px;
-  letter-spacing: 1px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-shadow: 0 1px 4px rgba(40,25,10,0.65), 0 0 14px rgba(40,25,10,0.45);
 }
-.footer a {
-  color: #7a8a6a;
+.cta-footer-slogan {
+  font-size: 11px;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  text-shadow: 0 1px 3px rgba(40,25,10,0.5), 0 0 8px rgba(40,25,10,0.3);
+}
+.footer-meta {
+  background: #2a1d10;
+  padding: 18px 20px;
+  text-align: center;
+}
+.footer-meta p {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.9;
+  letter-spacing: 0.3px;
+  margin: 0;
+}
+.footer-meta a {
+  color: rgba(255,255,255,0.7);
   text-decoration: none;
-  border-bottom: 1px solid rgba(122,138,106,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
-.footer a:hover { color: var(--moss); border-bottom-color: var(--moss); }
+.footer-meta a:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
 
 /* ══════════════ MOBILE ══════════════ */
 @media(max-width: 768px) {
@@ -1879,20 +1913,17 @@ select.form-input {
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ── FOOTER 地平線 v6.3 ── -->
 <footer class="footer">
-  <div class="footer-horizon" aria-hidden="true">
-    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
-      <path d="M0,110 C180,82 320,96 460,86 C600,76 720,62 880,72 C1040,82 1200,98 1440,84 L1440,140 L0,140 Z" fill="#b8a98c" opacity="0.14"/>
-      <path d="M0,118 C220,100 380,108 540,98 C700,88 860,80 1020,90 C1180,100 1320,114 1440,104 L1440,140 L0,140 Z" fill="#9aab95" opacity="0.20"/>
-    </svg>
+  <div class="cta-footer-system">
+    <div class="cta-footer-text">
+      <div class="cta-footer-brand">Wishlite 韻手作永續</div>
+      <div class="cta-footer-slogan">MAKE ART · LIVE ECO</div>
+    </div>
   </div>
-  <div class="footer-content">
-    <p class="footer-tagline">讓永續成為日常的選擇</p>
+  <div class="footer-meta">
     <p>
-      韻手作永續 Wishlite<br>
-      <a href="mailto:wishlite1111@gmail.com">wishlite1111@gmail.com</a><br>
-      © 2026 Wishlite. All rights reserved.
+      <a href="mailto:wishlite1111@gmail.com">wishlite1111@gmail.com</a>　｜　© 2026 Wishlite. All rights reserved.
     </p>
   </div>
 </footer>
