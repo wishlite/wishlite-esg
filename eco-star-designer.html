@@ -321,6 +321,47 @@
     .closing-note { text-align: center; margin-top: 24px; color: var(--sub); font-size: 14.5px; line-height: 1.9; }
 
     /* Footer */
+    /* v3.79 footer 六友陪伴尾韻 — 繪本最後一頁的小尾韻、不是 CTA / 不是 icon bar
+       設計：六友以柔和小弧形排列、低飽和、高透明、輕輕站著 */
+    .footer-companions {
+      width: 100%;
+      padding: 36px 24px 8px;
+      background: linear-gradient(180deg, transparent 0%, rgba(245, 242, 234, 0.5) 60%, var(--paper-warm, #ece2d0) 100%);
+      pointer-events: none;
+    }
+    .footer-companions-row {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 10px;
+      flex-wrap: nowrap;
+    }
+    .footer-companions-row img {
+      width: 52px; height: 52px;
+      object-fit: contain;
+      opacity: 0.55;
+      filter: saturate(0.85);
+      transition: opacity .4s ease;
+    }
+    /* 弧形排列：兩端低、中間高（自然山稜般的小弧度）*/
+    .footer-companions-row .fc-1 { transform: translateY(0); }
+    .footer-companions-row .fc-2 { transform: translateY(-8px); }
+    .footer-companions-row .fc-3 { transform: translateY(-14px); }
+    .footer-companions-row .fc-4 { transform: translateY(-14px); }
+    .footer-companions-row .fc-5 { transform: translateY(-8px); }
+    .footer-companions-row .fc-6 { transform: translateY(0); }
+    @media (max-width: 720px) {
+      .footer-companions { padding: 28px 16px 4px; }
+      .footer-companions-row { gap: 6px; max-width: 100%; }
+      .footer-companions-row img { width: 36px; height: 36px; opacity: 0.5; }
+      .footer-companions-row .fc-2,
+      .footer-companions-row .fc-5 { transform: translateY(-6px); }
+      .footer-companions-row .fc-3,
+      .footer-companions-row .fc-4 { transform: translateY(-10px); }
+    }
+
     footer {
       position: relative; background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-cream) 100%);
       padding: 80px 0 36px; overflow: hidden;
@@ -584,20 +625,7 @@
       </h1>
       <!-- v3.56 hero-lead 移除（情緒重複 → CORE SYSTEM/Pain/REAL PLACES 已承擔安撫，Hero 改更乾淨的世界觀入口）-->
 
-      <!-- 🆕 v3.78 從測驗延續的熟悉感 banner（小字 + 六友頭像橫排，定位「不是主視覺、是回憶」）-->
-      <div class="hero-from-quiz" aria-label="從永續行動測驗延續而來">
-        <p class="hero-from-quiz-note">如果你是從永續行動測驗來到這裡，也許你已經看見自己靠近永續的方式。</p>
-        <div class="hero-mascot-row" aria-hidden="true">
-          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
-          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozha_transparent_v1.png" alt="" loading="lazy">
-          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaohao_transparent_v1.png" alt="" loading="lazy">
-          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaomian_transparent_v1.png" alt="" loading="lazy">
-          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaosu_transparent_v1.png" alt="" loading="lazy">
-          <img src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozi_transparent_v1.png" alt="" loading="lazy">
-        </div>
-      </div>
-
-      <div class="hero-cta-row">
+<div class="hero-cta-row">
         <a href="#info-session" class="btn btn-primary">了解 ECO STAR</a>
         <a href="esg-explore-more.html" class="btn-soft">先看看 ESG 合作案例</a>
       </div>
@@ -666,37 +694,6 @@
         margin:0 0 16px;text-align:center;
       }
       .hero-cta-row{margin-top:8px}
-
-      /* v3.78 quiz 延續 banner — 小字 + 六友頭像橫排（定位「熟悉感不是主視覺」）*/
-      .hero-from-quiz{
-        margin: 0 auto 36px;
-        max-width: 620px;
-        opacity: 0.95;
-      }
-      .hero-from-quiz-note{
-        font-family:'Noto Sans TC',sans-serif;
-        font-size: 13.5px; line-height: 1.85;
-        color: rgba(92,72,48,.62);
-        letter-spacing: .04em;
-        margin: 0 0 16px;
-        font-weight: 400;
-        text-align: center;
-      }
-      .hero-mascot-row{
-        display: flex; justify-content: center; align-items: center;
-        gap: 14px; flex-wrap: nowrap;
-      }
-      .hero-mascot-row img{
-        width: 56px; height: 56px;
-        object-fit: contain;
-        opacity: 0.78;
-      }
-      @media(max-width:720px){
-        .hero-from-quiz{margin: 0 auto 26px}
-        .hero-from-quiz-note{font-size: 12.5px; margin: 0 0 12px; padding: 0 6px; line-height: 1.75}
-        .hero-mascot-row{gap: 8px}
-        .hero-mascot-row img{width: 36px; height: 36px}
-      }
       /* v3.16 hero figure + v3.22 邊界融化：六友融進頁面世界 */
       .hero-figure{
         position:relative;text-align:center;
@@ -1827,6 +1824,18 @@
     </style>
   </section>
   <!-- v3.61 LEGACY DELETED 舊 info-session（form + 資訊卡 + 三層 CTA + share + thanks）-->
+
+  <!-- 🆕 v3.79 footer 六友陪伴尾韻（繪本最後一頁的小尾韻、不是 CTA / 不是 icon bar）-->
+  <section class="footer-companions" aria-hidden="true">
+    <div class="footer-companions-row">
+      <img class="fc-1" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
+      <img class="fc-2" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozha_transparent_v1.png" alt="" loading="lazy">
+      <img class="fc-3" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaohao_transparent_v1.png" alt="" loading="lazy">
+      <img class="fc-4" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaomian_transparent_v1.png" alt="" loading="lazy">
+      <img class="fc-5" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaosu_transparent_v1.png" alt="" loading="lazy">
+      <img class="fc-6" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozi_transparent_v1.png" alt="" loading="lazy">
+    </div>
+  </section>
 
   <footer>
     <div class="horizon-photo" aria-hidden="true"></div>
