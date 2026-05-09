@@ -280,30 +280,44 @@
         /* Three Pillars */
         .hero-value-chips {
             display: flex;
-            gap: 0.8rem;
+            gap: 2.4rem;
             justify-content: center;
             flex-wrap: wrap;
-            max-width: 800px;
+            max-width: 720px;
             width: 100%;
+            margin-top: 0.5rem;
+            opacity: 0.72;
         }
 
         .hero-chip {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 40px;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.88rem;
-            color: rgba(255,255,255,0.78);
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            letter-spacing: 0.02em;
+            background: transparent;
+            border: none;
+            padding: 0;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.62);
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.45rem;
+            letter-spacing: 0.04em;
         }
 
         .chip-zh {
             color: var(--gold-light);
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 500;
+            font-size: 0.82rem;
+            opacity: 0.85;
+            letter-spacing: 0.08em;
+        }
+
+        .chip-en {
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+        }
+
+        .hero-br-spacer { display: none; }
+        @media (max-width: 640px) {
+            .hero-value-chips { gap: 1.2rem; }
+            .hero-chip { font-size: 0.74rem; }
         }
 
         .cta-primary, .cta-secondary {
@@ -1798,14 +1812,14 @@
     <section class="hero reveal">
         <div class="hero-badge">Wishlite ESG Gifts</div>
         <h1>讓每一份禮物，<br>都成為品牌實踐永續的方式。</h1>
-        <p class="hero-desc">以循環材料打造有溫度、有故事的 ESG 禮品——讓每一份品牌心意，不只被收到，也被記住。</p>
+        <p class="hero-desc">以循環材料打造<br class="hero-br">有溫度、有故事的 ESG 禮品。<br><br class="hero-br-spacer">讓每一份品牌心意，<br class="hero-br">不只被收到，也被記住。</p>
         <div class="hero-ctas">
-            <a href="#products" class="cta-primary">查看永續禮品系列 →</a>
+            <a href="#products" class="cta-primary">探索永續禮品系列 →</a>
         </div>
         <div class="hero-value-chips">
-            <div class="hero-chip"><span class="chip-zh">厚實</span> 再生材料，廢棄物重新成為禮物</div>
-            <div class="hero-chip"><span class="chip-zh">厚工</span> 文化底蘊，刻入每件品牌禮品</div>
-            <div class="hero-chip"><span class="chip-zh">厚禮</span> 品牌心意，讓送禮被感受被記住</div>
+            <div class="hero-chip"><span class="chip-zh">厚實</span><span class="chip-en">再生材料</span></div>
+            <div class="hero-chip"><span class="chip-zh">厚工</span><span class="chip-en">文化底蘊</span></div>
+            <div class="hero-chip"><span class="chip-zh">厚禮</span><span class="chip-en">品牌心意</span></div>
         </div>
     </section>
 
