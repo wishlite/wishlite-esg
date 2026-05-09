@@ -321,45 +321,49 @@
     .closing-note { text-align: center; margin-top: 24px; color: var(--sub); font-size: 14.5px; line-height: 1.9; }
 
     /* Footer */
-    /* v3.79 footer 六友陪伴尾韻 — 繪本最後一頁的小尾韻、不是 CTA / 不是 icon bar
-       設計：六友以柔和小弧形排列、低飽和、高透明、輕輕站著 */
-    .footer-companions {
+    /* v3.82 pre-CTA 六友陪伴 scene — 移到 v4-signup-hero 上方，繪本尾頁感
+       設計：小芽中央站立（最大）、其餘五友自然圍繞（不同尺寸/層次/微偏移）、不是 icon bar */
+    .pre-cta-companions {
       width: 100%;
-      padding: 36px 24px 8px;
-      background: linear-gradient(180deg, transparent 0%, rgba(245, 242, 234, 0.5) 60%, var(--paper-warm, #ece2d0) 100%);
+      padding: 72px 24px 24px;
+      background: #F5F2EA;  /* 與 collab-path 與 signup-hero-section 同色，平滑過渡 */
       pointer-events: none;
     }
-    .footer-companions-row {
-      max-width: 560px;
+    .pre-cta-companions-scene {
+      max-width: 480px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 10px;
-      flex-wrap: nowrap;
+      gap: 4px;
     }
-    .footer-companions-row img {
-      width: 52px; height: 52px;
+    .pre-cta-companions-scene img {
       object-fit: contain;
-      opacity: 0.55;
-      filter: saturate(0.85);
+      opacity: 0.6;
+      filter: saturate(0.82);
       transition: opacity .4s ease;
     }
-    /* 弧形排列：兩端低、中間高（自然山稜般的小弧度）*/
-    .footer-companions-row .fc-1 { transform: translateY(0); }
-    .footer-companions-row .fc-2 { transform: translateY(-8px); }
-    .footer-companions-row .fc-3 { transform: translateY(-14px); }
-    .footer-companions-row .fc-4 { transform: translateY(-14px); }
-    .footer-companions-row .fc-5 { transform: translateY(-8px); }
-    .footer-companions-row .fc-6 { transform: translateY(0); }
+    /* 小芽中央、最大、最前 */
+    .pre-cta-companions-scene .pcc-sprout {
+      width: 86px; height: 86px;
+      opacity: 0.78;
+      order: 3; z-index: 3;
+    }
+    /* 圍繞順序：小渣 → 小蠔 → [小芽] → 小棉 → 小塑 → 小仔 */
+    .pre-cta-companions-scene .pcc-zha   { width: 56px; height: 56px; order: 1; transform: translateY(-8px); z-index: 1; }
+    .pre-cta-companions-scene .pcc-hao   { width: 60px; height: 60px; order: 2; transform: translateY(4px); margin-right: -8px; z-index: 2; }
+    .pre-cta-companions-scene .pcc-mian  { width: 60px; height: 60px; order: 4; transform: translateY(4px); margin-left: -8px; z-index: 2; }
+    .pre-cta-companions-scene .pcc-su    { width: 56px; height: 56px; order: 5; transform: translateY(-8px); z-index: 1; }
+    .pre-cta-companions-scene .pcc-zi    { width: 48px; height: 48px; order: 6; transform: translateY(2px); opacity: 0.5; z-index: 1; }
     @media (max-width: 720px) {
-      .footer-companions { padding: 28px 16px 4px; }
-      .footer-companions-row { gap: 6px; max-width: 100%; }
-      .footer-companions-row img { width: 36px; height: 36px; opacity: 0.5; }
-      .footer-companions-row .fc-2,
-      .footer-companions-row .fc-5 { transform: translateY(-6px); }
-      .footer-companions-row .fc-3,
-      .footer-companions-row .fc-4 { transform: translateY(-10px); }
+      .pre-cta-companions { padding: 56px 16px 18px; }
+      .pre-cta-companions-scene { gap: 2px; max-width: 100%; }
+      .pre-cta-companions-scene .pcc-sprout { width: 64px; height: 64px; }
+      .pre-cta-companions-scene .pcc-zha,
+      .pre-cta-companions-scene .pcc-su   { width: 42px; height: 42px; }
+      .pre-cta-companions-scene .pcc-hao,
+      .pre-cta-companions-scene .pcc-mian { width: 44px; height: 44px; }
+      .pre-cta-companions-scene .pcc-zi   { width: 36px; height: 36px; }
     }
 
     footer {
@@ -1773,6 +1777,18 @@
 
   <!-- ═══════════ 段落 5：轉換 ═══════════ -->
 
+  <!-- 🆕 v3.82 pre-CTA 六友陪伴 scene（陪伴大家走到最後一步、繪本尾頁感、不是 icon bar）-->
+  <section class="pre-cta-companions" aria-hidden="true">
+    <div class="pre-cta-companions-scene">
+      <img class="pcc-sprout" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
+      <img class="pcc-zha"    src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozha_transparent_v1.png" alt="" loading="lazy">
+      <img class="pcc-hao"    src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaohao_transparent_v1.png" alt="" loading="lazy">
+      <img class="pcc-mian"   src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaomian_transparent_v1.png" alt="" loading="lazy">
+      <img class="pcc-su"     src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaosu_transparent_v1.png" alt="" loading="lazy">
+      <img class="pcc-zi"     src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozi_transparent_v1.png" alt="" loading="lazy">
+    </div>
+  </section>
+
   <!-- v3.61 INFO SESSION 重構為「最後一個世界入口」— 整段表單/CTA/分享移除，改 v4-signup-hero.png + 兩個透明 anchor 熱區（保持原始水彩視覺）-->
   <section id="info-session" class="signup-hero-section" aria-label="ECO STAR 最後邀請">
     <div class="signup-hero-wrap">
@@ -1823,18 +1839,6 @@
     </style>
   </section>
   <!-- v3.61 LEGACY DELETED 舊 info-session（form + 資訊卡 + 三層 CTA + share + thanks）-->
-
-  <!-- 🆕 v3.79 footer 六友陪伴尾韻（繪本最後一頁的小尾韻、不是 CTA / 不是 icon bar）-->
-  <section class="footer-companions" aria-hidden="true">
-    <div class="footer-companions-row">
-      <img class="fc-1" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaoya_transparent_v1.png" alt="" loading="lazy">
-      <img class="fc-2" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozha_transparent_v1.png" alt="" loading="lazy">
-      <img class="fc-3" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaohao_transparent_v1.png" alt="" loading="lazy">
-      <img class="fc-4" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaomian_transparent_v1.png" alt="" loading="lazy">
-      <img class="fc-5" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaosu_transparent_v1.png" alt="" loading="lazy">
-      <img class="fc-6" src="https://wishlite.github.io/wishlite-proposals/assets/personas/xiaozi_transparent_v1.png" alt="" loading="lazy">
-    </div>
-  </section>
 
   <footer>
     <div class="horizon-photo" aria-hidden="true"></div>
