@@ -1186,21 +1186,58 @@ select.form-input {
 
 /* ══════════════ FOOTER ══════════════ */
 .footer {
-  background: var(--moss-dark);
-  padding: 40px 20px;
+  position: relative;
+  background: var(--soft);
+  padding: 0 20px 36px;
   text-align: center;
+  overflow: hidden;
 }
-.footer-logo { height: 80px; margin-bottom: 20px; opacity: 0.9; }
+.footer-horizon {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  margin-bottom: 28px;
+  pointer-events: none;
+}
+.footer-horizon::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--white) 0%, var(--soft) 100%);
+  z-index: 1;
+}
+.footer-horizon svg {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+.footer-logo { height: 80px; margin-bottom: 20px; opacity: 0.85; }
 .footer p {
   font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.8;
+  color: #9a8f80;
+  line-height: 1.95;
+  letter-spacing: 0.3px;
+}
+.footer .footer-tagline {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: 1px;
 }
 .footer a {
-  color: rgba(255,255,255,0.6);
+  color: #7a8a6a;
   text-decoration: none;
+  border-bottom: 1px solid rgba(122,138,106,0.25);
 }
-.footer a:hover { color: var(--gold-light); }
+.footer a:hover { color: var(--moss); border-bottom-color: var(--moss); }
 
 /* ══════════════ MOBILE ══════════════ */
 @media(max-width: 768px) {
@@ -1844,11 +1881,20 @@ select.form-input {
 
 <!-- ── FOOTER ── -->
 <footer class="footer">
-  <p>
-    韻手作永續 Wishlite ｜ 讓永續成為日常的選擇<br>
-    <a href="mailto:wishlite1111@gmail.com">wishlite1111@gmail.com</a><br>
-    © 2026 Wishlite. All rights reserved.
-  </p>
+  <div class="footer-horizon" aria-hidden="true">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path d="M0,110 C180,82 320,96 460,86 C600,76 720,62 880,72 C1040,82 1200,98 1440,84 L1440,140 L0,140 Z" fill="#b8a98c" opacity="0.14"/>
+      <path d="M0,118 C220,100 380,108 540,98 C700,88 860,80 1020,90 C1180,100 1320,114 1440,104 L1440,140 L0,140 Z" fill="#9aab95" opacity="0.20"/>
+    </svg>
+  </div>
+  <div class="footer-content">
+    <p class="footer-tagline">讓永續成為日常的選擇</p>
+    <p>
+      韻手作永續 Wishlite<br>
+      <a href="mailto:wishlite1111@gmail.com">wishlite1111@gmail.com</a><br>
+      © 2026 Wishlite. All rights reserved.
+    </p>
+  </div>
 </footer>
 
 <script>
