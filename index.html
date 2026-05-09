@@ -618,45 +618,55 @@ body {
 
 /* ══════════════ WHY US ══════════════ */
 .why-us {
-  background: var(--moss);
+  background: var(--soft);
   padding: 72px 20px;
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
 }
 .why-inner {
   max-width: 1000px;
   margin: 0 auto;
 }
 .why-us .section-label { color: var(--gold-light); }
-.why-us .section-title { color: #fff; }
-.why-us .section-desc { color: rgba(255,255,255,0.6); }
+.why-us .section-title { color: var(--ink); }
+.why-us .section-desc { color: #888; }
 .why-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 .why-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--white);
+  border: 1px solid var(--sand);
   border-radius: 14px;
-  padding: 24px 20px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 12px rgba(120,100,70,0.04);
+  transition: all 0.25s ease;
 }
-.why-card .num {
-  font-family: 'Noto Serif TC', serif;
-  font-size: 32px;
-  color: var(--gold-light);
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 12px;
+.why-card:hover {
+  border-color: var(--gold-light);
+  box-shadow: 0 6px 20px rgba(120,100,70,0.08);
+  transform: translateY(-2px);
+}
+.why-card .why-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  margin-bottom: 14px;
 }
 .why-card h3 {
-  color: #fff;
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
 .why-card p {
-  font-size: 12px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.7;
+  font-size: 13px;
+  color: #777;
+  line-height: 1.85;
 }
 
 /* ══════════════ PROCESS ══════════════ */
@@ -1486,19 +1496,19 @@ select.form-input {
     </div>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-top:32px;">
-      <div class="why-card fade-up" style="text-align:center;">
-        <div style="font-size:32px; margin-bottom:12px;">📈</div>
-        <h3 style="font-size:17px;">成果看得見</h3>
+      <div class="why-card fade-up">
+        <span class="why-dot"></span>
+        <h3>成果看得見</h3>
         <p>每場活動都能整理參與人次、材料轉化、減碳數據與活動紀錄，讓 ESG 不只停留在口號，而是成為可被呈報的成果。</p>
       </div>
-      <div class="why-card fade-up" style="text-align:center;">
-        <div style="font-size:32px; margin-bottom:12px;">🧩</div>
-        <h3 style="font-size:17px;">方案可彈性搭配</h3>
+      <div class="why-card fade-up">
+        <span class="why-dot"></span>
+        <h3>方案可彈性搭配</h3>
         <p>從員工工作坊、永續禮品到成果報告，都可以依人數、預算、場域與品牌需求，單獨規劃或整合執行。</p>
       </div>
-      <div class="why-card fade-up" style="text-align:center;">
-        <div style="font-size:32px; margin-bottom:12px;">🎯</div>
-        <h3 style="font-size:17px;">執行交給我們</h3>
+      <div class="why-card fade-up">
+        <span class="why-dot"></span>
+        <h3>執行交給我們</h3>
         <p>從材料、講師、流程、現場帶領到活動後紀錄整理，Wishlite 協助企業把一場 ESG 活動穩穩落地。</p>
       </div>
     </div>
