@@ -1247,38 +1247,38 @@
   </section>
 
   <!-- ═══════════ v3.76 適合誰｜FOR YOU 身份投射 pause（REAL PLACES → What is ECO STAR 之間，「原來我可能本來就離這條路很近」感）═══════════ -->
-  <section id="for-you" class="fit-section" aria-labelledby="fit-title">
+  <section id="for-you" class="fit-section" aria-label="FOR YOU 適合誰">
     <div class="container">
       <div class="section-kicker-wrap"><span class="section-kicker">FOR YOU｜適合誰</span></div>
-      <h2 id="fit-title" class="section-title fit-section-title">
-        你已經具備了起點，<br>
-        <span class="fit-title-accent">只差一套：能慢慢走進現場的方法。</span>
-      </h2>
       <figure class="fit-figure">
         <img src="assets/fit-for-you-cards.png" alt="適合誰：① 手作老師/創作者 — 想讓自己的課程與作品，多一層永續價值與深度 ② 教育工作者/議題關注者 — 喜歡材料、創作與環境議題，想把這份關心變成實際可執行的行動 ③ 活動引導者/陪伴者 — 一直很擅長陪伴人、整理想法、帶動現場，希望帶領參與者看見不同的觀點" loading="lazy">
       </figure>
+      <!-- v3.96 收尾句移到圖下方，作為「看完三種人後」的情緒收束 -->
+      <p class="fit-closing">
+        你其實已經具備了起點。<br><br>
+        只是還需要一條路，<br>
+        讓你慢慢走進真實現場。
+      </p>
     </div>
     <style>
       .fit-section{padding:88px 0 80px;}
-      .fit-section-title{
-        font-family:'Noto Serif TC',serif;font-weight:600;
-        text-align:center;line-height:1.7;letter-spacing:.06em;
-        font-size:clamp(22px,2.6vw,28px);color:#5C4830;
-        max-width:780px;margin:0 auto 56px;
-      }
-      .fit-title-accent{
-        display:block;margin-top:10px;
-        font-size:clamp(24px,3vw,32px);font-weight:700;
-        letter-spacing:.07em;color:#5C4830;
-      }
       .fit-figure{
-        max-width:1180px;margin:0 auto;
+        max-width:1180px;margin:0 auto 0;
         background:transparent;
       }
       .fit-figure img{display:block;width:100%;height:auto;}
+      /* v3.96 收尾句：柔和、留白、紙感，不是 CTA / 不是 slogan */
+      .fit-closing{
+        max-width:520px;margin:56px auto 0;
+        padding:0 24px;
+        text-align:center;
+        font-family:'Noto Serif TC',serif;font-weight:500;
+        font-size:17px;line-height:2.05;
+        color:rgba(92,72,48,.72);letter-spacing:.06em;
+      }
       @media(max-width:720px){
         .fit-section{padding:64px 0 56px;}
-        .fit-section-title{margin-bottom:36px;}
+        .fit-closing{font-size:15.5px;line-height:1.95;margin-top:40px;}
       }
     </style>
   </section>
