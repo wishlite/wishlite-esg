@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>找到你的命定小多肉｜韻手作 Wishlite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --moss: #3d5a3e;
+  --moss-dark: #2e4630;
+  --sage: #7a9e7e;
+  --cream: #f5f0e8;
+  --sand: #e8dcc8;
+  --soft: #f9f6f0;
+  --gold: #c49a3c;
+  --gold-light: #d4b06a;
+  --mist: #d4e4d0;
+  --ink: #1e2a1e;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: linear-gradient(135deg, var(--soft) 0%, var(--cream) 100%);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Decorative background leaves */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--mist) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+body::before { top: -100px; left: -100px; }
+body::after { bottom: -100px; right: -100px; }
+
+.container {
+  max-width: 560px;
+  width: 100%;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(61, 90, 62, 0.12);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.screen {
+  padding: 48px 36px;
+  display: none;
+  animation: fadeIn 0.5s ease-out;
+}
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ INTRO SCREEN ============ */
+.brand-label {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.intro-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--moss);
+  text-align: center;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.intro-subtitle {
+  font-size: 15px;
+  color: var(--sage);
+  text-align: center;
+  margin-bottom: 36px;
+  line-height: 1.9;
+  font-weight: 400;
+}
+
+.intro-cover {
+  width: calc(100% + 72px);
+  margin: 0 -36px 28px -36px;
+  display: block;
+  background: var(--soft);
+  overflow: hidden;
+}
+.intro-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.intro-cover-fallback {
+  display: none;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 48px;
+  letter-spacing: 8px;
+}
+
+.intro-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding: 16px 0;
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+}
+.intro-meta-item {
+  text-align: center;
+}
+.intro-meta-num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--moss);
+}
+.intro-meta-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--sage);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--moss);
+  color: var(--white);
+  border: none;
+  border-radius: 28px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+.btn:hover {
+  background: var(--moss-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(61, 90, 62, 0.25);
+}
+.btn:active { transform: translateY(0); }
+
+.btn-outline {
+  background: var(--white);
+  color: var(--moss);
+  border: 1.5px solid var(--moss);
+}
+.btn-outline:hover {
+  background: var(--moss);
+  color: var(--white);
+}
+
+/* ============ QUESTION SCREEN ============ */
+.progress-wrap {
+  margin-bottom: 36px;
+}
+.progress {
+  height: 4px;
+  background: var(--mist);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--moss) 0%, var(--sage) 100%);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px;
+  width: 0%;
+}
+
+.q-number {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.question {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--moss);
+  margin-bottom: 32px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  padding: 18px 22px;
+  background: var(--soft);
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  transition: all 0.25s ease;
+  line-height: 1.5;
+  font-weight: 400;
+  position: relative;
+}
+.option:hover {
+  border-color: var(--sage);
+  background: var(--mist);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(61, 90, 62, 0.08);
+}
+.option:active { transform: translateX(2px) scale(0.99); }
+
+/* ============ RESULT SCREEN ============ */
+.result-frame {
+  background: linear-gradient(180deg, var(--mist) 0%, var(--soft) 100%);
+  margin: -48px -36px 28px -36px;
+  padding: 48px 36px 36px 36px;
+  text-align: center;
+  position: relative;
+}
+.result-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+.result-badge {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.result-emoji {
+  font-size: 72px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 6px 12px rgba(61,90,62,0.15));
+}
+.result-photo {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 10px 30px rgba(61,90,62,0.2);
+  border: 4px solid var(--white);
+}
+.result-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.result-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--moss-dark);
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.result-tagline {
+  font-size: 13px;
+  color: var(--sage);
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.result-section {
+  margin-bottom: 24px;
+}
+
+.result-section-label {
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.result-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ink);
+  letter-spacing: 0.3px;
+}
+
+.traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.trait-tag {
+  padding: 6px 14px;
+  background: var(--cream);
+  color: var(--moss);
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.match-card {
+  background: var(--soft);
+  padding: 18px 20px;
+  border-radius: 16px;
+  border-left: 3px solid var(--gold);
+}
+
+.match-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.match-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  color: var(--moss);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ============ CTA CARD ============ */
+.cta-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 24px 22px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 24px rgba(61, 90, 62, 0.08);
+  border: 1px solid var(--cream);
+}
+.cta-card-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  color: var(--moss-dark);
+  font-weight: 500;
+  margin-bottom: 18px;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+.cta-card-title .leaf {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.btn-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: #06C755;
+  color: var(--white);
+  border: none;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.btn-line:hover {
+  background: #05B14C;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(6, 199, 85, 0.25);
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--white);
+  color: var(--moss);
+  border: 1.5px solid var(--moss);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+}
+.btn-secondary:hover {
+  background: var(--moss);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(61, 90, 62, 0.18);
+}
+
+.btn-restart {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--white);
+  color: var(--moss);
+  border: 1.5px solid var(--sage);
+  border-radius: 14px;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+.btn-restart:hover {
+  background: var(--soft);
+  border-color: var(--moss);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  text-align: center;
+  padding-top: 8px;
+}
+.footer-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.footer-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--mist);
+}
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--sage);
+  font-weight: 400;
+}
+.footer-text strong {
+  color: var(--moss);
+  font-weight: 500;
+  letter-spacing: 2.5px;
+}
+
+.share-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--sage);
+  text-decoration: none;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.share-link:hover { color: var(--moss); text-decoration: underline; }
+
+/* ============ MOBILE ============ */
+@media (max-width: 480px) {
+  body { padding: 12px; }
+  .screen { padding: 36px 24px; }
+  .intro-title { font-size: 28px; }
+  .intro-subtitle { font-size: 14px; }
+  .question { font-size: 20px; }
+  .result-frame { margin: -36px -24px 24px -24px; padding: 36px 24px 28px; }
+  .result-name { font-size: 26px; }
+  .result-emoji { font-size: 60px; }
+  .option { padding: 16px 18px; font-size: 14px; }
+  .action-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============ INTRO ============ -->
+  <div class="screen active" id="screen-intro">
+    <div class="brand-label">WISHLITE × 多肉測驗</div>
+    <h1 class="intro-title">找到你的<br>命定小多肉</h1>
+    <p class="intro-subtitle">
+      每一棵多肉，都有自己的個性。<br>
+      回答 8 道題，看看哪一棵<br>
+      最像現在的你。
+    </p>
+    <div class="intro-cover">
+      <img src="img/cover.jpg" alt="找到你的命定小多肉" onerror="this.style.display='none'; this.parentElement.querySelector('.intro-cover-fallback').style.display='block';">
+      <div class="intro-cover-fallback">🌵 🤍 🌿 💗<br>🌸 🌱 🍑 🦋</div>
+    </div>
+    <div class="intro-meta">
+      <div class="intro-meta-item">
+        <div class="intro-meta-num">8</div>
+        <div class="intro-meta-label">題目</div>
+      </div>
+      <div class="intro-meta-item">
+        <div class="intro-meta-num">2 min</div>
+        <div class="intro-meta-label">時間</div>
+      </div>
+      <div class="intro-meta-item">
+        <div class="intro-meta-num">8</div>
+        <div class="intro-meta-label">結果</div>
+      </div>
+    </div>
+    <button class="btn" onclick="startQuiz()">開始測驗</button>
+  </div>
+
+  <!-- ============ QUESTION ============ -->
+  <div class="screen" id="screen-question">
+    <div class="progress-wrap">
+      <div class="progress"><div class="progress-bar" id="progress"></div></div>
+    </div>
+    <div class="q-number" id="q-number">QUESTION 1 / 8</div>
+    <h2 class="question" id="q-text"></h2>
+    <div class="options" id="q-options"></div>
+  </div>
+
+  <!-- ============ RESULT ============ -->
+  <div class="screen" id="screen-result">
+    <div class="result-frame">
+      <div class="result-badge">你的命定多肉是</div>
+      <div class="result-photo" id="r-photo-wrap">
+        <img id="r-photo" src="" alt="" onerror="this.parentElement.style.display='none'; document.getElementById('r-emoji').style.display='block';">
+      </div>
+      <div class="result-emoji" id="r-emoji" style="display:none;"></div>
+      <div class="result-name" id="r-name"></div>
+      <div class="result-tagline" id="r-tagline"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">關於你</div>
+      <p class="result-text" id="r-desc"></p>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">你的關鍵字</div>
+      <div class="traits" id="r-traits"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="match-card">
+        <div class="match-label">最適合搭配</div>
+        <div class="match-name" id="r-match"></div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-card-title">把這份溫柔帶回家 <span class="leaf">🌿</span></div>
+      <a href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener" class="btn-line">加入 韻手作 LINE</a>
+      <a href="https://www.notion.so/wishlite/ESG-2c5704274681800d8b90f045e1f6cf00" target="_blank" rel="noopener" class="btn-secondary">看更多永續行動</a>
+    </div>
+
+    <button class="btn-restart" onclick="restart()">再測一次</button>
+
+    <div class="footer">
+      <div class="footer-dots">
+        <span class="footer-dot"></span>
+        <span class="footer-dot"></span>
+        <span class="footer-dot"></span>
+        <span class="footer-dot"></span>
+        <span class="footer-dot"></span>
+      </div>
+      <div class="footer-text">韻手作 <strong>Wishlite</strong> ｜ 讓永續成為日常的選擇</div>
+      <a class="share-link" onclick="share()">分享結果給朋友 →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============ DATA ============
+const succulents = {
+  shrek: {
+    name: '史瑞克',
+    emoji: '🌵',
+    image: 'img/shrek.jpg',
+    tagline: 'The Unique Explorer · 獨特探險家',
+    desc: '你是少數會讓人說「他真的很特別」的人。不從眾，但也不刻意特立獨行。你只是相信——做自己，最舒服。',
+    traits: ['獨特', '創意', '做自己', '好奇心'],
+    match: '八千代 — 兩位生活探險家，一起做有趣的怪事'
+  },
+  fukuMusume: {
+    name: '達摩福娘',
+    emoji: '🤍',
+    image: 'img/fukumusume.jpg',
+    tagline: 'The Warm Harmonizer · 暖心調和家',
+    desc: '你是任何團體裡那個讓氣氛變好的人。不一定最閃亮，但大家都想靠近你。你的存在，就像家裡的小燈一樣讓人安心。',
+    traits: ['圓融', '人緣好', '福氣', '暖心'],
+    match: '達摩姬秋麗 — 兩顆甜豆，組成最療癒的組合'
+  },
+  manRen: {
+    name: '蔓蓮',
+    emoji: '🌿',
+    image: 'img/manren.jpg',
+    tagline: 'The Quiet Anchor · 沉穩守護者',
+    desc: '你看起來平凡，但相處久了會發現你有底。穩定、可靠、不張揚。你是那種——別人需要的時候，總會在的存在。',
+    traits: ['沉穩', '可靠', '有底蘊', '不張揚'],
+    match: '蜜桃獵戶座 — 兩棵能讓人安心依靠的樹'
+  },
+  qiuLi: {
+    name: '達摩姬秋麗',
+    emoji: '💗',
+    image: 'img/qiuli.jpg',
+    tagline: 'The Healing Angel · 療癒小天使',
+    desc: '你天生會讓人放鬆。不用做什麼，只要你在，世界就會柔軟一點。很多人不一定說得出，但他們很喜歡有你在的時刻。',
+    traits: ['甜美', '療癒', '可愛', '好能量'],
+    match: '櫻吹雪 — 兩朵粉色的花，相遇就會開出春天'
+  },
+  sakura: {
+    name: '櫻吹雪',
+    emoji: '🌸',
+    image: 'img/sakura.jpg',
+    tagline: 'The Romantic Poet · 浪漫詩人',
+    desc: '你很容易被一句話、一幅畫、一段音樂打動。感性是你的天賦，也是你的武器。你看世界的方式，總是比別人多一層顏色。',
+    traits: ['浪漫', '感性', '藝術', '富感染力'],
+    match: '翊蝶之舞 — 兩個有靈魂的人，懂彼此的沉默'
+  },
+  hachi: {
+    name: '八千代',
+    emoji: '🌱',
+    image: 'img/hachi.jpg',
+    tagline: 'The Free Wanderer · 自由旅人',
+    desc: '你不太被計畫綁住，喜歡走到哪算到哪。輕鬆，但很有自己的節奏。你讓身邊的人放下緊繃，記得呼吸。',
+    traits: ['自由', '隨性', '不拘小節', '樂觀'],
+    match: '史瑞克 — 兩位生活探險家，永遠不無聊'
+  },
+  peach: {
+    name: '蜜桃獵戶座',
+    emoji: '🍑',
+    image: 'img/peach.jpg',
+    tagline: 'The Tender Planner · 溫柔擘劃者',
+    desc: '你是大家的依靠。有計畫、會照顧、不誇張。看起來溫和，其實內心很有想法。你的「準備好了」三個字，就是別人安心的來源。',
+    traits: ['可靠', '溫柔', '有計畫', '責任感'],
+    match: '蔓蓮 — 兩棵讓人想長期待著的存在'
+  },
+  butterfly: {
+    name: '翊蝶之舞',
+    emoji: '🦋',
+    image: 'img/butterfly.jpg',
+    tagline: 'The Deep Observer · 深思觀察者',
+    desc: '你不會輕易被理解，但被理解後會被深深記住。安靜、有深度、有自己的世界。你不需要太多話，光是看你想事情的樣子，就有故事。',
+    traits: ['神秘', '深刻', '有層次', '洞察力'],
+    match: '櫻吹雪 — 兩個藝術靈魂，互相讀懂彼此'
+  }
+};
+
+const questions = [
+  {
+    q: '週末你最想做什麼？',
+    options: [
+      { text: '一個人窩在家裡看劇放空', score: ['manRen', 'butterfly'] },
+      { text: '約朋友出門逛街、吃飯', score: ['fukuMusume', 'qiuLi'] },
+      { text: '嘗試從沒做過的新活動', score: ['shrek', 'hachi'] },
+      { text: '在咖啡廳寫東西、畫畫', score: ['sakura', 'peach'] }
+    ]
+  },
+  {
+    q: '朋友聚會時的你是？',
+    options: [
+      { text: '安靜的傾聽者', score: ['manRen', 'butterfly'] },
+      { text: '氣氛調節大師', score: ['fukuMusume', 'peach'] },
+      { text: '帶話題的人', score: ['shrek', 'hachi'] },
+      { text: '偶爾說出金句的人', score: ['sakura', 'qiuLi'] }
+    ]
+  },
+  {
+    q: '你的衣著風格偏向？',
+    options: [
+      { text: '經典、穩重不出錯', score: ['manRen', 'peach'] },
+      { text: '可愛、甜美風格', score: ['fukuMusume', 'qiuLi'] },
+      { text: '個性、與眾不同', score: ['shrek', 'butterfly'] },
+      { text: '浪漫、文青感', score: ['sakura', 'hachi'] }
+    ]
+  },
+  {
+    q: '工作中的你比較像？',
+    options: [
+      { text: '計畫派，細節控', score: ['peach', 'manRen'] },
+      { text: '創意派，腦洞大', score: ['shrek', 'hachi'] },
+      { text: '協作派，人緣好', score: ['fukuMusume', 'qiuLi'] },
+      { text: '深思派，慢工出細活', score: ['butterfly', 'sakura'] }
+    ]
+  },
+  {
+    q: '壓力大時你會選擇？',
+    options: [
+      { text: '找朋友聊天紓壓', score: ['fukuMusume', 'qiuLi'] },
+      { text: '一個人靜一靜', score: ['manRen', 'butterfly'] },
+      { text: '做自己喜歡的事', score: ['hachi', 'sakura'] },
+      { text: '把待辦事項整理一遍', score: ['peach', 'shrek'] }
+    ]
+  },
+  {
+    q: '在關係裡你最看重？',
+    options: [
+      { text: '互相支持，有人懂你', score: ['peach', 'fukuMusume'] },
+      { text: '保有空間，互不打擾', score: ['hachi', 'butterfly'] },
+      { text: '有浪漫、有感動', score: ['sakura', 'qiuLi'] },
+      { text: '能一起冒險', score: ['shrek', 'manRen'] }
+    ]
+  },
+  {
+    q: '對你來說「美好的一天」是？',
+    options: [
+      { text: '完成計畫表上的所有事', score: ['peach', 'manRen'] },
+      { text: '遇到意料之外的驚喜', score: ['shrek', 'hachi'] },
+      { text: '有人陪你一整天', score: ['fukuMusume', 'qiuLi'] },
+      { text: '一個靈感突然降臨', score: ['sakura', 'butterfly'] }
+    ]
+  },
+  {
+    q: '你的「療癒方式」是？',
+    options: [
+      { text: '一個人讀一本好書', score: ['butterfly', 'manRen'] },
+      { text: '吃一頓好吃的', score: ['fukuMusume', 'qiuLi'] },
+      { text: '出門踏青、走走', score: ['hachi', 'shrek'] },
+      { text: '看夕陽或星空發呆', score: ['sakura', 'peach'] }
+    ]
+  }
+];
+
+// ============ LOGIC ============
+let currentQ = 0;
+let scores = {};
+
+function startQuiz() {
+  scores = {};
+  Object.keys(succulents).forEach(k => scores[k] = 0);
+  currentQ = 0;
+  showScreen('screen-question');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('q-number').textContent = `QUESTION ${currentQ + 1} / ${questions.length}`;
+  document.getElementById('q-text').textContent = q.q;
+  document.getElementById('progress').style.width = `${((currentQ) / questions.length) * 100}%`;
+
+  const optsDiv = document.getElementById('q-options');
+  optsDiv.innerHTML = '';
+  q.options.forEach((opt) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt.text;
+    btn.onclick = () => selectOption(opt);
+    optsDiv.appendChild(btn);
+  });
+}
+
+function selectOption(opt) {
+  opt.score.forEach(s => scores[s] = (scores[s] || 0) + 1);
+  currentQ++;
+  if (currentQ >= questions.length) {
+    document.getElementById('progress').style.width = '100%';
+    setTimeout(showResult, 400);
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResult() {
+  // Find highest scoring succulent
+  let topKey = Object.keys(scores).reduce((a, b) =>
+    scores[a] > scores[b] ? a : b
+  );
+  const s = succulents[topKey];
+
+  document.getElementById('r-emoji').textContent = s.emoji;
+  const photoEl = document.getElementById('r-photo');
+  const photoWrap = document.getElementById('r-photo-wrap');
+  const emojiEl = document.getElementById('r-emoji');
+  photoWrap.style.display = 'block';
+  emojiEl.style.display = 'none';
+  photoEl.src = s.image;
+  photoEl.alt = s.name;
+  document.getElementById('r-name').textContent = s.name;
+  document.getElementById('r-tagline').textContent = s.tagline;
+  document.getElementById('r-desc').textContent = s.desc;
+
+  const traitsDiv = document.getElementById('r-traits');
+  traitsDiv.innerHTML = '';
+  s.traits.forEach(t => {
+    const tag = document.createElement('span');
+    tag.className = 'trait-tag';
+    tag.textContent = t;
+    traitsDiv.appendChild(tag);
+  });
+
+  document.getElementById('r-match').textContent = s.match;
+
+  showScreen('screen-result');
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() {
+  showScreen('screen-intro');
+}
+
+function share() {
+  const name = document.getElementById('r-name').textContent;
+  const tagline = document.getElementById('r-tagline').textContent;
+  const text = `我的命定多肉是「${name}」${tagline.split('·')[1] || ''}！\n來測測你的吧 🌱\n\n韻手作 Wishlite LINE：@728zvmqz\n#韻手作Wishlite #多肉人格測驗 #永續行動`;
+
+  if (navigator.share) {
+    navigator.share({
+      title: '韻手作多肉人格測驗',
+      text: text
+    }).catch(() => {});
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('已複製分享文字，可以貼到 IG / FB / LINE！');
+    });
+  } else {
+    alert(text);
+  }
+}
+</script>
+</body>
+</html>
