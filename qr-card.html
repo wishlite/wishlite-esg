@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>多肉人格測驗｜活動印製卡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --moss: #3d5a3e;
+  --moss-dark: #2e4630;
+  --sage: #7a9e7e;
+  --cream: #f5f0e8;
+  --soft: #f9f6f0;
+  --gold: #c49a3c;
+  --gold-light: #d4b06a;
+  --mist: #d4e4d0;
+  --ink: #1e2a1e;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #e8e0d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  width: 380px;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px 36px 32px;
+  box-shadow: 0 30px 80px rgba(61, 90, 62, 0.18);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before, .card::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.card::before {
+  top: -40px; left: -40px;
+  background: radial-gradient(circle, var(--mist) 0%, transparent 70%);
+}
+.card::after {
+  bottom: -40px; right: -40px;
+  background: radial-gradient(circle, var(--cream) 0%, transparent 70%);
+}
+
+.brand-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 500;
+  position: relative;
+}
+
+.title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--moss);
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+  line-height: 1.3;
+  position: relative;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--sage);
+  margin-bottom: 28px;
+  line-height: 1.8;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.qr-frame {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 20px;
+  padding: 16px;
+  background: var(--white);
+  border: 2px solid var(--cream);
+  border-radius: 16px;
+  position: relative;
+}
+.qr-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.qr-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--gold);
+}
+.qr-corner.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; border-radius: 6px 0 0 0; }
+.qr-corner.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; border-radius: 0 6px 0 0; }
+.qr-corner.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; border-radius: 0 0 0 6px; }
+.qr-corner.br { bottom: -2px; right: -2px; border-left: none; border-top: none; border-radius: 0 0 6px 0; }
+
+.scan-line {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--moss-dark);
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+  position: relative;
+}
+.scan-sub {
+  font-size: 12px;
+  color: var(--sage);
+  letter-spacing: 1.5px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 18px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: var(--sage);
+  letter-spacing: 2px;
+  line-height: 1.8;
+  position: relative;
+}
+.footer-text strong {
+  color: var(--moss);
+  font-weight: 500;
+  letter-spacing: 2.5px;
+}
+
+.print-only {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--moss);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  z-index: 100;
+}
+.print-only:hover { background: var(--moss-dark); }
+
+@media print {
+  body { background: white; padding: 0; }
+  .card { box-shadow: none; }
+  .print-only { display: none; }
+  @page { size: A6; margin: 10mm; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-only" onclick="window.print()">🖨️ 列印</button>
+
+<div class="card">
+  <div class="brand-label">WISHLITE × 多肉測驗</div>
+  <div class="title">找到你的<br>命定小多肉</div>
+  <div class="subtitle">8 道題 · 2 分鐘<br>看看哪一棵最像現在的你</div>
+
+  <div class="qr-frame">
+    <div class="qr-corner tl"></div>
+    <div class="qr-corner tr"></div>
+    <div class="qr-corner bl"></div>
+    <div class="qr-corner br"></div>
+    <img src="data:image/png;base64,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+NnX4/mLM/m77bjOO855xcr7rthxrXY0dZ53vEc7znnF2d53hd/J77fjefblGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIpepga/328i4r8dzZNwpU+u8Ysc5r9jxfXe8R2db55VnV9Zq6mycbc472nGPVux4B3c8kzueDV++AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAg8nMcx8jA1/ttZNyzeT2eI+OebX9X1nlqrabmbFyY5fe5sePvhrPR8OUbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAiP8dxjAx8vd8+fvb1eP7iTN43NeeVcVdMrfMU68y/Odvv1ZSp38kd98icv9+Od3DF2fZ3hS/fAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQ+TmOY2Tg6/328bOvx9O4X877vm/Hc7Uy7o523KMVO+6v8/y+s/3GrtjxDu54F872G+vLNwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARC5TA78ez1ONO+V6v3387I5rdbb33dHKOk/t747jrpi6C1PvS2PHe7Tjf4p1/n6+fAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQOTnOI7pOfyx6/02PYXU6/EcGXfHdV5Zq5X33XHcFTvOecXUXTjbuVrh/r7PnJtxaez4e+XLNwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARC5TA1/vt4+ffT2evziT963MecrUOp9t3B3tuFY73sEVU+/r/n6/s+3R1Jx5347/C1Nz9uUbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAiP8dxTM+Bv9D1fpuewh97PZ4j466s1Y5znrKyVjvu0Yod93fF2e7Rjmdyhfv7/c72++zLNwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARC5TA1/vt6mhedPr8Rx5dsXKuVp5dup9V+x4B1fWecf33fFMTu3RjndwR1P3aMf93fE8T93fHddqhS/fAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQuUxP4BOvx3N6Ctu43m/TU0jteDam5rwy7sq5mhp3RzueZ2fjfVP7O7VHZ7PjWk3dox3XaoUv3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAEBHfAAAQEd8AABAR3wAAELlMT6B2vd+mp/DHXo/n9BT+2Mo6r7zv1P5OzXnqbOy4R1PO9r5nuwtTzrZWU/fI/f1+O94FX74BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACAivgEAICK+AQAgIr4BACBymZ4A/NP1fpueQur1eH787Mpa7TjuCmvVONv9XTG1VjueyR3vwpSV/XV/G758AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBARHwDAEBEfAMAQER8AwBA5DI9Afin1+P58bPX++0XZ9JYmfOOa7XjHp3N1B6tnOcVU3dwyo6/G2ezskdT+7vjXZjiyzcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAER+juMYGfh6v3387Ovx/MWZ/N2s8/us1ftW1mpHK/s7tVZTZ3LqHp1t3B2d7S5M2fH3+Wx75Ms3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABExDcAAETENwAARMQ3AABELtMT+MT1fpueAvw/K2fy9XiOjLtias5nW6spO+7RjmdjxY5znnK2tfKb8/18+QYAgIj4BgCAiPgGAICI+AYAgIj4BgCAiPgGAICI+AYAgIj4BgCAiPgGAICI+AYAgIj4BgCAiPgGAICI+AYAgIj4BgCAiPgGAICI+AYAgIj4BgCAiPgGAICI+AYAgMjPcRzTcwAAgFPw5RsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi4hsAACLiGwAAIuIbAAAi/wf7xIAmjF7/DwAAAABJRU5ErkJggg==" alt="QR Code">
+  </div>
+
+  <div class="scan-line">📱 掃我開始測驗</div>
+  <div class="scan-sub">手機相機 / LINE 掃描皆可</div>
+
+  <div class="divider"></div>
+
+  <div class="footer-text">
+    韻手作 <strong>Wishlite</strong><br>
+    讓永續成為日常的選擇
+  </div>
+</div>
+
+</body>
+</html>
