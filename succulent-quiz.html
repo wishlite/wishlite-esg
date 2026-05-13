@@ -670,10 +670,10 @@ const succulents = {
     name: '櫻吹雪',
     emoji: '🌸',
     image: 'img/sakura.jpg',
-    tagline: 'The Romantic Poet · 把瞬間活成永恆',
-    desc: '你的感受力比常人深一級。一場光、一段話、一個眼神，就能讓你停下來想很久。別人覺得「就那樣」的瞬間，你會記成詩。',
-    traits: ['感性', '浪漫', '會記住瞬間', '富感染力'],
-    match: '翩蝶之舞 — 兩個靈魂派，懂彼此的沉默'
+    tagline: 'The Keeper · 把瞬間收藏起來的人',
+    desc: '你比別人多一層「記住」的能力——一段光、一首歌、一個眼神，會被你存進心裡很久。別人覺得「就那樣」的瞬間，你會偷偷收藏起來，變成某天回憶裡的養分。',
+    traits: ['會收藏瞬間', '感受力強', '懂得欣賞', '富感染力'],
+    match: '達摩姬秋麗 — 兩個都會把美好留下來的人'
   },
   hachi: {
     name: '八千代',
@@ -697,10 +697,10 @@ const succulents = {
     name: '翩蝶之舞',
     emoji: '🦋',
     image: 'img/butterfly.jpg',
-    tagline: 'The Shape-Shifter · 在變化中沉澱的舞者',
-    desc: '你的樣子會隨人生階段一直變——別人說你難捉摸，但其實你只是不停在蛻皮。你不為了被理解而活，但被你信任的人，會看到很多版本的你。',
-    traits: ['多面向', '深刻', '蛻變力', '不被定義'],
-    match: '櫻吹雪 — 兩個藝術靈魂，互相讀懂彼此'
+    tagline: 'The Shape-Shifter · 不斷蛻變的舞者',
+    desc: '你不喜歡被定義。每隔幾個月看自己，會發現自己又不一樣了——換造型、換想法、換方向都可以。你不為了被理解而活，但被你信任的人，會看到你很多不同的版本。',
+    traits: ['多面向', '蛻變力', '不被定義', '勇於改變'],
+    match: '史瑞克 — 兩個都不甘於只長一種樣子的人'
   }
 };
 
@@ -708,10 +708,10 @@ const questions = [
   {
     q: '下班/下課回家路上，你最常做什麼？',
     options: [
-      { text: '戴耳機聽歌或 podcast，放空一下', score: ['sakura', 'butterfly'] },
-      { text: '滑手機看訊息、看限動', score: ['hachi', 'qiuLi'] },
-      { text: '順路逛超市或便利商店買東西', score: ['peach', 'fukuMusume'] },
-      { text: '邊走邊想今天發生的事', score: ['shrek', 'manRen'] }
+      { text: '戴耳機聽歌或 podcast，放空一下', score: ['sakura', 'qiuLi'] },
+      { text: '邊走邊想「我接下來想變成什麼樣」', score: ['butterfly', 'shrek'] },
+      { text: '滑手機看訊息、看限動', score: ['hachi', 'fukuMusume'] },
+      { text: '順路逛超市或便利商店買東西', score: ['peach', 'manRen'] }
     ]
   },
   {
@@ -727,9 +727,9 @@ const questions = [
     q: '朋友失戀來找你哭訴，你會...',
     options: [
       { text: '陪他罵那個人罵到爽', score: ['hachi', 'shrek'] },
-      { text: '倒杯熱的給他，靜靜聽他說', score: ['manRen', 'butterfly'] },
-      { text: '提醒他自己其實很好、值得更好的', score: ['fukuMusume', 'qiuLi'] },
-      { text: '寫張卡片或送他喜歡的小東西', score: ['sakura', 'peach'] }
+      { text: '倒杯熱的給他，靜靜聽他說', score: ['manRen', 'peach'] },
+      { text: '寫張卡片或送他一個喜歡的小東西', score: ['sakura', 'qiuLi'] },
+      { text: '跟他一起想「下一段你想成為什麼樣的人」', score: ['butterfly', 'fukuMusume'] }
     ]
   },
   {
@@ -746,8 +746,8 @@ const questions = [
     options: [
       { text: '馬上答應，人多熱鬧才有趣', score: ['hachi', 'fukuMusume'] },
       { text: '看當天心情才決定', score: ['shrek', 'sakura'] },
-      { text: '想知道誰會去、做什麼再決定', score: ['peach', 'manRen'] },
-      { text: '委婉拒絕，週末想一個人靜靜', score: ['butterfly', 'qiuLi'] }
+      { text: '想知道誰會去、做什麼再決定', score: ['peach', 'qiuLi'] },
+      { text: '委婉拒絕，週末想一個人靜靜', score: ['butterfly', 'manRen'] }
     ]
   },
   {
@@ -755,8 +755,8 @@ const questions = [
     options: [
       { text: '列出問題，拆解成步驟一個個解', score: ['peach', 'butterfly'] },
       { text: '直接動手做做看，邊做邊調', score: ['shrek', 'hachi'] },
-      { text: '找信任的人聊聊，獲得不同角度', score: ['fukuMusume', 'manRen'] },
-      { text: '換個環境/聽音樂，等靈感自己來', score: ['sakura', 'qiuLi'] }
+      { text: '找信任的人聊聊，獲得不同角度', score: ['fukuMusume', 'qiuLi'] },
+      { text: '換個環境/聽音樂，等靈感自己來', score: ['sakura', 'manRen'] }
     ]
   },
   {
@@ -764,17 +764,17 @@ const questions = [
     options: [
       { text: '「跟你相處很穩，很安心」', score: ['manRen', 'peach'] },
       { text: '「你怎麼都不會累？能量好飽」', score: ['hachi', 'shrek'] },
-      { text: '「你想得很深，跟你聊有東西」', score: ['butterfly', 'sakura'] },
-      { text: '「你看起來脾氣超好、超溫柔」', score: ['fukuMusume', 'qiuLi'] }
+      { text: '「你最近又變得跟之前不太一樣了」', score: ['butterfly', 'qiuLi'] },
+      { text: '「你很會欣賞小事，很有眼光」', score: ['sakura', 'fukuMusume'] }
     ]
   },
   {
     q: '最近一件讓你停下來「有感覺」的小事是？',
     options: [
-      { text: '看到一句話、一張圖，記在筆記裡', score: ['sakura', 'butterfly'] },
-      { text: '終於完成一個拖很久的待辦', score: ['peach', 'shrek'] },
+      { text: '看到一句話、一張圖，記在筆記裡', score: ['sakura', 'peach'] },
+      { text: '終於完成一個拖很久的待辦', score: ['manRen', 'shrek'] },
       { text: '跟久沒見的朋友吃了一頓飯', score: ['fukuMusume', 'hachi'] },
-      { text: '換一個小擺飾、房間就變美了', score: ['qiuLi', 'manRen'] }
+      { text: '突然想剪短頭髮 / 換個風格', score: ['butterfly', 'qiuLi'] }
     ]
   }
 ];
