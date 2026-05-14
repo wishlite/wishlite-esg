@@ -516,6 +516,109 @@ body::after { bottom: -100px; right: -100px; }
 }
 .share-link:hover { color: var(--moss); text-decoration: underline; }
 
+/* ============ SUCCULENT GRID (V2 新流程) ============ */
+.succulent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.succulent-card {
+  background: var(--soft);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 12px 10px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  font-family: inherit;
+}
+.succulent-card:hover {
+  border-color: var(--sage);
+  background: var(--mist);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(61,90,62,0.12);
+}
+.succulent-card:active { transform: translateY(0); }
+.succulent-card-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+  margin-bottom: 8px;
+}
+.succulent-card-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.succulent-card-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--moss-dark);
+  letter-spacing: 1px;
+}
+.intro-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--sage);
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+.selected-preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--soft);
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin-bottom: 28px;
+}
+.selected-preview img {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--white);
+  box-shadow: 0 3px 8px rgba(61,90,62,0.12);
+}
+.selected-info { flex: 1; }
+.selected-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.selected-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--moss-dark);
+  letter-spacing: 2px;
+}
+.btn-back {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  background: transparent;
+  color: var(--sage);
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.btn-back:hover { color: var(--moss); }
+.result-opening {
+  background: linear-gradient(135deg, var(--mist) 0%, var(--soft) 100%);
+  border-left: 3px solid var(--gold);
+  padding: 16px 18px;
+  border-radius: 12px;
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: var(--moss-dark);
+}
+
 /* ============ MOBILE ============ */
 @media (max-width: 480px) {
   body { padding: 12px; }
@@ -528,6 +631,10 @@ body::after { bottom: -100px; right: -100px; }
   .result-emoji { font-size: 60px; }
   .option { padding: 16px 18px; font-size: 14px; }
   .action-row { flex-direction: column; }
+  .succulent-card { padding: 10px 8px 12px; }
+  .succulent-card-name { font-size: 14px; }
+  .selected-preview img { width: 50px; height: 50px; }
+  .selected-name { font-size: 17px; }
 }
 </style>
 </head>
@@ -538,41 +645,29 @@ body::after { bottom: -100px; right: -100px; }
   <!-- ============ INTRO ============ -->
   <div class="screen active" id="screen-intro">
     <div class="brand-label">WISHLITE × 多肉測驗</div>
-    <h1 class="intro-title">找到你的<br>命定小多肉</h1>
+    <h1 class="intro-title">你被哪一隻<br>多肉吸引？</h1>
     <p class="intro-subtitle">
-      每一棵多肉，都有自己的個性。<br>
-      回答 8 道題，看看哪一棵<br>
-      最像現在的你。
+      讓直覺帶你選一隻 ——<br>
+      它會告訴你關於你的事。
     </p>
-    <div class="intro-cover">
-      <img src="img/cover.jpg" alt="找到你的命定小多肉" onerror="this.style.display='none'; this.parentElement.querySelector('.intro-cover-fallback').style.display='block';">
-      <div class="intro-cover-fallback">🌵 🤍 🌿 💗<br>🌸 🌱 🍑 🦋</div>
+    <div class="succulent-grid" id="succulent-grid">
+      <!-- 8 隻多肉卡片由 JS 渲染 -->
     </div>
-    <div class="intro-meta">
-      <div class="intro-meta-item">
-        <div class="intro-meta-num">8</div>
-        <div class="intro-meta-label">題目</div>
-      </div>
-      <div class="intro-meta-item">
-        <div class="intro-meta-num">2 min</div>
-        <div class="intro-meta-label">時間</div>
-      </div>
-      <div class="intro-meta-item">
-        <div class="intro-meta-num">8</div>
-        <div class="intro-meta-label">結果</div>
-      </div>
-    </div>
-    <button class="btn" onclick="startQuiz()">開始測驗</button>
+    <p class="intro-hint">👆 點選一隻最先吸引你的多肉</p>
   </div>
 
-  <!-- ============ QUESTION ============ -->
-  <div class="screen" id="screen-question">
-    <div class="progress-wrap">
-      <div class="progress"><div class="progress-bar" id="progress"></div></div>
+  <!-- ============ EMOTION QUESTION ============ -->
+  <div class="screen" id="screen-emotion">
+    <div class="selected-preview">
+      <img id="selected-photo" src="" alt="">
+      <div class="selected-info">
+        <div class="selected-label">你選的是</div>
+        <div class="selected-name" id="selected-name"></div>
+      </div>
     </div>
-    <div class="q-number" id="q-number">QUESTION 1 / 8</div>
-    <h2 class="question" id="q-text"></h2>
-    <div class="options" id="q-options"></div>
+    <h2 class="question">你選它的瞬間，是因為...</h2>
+    <div class="options" id="emotion-options"></div>
+    <button class="btn-back" onclick="restart()">← 重新選一隻</button>
   </div>
 
   <!-- ============ RESULT ============ -->
@@ -585,6 +680,11 @@ body::after { bottom: -100px; right: -100px; }
       <div class="result-emoji" id="r-emoji" style="display:none;"></div>
       <div class="result-name" id="r-name"></div>
       <div class="result-tagline" id="r-tagline"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-label">為什麼是它</div>
+      <p class="result-text result-opening" id="r-opening"></p>
     </div>
 
     <div class="result-section">
@@ -704,129 +804,119 @@ const succulents = {
   }
 };
 
-const questions = [
-  {
-    q: '下班/下課回家路上，你最常做什麼？',
-    options: [
-      { text: '戴耳機聽歌或 podcast，放空一下', score: ['sakura', 'qiuLi'] },
-      { text: '邊走邊想「我接下來想變成什麼樣」', score: ['butterfly', 'shrek'] },
-      { text: '滑手機看訊息、看限動', score: ['hachi', 'fukuMusume'] },
-      { text: '順路逛超市或便利商店買東西', score: ['peach', 'manRen'] }
-    ]
-  },
-  {
-    q: '剛領完薪水/獎金，你第一件事會是？',
-    options: [
-      { text: '打開記帳本，列出這個月預算', score: ['peach', 'butterfly'] },
-      { text: '買一個想很久的小東西犒賞自己', score: ['qiuLi', 'shrek'] },
-      { text: '揪朋友一起吃頓好的', score: ['fukuMusume', 'hachi'] },
-      { text: '存一筆「給自己想做的事」的錢', score: ['sakura', 'manRen'] }
-    ]
-  },
-  {
-    q: '朋友失戀來找你哭訴，你會...',
-    options: [
-      { text: '陪他罵那個人罵到爽', score: ['hachi', 'shrek'] },
-      { text: '倒杯熱的給他，靜靜聽他說', score: ['manRen', 'peach'] },
-      { text: '寫張卡片或送他一個喜歡的小東西', score: ['sakura', 'qiuLi'] },
-      { text: '跟他一起想「下一段你想成為什麼樣的人」', score: ['butterfly', 'fukuMusume'] }
-    ]
-  },
-  {
-    q: '你的房間最容易亂的角落是？',
-    options: [
-      { text: '桌面 — 事情堆著沒處理完', score: ['butterfly', 'hachi'] },
-      { text: '衣櫃 — 穿過沒洗的疊一堆', score: ['shrek', 'manRen'] },
-      { text: '床上 — 包包、外套隨手放', score: ['fukuMusume', 'sakura'] },
-      { text: '其實我房間不太亂耶', score: ['peach', 'qiuLi'] }
-    ]
-  },
-  {
-    q: '同事/同學突然約你週末聚會，你...',
-    options: [
-      { text: '馬上答應，人多熱鬧才有趣', score: ['hachi', 'fukuMusume'] },
-      { text: '看當天心情才決定', score: ['shrek', 'sakura'] },
-      { text: '想知道誰會去、做什麼再決定', score: ['peach', 'qiuLi'] },
-      { text: '委婉拒絕，週末想一個人靜靜', score: ['butterfly', 'manRen'] }
-    ]
-  },
-  {
-    q: '工作/讀書遇到瓶頸時，你會...',
-    options: [
-      { text: '列出問題，拆解成步驟一個個解', score: ['peach', 'butterfly'] },
-      { text: '直接動手做做看，邊做邊調', score: ['shrek', 'hachi'] },
-      { text: '找信任的人聊聊，獲得不同角度', score: ['fukuMusume', 'qiuLi'] },
-      { text: '換個環境/聽音樂，等靈感自己來', score: ['sakura', 'manRen'] }
-    ]
-  },
-  {
-    q: '朋友最常用來形容你的一句話？',
-    options: [
-      { text: '「跟你相處很穩，很安心」', score: ['manRen', 'peach'] },
-      { text: '「你怎麼都不會累？能量好飽」', score: ['hachi', 'shrek'] },
-      { text: '「你最近又變得跟之前不太一樣了」', score: ['butterfly', 'qiuLi'] },
-      { text: '「你很會欣賞小事，很有眼光」', score: ['sakura', 'fukuMusume'] }
-    ]
-  },
-  {
-    q: '最近一件讓你停下來「有感覺」的小事是？',
-    options: [
-      { text: '看到一句話、一張圖，記在筆記裡', score: ['sakura', 'peach'] },
-      { text: '終於完成一個拖很久的待辦', score: ['manRen', 'shrek'] },
-      { text: '跟久沒見的朋友吃了一頓飯', score: ['fukuMusume', 'hachi'] },
-      { text: '突然想剪短頭髮 / 換個風格', score: ['butterfly', 'qiuLi'] }
-    ]
-  }
+// ============ 情緒分流 4 選項 ============
+const emotions = [
+  { key: 'shape',     text: '它的形狀讓我著迷' },
+  { key: 'vibe',      text: '它的顏色和氣質很對' },
+  { key: 'name',      text: '它的名字打動了我' },
+  { key: 'intuition', text: '說不上來，就是被它吸引' }
 ];
 
-// ============ LOGIC ============
-let currentQ = 0;
-let scores = {};
+// ============ 32 種客製化開頭（8 隻多肉 × 4 情緒）============
+const openings = {
+  shrek: {
+    shape:     '你被它「管狀內凹」的奇怪形狀吸引——表示你最近也在欣賞那些「不一樣」的東西，包括你自己的某個部分。',
+    vibe:      '你被它「不像多肉的多肉」那種氣質吸引——表示你心裡也住著一個不想被歸類的自己。',
+    name:      '你被「史瑞克」這個名字吸引——你喜歡有反差、有故事的東西，不只追求漂亮。',
+    intuition: '你說不上來為什麼，但你看到它就想笑——這就是它的魔法，也是你的：你看得見別人忽略的「怪可愛」。'
+  },
+  fukuMusume: {
+    shape:     '你被它「圓圓胖胖」的形狀吸引——表示你最近想被包圍的，是那種柔軟可靠的感覺。',
+    vibe:      '你被它白白粉粉的「可愛感」吸引——你正在想念一個能讓你卸下防備的存在。',
+    name:      '你被「福娘」這個招福的名字吸引——你最近想要一點好運氣、一點安心感。',
+    intuition: '你看到它就被打動——表示你需要一點「不必表現得很厲害」的時刻。'
+  },
+  manRen: {
+    shape:     '你被它「蓮座狀」那種規律安穩的樣子吸引——表示你最近想要的是「穩定」，不是「驚喜」。',
+    vibe:      '你被它「不爭不搶」的氣質吸引——你欣賞那種低調但有底蘊的人，因為你也是這樣的人。',
+    name:      '你被「蔓蓮」這個聽起來很溫柔的名字吸引——你心裡也有那種會慢慢蔓延、不會大聲喊的力量。',
+    intuition: '你說不上來為什麼，但它讓你感到安心——表示你最近需要一個「不會走掉的存在」。'
+  },
+  qiuLi: {
+    shape:     '你被它「圓滾滾像小石頭」的形狀吸引——表示你想被療癒、想要那種柔軟的可愛感。',
+    vibe:      '你被它粉嫩的「療癒感」吸引——你最近需要被輕輕對待，這個直覺值得相信。',
+    name:      '你被「姬秋麗」這個甜甜的名字吸引——你心裡也住著一個希望被溫柔對待的自己。',
+    intuition: '你看到它就覺得舒服——表示你最近需要的，是「簡單的好」，不是更多的努力。'
+  },
+  sakura: {
+    shape:     '你被它「紅綠斑葉」那種藝術感吸引——表示你欣賞細節，你看得見別人看不見的紋路。',
+    vibe:      '你被它「花開短暫卻很美」的氣質吸引——你懂得欣賞稍縱即逝的東西，因為你心裡記著很多瞬間。',
+    name:      '你被「櫻吹雪」這個有詩感的名字吸引——你的感受力比別人多一層，這是你的天賦。',
+    intuition: '你看到它就停下來——表示你最近需要一個「把生活記下來」的對象。'
+  },
+  hachi: {
+    shape:     '你被它「長條棒狀像小樹」的形狀吸引——表示你嚮往的是那種「往上長」的自由感。',
+    vibe:      '你被它「輕鬆好養」的氣質吸引——你最近想要的是「不用費心」的關係，可以放鬆地共處。',
+    name:      '你被「八千代」這個「活得長長久久」的名字吸引——你想要一段穩定但不被綁住的時光。',
+    intuition: '你看到它就放鬆——表示你最近壓力大了，需要一個「怎麼放都可以」的陪伴。'
+  },
+  peach: {
+    shape:     '你被它「工整對稱」的蓮座吸引——表示你心裡很有秩序感，你欣賞那種「有設計過」的美。',
+    vibe:      '你被它粉橘漸層的「優雅感」吸引——你正在尋找一種「溫柔但有自己想法」的力量。',
+    name:      '你被「蜜桃獵戶座」這個有星空感的名字吸引——你心裡有藍圖，也有溫度。',
+    intuition: '你看到它就覺得「好剛剛好」——表示你最近欣賞的是恰到好處，不要太多、也不要太少。'
+  },
+  butterfly: {
+    shape:     '你被它「葉緣捲翹像蝶翼」的形狀吸引——表示你最近正在嘗試變成「不一樣的自己」。',
+    vibe:      '你被它「紫綠霜色多變」的氣質吸引——你不喜歡被定義，你欣賞變化中的美。',
+    name:      '你被「翩蝶之舞」這個有動感的名字吸引——你心裡有一個想自由舞動的靈魂。',
+    intuition: '你看到它就被吸住——表示你最近需要的，是「允許自己改變」的訊號。'
+  }
+};
 
-function startQuiz() {
-  scores = {};
-  Object.keys(succulents).forEach(k => scores[k] = 0);
-  currentQ = 0;
-  showScreen('screen-question');
-  renderQuestion();
+// ============ STATE ============
+let selectedSucculent = null;
+
+// ============ LOGIC ============
+function initGrid() {
+  const grid = document.getElementById('succulent-grid');
+  grid.innerHTML = '';
+  Object.keys(succulents).forEach(key => {
+    const s = succulents[key];
+    const card = document.createElement('button');
+    card.className = 'succulent-card';
+    card.onclick = () => selectSucculent(key);
+    card.innerHTML = `
+      <div class="succulent-card-photo">
+        <img src="${s.image}" alt="${s.name}" onerror="this.parentElement.innerHTML='<div style=\\'font-size:48px;display:flex;align-items:center;justify-content:center;height:100%\\'>${s.emoji}</div>'">
+      </div>
+      <div class="succulent-card-name">${s.name}</div>
+    `;
+    grid.appendChild(card);
+  });
 }
 
-function renderQuestion() {
-  const q = questions[currentQ];
-  document.getElementById('q-number').textContent = `QUESTION ${currentQ + 1} / ${questions.length}`;
-  document.getElementById('q-text').textContent = q.q;
-  document.getElementById('progress').style.width = `${((currentQ) / questions.length) * 100}%`;
+function selectSucculent(key) {
+  selectedSucculent = key;
+  const s = succulents[key];
+  document.getElementById('selected-photo').src = s.image;
+  document.getElementById('selected-photo').alt = s.name;
+  document.getElementById('selected-name').textContent = s.name;
+  renderEmotionOptions();
+  showScreen('screen-emotion');
+}
 
-  const optsDiv = document.getElementById('q-options');
+function renderEmotionOptions() {
+  const optsDiv = document.getElementById('emotion-options');
   optsDiv.innerHTML = '';
-  q.options.forEach((opt) => {
+  emotions.forEach(em => {
     const btn = document.createElement('button');
     btn.className = 'option';
-    btn.textContent = opt.text;
-    btn.onclick = () => selectOption(opt);
+    btn.textContent = em.text;
+    btn.onclick = () => selectEmotion(em.key);
     optsDiv.appendChild(btn);
   });
 }
 
-function selectOption(opt) {
-  opt.score.forEach(s => scores[s] = (scores[s] || 0) + 1);
-  currentQ++;
-  if (currentQ >= questions.length) {
-    document.getElementById('progress').style.width = '100%';
-    setTimeout(showResult, 400);
-  } else {
-    renderQuestion();
-  }
+function selectEmotion(emotionKey) {
+  showResult(selectedSucculent, emotionKey);
 }
 
-function showResult() {
-  // 找最高分（多隻同分時，隨機選一隻避免系統偏向）
-  const maxScore = Math.max(...Object.values(scores));
-  const winners = Object.keys(scores).filter(k => scores[k] === maxScore);
-  const topKey = winners[Math.floor(Math.random() * winners.length)];
-  const s = succulents[topKey];
+function showResult(succulentKey, emotionKey) {
+  const s = succulents[succulentKey];
+  const opening = openings[succulentKey][emotionKey];
 
-  document.getElementById('r-emoji').textContent = s.emoji;
+  // 圖片
   const photoEl = document.getElementById('r-photo');
   const photoWrap = document.getElementById('r-photo-wrap');
   const emojiEl = document.getElementById('r-emoji');
@@ -834,10 +924,15 @@ function showResult() {
   emojiEl.style.display = 'none';
   photoEl.src = s.image;
   photoEl.alt = s.name;
+  document.getElementById('r-emoji').textContent = s.emoji;
+
+  // 文字
   document.getElementById('r-name').textContent = s.name;
   document.getElementById('r-tagline').textContent = s.tagline;
+  document.getElementById('r-opening').textContent = opening;
   document.getElementById('r-desc').textContent = s.desc;
 
+  // 關鍵字
   const traitsDiv = document.getElementById('r-traits');
   traitsDiv.innerHTML = '';
   s.traits.forEach(t => {
@@ -847,6 +942,7 @@ function showResult() {
     traitsDiv.appendChild(tag);
   });
 
+  // 最適合搭配
   document.getElementById('r-match').textContent = s.match;
 
   showScreen('screen-result');
@@ -859,8 +955,12 @@ function showScreen(id) {
 }
 
 function restart() {
+  selectedSucculent = null;
   showScreen('screen-intro');
 }
+
+// 頁面載入時渲染 8 隻多肉格子
+document.addEventListener('DOMContentLoaded', initGrid);
 
 function share() {
   const name = document.getElementById('r-name').textContent;
