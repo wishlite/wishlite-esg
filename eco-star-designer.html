@@ -629,8 +629,8 @@
       <!-- v3.56 hero-lead 移除（情緒重複 → CORE SYSTEM/Pain/REAL PLACES 已承擔安撫，Hero 改更乾淨的世界觀入口）-->
 
 <div class="hero-cta-row">
-        <a href="#for-you" class="btn btn-primary">看看這條路怎麼開始</a>
-        <a href="esg-explore-more.html" class="btn-soft">延伸看看更多永續行動</a>
+        <a href="#for-you" class="btn btn-primary" data-track="click_designer_hero_path" data-source="ecostar_designer" data-funnel="eco_star_2026">看看這條路怎麼開始</a>
+        <a href="esg-explore-more.html" class="btn-soft" data-track="click_explore_more" data-source="ecostar_designer" data-funnel="eco_star_2026">延伸看看更多永續行動</a>
       </div>
     </div>
     <div class="hero-figure" aria-hidden="true">
@@ -1139,7 +1139,7 @@
 
       <!-- v3.55 移除 3 張真實照片 + logo wall + 收尾文字 — 改為單顆柔和 CTA 替代（不再做作品集堆疊）-->
       <div class="market-cta">
-        <a href="esg-explore-more.html" class="btn-soft">看看更多真實行動 →</a>
+        <a href="esg-explore-more.html" class="btn-soft" data-track="click_explore_more" data-source="ecostar_designer" data-funnel="eco_star_2026">看看更多真實行動 →</a>
       </div>
       <style>
         .market-cta{
@@ -1577,6 +1577,85 @@
     </style>
   </section>
 
+  <!--
+  ════════════════════════════════════════════════════════════════════
+  📦 OFFER STACK 草稿區（2026-05-23 任務五｜A 案位置｜FOR YOU 後 / Program Outline 前）
+  ════════════════════════════════════════════════════════════════════
+  狀態：草稿，未上線（HTML 註解包覆，不 render、不影響視覺）
+  決策：Apple 5/23 拍板 — 先讓使用者確認「這條路是不是跟我有關」(FOR YOU)
+        → 再告訴他「你不是只得到課程，而是得到一套支持系統」(Offer Stack ← 本區)
+        → 最後才進入課程細節 (Program Outline)
+  紅線檢查：✅ 不寫保證接案 / 不寫變現 / 不寫 24h 親自回覆 / 不寫成講師培訓
+  上線方式：未來決定上線時，刪除本「<!-- 草稿 -->」開頭與結尾，並補對應 CSS 樣式
+  ────────────────────────────────────────────────────────────────────
+
+  <section class="offer-stack" aria-labelledby="offer-stack-title">
+    <div class="container">
+      <div class="section-kicker-wrap">
+        <span class="section-kicker">SUPPORT SYSTEM｜你會得到的</span>
+      </div>
+      <h2 id="offer-stack-title" class="section-title">
+        你不是只會得到 18 小時課程，<br>
+        而是一套靠近真實現場的支持系統。
+      </h2>
+      <p class="offer-stack-sub">
+        ECO STAR 不是把人變成另一個標準答案，<br>
+        而是陪你慢慢長出自己靠近永續的方法。
+      </p>
+
+      <div class="offer-stack-grid">
+
+        <article class="offer-card offer-card-a">
+          <div class="offer-icon" aria-hidden="true">🌱</div>
+          <h3 class="offer-card-title">能力訓練</h3>
+          <p class="offer-card-meta">材料敘事 × 體驗設計 × 課程交付 × 場域溝通</p>
+          <p class="offer-card-body">
+            不是知識堆疊，<br>
+            是把你在乎的事，<br>
+            翻譯成一場能被參與的行動。
+          </p>
+        </article>
+
+        <article class="offer-card offer-card-b">
+          <div class="offer-icon" aria-hidden="true">🧰</div>
+          <h3 class="offer-card-title">工具支持</h3>
+          <p class="offer-card-meta">教案框架 × 活動 SOP × 材料故事腳本 × 現場引導句</p>
+          <p class="offer-card-body">
+            從備課到收尾，<br>
+            每一步都有可以帶走的參考。
+          </p>
+        </article>
+
+        <article class="offer-card offer-card-c">
+          <div class="offer-icon" aria-hidden="true">🌿</div>
+          <h3 class="offer-card-title">現場演練</h3>
+          <p class="offer-card-meta">實體練習 × 真實案例拆解 × 完訓評估</p>
+          <p class="offer-card-body">
+            不是看別人的故事，<br>
+            是練習自己的判斷力。
+          </p>
+        </article>
+
+        <article class="offer-card offer-card-d">
+          <div class="offer-icon" aria-hidden="true">🏔️</div>
+          <h3 class="offer-card-title">平台入口</h3>
+          <p class="offer-card-meta">完訓後可依狀態，申請進入 Wishlite 後續合作評估</p>
+          <p class="offer-card-body">
+            不保證接案，<br>
+            但會讓真正適合的人，<br>
+            被看見、被陪伴。
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  ════════════════════════════════════════════════════════════════════
+  📦 OFFER STACK 草稿區 END
+  ════════════════════════════════════════════════════════════════════
+  -->
+
   <!-- v3.48 培育計畫輪廓 -->
   <section class="program-outline" aria-labelledby="program-title">
     <div class="container">
@@ -1840,10 +1919,22 @@
   <section id="info-session" class="signup-hero-section" aria-label="ECO STAR 最後邀請">
     <div class="signup-hero-wrap">
       <img class="signup-hero-img" src="assets/v4-signup-hero.png" alt="永續不是一開始就很完整，而是從願意靠近的那一刻開始。如果你心裡也有一點點想法，想把喜歡、材料、故事與人連在一起，也許這一次，就是你開始的地方。" loading="lazy">
-      <a class="signup-hero-hotspot signup-hero-hotspot--primary" href="#signup-form" aria-label="我要報名 5/31 說明會"></a>
-      <a class="signup-hero-hotspot signup-hero-hotspot--secondary" href="esg-explore-more.html" aria-label="洽詢企業合作"></a>
+      <a class="signup-hero-hotspot signup-hero-hotspot--primary" href="eco-star-info-session.html" aria-label="我要報名 5/31 說明會" data-track="click_webinar_signup" data-source="ecostar_designer" data-funnel="eco_star_2026"></a>
+      <a class="signup-hero-hotspot signup-hero-hotspot--secondary" href="esg-explore-more.html" aria-label="洽詢企業合作" data-track="click_b2b_inquiry" data-source="ecostar_designer" data-funnel="eco_star_2026"></a>
     </div>
+    <p class="signup-hero-meta">下一場線上說明會：5/31（六）</p>
     <style>
+      .signup-hero-meta{
+        text-align:center;
+        margin:28px auto 0;
+        color:rgba(126,90,53,.78);
+        font-size:14px;
+        letter-spacing:1.2px;
+        font-family:'Noto Serif TC',serif;
+      }
+      @media(max-width:720px){
+        .signup-hero-meta{font-size:13px;margin-top:20px;letter-spacing:1px;}
+      }
       .signup-hero-section{
         background:#F5F2EA;
         padding:88px 24px 96px;

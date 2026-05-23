@@ -218,8 +218,9 @@
   <span class="page-kicker">ECO STAR INFO SESSION</span>
   <h1 class="page-title">登記線上說明會</h1>
   <p class="page-lead">
+    下一場：<strong>5/31（六）線上說明會</strong><br>
     填好下面的資料，<br>
-    我們會把最新一場說明會的時間、觀看方式或回放連結，<br>
+    我們會把說明會的時間、觀看方式或回放連結，<br>
     透過 Email 寄給你。
   </p>
 
@@ -252,6 +253,10 @@
           <span>喜歡永續與材料，想進一步學習</span>
         </label>
         <label class="form-radio-option">
+          <input type="radio" name="status" value="b2b">
+          <span>企業／組織單位，想了解合作或內訓可能</span>
+        </label>
+        <label class="form-radio-option">
           <input type="radio" name="status" value="other">
           <span>其他</span>
         </label>
@@ -261,15 +266,15 @@
       <input type="checkbox" id="f-confirm" name="confirm" required>
       <label for="f-confirm">我想登記 ECO STAR 線上說明會資訊</label>
     </div>
-    <button type="submit" class="form-submit" id="submitBtn">送出登記</button>
+    <button type="submit" class="form-submit" id="submitBtn" data-track="submit_webinar_signup" data-source="ecostar_info_session" data-funnel="eco_star_2026">送出登記</button>
     <p class="form-after-note">填好之後，我們會寄送說明會時間與觀看方式給你。</p>
   </form>
 
   <div class="signup-thanks" id="signupThanks" style="display:none;" role="status" aria-live="polite">
     <div class="signup-thanks-icon" aria-hidden="true">🌱</div>
     <h3>謝謝你願意走到這裡</h3>
-    <p>我們已經把你的登記收下了。</p>
-    <p>最新一場說明會的時間、觀看方式或回放連結，<br>會透過 Email 寄給你。</p>
+    <p>我們已收到你的說明會登記，<br>接下來也會透過 Email 提醒你活動資訊。</p>
+    <p style="margin-top:18px;">如果你想更即時收到通知，<br>也可以加入 Wishlite 永續行動學院 LINE：<br><a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" data-track="click_line_oa" data-source="ecostar_info_session_thanks" data-funnel="eco_star_2026" data-oa="403kginl" style="color:var(--green-deep);font-weight:500;">@403kginl →</a></p>
     <p style="margin-top:22px; opacity:0.7; font-size:14px;">那天見。</p>
   </div>
 </main>
@@ -280,27 +285,55 @@
 </footer>
 
 <script>
-  // 表單 thank-you 切換（前端模擬，TODO 接 n8n webhook）
-  document.getElementById('signupForm').addEventListener('submit', function(e) {
+  // 表單送出 → POST n8n webhook → 切 thanks 區塊
+  // 設計：fetch 失敗也仍切到 thanks（graceful fallback），錯誤紀錄在 console
+  // workflow: WF-Webinar-Signup (jqLVdyLgrsbiOZ8Z) | webhook: /webhook/eco-star-signup
+  document.getElementById('signupForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = e.target;
     if (!form.checkValidity()) { form.reportValidity(); return; }
     const btn = document.getElementById('submitBtn');
-    btn.disabled = true; btn.textContent = '送出中…';
-    setTimeout(() => {
+    btn.disabled = true;
+    btn.textContent = '送出中…';
+
+    // 讀 URL 上的 UTM 參數，跟著表單一起送
+    const urlParams = new URLSearchParams(window.location.search);
+    const payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      line: form.line.value.trim(),
+      status: form.status.value,
+      confirm: form.confirm.checked,
+      utm_source: urlParams.get('utm_source') || '',
+      utm_medium: urlParams.get('utm_medium') || '',
+      utm_campaign: urlParams.get('utm_campaign') || '',
+      utm_content: urlParams.get('utm_content') || '',
+      source_page: window.location.href
+    };
+
+    const showThanks = () => {
       form.style.display = 'none';
       const thanks = document.getElementById('signupThanks');
       thanks.style.display = 'block';
       thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 600);
-    // TODO 接 n8n webhook：
-    // fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
-    //   method: 'POST', headers: {'Content-Type':'application/json'},
-    //   body: JSON.stringify({
-    //     name: form.name.value, email: form.email.value, line: form.line.value,
-    //     status: form.status.value, source: 'eco-star-info-session', date: new Date().toISOString()
-    //   })
-    // });
+    };
+
+    try {
+      const res = await fetch('https://wishlite-n8n.zeabur.app/webhook/eco-star-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!data || data.ok !== true) {
+        console.warn('[signup] non-ok response', data);
+      } else if (data.notion_saved === false) {
+        console.warn('[signup] notion write failed, Apple notified by email');
+      }
+    } catch (err) {
+      console.warn('[signup] webhook fetch failed', err);
+    }
+    showThanks();
   });
 </script>
 
