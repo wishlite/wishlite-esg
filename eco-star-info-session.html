@@ -238,6 +238,11 @@
       <input class="form-input" type="text" id="f-line" name="line" placeholder="方便我們之後和你聯繫">
     </div>
     <div class="form-row">
+      <label class="form-label" for="f-phone">手機號碼（選填）</label>
+      <input class="form-input" type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="例如：0912-345-678">
+      <small style="display:block;margin-top:6px;font-size:13px;color:var(--sub);line-height:1.6;">方便 Wishlite 專人後續聯繫。</small>
+    </div>
+    <div class="form-row">
       <label class="form-label">你目前比較接近哪一種狀態？</label>
       <div class="form-radio-group" role="radiogroup">
         <label class="form-radio-option">
@@ -302,6 +307,7 @@
       name: form.name.value.trim(),
       email: form.email.value.trim(),
       line: form.line.value.trim(),
+      phone: form.phone.value.trim(),
       status: form.status.value,
       confirm: form.confirm.checked,
       utm_source: urlParams.get('utm_source') || '',
