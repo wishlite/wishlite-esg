@@ -1402,296 +1402,6 @@
             .horizon-meta .footer-contact { gap: 0.7rem 1.4rem; font-size: 0.72rem; }
         }
 
-        /* ========== MODAL ========== */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(20, 24, 20, 0.75);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-
-        .modal-overlay.open {
-            display: flex;
-        }
-
-        .modal-box {
-            background: var(--cream);
-            border-radius: 18px;
-            padding: 0;
-            max-width: 640px;
-            width: 100%;
-            color: var(--charcoal);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.35);
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            background: var(--bg-dark);
-            padding: 2rem 2.5rem 1.8rem;
-            border-radius: 18px 18px 0 0;
-            position: relative;
-            text-align: center;
-        }
-
-        .modal-brand-line {
-            font-size: 0.72rem;
-            letter-spacing: 0.35em;
-            color: rgba(196,154,108,0.5);
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.2rem;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-light-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-
-        .modal-close:hover {
-            background: rgba(255,255,255,0.15);
-            color: var(--gold-light);
-        }
-
-        .modal-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-            color: var(--text-light);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .modal-subtitle {
-            font-size: 0.88rem;
-            color: var(--text-light-secondary);
-            margin: 0;
-        }
-
-        .modal-header-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1.2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .modal-header-tag {
-            border: 1px solid rgba(196,154,108,0.45);
-            color: rgba(196,154,108,0.85);
-            padding: 0.28rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            letter-spacing: 0.04em;
-            font-weight: 400;
-        }
-
-        .form-section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--brown);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 1.4rem 2.5rem 0.5rem;
-        }
-
-        .form-section-divider {
-            border: none;
-            border-top: 1px dashed rgba(139,111,71,0.2);
-            margin: 0.6rem 2.5rem 0;
-        }
-
-        .modal-form-body {
-            padding: 0;
-        }
-
-        /* Alternating row colors */
-        .form-field-row {
-            padding: 1.4rem 2.5rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
-
-        .form-field-row.full {
-            grid-template-columns: 1fr;
-        }
-
-        .form-field-row:nth-child(odd) {
-            background: #ffffff;
-        }
-
-        .form-field-row:nth-child(even) {
-            background: var(--cream);
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            color: var(--charcoal);
-            margin-bottom: 0.45rem;
-            font-size: 0.88rem;
-            letter-spacing: 0.01em;
-        }
-
-        .form-group label .required {
-            color: #c0694a;
-            margin-left: 2px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 0.7rem 0.9rem;
-            border: 1px solid rgba(196,154,108,0.2);
-            border-radius: 8px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.7);
-            color: var(--charcoal);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(196, 154, 108, 0.12);
-            background: #fff;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #b0a89c;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-
-        .form-group select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238b6f47' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.9rem center;
-            padding-right: 2.2rem;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 0.4rem;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-        }
-
-        .radio-option input[type="radio"],
-        .checkbox-option input[type="checkbox"] {
-            cursor: pointer;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--gold);
-        }
-
-        .radio-option label,
-        .checkbox-option label {
-            margin: 0;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--charcoal);
-            font-size: 0.9rem;
-        }
-
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem 1.5rem;
-            margin-top: 0.4rem;
-        }
-
-        .checkbox-option {
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-        }
-
-        .form-footer {
-            padding: 1.5rem 2.5rem 2rem;
-            background: #ffffff;
-            border-radius: 0 0 18px 18px;
-            border-top: 1px solid rgba(196,154,108,0.1);
-        }
-
-        .form-submit {
-            background: var(--gold);
-            color: white;
-            padding: 0.9rem 2rem;
-            border-radius: 30px;
-            border: none;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s ease, transform 0.15s ease;
-            letter-spacing: 0.02em;
-        }
-
-        .form-submit:hover {
-            background: var(--gold-dark);
-            transform: translateY(-1px);
-        }
-
-        .form-note {
-            text-align: center;
-            font-size: 0.82rem;
-            color: #8b8178;
-            margin-top: 0.8rem;
-        }
-
         /* ========== SCROLL REVEAL ========== */
         .reveal {
             opacity: 0;
@@ -1825,24 +1535,6 @@
 
             .section-title {
                 font-size: 1.8rem;
-            }
-
-            .modal-box {
-                margin: 0.5rem;
-            }
-
-            .modal-header {
-                padding: 1.5rem 1.5rem 1.2rem;
-            }
-
-            .form-field-row {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 1.2rem 1.5rem;
-            }
-
-            .form-footer {
-                padding: 1.2rem 1.5rem 1.5rem;
             }
 
             .emoji-grid {
@@ -2225,8 +1917,8 @@
                 <div class="step-card reveal">
                     <div class="step-number">2</div>
                     <div class="step-title">收到選品與報價建議</div>
-                    <div class="step-desc">依需求整理合適品項與初步報價方向</div>
-                    <div class="step-time">⏱ 約 2 個工作天</div>
+                    <div class="step-desc">在 LINE 為您整理合適品項與建議方向</div>
+                    <div class="step-time">⏱ LINE 對話即時承接</div>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">3</div>
@@ -2261,7 +1953,7 @@
                         <span>還不確定要送什麼，可以請你們幫忙推薦嗎？</span>
                         <span class="faq-toggle">▼</span>
                     </div>
-                    <div class="faq-answer">當然可以。填寫需求表告訴我們送禮場景、數量與預算區間，我們會在 2 個工作天內回覆 2–3 個建議方向，包含品項說明與初步報價，讓你有具體選項再做決定。</div>
+                    <div class="faq-answer">當然可以。回 LINE 告訴我們送禮場景、數量與預算區間，我們會在對話中提供 2–3 個建議方向，包含品項說明與費用範圍，讓你有具體選項再做決定。</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
@@ -2275,7 +1967,7 @@
                         <span>是否可依企業活動需求整合提案？</span>
                         <span class="faq-toggle">▼</span>
                     </div>
-                    <div class="faq-answer">可以。我們可依企業活動主題搭配商品、附上品牌故事卡說明材料來源與 ESG 對應目標（SDGs），也可延伸為完整的 ESG 工作坊提案。歡迎填寫需求表，我們會依您的情境提供整合建議。</div>
+                    <div class="faq-answer">可以。我們可依企業活動主題搭配商品、附上品牌故事卡說明材料來源與 ESG 對應目標（SDGs），也可延伸為完整的 ESG 工作坊提案。歡迎回 LINE 告訴我們，我們會依您的情境提供整合建議。</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
@@ -2368,7 +2060,7 @@
     <section style="background:var(--bg-deep, #1e2420); padding:56px 20px; text-align:center;">
         <div style="max-width:600px; margin:0 auto;">
             <h2 style="font-family:var(--font-serif,serif); font-size:clamp(20px,3vw,26px); color:#fff; margin-bottom:14px; font-weight:700;">準備好規劃專屬的永續禮品了嗎？</h2>
-            <p style="font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:28px;">歡迎直接回 LINE 告訴我們您的用途、預算與交期，我們將提供建議禮品方向與初步報價。</p>
+            <p style="font-size:14px; color:rgba(255,255,255,0.6); margin-bottom:28px;">歡迎直接回 LINE 告訴我們您的用途、預算與交期，我們將提供建議禮品方向與費用範圍。</p>
             <a class="cta-primary" href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener noreferrer" style="font-size:15px; padding:14px 36px; border-radius:28px; display:inline-block; text-decoration:none;">回 LINE 詢問禮品方向 →</a>
         </div>
     </section>
@@ -2389,377 +2081,7 @@
         <div class="footer-copyright">© 2026 Wishlite 韻手作 — ESG Sustainable Gifts.</div>
     </div>
 
-    <!-- MODAL -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <div class="modal-header">
-                <button class="modal-close" onclick="closeModal()">×</button>
-                <div class="modal-brand-line">韻 手 作 永 續　WISHLITE</div>
-                <h2 class="modal-title">永續禮品需求表</h2>
-                <p class="modal-subtitle">填寫約 3 分鐘，我們將依您的用途、預算與交期，提供建議禮品方向與初步報價。</p>
-                <div class="modal-header-tags">
-                    <span class="modal-header-tag">客製 Logo 禮品</span>
-                    <span class="modal-header-tag">永續 ESG 禮品</span>
-                    <span class="modal-header-tag">品牌故事包裝</span>
-                </div>
-            </div>
-            <form onsubmit="submitForm(event)">
-                <div class="modal-form-body">
-
-                    <div class="form-section-label">基本資訊</div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>公司／單位名稱 <span class="required">*</span></label>
-                            <input type="text" id="company" placeholder="例：台積電" required>
-                        </div>
-                        <div class="form-group">
-                            <label>怎麼稱呼您 <span class="required">*</span></label>
-                            <input type="text" id="name" placeholder="例：王小姐" required>
-                        </div>
-                    </div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>Email <span class="required">*</span></label>
-                            <input type="email" id="email" placeholder="name@company.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label>聯繫電話 <span class="required">*</span></label>
-                            <input type="tel" id="phone" placeholder="09xx-xxx-xxx" required>
-                        </div>
-                    </div>
-
-                    <hr class="form-section-divider">
-                    <div class="form-section-label">禮品需求</div>
-
-                    <div class="form-field-row full">
-                        <div class="form-group">
-                            <label>預計用途 <span class="required">*</span></label>
-                            <select id="usage" required>
-                                <option value="">請選擇用途類型</option>
-                                <option value="員工禮品(三節/生日/入職)">員工禮品（三節／生日／入職）</option>
-                                <option value="VIP貴賓禮">VIP 貴賓禮</option>
-                                <option value="活動紀念品(展覽/論壇/研討會)">活動紀念品（展覽／論壇／研討會）</option>
-                                <option value="節慶禮盒(春節/中秋/端午)">節慶禮盒（春節／中秋／端午）</option>
-                                <option value="ESG主題活動搭配禮品">ESG 主題活動搭配禮品</option>
-                                <option value="品牌聯名/行銷贈品">品牌聯名／行銷贈品</option>
-                                <option value="其他">其他</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>預計數量 <span class="required">*</span></label>
-                            <input type="text" id="quantity" placeholder="例：500" required>
-                        </div>
-                        <div class="form-group">
-                            <label>每份預算區間 <span class="required">*</span></label>
-                            <select id="budget" required>
-                                <option value="">請選擇預算範圍</option>
-                                <option value="$200以下/份">$200 以下／份</option>
-                                <option value="$200-$500/份">$200–$500／份</option>
-                                <option value="$500-$800/份">$500–$800／份</option>
-                                <option value="$800-$1200/份">$800–$1,200／份</option>
-                                <option value="$1200以上/份">$1,200 以上／份</option>
-                                <option value="尚未確定">尚未確定</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>希望交期 <span class="required">*</span></label>
-                            <input type="date" id="deadline" required>
-                        </div>
-                        <div class="form-group">
-                            <label>預計使用日期</label>
-                            <input type="date" id="use-date">
-                        </div>
-                    </div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>是否需要 Logo 客製？ <span class="required">*</span></label>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <input type="radio" id="logo-yes" name="logo" value="需要" required>
-                                    <label for="logo-yes">需要</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="logo-no" name="logo" value="不需要">
-                                    <label for="logo-no">不需要</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="logo-learn" name="logo" value="想先了解">
-                                    <label for="logo-learn">想先了解</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-field-row full">
-                        <div class="form-group">
-                            <label>偏好的商品類型（可複選）</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-diy" name="product-pref" value="DIY 材料包">
-                                    <label for="pref-diy">DIY 材料包</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-finished" name="product-pref" value="完成品禮品">
-                                    <label for="pref-finished">完成品禮品</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-diffuser" name="product-pref" value="擴香石／香氛類">
-                                    <label for="pref-diffuser">擴香石／香氛類</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-soap" name="product-pref" value="手工皂／清潔類">
-                                    <label for="pref-soap">手工皂／清潔類</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-desk" name="product-pref" value="桌上小物">
-                                    <label for="pref-desk">桌上小物</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-giftbox" name="product-pref" value="節慶禮盒">
-                                    <label for="pref-giftbox">節慶禮盒</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-edu" name="product-pref" value="永續教育搭配款">
-                                    <label for="pref-edu">永續教育搭配款</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pref-undecided" name="product-pref" value="尚未確定">
-                                    <label for="pref-undecided">尚未確定</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="form-section-divider">
-                    <div class="form-section-label">客製與配送</div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>是否需要包裝／品牌故事卡？</label>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <input type="radio" id="pkg-yes" name="packaging" value="需要">
-                                    <label for="pkg-yes">需要</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="pkg-no" name="packaging" value="不需要">
-                                    <label for="pkg-no">不需要</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="pkg-learn" name="packaging" value="想先了解">
-                                    <label for="pkg-learn">想先了解</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>是否希望搭配 ESG／永續說明內容？</label>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <input type="radio" id="esg-yes" name="esg-content" value="需要">
-                                    <label for="esg-yes">需要</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="esg-no" name="esg-content" value="不需要">
-                                    <label for="esg-no">不需要</label>
-                                </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="esg-learn" name="esg-content" value="想先了解">
-                                    <label for="esg-learn">想先了解</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-field-row">
-                        <div class="form-group">
-                            <label>是否需分批配送／多點寄送？</label>
-                            <select id="batch-delivery">
-                                <option value="" disabled selected>請選擇</option>
-                                <option value="不需要">不需要</option>
-                                <option value="需要">需要</option>
-                                <option value="想先了解">想先了解</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>預計交付地點／城市</label>
-                            <input type="text" id="delivery-location" placeholder="例：台北市內湖區 / 新竹科學園區">
-                        </div>
-                    </div>
-
-                    <div class="form-field-row full">
-                        <div class="form-group">
-                            <label>其他需求或想法（選填）</label>
-                            <textarea id="notes" placeholder="例：希望為年末尾牙準備 300 份員工禮品，需搭配品牌故事卡..."></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-field-row full">
-                        <div class="form-group">
-                            <label>您是透過什麼管道認識我們的？<span class="required">*</span></label>
-                            <select id="referral-source">
-                                <option value="" disabled selected>請選擇</option>
-                                <option value="Google 搜尋">Google 搜尋</option>
-                                <option value="Instagram">Instagram</option>
-                                <option value="LINE">LINE</option>
-                                <option value="朋友／同事推薦">朋友／同事推薦</option>
-                                <option value="曾參加過我們的活動">曾參加過我們的活動</option>
-                                <option value="媒體報導">媒體報導</option>
-                                <option value="其他">其他</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-footer">
-                    <button type="submit" class="form-submit">填寫完成，讓我們為您推薦合適方案</button>
-                    <p class="form-note">提交後 2 個工作天內，我們將依您的用途、預算與交期，回覆建議禮品方向與初步報價</p>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // Modal Functions
-        function openModal() {
-            document.getElementById('modalOverlay').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('open');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close on overlay click
-        document.getElementById('modalOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        // Close on Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        // Toast notification (replaces alert)
-        function showToast(message, type) {
-            const existing = document.querySelector('.toast-notification');
-            if (existing) existing.remove();
-            const toast = document.createElement('div');
-            toast.className = 'toast-notification';
-            toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100001;padding:16px 28px;border-radius:12px;font-size:15px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,0.15);animation:toastIn 0.3s ease;max-width:90vw;text-align:center;';
-            if (type === 'success') {
-                toast.style.background = '#2e7d32';
-                toast.style.color = '#fff';
-            } else {
-                toast.style.background = '#c62828';
-                toast.style.color = '#fff';
-            }
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.3s'; setTimeout(() => toast.remove(), 300); }, 4000);
-        }
-
-        // Form Submit
-        async function submitForm(event) {
-            event.preventDefault();
-
-            // Validate required fields
-            const form = event.target;
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            const company = document.getElementById('company').value;
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const usage = document.getElementById('usage').value;
-            const quantity = document.getElementById('quantity').value;
-            const budget = document.getElementById('budget').value;
-            const deadline = document.getElementById('deadline').value;
-            const useDate = document.getElementById('use-date').value || '';
-            const logoEl = document.querySelector('input[name="logo"]:checked');
-            const logo = logoEl ? logoEl.value : '';
-            const productPref = Array.from(document.querySelectorAll('input[name="product-pref"]:checked')).map(el => el.value);
-            const packagingEl = document.querySelector('input[name="packaging"]:checked');
-            const packaging = packagingEl ? packagingEl.value : '';
-            const esgContentEl = document.querySelector('input[name="esg-content"]:checked');
-            const esgContent = esgContentEl ? esgContentEl.value : '';
-            const batchDelivery = document.getElementById('batch-delivery').value || '';
-            const deliveryLocation = document.getElementById('delivery-location').value || '';
-            const notes = document.getElementById('notes').value;
-            const referralSource = document.getElementById('referral-source').value || '';
-
-            const btn = event.target.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.disabled = true;
-            btn.textContent = '送出中⋯';
-
-            const data = {
-                type: '永續禮品詢價（Landing Page）',
-                company, name, email, phone,
-                giftType: usage,
-                quantity,
-                budget,
-                deliveryDate: deadline,
-                useDate: useDate,
-                logoCustom: logo,
-                productPreference: productPref.length > 0 ? productPref.join('、') : '',
-                packaging: packaging,
-                esgContent: esgContent,
-                batchDelivery: batchDelivery,
-                deliveryLocation: deliveryLocation,
-                notes: notes || '',
-                referralSource,
-                source: 'landing-page',
-                submitted_at: new Date().toISOString()
-            };
-
-            try {
-                const resp = await fetch('https://wishlite-n8n.zeabur.app/webhook/gift-inquiry', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                if (resp.ok) {
-                    closeModal();
-                    form.reset();
-                    showToast('感謝您的詢問！我們會在 48 小時內與您聯繫。', 'success');
-                } else {
-                    throw new Error('Server error');
-                }
-            } catch (err) {
-                // Backup to localStorage in case webhook fails
-                try {
-                    const pending = JSON.parse(localStorage.getItem('wishlite_pending_gift_forms') || '[]');
-                    pending.push(data);
-                    localStorage.setItem('wishlite_pending_gift_forms', JSON.stringify(pending));
-                    closeModal();
-                    form.reset();
-                    showToast('感謝您的詢問！我們已收到您的資料，將盡快與您聯繫。', 'success');
-                } catch (backupErr) {
-                    showToast('送出失敗，請稍後再試或直接聯繫我們（LINE: @wishlite）', 'error');
-                }
-            } finally {
-                btn.disabled = false;
-                btn.textContent = originalText;
-            }
-        }
-
         // Tab Switching
         function switchTab(index) {
             const tabs = document.querySelectorAll('.tab-btn');
@@ -2793,17 +2115,12 @@
             if (link.getAttribute('href') !== '#') {
                 link.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href === '#form' || href === '#products' || href === '#why' ||
+                    if (href === '#products' || href === '#why' ||
                         href === '#proof' || href === '#materials' || href === '#custom' || href === '#process') {
                         e.preventDefault();
-
-                        if (href === '#form') {
-                            openModal();
-                        } else {
-                            const target = document.querySelector(href);
-                            if (target) {
-                                target.scrollIntoView({ behavior: 'smooth' });
-                            }
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
                         }
                     }
                 });
@@ -2829,12 +2146,6 @@
             observer.observe(element);
         });
 
-        // Prevent link navigation for modal triggers
-        document.querySelectorAll('a[onclick*="openModal"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-            });
-        });
     </script>
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="回到頂部">↑</button>
     <script>
@@ -2846,13 +2157,6 @@
             });
         })();
 
-        // ── 網址帶 #open-form 時自動開啟填單 Modal（給外部連結用，如 Module B 提案右鈕） ──
-        window.addEventListener('load', function() {
-            if (window.location.hash === '#open-form' && typeof openModal === 'function') {
-                window.scrollTo(0, 0);
-                setTimeout(function() { openModal(); }, 300);
-            }
-        });
     </script>
 </body>
 </html>
