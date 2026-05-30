@@ -1706,181 +1706,12 @@ select.form-input {
   <div class="modal-container">
     <button class="modal-close" onclick="closeFormModal()" aria-label="關閉">&times;</button>
 
-    <div class="form-wrapper">
-      <div class="form-header">
-        <div class="form-header-sub">韻 手 作 永 續 &ensp; W I S H L I T E</div>
-        <h3>為企業打造<em>可量化的</em> ESG 行動體驗</h3>
-        <p>如果你已經有比較明確的活動資訊，也可以先填寫表單，我們會依資料協助評估適合的合作方式。<br>若想先快速討論，歡迎直接透過 <a href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">LINE</a> 與我們聯繫。</p>
-        <div class="form-header-tags">
-          <span>再生材料工作坊</span>
-          <span>SDGs 行動體驗</span>
-          <span>ESG 結案報告</span>
-        </div>
-      </div>
-
-      <form id="esgForm" class="form-body" novalidate>
-        <span class="form-section-label">基本資訊</span>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>公司 / 單位名稱 <span class="req">*</span></label>
-            <input type="text" name="company" class="form-input" placeholder="例：台積電" required>
-          </div>
-          <div class="form-group">
-            <label>怎麼稱呼您？ <span class="req">*</span></label>
-            <input type="text" name="contact_name" class="form-input" placeholder="例：王小姐" required>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Email <span class="hint">方便寄送提案</span></label>
-            <input type="email" name="email" class="form-input" placeholder="name@company.com">
-          </div>
-          <div class="form-group">
-            <label>聯繫電話</label>
-            <input type="tel" name="phone" class="form-input" placeholder="09xx-xxx-xxx">
-          </div>
-        </div>
-
-        <hr class="form-divider">
-        <span class="form-section-label">活動需求</span>
-
-        <div class="form-group">
-          <label>您這次想了解哪一種合作？ <span class="req">*</span></label>
-          <div class="radio-group">
-            <label><input type="radio" name="service_type" value="ESG活動" required><span>我要辦 ESG 活動</span></label>
-            <label><input type="radio" name="service_type" value="永續禮品"><span>我要送永續禮品</span></label>
-            <label><input type="radio" name="service_type" value="活動+禮品"><span>活動 + 禮品</span></label>
-            <label><input type="radio" name="service_type" value="其他需求"><span>其他需求</span></label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>請簡單描述您的需求、活動目的或想法 <span class="req">*</span></label>
-          <textarea name="description" class="form-input" placeholder="例：希望在年末辦一場 50 人的永續手作 Team Building，主題偏向循環經濟..." required></textarea>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>預計參與人數 <span class="req">*</span></label>
-            <input type="number" name="headcount" class="form-input" placeholder="例：50" min="1" required>
-          </div>
-          <div class="form-group">
-            <label>預算範圍</label>
-            <select name="budget" class="form-input">
-              <option value="" disabled selected>請選擇</option>
-              <option value="10000以下">10,000 以下</option>
-              <option value="10000-30000">10,000 – 30,000</option>
-              <option value="30000-50000">30,000 – 50,000</option>
-              <option value="50000-80000">50,000 – 80,000</option>
-              <option value="80000-120000">80,000 – 120,000</option>
-              <option value="120000以上">120,000 以上</option>
-              <option value="尚未確定">尚未確定</option>
-            </select>
-            <p style="font-size:11px; color:#aaa; margin-top:6px; line-height:1.6;">若預算較精簡，也可評估材料包或簡化版活動方案。</p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>預計合作日期</label>
-          <input type="date" name="event_date" class="form-input">
-        </div>
-
-        <div class="form-group">
-          <label>活動地點／城市</label>
-          <input type="text" name="event_location" class="form-input" placeholder="例如：台北市內湖區／企業辦公室／指定活動場地">
-        </div>
-
-        <div class="form-group">
-          <label>您偏好的合作形式？</label>
-          <select name="cooperation_type" class="form-input">
-            <option value="" disabled selected>請選擇</option>
-            <option value="現場活動">現場活動（含講師到場）</option>
-            <option value="材料包">材料包（自主持／簡化版）</option>
-            <option value="兩者皆可">兩者皆可</option>
-            <option value="想先了解建議">想先了解建議</option>
-          </select>
-        </div>
-
-        <hr class="form-divider">
-        <span class="form-section-label">其他資訊</span>
-
-        <div class="form-group">
-          <label>這次活動較關注哪些方向？（可複選）</label>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="esg_focus" value="減碳/淨零意識"><span>減碳／淨零意識</span></label>
-            <label><input type="checkbox" name="esg_focus" value="循環經濟/資源再生"><span>循環經濟／資源再生</span></label>
-            <label><input type="checkbox" name="esg_focus" value="生物多樣性/環境保育"><span>生物多樣性／環境保育</span></label>
-            <label><input type="checkbox" name="esg_focus" value="員工參與/員工福利"><span>員工參與／員工福利</span></label>
-            <label><input type="checkbox" name="esg_focus" value="SDGs教育/永續學習"><span>SDGs 教育／永續學習</span></label>
-            <label><input type="checkbox" name="esg_focus" value="社會共融/公益關懷"><span>社會共融／公益關懷</span></label>
-            <label><input type="checkbox" name="esg_focus" value="品牌永續溝通/對外形象"><span>品牌永續溝通／對外形象</span></label>
-            <label><input type="checkbox" name="esg_focus" value="其他"><span>其他</span></label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>其他關注方向或補充說明</label>
-          <input type="text" name="esg_focus_note" class="form-input" placeholder="例如：海洋教育、地方創生、女性培力、親子共學、品牌主題整合、內部共識建立等">
-        </div>
-
-        <div class="form-group">
-          <label>這次活動最希望達成的效果是什麼？</label>
-          <input type="text" name="activity_goal" class="form-input" placeholder="例如：提升員工參與感、搭配永續月主題、作為家庭日活動、建立品牌 ESG 形象、結合 CSR 溝通等">
-        </div>
-
-        <div class="form-group">
-          <label>本次活動是否需要成果整理／ESG 影響力報告？</label>
-          <select name="esg_report" class="form-input">
-            <option value="" disabled selected>請選擇</option>
-            <option value="不需要">不需要</option>
-            <option value="想先了解">想先了解</option>
-            <option value="需要基本成果整理">需要基本成果整理</option>
-            <option value="需要ESG影響力報告">需要 ESG 影響力報告</option>
-          </select>
-          <p style="font-size:11px; color:#aaa; margin-top:6px; line-height:1.6;">可依需求提供活動成果摘要、照片整理、材料永續意義說明與延伸 ESG 溝通素材。</p>
-        </div>
-
-        <div class="form-group">
-          <label>若需要成果整理／報告，請補充用途（可複選）</label>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="report_usage" value="內部結案"><span>內部結案</span></label>
-            <label><input type="checkbox" name="report_usage" value="CSR/ESG資料整理"><span>CSR / ESG 資料整理</span></label>
-            <label><input type="checkbox" name="report_usage" value="社群貼文素材"><span>社群貼文素材</span></label>
-            <label><input type="checkbox" name="report_usage" value="年報/永續報告書引用"><span>年報／永續報告書引用</span></label>
-            <label><input type="checkbox" name="report_usage" value="其他"><span>其他</span></label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>您是透過什麼管道認識我們的？</label>
-          <select name="source" class="form-input">
-            <option value="" disabled selected>請選擇</option>
-            <option value="Google搜尋">Google 搜尋</option>
-            <option value="Instagram">Instagram</option>
-            <option value="LINE">LINE</option>
-            <option value="朋友推薦">朋友 / 同事推薦</option>
-            <option value="曾參加活動">曾參加過我們的活動</option>
-            <option value="媒體報導">媒體報導</option>
-            <option value="其他">其他</option>
-          </select>
-        </div>
-
-        <button type="submit" class="form-submit" id="submitBtn">填寫完成，讓我們為您推薦合適方案</button>
-        <p class="form-footer">提交後 2 個工作天內，我們會以 Email 或電話與您聯繫</p>
-      </form>
-
-      <!-- 成功畫面 -->
-      <div class="form-success" id="formSuccess">
-        <div class="check-icon">&#10003;</div>
-        <h3>需求已收到！</h3>
-        <p>
-          感謝您的填寫，我們的團隊會在<strong> 2 個工作天內</strong>與您聯繫，<br>
-          為您提供初步建議與適合的活動方案。
-        </p>
-        <button onclick="closeFormModal()" style="margin-top:20px; padding:10px 28px; background:var(--moss); color:#fff; border:none; border-radius:8px; font-size:14px; cursor:pointer;">關閉</button>
-      </div>
+    <div class="form-wrapper" style="padding:48px 32px;text-align:center;">
+      <div style="font-family:'Noto Sans TC',sans-serif;font-size:11px;letter-spacing:3px;color:#9a9388;margin-bottom:18px;">WISHLITE｜ESG 活動詢問</div>
+      <h3 style="font-family:'Noto Serif TC',serif;font-size:24px;font-weight:700;color:var(--ink);margin:0 0 22px;line-height:1.55;letter-spacing:1px;">想討論 ESG 活動？</h3>
+      <p style="font-size:15.5px;line-height:2;color:#7a7468;margin:0 auto 32px;max-width:480px;">請直接透過 LINE 告訴我們你的需求。<br>你可以簡單提供活動類型、人數、時間或預算，<br>我們會協助你判斷適合的活動方式。</p>
+      <a href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:16px 44px;background:#06C755;color:#fff;font-size:16px;font-weight:600;border-radius:32px;text-decoration:none;letter-spacing:0.5px;box-shadow:0 4px 14px -4px rgba(6,199,85,.45);transition:opacity .2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">加入 LINE 詢問</a>
+      <p style="margin:18px 0 0;font-size:13px;color:#9a9388;letter-spacing:1px;">@728zvmqz</p>
     </div>
   </div>
 </div>
@@ -2026,8 +1857,9 @@ window.addEventListener('load', function() {
   }
 });
 
-// ── Form submission → n8n Webhook ──
-document.getElementById('esgForm').addEventListener('submit', async function(e) {
+// ── Form submission → n8n Webhook ──（2026-05-30 表單已替換為 LINE 聯繫卡，handler 加 null guard 以免 script 中斷）
+const _esgFormEl = document.getElementById('esgForm');
+if (_esgFormEl) _esgFormEl.addEventListener('submit', async function(e) {
   e.preventDefault();
 
   const btn = document.getElementById('submitBtn');
