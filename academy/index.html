@@ -220,6 +220,12 @@
   .compare tbody th{font-weight:500;color:var(--brown-deep);width:130px;background:var(--warm-white);}
   .compare td{color:var(--brown);line-height:1.8;}
   .compare .price{font-family:var(--serif);font-size:20px;color:var(--olive-deep);font-weight:600;}
+  .trust-wall-img{
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 5%,#000 95%,transparent 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0%,#000 6%,#000 94%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 5%,#000 95%,transparent 100%);
+    mask-composite:intersect;
+  }
   .logo-wall{
     display:block;width:100%;max-width:920px;margin:40px auto 0;
     opacity:.6;filter:saturate(.82) contrast(.92);
@@ -490,7 +496,7 @@
     <span class="kicker">Real Impact</span>
     <div class="gold-line"></div>
     <h2 class="section-title">我們走過的真實場域</h2>
-    <img class="section-img" style="max-width:780px;margin-top:36px;" src="assets/trust-wall.png" alt="真實累積：300+ 場永續／ESG／手作體驗活動、10,000+ 位參與過 Wishlite 永續手作體驗、60+ 家上市櫃／企業合作單位、133 噸資源再生與材料循環成果、364,420 kg CO₂e 累積減碳效益、2,315 小時婦女二度就業支持時數。" loading="lazy">
+    <img class="section-img trust-wall-img" style="max-width:780px;margin-top:36px;" src="assets/trust-wall.png" alt="真實累積：300+ 場永續／ESG／手作體驗活動、10,000+ 位參與過 Wishlite 永續手作體驗、60+ 家上市櫃／企業合作單位、133 噸資源再生與材料循環成果、364,420 kg CO₂e 累積減碳效益、2,315 小時婦女二度就業支持時數。" loading="lazy">
     <img class="logo-wall" src="assets/logo-wall.jpg" alt="Wishlite 合作品牌與企業 logo 牆：證交所、緯穎、微星、玉山銀行、第一銀行、KPMG、Deloitte、IKEA、Microsoft、Meta、Google、LINE、BMW、Kia、AVEDA、誠品、台積電 TSMC、桃園市政府、行政院環保署、各大專院校等。" loading="lazy">
     <p class="section-lead center" style="margin:24px auto 0;">這些事，已經慢慢發生在<br>100+ 品牌、校園與企業場域裡。<br><br>它正在一場一場真實的活動裡，被更多人看見、參與、記住。</p>
   </div>
