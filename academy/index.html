@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永續行動設計師共創計畫｜Wishlite Sustainable Academy</title>
+<meta name="description" content="把喜歡的事，變成能帶來改變的能力。永續材料 × 體驗設計 × 真實場域 × 多元合作。一套來自真實企業、校園與品牌場域驗證過的永續體驗設計能力。">
+<meta property="og:title" content="永續行動設計師共創計畫｜Wishlite Sustainable Academy">
+<meta property="og:description" content="把喜歡的事，變成能帶來改變的能力。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF7F0;          /* 偏白 light ivory */
+    --warm-white:#F5F2EA;     /* warm white 紙感 */
+    --cream-deep:#EFE9DC;
+    --brown-deep:#3D2F1F;     /* 深暖棕 標題 */
+    --brown:#5C4830;          /* 暖棕 內文 */
+    --brown-soft:rgba(92,72,48,.72);
+    --olive:#8A9A6B;          /* 霧橄欖綠 點綴 */
+    --olive-deep:#6E7E52;
+    --gold:#B89B6E;           /* 金線印章 */
+    --line:rgba(92,72,48,.14);
+    --serif:'Noto Serif TC',serif;
+    --sans:'Noto Sans TC',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);color:var(--brown);
+    background:var(--ivory);line-height:1.9;
+    font-weight:300;letter-spacing:.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px;}
+  h1,h2,h3{font-family:var(--serif);color:var(--brown-deep);font-weight:500;letter-spacing:.04em;}
+  section{padding:54px 0;}
+  .kicker{
+    font-family:var(--serif);font-size:13px;letter-spacing:.32em;
+    color:var(--olive-deep);text-transform:uppercase;margin-bottom:20px;display:block;
+  }
+  .section-title{font-size:clamp(26px,3.4vw,34px);line-height:1.5;margin-bottom:18px;}
+  .section-lead{font-size:17px;color:var(--brown-soft);max-width:680px;line-height:1.95;}
+  .gold-line{width:40px;height:1px;background:var(--gold);margin:0 0 28px;}
+  .center{text-align:center;}
+  .center .gold-line{margin:0 auto 28px;}
+  .center .section-lead{margin:0 auto;}
+  .section-img{width:100%;max-width:960px;margin:44px auto 0;display:block;border-radius:6px;}
+  .section-img--mid{max-width:1000px;margin:24px auto 0;}
+  .section-fullbleed{display:block;width:100%;height:auto;margin:0;}
+  .bridge-copy{
+    font-family:var(--serif);text-align:center;color:var(--brown-deep);
+    font-size:clamp(18px,2.4vw,23px);line-height:2;letter-spacing:.05em;
+    max-width:720px;margin:0 auto;font-weight:400;
+  }
+  .bridge-lead{
+    text-align:center;color:var(--brown-soft);font-size:clamp(15px,1.9vw,17px);
+    letter-spacing:.06em;margin:22px auto 0;
+  }
+  /* 滿版設計稿：衝出 1000px 容器，讓燒字圖更大更清楚 */
+  .section-img--bleed{
+    max-width:1120px;width:88vw;border-radius:8px;
+    margin:0 auto 0;position:relative;left:50%;transform:translateX(-50%);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;min-height:88vh;display:flex;align-items:center;
+    background:url('assets/hero-academy.png') right center/cover no-repeat,var(--warm-white);
+    padding:0;overflow:hidden;
+  }
+  /* 左側可讀性漸層：亮底 → 透明，讓文字區永遠乾淨，材料退到右邊 */
+  .hero::before{
+    content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(100deg,var(--ivory) 0%,var(--ivory) 34%,rgba(250,247,240,.72) 50%,rgba(250,247,240,0) 70%);
+  }
+  .hero-inner{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 28px;width:100%;}
+  .hero-text{max-width:500px;}
+  .hero-brand{
+    font-family:var(--serif);font-size:14px;letter-spacing:.28em;
+    color:var(--brown-soft);text-transform:uppercase;line-height:1.7;margin-bottom:22px;
+  }
+  .hero-title{
+    font-size:clamp(38px,5.6vw,58px);font-weight:600;color:var(--brown-deep);
+    letter-spacing:.06em;line-height:1.2;margin-bottom:14px;
+  }
+  .hero-en{
+    font-family:var(--serif);font-size:clamp(15px,2vw,20px);color:var(--brown);
+    letter-spacing:.12em;margin-bottom:26px;
+  }
+  .hero-en .dot{color:var(--olive-deep);margin:0 10px;}
+  .hero-formula{
+    font-size:clamp(15px,1.9vw,18px);color:var(--brown);letter-spacing:.08em;
+    font-weight:400;margin-bottom:40px;
+  }
+  .hero-tagline{
+    font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);color:var(--brown-deep);
+    letter-spacing:.06em;font-weight:500;position:relative;padding-top:24px;
+  }
+  .hero-tagline::before{content:'';position:absolute;top:0;left:0;width:64px;height:1px;background:var(--gold);}
+
+  /* ===== WHY BAND（照片視覺帶）===== */
+  .why-band{
+    position:relative;overflow:hidden;padding:120px 0;
+    background:url('assets/section-why.png') right center/cover no-repeat,var(--warm-white);
+  }
+  .why-band::before{
+    content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(100deg,var(--ivory) 0%,var(--ivory) 36%,rgba(250,247,240,.72) 52%,rgba(250,247,240,0) 72%);
+  }
+  .why-band .wrap{position:relative;z-index:1;}
+  .why-text{max-width:480px;}
+  .why-text .section-lead{margin:0;}
+  @media(max-width:680px){
+    .why-band{padding:300px 0 60px;background-position:top center;background-size:150% auto;}
+    .why-band::after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(250,247,240,0) 30%,var(--ivory) 60%);}
+    .why-text{max-width:100%;}
+  }
+
+  /* ===== WARM-UP ===== */
+  .warmup{background:var(--warm-white);text-align:center;}
+  .warmup p{
+    font-family:var(--serif);font-size:clamp(19px,2.6vw,26px);color:var(--brown-deep);
+    line-height:2;letter-spacing:.05em;font-weight:400;max-width:720px;margin:0 auto;
+  }
+  .warmup p + p{margin-top:36px;color:var(--brown-soft);font-size:clamp(16px,2vw,19px);}
+  .warmup-cta{margin-top:44px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-brown,.btn-outline{
+    display:inline-block;font-family:var(--serif);font-size:16px;letter-spacing:.06em;
+    padding:15px 36px;border-radius:40px;text-decoration:none;transition:.25s;font-weight:500;
+  }
+  .btn-brown{background:var(--brown);color:#fff;}
+  .btn-brown:hover{background:var(--brown-deep);transform:translateY(-2px);}
+  .btn-outline{background:transparent;color:var(--brown);border:1px solid rgba(92,72,48,.35);}
+  .btn-outline:hover{background:rgba(92,72,48,.06);border-color:var(--brown);}
+  .warmup-friends{
+    display:block;width:100%;max-width:780px;margin:0 auto -40px;
+    opacity:.72;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 24%,#000 82%,transparent 100%);
+            mask-image:linear-gradient(180deg,transparent 0%,#000 24%,#000 82%,transparent 100%);
+  }
+
+  /* ===== generic grid ===== */
+  .grid{display:grid;gap:24px;margin-top:48px;}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-4{grid-template-columns:repeat(4,1fr);}
+  .card{
+    background:var(--warm-white);border:1px solid var(--line);border-radius:4px;
+    padding:32px 28px;
+  }
+  .card h3{font-size:19px;margin-bottom:10px;letter-spacing:.05em;}
+  .card p{font-size:15px;color:var(--brown-soft);line-height:1.85;}
+
+  /* fit / not-need columns */
+  .fit-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;}
+  .fit-col h3{font-size:18px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .fit-col ul{list-style:none;}
+  .fit-col li{font-size:16px;color:var(--brown);padding:9px 0 9px 24px;position:relative;}
+  .fit-col li::before{content:'';position:absolute;left:0;top:18px;width:8px;height:8px;border-radius:50%;background:var(--olive);}
+  .fit-col.notneed li::before{background:var(--line);}
+  .fit-col.notneed li{color:var(--brown-soft);}
+
+  /* six-layer map */
+  .layers{counter-reset:layer;margin-top:48px;display:grid;gap:14px;}
+  .layer{
+    display:flex;align-items:baseline;gap:22px;background:var(--warm-white);
+    border:1px solid var(--line);border-radius:4px;padding:22px 28px;
+  }
+  .layer-num{font-family:var(--serif);font-size:22px;color:var(--olive-deep);font-weight:600;min-width:42px;}
+  .layer-body h3{font-size:18px;margin-bottom:3px;}
+  .layer-body p{font-size:14px;color:var(--brown-soft);}
+
+  /* materials */
+  .mat-intro{font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);color:var(--brown-deep);text-align:center;max-width:680px;margin:0 auto 8px;line-height:1.9;}
+  .materials .card h3{color:var(--olive-deep);}
+  .materials .tag{font-size:12px;letter-spacing:.18em;color:var(--gold);display:block;margin-bottom:6px;font-family:var(--serif);}
+  .mat-card{text-align:center;}
+  .mat-card img{width:100%;aspect-ratio:1/0.82;object-fit:contain;display:block;margin:0 auto 14px;mix-blend-mode:multiply;}
+  .mat-card .tag{font-size:12px;letter-spacing:.18em;color:var(--gold);display:block;margin-bottom:4px;font-family:var(--serif);}
+  .mat-card h3{font-family:var(--serif);font-size:20px;color:var(--brown-deep);margin-bottom:8px;letter-spacing:.06em;}
+  .mat-card p{font-size:14px;color:var(--brown-soft);line-height:1.8;}
+
+  /* course system */
+  .course-sys{background:var(--warm-white);}
+  .course-block{margin-top:14px;background:var(--ivory);border:1px solid var(--line);border-radius:4px;padding:24px 28px;}
+  .course-block h3{font-size:16px;color:var(--olive-deep);margin-bottom:8px;letter-spacing:.06em;}
+  .course-block p{font-size:14.5px;color:var(--brown);line-height:1.8;}
+  .course-col .col-head{
+    font-family:var(--serif);font-size:20px;color:var(--brown-deep);
+    padding-bottom:14px;margin-bottom:8px;border-bottom:1px solid var(--line);letter-spacing:.06em;
+  }
+  .course-col .col-head span{
+    display:block;font-family:var(--sans);font-size:13px;color:var(--brown-soft);
+    font-weight:300;letter-spacing:.02em;margin-top:8px;line-height:1.7;
+  }
+  .course-row{display:flex;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);}
+  .course-row:last-child{border-bottom:none;}
+  .course-row img{width:84px;height:64px;object-fit:cover;border-radius:5px;flex-shrink:0;mix-blend-mode:multiply;}
+  .course-row h4{font-family:var(--serif);font-size:16px;color:var(--brown-deep);margin-bottom:5px;letter-spacing:.04em;font-weight:600;}
+  .course-row p{font-size:13.5px;color:var(--brown-soft);line-height:1.7;}
+  @media(max-width:680px){.course-row img{width:70px;height:54px;}}
+  .works-closing{text-align:center;margin-top:72px;}
+  .works-title{font-size:clamp(24px,3vw,30px);color:var(--brown-deep);margin:10px 0 18px;letter-spacing:.05em;}
+  .works-quote{font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);color:var(--brown);line-height:1.9;letter-spacing:.04em;margin-bottom:26px;}
+
+  /* future self */
+  .future{background:#FBF7F4;text-align:center;}
+  .future .big{font-family:var(--serif);font-size:clamp(22px,3.2vw,32px);color:var(--brown-deep);line-height:1.7;max-width:740px;margin:0 auto 40px;font-weight:500;letter-spacing:.04em;}
+  .future-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:8px;}
+  .future-item h3{font-size:16px;margin-bottom:8px;}
+  .future-item p{font-size:13.5px;color:var(--brown-soft);line-height:1.75;}
+
+  /* compare table */
+  .compare{margin-top:48px;border:1px solid var(--line);border-radius:6px;overflow:hidden;}
+  .compare table{width:100%;border-collapse:collapse;}
+  .compare th,.compare td{padding:18px 20px;text-align:left;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top;}
+  .compare thead th{background:var(--cream-deep);font-family:var(--serif);font-size:17px;color:var(--brown-deep);font-weight:600;}
+  .compare tbody th{font-weight:500;color:var(--brown-deep);width:130px;background:var(--warm-white);}
+  .compare td{color:var(--brown);line-height:1.8;}
+  .compare .price{font-family:var(--serif);font-size:20px;color:var(--olive-deep);font-weight:600;}
+  .logo-wall{
+    display:block;width:100%;max-width:920px;margin:40px auto 0;
+    opacity:.6;filter:saturate(.82) contrast(.92);
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 5%,#000 95%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 8%,#000 92%,transparent 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0%,#000 5%,#000 95%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 8%,#000 92%,transparent 100%);
+    mask-composite:intersect;
+  }
+  .class-price{text-align:center;margin:16px auto 0;font-family:var(--serif);font-size:16px;color:var(--brown);letter-spacing:.04em;}
+  .class-price b{color:var(--olive-deep);font-size:19px;font-weight:600;}
+  .compare tr:last-child th,.compare tr:last-child td{border-bottom:none;}
+
+  /* faq */
+  .faq{background:var(--warm-white);}
+  .faq-item{border-bottom:1px solid var(--line);padding:26px 0;}
+  .faq-q{font-family:var(--serif);font-size:18px;color:var(--brown-deep);margin-bottom:10px;font-weight:500;}
+  .faq-q::before{content:'Q';color:var(--olive-deep);margin-right:12px;font-weight:600;}
+  .faq-a{font-size:15.5px;color:var(--brown-soft);line-height:1.9;padding-left:30px;}
+
+  /* CTA */
+  .cta{background:var(--brown-deep);color:var(--ivory);text-align:center;padding:110px 0;}
+  .cta .kicker{color:var(--olive);}
+  .cta h2{color:var(--ivory);font-size:clamp(26px,3.4vw,36px);line-height:1.55;margin-bottom:20px;}
+  .cta p{color:rgba(250,247,240,.78);font-size:16.5px;max-width:560px;margin:0 auto 44px;line-height:1.95;}
+  .btn{
+    display:inline-block;background:var(--olive);color:#fff;font-family:var(--serif);
+    font-size:18px;letter-spacing:.08em;padding:18px 52px;border-radius:40px;
+    text-decoration:none;transition:.25s;font-weight:500;
+  }
+  .btn:hover{background:#7d8d5e;transform:translateY(-2px);}
+  .btn-line{background:#06C755;}
+  .btn-line:hover{background:#05b34c;}
+  .cta-entry{padding:0;background:var(--ivory);}
+  .cta-entry-wrap{position:relative;max-width:1120px;margin:0 auto;line-height:0;}
+  .cta-entry-wrap img{display:block;width:100%;height:auto;}
+  .cta-hotspot{position:absolute;display:block;cursor:pointer;border-radius:8px;}
+  .cta-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .btn-ghost{background:transparent;border:1px solid rgba(250,247,240,.5);color:var(--ivory);}
+  .btn-ghost:hover{background:rgba(250,247,240,.1);border-color:var(--ivory);}
+  .cta-sub{margin-top:22px;font-size:14px;color:rgba(250,247,240,.6);letter-spacing:.04em;}
+
+  /* footer 地平線山景 */
+  .horizon-footer{position:relative;background:linear-gradient(180deg,var(--warm-white) 0%,var(--ivory) 100%);padding:80px 0 36px;overflow:hidden;}
+  .horizon-photo{position:absolute;left:0;right:0;bottom:0;width:100%;height:260px;background-image:url('https://wishlite.github.io/wishlite-proposals/assets/hero-mountain-warm.jpg');background-size:cover;background-position:center bottom;background-repeat:no-repeat;opacity:.32;pointer-events:none;z-index:0;}
+  .horizon-photo::before{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:linear-gradient(180deg,var(--warm-white) 0%,rgba(250,247,240,.78) 14%,rgba(250,247,240,.38) 32%,rgba(250,247,240,.10) 58%,transparent 88%);pointer-events:none;}
+  .horizon-footer .footer-inner{position:relative;text-align:center;color:var(--brown-soft);font-size:12px;padding-top:60px;opacity:.85;}
+  .horizon-footer .footer-brand-h{font-family:var(--serif);font-weight:600;color:var(--brown-deep);font-size:15px;margin-bottom:6px;letter-spacing:.1em;opacity:.92;}
+
+  /* responsive */
+  @media(max-width:860px){
+    .grid-3,.grid-4,.future-grid{grid-template-columns:repeat(2,1fr);}
+    .fit-cols{grid-template-columns:1fr;gap:32px;}
+  }
+  @media(max-width:680px){
+    section{padding:42px 0;}
+    .wrap{padding:0 14px;}
+    .hero{min-height:auto;padding:340px 0 56px;background-position:top center;background-size:140% auto;align-items:flex-start;}
+    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,247,240,0) 30%,var(--ivory) 62%);z-index:0;}
+    .hero-inner{position:relative;z-index:1;}
+    .grid-2,.grid-3,.grid-4,.future-grid{grid-template-columns:1fr;}
+    /* 手機：設計稿圖盡量放大（98vw）讓燒字看得清楚 */
+    .section-img--bleed{width:98vw;max-width:98vw;}
+    .section-img--mid,.logo-wall{max-width:98vw;}
+    .compare{overflow-x:auto;}
+    .compare table{min-width:520px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 1. HERO ===== -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-brand">WISHLITE SUSTAINABLE ACADEMY</p>
+      <h1 class="hero-title">永續行動設計師</h1>
+      <p class="hero-en">Sustainable Action Designer<span class="dot">·</span>共創計畫</p>
+      <p class="hero-formula">永續材料 × 體驗設計 × 真實場域 × 多元合作</p>
+      <p class="hero-tagline">把喜歡的事，變成能帶來改變的能力。</p>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 2. 暖身（舊頁溫柔語氣）===== -->
+<section class="warmup">
+  <div class="wrap">
+    <p>每個人，都有自己靠近永續的方式。</p>
+    <div class="warmup-cta">
+      <a href="#paths" class="btn-brown">看看這條路怎麼開始</a>
+      <a href="https://wishlite.github.io/wishlite-esg/esg-explore-more.html" class="btn-outline" target="_blank" rel="noopener">延伸看看更多永續行動</a>
+    </div>
+  </div>
+  <img class="warmup-friends" src="assets/six-friends-scene.png" alt="永續六友手牽手走在永續之路上" loading="lazy">
+</section>
+
+<!-- ===== 2.5 永續，不再只是環保（P5）===== -->
+<section style="padding:36px 0 0;">
+  <img class="section-fullbleed" src="assets/section-sustainability-today.png" alt="永續，不再只是環保。當越來越多企業、校園、品牌與公共場域開始談永續，真正重要的已經不只是知道更多資訊，而是如何讓人願意理解、願意參與，並在日常裡慢慢產生改變。永續有四個面向：體驗（讓永續被感受）、行動（讓理念走進日常）、合作（讓更多人一起參與）、影響（讓改變持續發生）。永續，不只是一個名詞，而是一種能被設計、被參與、也能慢慢擴散的行動方式。" loading="lazy">
+</section>
+
+<!-- ===== 3. 為什麼現在（視覺 band）===== -->
+<section class="why-band">
+  <div class="wrap">
+    <div class="why-text">
+      <span class="kicker">Why Now</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">永續浪潮下的新選擇</h2>
+      <p class="section-lead">
+        當永續走進企業、校園、品牌與日常生活，
+        世界需要的不只是懂永續的人，
+        而是能把理念轉化成體驗、行動與參與的人。<br><br>
+        永續行動設計師，是把材料、故事、體驗與真實需求，
+        設計成一場讓更多人願意理解、願意參與的永續行動者。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. 你可能是／而你不需要 + 適合誰（合併）===== -->
+<section class="warmup" style="background:#FAF6F2;">
+  <div class="wrap">
+    <img class="section-img section-img--bleed" style="margin-top:0;" src="assets/section-fit.png" alt="你可能是：手作老師、花藝工作者、香氣／療癒品牌主理人、教育工作者、活動企劃與品牌工作者、想發展第二專長的人、想讓專業更有意義的人。而你不需要：很懂永續、有教學經驗、是設計背景、有自己的品牌、環境科系畢業、一開始就知道答案。" loading="lazy">
+    <div class="center" style="margin-top:24px;">
+      <h2 class="section-title" style="font-size:clamp(23px,2.9vw,29px);margin-bottom:0;">其實，你已經有了開始的能力</h2>
+    </div>
+    <img class="section-img section-img--bleed" style="margin-top:20px;mix-blend-mode:multiply;" src="assets/section-whofor.png" alt="這條路適合誰：手作愛好者（把喜歡的手作，轉化成有質感、被理解的體驗）、教育工作者（把永續變成可以被教、被體驗的內容，讓課程更有溫度與意義）、品牌主理人（讓商品與服務有故事、理念與情感）、上班族斜槓者（發展工作之外，慢慢累積屬於自己的第二專長）。" loading="lazy">
+
+    <p class="bridge-copy" style="margin:48px auto 0;">
+      有些人從創作開始，有些人從陪伴開始，<br>
+      也有些人，從整理與協作開始。
+    </p>
+    <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/personas-3types.png" alt="三種走進永續的方式：創作者型（從喜歡材料的人，到能把感受說出來的人）、引導者型（從喜歡陪伴的人，到能把參與帶進現場的人）、協作者型（從擅長整理與支援的人，到讓任務穩穩完成的人）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 5. 真實世界需要這樣的設計者 ===== -->
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Real Fields</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title" style="font-size:clamp(17px,2.1vw,21px);line-height:1.9;font-weight:500;max-width:720px;margin:0 auto;">永續不再只是理念。<br>它正在走進企業活動、校園教育、品牌合作，<br>以及更多公共與文化場域，<br>成為一場可以被理解、被參與、被記住的體驗。</h2>
+    </div>
+    <img class="section-img section-img--mid" src="assets/section-fields.png" alt="真實世界四種場域：企業與組織（企業活動、ESG 體驗、品牌日、家庭日）、校園與教育（學生體驗課、環境教育、手作教學）、品牌與空間（品牌店面、永續選品、體驗活動）、地方與文化場域（市集、地方創生、文化活動、社區參與）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 5.5 不只是做完一個作品（一般手作 vs 好的永續體驗）===== -->
+<section style="background:var(--warm-white);">
+  <div class="wrap center">
+    <span class="kicker">Real Needs · Real Change</span>
+    <h2 class="section-title" style="line-height:1.7;font-size:clamp(20px,2.5vw,26px);">企業與校園需要的，<br>其實不只是：「做完一個作品」。</h2>
+    <img class="section-img" style="margin-top:24px;max-width:960px;" src="assets/good-experience.png" alt="一般的永續手作 vs 一場好的永續體驗：一般手作＝把材料放在桌上、照著步驟完成作品、帶走一個實體物件；一場好的永續體驗＝說出材料的故事與生命週期、設計一段讓人願意主動參與的流程、帶走對永續的全新理解與關係。" loading="lazy">
+    <p class="section-lead center" style="margin:8px auto 0;">
+      一場好的永續體驗，不只是完成一件作品，<br>
+      而是讓參與的人真的理解材料從哪裡來，<br>
+      也找到自己可以參與的方式。<br><br>
+      這，就是永續行動設計師在做的事——<br>
+      讓更多人，用自己的方式靠近永續。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 6. 六步驟學習旅程 ===== -->
+<section style="background:#FAF7F0;">
+  <div class="wrap">
+    <p class="bridge-copy" style="margin-bottom:8px;">
+      要成為這樣的設計者，<br>
+      會經過一段，一步步累積的學習旅程。
+    </p>
+    <img class="section-img section-img--bleed" style="margin-top:32px;" src="assets/section-journey.png" alt="六步驟學習旅程：01 建立基礎（從材料、永續概念與設計思維開始，建立屬於你的基礎能力）、02 動手實作（透過手作、體驗與練習，讓知識轉化為真正的技能）、03 理解應用（理解如何應用在不同場域，看見更多可能性）、04 真實場域練習（走進企業、校園、品牌與社區，在真實情境中累積經驗）、05 成果整合（整理作品、設計流程與成果，累積屬於你的專業資產）、06 展開行動（帶著能力、自信與資源，展開屬於你的永續行動旅程）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 6.5 六層核心能力地圖 ===== -->
+<section style="padding-top:48px;">
+  <div class="wrap">
+    <p class="bridge-copy">
+      走過這六個階段，<br>
+      你會慢慢長出六層核心能力。
+    </p>
+    <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/section-sixlayer.png" alt="六層核心能力地圖：01 理解世界（從永續與材料重新認識世界的運作）、02 讓永續被理解（把理念轉成一般人聽得懂的語言與故事）、03 把想法做出來（用材料與手作把概念變成可被體驗的作品）、04 走進真實場域（走進企業、校園、品牌的真實需求）、05 讓成果被看見（成果整理與交付力，讓努力被看見）、06 整理自己的路（把走過的歷程整理成自己的方向）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 6.7 四大篇章·八核心單元（課程結構）===== -->
+<section style="padding-top:36px;">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Four Chapters · Eight Core Modules</span>
+      <h2 class="section-title">四大篇章·八個核心單元</h2>
+      <p class="section-lead">從材料開始，一步一步學會把永續設計成能走進真實世界的體驗。</p>
+    </div>
+    <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/section-chapters.png" alt="四大篇章·八個核心單元：① 通識篇（Ch1 重新認識永續材料、Ch2 材料敘事與體驗設計）、② 手作篇（Ch3 永續工作坊設計）、③ 商業篇（Ch4 永續體驗場域應用、Ch5 永續產品與品牌合作、Ch6 場域合作與方案設計）、④ 個案篇（Ch7 真實任務流程拆解、Ch8 整理你的永續行動系統能力）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 8. 25 堂代表課程系統 ===== -->
+<section class="course-sys">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Two Sustainable Experience Systems</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">25 堂代表課程系統與方案設計</h2>
+      <p class="section-lead">Wishlite 的永續體驗，涵蓋材料循環、感官體驗與生活設計。<br>不只從材料出發，也從人的感受出發。</p>
+    </div>
+    <img class="section-img section-img--bleed" style="margin-top:32px;" src="assets/courses-body.png" alt="外在永續：咖啡渣再生創作（感受生活）、牡蠣殼再生創作（創造作品）、再生紙纖創作（培養生命）、循環生活創作（設計生活）；內在永續：A 手工皂與五感療癒、B 香氣與情緒覺察、C 蠟燭與生活儀式、D 植物與自然感官。從外在永續到內在永續，建立能被真實場域應用的體驗設計能力。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 8.3 四大材料宇宙（25 堂與作品牆之間）===== -->
+<section class="materials">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Four Material Worlds</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">四大材料宇宙</h2>
+    </div>
+    <p class="mat-intro">有些材料，原本只是被忽略的剩餘。<br>但在 Wishlite 的世界裡，它們重新長出了感受、作品、生命與設計。</p>
+    <div class="grid grid-4">
+      <div class="mat-card"><img src="assets/mat-coffee.png" alt="咖啡渣" loading="lazy"><span class="tag">感受生活</span><h3>咖啡渣</h3><p>把日常裡留下的痕跡，變成可以被感受的生活與美感。</p></div>
+      <div class="mat-card"><img src="assets/mat-oyster.png" alt="牡蠣殼" loading="lazy"><span class="tag">創造作品</span><h3>牡蠣殼</h3><p>從海邊遺留的殼，創造出具有質感、香氣與辨識度的作品。</p></div>
+      <div class="mat-card"><img src="assets/mat-paper.png" alt="再生紙纖" loading="lazy"><span class="tag">培養生命</span><h3>再生紙纖</h3><p>讓一張紙不只被再利用，也重新長成希望與生命。</p></div>
+      <div class="mat-card"><img src="assets/mat-plastic.png" alt="回收塑膠" loading="lazy"><span class="tag">設計生活</span><h3>回收塑膠</h3><p>回收不只是回收，而是重新設計生活的方式。</p></div>
+    </div>
+    <p class="section-lead center" style="margin-top:44px;">它們不只是材料，而是重新理解世界的入口。</p>
+  </div>
+</section>
+
+<!-- ===== 8.5 作品牆 Works That Become Experiences ===== -->
+<section class="course-sys">
+  <div class="wrap">
+    <div class="works-closing" style="margin-top:0;">
+      <span class="kicker">Works That Become Experiences</span>
+      <h3 class="works-title">你會做出的，不只是作品</h3>
+      <p class="works-quote">每一件作品，都可能成為一堂課、一份禮物，一場活動……<br>或一次改變他人的開始。</p>
+      <p class="section-lead center" style="margin:0 auto;">從材料循環到感官覺察，Wishlite Academy 帶你接觸 25 堂代表課程，<br>學會把作品整理成可以被教、被溝通、被應用的體驗內容。</p>
+    </div>
+    <img class="section-img" style="max-width:1040px;margin-top:40px;" src="assets/works-wall.png" alt="代表作品牆：材料循環應用作品（咖啡渣手工皂、月亮／星球擴香石、植物標本香氛磁石、地球種子球）、生活設計作品（馬賽克拼貼創作、熱壓塑形生活設計、地球生命樹、植感多肉盆栽）、五感療癒作品（地球寶石皂、地球百變皂、沐浴鹽畫、情緒調香）、光香氣與自然（沙畫蠟燭、蜜眼粉光蠟燭、椰殼香氛蠟燭、七彩水晶樹）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 9. 學完會成為什麼樣的人 ===== -->
+<section class="future">
+  <div class="wrap">
+    <p class="big" style="margin:0 auto 40px;font-size:clamp(16px,1.9vw,18.5px);font-weight:400;color:var(--brown-soft);line-height:1.95;">這堂課不是要你重新開始。<br>而是陪你慢慢累積一套新的能力，<br>讓你在需要的時候，多一份選擇，多一份底氣。</p>
+    <span class="kicker">Another Option</span>
+    <h2 class="section-title" style="margin-bottom:14px;">讓自己多一種選擇</h2>
+    <p class="section-lead center" style="margin:0 auto;">也許你曾經想過：如果未來有變化，我還有沒有別的可能？<br>我們無法預測未來，但可以提前培養，讓自己安心的能力。</p>
+    <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/section-future.png" alt="讓自己多一種選擇：為自己培養第二專長（延伸原有能力，長出更多新的可能）、增加收入的可能（從協作與體驗開始，慢慢累積需要的專業）、不需立刻轉職（保留探索的彈性，不用急著做重大決定）、慢慢找到方向（你的影響力，會在行動裡慢慢出現）。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 9.6 真實夥伴故事 ===== -->
+<section>
+  <div class="wrap center">
+    <span class="kicker">Real Partners</span>
+    <div class="gold-line"></div>
+    <h2 class="section-title">她們，也是這樣慢慢開始的</h2>
+    <p class="section-lead center" style="margin:0 auto;">不是一開始就很確定，也不是一開始就很厲害。<br>只是願意把心裡在乎的事，一步一步整理成可以行動的樣子。</p>
+    <img class="section-img section-img--bleed" style="margin-top:32px;max-width:920px;" src="assets/real-partners.png" alt="真實夥伴故事：Mico 從種子講師到專案執行夥伴／婷婷 從手作愛好者到永續參與者／阿寶 把生命經驗轉成陪伴他人的力量。" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 9.7 信任牆（P16）===== -->
+<section style="background:var(--warm-white);">
+  <div class="wrap center">
+    <span class="kicker">Real Impact</span>
+    <div class="gold-line"></div>
+    <h2 class="section-title">我們走過的真實場域</h2>
+    <img class="section-img" style="max-width:780px;margin-top:36px;" src="assets/trust-wall.png" alt="真實累積：300+ 場永續／ESG／手作體驗活動、10,000+ 位參與過 Wishlite 永續手作體驗、60+ 家上市櫃／企業合作單位、133 噸資源再生與材料循環成果、364,420 kg CO₂e 累積減碳效益、2,315 小時婦女二度就業支持時數。" loading="lazy">
+    <img class="logo-wall" src="assets/logo-wall.jpg" alt="Wishlite 合作品牌與企業 logo 牆：證交所、緯穎、微星、玉山銀行、第一銀行、KPMG、Deloitte、IKEA、Microsoft、Meta、Google、LINE、BMW、Kia、AVEDA、誠品、台積電 TSMC、桃園市政府、行政院環保署、各大專院校等。" loading="lazy">
+    <p class="section-lead center" style="margin:24px auto 0;">這些事，已經慢慢發生在<br>100+ 品牌、校園與企業場域裡。<br><br>它正在一場一場真實的活動裡，被更多人看見、參與、記住。</p>
+  </div>
+</section>
+
+<!-- ===== 10. 通識班 vs 專班 比較表 ===== -->
+<section id="paths">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Two Paths</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">歡迎你加入我們的行列</h2>
+      <p class="section-lead">你可以選擇適合自己的節奏開始。<br>先用一堂課認識永續材料的世界，或走進完整的能力養成。</p>
+    </div>
+    <img class="section-img section-img--bleed" style="margin-top:40px;" src="assets/class-tongshi.png" alt="永續材料通識班｜入門路徑·實體材料體驗·半日課程。給想先認識永續材料與體驗設計的人，一堂打開入口的基礎課。課程重點：認識四大永續材料與應用可能、理解永續概念與循環設計思維、完成一件代表性永續作品、練習說出材料故事與體驗引導、建立永續生活與工作視角。" loading="lazy">
+
+    <img class="section-img section-img--bleed" style="margin-top:52px;" src="assets/class-zhuanban.png" alt="永續行動設計師專班｜完整培訓·線上預習·實體密集·真實場域觀摩·成果陪跑。給想系統學習、發展第二專長，並把手作、教育、品牌或活動經驗，轉化為永續體驗設計能力的人。課程重點：材料應用×體驗設計×場域應用整合、25 堂代表課程系統與方案設計、外在永續×內在永續課程轉譯、企業校園品牌與公共場域應用、真實場域觀摩與提案表達、個人永續行動方案整理與成果檢核。" loading="lazy">
+
+    <p class="section-lead center" style="margin-top:36px;font-size:14.5px;">
+      課程含真實場域觀摩，依學習成果與場域狀況，提供後續合作發展建議。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 11. FAQ ===== -->
+<section class="faq">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Common Questions</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">常見問題</h2>
+    </div>
+    <div style="max-width:760px;margin:48px auto 0;">
+      <div class="faq-item"><p class="faq-q">沒有永續背景，可以嗎？</p><p class="faq-a">可以。我們會從材料、生活與真實場域開始，陪你一步一步建立理解。</p></div>
+      <div class="faq-item"><p class="faq-q">工作很忙，跟得上嗎？</p><p class="faq-a">可以。課程採循序漸進，讓你能依照自己的節奏慢慢學、慢慢累積。</p></div>
+      <div class="faq-item"><p class="faq-q">還不知道方向，可以嗎？</p><p class="faq-a">可以。很多方向，不是一開始就想清楚，而是在行動裡慢慢長出來的。</p></div>
+      <div class="faq-item"><p class="faq-q">沒有教學經驗，可以嗎？</p><p class="faq-a">可以。我們會陪你慢慢建立教學設計與帶領能力。</p></div>
+      <div class="faq-item"><p class="faq-q">一定要接案或創業嗎？</p><p class="faq-a">不用。我們會陪你慢慢建立設計與帶領能力，你可以自己決定要走多遠。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 12. CTA ===== -->
+<section class="cta-entry">
+  <div class="cta-entry-wrap">
+    <img src="assets/cta-entry.png" alt="永續，是從願意靠近的那一刻開始。如果你心裡也有一點點想法，想把喜歡、材料、故事與人連在一起，也許這一次，就是你開始的地方。進一步了解／洽詢企業合作。填寫後，Wishlite 專人會與你聯繫。" loading="lazy">
+    <a class="cta-hotspot" style="left:21.5%;top:69%;width:28%;height:10%;" href="https://wishlite.github.io/wishlite-esg/eco-star-info-session.html" target="_blank" rel="noopener" aria-label="進一步了解"></a>
+    <a class="cta-hotspot" style="left:51%;top:69%;width:26%;height:10%;" href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener" aria-label="洽詢企業合作"></a>
+  </div>
+</section>
+
+<!-- ===== FOOTER 地平線 ===== -->
+<footer class="horizon-footer">
+  <div class="horizon-photo" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-brand-h">Wishlite ｜ 韻手作永續</div>
+    <p>讓永續成為日常的選擇</p>
+  </div>
+</footer>
+
+</body>
+</html>
