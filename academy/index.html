@@ -282,9 +282,10 @@
   @media(max-width:680px){
     section{padding:42px 0;}
     .wrap{padding:0 14px;}
-    .hero{min-height:auto;padding:340px 0 56px;background-position:top center;background-size:140% auto;align-items:flex-start;}
-    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,247,240,0) 30%,var(--ivory) 62%);z-index:0;}
+    .hero{min-height:78vh;padding:56px 0;background-position:right center;background-size:cover;align-items:center;}
     .hero-inner{position:relative;z-index:1;}
+    .hero-text{max-width:66%;}
+    .hero-formula{margin-bottom:28px;}
     .grid-2,.grid-3,.grid-4,.future-grid{grid-template-columns:1fr;}
     /* 手機：設計稿圖盡量放大（98vw）讓燒字看得清楚 */
     .section-img--bleed{width:98vw;max-width:98vw;}
@@ -440,9 +441,9 @@
 <section id="paths">
   <div class="wrap">
     <div class="center">
-      <span class="kicker">Two Paths</span>
+      <span class="kicker">Choose Your Path</span>
       <div class="gold-line"></div>
-      <h2 class="section-title">歡迎你加入我們的行列</h2>
+      <h2 class="section-title">選擇適合你的學習路徑</h2>
       <p class="section-lead">你可以選擇適合自己的節奏開始。<br>先用一堂課認識永續材料的世界，或走進完整的能力養成。</p>
     </div>
     <img class="section-img section-img--bleed" style="margin-top:40px;" src="assets/class-tongshi.png" alt="永續材料通識班｜入門路徑·實體材料體驗·半日課程。給想先認識永續材料與體驗設計的人，一堂打開入口的基礎課。課程重點：認識四大永續材料與應用可能、理解永續概念與循環設計思維、完成一件代表性永續作品、練習說出材料故事與體驗引導、建立永續生活與工作視角。" loading="lazy">
@@ -459,6 +460,7 @@
 <section class="materials">
   <div class="wrap">
     <div class="center">
+      <p class="section-lead" style="margin:0 auto 28px;max-width:760px;">不論你選擇從通識班開始，或進入完整專班，<br>Wishlite Academy 都會從真實材料出發，<br>帶你重新理解永續如何被看見、被感受、被設計。</p>
       <span class="kicker">Four Material Worlds</span>
       <div class="gold-line"></div>
       <h2 class="section-title">四大材料宇宙</h2>
@@ -539,12 +541,24 @@
   </div>
 </section>
 
+<!-- ===== 11.5 P21 招生型錄頁（CTA 上方加強）===== -->
+<section class="cta-entry">
+  <div class="cta-entry-wrap">
+    <img src="assets/p21-cta-top.png" alt="永續行動設計師招生型錄 P21。" loading="lazy">
+  </div>
+</section>
+
 <!-- ===== 12. CTA ===== -->
 <section class="cta-entry">
   <div class="cta-entry-wrap">
-    <img src="assets/cta-entry.png" alt="永續，是從願意靠近的那一刻開始。如果你心裡也有一點點想法，想把喜歡、材料、故事與人連在一起，也許這一次，就是你開始的地方。進一步了解／洽詢企業合作。填寫後，Wishlite 專人會與你聯繫。" loading="lazy">
-    <a class="cta-hotspot" style="left:21.5%;top:69%;width:28%;height:10%;" href="https://wishlite.github.io/wishlite-esg/eco-star-info-session.html" target="_blank" rel="noopener" aria-label="進一步了解"></a>
-    <a class="cta-hotspot" style="left:51%;top:69%;width:26%;height:10%;" href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener" aria-label="洽詢企業合作"></a>
+    <img src="assets/cta-final.png" alt="永續，是從願意靠近的那一刻開始。如果你心裡也有一點點想法，這一次，也許就是你開始的地方。加入官方 LINE 預約諮詢。" loading="lazy">
+    <!-- 真 QR 疊在圖右下白框上 -->
+    <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" aria-label="加入官方 LINE 預約諮詢"
+       style="position:absolute;left:65.5%;top:42%;width:28%;height:auto;display:block;">
+      <img src="assets/qr-403kginl-brown.png" alt="加入 Wishlite 永續行動學院官方 LINE QR Code" style="display:block;width:100%;height:auto;border-radius:6px;" loading="lazy">
+    </a>
+    <!-- 棕色按鈕熱點 -->
+    <a class="cta-hotspot" style="left:11%;top:63.5%;width:34%;height:9.5%;" href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" aria-label="加入官方 LINE 預約諮詢"></a>
   </div>
 </section>
 
