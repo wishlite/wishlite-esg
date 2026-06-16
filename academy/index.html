@@ -75,6 +75,8 @@
     content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
     background:linear-gradient(100deg,var(--ivory) 0%,var(--ivory) 34%,rgba(250,247,240,.72) 50%,rgba(250,247,240,0) 70%);
   }
+  .site-logo{position:absolute;top:24px;left:32px;z-index:6;display:block;line-height:0;}
+  .site-logo img{height:52px;width:auto;display:block;}
   .hero-inner{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 28px;width:100%;}
   .hero-text{max-width:500px;}
   .hero-brand{
@@ -282,7 +284,9 @@
   @media(max-width:680px){
     section{padding:42px 0;}
     .wrap{padding:0 14px;}
-    .hero{min-height:78vh;padding:56px 0;background-position:right center;background-size:cover;align-items:center;}
+    .hero{min-height:78vh;padding:84px 0 56px;background-position:right center;background-size:cover;align-items:center;}
+    .site-logo{top:16px;left:18px;}
+    .site-logo img{height:38px;}
     .hero-inner{position:relative;z-index:1;}
     .hero-text{max-width:66%;}
     .hero-formula{margin-bottom:28px;}
@@ -301,6 +305,9 @@
 
 <!-- ===== 1. HERO ===== -->
 <header class="hero">
+  <a class="site-logo" href="https://wishlite.com.tw/" target="_blank" rel="noopener" aria-label="回到 Wishlite 官方網站">
+    <img src="assets/wishlite-logo.png" alt="Wishlite 韻手作永續">
+  </a>
   <div class="hero-inner">
     <div class="hero-text">
       <p class="hero-brand">WISHLITE SUSTAINABLE ACADEMY</p>
