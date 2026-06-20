@@ -63,6 +63,10 @@
     max-width:1120px;width:88vw;border-radius:8px;
     margin:0 auto 0;position:relative;left:50%;transform:translateX(-50%);
   }
+  /* 養成地圖：加遮罩 + 降飽和，與其他淡色區塊一致 */
+  .learnmap-wrap{position:relative;overflow:hidden;}
+  .learnmap-wrap img{display:block;width:100%;margin:0;border-radius:8px;filter:saturate(0.88) brightness(1.02);}
+  .learnmap-wrap::after{content:"";position:absolute;inset:0;border-radius:8px;background:var(--warm-white);opacity:.16;pointer-events:none;}
 
   /* ===== HERO ===== */
   .hero{
@@ -413,7 +417,9 @@
 <!-- ===== 6.3 學習地圖總覽（分段式·高層次路徑）===== -->
 <section class="learnmap" style="background:var(--warm-white);">
   <div class="wrap">
-    <img class="section-img section-img--bleed" src="assets/section-learnmap.png" alt="永續行動設計師養成地圖｜一張看懂：從學習架構到真實應用。1 四大篇章（通識→體驗設計→商業→個案，建立完整學習架構）、2 八大核心單元（從材料理解、敘事設計到方案設計與案例拆解）、3 八大課程家族（外在永續×內在永續，看懂材料如何變成體驗）、4 25 堂代表方案庫（實際作品與課程案例，延伸成完整永續體驗方案庫）、5 六層核心能力（理解→設計→整合→應用→表達→影響）、6 真實場域（把學習帶進企業、校園、品牌與社區）。" loading="lazy">
+    <div class="section-img--bleed learnmap-wrap">
+      <img src="assets/section-learnmap.png" alt="永續行動設計師養成地圖｜一張看懂：從學習架構到真實應用。1 四大篇章（通識→體驗設計→商業→個案，建立完整學習架構）、2 八大核心單元（從材料理解、敘事設計到方案設計與案例拆解）、3 八大課程家族（外在永續×內在永續，看懂材料如何變成體驗）、4 25 堂代表方案庫（實際作品與課程案例，延伸成完整永續體驗方案庫）、5 六層核心能力（理解→設計→整合→應用→表達→影響）、6 真實場域（把學習帶進企業、校園、品牌與社區）。" loading="lazy">
+    </div>
   </div>
 </section>
 
