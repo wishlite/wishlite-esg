@@ -63,9 +63,10 @@
     max-width:1120px;width:88vw;border-radius:8px;
     margin:0 auto 0;position:relative;left:50%;transform:translateX(-50%);
   }
-  /* 養成地圖：已去背(透明底)，僅降飽和與其他淡色區塊一致 */
-  .learnmap-wrap{position:relative;}
-  .learnmap-wrap img{display:block;width:100%;margin:0;filter:saturate(0.9);}
+  /* 養成地圖：有背景版 + 遮罩 + 降飽和，與其他淡色區塊一致 */
+  .learnmap-wrap{position:relative;overflow:hidden;}
+  .learnmap-wrap img{display:block;width:100%;margin:0;border-radius:8px;filter:saturate(0.88) brightness(1.02);}
+  .learnmap-wrap::after{content:"";position:absolute;inset:0;border-radius:8px;background:var(--warm-white);opacity:.16;pointer-events:none;}
 
   /* ===== HERO ===== */
   .hero{
