@@ -49,6 +49,18 @@
   .section-img{width:100%;max-width:960px;margin:44px auto 0;display:block;border-radius:6px;}
   .section-img--mid{max-width:1000px;margin:24px auto 0;}
   .section-fullbleed{display:block;width:100%;height:auto;margin:0;}
+  .fade-edges{
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 7%,#000 93%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 7%,#000 93%,transparent 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0%,#000 7%,#000 93%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 7%,#000 93%,transparent 100%);
+    mask-composite:intersect;
+  }
+  .fade-edges-keepbottom{
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 3%,#000 97%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 2%,#000 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0%,#000 3%,#000 97%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 2%,#000 100%);
+    mask-composite:intersect;
+  }
   .bridge-copy{
     font-family:var(--serif);text-align:center;color:var(--brown-deep);
     font-size:clamp(18px,2.4vw,23px);line-height:2;letter-spacing:.05em;
@@ -64,9 +76,14 @@
     margin:0 auto 0;position:relative;left:50%;transform:translateX(-50%);
   }
   /* 養成地圖：有背景版 + 遮罩 + 降飽和，與其他淡色區塊一致 */
-  .learnmap-wrap{position:relative;overflow:hidden;}
+  .learnmap-wrap{position:relative;overflow:hidden;aspect-ratio:887/1478;}
+  .learnmap-wrap img{position:absolute;top:0;left:0;}
   .learnmap-wrap img{display:block;width:100%;margin:0;border-radius:8px;filter:saturate(0.88) brightness(1.02);}
-  .learnmap-wrap::after{content:"";position:absolute;inset:0;border-radius:8px;background:var(--warm-white);opacity:.16;pointer-events:none;}
+  .learnmap-wrap::after{content:"";position:absolute;inset:0;border-radius:8px;background:var(--warm-white);opacity:.16;pointer-events:none;
+    -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 3%,#000 97%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 2%,#000 100%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(to right,transparent 0%,#000 3%,#000 97%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 2%,#000 100%);
+    mask-composite:intersect;}
 
   /* ===== HERO ===== */
   .hero{
@@ -366,7 +383,7 @@
           <span class="cta-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></span>
           <span class="cta-main">報名免費公開課</span>
         </a>
-        <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">先看完整型錄 →</a>
+        <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">索取完整型錄 →</a>
       </div>
     </div>
   </div>
@@ -380,7 +397,6 @@
   </div>
   <div class="wrap">
     <div class="warmup-cta" style="margin-top:60px;">
-      <a href="#paths" class="btn-brown">看看這條路怎麼開始</a>
       <a href="https://wishlite.github.io/wishlite-esg/esg-explore-more.html" class="btn-outline" target="_blank" rel="noopener">延伸看看更多永續行動</a>
     </div>
   </div>
@@ -403,7 +419,7 @@
 
 <!-- ===== 2.5 永續，不再只是環保（P5）===== -->
 <section style="padding:36px 0 0;">
-  <img class="section-fullbleed" style="max-width:760px;margin:0 auto;padding:0 20px;box-sizing:border-box;" src="assets/section-sustainability-today.png" alt="永續，不再只是環保。當越來越多企業、校園、品牌與公共場域開始談永續，真正重要的已經不只是知道更多資訊，而是如何讓人願意理解、願意參與，並在日常裡慢慢產生改變。永續有四個面向：體驗（讓永續被感受）、行動（讓理念走進日常）、合作（讓更多人一起參與）、影響（讓改變持續發生）。永續，不只是一個名詞，而是一種能被設計、被參與、也能慢慢擴散的行動方式。" loading="lazy">
+  <img class="section-fullbleed fade-edges" style="max-width:1120px;margin:0 auto;padding:0 20px;box-sizing:border-box;" src="assets/section-sustainability-today.png" alt="永續，不再只是環保。當越來越多企業、校園、品牌與公共場域開始談永續，真正重要的已經不只是知道更多資訊，而是如何讓人願意理解、願意參與，並在日常裡慢慢產生改變。永續有四個面向：體驗（讓永續被感受）、行動（讓理念走進日常）、合作（讓更多人一起參與）、影響（讓改變持續發生）。永續，不只是一個名詞，而是一種能被設計、被參與、也能慢慢擴散的行動方式。" loading="lazy">
 </section>
 
 <!-- ===== 3. 為什麼現在（視覺 band）===== -->
@@ -442,8 +458,11 @@
       <p style="font-size:13px;color:var(--brown);letter-spacing:.04em;line-height:1.7;margin:10px 0 0;">四大篇章 · 八大核心單元 · 八大課程家族 · 25 堂方案 · 六層能力 · 真實場域</p>
     </div>
     <div class="section-img--bleed learnmap-wrap">
-      <img src="assets/section-learnmap.png" alt="永續行動設計師養成地圖｜一張看懂：從學習架構到真實應用。1 四大篇章（通識→體驗設計→商業→個案，建立完整學習架構）、2 八大核心單元（從材料理解、敘事設計到方案設計與案例拆解）、3 八大課程家族（外在永續×內在永續，看懂材料如何變成體驗）、4 25 堂代表方案庫（實際作品與課程案例，延伸成完整永續體驗方案庫）、5 六層核心能力（理解→設計→整合→應用→表達→影響）、6 真實場域（把學習帶進企業、校園、品牌與社區）。" loading="lazy">
-      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" aria-label="開啟你的行動旅程：報名免費公開課" style="position:absolute;left:29%;top:96.6%;width:42%;height:3.2%;z-index:3;border-radius:30px;"></a>
+      <img class="fade-edges-keepbottom" src="assets/section-learnmap.png" alt="永續行動設計師養成地圖｜一張看懂：從學習架構到真實應用。1 四大篇章（通識→體驗設計→商業→個案，建立完整學習架構）、2 八大核心單元（從材料理解、敘事設計到方案設計與案例拆解）、3 八大課程家族（外在永續×內在永續，看懂材料如何變成體驗）、4 25 堂代表方案庫（實際作品與課程案例，延伸成完整永續體驗方案庫）、5 六層核心能力（理解→設計→整合→應用→表達→影響）、6 真實場域（把學習帶進企業、校園、品牌與社區）。" loading="lazy">
+    </div>
+    <div class="center" style="margin-top:6px;">
+      <p class="section-lead center" style="margin:0 auto 22px;font-family:var(--serif);font-size:clamp(19px,2.5vw,24px);font-weight:600;color:var(--brown-deep);letter-spacing:.06em;">從材料理解到真實場域，<br>一步步建立你的永續影響力。</p>
+      <a href="https://line.me/R/ti/p/@403kginl" class="btn-brown" target="_blank" rel="noopener">開啟你的行動旅程 · 報名免費公開課</a>
     </div>
   </div>
 </section>
@@ -452,8 +471,9 @@
 <section style="background:#FAF7F0;">
   <div class="wrap">
     <p class="bridge-copy" style="margin-bottom:8px;">
-      一位專業的永續行動設計師，<br>
-      是在一步步學習、實作與場域經驗中累積出來的。
+      永續行動設計師不是一開始就準備好，<br>
+      而是在學習、實作與真實場域中，<br>
+      一步一步長出來的。
     </p>
     <img class="section-img section-img--bleed" style="margin-top:32px;" src="assets/section-journey-8week.png" alt="8 週完整培訓旅程：1 線上預習、2 實體 Day1（外在永續）、3 實體 Day2（內在永續）、4 25 堂方案庫、5 場域案例①、6 方案設計、7 場域案例②、8 成果整理。真實場域觀摩／案例拆解將依當期專案安排。" loading="lazy">
     <p class="section-lead center" style="margin:30px auto 0;max-width:720px;">這 8 週，會帶你從理解材料、設計體驗，<br>一步步完成自己的第一份永續體驗方案。</p>
@@ -471,10 +491,8 @@
 <section class="future">
   <div class="wrap">
     <p class="big" style="margin:0 auto 40px;font-size:clamp(16px,1.9vw,18.5px);font-weight:400;color:var(--brown-soft);line-height:1.95;">有些能力，<br>不是為了立刻改變現在，<br>而是為了未來需要的時候，<br>你已經準備好了。</p>
-    <span class="kicker">Another Option</span>
     <h2 class="section-title" style="margin-bottom:14px;">讓自己多一種選擇</h2>
     <p class="section-lead center" style="margin:0 auto;">不是要你立刻轉職，<br>而是提前累積一項能被真實場域需要的第二能力。</p>
-    <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/section-future.png" alt="讓自己多一種選擇：為自己培養第二專長（延伸原有能力，長出更多新的可能）、增加收入的可能（從協作與體驗開始，慢慢累積需要的專業）、不需立刻轉職（保留探索的彈性，不用急著做重大決定）、慢慢找到方向（你的影響力，會在行動裡慢慢出現）。" loading="lazy">
   </div>
 </section>
 
@@ -491,26 +509,10 @@
 
     <img class="section-img section-img--bleed" style="margin-top:52px;" src="assets/class-zhuanban.png" alt="永續行動設計師專班｜完整培訓·線上預習·實體密集·真實場域觀摩·成果陪跑。給想系統學習、發展第二專長，並把手作、教育、品牌或活動經驗，轉化為永續體驗設計能力的人。課程重點：材料應用×體驗設計×場域應用整合、25 堂代表課程系統與方案設計、外在永續×內在永續課程轉譯、企業校園品牌與公共場域應用、真實場域觀摩與提案表達、個人永續行動方案整理與成果檢核。" loading="lazy">
 
-    <p class="section-lead center" style="margin-top:36px;font-size:14.5px;">
-      課程含真實場域觀摩，依學習成果與場域狀況，提供後續合作發展建議。
-    </p>
-    <div class="warmup-cta" style="margin-top:30px;">
-      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="btn-brown">我想先了解通識班</a>
-      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="btn-outline">我想了解完整培訓</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 7.5 索取完整型錄 CTA（中段名單收集）===== -->
-<section style="background:var(--cream-deep);">
-  <div class="wrap center">
-    <span class="kicker">Get the Full Catalog</span>
-    <div class="gold-line" style="margin:0 auto 28px;"></div>
-    <h2 class="section-title">加入 LINE 領取完整型錄</h2>
-    <p class="bridge-copy" style="font-size:clamp(17px,2.1vw,21px);margin-bottom:18px;">你將看到：</p>
+    <p class="bridge-copy" style="font-size:clamp(16px,2vw,20px);margin:40px auto 14px;">加入 LINE 領取完整型錄，你將看到：</p>
     <p class="section-lead center" style="margin:0 auto;font-size:16.5px;line-height:2.1;">✓ 八大課程家族<br>✓ 25 堂代表方案<br>✓ 真實案例拆解<br>✓ 完整學習路徑<br>✓ 未來發展方向</p>
-    <div class="warmup-cta" style="margin-top:32px;">
-      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="btn-brown">加入 LINE 領取完整型錄</a>
+    <div class="warmup-cta" style="margin-top:26px;">
+      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="btn-brown">索取完整型錄 →</a>
     </div>
   </div>
 </section>
