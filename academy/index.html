@@ -139,6 +139,20 @@
   .btn-brown:hover{background:var(--brown-deep);transform:translateY(-2px);}
   .btn-outline{background:transparent;color:var(--brown);border:1px solid rgba(92,72,48,.35);}
   .btn-outline:hover{background:rgba(92,72,48,.06);border-color:var(--brown);}
+  /* Hero 卡片式 CTA — 清爽綠色系（深橄欖綠主 / 淺色次，細線 icon）*/
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;max-width:560px;}
+  .cta-card{display:flex;align-items:center;gap:14px;padding:15px 22px;border-radius:14px;text-decoration:none;flex:1 1 232px;min-width:222px;transition:transform .22s,box-shadow .22s,background .22s,border-color .22s;}
+  .cta-card:hover{transform:translateY(-2px);}
+  .cta-ico{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cta-txt{display:flex;flex-direction:column;gap:3px;}
+  .cta-main{font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:.04em;}
+  .cta-sub{font-size:11.5px;letter-spacing:.02em;opacity:.82;font-weight:300;}
+  .cta-card--primary{background:#5E6B45;color:#fff;box-shadow:0 6px 16px rgba(94,107,69,.2);}
+  .cta-card--primary:hover{background:#515d3b;box-shadow:0 10px 24px rgba(94,107,69,.3);}
+  .cta-card--primary .cta-ico{background:rgba(255,255,255,.16);color:#fff;}
+  .cta-card--ghost{background:rgba(255,255,255,.7);color:var(--brown-deep);border:1px solid rgba(110,126,82,.42);}
+  .cta-card--ghost:hover{background:#fff;border-color:var(--olive-deep);}
+  .cta-card--ghost .cta-ico{background:rgba(110,126,82,.14);color:var(--olive-deep);}
   .warmup-friends{
     display:block;width:100%;max-width:780px;margin:0 auto -40px;
     opacity:.72;
@@ -349,11 +363,23 @@
       <div style="margin-top:22px;padding:15px 18px;background:rgba(255,255,255,.5);border-left:3px solid var(--olive-deep);border-radius:6px;max-width:460px;">
         <p style="font-family:var(--serif);font-size:clamp(15.5px,2vw,18px);color:var(--brown-deep);font-weight:500;line-height:1.6;margin:0;">一堂課，看懂企業、校園與品牌都在找什麼樣的永續體驗</p>
       </div>
-      <div style="margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-        <p style="font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--olive-deep);margin:0;">🌿 免費線上公開課 ｜ 60 分鐘</p>
-        <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="btn-brown">報名免費公開課</a>
+      <p style="font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--olive-deep);margin:14px 0 0;">🌿 免費線上公開課 ｜ 60 分鐘</p>
+      <div class="cta-row">
+        <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="cta-card cta-card--primary">
+          <span class="cta-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></span>
+          <span class="cta-txt">
+            <span class="cta-main">報名免費公開課</span>
+            <span class="cta-sub">立即預約 · 鎖定你的學習名額</span>
+          </span>
+        </a>
+        <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-card cta-card--ghost">
+          <span class="cta-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5h8l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 20V4a1.5 1.5 0 0 1 0-1.5z"/><path d="M14 2.5V7h4M8.5 13h7M8.5 16.5h5"/></svg></span>
+          <span class="cta-txt">
+            <span class="cta-main">先看完整型錄</span>
+            <span class="cta-sub">課程內容 × 學習路徑 × 真實案例</span>
+          </span>
+        </a>
       </div>
-      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;font-size:14px;color:var(--brown-deep);border-bottom:1.5px solid var(--olive-deep);padding-bottom:2px;text-decoration:none;letter-spacing:.03em;">先看完整型錄 →</a>
     </div>
   </div>
 </header>
