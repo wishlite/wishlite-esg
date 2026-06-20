@@ -139,6 +139,18 @@
   .btn-brown:hover{background:var(--brown-deep);transform:translateY(-2px);}
   .btn-outline{background:transparent;color:var(--brown);border:1px solid rgba(92,72,48,.35);}
   .btn-outline:hover{background:rgba(92,72,48,.06);border-color:var(--brown);}
+  /* Hero 卡片式 CTA（icon + 主字 + 小字，主深次淺）*/
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;max-width:540px;}
+  .cta-card{display:flex;align-items:center;gap:12px;padding:13px 18px;border-radius:10px;text-decoration:none;flex:1 1 220px;min-width:215px;transition:transform .2s,box-shadow .2s,background .2s;}
+  .cta-card:hover{transform:translateY(-2px);}
+  .cta-ico{font-size:21px;line-height:1;flex-shrink:0;}
+  .cta-txt{display:flex;flex-direction:column;gap:2px;}
+  .cta-main{font-family:var(--serif);font-size:15.5px;font-weight:600;letter-spacing:.03em;}
+  .cta-sub{font-size:11px;letter-spacing:.02em;opacity:.82;}
+  .cta-card--primary{background:var(--brown);color:#fff;}
+  .cta-card--primary:hover{background:var(--brown-deep);box-shadow:0 8px 20px rgba(60,45,30,.22);}
+  .cta-card--ghost{background:rgba(255,255,255,.6);color:var(--brown-deep);border:1px solid rgba(92,72,48,.26);}
+  .cta-card--ghost:hover{background:rgba(255,255,255,.88);border-color:var(--brown);}
   .warmup-friends{
     display:block;width:100%;max-width:780px;margin:0 auto -40px;
     opacity:.72;
@@ -349,11 +361,23 @@
       <div style="margin-top:22px;padding:15px 18px;background:rgba(255,255,255,.5);border-left:3px solid var(--olive-deep);border-radius:6px;max-width:460px;">
         <p style="font-family:var(--serif);font-size:clamp(15.5px,2vw,18px);color:var(--brown-deep);font-weight:500;line-height:1.6;margin:0;">一堂課，看懂企業、校園與品牌都在找什麼樣的永續體驗</p>
       </div>
-      <div style="margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-        <p style="font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--olive-deep);margin:0;">🌿 免費線上公開課 ｜ 60 分鐘</p>
-        <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="btn-brown">報名免費公開課</a>
+      <p style="font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--olive-deep);margin:14px 0 0;">🌿 免費線上公開課 ｜ 60 分鐘</p>
+      <div class="cta-row">
+        <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="cta-card cta-card--primary">
+          <span class="cta-ico">📅</span>
+          <span class="cta-txt">
+            <span class="cta-main">報名免費公開課</span>
+            <span class="cta-sub">立即預約 · 鎖定你的學習名額</span>
+          </span>
+        </a>
+        <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-card cta-card--ghost">
+          <span class="cta-ico">📄</span>
+          <span class="cta-txt">
+            <span class="cta-main">先看完整型錄</span>
+            <span class="cta-sub">課程內容 × 學習路徑 × 真實案例</span>
+          </span>
+        </a>
       </div>
-      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;font-size:14px;color:var(--brown-deep);border-bottom:1.5px solid var(--olive-deep);padding-bottom:2px;text-decoration:none;letter-spacing:.03em;">先看完整型錄 →</a>
     </div>
   </div>
 </header>
