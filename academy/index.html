@@ -320,12 +320,21 @@
   .class-price b{color:var(--olive-deep);font-size:19px;font-weight:600;}
   .compare tr:last-child th,.compare tr:last-child td{border-bottom:none;}
 
-  /* faq */
+  /* faq（收合式 details/summary）*/
   .faq{background:var(--warm-white);}
-  .faq-item{border-bottom:1px solid var(--line);padding:26px 0;}
-  .faq-q{font-family:var(--serif);font-size:18px;color:var(--brown-deep);margin-bottom:10px;font-weight:500;}
-  .faq-q::before{content:'Q';color:var(--olive-deep);margin-right:12px;font-weight:600;}
-  .faq-a{font-size:15.5px;color:var(--brown-soft);line-height:1.9;padding-left:30px;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{font-family:var(--serif);font-size:18px;color:var(--brown-deep);font-weight:500;
+    list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;
+    display:flex;align-items:flex-start;transition:color .2s;}
+  .faq-q::-webkit-details-marker{display:none;}
+  .faq-q::before{content:'Q';color:var(--olive-deep);margin-right:12px;font-weight:600;flex:0 0 auto;}
+  .faq-q::after{content:'';position:absolute;right:4px;top:28px;width:11px;height:11px;
+    border-right:1.6px solid var(--olive-deep);border-bottom:1.6px solid var(--olive-deep);
+    transform:rotate(45deg);transition:transform .25s;}
+  .faq-item[open] .faq-q{color:var(--olive-deep);}
+  .faq-item[open] .faq-q::after{transform:rotate(-135deg);top:32px;}
+  .faq-q:hover{color:var(--olive-deep);}
+  .faq-a{font-size:15.5px;color:var(--brown-soft);line-height:1.9;padding:0 30px 24px 30px;}
 
   /* CTA */
   .cta{background:var(--brown-deep);color:var(--ivory);text-align:center;padding:110px 0;}
@@ -573,13 +582,13 @@
       <h2 class="section-title">常見問題</h2>
     </div>
     <div style="max-width:760px;margin:48px auto 0;">
-      <div class="faq-item"><p class="faq-q">沒有永續背景，可以嗎？</p><p class="faq-a">可以。我們會從材料、生活案例與真實場域開始，建立你對永續材料與體驗設計的基本理解。</p></div>
-      <div class="faq-item"><p class="faq-q">工作很忙，跟得上嗎？</p><p class="faq-a">可以。課程採循序漸進安排，搭配線上預習、實體課程與階段整理，讓你能依照自己的節奏完成學習。</p></div>
-      <div class="faq-item"><p class="faq-q">還不知道方向，可以嗎？</p><p class="faq-a">可以。<br><br>有些人後來成為課程帶領者，有些人進入企業合作現場，也有人把這套能力運用在原本的工作裡。<br><br>方向通常不是先決定，而是在實作與真實場域中慢慢看見。</p></div>
-      <div class="faq-item"><p class="faq-q">沒有教學經驗，可以嗎？</p><p class="faq-a">可以。課程會帶你練習活動流程、引導語、材料故事與方案設計，逐步建立帶領一場永續體驗的能力。</p></div>
-      <div class="faq-item"><p class="faq-q">通識班和專班怎麼選？</p><p class="faq-a">如果你還不確定自己是否喜歡這個領域，可以先從通識班開始。<br><br>如果你看完這個頁面後，已經對永續體驗設計產生興趣，希望未來有機會把它運用在工作、課程、活動或第二專長上，其實可以直接進入 8 週完整培訓。<br><br>因為通識班解決的是「認識」；專班培養的則是「真正做出來」的能力。</p></div>
-      <div class="faq-item"><p class="faq-q">學完之後一定能接案嗎？</p><p class="faq-a">我們不保證接案或收入。<br><br>但你會擁有一套能被真實場域使用的能力，並有機會參與 Wishlite 的協作與合作機會。<br><br>能不能發展成第二專長，仍取決於你的投入與實踐。</p></div>
-      <div class="faq-item"><p class="faq-q">一定要接案或創業嗎？</p><p class="faq-a">不用。這套能力可以應用在原本的工作、品牌、教學、活動企劃或生活實踐裡；接案與合作，只是其中一種可能。</p></div>
+      <details class="faq-item"><summary class="faq-q">沒有永續背景，可以嗎？</summary><p class="faq-a">可以。我們會從材料、生活案例與真實場域開始，建立你對永續材料與體驗設計的基本理解。</p></details>
+      <details class="faq-item"><summary class="faq-q">工作很忙，跟得上嗎？</summary><p class="faq-a">可以。課程採循序漸進安排，搭配線上預習、實體課程與階段整理，讓你能依照自己的節奏完成學習。</p></details>
+      <details class="faq-item"><summary class="faq-q">還不知道方向，可以嗎？</summary><p class="faq-a">可以。<br><br>有些人後來成為課程帶領者，有些人進入企業合作現場，也有人把這套能力運用在原本的工作裡。<br><br>方向通常不是先決定，而是在實作與真實場域中慢慢看見。</p></details>
+      <details class="faq-item"><summary class="faq-q">沒有教學經驗，可以嗎？</summary><p class="faq-a">可以。課程會帶你練習活動流程、引導語、材料故事與方案設計，逐步建立帶領一場永續體驗的能力。</p></details>
+      <details class="faq-item"><summary class="faq-q">通識班和專班怎麼選？</summary><p class="faq-a">如果你還不確定自己是否喜歡這個領域，可以先從通識班開始。<br><br>如果你看完這個頁面後，已經對永續體驗設計產生興趣，希望未來有機會把它運用在工作、課程、活動或第二專長上，其實可以直接進入 8 週完整培訓。<br><br>因為通識班解決的是「認識」；專班培養的則是「真正做出來」的能力。</p></details>
+      <details class="faq-item"><summary class="faq-q">學完之後一定能接案嗎？</summary><p class="faq-a">我們不保證接案或收入。<br><br>但你會擁有一套能被真實場域使用的能力，並有機會參與 Wishlite 的協作與合作機會。<br><br>能不能發展成第二專長，仍取決於你的投入與實踐。</p></details>
+      <details class="faq-item"><summary class="faq-q">一定要接案或創業嗎？</summary><p class="faq-a">不用。這套能力可以應用在原本的工作、品牌、教學、活動企劃或生活實踐裡；接案與合作，只是其中一種可能。</p></details>
     </div>
   </div>
 </section>
