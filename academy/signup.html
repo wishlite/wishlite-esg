@@ -120,8 +120,11 @@
   .after li:last-child::before{display:none}
   .after li::after{content:"";position:absolute;left:2px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--olive);border:3px solid var(--paper)}
 
-  footer{text-align:center;padding:46px 0 60px;color:var(--brown-soft);font-size:13px;border-top:1px solid var(--line);margin-top:30px}
-  footer .horizon{font-family:var(--serif);color:var(--brown);font-size:15px;margin-bottom:6px;letter-spacing:.05em}
+  .horizon-footer{position:relative;background:linear-gradient(180deg,var(--warm-white) 0%,var(--ivory) 100%);padding:80px 0 36px;overflow:hidden;margin-top:40px;}
+  .horizon-photo{position:absolute;left:0;right:0;bottom:0;width:100%;height:260px;background-image:url('https://wishlite.github.io/wishlite-proposals/assets/hero-mountain-warm.jpg');background-size:cover;background-position:center bottom;background-repeat:no-repeat;opacity:.32;pointer-events:none;z-index:0;}
+  .horizon-photo::before{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:linear-gradient(180deg,var(--warm-white) 0%,rgba(250,247,240,.78) 14%,rgba(250,247,240,.38) 32%,rgba(250,247,240,.10) 58%,transparent 88%);pointer-events:none;}
+  .horizon-footer .footer-inner{position:relative;text-align:center;color:var(--brown-soft);font-size:12px;padding-top:60px;opacity:.85;}
+  .horizon-footer .footer-brand-h{font-family:var(--serif);font-weight:600;color:var(--brown-deep);font-size:15px;margin-bottom:6px;letter-spacing:.1em;opacity:.92;}
 </style>
 </head>
 <body>
@@ -238,9 +241,12 @@
   </div>
 </section>
 
-<footer>
-  <p class="horizon">韻手作 Wishlite ・ 永續行動學院</p>
-  <p>🌿 讓永續成為日常的選擇</p>
+<footer class="horizon-footer">
+  <div class="horizon-photo" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-brand-h">Wishlite ｜ 韻手作永續</div>
+    <p>讓永續成為日常的選擇</p>
+  </div>
 </footer>
 
 <script>
