@@ -525,14 +525,6 @@
   }
   .cta-card.featured .btn:hover{background:var(--brown-deep);}
   .cta-card.featured small{color:var(--brown-soft);}
-  .line-copy-card{
-    margin-top:14px;
-    padding:18px 20px;
-    border:1px solid rgba(102,119,77,.42);
-    border-radius:8px;
-    background:rgba(138,154,107,.14);
-  }
-  .line-copy-card .btn{width:100%;justify-content:center;text-align:center;}
   .sr-only{
     position:absolute;
     width:1px;
@@ -685,13 +677,8 @@
           <div class="cta-panel">
             <h3>接下來，可以這樣開始</h3>
             <div class="cta-grid" id="cta-grid"></div>
-            <div class="line-copy-card">
-              <button class="btn secondary" type="button" id="copy-result">複製我的測驗結果，回 LINE 諮詢</button>
-              <small>貼回 LINE 後，我們會協助你判斷適合從公開課、通識班，還是完整培訓開始。</small>
-            </div>
           </div>
 
-          <textarea id="copy-text" class="copybox sr-only" readonly></textarea>
           <div class="actions">
             <button class="btn secondary" type="button" id="retake">重新測驗</button>
           </div>
@@ -701,7 +688,7 @@
     </main>
   </div>
 </div>
-<div id="toast" class="toast">已複製</div>
+<div id="toast" class="toast">已完成</div>
 
 <script>
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLf_C0xrOp3QuHS7N-3bfkutqkxKuKFBUdIi_Ijdp-QwlthszCgM7ElQ39TpndXZuVCA/exec"; // Google Apps Script / n8n webhook URL. 留空時只存使用者瀏覽器 localStorage。
@@ -709,8 +696,7 @@ const CTA_LINKS = {
   l0:"https://wishlite.github.io/wishlite-esg/academy/signup.html",
   l1:"https://line.me/R/ti/p/@403kginl",
   l2:"https://line.me/R/ti/p/@403kginl",
-  catalog:"https://line.me/R/ti/p/@403kginl",
-  line:"https://line.me/R/ti/p/@403kginl"
+  catalog:"https://line.me/R/ti/p/@403kginl"
 };
 
 const questions = [
@@ -958,9 +944,6 @@ function showResult(){
   renderScoreBars(calc.scores);
   renderCtas(calc.isMulti ? "X" : calc.topKey);
 
-  const copyText = `我的永續入門方向測驗結果是：${latestResultTitle}。\n我想了解自己比較適合從 L0 公開課、L1 通識班，還是 L2 培訓計畫開始。`;
-  document.getElementById("copy-text").value = copyText;
-
   latestPayload = {
     scores: calc.scores,
     finalResult: latestResultTitle,
@@ -1029,20 +1012,6 @@ function trackEvent(name, payload){
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({event:name, quizResult:payload.finalResult, quizSource:payload.source});
   if(typeof window.fbq === "function") window.fbq("trackCustom", name, {result:payload.finalResult, source:payload.source});
-}
-
-document.getElementById("copy-result").addEventListener("click", copyResult);
-
-async function copyResult(){
-  const text = document.getElementById("copy-text").value;
-  try{
-    await navigator.clipboard.writeText(text);
-  }catch(err){
-    document.getElementById("copy-text").select();
-    document.execCommand("copy");
-  }
-  trackEvent("quiz_result_copied", latestPayload || {});
-  showToast("已複製測驗結果");
 }
 
 document.getElementById("retake").addEventListener("click", () => {
