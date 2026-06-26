@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永續入門方向測驗互動板｜Wishlite 永續行動學院</title>
+<meta name="description" content="用 3 分鐘完成測驗，看看你比較適合從內容、材料、教育引導，還是場域方案開始。">
+<meta property="og:title" content="永續入門方向測驗互動板">
+<meta property="og:description" content="還不確定自己適不適合《永續行動設計師》嗎？用 3 分鐘找到你的永續入門方向。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://wishlite.github.io/wishlite-esg/academy/quiz/assets/hero-methodology-worktable.jpg">
+<meta property="og:url" content="https://wishlite.github.io/wishlite-esg/academy/quiz/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF7F0;
+    --warm-white:#F5F2EA;
+    --cream:#EFE9DC;
+    --paper:#FFFDF8;
+    --brown-deep:#3D2F1F;
+    --brown:#5C4830;
+    --brown-soft:rgba(92,72,48,.72);
+    --olive:#8A9A6B;
+    --olive-deep:#66774D;
+    --gold:#B89B6E;
+    --clay:#C98767;
+    --blue:#9FBCCA;
+    --line:rgba(92,72,48,.16);
+    --glow:0 14px 34px rgba(138,154,107,.18);
+    --shadow:0 18px 42px rgba(61,47,31,.10);
+    --serif:'Noto Serif TC',serif;
+    --sans:'Noto Sans TC',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    color:var(--brown);
+    font-family:var(--sans);
+    line-height:1.85;
+    background:
+      linear-gradient(180deg,rgba(250,247,240,.92),rgba(245,242,234,.98)),
+      url('assets/section-materials.png') center top/1180px auto no-repeat,
+      var(--ivory);
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.22;
+    background-image:
+      linear-gradient(rgba(92,72,48,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(92,72,48,.03) 1px,transparent 1px);
+    background-size:26px 26px;
+    mix-blend-mode:multiply;
+  }
+  button,input,textarea{font:inherit;}
+  button{cursor:pointer;}
+  a{color:inherit;}
+  .site{position:relative;min-height:100vh;}
+  .wrap{width:min(100%,980px);margin:0 auto;padding:0 22px;}
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    padding:20px 0 12px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--brown-deep);
+    text-decoration:none;
+    font-family:var(--serif);
+    font-weight:600;
+    letter-spacing:.06em;
+  }
+  .brand-logo{
+    height:38px;
+    width:auto;
+    display:block;
+    border-radius:8px;
+  }
+  .brand-academy{
+    padding-left:12px;
+    margin-left:2px;
+    border-left:1px solid var(--line);
+    color:var(--olive-deep);
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:.06em;
+  }
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    min-height:32px;
+    padding:4px 12px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--olive-deep);
+    background:rgba(255,253,248,.72);
+    font-size:13px;
+    white-space:nowrap;
+  }
+  .screen{display:none;}
+  .screen.active{display:block;animation:fadeIn .36s ease both;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .hero{
+    min-height:calc(100vh - 78px);
+    display:grid;
+    align-items:center;
+    padding:42px 0 72px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.04fr) minmax(260px,.72fr);
+    gap:42px;
+    align-items:center;
+  }
+  .hero-grid.hero-single{
+    grid-template-columns:1fr;
+    max-width:1080px;
+    margin:0 auto;
+    gap:18px;
+  }
+  .kicker{
+    display:block;
+    margin-bottom:16px;
+    color:var(--olive-deep);
+    font-family:var(--serif);
+    font-size:13px;
+    letter-spacing:.28em;
+  }
+  h1,h2,h3{
+    margin:0;
+    color:var(--brown-deep);
+    font-family:var(--serif);
+    font-weight:600;
+    letter-spacing:.04em;
+  }
+  h1{font-size:clamp(38px,6vw,62px);line-height:1.18;}
+  h2{font-size:clamp(27px,4vw,38px);line-height:1.35;}
+  h3{font-size:21px;line-height:1.45;}
+  p{margin:0;color:var(--brown-soft);}
+  .lead{
+    margin-top:24px;
+    max-width:640px;
+    font-size:clamp(17px,2.2vw,20px);
+    color:var(--brown);
+  }
+  .hero-actions,.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:34px;
+  }
+  .hero-actions.hero-actions-centered{
+    justify-content:center;
+    margin-top:10px;
+  }
+  .btn{
+    min-height:48px;
+    border:1px solid transparent;
+    border-radius:999px;
+    padding:11px 22px;
+    color:#fff;
+    background:var(--brown);
+    text-decoration:none;
+    transition:.22s ease;
+    box-shadow:0 10px 26px rgba(92,72,48,.12);
+  }
+  .btn:hover{transform:translateY(-1px);background:var(--brown-deep);}
+  .btn.secondary{color:var(--brown);background:rgba(255,253,248,.78);border-color:var(--line);box-shadow:none;}
+  .btn.secondary:hover{background:var(--paper);}
+  .btn.olive{background:var(--olive-deep);}
+  .btn.clay{background:var(--clay);}
+  .btn[disabled]{opacity:.48;cursor:not-allowed;transform:none;}
+  .visual{
+    position:relative;
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    background:rgba(255,253,248,.76);
+    box-shadow:var(--shadow);
+  }
+  .visual img{display:block;width:100%;height:auto;}
+  .hero .visual{aspect-ratio:16/9;}
+  .hero .visual img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+  .hero-hotspot{
+    position:absolute;
+    display:block;
+    border-radius:999px;
+    text-indent:-9999px;
+    overflow:hidden;
+  }
+  .hero-hotspot:focus-visible{
+    outline:3px solid rgba(102,119,77,.78);
+    outline-offset:4px;
+  }
+  .hero-hotspot.start{
+    left:7.8%;
+    top:68.1%;
+    width:16.2%;
+    height:6.6%;
+    min-width:120px;
+    min-height:44px;
+  }
+  .panel{
+    margin:34px auto 74px;
+    padding:30px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:rgba(255,253,248,.90);
+    box-shadow:var(--shadow);
+  }
+  .panel.narrow{max-width:760px;}
+  .stage-intro{
+    margin-bottom:12px;
+    padding:0;
+    border:0;
+    background:transparent;
+  }
+  .stage-intro strong{display:block;color:var(--olive-deep);font-family:var(--serif);font-size:18px;margin-bottom:4px;}
+  .path-progress{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    margin:18px 0 30px;
+    padding-top:22px;
+  }
+  .path-progress::before,
+  .path-progress::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:8px;
+    height:4px;
+    border-radius:999px;
+    background:rgba(92,72,48,.11);
+  }
+  .path-progress::after{
+    right:auto;
+    width:var(--path-progress,0%);
+    background:linear-gradient(90deg,var(--olive),var(--gold));
+  }
+  .path-node{
+    position:relative;
+    min-height:auto;
+    display:grid;
+    place-items:center;
+    border:0;
+    border-radius:0;
+    color:rgba(92,72,48,.54);
+    background:transparent;
+    font-size:12px;
+    text-align:center;
+    padding:12px 4px 0;
+    pointer-events:none;
+  }
+  .path-node::before{
+    content:"";
+    position:absolute;
+    top:-20px;
+    left:50%;
+    z-index:1;
+    width:16px;
+    height:16px;
+    border:3px solid var(--cream);
+    border-radius:50%;
+    background:#C9C0B2;
+    transform:translateX(-50%);
+  }
+  .path-node.active,.path-node.done{
+    color:var(--brown-deep);
+  }
+  .path-node.active::before,.path-node.done::before{
+    background:var(--olive-deep);
+  }
+  .path-node.active::before{
+    width:20px;
+    height:20px;
+    box-shadow:0 0 0 5px rgba(138,154,107,.16);
+  }
+  .question-card{
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:
+      linear-gradient(145deg,rgba(255,253,248,.92),rgba(250,247,240,.72));
+    animation:paperSlide .28s ease both;
+  }
+  @keyframes paperSlide{from{opacity:0;transform:translateX(14px);}to{opacity:1;transform:none;}}
+  .question-title{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    color:var(--brown-deep);
+    font-weight:700;
+    line-height:1.7;
+    font-size:clamp(19px,2.8vw,25px);
+  }
+  .qnum{
+    flex:0 0 auto;
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:#fff;
+    background:var(--olive-deep);
+    font-size:15px;
+    box-shadow:var(--glow);
+  }
+  .options{display:grid;gap:12px;margin-top:24px;}
+  .option{
+    position:relative;
+    display:grid;
+    grid-template-columns:44px 1fr 26px;
+    gap:12px;
+    align-items:center;
+    min-height:64px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+    color:var(--brown);
+    transition:.18s ease;
+  }
+  .option:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(92,72,48,.08);}
+  .option input{position:absolute;opacity:0;pointer-events:none;}
+  .letter{
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:var(--warm-white);
+    color:var(--olive-deep);
+    font-weight:700;
+  }
+  .option-icon{
+    width:24px;
+    height:24px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:transparent;
+    border:1px solid transparent;
+  }
+  .option:has(input:checked){
+    border-color:rgba(102,119,77,.72);
+    background:rgba(138,154,107,.13);
+    box-shadow:0 14px 30px rgba(138,154,107,.18);
+    transform:translateY(-2px);
+  }
+  .option:has(input:checked) .letter{background:var(--olive-deep);color:#fff;}
+  .option:has(input:checked) .option-icon{color:#fff;background:var(--olive-deep);}
+  .pager{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:26px;
+  }
+  .error{
+    display:none;
+    margin-top:14px;
+    color:#8F4A36;
+    font-weight:500;
+  }
+  .error.show{display:block;}
+  .result-card{
+    position:relative;
+    overflow:hidden;
+    padding:30px;
+    border:1px solid rgba(184,155,110,.44);
+    border-radius:8px;
+    background:
+      linear-gradient(135deg,rgba(255,253,248,.96),rgba(245,242,234,.82)),
+      radial-gradient(circle at 95% 0%,rgba(159,188,202,.26),transparent 18rem);
+    box-shadow:var(--shadow);
+  }
+  .result-card::after{
+    content:"";
+    position:absolute;
+    right:-42px;
+    bottom:-42px;
+    width:180px;
+    height:180px;
+    border:1px solid rgba(138,154,107,.24);
+    border-radius:50%;
+  }
+  .result-label{color:var(--olive-deep);font-family:var(--serif);letter-spacing:.14em;font-size:13px;}
+  .result-name{margin-top:8px;font-size:clamp(32px,5vw,52px);}
+  .result-hit{
+    max-width:760px;
+    margin-top:20px;
+    color:var(--brown-deep);
+    font-family:var(--serif);
+    font-size:clamp(20px,3vw,28px);
+    line-height:1.75;
+  }
+  .result-sub{margin-top:16px;font-size:16px;color:var(--brown-soft);}
+  .score-bars{display:grid;gap:13px;margin-top:28px;}
+  .score-row{
+    display:grid;
+    grid-template-columns:122px 1fr 34px;
+    align-items:center;
+    gap:12px;
+  }
+  .score-label{color:var(--brown-deep);font-weight:600;}
+  .bar-track{height:14px;border-radius:999px;background:rgba(92,72,48,.10);overflow:hidden;}
+  .bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--olive),var(--gold));width:0;transition:.45s ease;}
+  .result-sections{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+    margin-top:28px;
+  }
+  .info-block{
+    padding:20px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:rgba(250,247,240,.68);
+  }
+  .info-block p{margin-top:10px;}
+  details{
+    margin-top:12px;
+    color:var(--brown-soft);
+  }
+  summary{cursor:pointer;color:var(--olive-deep);font-weight:600;}
+  .cta-panel{
+    margin-top:28px;
+    padding:22px;
+    border:1px solid rgba(102,119,77,.24);
+    border-radius:8px;
+    background:rgba(138,154,107,.10);
+  }
+  .cta-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px;}
+  .cta-card{
+    padding:18px 20px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+  }
+  .cta-card.featured{
+    position:relative;
+    background:var(--paper);
+    border-color:rgba(92,72,48,.14);
+    border-left:5px solid var(--olive);
+    color:var(--brown);
+  }
+  .cta-card .btn{width:100%;justify-content:center;text-align:center;}
+  .cta-card small{display:block;margin-top:10px;color:var(--brown-soft);line-height:1.6;}
+  .cta-label{
+    display:flex;
+    width:max-content;
+    align-items:center;
+    min-height:28px;
+    margin-top:10px;
+    margin-bottom:0;
+    padding:3px 10px;
+    border-radius:999px;
+    color:var(--olive-deep);
+    background:rgba(138,154,107,.13);
+    font-size:13px;
+    font-weight:600;
+  }
+  .cta-card.advice-card{
+    background:rgba(255,253,248,.72);
+  }
+  .cta-card.advice-card strong{
+    display:block;
+    color:var(--brown-deep);
+    font-size:17px;
+  }
+  .cta-card > strong{
+    display:block;
+    margin-bottom:12px;
+    color:var(--brown-deep);
+    font-size:17px;
+  }
+  .cta-card.featured .btn{
+    width:auto;
+    min-height:44px;
+    margin-top:0;
+    margin-bottom:2px;
+    padding:9px 18px;
+    display:flex;
+    width:max-content;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    background:var(--brown);
+    border-color:transparent;
+    box-shadow:0 10px 24px rgba(92,72,48,.12);
+    font-size:16px;
+    font-weight:600;
+  }
+  .cta-card.featured .btn::after{
+    content:none;
+  }
+  .cta-card.featured .btn:hover{background:var(--brown-deep);}
+  .cta-card.featured small{color:var(--brown-soft);}
+  .line-copy-card{
+    margin-top:14px;
+    padding:18px 20px;
+    border:1px solid rgba(102,119,77,.42);
+    border-radius:8px;
+    background:rgba(138,154,107,.14);
+  }
+  .line-copy-card .btn{width:100%;justify-content:center;text-align:center;}
+  .email-card{
+    margin-top:18px;
+    padding:20px;
+    border:1px solid rgba(184,155,110,.28);
+    border-radius:8px;
+    background:rgba(255,253,248,.68);
+  }
+  .email-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:10px;
+    align-items:end;
+    margin-top:14px;
+  }
+  .sr-only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+  .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px;}
+  .field{display:grid;gap:8px;}
+  .field.full{grid-column:1/-1;}
+  label{color:var(--brown-deep);font-weight:500;}
+  input,textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+    color:var(--brown-deep);
+    padding:13px 14px;
+    outline:none;
+  }
+  textarea{min-height:86px;resize:vertical;}
+  input:focus,textarea:focus{border-color:rgba(102,119,77,.58);box-shadow:0 0 0 4px rgba(138,154,107,.13);}
+  .required{color:var(--clay);}
+  .copybox{
+    width:100%;
+    min-height:88px;
+    margin-top:14px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--paper);
+    padding:12px;
+    color:var(--brown);
+  }
+  .fineprint{
+    margin-top:22px;
+    font-size:13px;
+    color:rgba(92,72,48,.62);
+  }
+  .fineprint.hero-fineprint{
+    margin-top:4px;
+    text-align:center;
+  }
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:22px;
+    transform:translateX(-50%) translateY(20px);
+    opacity:0;
+    pointer-events:none;
+    padding:10px 16px;
+    border-radius:999px;
+    background:var(--brown-deep);
+    color:#fff;
+    transition:.2s ease;
+    z-index:20;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  @media(max-width:760px){
+    .topbar{align-items:flex-start;}
+    .brand-logo{height:30px;}
+    .brand-academy{font-size:13px;padding-left:9px;}
+    .tag{display:none;}
+    .hero{min-height:auto;padding:26px 0 48px;}
+    .hero-grid{grid-template-columns:1fr;}
+    .visual{order:-1;}
+    .panel,.result-card{padding:22px;margin-bottom:48px;}
+    .path-progress{grid-template-columns:repeat(4,1fr);}
+    .form-grid,.result-sections,.cta-grid,.email-row{grid-template-columns:1fr;}
+    .pager{flex-direction:column-reverse;}
+    .pager .btn,.actions .btn,.hero-actions .btn,.email-row .btn{width:100%;text-align:center;justify-content:center;}
+    .option{grid-template-columns:38px 1fr 24px;}
+    .score-row{grid-template-columns:88px 1fr 28px;}
+  }
+</style>
+</head>
+<body>
+<div class="site">
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="./index.html" aria-label="回到 Wishlite 永續行動學院">
+        <img class="brand-logo" src="assets/wishlite-logo.png" alt="Wishlite 韻手作永續">
+        <span class="brand-academy">永續行動學院</span>
+      </a>
+    </header>
+
+    <main>
+      <section id="screen-home" class="screen active">
+        <div class="hero">
+          <div class="hero-grid hero-single">
+            <div class="visual">
+              <img src="assets/hero-methodology-worktable.jpg?v=5" alt="永續材料、手寫筆記與學習路徑工作桌">
+              <a class="hero-hotspot start" href="#quiz" data-go="quiz" aria-label="開始探索">開始探索</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-quiz" class="screen">
+        <div class="panel">
+          <span class="kicker" id="quiz-step">探索 1 / 15</span>
+          <div class="stage-intro">
+            <strong id="stage-title">入口探索</strong>
+            <p id="stage-copy">先看看你是從哪一個入口靠近永續。</p>
+          </div>
+          <div class="path-progress" id="path-progress"></div>
+          <div id="question-card" class="question-card"></div>
+          <p id="quiz-error" class="error">請先選一個最接近你的答案。</p>
+          <div class="pager">
+            <button class="btn secondary" type="button" id="prev-question">上一題</button>
+            <button class="btn" type="button" id="next-question" disabled>下一題</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-result" class="screen">
+        <div class="panel">
+          <div class="result-card">
+            <span class="result-label" id="result-label">你的永續入門方向是</span>
+            <h2 class="result-name" id="result-title"></h2>
+            <p class="result-hit" id="result-hit"></p>
+            <p class="result-sub" id="result-sub"></p>
+          </div>
+
+          <div class="score-bars" id="score-bars" aria-label="測驗分數視覺化"></div>
+
+          <div class="result-sections">
+            <div class="info-block">
+              <h3>你的優勢</h3>
+              <p id="result-strengths"></p>
+              <details><summary>展開看更多</summary><p id="result-strengths-more"></p></details>
+            </div>
+            <div class="info-block">
+              <h3>你可以補強</h3>
+              <p id="result-growth"></p>
+              <details><summary>展開看更多</summary><p id="result-growth-more"></p></details>
+            </div>
+            <div class="info-block">
+              <h3>建議入門路徑</h3>
+              <p id="result-route"></p>
+              <details><summary>展開看更多</summary><p id="result-route-more"></p></details>
+            </div>
+          </div>
+
+          <div class="cta-panel">
+            <h3>接下來，可以這樣開始</h3>
+            <div class="cta-grid" id="cta-grid"></div>
+            <div class="line-copy-card">
+              <button class="btn secondary" type="button" id="copy-result">複製我的測驗結果，回 LINE 諮詢</button>
+              <small>貼回 LINE 後，我們會協助你判斷適合從公開課、通識班，還是完整培訓開始。</small>
+            </div>
+          </div>
+
+          <div class="email-card">
+            <h3>想收到完整結果與學習建議嗎？</h3>
+            <p style="margin-top:8px;">留下 Email，我們會幫你保存這次測驗結果，並寄送後續學習建議。這一步可填可不填，也可以直接複製結果回 LINE 諮詢。</p>
+            <form id="profile-form" class="email-row">
+              <input id="name" name="name" type="hidden" value="">
+              <input id="role" name="role" type="hidden" value="">
+              <input id="source" name="source" type="hidden" value="LINE 諮詢">
+              <input id="interest" name="interest" type="hidden" value="">
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <button class="btn" type="button" id="save-profile">保存</button>
+            </form>
+            <p id="info-error" class="error">請填寫可使用的 Email。</p>
+            <p class="fineprint">不填也可以直接複製結果回 LINE，我們一樣可以協助你看下一步。</p>
+          </div>
+
+          <textarea id="copy-text" class="copybox sr-only" readonly></textarea>
+          <div class="actions">
+            <a class="btn secondary" href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener">打開 LINE @403kginl</a>
+            <button class="btn secondary" type="button" id="retake">重新測驗</button>
+          </div>
+          <p class="fineprint">這份測驗只是入門方向參考。你不需要一開始就很懂 ESG，也不需要馬上決定路徑；先看見入口，再選下一步就好。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<div id="toast" class="toast">已複製</div>
+
+<script>
+const GOOGLE_SCRIPT_URL = ""; // Google Apps Script / n8n webhook URL. 留空時只存使用者瀏覽器 localStorage。
+const CTA_LINKS = {
+  l0:"https://line.me/R/ti/p/@403kginl",
+  l1:"https://line.me/R/ti/p/@403kginl",
+  l2:"https://line.me/R/ti/p/@403kginl",
+  catalog:"https://line.me/R/ti/p/@403kginl",
+  line:"https://line.me/R/ti/p/@403kginl"
+};
+
+const questions = [
+  ["你平常最容易被哪一類內容吸引？", {A:"永續故事、品牌案例、社群內容、文字表達", B:"材料、手作、創作、美感與作品呈現", C:"教育、引導、陪伴他人理解一個議題", D:"活動規劃、場域合作、專案執行與方案設計"}],
+  ["你覺得自己目前比較擅長哪一件事？", {A:"把一件事說清楚、寫成內容、整理成重點", B:"動手做作品，對色彩、材質、造型有感覺", C:"陪人理解概念，讓複雜的事情變得比較好懂", D:"組織流程、安排活動、把事情推進完成"}],
+  ["你最想透過永續學習獲得什麼能力？", {A:"把永續議題轉成內容、故事與傳播素材的能力", B:"理解永續材料，並設計出有質感的體驗作品", C:"把永續觀念帶進教學、課程或陪伴現場的能力", D:"規劃一場能被企業、學校或組織使用的永續活動"}],
+  ["你平常最喜歡處理哪一類問題？", {A:"文字、社群、文案、案例整理、溝通表達", B:"材料、配色、手感、作品美感、產品呈現", C:"學習動機、引導問題、活動中的互動與回饋", D:"場地、人數、流程、預算、執行細節與合作需求"}],
+  ["你最常關注的內容比較接近哪一類？", {A:"品牌經營、短影音、社群內容、創業故事", B:"手作設計、材料實驗、生活美學、永續產品", C:"教育方法、心理陪伴、議題引導、學習設計", D:"ESG 活動、企業合作、校園活動、社區或組織專案"}],
+  ["你希望未來把永續能力應用在哪裡？", {A:"個人品牌、社群內容、案例分享或知識整理", B:"手作課程、材料體驗、作品開發或禮品設計", C:"教學現場、親子課程、社區陪伴或學習活動", D:"企業 ESG、學校專案、組織活動或方案提案"}],
+  ["做一件事情時，你最在意的是什麼？", {A:"能不能說得清楚、被理解、被看見", B:"能不能做得好看、有質感、有記憶點", C:"能不能讓參與者真的理解、感受到改變", D:"能不能被執行、被採用、走進真實場域"}],
+  ["如果讓你設計一個永續作品，你會最想做哪一種？", {A:"一篇永續案例文章、一支短影音、一組社群內容", B:"一款材料作品、一份手作體驗、一組永續禮品", C:"一堂引導課、一份教案、一場能讓人理解永續的活動", D:"一份完整活動方案、一場企業工作坊、一套專案流程"}],
+  ["你比較喜歡哪一種學習方式？", {A:"看案例、整理重點、寫出自己的觀察", B:"動手做、看材料變化、從作品中理解概念", C:"聽引導、做反思、觀察人如何被帶進議題", D:"模擬專案、拆解流程、設計一場可執行的活動"}],
+  ["你覺得自己最大的優勢是什麼？", {A:"內容整理、表達、觀察與溝通能力", B:"美感、手感、創作與材料感知能力", C:"同理、引導、教育與陪伴他人理解的能力", D:"規劃、協調、執行與把事情落地的能力"}],
+  ["你最想補強哪一種能力？", {A:"如何把永續案例整理成有吸引力的內容", B:"如何理解永續材料，並轉成有設計感的體驗", C:"如何設計一場有引導、有感受、有學習效果的活動", D:"如何把永續活動整理成企業或組織看得懂的方案"}],
+  ["你比較期待自己未來完成哪一種成果？", {A:"一組能累積個人品牌或社群影響力的永續內容", B:"一款有材料故事與美感的永續作品或禮品", C:"一套能帶領他人理解永續的教案或體驗活動", D:"一份能提案、能執行、能走進場域的永續活動方案"}],
+  ["在團隊裡，你通常比較適合扮演哪一種角色？", {A:"內容整理者、文案企劃、品牌溝通者", B:"作品設計者、材料創作者、視覺美感把關者", C:"教學引導者、陪伴者、活動帶領者", D:"專案負責人、活動企劃、流程整合者"}],
+  ["你對永續有興趣，主要是因為什麼？", {A:"想把好的永續故事、品牌或案例分享出去", B:"喜歡材料再生、手作創作與生活美感", C:"希望讓更多人透過體驗理解環境與生活的關係", D:"看見企業、學校或組織需要更有感的永續活動"}],
+  ["如果只能先選一個開始方向，你會想先學什麼？", {A:"永續內容與案例表達", B:"永續材料與體驗作品", C:"永續教育與活動引導", D:"永續場域與方案設計"}]
+];
+
+const stages = [
+  {title:"入口探索", copy:"先看看你是從哪一個入口靠近永續。", until:4},
+  {title:"能力傾向", copy:"接下來，我們一起看見你的能力傾向。", until:8},
+  {title:"學習期待", copy:"這幾題會看見你想長出的能力。", until:12},
+  {title:"路徑生成", copy:"最後幾題，會幫你生成適合的入門路徑。", until:15}
+];
+
+const typeLabels = {
+  A:"內容轉譯",
+  B:"材料創作",
+  C:"教育引導",
+  D:"場域方案"
+};
+
+const icons = {A:"文", B:"材", C:"引", D:"域"};
+
+const results = {
+  A:{
+    name:"永續內容轉譯型",
+    hit:"你適合從故事、案例與表達開始靠近永續，讓更多人先聽懂、看見，才願意參與。",
+    sub:"你不一定要一開始就會帶活動，但你很適合先把永續材料與真實場域說清楚。",
+    strengths:"你擅長整理資訊、轉譯觀點，也容易把案例變成別人願意閱讀、收藏或分享的內容。",
+    strengthsMore:"你可以成為材料故事、活動案例、社群貼文、短影音腳本與課程文案的轉譯者。",
+    growth:"你可以補強材料理解與體驗設計，讓內容不只停在觀察，而能慢慢變成方法。",
+    growthMore:"當你看懂材料從哪裡來、活動為什麼這樣設計，你的內容會更有現場感與可信度。",
+    route:"建議先從免費公開課開始，看懂永續材料如何被轉化成故事、案例與體驗活動。",
+    routeMore:"公開課後，再依你的狀態判斷是否適合進入通識班或完整培訓。"
+  },
+  B:{
+    name:"材料美感創作型",
+    hit:"你適合從材料、手感與作品開始靠近永續，透過創作讓更多人願意理解永續。",
+    sub:"你能透過作品讓永續變得可被觸摸、可被看見，也更容易讓人先感受到美。",
+    strengths:"你對材料、色彩、手感與作品呈現有敏銳度，適合從體驗作品與材料故事切入。",
+    strengthsMore:"你可以把咖啡渣、牡蠣殼粉 + FGD 環保石膏、PCR 再生塑膠等材料轉成有感的體驗入口。",
+    growth:"你可以補強材料背後的議題與活動流程，讓作品不只好看，也能被帶進真實場域。",
+    growthMore:"一場好的永續體驗，不只是完成作品，而是讓人把一個觀念帶回生活。",
+    route:"建議先從免費公開課開始，看懂材料如何從作品延伸成一場有感的永續體驗。",
+    routeMore:"公開課後，如果你仍想從材料、手感與作品切入，再判斷是否適合通識班。"
+  },
+  C:{
+    name:"教育倡議引導型",
+    hit:"你適合把永續帶進教學、社群、校園或組織現場，讓人透過體驗慢慢理解與行動。",
+    sub:"你看得見人，也在意參與者是否真的被帶進議題，而不是只完成一個作品。",
+    strengths:"你擅長陪伴、引導與轉譯概念，適合做課程、社群活動、親子或校園場域。",
+    strengthsMore:"你的關鍵不是說服大家，而是讓大家透過材料、提問與體驗願意靠近永續。",
+    growth:"你可以補強材料基礎、活動節奏與教案結構，讓引導不只靠現場感覺。",
+    growthMore:"把材料、議題與流程整理成清楚設計後，你會更容易帶出穩定又有感的活動。",
+    route:"建議先從免費公開課開始，看懂永續體驗設計的基本邏輯。",
+    routeMore:"公開課後，再依你的教學、引導或組織經驗，判斷是否適合銜接通識班或完整培訓。"
+  },
+  D:{
+    name:"場域專案設計型",
+    hit:"你適合從活動、工作坊與場域需求切入，把永續整理成可被提案、可被執行的方案。",
+    sub:"你比較能理解真實場域裡的人數、時間、預算、流程與合作限制。",
+    strengths:"你擅長規劃、協調與落地，適合 ESG 活動、校園專案、組織活動與工作坊企劃。",
+    strengthsMore:"你有機會把永續材料、參與者需求與場域目標整合成完整方案。",
+    growth:"你可以補強材料敘事、參與者感受設計與成果整理，讓方案更有溫度與說服力。",
+    growthMore:"永續不是先說服，而是先讓人願意參與；好的方案要同時能執行，也能讓人有感。",
+    route:"建議先從免費公開課開始，看懂場域需求、活動流程與成果整理如何被串成一套方法。",
+    routeMore:"公開課後，如果你確定想完整建立方案能力，再判斷是否適合完整培訓。"
+  },
+  X:{
+    name:"多向探索型",
+    hit:"你對內容、材料、引導與場域都有感覺，現在最適合的不是急著選邊，而是先看見整體地圖。",
+    sub:"這代表你正在探索多種可能，很適合先透過案例與材料體驗慢慢判斷方向。",
+    strengths:"你有跨面向的好奇心，可能同時在意故事、美感、人與場域。",
+    strengthsMore:"這種特質很適合永續行動設計，因為一場好的體驗本來就需要多種能力合作。",
+    growth:"你可以先補全貌，不急著把自己固定成某一種角色。",
+    growthMore:"先理解 Wishlite 如何從材料、故事到活動流程，再判斷自己想深入哪一段。",
+    route:"建議先從免費公開課開始，透過案例與材料體驗建立全貌，再判斷下一步。",
+    routeMore:"公開課後可依你的感受，再判斷適合先補材料基礎，或進一步了解完整培訓。"
+  }
+};
+
+const mixes = {
+  AB:{name:"內容美感型", copy:"同時帶有內容創作與材料美感特質，適合把作品與案例轉成有畫面感、有故事感的內容。"},
+  AC:{name:"倡議內容型", copy:"同時帶有倡議與內容特質，適合把永續議題講得清楚、溫柔、容易理解。"},
+  AD:{name:"方案表達型", copy:"同時帶有內容與場域特質，適合把活動、案例與永續價值整理成提案與對外溝通。"},
+  BC:{name:"材料教學型", copy:"同時帶有材料創作與教育引導特質，適合把永續材料變成能被體驗、能被理解的課程。"},
+  BD:{name:"體驗設計型", copy:"同時帶有材料與場域特質，適合把作品、材料與場域需求整合成一場有感的體驗活動。"},
+  CD:{name:"場域引導型", copy:"同時帶有教育與場域特質，適合把永續議題帶進學校、企業、社區或組織現場。"}
+};
+
+const ctaCopy = {
+  info:{text:"登記免費公開課", note:"這是一場約 90 分鐘的線上入門課，會帶你看懂永續材料如何從作品、體驗走進真實場域，也幫助你判斷自己比較適合從哪一個階段開始。你不用一開始就決定要不要報名課程，先聽完、看懂全貌，再慢慢判斷下一步就好。", href:CTA_LINKS.l0, style:"olive"},
+  catalog:{text:"領取課程型錄", note:"如果你還想慢慢了解公開課、通識班與完整培訓的差異，可以先看完整學習路徑，再決定下一步。", href:CTA_LINKS.catalog, style:"secondary"}
+};
+
+const resultAdvice = {
+  A:{text:"你的方向提示", note:"你的結果顯示，你適合先從內容、故事與案例表達靠近永續。現在最重要的不是急著做完整課程或活動，而是先看懂永續材料如何被轉譯成別人願意理解、收藏與分享的體驗內容。建議你先參加免費公開課，透過真實案例看見內容力如何和材料、引導、場域串在一起。"},
+  B:{text:"你的方向提示", note:"你的結果顯示，你適合先從材料、手感與作品靠近永續。現在最重要的不是急著設計完整活動，而是先理解材料故事與體驗流程如何被帶進真實場域。建議你先參加免費公開課，透過真實案例看懂作品如何從手作延伸成一場有感的永續體驗。"},
+  C:{text:"你的方向提示", note:"你的結果顯示，你適合先從教育、引導與陪伴靠近永續。現在最重要的不是急著說服別人，而是先看懂材料、提問與體驗如何讓人慢慢理解，並願意把觀念帶回生活。建議你先參加免費公開課，透過真實案例看見永續如何走進教學、社群或組織現場。"},
+  D:{text:"你的方向提示", note:"你的結果顯示，你適合先從場域、活動與方案靠近永續。現在最重要的不是急著做出完整提案，而是先看懂材料、參與者與場域需求如何被整理成可執行的活動流程。建議你先參加免費公開課，透過真實案例看見一場永續體驗如何從想法走到現場。"},
+  X:{text:"你的方向提示", note:"你的結果顯示，你目前適合先看全貌，不急著選邊。因為你對內容、材料、引導與場域都有一定興趣，現在最需要的是一張清楚的學習地圖。建議你先參加免費公開課，透過真實案例看懂這幾種能力如何連在一起，再決定下一步要從通識班，還是完整培訓開始。"}
+};
+
+let currentQuestion = 0;
+const answers = Array(questions.length).fill(null);
+let latestPayload = null;
+let latestResultTitle = "";
+
+function showScreen(name){
+  document.querySelectorAll(".screen").forEach(el => el.classList.remove("active"));
+  document.getElementById(`screen-${name}`).classList.add("active");
+  window.scrollTo({top:0, behavior:"smooth"});
+  if(name === "quiz") renderQuestion();
+}
+
+document.querySelectorAll("[data-go]").forEach(btn => {
+  btn.addEventListener("click", event => {
+    event.preventDefault();
+    showScreen(btn.dataset.go);
+  });
+});
+
+function getStage(index){
+  return stages.find(stage => index < stage.until) || stages[3];
+}
+
+function renderQuestion(){
+  const stage = getStage(currentQuestion);
+  document.getElementById("quiz-step").textContent = `探索 ${currentQuestion + 1} / ${questions.length}`;
+  document.getElementById("stage-title").textContent = stage.title;
+  document.getElementById("stage-copy").textContent = stage.copy;
+  const stageIndex = stages.indexOf(stage);
+  const pathPercent = stageIndex <= 0 ? 0 : (stageIndex / (stages.length - 1)) * 100;
+  document.getElementById("path-progress").style.setProperty("--path-progress", `${pathPercent}%`);
+  document.getElementById("path-progress").innerHTML = stages.map((item, idx) => {
+    const state = idx < stageIndex ? "done" : idx === stageIndex ? "active" : "";
+    return `<div class="path-node ${state}">${item.title}</div>`;
+  }).join("");
+
+  const [title, opts] = questions[currentQuestion];
+  const card = document.getElementById("question-card");
+  card.style.animation = "none";
+  card.offsetHeight;
+  card.style.animation = "";
+  card.innerHTML = `
+    <div class="question-title"><span class="qnum">${currentQuestion + 1}</span><span>${title}</span></div>
+    <div class="options">
+      ${Object.entries(opts).map(([key, text]) => `
+        <label class="option">
+          <input type="radio" name="q${currentQuestion}" value="${key}" ${answers[currentQuestion] === key ? "checked" : ""}>
+          <span class="letter">${icons[key]}</span>
+          <span>${text}</span>
+          <span class="option-icon">✓</span>
+        </label>
+      `).join("")}
+    </div>
+  `;
+  card.querySelectorAll("input[type=radio]").forEach(input => {
+    input.addEventListener("change", event => {
+      answers[currentQuestion] = event.target.value;
+      document.getElementById("quiz-error").classList.remove("show");
+      document.getElementById("next-question").disabled = false;
+      if(window.matchMedia("(max-width: 760px)").matches){
+        setTimeout(() => goNext(), 260);
+      }
+    });
+  });
+  document.getElementById("prev-question").style.visibility = currentQuestion === 0 ? "hidden" : "visible";
+  document.getElementById("next-question").textContent = currentQuestion === questions.length - 1 ? "看結果" : "下一題";
+  document.getElementById("next-question").disabled = !answers[currentQuestion];
+}
+
+document.getElementById("prev-question").addEventListener("click", () => {
+  if(currentQuestion > 0){
+    currentQuestion -= 1;
+    renderQuestion();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+});
+
+document.getElementById("next-question").addEventListener("click", goNext);
+
+function goNext(){
+  if(!answers[currentQuestion]){
+    document.getElementById("quiz-error").classList.add("show");
+    return;
+  }
+  if(currentQuestion === questions.length - 1){
+    showResult();
+    return;
+  }
+  currentQuestion += 1;
+  renderQuestion();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function calculate(){
+  const scores = {A:0,B:0,C:0,D:0};
+  answers.forEach(answer => { if(answer) scores[answer] += 1; });
+  const sorted = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+  const [topKey, topScore] = sorted[0];
+  const [secondKey, secondScore] = sorted[1];
+  const [thirdKey, thirdScore] = sorted[2];
+  const threeClose = topScore - thirdScore <= 2;
+  if(threeClose){
+    return {scores, key:"X", topKey, isMixed:false, isMulti:true, mix:null};
+  }
+  const topClose = topScore - secondScore <= 2;
+  if(topClose){
+    const mixKey = [topKey, secondKey].sort().join("");
+    return {scores, key:topKey, topKey, isMixed:true, isMulti:false, mix:mixes[mixKey] || null};
+  }
+  return {scores, key:topKey, topKey, isMixed:false, isMulti:false, mix:null};
+}
+
+function showResult(){
+  const calc = calculate();
+  const base = results[calc.key];
+  const mainType = calc.isMulti ? base.name : results[calc.topKey].name;
+  latestResultTitle = calc.isMixed && calc.mix ? `${mainType}（同時帶有 ${calc.mix.name} 特質）` : mainType;
+
+  document.getElementById("result-label").textContent = calc.isMulti ? "你的永續入門狀態是" : "你的主方向是";
+  document.getElementById("result-title").textContent = mainType;
+  document.getElementById("result-hit").textContent = base.hit;
+  document.getElementById("result-sub").textContent = calc.isMixed && calc.mix ? `同時帶有：${calc.mix.name}特質。${calc.mix.copy}` : base.sub;
+  document.getElementById("result-strengths").textContent = base.strengths;
+  document.getElementById("result-strengths-more").textContent = base.strengthsMore;
+  document.getElementById("result-growth").textContent = base.growth;
+  document.getElementById("result-growth-more").textContent = base.growthMore;
+  document.getElementById("result-route").textContent = base.route;
+  document.getElementById("result-route-more").textContent = base.routeMore;
+  renderScoreBars(calc.scores);
+  renderCtas(calc.isMulti ? "X" : calc.topKey);
+
+  const copyText = `我的永續入門方向測驗結果是：${latestResultTitle}。\n我想了解自己比較適合從 L0 公開課、L1 通識班，還是 L2 培訓計畫開始。`;
+  document.getElementById("copy-text").value = copyText;
+
+  latestPayload = {
+    scores: calc.scores,
+    finalResult: latestResultTitle,
+    isMixed: calc.isMixed,
+    isMulti: calc.isMulti,
+    recommendedPath: base.route,
+    completedAt: new Date().toISOString(),
+    source: getSource()
+  };
+  saveLead(latestPayload, false);
+  trackEvent("quiz_completed", latestPayload);
+  showScreen("result");
+}
+
+function renderScoreBars(scores){
+  const max = Math.max(...Object.values(scores), 1);
+  document.getElementById("score-bars").innerHTML = Object.entries(scores).map(([key, value]) => `
+    <div class="score-row">
+      <div class="score-label">${key} ${typeLabels[key]}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(value / max) * 100}%"></div></div>
+      <strong>${value}</strong>
+    </div>
+  `).join("");
+}
+
+function renderCtas(resultKey){
+  const advice = resultAdvice[resultKey] || resultAdvice.X;
+  const cards = [
+    {type:"link", item:ctaCopy.info, featured:true},
+    {type:"advice", item:advice},
+    {type:"link", item:ctaCopy.catalog, featured:false}
+  ];
+  document.getElementById("cta-grid").innerHTML = cards.map(card => {
+    if(card.type === "advice"){
+      return `<div class="cta-card advice-card"><strong>${card.item.text}</strong><small>${card.item.note}</small></div>`;
+    }
+    const item = card.item;
+    const featured = card.featured ? " featured" : "";
+    const label = card.featured ? `<span class="cta-label">先看懂全貌</span>` : "";
+    const title = !card.featured && item === ctaCopy.catalog ? `<strong>想先看完整學習地圖？</strong>` : "";
+    return `<div class="cta-card${featured}">${title}<a class="btn ${item.style}" href="${item.href}" target="_blank" rel="noopener">${item.text} →</a>${label}<small>${item.note}</small></div>`;
+  }).join("");
+}
+
+function getSource(){
+  const params = new URLSearchParams(window.location.search);
+  return params.get("source") || params.get("utm_source") || "LINE 諮詢";
+}
+
+document.getElementById("save-profile").addEventListener("click", () => {
+  const form = document.getElementById("profile-form");
+  const email = document.getElementById("email").value.trim();
+  const err = document.getElementById("info-error");
+  if(!email || !document.getElementById("email").checkValidity()){
+    err.classList.add("show");
+    return;
+  }
+  err.classList.remove("show");
+  const profile = Object.fromEntries(new FormData(form).entries());
+  saveLead({...latestPayload, ...profile, source: profile.source || getSource()}, true);
+  trackEvent("quiz_profile_saved", {...latestPayload, ...profile});
+  showToast("已保存測驗結果");
+});
+
+function saveLead(payload, withProfile){
+  const key = "wishlite_quiz_leads_v2";
+  const existing = JSON.parse(localStorage.getItem(key) || "[]");
+  existing.push({...payload, withProfile});
+  localStorage.setItem(key, JSON.stringify(existing));
+  if(GOOGLE_SCRIPT_URL && withProfile){
+    fetch(GOOGLE_SCRIPT_URL, {
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({...payload, withProfile})
+    }).catch(() => {});
+  }
+}
+
+function trackEvent(name, payload){
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event:name, quizResult:payload.finalResult, quizSource:payload.source});
+  if(typeof window.fbq === "function") window.fbq("trackCustom", name, {result:payload.finalResult, source:payload.source});
+}
+
+document.getElementById("copy-result").addEventListener("click", copyResult);
+
+async function copyResult(){
+  const text = document.getElementById("copy-text").value;
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(err){
+    document.getElementById("copy-text").select();
+    document.execCommand("copy");
+  }
+  trackEvent("quiz_result_copied", latestPayload || {});
+  showToast("已複製測驗結果");
+}
+
+document.getElementById("retake").addEventListener("click", () => {
+  answers.fill(null);
+  currentQuestion = 0;
+  latestPayload = null;
+  showScreen("quiz");
+});
+
+function showToast(text){
+  const toast = document.getElementById("toast");
+  toast.textContent = text;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 1800);
+}
+</script>
+</body>
+</html>
