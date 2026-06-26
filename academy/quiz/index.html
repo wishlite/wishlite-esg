@@ -533,20 +533,6 @@
     background:rgba(138,154,107,.14);
   }
   .line-copy-card .btn{width:100%;justify-content:center;text-align:center;}
-  .email-card{
-    margin-top:18px;
-    padding:20px;
-    border:1px solid rgba(184,155,110,.28);
-    border-radius:8px;
-    background:rgba(255,253,248,.68);
-  }
-  .email-row{
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:10px;
-    align-items:end;
-    margin-top:14px;
-  }
   .sr-only{
     position:absolute;
     width:1px;
@@ -618,9 +604,9 @@
     .visual{order:-1;}
     .panel,.result-card{padding:22px;margin-bottom:48px;}
     .path-progress{grid-template-columns:repeat(4,1fr);}
-    .form-grid,.result-sections,.cta-grid,.email-row{grid-template-columns:1fr;}
+    .form-grid,.result-sections,.cta-grid{grid-template-columns:1fr;}
     .pager{flex-direction:column-reverse;}
-    .pager .btn,.actions .btn,.hero-actions .btn,.email-row .btn{width:100%;text-align:center;justify-content:center;}
+    .pager .btn,.actions .btn,.hero-actions .btn{width:100%;text-align:center;justify-content:center;}
     .option{grid-template-columns:38px 1fr 24px;}
     .score-row{grid-template-columns:88px 1fr 28px;}
   }
@@ -705,27 +691,8 @@
             </div>
           </div>
 
-          <div class="email-card">
-            <h3>想收到完整結果與學習建議嗎？</h3>
-            <p style="margin-top:8px;">留下 Email，我們會幫你保存這次測驗結果，並寄送後續學習建議。這一步可填可不填，也可以直接複製結果回 LINE 諮詢。</p>
-            <form id="profile-form" class="email-row">
-              <input id="name" name="name" type="hidden" value="">
-              <input id="role" name="role" type="hidden" value="">
-              <input id="source" name="source" type="hidden" value="LINE 諮詢">
-              <input id="interest" name="interest" type="hidden" value="">
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
-              </div>
-              <button class="btn" type="button" id="save-profile">保存</button>
-            </form>
-            <p id="info-error" class="error">請填寫可使用的 Email。</p>
-            <p class="fineprint">不填也可以直接複製結果回 LINE，我們一樣可以協助你看下一步。</p>
-          </div>
-
           <textarea id="copy-text" class="copybox sr-only" readonly></textarea>
           <div class="actions">
-            <a class="btn secondary" href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener">打開 LINE @403kginl</a>
             <button class="btn secondary" type="button" id="retake">重新測驗</button>
           </div>
           <p class="fineprint">這份測驗只是入門方向參考。你不需要一開始就很懂 ESG，也不需要馬上決定路徑；先看見入口，再選下一步就好。</p>
@@ -739,7 +706,7 @@
 <script>
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLf_C0xrOp3QuHS7N-3bfkutqkxKuKFBUdIi_Ijdp-QwlthszCgM7ElQ39TpndXZuVCA/exec"; // Google Apps Script / n8n webhook URL. 留空時只存使用者瀏覽器 localStorage。
 const CTA_LINKS = {
-  l0:"https://line.me/R/ti/p/@403kginl",
+  l0:"https://wishlite.github.io/wishlite-esg/academy/signup.html",
   l1:"https://line.me/R/ti/p/@403kginl",
   l2:"https://line.me/R/ti/p/@403kginl",
   catalog:"https://line.me/R/ti/p/@403kginl",
@@ -1042,21 +1009,6 @@ function getSource(){
   const params = new URLSearchParams(window.location.search);
   return params.get("source") || params.get("utm_source") || "LINE 諮詢";
 }
-
-document.getElementById("save-profile").addEventListener("click", () => {
-  const form = document.getElementById("profile-form");
-  const email = document.getElementById("email").value.trim();
-  const err = document.getElementById("info-error");
-  if(!email || !document.getElementById("email").checkValidity()){
-    err.classList.add("show");
-    return;
-  }
-  err.classList.remove("show");
-  const profile = Object.fromEntries(new FormData(form).entries());
-  saveLead({...latestPayload, ...profile, source: profile.source || getSource()}, true);
-  trackEvent("quiz_profile_saved", {...latestPayload, ...profile});
-  showToast("已保存測驗結果");
-});
 
 function saveLead(payload, withProfile){
   const key = "wishlite_quiz_leads_v2";
