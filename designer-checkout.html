@@ -99,6 +99,16 @@
   .plan-note{font-size:13px;color:var(--gold);margin-top:2px;}
   .plan-pay{font-size:13.5px;color:#4a5a4a;background:var(--soft);border-radius:10px;padding:12px 16px;margin:18px 0 20px;}
   .plan-card .btn{text-align:center;margin-top:auto;}
+  /* 兩價兩鈕 tier */
+  .tier{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid var(--sand);padding:15px 0;}
+  .tier .btn{margin:0;}
+  .tier-label{font-size:12px;letter-spacing:1px;color:var(--sage);}
+  .tier-label.limited{color:#8a6a2a;}
+  .tier-price{font-family:'Noto Serif TC',serif;font-size:25px;color:var(--moss-dark);margin:3px 0 1px;}
+  .tier-price small{font-size:12px;font-family:'Noto Sans TC',sans-serif;color:var(--sage);font-weight:400;}
+  .tier-old{font-size:12.5px;color:var(--sage);text-decoration:line-through;}
+  .tier-note{display:block;font-size:12px;color:var(--gold);margin-top:1px;}
+  .btn-tier{padding:11px 26px;font-size:14px;white-space:nowrap;}
   .pay-methods-line{max-width:700px;margin:30px auto 0;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.8;}
   .policy-link{display:block;margin-top:16px;font-size:13px;color:var(--white);text-decoration:underline;text-underline-offset:4px;}
   .course-format-note{max-width:640px;margin:16px auto 0;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;}
@@ -214,13 +224,25 @@
       <span class="plan-tag">入門・單堂</span>
       <h3>永續材料通識班</h3>
       <p class="plan-desc">4 小時線上課程＋四款材料包，一次看懂四種循環材料如何變成體驗設計。</p>
-      <div class="plan-price">
-        <span class="plan-old">課程定價 <s>NT$5,980</s></span>
-        <div class="plan-now">NT$4,980 <small>含稅・早鳥</small></div>
-      </div>
       <div class="plan-pay">付款方式：信用卡單次付清</div>
-      <!-- 藍新審核通過後，將下方 href 換成「通識班」藍新金流付款連結 -->
-      <a class="btn" href="https://line.me/R/ti/p/@403kginl">我要報名通識班</a>
+      <div class="tier">
+        <div class="tier-info">
+          <span class="tier-label">早鳥報名</span>
+          <div class="tier-price">NT$4,980 <small>含稅</small></div>
+          <span class="tier-old">課程定價 NT$5,980</span>
+        </div>
+        <!-- 藍新過件後：換成「通識班・早鳥 4,980」付款連結 -->
+        <a class="btn btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+      </div>
+      <div class="tier">
+        <div class="tier-info">
+          <span class="tier-label limited">公開課現場限定</span>
+          <div class="tier-price">NT$3,980 <small>含稅</small></div>
+          <span class="tier-note">7 日內升級專班可全額折抵</span>
+        </div>
+        <!-- 藍新過件後：換成「通識班・現場限定 3,980」付款連結 -->
+        <a class="btn btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+      </div>
     </div>
 
     <!-- L2 專班 -->
@@ -234,14 +256,25 @@
         <li><b>永續體驗設計師資源包</b>：課程總覽、簡報模板、材料故事引導卡、流程設計表、提案架構等</li>
         <li><b>完課帶走</b>：一套可帶進企業現場的體驗設計方法，與你的個人方案</li>
       </ul>
-      <div class="plan-price">
-        <span class="plan-old">課程定價 <s>NT$42,800</s></span>
-        <div class="plan-now">NT$36,800 <small>含稅・早鳥</small></div>
-        <div class="plan-note">首梯共創支持價 NT$32,800（現場限定名額）</div>
-      </div>
       <div class="plan-pay">付款方式：信用卡一次付清，或信用卡分期付款</div>
-      <!-- 藍新審核通過後，將下方 href 換成「專班」藍新金流付款連結 -->
-      <a class="btn btn-gold" href="https://line.me/R/ti/p/@403kginl">我要報名專班</a>
+      <div class="tier">
+        <div class="tier-info">
+          <span class="tier-label">早鳥報名</span>
+          <div class="tier-price">NT$36,800 <small>含稅</small></div>
+          <span class="tier-old">課程定價 NT$42,800</span>
+        </div>
+        <!-- 藍新過件後：換成「專班・早鳥 36,800」付款連結（含分期）-->
+        <a class="btn btn-gold btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+      </div>
+      <div class="tier">
+        <div class="tier-info">
+          <span class="tier-label limited">公開課現場限定</span>
+          <div class="tier-price">NT$32,800 <small>含稅</small></div>
+          <span class="tier-note">首梯共創支持價</span>
+        </div>
+        <!-- 藍新過件後：換成「專班・現場限定 32,800」付款連結（含分期）-->
+        <a class="btn btn-gold btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+      </div>
     </div>
 
   </div>
