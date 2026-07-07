@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永續行動設計師培訓計畫｜韻手作永續 Wishlite・永續行動學院</title>
+<meta name="description" content="把材料的故事，設計成一場有人記得的體驗。永續材料通識班與永續行動設計師專班，小班共創制，2026 年首梯招生中。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#3d5a3e; --moss-dark:#2e4630; --sage:#7a9e7e;
+    --cream:#f5f0e8; --sand:#e8dcc8; --soft:#f9f6f0;
+    --gold:#c49a3c; --gold-light:#d4b06a; --mist:#d4e4d0;
+    --ink:#1e2a1e; --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans TC',sans-serif;color:var(--ink);line-height:1.9;background:var(--white);}
+  .container{max-width:900px;margin:0 auto;padding:0 24px;}
+  .label{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+  h2{font-family:'Noto Serif TC',serif;font-size:26px;color:var(--moss-dark);margin:8px 0 12px;}
+  .section-sub{font-size:15px;color:var(--sage);margin-bottom:32px;}
+  .btn{display:inline-block;background:var(--moss);color:var(--white);padding:14px 40px;border-radius:28px;font-size:16px;font-weight:500;text-decoration:none;transition:background .2s;}
+  .btn:hover{background:var(--moss-dark);}
+  .btn-gold{background:var(--gold);}
+  .btn-gold:hover{background:var(--gold-light);}
+
+  /* Nav */
+  .nav{background:var(--white);border-bottom:1px solid var(--sand);position:sticky;top:0;z-index:10;}
+  .nav .container{display:flex;justify-content:space-between;align-items:center;height:60px;}
+  .nav-brand{font-family:'Noto Serif TC',serif;font-weight:700;color:var(--moss-dark);font-size:16px;}
+  .nav a.nav-cta{font-size:14px;color:var(--moss);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;}
+
+  /* Hero */
+  .hero{background:var(--moss-dark);text-align:center;padding:88px 24px 80px;}
+  .hero .label{color:var(--gold-light);}
+  .hero h1{font-family:'Noto Serif TC',serif;font-size:38px;color:var(--white);margin:14px 0 16px;line-height:1.4;}
+  .hero p{color:rgba(255,255,255,0.65);font-size:17px;margin-bottom:28px;}
+  .hero .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+  .hero .chip{border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:13px;padding:6px 16px;border-radius:20px;}
+
+  /* Trust bar */
+  .trust{background:var(--white);padding:36px 24px;border-bottom:1px solid var(--sand);}
+  .trust .container{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;text-align:center;}
+  .trust b{display:block;font-family:'Noto Serif TC',serif;font-size:24px;color:var(--moss);}
+  .trust span{font-size:13px;color:var(--sage);}
+
+  /* Content sections */
+  section.block{padding:72px 0;}
+  .bg-soft{background:var(--soft);}
+  .bg-cream{background:var(--cream);}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;}
+  .card{background:var(--white);border:1px solid var(--sand);border-radius:14px;padding:26px 24px;}
+  .card h3{font-family:'Noto Serif TC',serif;font-size:17px;color:var(--moss-dark);margin-bottom:8px;}
+  .card p{font-size:14px;color:#4a5a4a;}
+
+  .fit-list{list-style:none;}
+  .fit-list li{padding:14px 0 14px 30px;border-bottom:1px solid var(--sand);position:relative;font-size:15px;}
+  .fit-list li::before{content:"";position:absolute;left:6px;top:26px;width:8px;height:8px;border-radius:50%;background:var(--gold);}
+
+  .info-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--sand);border-radius:14px;overflow:hidden;}
+  .info-table th,.info-table td{padding:16px 22px;font-size:15px;text-align:left;border-bottom:1px solid var(--sand);}
+  .info-table th{width:130px;color:var(--moss);font-weight:500;background:var(--soft);}
+  .info-table tr:last-child th,.info-table tr:last-child td{border-bottom:none;}
+
+  /* Pricing — two plans */
+  .pricing{background:var(--moss);text-align:center;padding:80px 24px;}
+  .pricing .label{color:var(--gold-light);}
+  .pricing h2{color:var(--white);}
+  .pricing-sub{color:rgba(255,255,255,0.7);font-size:15px;margin-bottom:34px;}
+  .plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:760px;margin:0 auto;text-align:left;}
+  .plan-card{background:var(--white);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;}
+  .plan-card.featured{outline:3px solid var(--gold-light);outline-offset:-3px;}
+  .plan-tag{display:inline-block;align-self:flex-start;font-size:12px;letter-spacing:1px;color:var(--sage);background:var(--soft);border-radius:20px;padding:5px 14px;margin-bottom:14px;}
+  .plan-tag.gold{color:#8a6a2a;background:#f4ead0;}
+  .plan-card h3{font-family:'Noto Serif TC',serif;font-size:21px;color:var(--moss-dark);margin-bottom:8px;}
+  .plan-desc{font-size:14px;color:#4a5a4a;margin-bottom:20px;min-height:66px;}
+  .plan-price{border-top:1px solid var(--sand);padding-top:16px;}
+  .plan-old{font-size:14px;color:var(--sage);}
+  .plan-now{font-family:'Noto Serif TC',serif;font-size:34px;color:var(--moss-dark);margin:2px 0;}
+  .plan-now small{font-size:14px;font-family:'Noto Sans TC',sans-serif;color:var(--sage);font-weight:400;}
+  .plan-note{font-size:13px;color:var(--gold);margin-top:2px;}
+  .plan-pay{font-size:13.5px;color:#4a5a4a;background:var(--soft);border-radius:10px;padding:12px 16px;margin:18px 0 20px;}
+  .plan-card .btn{text-align:center;margin-top:auto;}
+  .pay-methods-line{max-width:700px;margin:30px auto 0;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.8;}
+  .policy-link{display:block;margin-top:16px;font-size:13px;color:var(--white);text-decoration:underline;text-underline-offset:4px;}
+
+  /* Statement */
+  .statement{background:var(--soft);padding:48px 24px;}
+  .statement .inner{max-width:760px;margin:0 auto;background:var(--white);border-left:3px solid var(--gold-light);border-radius:0 10px 10px 0;padding:24px 28px;font-size:14.5px;color:#3a4a3a;}
+
+  /* FAQ */
+  .faq-item{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:22px 26px;margin-bottom:14px;}
+  .faq-item h3{font-size:16px;color:var(--moss-dark);margin-bottom:6px;font-weight:700;}
+  .faq-item p{font-size:14.5px;color:#4a5a4a;}
+
+  /* Policy */
+  .policy h2{font-size:24px;text-align:center;}
+  .policy .policy-meta{text-align:center;font-size:13px;color:var(--sage);margin-bottom:32px;}
+  .policy h3{font-family:'Noto Serif TC',serif;font-size:17px;color:var(--moss-dark);padding-bottom:8px;border-bottom:1px solid var(--sand);margin:28px 0 12px;}
+  .policy ol{padding-left:26px;font-size:14.5px;}
+  .policy ol li{margin-bottom:7px;}
+  .policy .intro{background:var(--white);border-left:3px solid var(--gold-light);padding:16px 20px;font-size:14.5px;border-radius:0 8px 8px 0;margin-bottom:8px;}
+  .contact-card{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:20px 24px;font-size:14.5px;}
+  .contact-card p{margin-bottom:5px;}
+  .contact-card strong{color:var(--moss);}
+
+  /* Footer */
+  footer{background:var(--moss-dark);color:rgba(255,255,255,0.6);padding:48px 24px;text-align:center;font-size:13px;line-height:2.1;}
+  footer b{color:var(--white);font-family:'Noto Serif TC',serif;font-size:15px;display:block;margin-bottom:8px;}
+
+  @media (max-width:640px){
+    .hero h1{font-size:28px;}
+    section.block{padding:56px 0;}
+    .trust .container{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-brand">韻手作永續｜永續行動學院</div>
+    <a class="nav-cta" href="#signup">方案與報名</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="label">Sustainable Action Designer</div>
+  <h1>永續行動設計師培訓計畫</h1>
+  <p>把材料的故事，設計成一場有人記得的體驗。</p>
+  <div class="chips">
+    <span class="chip">2026 年 8 月下旬開課</span>
+    <span class="chip">小班共創制</span>
+    <span class="chip">通識入門・完整專班兩種選擇</span>
+  </div>
+  <a class="btn btn-gold" href="#signup">查看方案與報名</a>
+</header>
+
+<!-- Trust bar -->
+<div class="trust">
+  <div class="container">
+    <div><b>累計 300+ 場</b><span>企業與公眾活動經驗</span></div>
+    <div><b>近 3 萬份</b><span>永續作品在現場誕生</span></div>
+    <div><b>六大循環材料</b><span>系統化教學方法</span></div>
+  </div>
+</div>
+
+<!-- 課程內容 -->
+<section class="block bg-soft">
+  <div class="container">
+    <div class="label">What You Learn</div>
+    <h2>這套培訓，帶你走進企業現場</h2>
+    <p class="section-sub">我們團隊把多年現場經驗，整理成一套走得進企業的方法。</p>
+    <div class="cards">
+      <div class="card">
+        <h3>材料敘事力</h3>
+        <p>讓六大循環材料，說出打動人的故事。</p>
+      </div>
+      <div class="card">
+        <h3>體驗設計力</h3>
+        <p>從教案到現場，設計一場完整的體驗流程。</p>
+      </div>
+      <div class="card">
+        <h3>企業溝通與 ESG 語言</h3>
+        <p>學會用企業聽得懂的方式，說明活動的價值。</p>
+      </div>
+      <div class="card">
+        <h3>真實場域學習</h3>
+        <p>以觀摩、案例拆解與流程復盤，把課堂所學帶到現場。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 適合誰 -->
+<section class="block">
+  <div class="container">
+    <div class="label">Who It's For</div>
+    <h2>適合這樣的你</h2>
+    <ul class="fit-list">
+      <li>想把手作專業，帶進企業與組織現場的人</li>
+      <li>學校、社區、工作室的課程帶領者</li>
+      <li>想以永續體驗設計為職涯方向的夥伴</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 課程資訊 -->
+<section class="block bg-cream">
+  <div class="container">
+    <div class="label">Course Info</div>
+    <h2>課程資訊</h2>
+    <p class="section-sub">實際課程安排以報名後的開課通知為準。</p>
+    <table class="info-table">
+      <tr><th>開課時間</th><td>2026 年 8 月下旬（確切日期於報名後以開課通知寄送）</td></tr>
+      <tr><th>課程形式</th><td>通識班為線上課程＋材料包；專班以實體課程為主，輔以線上教材與學習資源</td></tr>
+      <tr><th>上課地點</th><td>以開課通知為準</td></tr>
+      <tr><th>班級規模</th><td>小班共創制</td></tr>
+      <tr><th>主辦單位</th><td>韻手作有限公司（品牌名稱：韻手作永續 Wishlite｜永續行動學院）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 價格與報名 -->
+<section class="pricing" id="signup">
+  <div class="label">Enrollment</div>
+  <h2>選擇你的方案</h2>
+  <p class="pricing-sub">從一堂通識入門，或直接進入完整培訓。</p>
+  <div class="plan-grid">
+
+    <!-- L1 通識班 -->
+    <div class="plan-card">
+      <span class="plan-tag">入門・單堂</span>
+      <h3>永續材料通識班</h3>
+      <p class="plan-desc">4 小時線上課程＋四款材料包，一次看懂四種循環材料如何變成體驗設計。</p>
+      <div class="plan-price">
+        <span class="plan-old">課程定價 <s>NT$5,980</s></span>
+        <div class="plan-now">NT$4,980 <small>含稅・早鳥</small></div>
+      </div>
+      <div class="plan-pay">付款方式：信用卡單次付清</div>
+      <!-- 藍新審核通過後，將下方 href 換成「通識班」藍新金流付款連結 -->
+      <a class="btn" href="https://line.me/R/ti/p/@403kginl">我要報名通識班</a>
+    </div>
+
+    <!-- L2 專班 -->
+    <div class="plan-card featured">
+      <span class="plan-tag gold">完整培訓・可分期</span>
+      <h3>永續行動設計師專班</h3>
+      <p class="plan-desc">35 小時完整培訓・四週假日實戰班，從材料敘事、體驗設計，到真實場域學習與個人方案設計。</p>
+      <div class="plan-price">
+        <span class="plan-old">課程定價 <s>NT$42,800</s></span>
+        <div class="plan-now">NT$36,800 <small>含稅・早鳥</small></div>
+        <div class="plan-note">首梯共創支持價 NT$32,800（現場限定名額）</div>
+      </div>
+      <div class="plan-pay">付款方式：信用卡一次付清，或信用卡分期付款</div>
+      <!-- 藍新審核通過後，將下方 href 換成「專班」藍新金流付款連結 -->
+      <a class="btn btn-gold" href="https://line.me/R/ti/p/@403kginl">我要報名專班</a>
+    </div>
+
+  </div>
+  <p class="pay-methods-line">付款方式透過「藍新金流」提供，支援信用卡一次付清與信用卡分期付款；可使用之分期期數與適用發卡銀行以付款頁面實際顯示為準，分期利息或手續費（如有）依各發卡銀行規定。交易幣別為新台幣（TWD），標示價格均為含稅價。</p>
+  <a class="policy-link" href="#policy">報名前，請先閱讀〈消費者購買及退費須知〉</a>
+</section>
+
+<!-- 重要聲明 -->
+<div class="statement">
+  <div class="inner">
+    本課程為教育培訓服務，課程費用僅包含課程教學、教材與本頁明列之內容，不包含任何工作機會、案件或收入之承諾。完成培訓後，會依學習成果、現場適配度與區域需求，提供後續合作評估與發展建議。
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="block">
+  <div class="container">
+    <div class="label">FAQ</div>
+    <h2>常見問題</h2>
+    <div class="faq-item">
+      <h3>可以分期付款嗎？</h3>
+      <p>永續行動設計師專班可透過藍新金流以信用卡分期付款；期數與適用銀行以付款頁面顯示為準，利息或手續費依各發卡銀行規定。通識班為單次付清。</p>
+    </div>
+    <div class="faq-item">
+      <h3>報名後可以退費嗎？</h3>
+      <p>可以，依本頁下方〈消費者購買及退費須知〉辦理；付款完成七日內且尚未開課，可全額退費。</p>
+    </div>
+    <div class="faq-item">
+      <h3>沒有手作或企業經驗，適合嗎？</h3>
+      <p>適合。課程從材料敘事與體驗設計的基礎開始，小班共創制會依每位夥伴的背景，調整練習的方向。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 消費者購買及退費須知 -->
+<section class="block bg-soft policy" id="policy">
+  <div class="container">
+    <div class="label" style="text-align:center;display:block;">Purchase &amp; Refund Policy</div>
+    <h2>消費者購買及退費須知</h2>
+    <div class="policy-meta">韻手作永續 Wishlite｜永續行動學院 ・ 版本 v1.0（2026 年 7 月）</div>
+
+    <div class="intro">
+      感謝您報名永續行動設計師培訓計畫。為保障您的消費權益，請於報名及付款前詳細閱讀本須知。您於本頁面完成報名並付款，即視為已閱讀、瞭解並同意本須知之全部內容。
+    </div>
+
+    <h3>一、課程與服務資訊</h3>
+    <ol>
+      <li>課程名稱：永續行動設計師培訓計畫，包含〈永續材料通識班〉（入門單堂課）與〈永續行動設計師專班〉（完整培訓，小班共創制）。</li>
+      <li>課程形式：通識班為線上課程搭配材料包；專班以實體課程為主，輔以線上教材與學習資源。實際課程安排以報名頁面公告及開課通知為準。</li>
+      <li>開課日期、時數與上課地點：以報名頁面公告及開課通知為準。</li>
+      <li>主辦單位：韻手作有限公司（品牌名稱：韻手作永續 Wishlite｜永續行動學院）。</li>
+      <li>統一編號：90025571。</li>
+      <li>本頁面所有商品／服務之交易幣別均為新台幣（TWD），標示價格均為含稅價。</li>
+    </ol>
+
+    <h3>二、付款方式與發票</h3>
+    <ol>
+      <li>本課程透過「藍新金流股份有限公司」提供線上金流服務，支援信用卡一次付清及信用卡分期付款；可使用之分期期數與適用發卡銀行，以付款頁面實際顯示為準。</li>
+      <li>分期付款屬信用卡分期服務，由各發卡銀行提供；分期利息或手續費（如有）依各發卡銀行規定，請於刷卡前向發卡銀行確認。</li>
+      <li>完成付款後，本公司將依統一發票相關法令開立電子發票，並寄送至您填寫之電子信箱。</li>
+    </ol>
+
+    <h3>三、契約解除權（七日猶豫期）</h3>
+    <ol>
+      <li>本課程屬通訊交易。依消費者保護法第 19 條規定，您得於付款完成日起七日內，以書面或本須知第七條所列方式通知本公司解除契約，無須說明理由及負擔任何費用或對價，本公司將全額退費。</li>
+      <li>若您於前述七日期間內已開始接受課程服務（如已出席課程），退費依第四條退費標準辦理。</li>
+      <li>課程如包含線上數位教材或學習資源，屬「非以有形媒介提供之數位內容或一經提供即為完成之線上服務」。經您於報名時勾選同意後開通，該部分依《通訊交易解除權合理例外情事適用準則》第 2 條規定，不適用七日解除權。</li>
+    </ol>
+
+    <h3>四、退費標準</h3>
+    <ol>
+      <li>除第三條第 1 項情形外，退費依下列標準辦理（以本公司「收到退費申請之日」為認定基準）。</li>
+      <li>開課日前提出申請：退還已繳費用之 90%（扣除 10% 作為行政作業費用）。</li>
+      <li>開課後、實際上課未逾課程總時數三分之一：退還已繳費用之 50%。</li>
+      <li>實際上課已逾課程總時數三分之一：恕不退費。</li>
+      <li>課程材料包如已寄出或領取：未拆封者，請於申請退費時一併退回（寄回運費由申請人負擔）；已拆封或使用者，將自退費金額中扣除材料成本 NT$2,000。</li>
+    </ol>
+
+    <h3>五、名額轉讓與保留</h3>
+    <ol>
+      <li>開課日前 7 日（含）以前，您得申請一次下列其中一項安排，不另收手續費：（1）將名額轉讓予他人；（2）保留名額至下一梯次（以一次為限，保留期限自原開課日起算一年）。</li>
+      <li>下一梯次課程費用如有調整，須補足差額；已享優惠恕無法轉換為現金。</li>
+      <li>開課後恕不受理名額轉讓或保留。</li>
+    </ol>
+
+    <h3>六、課程異動與停課處理</h3>
+    <ol>
+      <li>如遇天災、疫情、政府命令或其他不可抗力因素致無法如期上課，本公司將另行安排補課或調整上課時間，並事先通知學員。</li>
+      <li>學員如無法配合調整後之時間：尚未開課者，得申請全額退費；已開課者，得就未上課程時數按比例退費。</li>
+      <li>如因報名人數不足或本公司因素取消開課，本公司將主動通知並全額退費，學員無須負擔任何費用。</li>
+    </ol>
+
+    <h3>七、退費申請方式與退款作業</h3>
+    <ol>
+      <li>申請管道：Email wishlitediy@gmail.com 或 LINE 官方帳號 @403kginl，並請提供：姓名、訂單編號、報名時填寫之聯絡電話、退費原因。</li>
+      <li>本公司將於收到申請後 5 個工作天內完成審核，並以 Email 或 LINE 通知結果。</li>
+      <li>退款方式：一律依原付款方式辦理信用卡刷退，退回原交易之信用卡帳戶；恕不提供現金或轉帳退費。</li>
+      <li>分期付款之退費，由藍新金流向發卡銀行申請刷退；已扣繳之分期金額退還與後續期數之停扣，依各發卡銀行作業規定辦理。退款入帳時間約 7 至 14 個工作天，實際以各銀行作業時間為準。</li>
+      <li>辦理退費時，請配合完成電子發票之銷貨折讓或作廢程序；退款金額以實際繳納金額依本須知標準計算。</li>
+    </ol>
+
+    <h3>八、重要聲明</h3>
+    <ol>
+      <li>本課程為教育培訓服務，課程費用僅包含課程教學、教材及本頁面明列之內容，不包含任何工作機會、案件或收入之承諾。</li>
+      <li>完成培訓後，會依學習成果、現場適配度與區域需求，提供後續合作評估與發展建議。</li>
+      <li>本公司保留依實際狀況微調課程講師、時段與細部內容之權利，調整以不影響學員權益為原則。</li>
+    </ol>
+
+    <h3>九、個人資料保護</h3>
+    <ol>
+      <li>本公司依《個人資料保護法》蒐集、處理及利用您於報名時提供之個人資料，僅用於課程報名、繳費、開立發票、課程通知與售後服務等目的。</li>
+      <li>您得依法行使查詢、閱覽、更正、停止利用或刪除等權利，行使方式請透過第十條所列客服管道聯繫。</li>
+    </ol>
+
+    <h3>十、客服與聯絡資訊</h3>
+    <div class="contact-card">
+      <p><strong>公司名稱</strong>：韻手作有限公司</p>
+      <p><strong>統一編號</strong>：90025571</p>
+      <p><strong>公司地址</strong>：桃園市桃園區介壽路 495 巷 67 號 14 樓</p>
+      <p><strong>客服電話</strong>：02-8911-5001</p>
+      <p><strong>客服信箱</strong>：wishlitediy@gmail.com</p>
+      <p><strong>LINE 官方帳號</strong>：@403kginl</p>
+      <p><strong>客服時間</strong>：週一至週五 10:00–18:00（例假日暫停服務）</p>
+    </div>
+
+    <h3>十一、爭議處理</h3>
+    <ol>
+      <li>如有消費爭議，您得撥打消費者服務專線 1950，或向各縣市政府消費者服務中心、行政院消費者保護會提出申訴。</li>
+      <li>本須知未盡事宜，悉依消費者保護法及其他相關法令規定辦理。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <b>韻手作永續 Wishlite｜永續行動學院</b>
+  韻手作有限公司・統一編號 90025571<br>
+  桃園市桃園區介壽路 495 巷 67 號 14 樓<br>
+  客服信箱 wishlitediy@gmail.com・客服電話 02-8911-5001・LINE 官方帳號 @403kginl<br>
+  © 2026 Wishlite. All rights reserved.
+</footer>
+
+</body>
+</html>
