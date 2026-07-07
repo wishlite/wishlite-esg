@@ -54,6 +54,15 @@
   .card h3{font-family:'Noto Serif TC',serif;font-size:17px;color:var(--moss-dark);margin-bottom:8px;}
   .card p{font-size:14px;color:#4a5a4a;}
 
+  /* 學習地圖 roadmap */
+  .roadmap{position:relative;margin-top:14px;}
+  .roadmap::before{content:"";position:absolute;left:27px;top:14px;bottom:22px;width:2px;background:linear-gradient(var(--sage),var(--gold-light));}
+  .stop{position:relative;padding:0 0 30px 76px;}
+  .stop:last-child{padding-bottom:0;}
+  .stop-num{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background:var(--white);border:2px solid var(--gold-light);color:var(--moss-dark);font-family:'Noto Serif TC',serif;font-size:19px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1;}
+  .stop h3{font-family:'Noto Serif TC',serif;font-size:18px;color:var(--moss-dark);margin-bottom:4px;padding-top:7px;}
+  .stop p{font-size:14.5px;color:#4a5a4a;}
+
   .fit-list{list-style:none;}
   .fit-list li{padding:14px 0 14px 30px;border-bottom:1px solid var(--sand);position:relative;font-size:15px;}
   .fit-list li::before{content:"";position:absolute;left:6px;top:26px;width:8px;height:8px;border-radius:50%;background:var(--gold);}
@@ -139,35 +148,30 @@
   <a class="btn btn-gold" href="#signup">查看方案與報名</a>
 </header>
 
-<!-- Trust bar -->
-<div class="trust">
-  <div class="container">
-    <div><b>累計 300+ 場</b><span>企業與公眾活動經驗</span></div>
-    <div><b>近 3 萬份</b><span>永續作品在現場誕生</span></div>
-    <div><b>六大循環材料</b><span>系統化教學方法</span></div>
-  </div>
-</div>
-
-<!-- 課程內容 -->
+<!-- 學習地圖 -->
 <section class="block bg-soft">
   <div class="container">
-    <div class="label">What You Learn</div>
-    <h2>這套培訓，帶你走進企業現場</h2>
-    <p class="section-sub">我們團隊把多年現場經驗，整理成一套走得進企業的方法。</p>
-    <div class="cards">
-      <div class="card">
+    <div class="label">Learning Map</div>
+    <h2>你的永續行動設計師學習地圖</h2>
+    <p class="section-sub">從材料的故事出發，一步步走進企業現場。</p>
+    <div class="roadmap">
+      <div class="stop">
+        <div class="stop-num">01</div>
         <h3>材料敘事力</h3>
         <p>讓六大循環材料，說出打動人的故事。</p>
       </div>
-      <div class="card">
+      <div class="stop">
+        <div class="stop-num">02</div>
         <h3>體驗設計力</h3>
         <p>從教案到現場，設計一場完整的體驗流程。</p>
       </div>
-      <div class="card">
+      <div class="stop">
+        <div class="stop-num">03</div>
         <h3>企業溝通與 ESG 語言</h3>
         <p>學會用企業聽得懂的方式，說明活動的價值。</p>
       </div>
-      <div class="card">
+      <div class="stop">
+        <div class="stop-num">04</div>
         <h3>真實場域學習</h3>
         <p>以觀摩、案例拆解與流程復盤，把課堂所學帶到現場。</p>
       </div>
@@ -195,11 +199,7 @@
     <h2>課程資訊</h2>
     <p class="section-sub">實際課程安排以報名後的開課通知為準。</p>
     <table class="info-table">
-      <tr><th>開課時間</th><td>2026 年 8 月下旬（確切日期於報名後以開課通知寄送）</td></tr>
       <tr><th>課程形式</th><td>通識班為線上課程＋材料包；專班以實體課程為主，輔以線上教材與學習資源</td></tr>
-      <tr><th>上課地點</th><td>以開課通知為準</td></tr>
-      <tr><th>班級規模</th><td>小班共創制</td></tr>
-      <tr><th>主辦單位</th><td>韻手作有限公司（品牌名稱：韻手作永續 Wishlite｜永續行動學院）</td></tr>
     </table>
   </div>
 </section>
