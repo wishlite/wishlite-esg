@@ -118,6 +118,18 @@
   .tier-old{font-size:12.5px;color:var(--sage);text-decoration:line-through;}
   .tier-note{display:block;font-size:12px;color:var(--gold);margin-top:1px;}
   .btn-tier{padding:11px 26px;font-size:14px;white-space:nowrap;}
+  /* 產品區：內容左＋購買卡右 */
+  .product-section .label{margin-bottom:6px;display:block;}
+  .product-grid{display:grid;gap:28px;}
+  .product-buy .plan-card{border:1px solid var(--sand);box-shadow:0 3px 14px rgba(46,70,48,0.07);}
+  .pay-info{padding:40px 0 8px;text-align:center;}
+  .pay-info .pay-methods-line{color:#7a8578;max-width:700px;margin:0 auto;font-size:13px;line-height:1.8;}
+  .pay-info .policy-link{color:var(--moss);}
+  .pay-info .course-format-note{color:var(--sage);max-width:640px;margin:14px auto 0;font-size:13px;line-height:1.8;}
+  @media (min-width:920px){
+    .product-grid{grid-template-columns:minmax(0,1fr) 360px;gap:44px;align-items:start;}
+    .product-buy{position:sticky;top:84px;}
+  }
   .pay-methods-line{max-width:700px;margin:30px auto 0;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.8;}
   .policy-link{display:block;margin-top:16px;font-size:13px;color:var(--white);text-decoration:underline;text-underline-offset:4px;}
   .course-format-note{max-width:640px;margin:16px auto 0;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;}
@@ -181,11 +193,13 @@
   <a class="btn btn-gold" href="#signup">查看方案與報名</a>
 </header>
 
-<!-- L1 十堂課完整課綱 -->
-<section class="block bg-cream">
+<!-- L1 產品區：課綱＋購買 -->
+<section class="block bg-cream product-section" id="signup">
   <div class="container">
-    <div class="label">Curriculum</div>
-    <h2>L1 通識班｜10 堂線上課完整課綱</h2>
+    <div class="label">Enrollment 01</div>
+    <div class="product-grid">
+      <div class="product-content">
+        <h2>L1 通識班｜10 堂線上課完整課綱</h2>
     <p class="section-sub">付款開通即可看第一堂，之後自 7/26 起每週日解鎖兩堂，陪你四週看懂四種材料。</p>
     <table class="syllabus-table">
       <tr>
@@ -211,8 +225,43 @@
     </table>
     <p class="syllabus-note">線上課程搭配四款材料包實作（咖啡渣香牌・牡蠣殼擴香石・地球種子・馬賽克拼貼杯墊）。完成十堂後，可銜接 8 月底專班小班共創。</p>
     <a class="map-catalog-link" href="https://canva.link/1pbidgx99uuknmh" target="_blank" rel="noopener">想看更完整的課程內容？翻開永續行動設計師課程型錄 →</a>
+      </div>
+      <aside class="product-buy">
+        <div class="plan-card">
+      <span class="plan-tag">入門・單堂</span>
+      <h3>永續材料通識班</h3>
+      <p class="plan-desc">4 小時線上課程＋四款材料包，一次看懂四種循環材料如何變成體驗設計。</p>
+      <div class="plan-pay">付款方式：信用卡單次付清</div>
+      <div class="tier">
+        <div class="tier-info">
+          <span class="tier-label">一般報名</span>
+          <div class="tier-price">NT$5,980 <small>含稅</small></div>
+        </div>
+        <!-- 藍新 EPG：通識班・一般 5,980 -->
+        <a class="btn btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/PnHobm">報名</a>
+      </div>
+      <div class="tier">
+        <div class="tier-info">
+          <span class="tier-label limited">公開課現場限定</span>
+          <div class="tier-price">NT$3,980 <small>含稅</small></div>
+          <span class="tier-note">7 日內升級專班可全額折抵</span>
+        </div>
+        <!-- 藍新 EPG：通識班・公開課現場限定 3,980（庫存 5）-->
+        <a class="btn btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/ppwsyL">報名</a>
+      </div>
+    </div>
+      </aside>
+    </div>
+  </div>
+</section>
 
-    <h2 style="margin-top:56px;">L2 專班｜35 小時完整培訓內容</h2>
+<!-- L2 產品區：培訓內容＋購買 -->
+<section class="block product-section">
+  <div class="container">
+    <div class="label">Enrollment 02</div>
+    <div class="product-grid">
+      <div class="product-content">
+        <h2>L2 專班｜35 小時完整培訓內容</h2>
     <p class="section-sub">內含模組一（即上方 L1 十堂線上課）＋模組二實戰。4 週假日實戰班，2026 年 8 月下旬開課。</p>
     <table class="syllabus-table">
       <tr>
@@ -245,43 +294,9 @@
       </tr>
     </table>
     <p class="syllabus-note">總學習時數 35 小時。通識班報名後 7 日內升級專班，可全額折抵通識班費用。</p>
-  </div>
-</section>
-
-<!-- 價格與報名 -->
-<section class="pricing" id="signup">
-  <div class="label">Enrollment</div>
-  <h2>選擇你的方案</h2>
-  <p class="pricing-sub">從一堂通識入門，或直接進入完整培訓。</p>
-  <div class="plan-grid">
-
-    <!-- L1 通識班 -->
-    <div class="plan-card">
-      <span class="plan-tag">入門・單堂</span>
-      <h3>永續材料通識班</h3>
-      <p class="plan-desc">4 小時線上課程＋四款材料包，一次看懂四種循環材料如何變成體驗設計。</p>
-      <div class="plan-pay">付款方式：信用卡單次付清</div>
-      <div class="tier">
-        <div class="tier-info">
-          <span class="tier-label">一般報名</span>
-          <div class="tier-price">NT$5,980 <small>含稅</small></div>
-        </div>
-        <!-- 藍新 EPG：通識班・一般 5,980 -->
-        <a class="btn btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/PnHobm">報名</a>
       </div>
-      <div class="tier">
-        <div class="tier-info">
-          <span class="tier-label limited">公開課現場限定</span>
-          <div class="tier-price">NT$3,980 <small>含稅</small></div>
-          <span class="tier-note">7 日內升級專班可全額折抵</span>
-        </div>
-        <!-- 藍新 EPG：通識班・公開課現場限定 3,980（庫存 5）-->
-        <a class="btn btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/ppwsyL">報名</a>
-      </div>
-    </div>
-
-    <!-- L2 專班 -->
-    <div class="plan-card featured">
+      <aside class="product-buy">
+        <div class="plan-card featured">
       <span class="plan-tag gold">完整培訓・可分期</span>
       <h3>永續行動設計師專班</h3>
       <p class="plan-desc">35 小時完整培訓・四週假日實戰班，從材料敘事、體驗設計，到真實場域學習與個人方案設計。</p>
@@ -304,11 +319,18 @@
         <a class="btn btn-gold btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/V2sSh6">報名</a>
       </div>
     </div>
-
+      </aside>
+    </div>
   </div>
-  <p class="pay-methods-line">付款方式透過「藍新金流」提供，支援信用卡一次付清與信用卡分期付款；可使用之分期期數與適用發卡銀行以付款頁面實際顯示為準，分期利息或手續費（如有）依各發卡銀行規定。交易幣別為新台幣（TWD），標示價格均為含稅價。</p>
-  <a class="policy-link" href="#policy">報名前，請先閱讀〈消費者購買及退費須知〉</a>
-  <p class="course-format-note">課程形式：通識班為線上課程＋材料包；專班以實體課程為主，輔以線上教材與學習資源。</p>
+</section>
+
+<!-- 付款共用資訊 -->
+<section class="block pay-info">
+  <div class="container">
+    <p class="pay-methods-line">付款方式透過「藍新金流」提供，支援信用卡一次付清與信用卡分期付款；可使用之分期期數與適用發卡銀行以付款頁面實際顯示為準，分期利息或手續費（如有）依各發卡銀行規定。交易幣別為新台幣（TWD），標示價格均為含稅價。</p>
+    <a class="policy-link" href="#policy">報名前，請先閱讀〈消費者購買及退費須知〉</a>
+    <p class="course-format-note">課程形式：通識班為線上課程＋材料包；專班以實體課程為主，輔以線上教材與學習資源。</p>
+  </div>
 </section>
 
 <!-- 重要聲明 -->
