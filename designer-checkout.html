@@ -127,8 +127,13 @@
   .pay-info .policy-link{color:var(--moss);}
   .pay-info .course-format-note{color:var(--sage);max-width:640px;margin:14px auto 0;font-size:13px;line-height:1.8;}
   @media (min-width:920px){
-    .product-grid{grid-template-columns:minmax(0,1fr) 360px;gap:44px;align-items:start;}
+    .product-grid{grid-template-columns:minmax(0,1fr) 360px;gap:44px;align-items:stretch;}
     /* sticky 已移除：滑動時卡片跟內容一起捲動，不再跳動 */
+    /* 卡片與左欄同高，底線對齊；價格鈕貼齊卡底，多餘空間化為留白 */
+    .product-buy{display:flex;}
+    .product-buy .plan-card{width:100%;}
+    .product-buy .plan-pay{margin-top:auto;}
+    .product-buy .tier:first-of-type{margin-top:auto;}
   }
   /* ── 產品區美化 v2：色塊同步 ── */
   .product-section{padding:64px 0 72px;}
