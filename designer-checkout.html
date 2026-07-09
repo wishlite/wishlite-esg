@@ -141,6 +141,16 @@
   .contact-card{background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:20px 24px;font-size:14.5px;}
   .contact-card p{margin-bottom:5px;}
   .contact-card strong{color:var(--moss);}
+  /* 退費須知手風琴 */
+  .p-acc{background:var(--white);border:1px solid var(--sand);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+  .p-acc summary{list-style:none;cursor:pointer;padding:16px 22px;font-family:'Noto Serif TC',serif;font-size:16px;color:var(--moss-dark);font-weight:700;position:relative;}
+  .p-acc summary::-webkit-details-marker{display:none;}
+  .p-acc summary::after{content:"＋";position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--sage);font-weight:400;}
+  .p-acc[open] summary::after{content:"－";}
+  .p-acc[open] summary{border-bottom:1px solid var(--sand);}
+  .p-acc ol{padding:16px 22px 18px 44px;}
+  .p-acc .contact-card{border:none;border-radius:0;}
+  .policy .p-acc h3{border:none;margin:0;padding:0;}
 
   /* Footer */
   footer{background:var(--moss-dark);color:rgba(255,255,255,0.6);padding:48px 24px;text-align:center;font-size:13px;line-height:2.1;}
@@ -336,8 +346,9 @@
       感謝您報名永續行動設計師培訓計畫。為保障您的消費權益，請於報名及付款前詳細閱讀本須知。您於本頁面完成報名並付款，即視為已閱讀、瞭解並同意本須知之全部內容。
     </div>
 
-    <h3>一、課程與服務資訊</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>一、課程與服務資訊</summary>
+      <ol>
       <li>課程名稱：永續行動設計師培訓計畫，包含〈永續材料通識班〉（入門單堂課）與〈永續行動設計師專班〉（完整培訓，小班共創制）。</li>
       <li>課程形式：通識班為線上課程搭配材料包；專班以實體課程為主，輔以線上教材與學習資源。實際課程安排以報名頁面公告及開課通知為準。</li>
       <li>開課日期、時數與上課地點：以報名頁面公告及開課通知為準。</li>
@@ -345,68 +356,86 @@
       <li>統一編號：90025571。</li>
       <li>本頁面所有商品／服務之交易幣別均為新台幣（TWD），標示價格均為含稅價。</li>
     </ol>
+    </details>
 
-    <h3>二、付款方式與發票</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>二、付款方式與發票</summary>
+      <ol>
       <li>本課程透過「藍新金流股份有限公司」提供線上金流服務，支援信用卡一次付清及信用卡分期付款；可使用之分期期數與適用發卡銀行，以付款頁面實際顯示為準。</li>
       <li>分期付款屬信用卡分期服務，由各發卡銀行提供；分期利息或手續費（如有）依各發卡銀行規定，請於刷卡前向發卡銀行確認。</li>
       <li>完成付款後，本公司將依統一發票相關法令開立電子發票，並寄送至您填寫之電子信箱。</li>
     </ol>
+    </details>
 
-    <h3>三、契約解除權（七日猶豫期）</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>三、契約解除權（七日猶豫期）</summary>
+      <ol>
       <li>本課程屬通訊交易。依消費者保護法第 19 條規定，您得於付款完成日起七日內，以書面或本須知第七條所列方式通知本公司解除契約，無須說明理由及負擔任何費用或對價，本公司將全額退費。</li>
       <li>若您於前述七日期間內已開始接受課程服務（如已出席課程），退費依第四條退費標準辦理。</li>
       <li>課程如包含線上數位教材或學習資源，屬「非以有形媒介提供之數位內容或一經提供即為完成之線上服務」。經您於報名時勾選同意後開通，該部分依《通訊交易解除權合理例外情事適用準則》第 2 條規定，不適用七日解除權。</li>
     </ol>
+    </details>
 
-    <h3>四、退費標準</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>四、退費標準</summary>
+      <ol>
       <li>除第三條第 1 項情形外，退費依下列標準辦理（以本公司「收到退費申請之日」為認定基準）。</li>
       <li>開課日前提出申請：退還已繳費用之 90%（扣除 10% 作為行政作業費用）。</li>
       <li>開課後、實際上課未逾課程總時數三分之一：退還已繳費用之 50%。</li>
       <li>實際上課已逾課程總時數三分之一：恕不退費。</li>
       <li>課程材料包如已寄出或領取：未拆封者，請於申請退費時一併退回（寄回運費由申請人負擔）；已拆封或使用者，將自退費金額中扣除材料成本 NT$2,000。</li>
     </ol>
+    </details>
 
-    <h3>五、名額轉讓與保留</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>五、名額轉讓與保留</summary>
+      <ol>
       <li>開課日前 7 日（含）以前，您得申請一次下列其中一項安排，不另收手續費：（1）將名額轉讓予他人；（2）保留名額至下一梯次（以一次為限，保留期限自原開課日起算一年）。</li>
       <li>下一梯次課程費用如有調整，須補足差額；已享優惠恕無法轉換為現金。</li>
       <li>開課後恕不受理名額轉讓或保留。</li>
     </ol>
+    </details>
 
-    <h3>六、課程異動與停課處理</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>六、課程異動與停課處理</summary>
+      <ol>
       <li>如遇天災、疫情、政府命令或其他不可抗力因素致無法如期上課，本公司將另行安排補課或調整上課時間，並事先通知學員。</li>
       <li>學員如無法配合調整後之時間：尚未開課者，得申請全額退費；已開課者，得就未上課程時數按比例退費。</li>
       <li>如因報名人數不足或本公司因素取消開課，本公司將主動通知並全額退費，學員無須負擔任何費用。</li>
     </ol>
+    </details>
 
-    <h3>七、退費申請方式與退款作業</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>七、退費申請方式與退款作業</summary>
+      <ol>
       <li>申請管道：Email wishlitediy@gmail.com 或 LINE 官方帳號 @403kginl，並請提供：姓名、訂單編號、報名時填寫之聯絡電話、退費原因。</li>
       <li>本公司將於收到申請後 5 個工作天內完成審核，並以 Email 或 LINE 通知結果。</li>
       <li>退款方式：一律依原付款方式辦理信用卡刷退，退回原交易之信用卡帳戶；恕不提供現金或轉帳退費。</li>
       <li>分期付款之退費，由藍新金流向發卡銀行申請刷退；已扣繳之分期金額退還與後續期數之停扣，依各發卡銀行作業規定辦理。退款入帳時間約 7 至 14 個工作天，實際以各銀行作業時間為準。</li>
       <li>辦理退費時，請配合完成電子發票之銷貨折讓或作廢程序；退款金額以實際繳納金額依本須知標準計算。</li>
     </ol>
+    </details>
 
-    <h3>八、重要聲明</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>八、重要聲明</summary>
+      <ol>
       <li>本課程為教育培訓服務，課程費用僅包含課程教學、教材及本頁面明列之內容，不包含任何工作機會、案件或收入之承諾。</li>
       <li>完成培訓後，會依學習成果、現場適配度與區域需求，提供後續合作評估與發展建議。</li>
       <li>本公司保留依實際狀況微調課程講師、時段與細部內容之權利，調整以不影響學員權益為原則。</li>
     </ol>
+    </details>
 
-    <h3>九、個人資料保護</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>九、個人資料保護</summary>
+      <ol>
       <li>本公司依《個人資料保護法》蒐集、處理及利用您於報名時提供之個人資料，僅用於課程報名、繳費、開立發票、課程通知與售後服務等目的。</li>
       <li>您得依法行使查詢、閱覽、更正、停止利用或刪除等權利，行使方式請透過第十條所列客服管道聯繫。</li>
     </ol>
+    </details>
 
-    <h3>十、客服與聯絡資訊</h3>
-    <div class="contact-card">
+    <details class="p-acc">
+      <summary>十、客服與聯絡資訊</summary>
+      <div class="contact-card">
       <p><strong>公司名稱</strong>：韻手作有限公司</p>
       <p><strong>統一編號</strong>：90025571</p>
       <p><strong>公司地址</strong>：桃園市桃園區介壽路 495 巷 67 號 14 樓</p>
@@ -415,12 +444,15 @@
       <p><strong>LINE 官方帳號</strong>：@403kginl</p>
       <p><strong>客服時間</strong>：週一至週五 10:00–18:00（例假日暫停服務）</p>
     </div>
+    </details>
 
-    <h3>十一、爭議處理</h3>
-    <ol>
+    <details class="p-acc">
+      <summary>十一、爭議處理</summary>
+      <ol>
       <li>如有消費爭議，您得撥打消費者服務專線 1950，或向各縣市政府消費者服務中心、行政院消費者保護會提出申訴。</li>
       <li>本須知未盡事宜，悉依消費者保護法及其他相關法令規定辦理。</li>
     </ol>
+    </details>
   </div>
 </section>
 
