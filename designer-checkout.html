@@ -75,6 +75,15 @@
   .fit-list li{padding:14px 0 14px 30px;border-bottom:1px solid var(--sand);position:relative;font-size:15px;}
   .fit-list li::before{content:"";position:absolute;left:6px;top:26px;width:8px;height:8px;border-radius:50%;background:var(--gold);}
 
+  /* 10 堂課課綱表 */
+  .syllabus-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--sand);border-radius:14px;overflow:hidden;}
+  .syllabus-table th,.syllabus-table td{padding:16px 22px;font-size:15px;text-align:left;border-bottom:1px solid var(--sand);vertical-align:top;}
+  .syllabus-table tr:last-child th,.syllabus-table tr:last-child td{border-bottom:none;}
+  .syllabus-table th{width:110px;color:var(--moss);font-weight:700;background:var(--soft);font-family:'Noto Serif TC',serif;font-size:16px;line-height:1.5;}
+  .syllabus-table th span{display:block;font-family:'Noto Sans TC',sans-serif;font-size:12px;color:var(--sage);font-weight:400;letter-spacing:1px;}
+  .syllabus-table td{line-height:2.1;color:#3a4a3a;}
+  .syllabus-note{margin-top:16px;font-size:13.5px;color:var(--sage);line-height:1.9;}
+
   .info-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--sand);border-radius:14px;overflow:hidden;}
   .info-table th,.info-table td{padding:16px 22px;font-size:15px;text-align:left;border-bottom:1px solid var(--sand);}
   .info-table th{width:130px;color:var(--moss);font-weight:500;background:var(--soft);}
@@ -212,6 +221,38 @@
   </div>
 </section>
 
+<!-- L1 十堂課完整課綱 -->
+<section class="block bg-cream">
+  <div class="container">
+    <div class="label">Curriculum</div>
+    <h2>L1 通識班｜10 堂線上課完整課綱</h2>
+    <p class="section-sub">付款開通即可看第一堂，之後自 7/26 起每週日解鎖兩堂，陪你四週看懂四種材料。</p>
+    <table class="syllabus-table">
+      <tr>
+        <th>開通即看</th>
+        <td>00・開場課：歡迎來到永續材料的世界</td>
+      </tr>
+      <tr>
+        <th>7/26<span>第 1 週</span></th>
+        <td>01・認識咖啡渣<br>02・咖啡渣香牌：把材料變成體驗</td>
+      </tr>
+      <tr>
+        <th>8/02<span>第 2 週</span></th>
+        <td>03・認識牡蠣殼<br>04・牡蠣殼擴香石：把材料變成體驗</td>
+      </tr>
+      <tr>
+        <th>8/09<span>第 3 週</span></th>
+        <td>05・認識紙纖與尿布再生纖維<br>06・地球種子：把材料變成體驗</td>
+      </tr>
+      <tr>
+        <th>8/16<span>第 4 週</span></th>
+        <td>07・認識 PCR 回收塑膠<br>08・馬賽克拼貼杯墊：把材料變成體驗<br>09・從材料到體驗：把作品變成一場有人記得的體驗（收尾課）</td>
+      </tr>
+    </table>
+    <p class="syllabus-note">線上課程搭配四款材料包實作（咖啡渣香牌・牡蠣殼擴香石・地球種子・馬賽克拼貼杯墊）。完成十堂後，可銜接 8 月底專班小班共創。</p>
+  </div>
+</section>
+
 <!-- 價格與報名 -->
 <section class="pricing" id="signup">
   <div class="label">Enrollment</div>
@@ -227,12 +268,11 @@
       <div class="plan-pay">付款方式：信用卡單次付清</div>
       <div class="tier">
         <div class="tier-info">
-          <span class="tier-label">早鳥報名</span>
-          <div class="tier-price">NT$4,980 <small>含稅</small></div>
-          <span class="tier-old">課程定價 NT$5,980</span>
+          <span class="tier-label">一般報名</span>
+          <div class="tier-price">NT$5,980 <small>含稅</small></div>
         </div>
-        <!-- 藍新過件後：換成「通識班・早鳥 4,980」付款連結 -->
-        <a class="btn btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+        <!-- 藍新 EPG：通識班・一般 5,980 -->
+        <a class="btn btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/PnHobm">報名</a>
       </div>
       <div class="tier">
         <div class="tier-info">
@@ -240,8 +280,8 @@
           <div class="tier-price">NT$3,980 <small>含稅</small></div>
           <span class="tier-note">7 日內升級專班可全額折抵</span>
         </div>
-        <!-- 藍新過件後：換成「通識班・現場限定 3,980」付款連結 -->
-        <a class="btn btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+        <!-- 藍新 EPG：通識班・公開課現場限定 3,980（庫存 5）-->
+        <a class="btn btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/ppwsyL">報名</a>
       </div>
     </div>
 
@@ -259,12 +299,11 @@
       <div class="plan-pay">付款方式：信用卡一次付清，或信用卡分期付款</div>
       <div class="tier">
         <div class="tier-info">
-          <span class="tier-label">早鳥報名</span>
-          <div class="tier-price">NT$36,800 <small>含稅</small></div>
-          <span class="tier-old">課程定價 NT$42,800</span>
+          <span class="tier-label">一般報名</span>
+          <div class="tier-price">NT$42,800 <small>含稅</small></div>
         </div>
-        <!-- 藍新過件後：換成「專班・早鳥 36,800」付款連結（含分期）-->
-        <a class="btn btn-gold btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+        <!-- 藍新 EPG：專班・一般 42,800（含分期，限玉山/台新）-->
+        <a class="btn btn-gold btn-tier" href="https://core.newebpay.com/EPG/wishlite/dSYCXU">報名</a>
       </div>
       <div class="tier">
         <div class="tier-info">
@@ -272,8 +311,8 @@
           <div class="tier-price">NT$32,800 <small>含稅</small></div>
           <span class="tier-note">首梯共創支持價</span>
         </div>
-        <!-- 藍新過件後：換成「專班・現場限定 32,800」付款連結（含分期）-->
-        <a class="btn btn-gold btn-tier" href="https://line.me/R/ti/p/@403kginl">報名</a>
+        <!-- 藍新 EPG：專班・公開課現場限定 32,800（含分期，庫存 3）-->
+        <a class="btn btn-gold btn-tier" href="https://core.newebpay.com/EPG/MS3836376462/V2sSh6">報名</a>
       </div>
     </div>
 
