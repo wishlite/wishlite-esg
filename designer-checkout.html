@@ -152,7 +152,7 @@
   .plan-tag{letter-spacing:1.5px;}
   .tier-price{font-size:27px;}
   /* L1 區塊精品化：底色加深一階，白色表格/卡片跳出來 */
-  .product-section.bg-cream{background:#ece1cb;}
+  .product-section.bg-cream{background:var(--soft);}
   .product-section.bg-cream .syllabus-table{border-color:#d9cbaa;box-shadow:0 6px 22px rgba(96,78,42,0.10);}
   .product-section.bg-cream .syllabus-table th{background:var(--moss);color:var(--cream);}
   .product-section.bg-cream .syllabus-table th span{color:rgba(245,240,232,0.65);}
@@ -194,6 +194,7 @@
   .p-acc[open] summary{border-bottom:1px solid var(--sand);}
   .p-acc ol{padding:16px 22px 18px 44px;}
   .p-acc .contact-card{border:none;border-radius:0;}
+  .p-acc .faq-body{padding:14px 22px 18px;font-size:14.5px;color:#3a4a3a;}
   .policy .p-acc h3{border:none;margin:0;padding:0;}
 
   /* Footer */
@@ -377,18 +378,18 @@
   <div class="container">
     <div class="label">FAQ</div>
     <h2>常見問題</h2>
-    <div class="faq-item">
-      <h3>可以分期付款嗎？</h3>
-      <p>永續行動設計師專班可透過藍新金流以信用卡分期付款；期數與適用銀行以付款頁面顯示為準，利息或手續費依各發卡銀行規定。通識班為單次付清。</p>
-    </div>
-    <div class="faq-item">
-      <h3>報名後可以退費嗎？</h3>
-      <p>可以，依〈<a href="designer-refund-policy.html" target="_blank" rel="noopener" style="color:var(--moss);">消費者購買及退費須知</a>〉辦理；付款完成七日內且尚未開課，可全額退費。</p>
-    </div>
-    <div class="faq-item">
-      <h3>沒有手作或企業經驗，適合嗎？</h3>
-      <p>適合。課程從材料敘事與體驗設計的基礎開始，小班共創制會依每位夥伴的背景，調整練習的方向。</p>
-    </div>
+    <details class="p-acc">
+      <summary>可以分期付款嗎？</summary>
+      <div class="faq-body"><p>永續行動設計師專班可透過藍新金流以信用卡分期付款；期數與適用銀行以付款頁面顯示為準，利息或手續費依各發卡銀行規定。通識班為單次付清。</p></div>
+    </details>
+    <details class="p-acc">
+      <summary>報名後可以退費嗎？</summary>
+      <div class="faq-body"><p>可以，依〈<a href="designer-refund-policy.html" target="_blank" rel="noopener" style="color:var(--moss);">消費者購買及退費須知</a>〉辦理；付款完成七日內且尚未開課，可全額退費。</p></div>
+    </details>
+    <details class="p-acc">
+      <summary>沒有手作或企業經驗，適合嗎？</summary>
+      <div class="faq-body"><p>適合。課程從材料敘事與體驗設計的基礎開始，小班共創制會依每位夥伴的背景，調整練習的方向。</p></div>
+    </details>
   </div>
 </section>
 
