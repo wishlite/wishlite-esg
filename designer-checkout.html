@@ -130,6 +130,25 @@
     .product-grid{grid-template-columns:minmax(0,1fr) 360px;gap:44px;align-items:start;}
     .product-buy{position:sticky;top:84px;}
   }
+  /* ── 產品區美化 v2：色塊同步 ── */
+  .product-section{padding:64px 0 72px;}
+  .product-section .label{display:inline-block;background:var(--mist);color:var(--moss-dark);padding:6px 16px;border-radius:20px;font-size:11px;letter-spacing:2.5px;margin-bottom:16px;}
+  .product-section h2{margin-top:0;}
+  /* L2 深綠沉浸區 */
+  .product-section.dark{background:var(--moss);}
+  .product-section.dark .label{background:rgba(212,176,106,0.22);color:var(--gold-light);}
+  .product-section.dark h2{color:var(--white);}
+  .product-section.dark .section-sub{color:rgba(255,255,255,0.72);}
+  .product-section.dark .syllabus-table{border-color:rgba(255,255,255,0.12);box-shadow:0 4px 18px rgba(0,0,0,0.10);}
+  .product-section.dark .syllabus-note{color:rgba(255,255,255,0.72);}
+  .product-section.dark .plan-card{border:none;box-shadow:0 6px 24px rgba(0,0,0,0.16);}
+  /* 購買卡層次 */
+  .product-buy .plan-card{border-radius:18px;}
+  .plan-tag{letter-spacing:1.5px;}
+  .tier-price{font-size:27px;}
+  /* 共用資訊收尾區 */
+  .pay-info{padding:44px 0 36px;}
+  .pay-info .policy-link{display:inline-block;margin-top:14px;font-weight:500;}
   .pay-methods-line{max-width:700px;margin:30px auto 0;font-size:13px;color:rgba(255,255,255,0.72);line-height:1.8;}
   .policy-link{display:block;margin-top:16px;font-size:13px;color:var(--white);text-decoration:underline;text-underline-offset:4px;}
   .course-format-note{max-width:640px;margin:16px auto 0;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.8;}
@@ -256,7 +275,7 @@
 </section>
 
 <!-- L2 產品區：培訓內容＋購買 -->
-<section class="block product-section">
+<section class="block product-section dark">
   <div class="container">
     <div class="label">Enrollment 02</div>
     <div class="product-grid">
@@ -325,7 +344,7 @@
 </section>
 
 <!-- 付款共用資訊 -->
-<section class="block pay-info">
+<section class="block pay-info bg-soft">
   <div class="container">
     <p class="pay-methods-line">付款方式透過「藍新金流」提供，支援信用卡一次付清與信用卡分期付款；可使用之分期期數與適用發卡銀行以付款頁面實際顯示為準，分期利息或手續費（如有）依各發卡銀行規定。交易幣別為新台幣（TWD），標示價格均為含稅價。</p>
     <a class="policy-link" href="#policy">報名前，請先閱讀〈消費者購買及退費須知〉</a>
