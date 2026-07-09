@@ -557,19 +557,82 @@
   </div>
 </section>
 
-<!-- ===== 5.8 學習路徑（提前·先讓人知道怎麼開始）===== -->
+<!-- ===== 5.8 學習路徑（成長路徑圖·四站點）===== -->
 <section id="paths">
+  <style>
+    .pathmap{max-width:680px;margin:48px auto 0;}
+    .pathmap-item{position:relative;display:flex;gap:22px;padding-bottom:46px;}
+    .pathmap-item:last-child{padding-bottom:0;}
+    .pathmap-item::before{content:'';position:absolute;left:23px;top:52px;bottom:6px;width:1px;background:var(--gold);opacity:.55;}
+    .pathmap-item:last-child::before{display:none;}
+    .pathmap-node{flex:0 0 48px;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--brown-deep);letter-spacing:.06em;}
+    .pathmap-body{flex:1;min-width:0;padding-top:3px;}
+    .pathmap-stage{font-size:12px;letter-spacing:.24em;color:var(--olive);text-transform:uppercase;display:block;margin-bottom:8px;}
+    .pathmap-title{font-family:var(--serif);font-size:clamp(19px,2.4vw,23px);color:var(--brown-deep);font-weight:500;letter-spacing:.04em;margin:0 0 10px;}
+    .pathmap-text{font-size:15.5px;line-height:2;color:var(--brown-deep);opacity:.82;margin:0;}
+    .pathmap-note{margin-top:4px;padding:16px 20px;border-left:2px solid var(--gold);background:rgba(184,155,110,.08);font-size:15px;line-height:2;color:var(--brown-deep);}
+    .pathmap-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+    .pathmap-card{border:1px solid rgba(184,155,110,.45);background:rgba(255,255,255,.55);padding:24px 22px;}
+    .pathmap-card-title{font-family:var(--serif);font-size:17.5px;color:var(--brown-deep);font-weight:500;letter-spacing:.05em;margin:0 0 10px;}
+    .pathmap-card-text{font-size:14.5px;line-height:1.95;color:var(--brown-deep);opacity:.8;margin:0;}
+    @media (max-width:620px){
+      .pathmap-cards{grid-template-columns:1fr;}
+      .pathmap-item{gap:16px;padding-bottom:38px;}
+      .pathmap-node{flex-basis:42px;width:42px;height:42px;font-size:15px;}
+      .pathmap-item::before{left:20px;top:46px;}
+    }
+  </style>
   <div class="wrap">
     <div class="center">
-      <span class="kicker">Choose Your Path</span>
+      <span class="kicker">Your Growth Path</span>
       <div class="gold-line"></div>
-      <h2 class="section-title">選擇適合你的學習路徑</h2>
-      <p class="section-lead">你可以先從一堂入門課開始，<br>認識永續材料與體驗設計的基本方法。</p>
-      <p class="section-lead" style="margin-top:18px;">也可以進入 35 小時完整培訓，<br>從材料理解、方案設計到真實場域應用，<br>一步步完成自己的永續體驗方案。</p>
+      <h2 class="section-title">你的成長路徑圖</h2>
+      <p class="section-lead">從一堂入門課到走進真實場域，<br>每一站，都有清楚的下一步。</p>
     </div>
-    <img class="section-img section-img--bleed" style="margin-top:40px;" src="assets/class-tongshi-v2.jpg" alt="永續材料通識班｜入門路徑·實體材料體驗·半日課程。給想先認識永續材料與體驗設計的人，一堂打開入口的基礎課。課程重點：認識四大永續材料與應用可能、理解永續概念與循環設計思維、完成一件代表性永續作品、練習說出材料故事與體驗引導、建立永續生活與工作視角。" loading="lazy">
 
-    <img class="section-img section-img--bleed" style="margin-top:52px;" src="assets/class-zhuanban-v2.jpg" alt="永續行動設計師專班｜完整培訓·線上預習·實體密集·真實場域學習·成果陪跑。給想系統學習、發展第二專長，並把手作、教育、品牌或活動經驗，轉化為永續體驗設計能力的人。課程重點：材料應用×體驗設計×場域應用整合、25 堂代表課程系統與方案設計、外在永續×內在永續課程轉譯、企業校園品牌與公共場域應用、真實場域學習與提案表達、個人永續行動方案整理與成果檢核。" loading="lazy">
+    <div class="pathmap">
+      <div class="pathmap-item">
+        <div class="pathmap-node">01</div>
+        <div class="pathmap-body">
+          <span class="pathmap-stage">入門</span>
+          <h3 class="pathmap-title">永續材料通識班</h3>
+          <p class="pathmap-text">先認識四大永續材料與體驗設計的基本方法，完成一件代表性作品，練習說出材料的故事。給想先打開入口的你。</p>
+        </div>
+      </div>
+      <div class="pathmap-item">
+        <div class="pathmap-node">02</div>
+        <div class="pathmap-body">
+          <span class="pathmap-stage">完整培訓</span>
+          <h3 class="pathmap-title">永續行動設計師培訓計畫</h3>
+          <p class="pathmap-text">35 小時完整培訓，從材料應用、體驗設計到場域應用整合，一步步完成自己的永續體驗方案，並在真實場域中練習與提案。</p>
+        </div>
+      </div>
+      <div class="pathmap-item">
+        <div class="pathmap-node">03</div>
+        <div class="pathmap-body">
+          <span class="pathmap-stage">合作評估</span>
+          <h3 class="pathmap-title">後續合作與發展建議</h3>
+          <p class="pathmap-note">完成培訓後，會依學習成果、現場適配度與區域需求，提供後續合作評估與發展建議。</p>
+        </div>
+      </div>
+      <div class="pathmap-item">
+        <div class="pathmap-node">04</div>
+        <div class="pathmap-body">
+          <span class="pathmap-stage">走進場域</span>
+          <h3 class="pathmap-title">兩個發展方向</h3>
+          <div class="pathmap-cards">
+            <div class="pathmap-card">
+              <h4 class="pathmap-card-title">社區・學校場域</h4>
+              <p class="pathmap-card-text">把永續體驗帶進社區據點與校園課堂，從在地的小場開始，累積引導與陪伴的經驗。</p>
+            </div>
+            <div class="pathmap-card">
+              <h4 class="pathmap-card-title">企業案場方向</h4>
+              <p class="pathmap-card-text">參與企業 ESG 體驗活動與品牌合作現場，在真實案場中累積協作與執行的經驗。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <p class="bridge-copy" style="font-size:clamp(16px,2vw,20px);margin:40px auto 14px;">如果想慢慢了解，<br>我們把完整課程內容整理成一份型錄。</p>
     <p class="section-lead center" style="margin:0 auto;font-size:16.5px;">加入 LINE 後即可領取。</p>
