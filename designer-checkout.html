@@ -197,9 +197,14 @@
   .p-acc .faq-body{padding:14px 22px 18px;font-size:14.5px;color:#3a4a3a;}
   .policy .p-acc h3{border:none;margin:0;padding:0;}
 
-  /* Footer */
-  footer{background:var(--moss-dark);color:rgba(255,255,255,0.6);padding:48px 24px;text-align:center;font-size:13px;line-height:2.1;}
-  footer b{color:var(--white);font-family:'Noto Serif TC',serif;font-size:15px;display:block;margin-bottom:8px;}
+  /* Footer — 地平線語言 landing-lite（同 eco-star-designer） */
+  footer.horizon-footer{position:relative;background:linear-gradient(180deg,#FAF6EA 0%,#F0E9D8 100%);padding:80px 0 36px;overflow:hidden;}
+  .horizon-photo{position:absolute;left:0;right:0;bottom:0;width:100%;height:260px;background-image:url('assets/hero-mountain-warm.jpg');background-size:cover;background-position:center bottom;background-repeat:no-repeat;opacity:0.32;pointer-events:none;z-index:0;}
+  .horizon-photo::before{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:linear-gradient(180deg,#FAF6EA 0%,rgba(250,246,234,0.78) 14%,rgba(250,246,234,0.38) 32%,rgba(250,246,234,0.10) 58%,transparent 88%);pointer-events:none;}
+  .footer-inner{position:relative;text-align:center;color:#7A6F61;font-size:12px;padding-top:60px;opacity:0.85;z-index:1;}
+  .footer-brand{font-family:'Noto Serif TC',serif;font-weight:600;color:#7E5A35;font-size:15px;margin-bottom:6px;opacity:0.92;}
+  .footer-legal{margin-top:14px;font-size:11.5px;line-height:2;color:#8a7f70;}
+  .footer-legal a{color:#7E5A35;}
 
   @media (max-width:640px){
     .hero{padding:48px 20px 44px;}
@@ -405,11 +410,13 @@
 </section>
 
 <!-- Footer -->
-<footer>
-  <b>韻手作永續 Wishlite｜永續行動學院</b>
-  韻手作有限公司・統一編號 90025571<br>
-  客服信箱 wishlitediy@gmail.com・官方網站 <a href="https://wishlite.com.tw" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.85);">wishlite.com.tw</a><br>
-  © 2026 Wishlite. All rights reserved.
+<footer class="horizon-footer">
+  <div class="horizon-photo" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-brand">Wishlite ｜ 韻手作永續</div>
+    <p>讓永續成為日常的選擇</p>
+    <p class="footer-legal">韻手作有限公司・統一編號 90025571・客服信箱 wishlitediy@gmail.com・官方網站 <a href="https://wishlite.com.tw" target="_blank" rel="noopener">wishlite.com.tw</a><br>© 2026 Wishlite. All rights reserved.</p>
+  </div>
 </footer>
 
 </body>
