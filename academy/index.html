@@ -365,6 +365,12 @@
   .horizon-footer .footer-inner{position:relative;text-align:center;color:var(--brown-soft);font-size:12px;padding-top:60px;opacity:.85;}
   .horizon-footer .footer-brand-h{font-family:var(--serif);font-weight:600;color:var(--brown-deep);font-size:15px;margin-bottom:6px;letter-spacing:.1em;opacity:.92;}
 
+  /* 公開課時效自動開關：JS 在截止後給 body 加 .openclass-over，
+     公開課 CTA（.js-openclass）隱藏、常態 CTA（.js-evergreen）現身。
+     無 JS 時預設顯示公開課版（截止前為主要流量期）。 */
+  body:not(.openclass-over) .js-evergreen{display:none!important;}
+  body.openclass-over .js-openclass{display:none!important;}
+
   /* responsive */
   @media(max-width:860px){
     .grid-3,.grid-4,.future-grid{grid-template-columns:repeat(2,1fr);}
@@ -412,9 +418,12 @@
       <p class="hero-en">Sustainable Action Designer Program</p>
       <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--brown-deep);font-weight:500;letter-spacing:.05em;margin:4px 0 14px;">35 小時完整培訓</p>
       <p style="font-size:clamp(14px,1.7vw,16px);color:var(--brown);line-height:1.85;max-width:460px;margin:0 0 10px;">從永續材料、體驗設計到真實場域應用，<br>養成一套能走進真實場域的永續行動力。</p>
-      <a href="signup.html" aria-label="報名免費公開課《一堂課，教你用永續材料設計一場體驗活動》｜線上直播 90 分鐘" style="display:block;margin-top:26px;max-width:680px;">
+      <a href="signup.html" class="js-openclass" aria-label="報名免費公開課《一堂課，教你用永續材料設計一場體驗活動》｜線上直播 90 分鐘" style="display:block;margin-top:26px;max-width:680px;">
         <img src="assets/hero-class-cta.png" alt="免費線上公開課 ｜ 90 分鐘：一堂課，看懂真實世界需要什麼樣的永續體驗。從材料到體驗，從體驗到行動。立即報名。" style="display:block;width:100%;height:auto;border-radius:10px;" loading="lazy">
       </a>
+      <div class="js-evergreen" style="margin-top:26px;">
+        <a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="btn-brown">查看課程方案與報名 →</a>
+      </div>
       <p style="margin-top:12px;"><a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">索取完整型錄 →</a></p>
     </div>
   </div>
@@ -434,27 +443,7 @@
   </div>
 </section>
 
-<!-- ===== 2.5 永續，不再只是環保（P5）===== -->
-<section style="padding:36px 0 0;">
-  <img class="section-fullbleed fade-edges" style="max-width:1120px;margin:0 auto;padding:0 20px;box-sizing:border-box;" src="assets/section-sustainability-today.png" alt="永續，不再只是環保。當越來越多企業、校園、品牌與公共場域開始談永續，真正重要的已經不只是知道更多資訊，而是如何讓人願意理解、願意參與，並在日常裡慢慢產生改變。永續有四個面向：體驗（讓永續被感受）、行動（讓理念走進日常）、合作（讓更多人一起參與）、影響（讓改變持續發生）。永續，不只是一個名詞，而是一種能被設計、被參與、也能慢慢擴散的行動方式。" loading="lazy">
-</section>
-
-<!-- ===== 3. 為什麼現在（視覺 band）===== -->
-<section class="why-band">
-  <div class="wrap">
-    <div class="why-text">
-      <span class="kicker">Why Now</span>
-      <div class="gold-line"></div>
-      <h2 class="section-title">永續浪潮下的新選擇</h2>
-      <p class="section-lead">
-        當永續走進企業、校園、品牌與日常生活，
-        世界需要的不只是懂永續的人，
-        而是能把理念轉化成體驗、行動與參與的人。<br><br>
-        <strong style="display:inline-block;margin-top:18px;color:var(--brown-deep);font-weight:600;line-height:2.1;">永續行動設計師，<br>讓永續被理解、被參與，<br>也被真正帶進生活。</strong>
-      </p>
-    </div>
-  </div>
-</section>
+<!-- ===== 2.5「永續不再只是環保」與 3.「Why Now」：2026-07-11 Apple 拍板刪除（觀念教育三留一，與下方「一般手作 vs 好的體驗」同義重複；圖檔 section-sustainability-today.png / section-why.png 保留 assets/）===== -->
 
 <!-- ===== 5.5 不只是做完一個作品（一般手作 vs 好的永續體驗）===== -->
 <section style="background:var(--warm-white);">
@@ -465,8 +454,8 @@
   </div>
 </section>
 
-<!-- ===== 5.6 免費公開課入口：先理解，再決定是否進入培訓 ===== -->
-<section class="free-class">
+<!-- ===== 5.6 免費公開課入口：先理解，再決定是否進入培訓（js-openclass：公開課結束後自動隱藏整區）===== -->
+<section class="free-class js-openclass">
   <div class="wrap center">
     <span class="kicker">Free Live Class</span>
     <div class="gold-line"></div>
@@ -487,7 +476,7 @@
       到走進真實場域，<br>
       每一步都會慢慢長出自己的方向。
     </p>
-    <img class="section-img section-img--bleed" style="margin-top:32px;" src="assets/section-journey-35hr.jpg" alt="35 小時系統課程：1 線上預習、2 實體 Day1（外在永續）、3 實體 Day2（內在永續）、4 25 堂方案庫、5 場域案例①、6 方案設計、7 場域案例②、8 成果整理。真實場域學習／案例拆解將依當期專案安排。" loading="lazy">
+    <!-- 2026-07-11 刪 35hr journey 大圖（與下方六張模組卡同一份時數表重複，且圖內「線上預習」為 6/21 淘汰舊詞；圖檔 section-journey-35hr.jpg 保留 assets/）-->
     <div class="center" style="margin-top:34px;">
       <h2 class="section-title" style="font-size:clamp(23px,2.9vw,29px);margin-bottom:0;">這 35 小時，不只是學一套課程。</h2>
       <p class="section-lead center" style="margin:20px auto 0;max-width:720px;">你會從材料理解、體驗設計，<br>一路走到真實場域應用，</p>
@@ -525,12 +514,7 @@
   </div>
 </section>
 
-<!-- ===== 6.9 學完之後（P14·未來可能·拉進想要的未來）===== -->
-<section style="background:var(--warm-white);">
-  <div class="wrap">
-    <img class="section-img section-img--bleed" style="margin-top:0;" src="assets/section-future-possibility.png" alt="學完之後，你帶走的不只是一套課程，而是一種能被真實世界需要的能力。01 設計自己的永續工作坊（把材料、故事與體驗，整理成屬於自己的課程）、02 與企業共同合作（設計 ESG 體驗活動、永續禮品與員工參與方案）、03 走進校園教育現場（把永續變成孩子願意理解、願意參與的體驗）、04 與品牌共同策展（結合節慶、商品與品牌理念，創造更有溫度的互動體驗）、05 發展第二專長（讓原本的興趣與專業，延伸出新的方向與可能）、06 開啟第二收入的可能（從協作、小場開始，慢慢建立屬於自己的節奏）。你不是多了一張證書，而是多了一種走進世界的能力。" loading="lazy">
-  </div>
-</section>
+<!-- ===== 6.9 學完之後：2026-07-11 Apple 拍板刪除（出口資訊與成長路徑圖站點4重疊，集中在路徑圖一站講完；圖檔 section-future-possibility.png 保留 assets/）===== -->
 
 <!-- ===== 5.8 學習路徑（成長路徑圖·四站點）===== -->
 <section id="paths">
@@ -612,10 +596,7 @@
     <img class="section-img section-img--bleed" style="margin-top:44px;" src="assets/three-paths-cards.png" alt="創作者路徑，把想法作品整理成課程；引導者路徑，把課程帶進真實場域；協作者路徑，成為專案夥伴與活動執行。你的專長 × 永續行動設計 ＝ 無限可能。" loading="lazy">
 
     <p class="bridge-copy" style="font-size:clamp(16px,2vw,20px);margin:40px auto 14px;">如果想慢慢了解，<br>我們把完整課程內容整理成一份型錄。</p>
-    <p class="section-lead center" style="margin:0 auto;font-size:16.5px;">加入 LINE 後即可領取。</p>
-    <div class="warmup-cta" style="margin-top:26px;">
-      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="btn-brown">索取完整型錄 →</a>
-    </div>
+    <p style="text-align:center;margin-top:18px;"><a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">加入 LINE 領取完整型錄 →</a></p>
   </div>
 </section>
 
@@ -668,11 +649,18 @@
     <span class="kicker">Start Here</span>
     <div class="gold-line" style="margin:0 auto 28px;"></div>
     <h2 class="section-title">還不確定從哪裡開始？</h2>
-    <p class="section-lead center" style="margin:0 auto;">加入官方 LINE，跟我們聊聊你的情況，<br>或先領一份完整型錄，慢慢看。</p>
-    <div class="warmup-cta" style="margin-top:36px;">
-      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="btn-brown">預約簡短諮詢 →</a>
-      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="btn-outline">領取完整型錄 →</a>
+    <p class="section-lead center" style="margin:0 auto;">先從一堂課開始，<br>或加入官方 LINE，跟我們聊聊你的情況。</p>
+    <div class="warmup-cta js-openclass" style="margin-top:36px;">
+      <a href="signup.html" class="btn-brown">報名免費公開課 →</a>
     </div>
+    <div class="warmup-cta js-evergreen" style="margin-top:36px;">
+      <a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="btn-brown">查看課程方案與報名 →</a>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:15px;">
+      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="cta-link">預約簡短諮詢 →</a>
+      <span style="color:var(--line);margin:0 10px;">·</span>
+      <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">領取完整型錄 →</a>
+    </p>
   </div>
 </section>
 
@@ -697,6 +685,18 @@
     <p>讓永續成為日常的選擇</p>
   </div>
 </footer>
+
+<script>
+  // 公開課時效自動開關（一勞永逸機制）：
+  // 過了 OPENCLASS_END，全頁公開課 CTA 自動隱藏、常態 CTA（導結帳頁）自動現身，不用手動下架。
+  // 下一場公開課上檔時：只改這行日期 + hero 公開課圖/文案即可。
+  (function(){
+    var OPENCLASS_END = '2026-07-12T21:30:00+08:00';
+    if (Date.now() > new Date(OPENCLASS_END).getTime()) {
+      document.body.classList.add('openclass-over');
+    }
+  })();
+</script>
 
 </body>
 </html>
