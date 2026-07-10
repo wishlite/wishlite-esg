@@ -698,5 +698,32 @@
   })();
 </script>
 
+<script>
+  // 漏斗事件信標：pageview + 連結/按鈕點擊 → n8n WF-Funnel-Track → Notion「📊 漏斗事件紀錄」。
+  // 全程 try/catch 靜默失敗，絕不影響頁面功能。
+  (function(){
+    var EP='https://wishlite-n8n.zeabur.app/webhook/funnel-track';
+    function send(d){
+      try{
+        d.page=location.pathname;
+        d.utm=(location.search||'').slice(0,140);
+        d.ref=(document.referrer||'').slice(0,140);
+        var b=JSON.stringify(d);
+        if(navigator.sendBeacon){ navigator.sendBeacon(EP, new Blob([b],{type:'text/plain;charset=UTF-8'})); }
+        else{ fetch(EP,{method:'POST',headers:{'Content-Type':'text/plain'},body:b,keepalive:true}).catch(function(){}); }
+      }catch(e){}
+    }
+    send({t:'pv'});
+    document.addEventListener('click',function(ev){
+      try{
+        var a=ev.target && ev.target.closest ? ev.target.closest('a[href],button') : null;
+        if(!a) return;
+        var label=(a.getAttribute('data-track')||a.textContent||'').trim().slice(0,60)||'(無文字)';
+        send({t:'click',target:label,href:(a.getAttribute('href')||'').slice(0,140)});
+      }catch(e){}
+    },true);
+  })();
+</script>
+
 </body>
 </html>
