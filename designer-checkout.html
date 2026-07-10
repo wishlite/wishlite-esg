@@ -29,13 +29,13 @@
   .nav{background:var(--white);border-bottom:1px solid var(--sand);position:sticky;top:0;z-index:10;}
   .nav .container{display:flex;justify-content:space-between;align-items:center;height:60px;}
   .nav-brand{font-family:'Noto Serif TC',serif;font-weight:700;color:var(--moss-dark);font-size:16px;}
-  .nav a.nav-cta{font-size:14px;color:var(--moss);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px;}
+  .nav a.nav-cta{display:inline-block;background:var(--gold);color:var(--white);font-size:14px;font-weight:500;padding:9px 24px;border-radius:22px;text-decoration:none;transition:background .2s;}
 
   /* Hero */
-  .hero{background:var(--moss-dark);text-align:center;padding:88px 24px 80px;}
+  .hero{background:var(--moss-dark);text-align:center;padding:64px 24px 60px;}
   .hero .label{color:var(--gold-light);}
   .hero h1{font-family:'Noto Serif TC',serif;font-size:38px;color:var(--white);margin:14px 0 16px;line-height:1.4;}
-  .hero p{color:rgba(255,255,255,0.65);font-size:17px;margin-bottom:28px;}
+  .hero p{color:rgba(255,255,255,0.65);font-size:17px;margin-bottom:0;}
   .hero .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
   .hero .chip{border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);font-size:13px;padding:6px 16px;border-radius:20px;}
 
@@ -202,7 +202,9 @@
   footer b{color:var(--white);font-family:'Noto Serif TC',serif;font-size:15px;display:block;margin-bottom:8px;}
 
   @media (max-width:640px){
+    .hero{padding:48px 20px 44px;}
     .hero h1{font-size:28px;}
+    .nav a.nav-cta{padding:8px 18px;font-size:13px;}
     section.block{padding:56px 0;}
     .trust .container{gap:28px;}
   }
@@ -214,6 +216,7 @@
 <nav class="nav">
   <div class="container">
     <div class="nav-brand">韻手作永續｜永續行動學院</div>
+    <a class="nav-cta" href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener">聯繫我們</a>
   </div>
 </nav>
 
@@ -222,7 +225,6 @@
   <div class="label">Sustainable Action Designer</div>
   <h1>永續行動設計師培訓計畫</h1>
   <p>把材料的故事，設計成一場有人記得的體驗。</p>
-  <a class="btn btn-gold" href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener">聯繫我們</a>
 </header>
 
 <!-- L1 產品區：課綱＋購買 -->
