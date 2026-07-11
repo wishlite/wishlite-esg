@@ -374,13 +374,7 @@
   }
   /* 新增入口頁大圖（picture 內的 img）：統一圓角與輕陰影 */
   .entry-img{border-radius:14px;box-shadow:0 10px 30px rgba(92,72,48,.08);}
-  /* 夥伴故事：桌機一張橫圖／手機切三張直式卡垂直排列（文字不縮小、不裁切） */
-  .partner-stack{display:none;}
-  @media(max-width:680px){
-    .partner-wide{display:none;}
-    .partner-stack{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px;padding:0 8px;}
-    .partner-stack img{width:100%;height:auto;border-radius:12px;display:block;}
-  }
+  /* 夥伴故事：桌機手機同用完整原橫圖，不裁切不切卡（7/11 Apple 定案，撤掉三直條切圖方案） */
 
   /* 公開課時效自動開關：JS 在截止後給 body 加 .openclass-over，
      公開課 CTA（.js-openclass）隱藏、常態 CTA（.js-evergreen）現身。
@@ -669,24 +663,8 @@
     <div class="gold-line"></div>
     <h2 class="section-title">夥伴故事｜每個人都可以從自己的起點開始</h2>
     <p class="section-lead center" style="margin:0 auto;">不是先準備好了，才能開始。<br><br>很多人都是從原本的背景與生活出發，<br>透過學習、練習與真實場域的累積，<br>慢慢長出屬於自己的位置。</p>
-    <picture class="partner-wide">
-      <source srcset="assets/academy-partner-story-cards.webp" type="image/webp">
-      <img class="section-img section-img--bleed entry-img" style="margin-top:32px;" src="assets/academy-partner-story-cards.png" width="1672" height="941" alt="Wishlite 三位夥伴 Mico、婷婷與阿寶，從不同起點走向永續實踐的成長故事" loading="lazy">
-    </picture>
-    <div class="partner-stack">
-      <picture>
-        <source srcset="assets/partner-story-mico.webp" type="image/webp">
-        <img src="assets/partner-story-mico.png" width="557" height="941" alt="夥伴故事：Mico 從種子講師，到專案執行夥伴" loading="lazy">
-      </picture>
-      <picture>
-        <source srcset="assets/partner-story-tingting.webp" type="image/webp">
-        <img src="assets/partner-story-tingting.png" width="557" height="941" alt="夥伴故事：婷婷 從手作愛好者，到永續參與者" loading="lazy">
-      </picture>
-      <picture>
-        <source srcset="assets/partner-story-abao.webp" type="image/webp">
-        <img src="assets/partner-story-abao.png" width="558" height="941" alt="夥伴故事：阿寶 把生命經驗，轉成陪伴他人的力量" loading="lazy">
-      </picture>
-    </div>
+    <!-- 真人照片一律供原始 PNG，不過 WebP（Apple 7/11 定案：夥伴照不可有任何壓縮失真）；桌機手機同用完整橫圖，不裁切 -->
+    <img class="section-img section-img--bleed entry-img" style="margin-top:32px;" src="assets/academy-partner-story-cards.png" width="1672" height="941" alt="Wishlite 三位夥伴 Mico、婷婷與阿寶，從不同起點走向永續實踐的成長故事" loading="lazy">
     <p class="section-lead center" style="margin:28px auto 0;">每一位夥伴的背景都不同。<br>有人從種子講師開始，有人從手作興趣出發，<br>也有人把生命經驗轉化成陪伴他人的力量。<br><br>他們不是一開始就準備好了，<br>而是在一次次學習、實作與真實場域中，慢慢長出自己的位置。</p>
   </div>
 </section>
