@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>永續行動設計師培訓計畫｜Wishlite Sustainable Academy</title>
-<meta name="description" content="把喜歡的事，變成能帶來改變的能力。永續材料 × 體驗設計 × 真實場域 × 多元合作。一套來自真實企業、校園與品牌場域驗證過的永續體驗設計能力。">
-<meta property="og:title" content="永續行動設計師培訓計畫｜Wishlite Sustainable Academy">
-<meta property="og:description" content="把喜歡的事，變成能帶來改變的能力。">
+<title>Wishlite 永續行動學院｜永續材料 × 體驗設計 × 真實場域</title>
+<meta name="description" content="永續行動學院，是一條從理解走向實踐的學習路徑。從免費公開課、L1 永續材料通識班到 L2 永續行動設計師專班，依照你的經驗與目標，找到適合的開始方式。">
+<meta property="og:title" content="Wishlite 永續行動學院｜永續材料 × 體驗設計 × 真實場域">
+<meta property="og:description" content="從理解材料、親手體驗、設計體驗到走進真實場域，找到適合你的開始方式。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -365,6 +365,23 @@
   .horizon-footer .footer-inner{position:relative;text-align:center;color:var(--brown-soft);font-size:12px;padding-top:60px;opacity:.85;}
   .horizon-footer .footer-brand-h{font-family:var(--serif);font-weight:600;color:var(--brown-deep);font-size:15px;margin-bottom:6px;letter-spacing:.1em;opacity:.92;}
 
+  /* 2026-07-11 官網入口頁改版：頁內錨點不被遮住 */
+  section[id]{scroll-margin-top:96px;}
+  /* 入口頁 hero 主標：桌機兩行不斷詞，手機縮字級避免溢出 */
+  .hero-title-entry{font-size:clamp(24px,3.4vw,36px);line-height:1.5;white-space:nowrap;}
+  @media(max-width:680px){
+    .hero-title-entry{font-size:clamp(17px,4.6vw,20px);letter-spacing:.04em;}
+  }
+  /* 新增入口頁大圖（picture 內的 img）：統一圓角與輕陰影 */
+  .entry-img{border-radius:14px;box-shadow:0 10px 30px rgba(92,72,48,.08);}
+  /* 夥伴故事：桌機一張橫圖／手機切三張直式卡垂直排列（文字不縮小、不裁切） */
+  .partner-stack{display:none;}
+  @media(max-width:680px){
+    .partner-wide{display:none;}
+    .partner-stack{display:grid;grid-template-columns:1fr;gap:16px;margin-top:28px;padding:0 8px;}
+    .partner-stack img{width:100%;height:auto;border-radius:12px;display:block;}
+  }
+
   /* 公開課時效自動開關：JS 在截止後給 body 加 .openclass-over，
      公開課 CTA（.js-openclass）隱藏、常態 CTA（.js-evergreen）現身。
      無 JS 時預設顯示公開課版（截止前為主要流量期）。 */
@@ -414,39 +431,100 @@
   <div class="hero-inner">
     <div class="hero-text">
       <p class="hero-brand">WISHLITE SUSTAINABLE ACADEMY</p>
-      <h1 class="hero-title">永續行動設計師<span style="display:block;font-size:.56em;font-weight:500;letter-spacing:.14em;margin-top:8px;color:var(--brown-deep);">培訓計畫</span></h1>
-      <p class="hero-en">Sustainable Action Designer Program</p>
-      <p style="font-family:var(--serif);font-size:clamp(15px,1.9vw,18px);color:var(--brown-deep);font-weight:500;letter-spacing:.05em;margin:4px 0 14px;">35 小時完整培訓</p>
-      <p style="font-size:clamp(14px,1.7vw,16px);color:var(--brown);line-height:1.85;max-width:460px;margin:0 0 10px;">從永續材料、體驗設計到真實場域應用，<br>養成一套能走進真實場域的永續行動力。</p>
-      <a href="signup.html" class="js-openclass" aria-label="報名免費公開課《一堂課，教你用永續材料設計一場體驗活動》｜線上直播 90 分鐘" style="display:block;margin-top:26px;max-width:680px;">
-        <img src="assets/hero-class-cta.png" alt="免費線上公開課 ｜ 90 分鐘：一堂課，看懂真實世界需要什麼樣的永續體驗。從材料到體驗，從體驗到行動。立即報名。" style="display:block;width:100%;height:auto;border-radius:10px;" loading="lazy">
-      </a>
-      <div class="js-evergreen" style="margin-top:26px;">
-        <a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="btn-brown">查看課程方案與報名 →</a>
+      <h1 class="hero-title hero-title-entry">一堂課，教你用永續材料，<br>設計一場讓人願意參與的體驗</h1>
+      <p style="font-size:clamp(14px,1.7vw,16px);color:var(--brown);line-height:1.9;max-width:480px;margin:0 0 14px;">從材料故事、體驗設計到真實場域，<br>看懂永續如何從一件作品，<br>變成一場可以被理解、參與與行動的體驗。</p>
+      <p class="hero-formula" style="margin-top:6px;margin-bottom:30px;">永續材料 × 體驗設計 × 真實場域</p>
+      <div class="js-openclass">
+        <a href="signup.html" class="btn-brown">報名免費線上公開課</a>
       </div>
-      <p style="margin-top:12px;"><a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">索取完整型錄 →</a></p>
+      <div class="js-evergreen">
+        <a href="https://line.me/R/oaMessage/@403kginl/?%E5%85%AC%E9%96%8B%E8%AA%B2" target="_blank" rel="noopener" class="btn-brown">報名免費線上公開課</a>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:var(--brown-soft);letter-spacing:.03em;">加入 LINE 後，輸入「公開課」取得最新課程資訊</p>
+      <p style="margin-top:18px;"><a href="#learning-paths" class="cta-link">想先了解完整學習路徑？往下查看 ↓</a></p>
     </div>
   </div>
 </header>
 
 <!-- ===== 2. 暖身：2026-07-09 移至頁尾（收尾 CTA 之後、footer 之前）——外連按鈕不再於頁首漏流量，改作看完全頁後的溫柔出口 ===== -->
 
+<!-- ===== 2.1 Wishlite Academy 是什麼（2026-07-11 官網入口頁改版新增）===== -->
+<section id="academy-intro" style="background:var(--warm-white);">
+  <div class="wrap center">
+    <span class="kicker">What Is Wishlite Academy</span>
+    <div class="gold-line"></div>
+    <h2 class="section-title">永續行動學院，<br>是一條從理解走向實踐的學習路徑</h2>
+    <p class="section-lead center" style="margin:0 auto;">Wishlite Academy 不只是一門課，也不只是教你完成一件作品。<br><br>我們把過去幾年走進企業、校園、品牌與公共場域的經驗，<br>整理成一套從材料理解、親手體驗、活動設計到真實場域應用的學習系統。<br><br>你可以依照自己的經驗與目標，<br>從免費公開課、L1 永續材料通識班或 L2 永續行動設計師專班開始，<br>慢慢找到適合自己的位置。</p>
+    <picture>
+      <source srcset="assets/academy-four-stage-journey.webp" type="image/webp">
+      <img class="section-img section-img--bleed entry-img" style="margin-top:40px;" src="assets/academy-four-stage-journey.png" width="1659" height="725" alt="Wishlite Academy 從理解材料、親手體驗、設計體驗到走進真實場域的四階段學習路徑" loading="lazy">
+    </picture>
+  </div>
+</section>
+
+<!-- ===== 2.2 公開課／L1／L2 三種開始方式（2026-07-11 官網入口頁改版新增｜CTA 規則：僅公開課用主色實心按鈕）===== -->
+<section id="learning-paths">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Three Ways To Start</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">依照你現在的位置，選擇適合的開始方式</h2>
+      <p class="section-lead center" style="margin:0 auto;">你不需要一開始就知道自己要走到哪裡。<br>可以依照目前的經驗、時間與學習目標，選擇最適合的入口。</p>
+    </div>
+    <picture>
+      <source srcset="assets/academy-three-entry-paths.webp" type="image/webp">
+      <img class="section-img section-img--bleed entry-img" style="margin-top:40px;" src="assets/academy-three-entry-paths.png" width="1659" height="725" alt="Wishlite Academy 免費公開課、L1 永續材料通識班與 L2 永續行動設計師專班三種學習入口" loading="lazy">
+    </picture>
+    <div class="learnmap-grid" style="margin-top:40px;">
+      <div class="lm-card">
+        <span class="lm-num">01</span>
+        <h3>免費公開課</h3>
+        <p style="font-family:var(--serif);color:var(--brown-deep);font-size:15.5px;margin-bottom:8px;">先理解一場永續體驗如何被設計</p>
+        <p>適合第一次認識永續材料與體驗設計，希望先看懂整體概念的人。</p>
+        <p style="margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--olive-deep);">90 分鐘｜免費線上課程</p>
+        <div class="js-openclass" style="margin-top:20px;"><a href="signup.html" class="btn-brown" style="font-size:14.5px;padding:12px 30px;">了解免費公開課</a></div>
+        <div class="js-evergreen" style="margin-top:20px;"><a href="https://line.me/R/oaMessage/@403kginl/?%E5%85%AC%E9%96%8B%E8%AA%B2" target="_blank" rel="noopener" class="btn-brown" style="font-size:14.5px;padding:12px 30px;">了解免費公開課</a></div>
+      </div>
+      <div class="lm-card">
+        <span class="lm-num">02</span>
+        <h3>L1 永續材料通識班</h3>
+        <p style="font-family:var(--serif);color:var(--brown-deep);font-size:15.5px;margin-bottom:8px;">先從材料與親手體驗開始</p>
+        <p>適合想認識循環材料、材料故事與作品應用可能的人。</p>
+        <p style="margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--olive-deep);">線上課程＋材料體驗包</p>
+        <p style="margin-top:20px;"><a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="cta-link">查看 L1 通識班 →</a></p>
+      </div>
+      <div class="lm-card">
+        <span class="lm-num">03</span>
+        <h3>L2 永續行動設計師專班</h3>
+        <p style="font-family:var(--serif);color:var(--brown-deep);font-size:15.5px;margin-bottom:8px;">建立從材料到場域的完整能力</p>
+        <p>適合希望進一步發展體驗設計、活動應用、方案整理與真實場域能力的人。</p>
+        <p style="margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--olive-deep);">35 小時完整培訓</p>
+        <p style="margin-top:20px;"><a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="cta-link">查看 L2 完整專班 →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 4. 你可能是／而你不需要 + 適合誰（合併）===== -->
-<section class="warmup" style="background:#FAF6F2;">
+<section id="who-is-it-for" class="warmup" style="background:#FAF6F2;">
   <div class="wrap">
     <img class="section-img section-img--bleed" style="margin-top:0;" src="assets/section-fit.png" alt="你可能是：手作老師、花藝工作者、香氣／療癒品牌主理人、教育工作者、活動企劃與品牌工作者、想發展第二專長的人、想讓專業更有意義的人。而你不需要：很懂永續、有教學經驗、是設計背景、有自己的品牌、環境科系畢業、一開始就知道答案。" loading="lazy">
-    <p class="bridge-copy" style="margin:40px auto 0;">
-      有些人從創作開始，有些人從陪伴開始，<br>
-      也有些人，從整理與協作開始。
-    </p>
-    <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/personas-3types.png" alt="三種走進永續的方式：創作者型（從喜歡材料的人，到能把感受說出來的人）、引導者型（從喜歡陪伴的人，到能把參與帶進現場的人）、協作者型（從擅長整理與支援的人，到讓任務穩穩完成的人）。" loading="lazy">
+    <p class="section-lead center" style="margin:32px auto 0;">你不需要先成為某一種人，才有資格開始。<br>我們會從你原本擅長的事情出發，陪你找到它與永續行動之間的連結。</p>
+    <div id="academy-roles" style="scroll-margin-top:96px;">
+      <p class="bridge-copy" style="margin:40px auto 0;">
+        有些人從創作開始，有些人從陪伴開始，<br>
+        也有些人，從整理與協作開始。
+      </p>
+      <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/personas-3types.png" alt="三種走進永續的方式：創作者型（從喜歡材料的人，到能把感受說出來的人）、引導者型（從喜歡陪伴的人，到能把參與帶進現場的人）、協作者型（從擅長整理與支援的人，到讓任務穩穩完成的人）。" loading="lazy">
+      <p class="section-lead center" style="margin:32px auto 0;">這三種角色不是固定分類，也不是入學前就要做出的選擇。<br>很多人會在學習與實作的過程中，同時長出兩種以上的能力，<br>並逐漸找到最適合自己的位置。</p>
+    </div>
   </div>
 </section>
 
 <!-- ===== 2.5「永續不再只是環保」與 3.「Why Now」：2026-07-11 Apple 拍板刪除（觀念教育三留一，與下方「一般手作 vs 好的體驗」同義重複；圖檔 section-sustainability-today.png / section-why.png 保留 assets/）===== -->
 
 <!-- ===== 5.5 不只是做完一個作品（一般手作 vs 好的永續體驗）===== -->
-<section style="background:var(--warm-white);">
+<section id="experience-design" style="background:var(--warm-white);">
   <div class="wrap center">
     <span class="kicker">Real Needs · Real Change</span>
     <p class="section-lead center" style="margin:0 auto 16px;">不管從哪一種樣子開始，<br>最後都會回到同一個問題——</p>
@@ -459,14 +537,29 @@
 
 <!-- ===== 6.3 學習地圖總覽：2026-07-09 已刪（型錄層級細節與 35hr 區/型錄重複，完整架構由「索取完整型錄」承接；圖檔 section-learnmap.png 保留於 assets/）===== -->
 
+<!-- ===== 5.9 六階段能力養成路徑（2026-07-11 官網入口頁改版新增｜置於 35hr 課程之前）===== -->
+<section id="six-stage-development">
+  <div class="wrap center">
+    <span class="kicker">Six Stages Of Growth</span>
+    <div class="gold-line"></div>
+    <h2 class="section-title">一場好的永續體驗，不是只學會做作品</h2>
+    <p class="section-lead center" style="margin:0 auto;">從一份材料走到一場真實活動，中間需要的不只是製作技巧。<br><br>你還需要理解材料背後的故事、拆解活動流程、<br>觀察不同場域與參與者的需求，<br>並把想法整理成一套可以被實際執行的方案。<br><br>因此，完整專班會帶你依序走過六個能力養成階段。</p>
+    <picture>
+      <source srcset="assets/academy-six-stage-development.webp" type="image/webp">
+      <img class="section-img section-img--bleed entry-img" style="margin-top:40px;" src="assets/academy-six-stage-development.png" width="1659" height="725" alt="Wishlite Academy 認識材料、親手實作、拆解方案、理解場域、設計方案與成果整理六階段能力養成路徑" loading="lazy">
+    </picture>
+    <p class="section-lead center" style="margin:28px auto 0;font-size:15px;">這六個階段不是六門彼此獨立的課，<br>而是一條從理解、實作、觀察，到設計與反思的完整學習路徑。</p>
+  </div>
+</section>
+
 <!-- ===== 6. 35 小時系統課程 ===== -->
-<section style="background:#FAF7F0;">
+<section id="l2-program" style="background:#FAF7F0;">
   <div class="wrap">
     <!-- 2026-07-11 敘事瘦身：開場 bridge 與兩段重複 lead 收成一句（原五段同義引言→一引一收）；journey 大圖同日已刪（圖檔保留 assets/）-->
     <div class="center">
       <span class="kicker">35-Hour Program</span>
       <div class="gold-line"></div>
-      <h2 class="section-title" style="font-size:clamp(23px,2.9vw,29px);margin-bottom:0;">這 35 小時，不只是學一套課程。</h2>
+      <h2 class="section-title" style="font-size:clamp(23px,2.9vw,29px);margin-bottom:0;">35 小時系統式學習，走過六個能力階段</h2>
       <p class="section-lead center" style="margin:20px auto 0;max-width:720px;">從材料理解、體驗設計到真實場域應用，<br>慢慢整理出屬於自己的永續體驗方案。</p>
     </div>
 
@@ -560,7 +653,7 @@
 
     <!-- 2026-07-11 Apple 拍板：四站點 HTML 路徑圖換成設計稿「成長路徑」16:9 圖（圖自帶標題與副標，原 h2/lead 移除避免重複；pathmap CSS 保留備用；站點3 定稿句保留為圖下說明行）-->
     <img class="section-img section-img--bleed" style="margin-top:6px;" src="assets/growth-path-16x9.png" alt="永續行動學院 成長路徑：這不只是一門課，是一條走得下去的路。STEP 1 L1 永續材料通識班——認識四種循環材料，打開永續設計的眼睛。STEP 2 L2 永續行動設計師專班——從材料到體驗設計，完整走過一場活動的誕生。STEP 3 依適配分流・雙軌發展——A 軌 材料應用資格（社區・學校・NGO 場域）、B 軌 合作評估與發展建議（企業案場方向）。ONWARD 區域合作夥伴——和我們團隊一起，把永續帶進更多現場。讓材料說故事，讓永續被感受。" loading="lazy">
-    <p class="section-lead center" style="margin:24px auto 0;font-size:15px;">完成培訓後，會依學習成果、現場適配度與區域需求，提供後續合作評估與發展建議。</p>
+    <p class="section-lead center" style="margin:24px auto 0;font-size:15px;">課程含真實場域觀摩與案例拆解；完成學習與成果檢核後，將依個人發展方向提供學習建議。<br>真實場域參與及後續合作，仍須依專案需求與評估結果安排。</p>
 
     <img class="section-img section-img--bleed" style="margin-top:44px;" src="assets/three-paths-cards.png" alt="創作者路徑，把想法作品整理成課程；引導者路徑，把課程帶進真實場域；協作者路徑，成為專案夥伴與活動執行。你的專長 × 永續行動設計 ＝ 無限可能。" loading="lazy">
 
@@ -569,31 +662,48 @@
   </div>
 </section>
 
-<!-- ===== 9.7 真實夥伴故事｜再證明：她們就是從這套系統長出來的 ===== -->
-<section>
+<!-- ===== 9.7 真實夥伴故事（2026-07-11 官網入口頁改版：桌機橫圖＋手機三直卡，圖檔沿用真實人物正式版）===== -->
+<section id="partner-stories">
   <div class="wrap center">
     <span class="kicker">Real Partners</span>
     <div class="gold-line"></div>
-    <h2 class="section-title">她們，從不同的起點走進來</h2>
-    <p class="section-lead center" style="margin:0 auto;">Mico、婷婷、阿寶——<br>三位真實走過這套系統的夥伴。<br><br>起點不同、節奏也不同，<br>但都在一次次課堂與現場中，<br>慢慢長出了屬於自己的位置。</p>
-    <img class="section-img section-img--bleed" style="margin-top:32px;max-width:920px;" src="assets/real-partners.png" alt="真實夥伴故事：Mico 從種子講師到專案執行夥伴／婷婷 從手作愛好者到永續參與者／阿寶 把生命經驗轉成陪伴他人的力量。" loading="lazy">
+    <h2 class="section-title">夥伴故事｜每個人都可以從自己的起點開始</h2>
+    <p class="section-lead center" style="margin:0 auto;">不是先準備好了，才能開始。<br><br>很多人都是從原本的背景與生活出發，<br>透過學習、練習與真實場域的累積，<br>慢慢長出屬於自己的位置。</p>
+    <picture class="partner-wide">
+      <source srcset="assets/academy-partner-story-cards.webp" type="image/webp">
+      <img class="section-img section-img--bleed entry-img" style="margin-top:32px;" src="assets/academy-partner-story-cards.png" width="1672" height="941" alt="Wishlite 三位夥伴 Mico、婷婷與阿寶，從不同起點走向永續實踐的成長故事" loading="lazy">
+    </picture>
+    <div class="partner-stack">
+      <picture>
+        <source srcset="assets/partner-story-mico.webp" type="image/webp">
+        <img src="assets/partner-story-mico.png" width="557" height="941" alt="夥伴故事：Mico 從種子講師，到專案執行夥伴" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="assets/partner-story-tingting.webp" type="image/webp">
+        <img src="assets/partner-story-tingting.png" width="557" height="941" alt="夥伴故事：婷婷 從手作愛好者，到永續參與者" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="assets/partner-story-abao.webp" type="image/webp">
+        <img src="assets/partner-story-abao.png" width="558" height="941" alt="夥伴故事：阿寶 把生命經驗，轉成陪伴他人的力量" loading="lazy">
+      </picture>
+    </div>
+    <p class="section-lead center" style="margin:28px auto 0;">每一位夥伴的背景都不同。<br>有人從種子講師開始，有人從手作興趣出發，<br>也有人把生命經驗轉化成陪伴他人的力量。<br><br>他們不是一開始就準備好了，<br>而是在一次次學習、實作與真實場域中，慢慢長出自己的位置。</p>
   </div>
 </section>
 
-<!-- ===== 9.6 信任牆（P16）｜先證明系統真的做到了 ===== -->
-<section style="background:#F6EDE4;">
+<!-- ===== 9.6 真實場域與品牌累積（2026-07-11 官網入口頁改版：僅保留已核准口徑 300+ 場／近 3 萬份；trust-wall.png 與 logo-wall.jpg 暫時下架，圖檔保留 assets/）===== -->
+<section id="real-world-impact" style="background:#F6EDE4;">
   <div class="wrap center">
     <span class="kicker">Real Impact</span>
     <div class="gold-line"></div>
-    <h2 class="section-title">我們走過的真實場域</h2>
-    <img class="section-img trust-wall-img" style="max-width:780px;margin-top:36px;" src="assets/trust-wall.png" alt="真實累積：300+ 場永續／ESG／手作體驗活動、10,000+ 位參與過 Wishlite 永續手作體驗、60+ 家上市櫃／企業合作單位、133 噸資源再生與材料循環成果、364,420 kg CO₂e 累積減碳效益、2,315 小時婦女二度就業支持時數。" loading="lazy">
-    <img class="logo-wall" src="assets/logo-wall.jpg" alt="Wishlite 合作品牌與企業 logo 牆：證交所、緯穎、微星、玉山銀行、第一銀行、KPMG、Deloitte、IKEA、Microsoft、Meta、Google、LINE、BMW、Kia、AVEDA、誠品、台積電 TSMC、桃園市政府、行政院環保署、各大專院校等。" loading="lazy">
+    <h2 class="section-title">從真實場域走出來的學習系統</h2>
+    <p class="section-lead center" style="margin:0 auto;">Wishlite 過去幾年持續走進企業、校園、品牌與公共場域，<br>累計完成 <b style="font-family:var(--serif);color:var(--olive-deep);font-weight:600;">300+ 場</b>永續體驗活動，<br>並製作<b style="font-family:var(--serif);color:var(--olive-deep);font-weight:600;">近 3 萬份</b>永續禮品與體驗作品。<br><br>這套課程不是只從概念出發，<br>而是整理自一場一場真實發生的設計、執行與現場經驗。</p>
     <p class="section-lead center" style="margin:24px auto 0;">這些經驗，不是停留在理念裡，<br>而是一場一場真實發生的永續行動。</p>
   </div>
 </section>
 
-<!-- ===== 11. FAQ ===== -->
-<section class="faq">
+<!-- ===== 11. FAQ（2026-07-11 官網入口頁改版：收斂為最影響報名決策的 5 題）===== -->
+<section id="faq" class="faq">
   <div class="wrap">
     <div class="center">
       <span class="kicker">Common Questions</span>
@@ -601,32 +711,44 @@
       <h2 class="section-title">常見問題</h2>
     </div>
     <div style="max-width:760px;margin:48px auto 0;">
-      <details class="faq-item"><summary class="faq-q">沒有永續背景，可以嗎？</summary><p class="faq-a">可以。我們會從材料、生活案例與真實場域開始，建立你對永續材料與體驗設計的基本理解。</p></details>
-      <details class="faq-item"><summary class="faq-q">沒有教學經驗，可以嗎？</summary><p class="faq-a">可以。課程會帶你練習活動流程、引導語、材料故事與方案設計，逐步建立帶領一場永續體驗的能力。</p></details>
-      <details class="faq-item"><summary class="faq-q">工作很忙，跟得上嗎？</summary><p class="faq-a">可以。課程採循序漸進安排，搭配線上預習、實體課程與階段整理，讓你能依照自己的節奏完成學習。</p></details>
-      <details class="faq-item"><summary class="faq-q">還不知道方向，可以嗎？</summary><p class="faq-a">可以。<br><br>有些人後來成為課程帶領者，有些人進入企業合作現場，也有人把這套能力運用在原本的工作裡。<br><br>方向通常不是先決定，而是在實作與真實場域中慢慢看見。</p></details>
-      <details class="faq-item"><summary class="faq-q">通識班和專班怎麼選？</summary><p class="faq-a">如果你還不確定自己是否喜歡這個領域，可以先從通識班開始。<br><br>如果你看完這個頁面後，已經對永續體驗設計產生興趣，希望未來有機會把它運用在工作、課程、活動或第二專長上，其實可以直接進入 35 小時完整培訓。<br><br>因為通識班解決的是「認識」；專班培養的則是「真正做出來」的能力。</p></details>
-      <details class="faq-item"><summary class="faq-q">學完之後一定能接案嗎？</summary><p class="faq-a">我們不保證接案或收入。<br><br>但你會擁有一套能被真實場域使用的能力，並有機會參與 Wishlite 的協作與合作機會。<br><br>能不能發展成第二專長，仍取決於你的投入與實踐。</p></details>
-      <details class="faq-item"><summary class="faq-q">一定要接案或創業嗎？</summary><p class="faq-a">不用。這套能力可以應用在原本的工作、品牌、教學、活動企劃或生活實踐裡；接案與合作，只是其中一種可能。</p></details>
+      <details class="faq-item"><summary class="faq-q">沒有永續背景，可以嗎？</summary><p class="faq-a">可以。課程會從材料理解與體驗設計的基礎開始，不需要先具備永續、設計或授課背景。</p></details>
+      <details class="faq-item"><summary class="faq-q">工作很忙，跟得上嗎？</summary><p class="faq-a">課程由線上學習、實體實作、真實場域與檢核組成，會提供清楚的學習節奏與任務安排。仍建議報名前確認自己能保留足夠時間完成學習。</p></details>
+      <details class="faq-item"><summary class="faq-q">還不知道自己的方向，可以嗎？</summary><p class="faq-a">可以。你不需要在開始前就決定自己是創作者、引導者或協作者。課程會透過材料、案例與實作，幫助你逐步看見適合自己的位置。</p></details>
+      <details class="faq-item"><summary class="faq-q">L1 和 L2 有什麼不同？</summary><p class="faq-a">L1 適合想先認識永續材料、材料故事與代表作品的人；L2 則進一步包含材料應用、體驗設計、方案整理、案例拆解、真實場域學習與成果檢核。</p></details>
+      <details class="faq-item"><summary class="faq-q">完成課程後，就能參與企業活動或接案嗎？</summary><p class="faq-a">課程會協助你建立材料理解、體驗設計、方案整理與場域應用能力，但不保證接案或合作機會。後續若有適合的專案，仍會依學習成果、專案需求與實際評估安排。</p></details>
     </div>
   </div>
 </section>
 
-<!-- ===== 11.5 輕量收尾 CTA（取代招生型錄大圖）===== -->
-<section>
-  <div class="wrap center">
-    <span class="kicker">Start Here</span>
-    <div class="gold-line" style="margin:0 auto 28px;"></div>
-    <h2 class="section-title">還不確定從哪裡開始？</h2>
-    <p class="section-lead center" style="margin:0 auto;">先從一堂課開始，<br>或加入官方 LINE，跟我們聊聊你的情況。</p>
-    <div class="warmup-cta js-openclass" style="margin-top:36px;">
-      <a href="signup.html" class="btn-brown">報名免費公開課 →</a>
+<!-- ===== 11.5 頁尾三種開始入口（2026-07-11 官網入口頁改版：僅公開課用主色實心按鈕）===== -->
+<section id="start-here">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Start Here</span>
+      <div class="gold-line" style="margin:0 auto 28px;"></div>
+      <h2 class="section-title">找到適合你的第一步</h2>
     </div>
-    <div class="warmup-cta js-evergreen" style="margin-top:36px;">
-      <a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="btn-brown">查看課程方案與報名 →</a>
+    <div class="learnmap-grid" style="margin-top:40px;">
+      <div class="lm-card center" style="text-align:center;">
+        <h3>想先理解整體概念</h3>
+        <p>從免費公開課開始，看懂永續材料如何被設計成一場體驗。</p>
+        <div class="js-openclass" style="margin-top:20px;"><a href="signup.html" class="btn-brown" style="font-size:14.5px;padding:12px 30px;">參加免費公開課</a></div>
+        <div class="js-evergreen" style="margin-top:20px;"><a href="https://line.me/R/oaMessage/@403kginl/?%E5%85%AC%E9%96%8B%E8%AA%B2" target="_blank" rel="noopener" class="btn-brown" style="font-size:14.5px;padding:12px 30px;">參加免費公開課</a></div>
+      </div>
+      <div class="lm-card center" style="text-align:center;">
+        <h3>想先親手體驗材料</h3>
+        <p>從 L1 永續材料通識班開始，認識材料故事與應用方式。</p>
+        <p style="margin-top:20px;"><a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="cta-link">查看 L1 通識班 →</a></p>
+      </div>
+      <div class="lm-card center" style="text-align:center;">
+        <h3>希望建立完整能力</h3>
+        <p>進一步了解 L2 永續行動設計師專班的完整學習內容。</p>
+        <p style="margin-top:20px;"><a href="https://wishlite.github.io/wishlite-esg/designer-checkout.html" class="cta-link">查看 L2 完整專班 →</a></p>
+      </div>
     </div>
-    <p style="text-align:center;margin-top:24px;font-size:15px;">
-      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="cta-link">預約簡短諮詢 →</a>
+    <p class="section-lead center" style="margin:36px auto 0;">還不確定適合哪一條路？<br>加入 LINE，告訴我們你的背景與期待。</p>
+    <p style="text-align:center;margin-top:20px;font-size:15px;">
+      <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="cta-link">加入官方 LINE →</a>
       <span style="color:var(--line);margin:0 10px;">·</span>
       <a href="https://line.me/R/oaMessage/@403kginl/?%E9%A0%98%E5%8F%96%E5%9E%8B%E9%8C%84" target="_blank" rel="noopener" class="cta-link">領取完整型錄 →</a>
     </p>
