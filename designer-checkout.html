@@ -279,11 +279,12 @@
         <!-- 2026-07-11 切換 MPG 新水管（自動開通＋分期受控）；EPG 備援連結：https://core.newebpay.com/EPG/MS3836376462/PnHobm -->
         <a class="btn btn-tier" href="https://wishlite-academy.zeabur.app/buy/l1">報名</a>
       </div>
-      <div class="tier">
+      <div class="tier js-support-tier">
         <div class="tier-info">
           <span class="tier-label limited">公開課現場限定</span>
           <div class="tier-price">NT$3,980 <small>含稅</small></div>
           <span class="tier-note">7 日內升級專班可全額折抵</span>
+          <span class="tier-note">開放至 7/15（二）中午 12:00</span>
         </div>
         <!-- 2026-07-11 切換 MPG 新水管；EPG 備援連結：https://core.newebpay.com/EPG/MS3836376462/ppwsyL -->
         <a class="btn btn-tier" href="https://wishlite-academy.zeabur.app/buy/l1">報名</a>
@@ -348,11 +349,12 @@
         <!-- 2026-07-11 切換 MPG 新水管（分期 3/6/12）；EPG 備援連結：https://core.newebpay.com/EPG/wishlite/dSYCXU -->
         <a class="btn btn-gold btn-tier" href="https://wishlite-academy.zeabur.app/buy/l2">報名</a>
       </div>
-      <div class="tier">
+      <div class="tier js-support-tier">
         <div class="tier-info">
           <span class="tier-label limited">公開課現場限定</span>
           <div class="tier-price">NT$32,800 <small>含稅</small></div>
           <span class="tier-note">首梯共創支持價</span>
+          <span class="tier-note">開放至 7/15（二）中午 12:00</span>
         </div>
         <!-- 2026-07-11 切換 MPG 新水管（分期 3/6/12）；EPG 備援連結：https://core.newebpay.com/EPG/MS3836376462/V2sSh6 -->
         <a class="btn btn-gold btn-tier" href="https://wishlite-academy.zeabur.app/buy/l2">報名</a>
@@ -443,6 +445,17 @@
         send({t:'click',target:label,href:(a.getAttribute('href')||'').slice(0,140)});
       }catch(e){}
     },true);
+  })();
+</script>
+
+<script>
+  // 支持價時效開關：7/15（二）中午 12:00 台北時間過後，自動隱藏兩張「公開課現場限定」支持價卡。
+  // 與 academy/index.html 的 OPENCLASS_END 同一模式；下一輪支持方案只要改 SUPPORT_END 再移除 hidden 即可。
+  (function(){
+    var SUPPORT_END = new Date('2026-07-15T12:00:00+08:00');
+    if (new Date() >= SUPPORT_END) {
+      document.querySelectorAll('.js-support-tier').forEach(function(el){ el.style.display = 'none'; });
+    }
   })();
 </script>
 
