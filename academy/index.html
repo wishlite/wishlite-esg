@@ -417,7 +417,23 @@
 <style>
 .hero-text{max-width:620px}.hero-title-entry{white-space:normal;font-size:clamp(32px,4vw,54px);line-height:1.45;letter-spacing:.06em}.hero-academy-label{font-size:18px;color:var(--olive-deep);letter-spacing:.16em;margin:0 0 24px}.openclass-info{max-width:850px;margin:40px auto 0;padding:56px 28px;background:var(--warm-white);border:1px solid #ded5c4;border-radius:12px}.openclass-info h3{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:400;margin:18px 0}.openclass-info p{line-height:1.9}.openclass-info .btn-brown{margin-top:24px}.openclass-note{font-size:13px;margin-top:16px;color:var(--brown-soft)}
 @media(max-width:768px){.hero-text{max-width:100%}.hero:before{background:linear-gradient(90deg,rgba(250,248,243,.96),rgba(250,248,243,.78))}.hero-title-entry{font-size:clamp(28px,7.3vw,40px)}.hero-inner{padding:0 24px}.hero-academy-label{margin-bottom:20px}.hero{min-height:720px}.openclass-info{padding:36px 22px}}
-</style></head>
+</style><style>
+.entry-mobile-photo{display:none}
+@media(max-width:600px){
+#learning-paths>.wrap>.entry-img{display:none}
+#learning-paths .learnmap-grid{display:flex;flex-direction:column;gap:16px;margin-top:28px!important}
+#learning-paths .entry-mobile-card{display:grid;grid-template-columns:minmax(100px,34%) minmax(0,1fr);gap:16px;padding:16px;text-align:left;align-items:start}
+.entry-mobile-photo{display:block;overflow:hidden;border-radius:9px;margin-top:4px}
+.entry-mobile-photo>svg{display:block;width:100%;height:auto}
+.entry-materials{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:#f2ebdf}
+.entry-materials svg{width:100%;height:auto;display:block}
+#learning-paths .lm-num{display:none}
+#learning-paths .entry-mobile-copy h3{font-size:17px;line-height:1.65;margin:0 0 8px;letter-spacing:.02em}
+#learning-paths .entry-mobile-copy p{font-size:14px;line-height:1.8;margin:0 0 8px}
+#learning-paths .entry-mobile-copy p:first-of-type{display:none}
+#learning-paths .entry-mobile-copy p:last-child{font-size:12px!important;margin-top:10px!important}
+}
+</style><style>.fit-mobile-panels{display:none}@media(max-width:600px){.fit-desktop-image{display:none}.fit-mobile-panels{display:flex;flex-direction:column;gap:22px;width:100%;max-width:420px;margin:0 auto}.fit-mobile-panels svg{display:block;width:100%;height:auto}}</style><style>.personas-mobile-panels{display:none}@media(max-width:600px){.personas-desktop-image{display:none}.personas-mobile-panels{display:flex;flex-direction:column;gap:24px;max-width:420px;width:100%;margin:28px auto 0}.personas-mobile-panels svg{display:block;width:100%;height:auto}}</style></head>
 <body>
 
 <!-- ===== 1. HERO ===== -->
@@ -468,7 +484,7 @@
     </div>
     <img class="section-img section-img--bleed entry-img" style="margin-top:40px;" src="assets/academy-three-entry-paths.png?v=2" width="1659" height="725" alt="Wishlite Academy 永續體驗設計・開放課、L1 永續材料通識班與 L2 永續行動設計師培訓計畫三種學習入口" loading="lazy">
     <div class="learnmap-grid" style="margin-top:40px;">
-      <div class="lm-card">
+      <div class="lm-card entry-mobile-card"><div class="entry-mobile-photo"><svg role="img" aria-label="開放課：筆電與學習筆記" viewBox="140 177 413 362" xmlns="http://www.w3.org/2000/svg"><image href="assets/academy-three-entry-paths.png?v=2" width="1659" height="725"/></svg></div><div class="entry-mobile-copy">
         <span class="lm-num">01</span>
         <h3>永續體驗設計・開放課</h3>
         <p style="font-family:var(--serif);color:var(--brown-deep);font-size:15.5px;margin-bottom:8px;">先理解一場永續體驗如何被設計</p>
@@ -476,21 +492,21 @@
         <p style="margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--olive-deep);">60 分鐘｜線上課程</p>
         <!-- 2026-07-25 移除公開課單顆 CTA：三張導覽卡改為一致（不放按鈕），避免視覺不平均。
              公開課漏斗 CTA 仍保留於 Hero 與下方免費課卡（js-openclass/js-evergreen）。 -->
-      </div>
-      <div class="lm-card">
+      </div></div>
+      <div class="lm-card entry-mobile-card"><div class="entry-mobile-photo"><div class="entry-materials"><svg role="img" aria-label="咖啡渣" viewBox="626 190 197 141" xmlns="http://www.w3.org/2000/svg"><image href="assets/academy-three-entry-paths.png?v=2" width="1659" height="725"/></svg><svg role="img" aria-label="牡蠣殼" viewBox="834 190 193 141" xmlns="http://www.w3.org/2000/svg"><image href="assets/academy-three-entry-paths.png?v=2" width="1659" height="725"/></svg><svg role="img" aria-label="再生紙纖" viewBox="626 380 197 144" xmlns="http://www.w3.org/2000/svg"><image href="assets/academy-three-entry-paths.png?v=2" width="1659" height="725"/></svg><svg role="img" aria-label="回收塑膠" viewBox="834 380 193 144" xmlns="http://www.w3.org/2000/svg"><image href="assets/academy-three-entry-paths.png?v=2" width="1659" height="725"/></svg></div></div><div class="entry-mobile-copy">
         <span class="lm-num">02</span>
         <h3>L1 永續材料通識班</h3>
         <p style="font-family:var(--serif);color:var(--brown-deep);font-size:15.5px;margin-bottom:8px;">先從材料與親手體驗開始</p>
         <p>認識四款循環材料，搭配材料包親手完成作品。</p>
         <p style="margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--olive-deep);">線上課程＋材料體驗包</p>
-      </div>
-      <div class="lm-card">
+      </div></div>
+      <div class="lm-card entry-mobile-card"><div class="entry-mobile-photo"><svg role="img" aria-label="培訓計畫：協作與體驗方案設計" viewBox="1098 177 413 362" xmlns="http://www.w3.org/2000/svg"><image href="assets/academy-three-entry-paths.png?v=2" width="1659" height="725"/></svg></div><div class="entry-mobile-copy">
         <span class="lm-num">03</span>
         <h3>L2 永續行動設計師培訓計畫</h3>
         <p style="font-family:var(--serif);color:var(--brown-deep);font-size:15.5px;margin-bottom:8px;">建立從材料到場域的完整能力</p>
         <p>從材料實作到方案設計，逐步建立真實場域的應用能力。</p>
         <p style="margin-top:10px;font-size:13px;letter-spacing:.06em;color:var(--olive-deep);">35 小時完整培訓</p>
-      </div>
+      </div></div>
     </div>
   </div>
 </section>
@@ -498,14 +514,17 @@
 <!-- ===== 4. 你可能是／而你不需要 + 適合誰（合併）===== -->
 <section id="who-is-it-for" class="warmup" style="background:#FAF6F2;">
   <div class="wrap">
-    <img class="section-img section-img--bleed" style="margin-top:0;" src="assets/section-fit.png" alt="你可能是：手作老師、花藝工作者、香氣／療癒品牌主理人、教育工作者、活動企劃與品牌工作者、想發展第二專長的人、想讓專業更有意義的人。而你不需要：很懂永續、有教學經驗、是設計背景、有自己的品牌、環境科系畢業、一開始就知道答案。" loading="lazy">
+    <img class="section-img section-img--bleed fit-desktop-image" style="margin-top:0;" src="assets/section-fit.png" alt="你可能是：手作老師、花藝工作者、香氣／療癒品牌主理人、教育工作者、活動企劃與品牌工作者、想發展第二專長的人、想讓專業更有意義的人。而你不需要：很懂永續、有教學經驗、是設計背景、有自己的品牌、環境科系畢業、一開始就知道答案。" loading="lazy"><div class="fit-mobile-panels">
+<svg role="img" aria-label="你可能是：手作老師、花藝工作者、香氣或療癒品牌主理人、教育工作者、活動企劃與品牌工作者、想發展第二專長、想讓專業更有意義的人。" viewBox="245 0 670 790" xmlns="http://www.w3.org/2000/svg"><image href="assets/section-fit.png" width="1920" height="803"/></svg>
+<svg role="img" aria-label="而你不需要：很懂永續、有教學經驗、是設計背景、有自己的品牌、環境科系畢業、一開始就知道答案。" viewBox="922 0 600 790" xmlns="http://www.w3.org/2000/svg"><image href="assets/section-fit.png" width="1920" height="803"/></svg>
+</div>
     <p class="section-lead center" style="margin:32px auto 0;">你不需要先成為某一種人，才有資格開始。<br>我們會從你原本擅長的事情出發，陪你找到它與永續行動之間的連結。</p>
     <div id="academy-roles" style="scroll-margin-top:96px;">
       <p class="bridge-copy" style="margin:40px auto 0;">
         有些人從創作開始，有些人從陪伴開始，<br>
         也有些人，從整理與協作開始。
       </p>
-      <img class="section-img section-img--bleed" style="margin-top:28px;" src="assets/personas-3types.png" alt="三種走進永續的方式：創作者型（從喜歡材料的人，到能把感受說出來的人）、引導者型（從喜歡陪伴的人，到能把參與帶進現場的人）、協作者型（從擅長整理與支援的人，到讓任務穩穩完成的人）。" loading="lazy">
+      <img class="section-img section-img--bleed personas-desktop-image" style="margin-top:28px;" src="assets/personas-3types.png" alt="三種走進永續的方式：創作者型（從喜歡材料的人，到能把感受說出來的人）、引導者型（從喜歡陪伴的人，到能把參與帶進現場的人）、協作者型（從擅長整理與支援的人，到讓任務穩穩完成的人）。" loading="lazy"><div class="personas-mobile-panels"><svg role="img" aria-label="創作者型：從喜歡材料的人，到能把感受說出來的人。" viewBox="0 0 532 992" xmlns="http://www.w3.org/2000/svg"><image href="assets/personas-3types.png" width="1586" height="992"/></svg><svg role="img" aria-label="引導者型：從喜歡陪伴的人，到能把參與帶進現場的人。" viewBox="536 0 507 992" xmlns="http://www.w3.org/2000/svg"><image href="assets/personas-3types.png" width="1586" height="992"/></svg><svg role="img" aria-label="協作者型：從擅長整理與支援的人，到讓任務穩穩完成的人。" viewBox="1048 0 538 992" xmlns="http://www.w3.org/2000/svg"><image href="assets/personas-3types.png" width="1586" height="992"/></svg></div>
       <p class="section-lead center" style="margin:32px auto 0;">這三種角色不是固定分類，也不是入學前就要做出的選擇。<br>很多人會在學習與實作的過程中，同時長出兩種以上的能力，<br>並逐漸找到最適合自己的位置。</p>
     </div>
   </div>
