@@ -322,19 +322,17 @@
 
   /* faq（收合式 details/summary）*/
   .faq{background:var(--warm-white);}
-  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item{border:0;margin-bottom:12px;}
   .faq-q{font-family:var(--serif);font-size:18px;color:var(--brown-deep);font-weight:500;
     list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;
     display:flex;align-items:flex-start;transition:color .2s;}
   .faq-q::-webkit-details-marker{display:none;}
   .faq-q::before{content:'Q';color:var(--olive-deep);margin-right:12px;font-weight:600;flex:0 0 auto;}
-  .faq-q::after{content:'';position:absolute;right:4px;top:28px;width:11px;height:11px;
-    border-right:1.6px solid var(--olive-deep);border-bottom:1.6px solid var(--olive-deep);
-    transform:rotate(45deg);transition:transform .25s;}
+  .faq-q::after{position:static;width:auto;height:auto;border:0;transform:none;transition:none;line-height:1;}
   .faq-item[open] .faq-q{color:var(--olive-deep);}
-  .faq-item[open] .faq-q::after{transform:rotate(-135deg);top:32px;}
+  .faq-item[open] .faq-q::after{position:static;transform:none;}
   .faq-q:hover{color:var(--olive-deep);}
-  .faq-a{font-size:15.5px;color:var(--brown-soft);line-height:1.9;padding:0 30px 24px 30px;}
+  .faq-a{font-size:15.5px;color:var(--brown-soft);line-height:1.9;padding:18px 20px 12px;margin:0;}
 
   /* CTA */
   .cta{background:var(--brown-deep);color:var(--ivory);text-align:center;padding:110px 0;}
@@ -537,22 +535,6 @@ body{font-weight:400;--brown-soft:#54594d}body>section{padding:48px 0}.wrap{max-
     <img class="section-img section-img--bleed entry-img" style="margin-top:32px;" src="assets/academy-partner-story-cards.png?v=2" width="1672" height="941" alt="Wishlite 三位夥伴 Mico、婷婷與阿寶，從不同起點走向永續實踐的成長故事" loading="lazy">
   </div>
 </section>
-<section id="faq" class="faq">
-  <div class="wrap">
-    <div class="center">
-      <span class="kicker">Common Questions</span>
-      <div class="gold-line"></div>
-      <h2 class="section-title">常見問題</h2>
-    </div>
-    <div style="max-width:760px;margin:48px auto 0;">
-      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>沒有永續背景，可以嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">可以。課程會從材料理解與體驗設計的基礎開始，不需要先具備永續、設計或授課背景。</p></details>
-      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>工作很忙，跟得上嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">課程由線上學習、實體實作、真實場域與檢核組成，會提供清楚的學習節奏與任務安排。仍建議報名前確認自己能保留足夠時間完成學習。</p></details>
-      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>還不知道自己的方向，可以嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">可以。你不需要在開始前就決定自己是創作者、引導者或協作者。課程會透過材料、案例與實作，幫助你逐步看見適合自己的位置。</p></details>
-      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>L1 和 L2 有什麼不同？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">L1 適合想先認識永續材料、材料故事與代表作品的人；L2 則進一步包含材料應用、體驗設計、方案整理、案例拆解、真實場域學習與成果檢核。</p></details>
-      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>完成課程後，就能參與企業活動或接案嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">課程會協助你建立材料理解、體驗設計、方案整理與場域應用能力，但不保證接案或合作機會。後續若有適合的專案，仍會依學習成果、專案需求與實際評估安排。</p></details>
-    </div>
-  </div>
-</section>
 <section id="start-here">
   <div class="wrap">
     <div class="center">
@@ -581,6 +563,23 @@ body{font-weight:400;--brown-soft:#54594d}body>section{padding:48px 0}.wrap{max-
       <a href="https://line.me/R/ti/p/@403kginl" target="_blank" rel="noopener" class="cta-link">諮詢適合的學習方向 →</a>
 
     </p>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="center">
+      <span class="kicker">Common Questions</span>
+      <div class="gold-line"></div>
+      <h2 class="section-title">常見問題</h2>
+    </div>
+    <div style="max-width:760px;margin:48px auto 0;">
+      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>沒有永續背景，可以嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">可以。課程會從材料理解與體驗設計的基礎開始，不需要先具備永續、設計或授課背景。</p></details>
+      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>工作很忙，跟得上嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">課程由線上學習、實體實作、真實場域與檢核組成，會提供清楚的學習節奏與任務安排。仍建議報名前確認自己能保留足夠時間完成學習。</p></details>
+      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>還不知道自己的方向，可以嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">可以。你不需要在開始前就決定自己是創作者、引導者或協作者。課程會透過材料、案例與實作，幫助你逐步看見適合自己的位置。</p></details>
+      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>L1 和 L2 有什麼不同？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">L1 適合想先認識永續材料、材料故事與代表作品的人；L2 則進一步包含材料應用、體驗設計、方案整理、案例拆解、真實場域學習與成果檢核。</p></details>
+      <details class="faq-item"><summary class="faq-q"><span class="disclosure-label"><span>完成課程後，就能參與企業活動或接案嗎？</span><span class="disclosure-hint" aria-hidden="true"></span></span></summary><p class="faq-a">課程會協助你建立材料理解、體驗設計、方案整理與場域應用能力，但不保證接案或合作機會。後續若有適合的專案，仍會依學習成果、專案需求與實際評估安排。</p></details>
+    </div>
   </div>
 </section>
 
