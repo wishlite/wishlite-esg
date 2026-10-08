@@ -385,26 +385,26 @@
         .why-card {
             background: #ffffff;
             border-radius: 14px;
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border: 1px solid rgba(196, 154, 108, 0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .why-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 36px rgba(139,111,71,0.08);
-        }
 
-        .why-card-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.18em;
-            color: var(--gold-light);
-            opacity: 0.55;
-            margin-bottom: 1.4rem;
-            line-height: 1;
+        .why-card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.25rem;
+            border-radius: 50%;
+            background: #eef2e9;
+            color: #3d5a3e;
         }
+        .why-card:nth-child(2) .why-card-icon { background: #f5eee3; color: #80623f; }
+        .why-card:nth-child(3) .why-card-icon { background: #eaf0ec; color: #446354; }
+        .why-card-icon svg { width: 32px; height: 32px; display: block; }
 
         .why-card-title {
             font-family: 'Noto Sans TC', sans-serif;
@@ -416,8 +416,8 @@
 
         .why-card-desc {
             font-size: 0.9rem;
-            color: #888;
-            line-height: 2.1;
+            color: #626b60;
+            line-height: 1.85;
         }
 
         /* ========== SOCIAL PROOF ========== */
@@ -738,7 +738,7 @@
             .explore-more-card { padding: 1.3rem 1.6rem; max-width: 92vw; }
             .explore-more-hint { font-size: 0.74rem; }
             .explore-more-title { font-size: 0.95rem; }
-            .why-card-number { opacity: 0.65; font-size: 0.78rem; }
+
         }
         @media (hover: none) {
             .explore-more-card:hover { transform: none; background: #fdfaf4; border-color: rgba(196,154,108,0.22); box-shadow: 0 2px 10px rgba(139,111,71,0.04); }
@@ -1505,8 +1505,17 @@
             }
 
             .why-card {
-                padding: 2rem 1.5rem;
+                padding: 1.5rem;
+                display: grid;
+                grid-template-columns: 48px minmax(0, 1fr);
+                column-gap: 1rem;
+                align-items: start;
             }
+            .why-card-icon { width: 48px; height: 48px; grid-row: 1 / 3; margin-bottom: 0; }
+            .why-card-icon svg { width: 26px; height: 26px; }
+            .why-card-title { font-size: 1.08rem; }
+            .why-card-desc { grid-column: 2; }
+            .why-header { margin-bottom: 2rem; }
 
             .hero {
                 padding: 4rem 1rem 2rem;
@@ -1645,23 +1654,23 @@
             <div class="why-header">
                 <p class="section-label">WHY WISHLITE</p>
                 <h2 class="section-title">為什麼選擇 Wishlite</h2>
-                <p>不只是送禮，<br>而是把材料、文化與品牌心意，<br>慢慢變成一份會被記住的永續行動。</p>
+                <p>把材料故事與品牌心意，變成日常禮物與親手參與的永續體驗。</p>
             </div>
             <div class="why-cards">
                 <div class="why-card">
-                    <div class="why-card-number">01</div>
+                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M26 5C13 4 5 10 6 19c1 7 10 9 15 3 4-5 4-10 5-17Z"/><path d="M5 27 21 11M12 20v-6M12 20h7"/></svg></span>
                     <div class="why-card-title">有來源的永續材料</div>
-                    <div class="why-card-desc">牡蠣殼、咖啡渣、回收塑膠等在地循環材料，<br>讓每一份禮物背後，都有真實的材料故事。</div>
+                    <div class="why-card-desc">從牡蠣殼、咖啡渣到回收塑膠，讓禮物帶著真實的材料故事。</div>
                 </div>
                 <div class="why-card">
-                    <div class="why-card-number">02</div>
+                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h12l10 10a3 3 0 0 1 0 4l-8 8a3 3 0 0 1-4 0L5 17V5Z"/><circle cx="11" cy="11" r="2"/><path d="m16 18 2 2 5-5"/></svg></span>
                     <div class="why-card-title">可客製的品牌表達</div>
-                    <div class="why-card-desc">不只是放上 Logo。<br>而是讓品牌想傳達的價值，自然地留在禮物裡。</div>
+                    <div class="why-card-desc">透過造型、Logo 與包裝配置，把品牌心意留在日常使用的禮物裡。</div>
                 </div>
                 <div class="why-card">
-                    <div class="why-card-number">03</div>
+                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17v-5a2 2 0 0 1 4 0v4-10a2 2 0 0 1 4 0v10-12a2 2 0 0 1 4 0v12-8a2 2 0 0 1 4 0v13c0 5-3 8-8 8-3 0-5-2-7-5l-4-6a2 2 0 0 1 3-3l3 4"/></svg></span>
                     <div class="why-card-title">可延伸為活動方案</div>
-                    <div class="why-card-desc">從禮品到 ESG 體驗活動，<br>讓參與者不只是收到，而是真正留下記憶。</div>
+                    <div class="why-card-desc">從禮品延伸到材料導覽與手作體驗，讓參與者親手認識材料、留下記憶。</div>
                 </div>
             </div>
         </div>
