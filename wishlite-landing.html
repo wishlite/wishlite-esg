@@ -768,48 +768,40 @@
         }
 
         .tabs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 12px;
             margin-bottom: 3rem;
         }
-
         .tab-btn {
-            background: rgba(255,255,255,0.04);
-            border: 1.5px solid rgba(196,154,108,0.22);
-            padding: 0.65rem 1.3rem;
-            font-size: 0.85rem;
-            color: var(--text-light-secondary);
+            position: relative;
+            background: #3c5144;
+            border: 1.5px solid #839786;
+            padding: 18px 32px 18px 18px;
+            font-size: 1rem;
+            color: #faf5ec;
             cursor: pointer;
-            border-radius: 40px;
-            font-weight: 500;
-            transition: all 0.25s ease;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: background .2s, border-color .2s;
             line-height: 1.5;
+            text-align: left;
+            min-height: 108px;
+            white-space: normal;
         }
-
+        .tab-btn::after { content: '→'; position: absolute; right: 12px; top: 18px; }
         .tab-btn.active {
-            color: var(--gold);
-            border-color: var(--gold);
-            background: rgba(196,154,108,0.09);
+            color: #243d2e;
+            border-color: #e5c28e;
+            background: #f3eadc;
+            box-shadow: inset 0 -4px 0 #c49a6c;
         }
-
-        .tab-btn:hover {
-            color: var(--gold);
-            border-color: rgba(196,154,108,0.5);
-        }
-
-        .tab-hint {
-            display: inline;
-            font-size: 0.72rem;
-            color: var(--text-light-muted);
-            font-weight: 400;
-        }
-
-        .tab-btn.active .tab-hint {
-            color: #c4a882;
-            opacity: 0.65;
-        }
-
+        .tab-btn:hover { background: #4c6354; border-color: #e5c28e; }
+        .tab-btn.active:hover { background: #fff6e8; }
+        .tab-btn:focus-visible { outline: 3px solid #f3cd91; outline-offset: 4px; }
+        .tab-hint { display: block; margin-top: 8px; font-size: .78rem; color: #e0e7dd; font-weight: 400; }
+        .tab-btn.active .tab-hint { color: #455649; }
+        @media (max-width: 1100px) { .tabs { grid-template-columns: repeat(3,minmax(0,1fr)); } }
         .tab-content {
             display: none;
         }
@@ -1465,14 +1457,12 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .tabs {
-                overflow-x: auto;
-            }
+            .tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
             .tab-btn {
-                padding: 0.75rem 1rem;
+                padding: 16px 32px 16px 14px;
                 font-size: 0.85rem;
-                white-space: nowrap;
+                white-space: normal;
             }
 
             .products-grid {
@@ -1681,14 +1671,14 @@
         <div class="section-container">
             <p class="section-label">PRODUCT LINES</p>
             <h2 class="section-title">五大產品系列</h2>
-            <p class="product-lines-subtitle">依不同送禮情境，找到最適合的永續禮品方案。</p>
+            <p class="product-lines-subtitle">依不同送禮情境，找到適合的永續禮品方案。點選分類，查看下方推薦商品。</p>
 
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(0)">活動紀念品<span class="tab-hint">　｜　ESG 活動、展會、大量贈送</span></button>
-                <button class="tab-btn" onclick="switchTab(1)">辦公 / 日常實用<span class="tab-hint">　｜　員工禮、品牌曝光</span></button>
-                <button class="tab-btn" onclick="switchTab(2)">香氛療癒<span class="tab-hint">　｜　感謝禮、VIP 贈禮</span></button>
-                <button class="tab-btn" onclick="switchTab(3)">節慶禮盒<span class="tab-hint">　｜　中秋、春節、年度送禮</span></button>
-                <button class="tab-btn" onclick="switchTab(4)">DIY 體驗型禮品<span class="tab-hint">｜可參與的互動式禮盒</span></button>
+                <button class="tab-btn active" aria-pressed="true" onclick="switchTab(0)">活動紀念品<span class="tab-hint">ESG 活動、展會、大量贈送</span></button>
+                <button class="tab-btn" aria-pressed="false" onclick="switchTab(1)">辦公 / 日常實用<span class="tab-hint">員工禮、品牌曝光</span></button>
+                <button class="tab-btn" aria-pressed="false" onclick="switchTab(2)">香氛療癒<span class="tab-hint">感謝禮、VIP 贈禮</span></button>
+                <button class="tab-btn" aria-pressed="false" onclick="switchTab(3)">節慶禮盒<span class="tab-hint">中秋、春節、年度送禮</span></button>
+                <button class="tab-btn" aria-pressed="false" onclick="switchTab(4)">DIY 體驗型禮品<span class="tab-hint">可參與的互動式禮盒</span></button>
             </div>
             <!-- Tab 0: 活動紀念品 -->
             <div class="tab-content active">
@@ -2077,10 +2067,12 @@
 
             tabs.forEach((tab, i) => {
                 tab.classList.remove('active');
+                tab.setAttribute('aria-pressed', 'false');
                 contents[i].classList.remove('active');
             });
 
             tabs[index].classList.add('active');
+            tabs[index].setAttribute('aria-pressed', 'true');
             contents[index].classList.add('active');
         }
 
