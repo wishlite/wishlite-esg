@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /pricing-system.html
 Disallow: /ai-health-check-wishlite.html
 Disallow: /wishlite-deep-audit-report.html
 
