@@ -1769,11 +1769,6 @@ select.form-input {
 </footer>
 
 <script>
-// ══════════════════════════════════════
-// n8n Webhook URL — 在 n8n 建好 Webhook 節點後貼上
-// ══════════════════════════════════════
-const N8N_WEBHOOK_URL = 'https://wishlite-n8n.zeabur.app/webhook/esg-inquiry';
-
 // ── URL source param auto-detection ──
 (function initFormSource() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -1858,80 +1853,6 @@ window.addEventListener('load', function() {
   }
 });
 
-// ── Form submission → n8n Webhook ──（2026-05-30 表單已替換為 LINE 聯繫卡，handler 加 null guard 以免 script 中斷）
-const _esgFormEl = document.getElementById('esgForm');
-if (_esgFormEl) _esgFormEl.addEventListener('submit', async function(e) {
-  e.preventDefault();
-
-  const btn = document.getElementById('submitBtn');
-  const form = this;
-  const originalText = btn.textContent;
-
-  // Validate required fields
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  // Disable button & show loading
-  btn.disabled = true;
-  btn.textContent = '送出中...';
-
-  // Collect form data
-  const formData = new FormData(form);
-  const data = {
-    company: formData.get('company'),
-    contact_name: formData.get('contact_name'),
-    email: formData.get('email'),
-    phone: formData.get('phone'),
-    service_type: formData.get('service_type'),
-    description: formData.get('description'),
-    headcount: formData.get('headcount'),
-    budget: formData.get('budget'),
-    event_date: formData.get('event_date'),
-    event_location: formData.get('event_location'),
-    cooperation_type: formData.get('cooperation_type'),
-    esg_focus: formData.getAll('esg_focus'),
-    esg_focus_note: formData.get('esg_focus_note'),
-    activity_goal: formData.get('activity_goal'),
-    esg_report: formData.get('esg_report'),
-    report_usage: formData.getAll('report_usage'),
-    source: formData.get('source'),
-    submitted_at: new Date().toISOString(),
-    form_source: window._urlFormSource || 'ESG活動Landing Page'
-  };
-
-  try {
-    const response = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    });
-
-    if (response.ok || response.status === 200) {
-      // Show success
-      form.style.display = 'none';
-      document.querySelector('.form-header').style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    } else {
-      throw new Error('Server error');
-    }
-  } catch (err) {
-    // 如果 webhook 失敗，仍然顯示成功（資料已記錄在瀏覽器）
-    // 同時在 console 留下紀錄方便 debug
-    // Silent fallback - data saved to localStorage backup
-
-    // 備援：將資料存到 localStorage 避免遺失
-    const pending = JSON.parse(localStorage.getItem('wishlite_pending_forms') || '[]');
-    pending.push(data);
-    localStorage.setItem('wishlite_pending_forms', JSON.stringify(pending));
-
-    // 仍顯示成功畫面（不讓客戶感到困惑）
-    form.style.display = 'none';
-    document.querySelector('.form-header').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-  }
-});
 </script>
 
 </body>
