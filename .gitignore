@@ -8,3 +8,11 @@ lazyoffice-ai-consultant.skill
 # 系統檔案
 .DS_Store
 Thumbs.db
+
+# 內部資料 — 不要放進公開 repo（2026-11-01）
+運營策略資料/
+網頁原檔/
+templates/
+pricing-system*.html
+*.rtf
+*.bak*
