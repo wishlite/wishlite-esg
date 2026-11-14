@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>材料小島｜材料小劇場 — 韻手作 Wishlite</title>
+<title>材料小島｜Wishlite</title>
 <meta name="description" content="走進 Wishlite 材料小島：咖啡渣、牛仔褲、牡蠣殼、NG 尿布、回收瓶蓋、捷綠木與自然素材，七座小島，看見材料的下一段旅程。">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,7 @@ a{color:var(--moss)}
 .top{position:absolute;left:12px;right:12px;top:12px;display:flex;align-items:center;gap:10px;z-index:5;pointer-events:none}
 .top > *{pointer-events:auto}
 .brand{display:flex;align-items:center;gap:10px;background:rgba(249,246,240,.94);border:1px solid var(--sand);border-radius:16px;padding:8px 14px 8px 8px;box-shadow:0 4px 16px rgba(30,42,30,.08);min-width:0}
+.brand[role="button"]{cursor:pointer;-webkit-tap-highlight-color:transparent}.brand[role="button"]:active{transform:scale(.98)}.brand[role="button"]:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .brand .logo{flex:none;width:34px;height:34px;border-radius:50%;background:var(--moss);color:var(--white);display:grid;place-items:center;font:700 13px "Noto Serif TC",serif}
 .brand div{display:flex;flex-direction:column;line-height:1.2;min-width:0}
 .brand small{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sage)}
@@ -55,8 +56,39 @@ a{color:var(--moss)}
 .tag.active i{width:22px;height:22px}
 .tag.seen i{background:var(--gold);border-color:var(--gold);color:var(--white)}
 .tag.active{background:var(--moss);color:var(--white);border-color:var(--moss-dark)}
-.tag.here{pointer-events:none;font-size:12px;background:rgba(196,154,60,.92);color:#fff;border-color:#c49a3c}
+.tag.here{pointer-events:auto;cursor:pointer;font:inherit;font-size:12px;background:rgba(196,154,60,.92);color:#fff;border-color:#c49a3c}
 .tag.here i{border-color:#fff;background:#fff;color:#c49a3c}
+/* 台灣入口「你在哪裡遇過它？」（Apple 11/15）：桌機浮在地球下方，手機是底部卡片，地球仍看得到 */
+.twcard{position:absolute;z-index:8;left:50%;bottom:28px;transform:translateX(-50%);width:min(380px,calc(100% - 32px));max-height:min(70vh,520px);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;background:var(--soft);border:1px solid var(--sand);border-radius:18px;padding:16px 16px 10px;box-shadow:0 10px 30px rgba(30,42,30,.22);animation:twIn .3s ease}
+.twcard h2{margin:0 40px 4px 0;font:700 17px "Noto Serif TC",serif;color:var(--moss-dark)}
+.twcard p{margin:0 0 10px;font-size:13px;line-height:1.6;color:var(--muted)}
+.twcard .x{top:10px;right:10px;width:32px;height:32px}
+.tw-opts{display:flex;flex-direction:column;border-top:1px solid var(--sand)}
+.tw-opts button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;font-size:15px;line-height:1.4;color:var(--moss-dark);background:transparent;border:0;border-bottom:1px solid var(--sand);padding:8px 4px;min-height:56px;cursor:pointer}
+.tw-opts img{flex:none;width:40px;height:40px;object-fit:contain;border-radius:50%;background:var(--cream);padding:3px}
+.tw-opts span{flex:1}
+.tw-opts i{flex:none;font-style:normal;color:#8a6d2f;font-weight:700}
+.tw-opts button:hover,.tw-opts button:focus-visible{background:var(--cream);outline:none}
+.tw-links{display:flex;flex-wrap:wrap;justify-content:center;gap:0 14px}
+.tw-all{display:block;margin:6px auto 0;padding:8px 10px;min-height:40px;border:0;background:none;font:inherit;font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.tw-kick{margin:0 40px 2px 0!important;font-size:12px!important;letter-spacing:.12em;color:#8a6d2f!important;font-weight:600}
+#twStory h2{margin-bottom:8px;outline:none;font-size:16px}
+.tw-ph{margin:0 auto 8px;max-width:240px;border-radius:12px;overflow:hidden;background:var(--cream)}
+.tw-ph img{display:block;width:100%;aspect-ratio:9/5;object-fit:cover}
+.twcard p.tw-rel{margin:0 0 4px;font-size:12.5px;color:#8a6d2f}
+.twcard p.tw-txt{margin:0 0 10px;font-size:14px;color:var(--moss-dark)}
+.tw-txt .tw-more{color:#8a6d2f;font-size:13px;white-space:nowrap;text-underline-offset:3px}
+.tw-acts{display:flex;gap:8px}
+.tw-acts button{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:999px;font:inherit;font-size:14px;text-decoration:none;cursor:pointer}
+.tw-back{border:1px solid var(--sand);background:var(--white);color:var(--moss-dark)}
+.tw-next{border:0;background:var(--moss);color:var(--white)}
+.tw-more[hidden]{display:none}
+@keyframes twIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translateX(-50%)}}
+@media (min-width:900px){ .twcard{left:auto;right:32px;bottom:auto;top:50%;transform:translateY(-50%);animation-name:twSide} }   /* 桌機放地球右側，不擋台灣愛心與下方材料列 */
+@keyframes twSide{from{opacity:0;transform:translate(12px,-50%)}to{opacity:1;transform:translateY(-50%)}}
+@media (max-width:640px){ .twcard{left:0;right:0;bottom:0;width:auto;transform:none;border-radius:20px 20px 0 0;border-bottom:0;max-height:44vh;max-height:44svh;padding-bottom:calc(8px + env(safe-area-inset-bottom));animation-name:twUp} .twcard.st{max-height:48vh;max-height:48svh} }
+@keyframes twUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .twcard{animation:none} }
 .tag.hub i{background:var(--moss);border-color:var(--moss);color:var(--white)}
 .tag:focus-visible{outline:3px solid var(--gold)}
 .tag[hidden]{display:none}
@@ -336,6 +368,8 @@ a{color:var(--moss)}
 .musicBtn[aria-pressed="true"] .mOn{display:inline}
 .musicBtn[aria-pressed="true"] .mOff{display:none}
 .musicBtn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.opening .opMusic{position:absolute;top:calc(10px + env(safe-area-inset-top));left:12px;min-height:30px;padding:3px 10px;pointer-events:auto;z-index:2;background:rgba(255,253,247,.88);border-color:rgba(122,106,85,.25)}
+.opening .opMusic[aria-pressed="true"]{background:var(--moss);color:var(--white)}
 @media (max-width:640px){ .top .musicBtn{position:absolute;left:var(--musicL,214px);top:54px;padding:4px 10px;min-height:29px} }
 @media (max-width:640px){ .top .bookBtn{position:absolute;left:112px;top:54px;padding:4px 10px} }
 .bizbox{margin:16px 0 6px;padding:14px 14px 12px;border-radius:14px;background:var(--cream)}
@@ -486,9 +520,14 @@ a{color:var(--moss)}
 .app .top,.app .zoom,.app .dock{transition:opacity .5s}.app.op-on .top,.app.op-on .zoom,.app.op-on .dock{opacity:0;pointer-events:none}.app.op-on #tag-hub,.app.op-on #btags,.app.op-on .tip3d,.app.op-on #propTips{opacity:0!important;pointer-events:none!important}
 .op-top{position:absolute;z-index:1;left:0;right:0;top:calc(46px + env(safe-area-inset-top));text-align:center;color:#fffdf8;text-shadow:0 2px 12px rgba(0,0,0,.45)}
 .op-kicker{margin:0 0 10px;font-size:13px;letter-spacing:.14em;opacity:0;animation:opFade 1.2s ease .3s forwards}
-.opening h2{margin:0;font-size:30px;line-height:1.45;font-weight:700;letter-spacing:.04em}
+.opening h2{margin:0;font-size:30px;line-height:1.38;font-weight:700;letter-spacing:.04em}
 .opening h2 span{display:block;opacity:0;animation:opFade 1.4s ease forwards}
 .op-l1{animation-delay:.6s!important}.op-l2{animation-delay:1.5s!important}
+.op-sub{margin:4px auto 0;max-width:22em;font-size:14px;line-height:1.6;letter-spacing:.04em;opacity:0;animation:opFade 1.2s ease 2.3s forwards}   /* 副標：說清楚可以做什麼（Apple 11/15） */
+.op-stop{position:absolute;z-index:1;left:0;top:0;transform:translate(-50%,calc(-100% - 10px));display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 14px 8px;border:0;border-radius:16px;background:#fffdf8;color:var(--moss-dark);font:inherit;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;pointer-events:auto;opacity:0;transition:opacity .6s}
+.op-stop b{font-size:14px;letter-spacing:.04em}.op-stop span{font-size:12.5px;color:var(--muted)}
+.op-stop::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#fffdf8}
+.op-stop.on{opacity:1}   /* 首訪拉遠後標出第一站，和「小森在這裡」錯開出現 */
 @keyframes opFade{from{opacity:0;transform:translateY(6px);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
 .op-bottom{position:absolute;z-index:1;left:16px;right:16px;bottom:calc(30px + env(safe-area-inset-bottom));max-width:420px;margin:0 auto;text-align:center;pointer-events:auto}
 .op-go{display:block;width:100%;min-height:54px;border:0;border-radius:999px;background:#fffdf8;color:var(--moss-dark);font:inherit;font-size:18px;font-weight:700;letter-spacing:.06em;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,.28)}
@@ -506,7 +545,7 @@ a{color:var(--moss)}
 .op-pin::after{content:"";position:absolute;left:50%;bottom:-5px;margin-left:-5px;border:5px solid transparent;border-bottom:0;border-top-color:#fffdf8}
 .op-pin.on{opacity:1}
 @media (min-width:900px){.op-top{left:7%;right:auto;top:50%;transform:translateY(-60%);text-align:left;max-width:380px}.opening h2{font-size:36px}.opening::before{top:0;bottom:0;height:auto;width:46%;background:linear-gradient(90deg,rgba(20,32,22,.55),rgba(20,32,22,0))}}   /* 桌機：標語放左側，地球留在中央 */
-@media (prefers-reduced-motion:reduce){.op-kicker,.opening h2 span{animation:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.op-kicker,.opening h2 span,.op-sub{animation:none;opacity:1}.op-stop{transition:none}}
 .nextbar{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 84px);z-index:6;width:min(380px,calc(100% - 32px));transform:translateX(-50%);padding:12px 12px 10px;border-radius:22px;background:rgba(255,253,248,.97);box-shadow:0 12px 32px rgba(46,70,48,.22);text-align:center}
 .nextbar[hidden]{display:none!important}
 #propTips{position:fixed;inset:0;pointer-events:none;z-index:5}
@@ -681,11 +720,11 @@ a{color:var(--moss)}
   <div class="tags" id="tags"></div><div class="btags" id="btags" style="position:absolute;inset:0;pointer-events:none;z-index:2"></div>
 
   <header class="top">
-    <div class="brand"><span class="logo" aria-hidden="true">W</span><div><small>Wishlite Material Island</small><h1>材料小島｜材料小劇場</h1></div></div>
+    <div class="brand" id="brandHome" role="button" tabindex="0" aria-label="材料小島｜Wishlite：回到地球全景" title="回到地球全景"><span class="logo" aria-hidden="true">W</span><div><small>Wishlite Material Island</small><h1>材料小島｜Wishlite</h1></div></div>
     <span class="sp"></span>
     <a class="pill biz" id="bizLink" href="https://wishlite.com.tw/service/detail/42?view=activities" target="_blank" rel="noopener" aria-label="直接找活動（官網活動選擇器，另開新頁）">直接找活動 ↗</a>
     <button type="button" class="pill seenpill bookBtn" id="bookBtn" aria-expanded="false" aria-controls="book">旅行冊 <b id="seenN">0</b> / 7</button>
-    <button type="button" class="pill musicBtn" id="musicBtn" aria-pressed="false" aria-label="開啟背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span id="musicLabel">音樂</span></button>
+    <button type="button" class="pill musicBtn" id="musicBtn" aria-pressed="true" aria-label="關閉背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span id="musicLabel">音樂</span></button>
     <div class="pill times" role="group" aria-label="時段">
       <button type="button" data-t="day" aria-pressed="false" title="白天">白天</button>
       <button type="button" data-t="dusk" aria-pressed="false" title="黃昏">黃昏</button>
@@ -730,6 +769,27 @@ a{color:var(--moss)}
     <p class="sub">材料小劇場六個篇章，加上自然素材，共 7 座島；中間是 Wishlite 總部。每到一座島，就蓋一枚探索章。</p>
     <ol id="list"></ol>
   </aside>
+  <aside class="twcard" id="twCard" hidden role="dialog" aria-labelledby="twTitle">
+    <button type="button" class="x" id="twClose" aria-label="關閉">×</button>
+    <div id="twMain">
+    <h2 id="twTitle">你今天遇過哪一樣？</h2>
+    <p>喝完的咖啡、吃完的蚵仔，或衣櫃裡那件舊牛仔褲。選一樣，小森帶你去看看它還能變成什麼。</p>
+    <div class="tw-opts">
+      <button type="button" data-spot="coffee" aria-label="喝完咖啡，濾杯裡剩下的渣：前往咖啡渣島"><img src="img/tw-coffee.webp" alt=""><span>喝完咖啡，濾杯裡剩下的渣</span><i aria-hidden="true">→</i></button>
+      <button type="button" data-spot="oyster" aria-label="吃完蚵仔，桌上留下的殼：前往牡蠣殼島"><img src="img/tw-oyster.webp" alt=""><span>吃完蚵仔，桌上留下的殼</span><i aria-hidden="true">→</i></button>
+      <button type="button" data-spot="denim" aria-label="衣櫃裡那件捨不得丟的牛仔褲：前往牛仔褲島"><img src="img/tw-denim.webp" alt=""><span>衣櫃裡那件捨不得丟的牛仔褲</span><i aria-hidden="true">→</i></button>
+    </div>
+    <div class="tw-links"><button type="button" class="tw-all" id="twAll">看看全部七座島</button><button type="button" class="tw-all" id="twStoryBtn">看一個發生在台灣的故事</button></div>
+    </div>
+    <div id="twStory" hidden>
+      <p class="tw-kick">一個地方，一件作品</p>
+      <h2 id="twStTitle" tabindex="-1"></h2>
+      <figure class="tw-ph"><img id="twStImg" alt=""></figure>
+      <p class="tw-rel" id="twStRel"></p>
+      <p class="tw-txt"><span id="twStTxt"></span> <a class="tw-more" id="twStMore" target="_blank" rel="noopener">看完整故事 ↗</a></p>
+      <div class="tw-acts"><button type="button" class="tw-back" id="twBack">返回材料選項</button><button type="button" class="tw-next" id="twStNext">下一個台灣故事 →</button></div>
+    </div>
+  </aside>
   <aside class="sheet book" id="book" aria-labelledby="bookTitle" aria-hidden="true">
     <header><h2 id="bookTitle">我的材料旅行冊</h2><button type="button" class="x" id="bookClose" aria-label="關閉旅行冊">×</button></header>
     <div id="bookMain">
@@ -745,8 +805,11 @@ a{color:var(--moss)}
     <p class="scope">旅行冊只存在這台裝置的這個瀏覽器，不用登入，也不會上傳；換手機、用無痕視窗或清除瀏覽資料，就會重新開始。</p>
   </aside>
   <section class="opening" id="opening" hidden aria-labelledby="opTitle">
-    <div class="op-top"><p class="op-kicker">材料小島｜Wishlite 永續工作室出發</p>
-      <h2 id="opTitle"><span class="op-l1">每一份材料，</span><span class="op-l2">都還有下一站。</span></h2></div>
+    <button type="button" class="pill musicBtn opMusic" id="opMusic" aria-pressed="true" aria-label="關閉背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span>音樂</span></button>
+    <div class="op-top"><p class="op-kicker">材料小島｜Wishlite</p>
+      <h2 id="opTitle"><span class="op-l1">每一份材料，</span><span class="op-l2">都還有下一站。</span></h2>
+      <p class="op-sub">跟著小森登上七座島，<br>看看這些材料還能變成什麼。</p></div>
+    <button type="button" class="op-stop" id="opStop" hidden><b id="opStopT"></b><span id="opStopQ"></span></button>
     <button type="button" class="op-skipanim" id="opSkipAnim">跳過</button>
     <span class="op-pin" id="opPin" aria-hidden="true">小森在這裡</span><p class="op-say" id="opSay" hidden aria-live="polite"></p>
     <div class="op-bottom"><button type="button" class="op-go" id="opGo">跟小森出發</button>
@@ -1818,7 +1881,7 @@ function renderBrief(s, i){
   $("storyBtn").onclick = function(){ renderStory(s, i); fadeIn($("cardBody")); $("backIsl").focus({ preventScroll:true }); };
   card.scrollTop = 0; viewTo = cardOffset();
 }
-function openSpot(i, how){ hubOff();
+function openSpot(i, how){ hubOff(); twClose(false);
   var s = SPOTS[i]; mode = how === "tour" ? "tour" : "explore"; if(exp && exp.s !== s) exLeave();
   card.classList.remove("brief", "story", "showcase");
   if(!lastFocus || card.hidden) lastFocus = document.activeElement;
@@ -2012,6 +2075,33 @@ function closeSheet(refocus){
 listBtn.addEventListener("click", function(){ sheet.classList.contains("open") ? closeSheet(true) : openSheet(); });
 $("sheetClose").addEventListener("click", function(){ closeSheet(true); });
 scrim.addEventListener("click", function(){ closeSheet(true); closeBook(true); });
+// 台灣入口：點愛心 → 小卡選一樣日常材料 → 沿用點島的登島流程；直接關閉就留在原本的地球位置
+// 「一個地方，一件作品」：台灣各地的真實作品故事（Apple 11/15）。新增一則就在這裡加一筆，順序照陣列
+// kind：材料來源／加工地點／創作地點；文字與照片以 Wishlite 官網「永續故事」原文為準
+var TW_STORIES = [
+  { place:"台北", kind:"材料來源", title:"球場的紅土，變成桌上的一扇窗", rel:"材料來源｜原本在臺北大巨蛋球場上的紅土", txt:"做成紅土再生窗花筆筒名片座，磚牆與窗花的模樣，一側放筆、正面放名片。", img:"img/tw-story-taipei.webp", alt:"紅土再生窗花筆筒名片座，插著筆、放著名片", url:"https://wishlite.com.tw/blog/article/34" },
+  { place:"台南", kind:"創作地點", title:"在考古館，做一顆掌心裡的小地球", rel:"創作地點｜南科考古館七週年館慶", txt:"大家在「永續創作實驗室」用再生紙纖做成地球生命樹，孩子捧起各自完成的那一顆。", img:"img/tw-story-tainan.webp", alt:"孩子們捧著完成的地球生命樹", url:"https://wishlite.com.tw/blog/article/41" }
+];
+var twSi = 0;
+function twView(story){ $("twCard").classList.toggle("st", story); $("twMain").hidden = story; $("twStory").hidden = !story; $("twCard").scrollTop = 0; }
+function twShow(i){ var d = TW_STORIES[i]; if(!d) return; twSi = i;
+  $("twStTitle").textContent = d.place + "｜" + d.title; $("twStImg").src = d.img; $("twStImg").alt = d.alt;
+  $("twStRel").textContent = d.rel; $("twStTxt").textContent = d.txt;
+  var m = $("twStMore"); if(d.url){ m.href = d.url; m.hidden = false; } else m.hidden = true;
+  $("twStNext").hidden = TW_STORIES.length < 2; twView(true); $("twStTitle").focus({ preventScroll:true }); }
+$("twStoryBtn").addEventListener("click", function(){ twShow(0); });
+$("twStNext").addEventListener("click", function(){ twShow((twSi + 1) % TW_STORIES.length); });
+$("twBack").addEventListener("click", function(){ twView(false); $("twStoryBtn").focus({ preventScroll:true }); });
+TW_STORIES.forEach(function(d){ var im = new Image(); im.src = d.img; });   // 先載好，切換時不空白
+function twOpen(e){ if(e) e.stopPropagation(); var c = $("twCard"); if(!c.hidden){ twClose(); return; } closeSheet(false); closeBook(false); twView(false); c.hidden = false; twTag && twTag.setAttribute("aria-expanded", "true"); setTimeout(function(){ c.querySelector(".tw-opts button").focus({ preventScroll:true }); }, 0); }
+function twClose(refocus){ var c = $("twCard"); if(c.hidden) return; c.hidden = true; if(twTag){ twTag.setAttribute("aria-expanded", "false"); if(refocus) twTag.focus({ preventScroll:true }); } }
+// 左上角「材料小島｜Wishlite」：點了回到地球全景，等於按「回到全景」（Apple 11/15）
+$("brandHome").addEventListener("click", function(){ twClose(false); closeSheet(false); closeBook(false); $("homeBtn").click(); });
+$("brandHome").addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); this.click(); } });
+$("twClose").addEventListener("click", function(){ twClose(true); });
+$("twAll").addEventListener("click", function(){ twClose(true); });   // 想自己探索：收起小卡，留在地球
+[].forEach.call(document.querySelectorAll("#twCard [data-spot]"), function(b){ b.addEventListener("click", function(){ var i = SPOTS.findIndex(function(s){ return s.id === b.dataset.spot; }); twClose(false); if(i >= 0) openSpot(i, "explore"); }); });
+document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !$("twCard").hidden){ twClose(true); } });
 document.addEventListener("keydown", function(e){
   if(e.key === "Escape"){
     if(viewer.open) return;
@@ -3197,7 +3287,7 @@ function placeReveal(dt){
 var introBox = null;
 function placeTags(){
   introBox = intro.hidden ? null : intro.getBoundingClientRect();
-  if(TW){ if(!twTag){ twTag = document.createElement("span"); twTag.className = "tag here"; twTag.innerHTML = "<i>♥</i><span>台灣・我們在這裡</span>"; tagsEl.appendChild(twTag); } placeTag(twTag, TW.p, TW.n); }
+  if(TW){ if(!twTag){ twTag = document.createElement("button"); twTag.type = "button"; twTag.className = "tag here"; twTag.setAttribute("aria-label", "台灣・我們在這裡：你今天遇過哪一樣？"); twTag.innerHTML = "<i>♥</i><span>台灣・我們在這裡</span>"; twTag.addEventListener("click", twOpen); tagsEl.appendChild(twTag); } placeTag(twTag, TW.p, TW.n); }
   SPOTS.forEach(function(sp){
     if(!sp._isl) return;
     // 名牌錨在島體圖本身的上緣（島體圖會轉向鏡頭並浮在地球前），才不會落到後方的島上
@@ -3212,18 +3302,19 @@ var appEl = document.getElementById("app");
 // 開場：工作室近景停一下 → 鏡頭慢慢拉遠看見地球 → 訪客自己選擇出發。按鈕從一開始就能點；全程無聲，可跳過，減少動態時直接到最後畫面
 var opAnim = null;
 function opReduced(){ return isPaused() || matchMedia("(prefers-reduced-motion: reduce)").matches; }
+function opNext(){ return SPOTS.findIndex(function(s){ return s.ritual && !dressed[s.id]; }); }   // 下一座還沒換過裝的島；-1＝七島都走完
 function opReturning(){ return seenCount() > 0 || Object.keys(dressed).length > 0; }
 function openingShow(replay){
   var o = $("opening"), back = !replay && opReturning(); appEl.classList.add("op-on"); o.hidden = false; o.classList.remove("out"); intro.hidden = true; chips.hidden = true;
-  $("opGo").textContent = back ? "繼續上次旅程" : "跟小森出發"; $("opReplay").hidden = !back;
+  var nx = opNext(); $("opGo").textContent = nx >= 0 ? "跟小森去" + SPOTS[nx].name + "島" : "打開地圖"; $("opReplay").hidden = !back; opStopOff();   // 主按鈕寫出實際目的地（Apple 11/15）
   [].forEach.call(o.querySelectorAll(".op-kicker,.opening h2 span"), function(e){ e.style.animation = "none"; void e.offsetWidth; e.style.animation = ""; });
   clearTimeout(opAnim); $("opSkipAnim").classList.add("gone");
-  if(back || opReduced()){ flyTo(homePose(), true); opPinOn(); return; }   // 回訪或減少動態：直接看見地球
+  if(back || opReduced()){ flyTo(homePose(), true); opPinOn(); opStopLater(); return; }   // 回訪或減少動態：直接看見地球
   flyTo(islPose(HUB.isl, 2.6, null, size().w <= 640 ? 1.05 : 1.5), true); $("opSkipAnim").classList.remove("gone");   // 近一點看清楚工作室與小森
   opAnim = setTimeout(function(){ viewTo = opFrame(); flyTo(islPose(HUB.isl, 2.6, null, (size().w <= 640 ? .5 : .75)*Math.min(1.3, Math.max(1, size().h*.55/Math.max(80, viewTo.fh)))), false, 1.4); opAnim = setTimeout(function(){ opTalk(opPull); }, 1400 + 500); }, 400);   // 鏡頭停穩後再留半秒讓人看清小森、小屋和層架   // 鏡頭再靠近一點，看清楚小森和工作室   // 小森先在工作室自我介紹、說明接下來的旅程（文字一個個跳出來），講完再拉遠（Apple 11/11 17:25）
 }
 // 介紹時工作室放大、往畫面中下方擺，泡泡在上方、不留大片空白（Apple 11/11 18:01）
-function opFrame(){ var s = size(), tr = $("opTitle").getBoundingClientRect(), bt = document.querySelector("#opening .op-bottom").getBoundingClientRect(), side = tr.bottom > s.h*.4;   // 把工作室擺在「標題以外、按鈕以上」的空間正中央；手機上方再留一個泡泡的高度
+function opFrame(){ var s = size(), tr = document.querySelector("#opening .op-top").getBoundingClientRect(), bt = document.querySelector("#opening .op-bottom").getBoundingClientRect(), side = tr.bottom > s.h*.4;   // 把工作室擺在「標題以外、按鈕以上」的空間正中央；手機上方再留一個泡泡的高度
   var L = side ? tr.right + 24 : 0, T = side ? 60 : tr.bottom + 96, Rr = s.w, B = bt.top - 12;
   return { ox: s.w/2 - (L + Rr)/2, oy: s.h/2 - (T + B)/2, fh: B - T }; }   // fh：可用高度太矮（橫放小螢幕）時鏡頭退遠一點
 function opPull(){ viewTo = { ox:0, oy:0 }; flyTo(homePose(), false, 3.4); (function wait(){ opAnim = setTimeout(function(){ if(flying) wait(); else opDone(); }, 120); })(); }   // 等鏡頭真的停下來才算拉遠完成
@@ -3240,21 +3331,34 @@ function opTalk(done){ var b = $("opSay"), li = 0; b.hidden = false; b.textConte
       opAnim = setTimeout(function(){ li++; line(); }, li === OP_LINES.length - 1 ? 2000 : 1500); })(); })(); }   // 一句打完停 1.5 秒（最後一句的問號停 2 秒）再換下一句
 function opSayOff(){ var b = $("opSay"); b.classList.remove("on"); setTimeout(function(){ if(!b.classList.contains("on")) b.hidden = true; }, 320); }
 function opSayTick(){ var b = $("opSay"); if(b.hidden || !HUB.sen) return; var m = HUB.sen, v = m.localToWorld(new THREE.Vector3(0, m.userData.H*1.02, 0)).project(camera), S = size(), w = b.offsetWidth, h = b.offsetHeight;   // 圓圓的小泡泡從小森頭上冒出來，兩顆小圓點指向小森（Apple 11/11 18:24）
-  var sx = (v.x + 1)/2*S.w, x = Math.max(12, Math.min(S.w - w - 12, sx - w/2)), tr = $("opTitle").getBoundingClientRect(), tb = (x < tr.right + 12 && x + w > tr.left - 12) ? tr.bottom + 16 : 70, y = Math.max(tb, (1 - v.y)/2*S.h - h - 30);   // 不壓到上方的開場標題
+  var sx = (v.x + 1)/2*S.w, x = Math.max(12, Math.min(S.w - w - 12, sx - w/2)), tr = document.querySelector("#opening .op-top").getBoundingClientRect(), tb = (x < tr.right + 12 && x + w > tr.left - 12) ? tr.bottom + 16 : 70, y = Math.max(tb, (1 - v.y)/2*S.h - h - 30);   // 不壓到上方的開場標題
   b.style.setProperty("--x", Math.round(x) + "px"); b.style.setProperty("--y", Math.round(y) + "px"); b.style.setProperty("--tail", Math.round(Math.max(18, Math.min(w - 18, sx - x))) + "px"); requestAnimationFrame(opSayTick); }
-function opDone(){ clearTimeout(opAnim); opAnim = null; $("opSkipAnim").classList.add("gone"); opPinOn(); }
+function opDone(){ clearTimeout(opAnim); opAnim = null; $("opSkipAnim").classList.add("gone"); opPinOn(); opStopLater(); }
+// 首訪：「小森在這裡」淡出後，再標出第一站（一次只看一個重點）
+var opStopT = null;
+function opStopLater(){ clearTimeout(opStopT); if(opReturning()) return; var nx = opNext(); if(nx < 0) return; opStopT = setTimeout(function(){ opStopOn(nx); }, 3100); }
+function opStopOn(nx){ var o = $("opening"), sp = SPOTS[nx]; if(o.hidden || o.classList.contains("out") || !sp || !sp._isl) return;
+  $("opStopT").textContent = "第一站・" + sp.name + "島"; $("opStopQ").textContent = sp.ritual.say; $("opStop").dataset.i = nx; $("opStop").hidden = false;
+  requestAnimationFrame(function(){ $("opStop").classList.add("on"); }); opStopTick(); }
+function opStopOff(){ clearTimeout(opStopT); var b = $("opStop"); b.classList.remove("on"); b.hidden = true; }
+function opStopTick(){ var o = $("opening"), b = $("opStop"); if(o.hidden || o.classList.contains("out") || b.hidden){ return; }
+  var sp = SPOTS[+b.dataset.i], S = size(), wp = sp._bb && sp._bb.userData.kind === "isl" ? sp._bb.localToWorld(new THREE.Vector3(0, sp._bb.userData.H*.9, 0)) : islWorld(sp._isl, sp._isl.top + (sp._H || 3.6) + 1.1), v = wp.project(camera);
+  var w = b.offsetWidth, x = Math.max(12 + w/2, Math.min(S.w - 12 - w/2, (v.x + 1)/2*S.w));
+  b.style.left = x + "px"; b.style.top = ((1 - v.y)/2*S.h) + "px"; requestAnimationFrame(opStopTick); }
 function opSkipAnim(){ if(!opAnim) return; clearTimeout(opAnim); opAnim = null; opSayOff(); viewTo = { ox:0, oy:0 }; flyTo(homePose(), true); opDone(); }
 var opPinT = null; function opPinOn(){ $("opPin").classList.add("on"); opPinTick(); clearTimeout(opPinT); opPinT = setTimeout(function(){ $("opPin").classList.remove("on"); }, 2400); }   // 拉遠後短暫提示工作室位置，再淡出
 function opPinTick(){ var o = $("opening"); if(o.hidden || o.classList.contains("out") || !HUB.isl || !$("opPin").classList.contains("on")){ $("opPin").classList.remove("on"); return; }   // 拉遠後還找得到小森：在工作室上方標一下
   var v = islWorld(HUB.isl, HUB.top + 2.4).project(camera), S = size(); $("opPin").style.left = ((v.x + 1)/2*S.w) + "px"; $("opPin").style.top = ((1 - v.y)/2*S.h) + "px";
   requestAnimationFrame(opPinTick); }
-function openingHide(){ if(opAnim) viewTo = { ox:0, oy:0 }; clearTimeout(opAnim); opAnim = null; opSayOff(); appEl.classList.remove("op-on"); var o = $("opening"); o.classList.add("out"); $("opPin").classList.remove("on"); setTimeout(function(){ o.hidden = true; }, 500); }
+function openingHide(){ opStopOff(); if(opAnim) viewTo = { ox:0, oy:0 }; clearTimeout(opAnim); opAnim = null; opSayOff(); appEl.classList.remove("op-on"); var o = $("opening"); o.classList.add("out"); $("opPin").classList.remove("on"); setTimeout(function(){ o.hidden = true; }, 500); }
 $("opSkipAnim").addEventListener("click", opSkipAnim);
+$("opStop").addEventListener("click", function(){ $("opGo").click(); });   // 點第一站提示＝跟小森出發
 $("opReplay").addEventListener("click", function(){ openingShow(true); });
 $("opSkip").addEventListener("click", function(){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; say("自己逛逛：點任何一座島就能出發"); });
-$("opGo").addEventListener("click", function(){ openingHide();   // 鏡頭平順回到工作室的小森身旁，接現有的登船與航行
+$("opGo").addEventListener("click", function(){ if(opNext() < 0){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; $("listBtn").click(); return; }   // 七島都走完：直接打開地圖
+  openingHide();   // 鏡頭平順回到工作室的小森身旁，接現有的登船與航行
   flyTo(islPose(HUB.isl, 2.6, null, size().w <= 640 ? 1.6 : 1), false, 1.3); toast("小森從 Wishlite 永續工作室出發！");
-  var next = SPOTS.findIndex(function(s){ return s.ritual && !dressed[s.id]; }); if(next < 0) next = 0;
+  var next = opNext(); if(next < 0) next = 0;
   setTimeout(function(){ var t0 = Date.now(); (function go(){ if(sailBoat && !sailBoat.userData.ready && Date.now() - t0 < 6000) return setTimeout(go, 150); openSpot(next, "explore"); })(); }, 1700); });   // 新船還在載就等一下（最多 6 秒）再出航
 var isReady = false;
 function ready(){
@@ -3488,64 +3592,33 @@ window.__island = { get state(){ return { gl:GL, ready:isReady, mode:mode, curre
   dist: GL ? camera.position.distanceTo(controls.target) : 0, target: GL ? controls.target.toArray() : [], calls: GL ? renderer.info.render.calls : 0, perf: perf.level, tris: GL ? renderer.info.render.triangles : 0, billboards: billboards.length, plan: !$("bookPlanView").hidden, wishes: wishes.length, book: book.classList.contains("open"), cardMode: card.classList.contains("brief") ? "brief" : card.classList.contains("story") ? "story" : "full", cardScroll: card.scrollHeight > card.clientHeight + 2, endFrom: endFrom ? endFrom.id : null, chips: !chips.hidden, dressed: SPOTS.filter(function(s){ return s._sen && s._sen.visible && s._sen.material.map === s._gearTex; }).length, senShown: SPOTS.filter(function(s){ return s._sen && s._sen.visible; }).length, islBody: SPOTS.filter(function(s){ return s.body3d && s._bb && s._bb.userData.kind === "isl"; }).length, tab: (document.querySelector('#cardBody [aria-selected="true"]') || {}).id || null, tagRect: current >= 0 ? SPOTS[current]._tag.getBoundingClientRect().toJSON() : null }; }, spots:N, get pres(){ return { hub:HUB._p, isl:SPOTS.map(function(s){ return s._face; }) }; } };
 </script>
 <script>
-/* 背景音樂：OpenTracks（舊名 DOVA-SYNDROME）「昼下がり気分」by KK，依該站音源利用ライセンス作背景音樂使用。預設靜音，訪客按喇叭才播放。 */
+/* 背景音樂：OpenTracks（舊名 DOVA-SYNDROME）「昼下がり気分」by KK，依該站音源利用ライセンス作背景音樂使用。
+   預設開啟（Apple 11/14）：瀏覽器規定要等訪客第一次點畫面才能出聲，所以第一次點擊時開始播放；訪客按「音樂」關掉後會記住，下次來也維持關閉。 */
 (function(){
-  var btn=document.getElementById("musicBtn"); if(!btn) return;
-  var SRC="audio/bgm-hirusagari.mp3", VOL=0.32;
-  var on=false, ctx=null, gain=null, buf=null, srcNode=null, loading=null, el=null;
-  // 手機靜音模式下仍可聽到（支援的 Safari 才有）
-  try{ if(navigator.audioSession) navigator.audioSession.type="playback"; }catch(e){}
-  // 讓按鈕跟在旅行冊後面（手機第二排）
-  function place(){ try{ var b=document.getElementById("bookBtn"); if(b && window.innerWidth<=640){ document.documentElement.style.setProperty("--musicL",(b.offsetLeft+b.offsetWidth+8)+"px"); } }catch(e){} }
-  window.addEventListener("resize",place); setTimeout(place,0); setTimeout(place,1500);
-  function setUI(){ btn.setAttribute("aria-pressed",on?"true":"false"); btn.setAttribute("aria-label",on?"關閉背景音樂":"開啟背景音樂"); }
-  function trimLoop(b){ // 跳過音檔前後的編碼空白，讓循環接得順
-    var d=b.getChannelData(0), n=d.length, a=0, z=n-1, th=1e-4;
-    while(a<n && Math.abs(d[a])<th) a++; while(z>a && Math.abs(d[z])<th) z--;
-    return {s:a/b.sampleRate, e:(z+1)/b.sampleRate};
+  var btns = [document.getElementById("musicBtn"), document.getElementById("opMusic")].filter(Boolean); if(!btns.length) return;
+  // iPhone：Web Audio 會被靜音鍵、Facebook／LINE 內建瀏覽器擋掉，改用 <audio> 播放（靜音鍵下也會出聲）；
+  // iPhone 不能用程式調音量，所以音檔本身已先降到原本約三成的音量（bgm-hirusagari-soft.mp3）
+  var SRC = "audio/bgm-hirusagari-soft.mp3", KEY = "wl-bgm";
+  var want = true; try{ want = localStorage.getItem(KEY) !== "off"; }catch(e){}
+  var playing = false, el = null;
+  try{ if(navigator.audioSession) navigator.audioSession.type = "playback"; }catch(e){}
+  function place(){ try{ var b = document.getElementById("bookBtn"); if(b && window.innerWidth <= 640){ document.documentElement.style.setProperty("--musicL", (b.offsetLeft + b.offsetWidth + 8) + "px"); } }catch(e){} }
+  window.addEventListener("resize", place); setTimeout(place, 0); setTimeout(place, 1500);
+  function setUI(){ btns.forEach(function(b){ b.setAttribute("aria-pressed", want ? "true" : "false"); b.setAttribute("aria-label", want ? "關閉背景音樂" : "開啟背景音樂"); }); }
+  function save(){ try{ if(want) localStorage.removeItem(KEY); else localStorage.setItem(KEY, "off"); }catch(e){} }
+  function mk(){ if(el) return; el = new Audio(SRC); el.loop = true; el.preload = "auto"; el.setAttribute("playsinline", ""); el.addEventListener("ended", function(){ if(playing){ el.currentTime = 0; el.play().catch(function(){}); } }); }
+  function start(){   // 一定要在訪客點擊的當下呼叫；沒成功就等下一次點擊再試
+    if(playing && el && !el.paused) return; mk(); playing = true;
+    var p = el.play(); if(p && p.catch) p.catch(function(){ playing = false; });
   }
-  function load(){
-    if(loading) return loading;
-    loading=fetch(SRC).then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); })
-      .then(function(ab){ return new Promise(function(res,rej){ var p=ctx.decodeAudioData(ab,res,rej); if(p&&p.then) p.then(res,rej); }); })
-      .then(function(b){ buf=b; return b; });
-    return loading;
-  }
-  function startWA(){
-    var lp=trimLoop(buf);
-    srcNode=ctx.createBufferSource(); srcNode.buffer=buf; srcNode.loop=true; srcNode.loopStart=lp.s; srcNode.loopEnd=lp.e;
-    srcNode.connect(gain); srcNode.start(0,lp.s);
-  }
-  function fadeTo(v,sec){ var t=ctx.currentTime; gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value,t); gain.gain.linearRampToValueAtTime(v,t+sec); }
-  function fallback(){ // 不支援 Web Audio 時改用一般播放
-    if(!el){ el=new Audio(SRC); el.loop=true; el.volume=VOL; }
-    var p=el.play(); if(p&&p.catch) p.catch(function(){ on=false; setUI(); });
-  }
-  function turnOn(){
-    on=true; setUI();
-    var AC=window.AudioContext||window.webkitAudioContext;
-    if(!AC){ fallback(); return; }
-    if(!ctx){ ctx=new AC(); gain=ctx.createGain(); gain.gain.value=0; gain.connect(ctx.destination); }
-    var r=ctx.resume(); // 一定要在點擊當下呼叫，iPhone 才放行
-    load().then(function(){
-      if(!on) return;
-      if(!srcNode) startWA();
-      return r;
-    }).then(function(){ if(on){ fadeTo(VOL,1.2); } })
-      .catch(function(){ ctx=null; fallback(); });
-  }
-  function turnOff(){
-    on=false; setUI();
-    if(el){ el.pause(); }
-    if(ctx&&gain){ fadeTo(0,0.6); setTimeout(function(){ if(!on&&ctx) ctx.suspend(); },650); }
-  }
-  btn.addEventListener("click",function(){ on?turnOff():turnOn(); });
-  // 切到別的分頁或鎖螢幕時先停，回來再接著播
-  document.addEventListener("visibilitychange",function(){
-    if(!on) return;
-    if(document.hidden){ if(ctx) ctx.suspend(); if(el) el.pause(); }
-    else { if(ctx){ ctx.resume(); } if(el){ var p=el.play(); if(p&&p.catch) p.catch(function(){}); } }
-  });
+  function kick(){ if(want && (!el || el.paused)) start(); }
+  function stop(){ playing = false; if(el) el.pause(); }
+  btns.forEach(function(b){ b.addEventListener("click", function(e){ e.stopPropagation(); want = !want; save(); setUI(); if(want) start(); else stop(); }); });
+  // 訪客第一次點畫面（不是點音樂按鈕）時，依設定開始播放
+  function first(e){ if(e.target && e.target.closest && e.target.closest(".musicBtn")) return; if(!want || document.hidden) return; kick(); }
+  ["touchend", "click", "keydown"].forEach(function(t){ document.addEventListener(t, first, true); });
+  document.addEventListener("visibilitychange", function(){ if(!playing || !el) return; if(document.hidden) el.pause(); else { var p = el.play(); if(p && p.catch) p.catch(function(){}); } });
+  setUI();
 })();
 </script>
 </body>
