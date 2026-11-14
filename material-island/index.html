@@ -327,6 +327,16 @@ a{color:var(--moss)}
 .wish[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--white)}
 .wish:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
 .book{overflow:auto}
+
+/* 背景音樂（預設關閉，訪客按了才播放） */
+.musicBtn{display:inline-flex;align-items:center;gap:5px;min-height:34px;cursor:pointer;font:inherit;font-size:13px;color:var(--muted)}
+.musicBtn svg{width:16px;height:16px;flex:none}
+.musicBtn .mOn{display:none}
+.musicBtn[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--white)}
+.musicBtn[aria-pressed="true"] .mOn{display:inline}
+.musicBtn[aria-pressed="true"] .mOff{display:none}
+.musicBtn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (max-width:640px){ .top .musicBtn{position:absolute;left:var(--musicL,214px);top:54px;padding:4px 10px;min-height:29px} }
 @media (max-width:640px){ .top .bookBtn{position:absolute;left:112px;top:54px;padding:4px 10px} }
 .bizbox{margin:16px 0 6px;padding:14px 14px 12px;border-radius:14px;background:var(--cream)}
 .bizbox h3{margin:0 0 6px;font:700 16px/1.5 "Noto Serif TC",serif;color:var(--moss-dark)}
@@ -675,6 +685,7 @@ a{color:var(--moss)}
     <span class="sp"></span>
     <a class="pill biz" id="bizLink" href="https://wishlite.com.tw/service/detail/42?view=activities" target="_blank" rel="noopener" aria-label="直接找活動（官網活動選擇器，另開新頁）">直接找活動 ↗</a>
     <button type="button" class="pill seenpill bookBtn" id="bookBtn" aria-expanded="false" aria-controls="book">旅行冊 <b id="seenN">0</b> / 7</button>
+    <button type="button" class="pill musicBtn" id="musicBtn" aria-pressed="false" aria-label="開啟背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span id="musicLabel">音樂</span></button>
     <div class="pill times" role="group" aria-label="時段">
       <button type="button" data-t="day" aria-pressed="false" title="白天">白天</button>
       <button type="button" data-t="dusk" aria-pressed="false" title="黃昏">黃昏</button>
@@ -3474,6 +3485,67 @@ window.__worksHTML = function(i){ return worksHTML(SPOTS[i]); };
 window.__senNdc = function(){ var s = rit ? rit.s : (current >= 0 ? SPOTS[current] : null), m = s && s._sen; if(!m) return null; var u = m.userData, pts = [[-u.W/2, 0], [u.W/2, 0], [0, u.H], [0, 0]].map(function(q){ var v = m.localToWorld(new THREE.Vector3(q[0], q[1], 0)).project(camera); return [+v.x.toFixed(2), +v.y.toFixed(2)]; }); return { ph:rit ? rit.phase : null, l:pts[0][0], r:pts[1][0], top:pts[2][1], bot:pts[3][1] }; };
 window.__island = { get state(){ return { gl:GL, ready:isReady, mode:mode, current:current, paused:isPaused(), sheet:sheet.classList.contains("open"), card:!card.hidden, seen:seenCount(), time:time, wave:wave, frames:frames, flying:!!flying,
   dist: GL ? camera.position.distanceTo(controls.target) : 0, target: GL ? controls.target.toArray() : [], calls: GL ? renderer.info.render.calls : 0, perf: perf.level, tris: GL ? renderer.info.render.triangles : 0, billboards: billboards.length, plan: !$("bookPlanView").hidden, wishes: wishes.length, book: book.classList.contains("open"), cardMode: card.classList.contains("brief") ? "brief" : card.classList.contains("story") ? "story" : "full", cardScroll: card.scrollHeight > card.clientHeight + 2, endFrom: endFrom ? endFrom.id : null, chips: !chips.hidden, dressed: SPOTS.filter(function(s){ return s._sen && s._sen.visible && s._sen.material.map === s._gearTex; }).length, senShown: SPOTS.filter(function(s){ return s._sen && s._sen.visible; }).length, islBody: SPOTS.filter(function(s){ return s.body3d && s._bb && s._bb.userData.kind === "isl"; }).length, tab: (document.querySelector('#cardBody [aria-selected="true"]') || {}).id || null, tagRect: current >= 0 ? SPOTS[current]._tag.getBoundingClientRect().toJSON() : null }; }, spots:N, get pres(){ return { hub:HUB._p, isl:SPOTS.map(function(s){ return s._face; }) }; } };
+</script>
+<script>
+/* 背景音樂：OpenTracks（舊名 DOVA-SYNDROME）「昼下がり気分」by KK，依該站音源利用ライセンス作背景音樂使用。預設靜音，訪客按喇叭才播放。 */
+(function(){
+  var btn=document.getElementById("musicBtn"); if(!btn) return;
+  var SRC="audio/bgm-hirusagari.mp3", VOL=0.32;
+  var on=false, ctx=null, gain=null, buf=null, srcNode=null, loading=null, el=null;
+  // 手機靜音模式下仍可聽到（支援的 Safari 才有）
+  try{ if(navigator.audioSession) navigator.audioSession.type="playback"; }catch(e){}
+  // 讓按鈕跟在旅行冊後面（手機第二排）
+  function place(){ try{ var b=document.getElementById("bookBtn"); if(b && window.innerWidth<=640){ document.documentElement.style.setProperty("--musicL",(b.offsetLeft+b.offsetWidth+8)+"px"); } }catch(e){} }
+  window.addEventListener("resize",place); setTimeout(place,0); setTimeout(place,1500);
+  function setUI(){ btn.setAttribute("aria-pressed",on?"true":"false"); btn.setAttribute("aria-label",on?"關閉背景音樂":"開啟背景音樂"); }
+  function trimLoop(b){ // 跳過音檔前後的編碼空白，讓循環接得順
+    var d=b.getChannelData(0), n=d.length, a=0, z=n-1, th=1e-4;
+    while(a<n && Math.abs(d[a])<th) a++; while(z>a && Math.abs(d[z])<th) z--;
+    return {s:a/b.sampleRate, e:(z+1)/b.sampleRate};
+  }
+  function load(){
+    if(loading) return loading;
+    loading=fetch(SRC).then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); })
+      .then(function(ab){ return new Promise(function(res,rej){ var p=ctx.decodeAudioData(ab,res,rej); if(p&&p.then) p.then(res,rej); }); })
+      .then(function(b){ buf=b; return b; });
+    return loading;
+  }
+  function startWA(){
+    var lp=trimLoop(buf);
+    srcNode=ctx.createBufferSource(); srcNode.buffer=buf; srcNode.loop=true; srcNode.loopStart=lp.s; srcNode.loopEnd=lp.e;
+    srcNode.connect(gain); srcNode.start(0,lp.s);
+  }
+  function fadeTo(v,sec){ var t=ctx.currentTime; gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value,t); gain.gain.linearRampToValueAtTime(v,t+sec); }
+  function fallback(){ // 不支援 Web Audio 時改用一般播放
+    if(!el){ el=new Audio(SRC); el.loop=true; el.volume=VOL; }
+    var p=el.play(); if(p&&p.catch) p.catch(function(){ on=false; setUI(); });
+  }
+  function turnOn(){
+    on=true; setUI();
+    var AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC){ fallback(); return; }
+    if(!ctx){ ctx=new AC(); gain=ctx.createGain(); gain.gain.value=0; gain.connect(ctx.destination); }
+    var r=ctx.resume(); // 一定要在點擊當下呼叫，iPhone 才放行
+    load().then(function(){
+      if(!on) return;
+      if(!srcNode) startWA();
+      return r;
+    }).then(function(){ if(on){ fadeTo(VOL,1.2); } })
+      .catch(function(){ ctx=null; fallback(); });
+  }
+  function turnOff(){
+    on=false; setUI();
+    if(el){ el.pause(); }
+    if(ctx&&gain){ fadeTo(0,0.6); setTimeout(function(){ if(!on&&ctx) ctx.suspend(); },650); }
+  }
+  btn.addEventListener("click",function(){ on?turnOff():turnOn(); });
+  // 切到別的分頁或鎖螢幕時先停，回來再接著播
+  document.addEventListener("visibilitychange",function(){
+    if(!on) return;
+    if(document.hidden){ if(ctx) ctx.suspend(); if(el) el.pause(); }
+    else { if(ctx){ ctx.resume(); } if(el){ var p=el.play(); if(p&&p.catch) p.catch(function(){}); } }
+  });
+})();
 </script>
 </body>
 </html>
