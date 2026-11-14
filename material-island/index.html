@@ -815,19 +815,19 @@ const ENTERPRISE_LINE_MSG = "https://line.me/R/oaMessage/@728zvmqz/?";
 
 var SEN_BASE = "img/sen-base.webp";
 var SPOTS = [
-  { id:"coffee", pier:[.366, .698], ritual:{ say:"杯子裡的咖啡渣，還能變成什麼？", wear:"穿上咖啡渣裝備", fx:"pop", walk:.3, wave:true, spin:true, more:["b2"], path:[.6, .45], depth:[.47, .58], decor:true, shell:[0.6197, 0.7978, 0.9667, 1.0095] }, showcase:true, theater:["img/ch1-coffee.jpg", "材料小劇場：微縮小人在咖啡杯與咖啡渣旁搬運、鏟渣"], finder:"coffee", body3d:"img/v2-isl-coffee.webp", plaza:0.58, brief:"杯子裡的任務結束，手作桌上的故事才要開始。", name:"咖啡渣", line:"咖啡喝完了，我還有事忙。",
+  { id:"coffee", pier:[.366, .698], ritual:{ say:"杯子裡的咖啡渣，還能變成什麼？", wear:"穿上咖啡渣裝備", fx:"pop", walk:.3, wave:true, v2:true, spin:true, more:["b2"], path:[.6, .45], depth:[.47, .58], decor:true, shell:[0.625, 0.7781, 0.9886, 0.9844] }, showcase:true, theater:["img/ch1-coffee.jpg", "材料小劇場：微縮小人在咖啡杯與咖啡渣旁搬運、鏟渣"], finder:"coffee", body3d:"img/v2-isl-coffee.webp", plaza:0.58, brief:"杯子裡的任務結束，手作桌上的故事才要開始。", name:"咖啡渣", line:"咖啡喝完了，我還有事忙。",
     img:"img/ch1-coffee.jpg", obj:"img/obj-coffee.webp", sen:"img/sen-coffee.webp", alt:"一小堆咖啡渣與幾顆咖啡豆",
     body:"<p>每天被沖煮後留下的咖啡渣，重新轉化成手作體驗材料。香氣、觸感都還在，讓永續從抽象概念走進日常。</p>",
     ws:[["咖啡渣發財香牌", "https://wishlite.com.tw/service/detail/30", "", "img/work-coffee-paiv.webp"], ["咖啡渣香氛燈", 410, "", "img/work-coffee-lamp.webp"], ["咖啡渣小海龜肌理畫", 377, "", "img/work-coffee-turtle.webp"], ["咖啡渣擴香石", 448, "", "img/work-coffee-stone.webp"]],
     kits:[["咖啡渣肌理畫 DIY 材料包", NOTION + "333704274681804a9c50f54fe0716238", "img/kit-coffee-texture.webp"], ["咖啡渣浮雕畫 DIY 材料包", NOTION + "3724a58538574b10a6de22fb95f23583", "img/kit-coffee-relief.webp"]],
     gifts:[["咖啡渣環保筆", NOTION + "32570427468181b1836cc88de265c71f", "img/gift-coffee-pen.webp"], ["咖啡渣保溫杯", NOTION + "33570427468180938593ec3c4f227e51", "img/gift-coffee-tumbler.webp"]] },
-  { id:"denim", pier:[.382, .686], ritual:{ say:"這些舊牛仔布，還能變成什麼呢？", wear:"穿上牛仔布裝備", fx:"coaster", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], shell:[0.6212, 0.8406, 1.0360, 1.0328] }, showcase:true, theater:["img/ch2-denim-v2.jpg", "材料小劇場：舊牛仔褲剪成布條，再一圈圈縫成杯墊"], finder:"denim", body3d:"img/v2-isl-denim.webp", plaza:0.52, brief:"口袋、接縫、穿過的痕跡，都是下一件小物的好點子。", name:"牛仔褲", line:"褲子先下班，布料繼續玩。",
+  { id:"denim", pier:[.382, .686], ritual:{ say:"這些舊牛仔布，還能變成什麼呢？", wear:"穿上牛仔布裝備", fx:"coaster", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], v2:true, shell:[0.5663, 0.7953, 0.9697, 0.9797] }, showcase:true, theater:["img/ch2-denim-v2.jpg", "材料小劇場：舊牛仔褲剪成布條，再一圈圈縫成杯墊"], finder:"denim", body3d:"img/v2-isl-denim.webp", plaza:0.52, brief:"口袋、接縫、穿過的痕跡，都是下一件小物的好點子。", name:"牛仔褲", line:"褲子先下班，布料繼續玩。",
     img:"img/ch2-denim.jpg", obj:"img/obj-denim.webp", sen:"img/sen-denim.webp", alt:"一件摺好的舊牛仔褲與幾片剪下的牛仔布",
     body:"<p>穿不下、穿舊了的牛仔褲，布料還很耐用。剪下來的布片，可以變成新的小物。</p>",
     ws:[["牛仔布金屬字母掛飾", 413, "", "img/work-denim-letter.webp"], ["牛仔布杯墊", 411, "以工藝膠黏合固定。", "img/work-denim-coaster.webp"]],
     kits:[["牛仔布杯墊 DIY 材料包", NOTION + "DIY-32570427468180848f8dd1ee3dc4cd7c", "img/kit-denim-coaster.webp"], ["牛仔布字母掛飾 DIY 材料包", NOTION + "362b534f7ba64382b196c207df02df83", "img/kit-denim-letter.webp"]],
     gifts:[], pending:"牛仔褲的來源與處理說明，待 Apple 提供確認版內容。" },
-  { id:"oyster", pier:[.37, .74], ritual:{ say:"咦，這裡有一枚牡蠣殼。", wear:"穿上牡蠣裝備", tap:true, invite:"進屋看看，牡蠣殼還能變成什麼？", walk:-.32, shell:[0.0588, 0.8532, 0.3442, 0.9938] }, finder:"oyster", body3d:"img/v2-isl-oyster.webp", plaza:.46, brief:"從殼到盆器，這回換我照顧植物。", name:"牡蠣殼", line:"吃完了，殼還有下半場。",
+  { id:"oyster", pier:[.37, .74], ritual:{ say:"咦，這裡有一枚牡蠣殼。", wear:"穿上牡蠣裝備", tap:true, invite:"進屋看看，牡蠣殼還能變成什麼？", walk:-.32, v2:true, shell:[0.0379, 0.8203, 0.3617, 0.9828] }, finder:"oyster", body3d:"img/v2-isl-oyster.webp", plaza:.46, brief:"從殼到盆器，這回換我照顧植物。", name:"牡蠣殼", line:"吃完了，殼還有下半場。",
     img:"img/ch3-oyster.jpg", obj:"img/obj-oyster.webp", sen:"img/sen-oyster.webp", alt:"兩片牡蠣殼、碎殼與一小堆殼粉",
     body:"<p>牡蠣肉被吃掉了，殼卻沒有跟著消失。殼主要由碳酸鈣構成，經過分類、清潔、乾燥、破碎與研磨，才能重新成為材料。</p>",
     kits:[["海洋風擴香石 DIY 材料包", NOTION + "32570427468180488f1de0a7385b3061", "img/kit-oyster-ocean.webp"], ["水晶星願擴香石 DIY 材料包", NOTION + "33570427468180058989fdc895ed3d6f", "img/kit-oyster-crystal.webp"]],
@@ -847,25 +847,25 @@ var SPOTS = [
            ["海洋風擴香石", OFFICIAL + "194", "", "img/work-oyster-ocean.webp"],
            ["水晶許願擴香石", OFFICIAL + "371", "", "img/work-oyster-crystal.webp"]],
     gifts:[["玉山擴香石（立體款）", NOTION + "33370427468181b281bdd3a76cc7512c", "img/gift-oyster-yushan.webp"], ["立體客製 Logo 擴香石", NOTION + "3257042746818119a3bec4d555538f55", "img/gift-oyster-line.webp"]], note:"「撿回來、洗一洗」並不足以安全使用，整理方式會依用途而不同。" },
-  { id:"diaper", pier:[.354, .678], ritual:{ say:"這些尿布紙纖，還能變成什麼呢？", wear:"穿上紙纖裝備", fx:"earth", walk:.3, wave:true, spin:true, depth:[0.6, 0.7], bigShell:true, shell:[0.6725, 0.7964, 1.1430, 1.0326] }, showcase:true, theater:["img/ch4-diaper-v2.jpg", "材料小劇場：尿布紙纖拆開、打散，做成會發芽的種子地球"], finder:"fiber", body3d:"img/v2-isl-diaper.webp", plaza:0.7, brief:"NG 尿布裡的紙纖換個舞台，陪種子發芽。", name:"NG 尿布紙纖", line:"一片尿布裡，哪一部分能變成種子地球？",
+  { id:"diaper", pier:[.354, .678], ritual:{ say:"這些尿布紙纖，還能變成什麼呢？", wear:"穿上紙纖裝備", fx:"earth", walk:.3, wave:true, spin:true, depth:[0.6, 0.7], bigShell:true, v2:true, shell:[0.6629, 0.8109, 0.9602, 0.9828] }, showcase:true, theater:["img/ch4-diaper-v2.jpg", "材料小劇場：尿布紙纖拆開、打散，做成會發芽的種子地球"], finder:"fiber", body3d:"img/v2-isl-diaper.webp", plaza:0.7, brief:"NG 尿布裡的紙纖換個舞台，陪種子發芽。", name:"NG 尿布紙纖", line:"一片尿布裡，哪一部分能變成種子地球？",
     img:"img/ch4-diaper.jpg", obj:"img/obj-diaper.webp", sen:"img/sen-diaper.webp", alt:"一片白色紙尿布與一團紙漿纖維",
     body:"<p>我們用的不是使用過的尿布，而是尿布工廠裡還沒被使用、因為外觀或規格不符留下的 NG 品，以及製造時的下腳料。</p><p>拆解後的紙漿纖維，包進植物種子，變成會發芽的種子地球。</p>",
     ws:[["地球種子", 259, "", "img/work-diaper-seedearth.webp"], ["地球生命樹", 419, "", "img/work-diaper-tree.webp"], ["地球紙漿畫冰箱貼", 437, "", "img/work-diaper-magnet.webp"]],
     kits:[["地球種子 DIY 材料包", OFFICIAL + "258", "img/kit-diaper-seedearth.webp"]],
     gifts:[["地球種子卡", NOTION + "325704274681819bb9c7c8ce0b70cc3d", "img/gift-diaper-card.webp"], ["地球種子（紙盒款）", NOTION + "325704274681818cbb06eb283f54dc56", "img/gift-diaper-box.webp"]] },
-  { id:"caps", pier:[.340, .677], ritual:{ say:"這些瓶蓋，還能變成什麼呢？", wear:"穿上瓶蓋裝備", fx:"turtles", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], bigShell:true, shell:[0.678, 0.81, 1.0744, 1.0063] }, showcase:true, theater:["img/ch5-caps-v2.jpg", "材料小劇場：瓶蓋剪成碎片，再壓成彩色小海龜"], finder:"caps", body3d:"img/v2-isl-caps.webp", plaza:0.52, brief:"圓圓一小顆，配上巧思，也能游進日常。", name:"回收瓶蓋", line:"瓶子喝空了，瓶蓋有新點子。",
+  { id:"caps", pier:[.340, .677], ritual:{ say:"這些瓶蓋，還能變成什麼呢？", wear:"穿上瓶蓋裝備", fx:"turtles", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], bigShell:true, v2:true, shell:[0.6856, 0.8422, 0.9678, 0.9812] }, showcase:true, theater:["img/ch5-caps-v2.jpg", "材料小劇場：瓶蓋剪成碎片，再壓成彩色小海龜"], finder:"caps", body3d:"img/v2-isl-caps.webp", plaza:0.52, brief:"圓圓一小顆，配上巧思，也能游進日常。", name:"回收瓶蓋", line:"瓶子喝空了，瓶蓋有新點子。",
     img:"img/ch5-caps.jpg", obj:"img/obj-caps.webp", sen:"img/sen-caps.webp", alt:"五個彩色塑膠瓶蓋與剪碎的瓶蓋碎片",
     body:"<p>飲料喝完了，瓶蓋還有下一站。</p><p>圓圓的形狀、繽紛的顏色，配上一點巧思，就能游成小魚、變身小海龜，繼續陪我們過日子。</p>",
     ws:[["瓶蓋小海龜工作坊", 375, "", "img/work-caps-turtle.webp"]],
     kits:[["瓶蓋票卡夾｜字母串珠 DIY 材料包", "https://wishlite.com.tw/product/detail/483", "img/kit-caps-cardholder.webp", "成品示意"]],   // 官網材料包頁 Apple 11/10 22:08 提供，已確認可公開開啟
     gifts:[["瓶蓋新生 ECO 證件票卡夾", NOTION + "3af477ea33b441f0b68d0acfeb06085d", "img/gift-caps-cardholder.webp"]] },
-  { id:"board", pier:[.669, .727], ritual:{ say:"這些養樂多瓶，還能變成什麼呢？", wear:"穿上再生板材裝備", fx:"build", walk:.3, wave:true, spin:true, depth:[0.45, 0.55], bigShell:true, shell:[0.735, 0.71, 0.931, 1.0] }, showcase:true, theater:["img/ch6-board-v2.jpg", "材料小劇場：養樂多瓶和保麗龍打碎、造粒，壓成一塊再生板材"], finder:"wood", body3d:"img/v2-isl-board.webp", plaza:0.55, brief:"養樂多瓶、保麗龍，原來也有變成板材的一面。", name:"回收塑膠再生板材", sub:"捷綠木", line:"換個模樣，還認得我嗎？",
+  { id:"board", pier:[.669, .727], ritual:{ say:"這些養樂多瓶，還能變成什麼呢？", wear:"穿上再生板材裝備", fx:"build", walk:.3, wave:true, spin:true, depth:[0.45, 0.55], bigShell:true, v2:true, shell:[0.6496, 0.5109, 0.9621, 0.9828] }, showcase:true, theater:["img/ch6-board-v2.jpg", "材料小劇場：養樂多瓶和保麗龍打碎、造粒，壓成一塊再生板材"], finder:"wood", body3d:"img/v2-isl-board.webp", plaza:0.55, brief:"養樂多瓶、保麗龍，原來也有變成板材的一面。", name:"回收塑膠再生板材", sub:"捷綠木", line:"換個模樣，還認得我嗎？",
     img:"img/ch6-board.jpg", obj:"img/obj-board.webp", sen:"img/rit-board-g.webp", alt:"三塊回收塑膠再生板材，旁邊是無標籤的小塑膠瓶與保麗龍底托",
     body:"<p>養樂多瓶、保麗龍底托這些回收塑膠，經過分選、清洗、破碎、造粒，壓成一塊塊再生板材，做成的產品叫捷綠木。</p><p>裁切成杯墊底座，拼上馬賽克磚，循環就變成看得見、用得到的作品。</p>",
     ws:[["馬賽克杯墊", 182, "底座使用回收塑膠再生板材（捷綠木）。", "img/work-board-coaster.webp", ["img/work-board-coaster-p1.webp", "img/work-board-coaster-p2.webp", "img/work-board-coaster-p3.webp"]], ["馬賽克星球燈", 291, "燈座與支架使用回收塑膠再生板材（捷綠木）；馬賽克拼貼片與燈具零件為其他素材。", "img/work-board-lamp.webp"]],
     kits:[["小海龜馬賽克杯墊｜DIY 材料包", OFFICIAL + "477", "img/kit-board-mosaic-ocean.webp"]   /* 官網正確材料包頁 477（Apple 11/11 13:30）；477 首圖有海報字，照片沿用 417 實拍 */, ["手繪星球燈材料包", OFFICIAL + "308", "img/kit-board-planetlamp.webp"]],
     gifts:[["永續萬年曆", NOTION + "06ebebeb8d784520a8e413c72f468476", "img/gift-board-calendar.webp"]], note:"馬賽克磚是市售磚，不是回收塑膠。" },
-  { id:"natural", pier:[.420, .866], ritual:{ say:"這些自然素材，還能變成什麼呢？", wear:"穿上自然素材裝備", fx:"leaves", walk:.3, wave:true, spin:true, depth:[0.44, 0.54], shell:[0.6742, 0.8078, 0.9924, 1.0516] }, showcase:true, theater:["img/ch7-natural-v2.jpg", "材料小劇場：落葉變成葉脈，再做成透光的葉脈作品"], finder:"natural", body3d:"img/v2-isl-natural.webp", plaza:0.54, brief:"椰殼、乾燥花、葉脈與藤圈，湊在一起，剛好有故事。", name:"自然素材", line:"大自然的零碎，我們的寶貝。",
+  { id:"natural", pier:[.420, .866], ritual:{ say:"這些自然素材，還能變成什麼呢？", wear:"穿上自然素材裝備", fx:"leaves", walk:.3, wave:true, spin:true, depth:[0.44, 0.54], v2:true, shell:[0.6515, 0.7734, 0.9545, 0.9828] }, showcase:true, theater:["img/ch7-natural-v2.jpg", "材料小劇場：落葉變成葉脈，再做成透光的葉脈作品"], finder:"natural", body3d:"img/v2-isl-natural.webp", plaza:0.54, brief:"椰殼、乾燥花、葉脈與藤圈，湊在一起，剛好有故事。", name:"自然素材", line:"大自然的零碎，我們的寶貝。",
     img:"img/ch7-natural.jpg", obj:"img/obj-natural.webp", sen:"img/sen-natural.webp", alt:"半顆椰子殼、一小束乾燥花、一片葉脈與一個藤圈",
     body:"<p>椰殼、乾燥花、葉脈與藤圈。依作品實際用到的材料，歸在這一類。</p>",
     ws:[["葉脈時光書籤", 409, "", "img/work-natural-bookmark.webp", ["img/work-natural-bookmark-compare.webp"]], ["蜂蠟護唇膏", 378, "", "img/work-natural-lipbalm.webp"]],
@@ -2705,7 +2705,8 @@ function decorTick(){ islNear(); SPOTS.forEach(function(s){ if(!s._decor && s._l
   var u = m.userData; gndPose(g, s);
   var op = (s._face || 0)*(ib.material.opacity); g.visible = op > .01; g.children.forEach(function(p){ p.material.opacity = op; if(p.userData.cup) p.visible = !!s._cupBack && !(rit && rit.s === s); });
 }); }
-var WAVE = {}; (function(){ var L = new THREE.TextureLoader(); ["w1", "w2"].forEach(function(k){ L.load("img/rit-wave-" + k.slice(1) + ".webp", function(t){ t.colorSpace = THREE.SRGBColorSpace; WAVE[k] = t; }, undefined, function(){}); }); })();
+var WAVE = {}; (function(){ var L = new THREE.TextureLoader(); [["w1", "rit-wave-1"], ["w2", "rit-wave-2"], ["v1", "rit-wave-v2-1"], ["v2", "rit-wave-v2-2"]].forEach(function(p){ L.load("img/" + p[1] + ".webp", function(t){ t.colorSpace = THREE.SRGBColorSpace; WAVE[p[0]] = t; }, undefined, function(){}); }); })();
+function waveTex(s, k){ return (s.ritual && s.ritual.v2 && WAVE["v" + k.slice(1)]) || WAVE[k]; }   // 已換成 10/27 造型的島用新版揮手（Apple 11/14），其他島沿用舊版，避免揮手與站姿的臉不一致
 function ritReady(s){ return s._ritTex && RIT_KEYS.every(function(k){ return s._ritTex[k]; }) && s._ritTex.shell; }
 function senWear(s, tex){   // 一般換圖（同畫框）
   var m = s._sen; if(!m || !tex || !tex.image) return;
@@ -2845,13 +2846,13 @@ function tickRitual(dt){
   }
   if(rit.phase === "walk" && s.ritual.wave && !rit.waved){   // 先在泥土地上站穩、轉向觀眾揮手（約 1 秒），再走去石台拿杯子
     var wv0 = WAVE.w1 && WAVE.w2 && !rit.reduce;
-    if(wv0){ var n0 = Math.floor(rit.t/.25); var wk0 = n0 >= 4 ? "s0" : (n0 % 2 ? "w2" : "w1"); if(wk0 === "s0") ritFrame("s0", .08); else if(rit.frame !== wk0){ rit.frame = wk0; senWear(s, WAVE[wk0]); if(ritOver) ritOver.visible = false; } }
+    if(wv0){ var n0 = Math.floor(rit.t/.25); var wk0 = n0 >= 4 ? "s0" : (n0 % 2 ? "w2" : "w1"); if(wk0 === "s0") ritFrame("s0", .08); else if(rit.frame !== wk0){ rit.frame = wk0; senWear(s, waveTex(s, wk0)); if(ritOver) ritOver.visible = false; } }
     if(rit.t > (wv0 ? 1.4 : (rit.reduce ? .2 : .7))){ rit.waved = true; rit.t = 0; if(wv0) ritFrame("s0", 0); }
     return;
   }
   if(rit.phase === "walk" && !s.ritual.walk && !rit.prev){   // 站定位後先轉向觀眾揮手（約 1 秒），再看向旁邊的杯子
     var wv = WAVE.w1 && WAVE.w2 && !rit.reduce;
-    if(wv){ var n = Math.floor(rit.t/.25); var wk = n >= 4 ? "s0" : (n % 2 ? "w2" : "w1"); if(wk === "s0") ritFrame("s0", .08); else if(rit.frame !== wk){ rit.frame = wk; senWear(s, WAVE[wk]); if(ritOver) ritOver.visible = false; } }
+    if(wv){ var n = Math.floor(rit.t/.25); var wk = n >= 4 ? "s0" : (n % 2 ? "w2" : "w1"); if(wk === "s0") ritFrame("s0", .08); else if(rit.frame !== wk){ rit.frame = wk; senWear(s, waveTex(s, wk)); if(ritOver) ritOver.visible = false; } }
     if(rit.t > (wv ? 1.25 : (rit.reduce ? .2 : .6))){ rit.phase = "reach"; rit.t = 0; ritFrame("a", 0); ritShell.visible = !!s.ritual.bigShell; }
     return;
   }
@@ -2864,7 +2865,7 @@ function tickRitual(dt){
     return;
   }
   if(rit.phase === "tapwait"){   // 牡蠣殼島：小森停在殼旁，殼輕輕發亮提示，等訪客點殼
-    if(ritShell){ var pl = 1.35 + .12*Math.max(0, Math.sin(rit.t*3.2)); ritShell.scale.set(pl, pl, 1);
+    if(ritShell){ var pl = 1.03 + .07*Math.max(0, Math.sin(rit.t*3.2)); ritShell.scale.set(pl, pl, 1);   /* 提示用的輕微脈動：原本放大 1.35 倍，點下去縮回原尺寸時像鏡頭突然拉遠（Apple 11/14 改小） */
       if(!rit.halo && ritShell.parent){ var c = document.createElement("canvas"); c.width = c.height = 128; var x = c.getContext("2d"), gr = x.createRadialGradient(64, 64, 4, 64, 64, 62); gr.addColorStop(0, "rgba(255,206,92,1)"); gr.addColorStop(.3, "rgba(250,196,80,.85)"); gr.addColorStop(.55, "rgba(246,205,110,.45)"); gr.addColorStop(1, "rgba(246,205,110,0)"); x.fillStyle = gr; x.fillRect(0, 0, 128, 128);
         var ht = new THREE.CanvasTexture(c), hw = ritShell.geometry.parameters.width*3.2; rit.halo = fxSprite(ht, hw, 8.4); rit.halo.scale.set(hw, hw*.6, 1); ritShell.parent.add(rit.halo); }   // 殼底下一圈淡金光，提示「可以點這枚殼」
       if(rit.halo){ rit.halo.position.copy(ritShell.position); rit.halo.material.opacity = .7 + .3*Math.max(0, Math.sin(rit.t*3.2)); } }
@@ -2884,7 +2885,7 @@ function tickRitual(dt){
   if(rit.phase === "dress"){   // 約 3 秒：捧到胸前 → 罩內苔蘚一點一點變成殼砂 → 背包收起、低頭看看 → 抬頭展示
     var t = rit.t, spin = false, S0 = 1.9, S1 = 2.6;   // 不再整張翻轉（像紙片）；改成輕微起伏   // 換上裝備時原地轉一圈（像卡通變身）：轉到背面那半圈是一團珍珠白光影
     var steps = spin ? [[0, "c", .08], [.5, "d", .2], [1.05, "e", .2], [1.5, "e2", .08], [S1, "f", 0], [2.95, "g", .08]] : [[0, "c", .08], [.5, "d", .2], [1.05, "e", .2], [1.6, "e2", .08], [2.1, "f", .2], [2.65, "g", .08]];
-    var flowC = MAT_FLOW[s.id] && !rit.reduce; if(flowC) steps = [[0, "c", .08], [.75, "d", .35], [1.25, "e", .35], [1.75, "e2", .25], [2.1, "f", .25], [2.7, "g", .2]];   // 顆粒先飄進頭罩，頭罩才跟著填滿；背包用較長淡接，跟頭罩一起變   // 同姿勢（只變頭罩）慢淡接；換姿勢極短淡接
+    var flowC = MAT_FLOW[s.id] && !rit.reduce; if(flowC) steps = [[0, "c", .08], [.75, "d", .35], [1.25, "e", .35], [1.75, "e2", .25], [2.1, "f", .08], [2.7, "g", .2]];   // 顆粒先飄進頭罩，頭罩才跟著填滿；背包用較長淡接，跟頭罩一起變   // 同姿勢（只變頭罩）慢淡接；換姿勢極短淡接
     if(spin && t >= S0 && t < S1){
       if(rit.fade){ senWear(s, s._ritTex[rit.fade.k]); rit.fade = null; } if(ritOver) ritOver.visible = false;
       if(!rit.sil && s._ritTex.f){ var im = s._ritTex.f.image, cv = document.createElement("canvas"); cv.width = im.width; cv.height = im.height; var cx = cv.getContext("2d"); cx.drawImage(im, 0, 0); cx.globalCompositeOperation = "source-atop"; cx.fillStyle = "rgba(255,247,230,.8)"; cx.fillRect(0, 0, cv.width, cv.height); rit.sil = new THREE.CanvasTexture(cv); rit.sil.colorSpace = THREE.SRGBColorSpace; }
