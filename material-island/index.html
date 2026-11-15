@@ -335,7 +335,7 @@ a{color:var(--moss)}
 .chips{padding:4px 6px;gap:4px;background:rgba(249,246,240,.82);box-shadow:0 3px 10px rgba(30,42,30,.08)}
 .chips ol{gap:4px}
 .chips button{padding:4px 10px;font-size:12px;min-height:32px}
-/* 我的材料旅行冊 */
+/* 我的材料集章冊 */
 .bookBtn{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:var(--moss-dark);font:inherit;font-size:13px}
 .bookBtn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .book .sec{margin:4px 16px 14px}
@@ -723,7 +723,7 @@ a{color:var(--moss)}
     <div class="brand" id="brandHome" role="button" tabindex="0" aria-label="材料小島｜Wishlite：回到地球全景" title="回到地球全景"><span class="logo" aria-hidden="true">W</span><div><small>Wishlite Material Island</small><h1>材料小島｜Wishlite</h1></div></div>
     <span class="sp"></span>
     <a class="pill biz" id="bizLink" href="https://wishlite.com.tw/service/detail/42?view=activities" target="_blank" rel="noopener" aria-label="直接找活動（官網活動選擇器，另開新頁）">直接找活動 ↗</a>
-    <button type="button" class="pill seenpill bookBtn" id="bookBtn" aria-expanded="false" aria-controls="book">旅行冊 <b id="seenN">0</b> / 7</button>
+    <button type="button" class="pill seenpill bookBtn" id="bookBtn" aria-expanded="false" aria-controls="book">集章 <b id="seenN">0</b> / 7</button>
     <button type="button" class="pill musicBtn" id="musicBtn" aria-pressed="true" aria-label="關閉背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span id="musicLabel">音樂</span></button>
     <div class="pill times" role="group" aria-label="時段">
       <button type="button" data-t="day" aria-pressed="false" title="白天">白天</button>
@@ -791,7 +791,7 @@ a{color:var(--moss)}
     </div>
   </aside>
   <aside class="sheet book" id="book" aria-labelledby="bookTitle" aria-hidden="true">
-    <header><h2 id="bookTitle">我的材料旅行冊</h2><button type="button" class="x" id="bookClose" aria-label="關閉旅行冊">×</button></header>
+    <header><h2 id="bookTitle">我的材料集章冊</h2><button type="button" class="x" id="bookClose" aria-label="關閉集章冊">×</button></header>
     <div id="bookMain">
     <div class="sec"><h3>到訪足跡 <small id="bookSeen" style="font-weight:400;color:var(--muted)"></small></h3><ol class="foot" id="bookFoot"></ol></div>
     <div class="sec"><h3>我的收藏</h3><ul class="wl" id="bookWish"></ul></div>
@@ -802,7 +802,7 @@ a{color:var(--moss)}
     <div class="sec"><button type="button" class="book-reset" id="bookReset">清除我的旅程紀錄，重新開始</button></div>
     </div>
     <div id="bookPlanView" class="sec plan" hidden></div>
-    <p class="scope">旅行冊只存在這台裝置的這個瀏覽器，不用登入，也不會上傳；換手機、用無痕視窗或清除瀏覽資料，就會重新開始。</p>
+    <p class="scope">集章冊只存在這台裝置的這個瀏覽器，不用登入，也不會上傳；換手機、用無痕視窗或清除瀏覽資料，就會重新開始。</p>
   </aside>
   <section class="opening" id="opening" hidden aria-labelledby="opTitle">
     <button type="button" class="pill musicBtn opMusic" id="opMusic" aria-pressed="true" aria-label="關閉背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span>音樂</span></button>
@@ -1555,7 +1555,7 @@ function toggleWish(w){
   var on = !wished(w.id);
   if(on) wishes.push(w); else wishes = wishes.filter(function(x){ return x.id !== w.id; });
   store("wl-island-wish", JSON.stringify(wishes)); renderBook();
-  toast(on ? "已收進旅行冊" : "已從旅行冊移除"); return on;
+  toast(on ? "已收進集章冊" : "已從集章冊移除"); return on;
 }
 function wishBtn(s, kind, name, url){
   var id = s.id + "|" + name;
@@ -1600,7 +1600,7 @@ function showPlanForm(){
   if(!wishes.length) planState.recommend = true;
   $("bookMain").hidden = true; v.hidden = false;
   var F = planState.f;
-  v.innerHTML = '<button type="button" class="back" id="planBack">← 回到旅行冊</button>' +
+  v.innerHTML = '<button type="button" class="back" id="planBack">← 回到集章冊</button>' +
     '<h3 id="planTitle" tabindex="-1">規劃企業活動</h3>' +
     '<p class="hint">先整理想詢問的內容；不確定的欄位可以留白，會寫成「尚未確定」。</p>' +
     "<label>材料</label><p style=\"margin:0;font-size:14px\">" + sp.name + "</p>" +
@@ -1608,7 +1608,7 @@ function showPlanForm(){
       wishes.map(function(w){ var m = SPOTS.find(function(x){ return x.id === w.spot; });
         return '<li><label><input type="checkbox" data-pick="' + esc(w.id) + '"' + (planState.picks.indexOf(w.id) >= 0 ? " checked" : "") + ">" + esc(w.name) + "<small>（" + (m ? m.name : "") + "・" + esc(w.kind) + "）</small></label></li>"; }).join("") +
       '<li><label><input type="checkbox" id="planRec"' + (planState.recommend ? " checked" : "") + ">請協助推薦作品</label></li></ul>" +
-    (wishes.length ? "" : '<p class="hint">旅行冊還沒有收藏，也可以先請我們推薦。</p>') +
+    (wishes.length ? "" : '<p class="hint">集章冊還沒有收藏，也可以先請我們推薦。</p>') +
     '<label for="planPeople">活動人數</label><input type="text" id="planPeople" placeholder="例：約 40 人；不確定可留白" value="' + esc(F.people) + '">' +
     '<label for="planDate">希望日期</label><input type="text" id="planDate" placeholder="例：12 月中；不確定可留白" value="' + esc(F.date) + '">' +
     '<label for="planPlace">地點</label><input type="text" id="planPlace" placeholder="例：台北；不確定可留白" value="' + esc(F.place) + '">' +
@@ -1995,7 +1995,7 @@ function bindTabs(){
     b.addEventListener("keydown", function(e){ var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if(d){ e.preventDefault(); e.stopPropagation(); sel((j + d + tabs.length) % tabs.length, true); } });
   });
 }
-var dressT, endFrom = null, cardSeq = 0, focusIdx = -1;   // 聚焦中的島：關卡片、開旅行冊都保留，按「回到全景」才退回
+var dressT, endFrom = null, cardSeq = 0, focusIdx = -1;   // 聚焦中的島：關卡片、開集章冊都保留，按「回到全景」才退回
 function fadeIn(el){ if(!el) return; el.classList.remove("fadein"); void el.offsetWidth; el.classList.add("fadein"); }
 // 目前開著的材料島（自由探索時）；從這裡走進工作坊會帶著材料
 function fromSpot(){ return mode === "explore" && !card.hidden && current >= 0 ? SPOTS[current] : null; }
@@ -2042,7 +2042,7 @@ function hubPanel(){ if(hs){ clearTimeout(hs.timer); clearTimeout(hs.nbT); }
     ["book", "永續行動學院", "學習設計與帶領材料體驗。", ACADEMY_SITE] ];
   var P = $("hubPanel"); P.innerHTML = '<div class="hub-in"><button type="button" class="hub-x" id="hubX" aria-label="收起，回到屋內">×</button><p class="k">WISHLITE 工作室</p><h2 id="hubPT" tabindex="-1">把島上的發現，<br>帶回生活</h2><div class="hub-rows">' +
     W.map(function(w){ return '<a class="hub-row" href="' + w[3] + '" target="_blank" rel="noopener"><svg class="hr-ic" viewBox="0 0 48 48" aria-hidden="true">' + IC[w[0]] + '</svg><span class="hr-tx"><b>' + w[1] + "</b><span>" + w[2] + '</span></span><svg class="hr-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>'; }).join("") +
-    '</div><div class="hub-foot"><button type="button" class="hub-bk" id="hubBook">打開旅行冊 ›</button><span class="sp"></span>' + (nx >= 0 ? '<button type="button" class="solid" id="hubGo">跟小森去' + SPOTS[nx].name + '島</button><button type="button" id="hubMap">打開地圖</button>' : '<button type="button" class="solid" id="hubMap">打開地圖</button>') + '<button type="button" id="hubStay">回到花園</button></div></div>';   // 還有沒去過的島：主按鈕帶去下一座；七島都走過才以地圖為主（Apple 11/10 22:08）
+    '</div><div class="hub-foot"><button type="button" class="hub-bk" id="hubBook">打開集章冊 ›</button><span class="sp"></span>' + (nx >= 0 ? '<button type="button" class="solid" id="hubGo">跟小森去' + SPOTS[nx].name + '島</button><button type="button" id="hubMap">打開地圖</button>' : '<button type="button" class="solid" id="hubMap">打開地圖</button>') + '<button type="button" id="hubStay">回到花園</button></div></div>';   // 還有沒去過的島：主按鈕帶去下一座；七島都走過才以地圖為主（Apple 11/10 22:08）
   P.hidden = false; P.scrollTop = 0; $("hs").classList.add("room", "ways"); $("hubRoom").hidden = false; $("hubPT").focus({ preventScroll:true }); say("把島上的發現，帶回生活");
   var shut = function(then){ hsClose(function(){ P.hidden = true; $("hubRoom").hidden = true; $("hs").classList.remove("panel", "wide", "room", "ways"); then(); }); };
   $("hubX").onclick = function(){ P.hidden = true; $("hs").classList.remove("ways"); var b = $("hrWays"); if(b) b.focus({ preventScroll:true }); };   // 收起面板回到屋內
@@ -2892,7 +2892,7 @@ function tipTick(){ if(!tip) return; var e = $("tip3d"), o = tip.at === "cup" ? 
   x = Math.max(e.offsetWidth/2 + 8, Math.min(sz.w - e.offsetWidth/2 - 8, x));
   e.style.left = Math.round(x) + "px"; e.style.top = Math.round(y) + "px"; e.classList.add("on"); }
 function ritTapGo(){ if(!rit || rit.phase !== "tapwait") return; tipSet(null); if(rit.halo && rit.halo.parent) rit.halo.parent.remove(rit.halo); rit.halo = null; rit.t = 0; if(rit.prev && !rit.reduce){ rit.phase = "swap"; rit.swap = { t:0, g:swapMake(rit.s._sen, rit.s) }; } else { rit.phase = "reach"; ritFrame("a", 0); } if(ritShell){ ritShell.visible = !!rit.s.ritual.bigShell; ritShell.scale.set(1, 1, 1); } ritUI(null, false); }   // 點小森、點材料或按下方按鈕，都開始換裝
-function ritReplay(s){ var m = s._sen, u = m.userData; ritLoad(s); rit = { s:s, phase:"hold", t:0, free:true, replay:{ ox:u.ox || 0, pa:u.plazaAt, map:m.material.map }, reduce:isPaused() || !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) }; exp.st = "replay"; say("再看一次換裝"); }   // 不改到訪紀錄與旅行冊
+function ritReplay(s){ var m = s._sen, u = m.userData; ritLoad(s); rit = { s:s, phase:"hold", t:0, free:true, replay:{ ox:u.ox || 0, pa:u.plazaAt, map:m.material.map }, reduce:isPaused() || !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) }; exp.st = "replay"; say("再看一次換裝"); }   // 不改到訪紀錄與集章冊
 function ritFinish(didWear){
   if(rit && rit.replay){ var RP = rit.replay, s0 = rit.s; ritClear(); senLook(s0); if(s0._sen){ s0._sen.userData.ox = RP.ox; s0._sen.userData.plazaAt = RP.pa; } if(exp) exp.st = "idle"; return; }
   var s = rit.s; ritClear();
