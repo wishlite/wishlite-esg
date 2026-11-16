@@ -1590,6 +1590,18 @@
             font-weight: 600; text-decoration: none;
         }
         .guide-catalog a:is(:hover, :focus-visible) { background: #4d6a4e; }
+        .guide-cooperation { padding: 24px 20px; background: #f9f6f0; }
+        .guide-cooperation .section-container { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+        .guide-cooperation a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            color: #3d5a3e;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            scroll-margin-top: 100px;
+        }
 </style>
 <style>.soap-photo-options{display:flex;gap:10px;padding:12px 16px 0}.soap-photo-options a{display:flex;align-items:center;gap:7px;text-decoration:none;color:#3d5a3e;font-size:12px;flex:1;min-width:0}.soap-photo-options img{width:44px;height:44px;object-fit:cover;border-radius:5px}.soap-photo-options a:hover{text-decoration:underline}</style><style>.gift-process-panel{background:#f8f5ee;padding:40px 32px;margin-top:32px;border-radius:12px}.gift-process-row-title{font-size:18px;letter-spacing:3px;color:#65705e;margin:0 0 24px}.gift-process-row+.gift-process-row{margin-top:42px}.gift-process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}.gift-process-step{text-align:center;position:relative}.gift-process-icon{width:104px;height:104px;border-radius:50%;background:#9da58e;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}.gift-process-step:nth-child(2) .gift-process-icon{background:#bea783}.gift-process-row:nth-child(2) .gift-process-step:first-child .gift-process-icon,.gift-process-row:nth-child(2) .gift-process-step:last-child .gift-process-icon{background:#bea783}.gift-process-icon svg{width:58px;height:58px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.gift-process-step h3{font-size:21px;font-weight:500;color:#455240;margin:0}.gift-process-step:not(:last-child):after{content:"→";position:absolute;right:-25px;top:34px;font-size:25px;color:#98a18f}@media(max-width:650px){.gift-process-panel{padding:28px 12px}.gift-process-grid{gap:12px}.gift-process-icon{width:56px;height:56px;margin-bottom:12px}.gift-process-icon svg{width:34px;height:34px}.gift-process-step h3{font-size:13px}.gift-process-step:not(:last-child):after{right:-12px;top:14px;font-size:16px}.gift-process-row-title{font-size:16px;letter-spacing:2px}}</style></head>
 <body>
@@ -1881,45 +1893,12 @@
         </div>
     </section>
 
-    <!-- CUSTOMIZATION -->
-    <section class="customization reveal" id="custom">
+    <nav class="guide-cooperation" aria-label="客製與合作">
         <div class="section-container">
-            <p class="section-label">CUSTOMIZATION</p>
-            <h2 class="section-title">客製合作</h2>
-            <p class="section-subtitle">從品牌識別到包裝細節，讓每一份禮物更貼近企業需求與送禮情境。</p>
-            <div class="custom-cards">
-                <div class="custom-card reveal">
-                    <div class="custom-img"><img src="custom-logo.jpg" alt="Logo 客製"></div>
-                    <div class="custom-title">Logo 客製</div>
-                    <div class="custom-desc">支援雷雕、壓印與印刷，適用多數品項<br>建議提前 3 週確認設計稿，部分品項可安排打樣</div>
-                </div>
-                <div class="custom-card reveal">
-                    <div class="custom-img"><img src="custom-storycard.JPG" alt="品牌故事卡 / ESG 說明卡"></div>
-                    <div class="custom-title">品牌故事卡 / ESG 說明卡</div>
-                    <div class="custom-desc">說明材料來源、SDGs 對應與品牌永續承諾<br>適合用於企業贈禮說明與永續成果溝通</div>
-                </div>
-                <div class="custom-card reveal">
-                    <div class="custom-img"><img src="custom-giftbox.JPG" alt="禮盒包裝"></div>
-                    <div class="custom-title">禮盒包裝</div>
-                    <div class="custom-desc">依送禮情境規劃包裝層級與整體呈現<br>含客製包裝之訂單建議提前 4 週洽詢</div>
-                </div>
-            </div>
+            <a id="custom" href="https://wishlite.com.tw/service/detail/23">客製合作 ↗</a>
+            <a id="process" href="https://wishlite.com.tw/service/detail/23#:~:text=%E5%AE%A2%E8%A3%BD%E6%B5%81%E7%A8%8B%EF%BD%9C%E6%89%93%E9%80%A0%E5%93%81%E7%89%8C%E6%B0%B8%E7%BA%8C%E4%BB%A3%E8%A1%A8%E4%BD%9C">合作流程 ↗</a>
         </div>
-    </section>
-
-    <!-- HOW IT WORKS (06) -->
-    <section class="how-it-works reveal" id="process">
-        <div class="section-container">
-            <p class="section-label">HOW IT WORKS</p>
-            <h2 class="section-title">合作流程</h2>
-            <p class="section-subtitle">從需求討論、報價確認到製作交付，依定案內容安排每一步。</p>
-<div class="gift-process-panel" aria-label="永續禮品合作八步驟"><div class="gift-process-row"><p class="gift-process-row-title">諮詢到定案</p><div class="gift-process-grid"><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><path d="M12 33 8 41l11-3a19 19 0 1 0-7-5Z"/><circle cx="22" cy="24" r="1"/><circle cx="30" cy="24" r="1"/><circle cx="38" cy="24" r="1"/></svg></div><h3>詢問諮詢</h3></article><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><path d="m7 22 10-12 9 3 8-2 9 11-8 13-9 4-12-9Z"/><path d="m26 13-7 9 5 4 8-7 12 10M15 29l5 6m2-7 7 8m0-10 7 7"/></svg></div><h3>溝通討論</h3></article><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><rect x="11" y="7" width="27" height="37" rx="3"/><path d="M18 16h13M18 23h13M18 30h7"/><circle cx="38" cy="37" r="10"/><path d="m33 37 3 3 6-7"/></svg></div><h3>報價確認</h3></article><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><rect x="6" y="13" width="40" height="28" rx="3"/><path d="M6 22h40M12 32h12M35 32h5"/></svg></div><h3>完成付款</h3></article></div></div><div class="gift-process-row"><p class="gift-process-row-title">製作到交付</p><div class="gift-process-grid"><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><path d="m8 15 16-8 17 8-17 9Z M8 15v23l16 9 8-4M24 24v23M16 11l17 9"/><path d="m38 30 3 2 4-1 2 4-2 3 1 4-4 2-3-2-4 1-2-4 2-3-1-4Z"/><circle cx="39" cy="37" r="3"/></svg></div><h3>商品製作</h3></article><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><path d="M12 35h28l-5-7v-9a9 9 0 0 0-18 0v9ZM21 40a5 5 0 0 0 10 0M26 6V3M8 16l-4-2M44 16l4-2M7 27H3M45 27h4"/></svg></div><h3>完成通知</h3></article><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><path d="M7 14h25v25H13M32 23h9l7 9v7H32M3 23h13M1 30h12"/><circle cx="17" cy="39" r="5"/><circle cx="40" cy="39" r="5"/></svg></div><h3>出貨寄送</h3></article><article class="gift-process-step"><div class="gift-process-icon" aria-hidden="true"><svg viewBox="0 0 52 54"><path d="m9 24 17-8 17 8-17 9ZM9 24v18l17 9 17-9V24M26 33v18M17 20l17 9M26 9V3M13 12l-4-5M39 12l4-5"/></svg></div><h3>收到大貨</h3></article></div></div></div>
-<div class="steps-cta-bridge">
-                <p>告訴我們送禮用途，一起找到適合的方向。</p>
-                <a class="cta-primary" href="https://line.me/R/ti/p/@728zvmqz" target="_blank" rel="noopener noreferrer">聊聊禮品需求 →</a>
-            </div>
-        </div>
-    </section>
+    </nav>
 
     <!-- FAQ -->
     <section class="faq reveal">
