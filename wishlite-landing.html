@@ -1575,7 +1575,22 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+
+        .hero.guide-hero { min-height: auto; padding: clamp(32px, 6vw, 72px) 20px; }
+        .guide-hero h1 { margin-bottom: 12px; line-height: 1.45; }
+        .guide-hero .hero-desc { margin: 0; color: #fff; line-height: 1.75; }
+        #products { padding-top: clamp(24px, 4vw, 48px); }
+        #products .product-lines-subtitle { margin-bottom: 16px; }
+        #products .tabs { margin-bottom: 24px; }
+        .guide-catalog { text-align: center; margin-top: 28px; }
+        .guide-catalog a {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-height: 44px; padding: 10px 22px; border-radius: 28px;
+            background: #3d5a3e; color: #fff; border: 1px solid #9bb195;
+            font-weight: 600; text-decoration: none;
+        }
+        .guide-catalog a:is(:hover, :focus-visible) { background: #4d6a4e; }
+</style>
 <style>.soap-photo-options{display:flex;gap:10px;padding:12px 16px 0}.soap-photo-options a{display:flex;align-items:center;gap:7px;text-decoration:none;color:#3d5a3e;font-size:12px;flex:1;min-width:0}.soap-photo-options img{width:44px;height:44px;object-fit:cover;border-radius:5px}.soap-photo-options a:hover{text-decoration:underline}</style><style>.gift-process-panel{background:#f8f5ee;padding:40px 32px;margin-top:32px;border-radius:12px}.gift-process-row-title{font-size:18px;letter-spacing:3px;color:#65705e;margin:0 0 24px}.gift-process-row+.gift-process-row{margin-top:42px}.gift-process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}.gift-process-step{text-align:center;position:relative}.gift-process-icon{width:104px;height:104px;border-radius:50%;background:#9da58e;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}.gift-process-step:nth-child(2) .gift-process-icon{background:#bea783}.gift-process-row:nth-child(2) .gift-process-step:first-child .gift-process-icon,.gift-process-row:nth-child(2) .gift-process-step:last-child .gift-process-icon{background:#bea783}.gift-process-icon svg{width:58px;height:58px;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.gift-process-step h3{font-size:21px;font-weight:500;color:#455240;margin:0}.gift-process-step:not(:last-child):after{content:"→";position:absolute;right:-25px;top:34px;font-size:25px;color:#98a18f}@media(max-width:650px){.gift-process-panel{padding:28px 12px}.gift-process-grid{gap:12px}.gift-process-icon{width:56px;height:56px;margin-bottom:12px}.gift-process-icon svg{width:34px;height:34px}.gift-process-step h3{font-size:13px}.gift-process-step:not(:last-child):after{right:-12px;top:14px;font-size:16px}.gift-process-row-title{font-size:16px;letter-spacing:2px}}</style></head>
 <body>
     <!-- NAVIGATION -->
@@ -1598,80 +1613,16 @@
     </nav>
 
     <!-- HERO -->
-    <section class="hero reveal">
-        <div class="hero-badge">Wishlite ESG Gifts</div>
+    <section class="hero guide-hero reveal">
         <h1>讓每一份禮物，<br>都成為品牌實踐永續的方式。</h1>
-        <p class="hero-desc">以循環材料打造<br class="hero-br">有溫度、有故事的 ESG 禮品。<br><br class="hero-br-spacer">讓每一份品牌心意，<br class="hero-br">不只被收到，也被記住。</p>
-        <div class="hero-ctas">
-            <a href="#products" class="cta-primary">探索永續禮品系列 →</a>
-        </div>
-        <div class="hero-value-chips">
-            <div class="hero-chip"><span class="chip-zh">厚實</span><span class="chip-en">再生材料</span></div>
-            <div class="hero-chip"><span class="chip-zh">厚工</span><span class="chip-en">文化底蘊</span></div>
-            <div class="hero-chip"><span class="chip-zh">厚禮</span><span class="chip-en">品牌心意</span></div>
-        </div>
-    </section>
-
-    <!-- SOCIAL PROOF -->
-    <section class="social-proof reveal" id="proof">
-        <div class="section-container">
-            <div class="proof-stats">
-                <div class="stat">
-                    <div class="stat-number">80+</div>
-                    <div class="stat-label">家合作企業</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">30,000+</div>
-                    <div class="stat-label">份禮品交付</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">6+</div>
-                    <div class="stat-label">再生材料來源</div>
-                </div>
-            </div>
-            <p class="proof-desc">涵蓋金融、科技、電信、製造與教育等產業。</p>
-            <div class="partner-grid">
-                <div class="partner-row">
-                    <span class="name">TSMC 台積電</span><span class="dot"> · </span><span class="name">Google</span><span class="dot"> · </span><span class="name">Microsoft</span><span class="dot"> · </span><span class="name">LINE</span><span class="dot"> · </span><span class="name">KPMG</span><span class="dot"> · </span><span class="name">BMW</span><span class="dot"> · </span><span class="name">MSI 微星</span><span class="dot"> · </span><span class="name">KINPO 金寶集團</span><span class="dot"> · </span><span class="name">L'Occitane 歐舒丹</span><span class="dot"> · </span><span class="name">誠品</span><span class="dot"> · </span><span class="name">行政院環境保護署</span><span class="dot"> · </span><span class="name">遠雄集團</span><span class="dot"> · </span><span class="name">台電</span><span class="dot"> · </span><span class="name">中油</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY WISHLITE -->
-    <section class="why-wishlite reveal" id="why">
-        <div class="section-container">
-            <div class="why-header">
-                <p class="section-label">WHY WISHLITE</p>
-                <h2 class="section-title">為什麼選擇 Wishlite</h2>
-                <p>把材料故事與品牌心意，變成日常禮物與親手參與的永續體驗。</p>
-            </div>
-            <div class="why-cards">
-                <div class="why-card">
-                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M26 5C13 4 5 10 6 19c1 7 10 9 15 3 4-5 4-10 5-17Z"/><path d="M5 27 21 11M12 20v-6M12 20h7"/></svg></span>
-                    <div class="why-card-title">有來源的永續材料</div>
-                    <div class="why-card-desc">從牡蠣殼、咖啡渣到回收塑膠，讓禮物帶著真實的材料故事。</div>
-                </div>
-                <div class="why-card">
-                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h12l10 10a3 3 0 0 1 0 4l-8 8a3 3 0 0 1-4 0L5 17V5Z"/><circle cx="11" cy="11" r="2"/><path d="m16 18 2 2 5-5"/></svg></span>
-                    <div class="why-card-title">可客製的品牌表達</div>
-                    <div class="why-card-desc">透過造型、Logo 與包裝配置，把品牌心意留在日常使用的禮物裡。</div>
-                </div>
-                <div class="why-card">
-                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17v-5a2 2 0 0 1 4 0v4-10a2 2 0 0 1 4 0v10-12a2 2 0 0 1 4 0v12-8a2 2 0 0 1 4 0v13c0 5-3 8-8 8-3 0-5-2-7-5l-4-6a2 2 0 0 1 3-3l3 4"/></svg></span>
-                    <div class="why-card-title">可延伸為活動方案</div>
-                    <div class="why-card-desc">從禮品延伸到材料導覽與手作體驗，讓參與者親手認識材料、留下記憶。</div>
-                </div>
-            </div>
-        </div>
+        <p class="hero-desc">從活動紀念、員工日常到節慶與手作體驗，依送禮情境挑一份適合的永續禮品。</p>
     </section>
 
     <!-- PRODUCT LINES (03) -->
     <section class="product-lines reveal" id="products">
         <div class="section-container">
-            <p class="section-label">PRODUCT LINES</p>
-            <h2 class="section-title">五大產品系列</h2>
-            <p class="product-lines-subtitle">依不同送禮情境，找到適合的永續禮品方案。點選分類，查看下方推薦商品。</p>
+            <h2 class="section-title">依送禮情境挑選</h2>
+            <p class="product-lines-subtitle">選一個情境，查看推薦商品。</p>
 
             <div class="tabs">
                 <button class="tab-btn active" aria-pressed="true" onclick="switchTab(0)">活動紀念品<span class="tab-hint">ESG 活動、展會、大量贈送</span></button>
@@ -1680,7 +1631,6 @@
                 <button class="tab-btn" aria-pressed="false" onclick="switchTab(3)">節慶禮盒<span class="tab-hint">母親節、端午、中秋、春節</span></button>
                 <button class="tab-btn" aria-pressed="false" onclick="switchTab(4)">DIY 體驗型禮品<span class="tab-hint">可參與的互動式禮盒</span></button>
             </div>
-            <div role="navigation" id="materials" aria-label="依材料與品類選禮品" style="scroll-margin-top:100px;margin:24px 0 28px;"><p style="font-size:16px;color:#eee9df;margin:0 0 12px;">依材料與品類選禮品</p><div style="display:flex;flex-wrap:wrap;gap:10px;"><a href="https://wishlite.com.tw/product/category/84" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">回收塑膠 ↗</a><a href="https://wishlite.com.tw/product/category/86" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">再生紙纖 ↗</a><a href="https://wishlite.com.tw/product/category/68" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">牡蠣殼 ↗</a><a href="https://wishlite.com.tw/product/category/85" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">咖啡渣 ↗</a><a href="https://wishlite.com.tw/product/category/74" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">手工皂 ↗</a></div></div>
             <!-- Tab 0: 活動紀念品 -->
             <div class="tab-content active">
                 <div class="products-grid">
@@ -1870,11 +1820,63 @@
                 </div>
             </div>
 
-            <div style="text-align:center; margin-top:3.5rem;">
-                <a href="https://wishlite.notion.site/esg-gifts?v=e6cf547cac9348b983de68ce3664f641" target="_blank" rel="noopener" class="explore-more-card">
-                    <span class="explore-more-hint">查看更多材料、節慶禮盒與 ESG 禮贈提案</span>
-                    <span class="explore-more-title">查看完整 Notion 永續禮品<span class="explore-more-arrow">→</span></span>
-                </a>
+            <div class="guide-catalog">
+                <a href="https://wishlite.notion.site/esg-gifts?v=e6cf547cac9348b983de68ce3664f641" target="_blank" rel="noopener">查看完整選品目錄 ↗</a>
+            </div>
+            <div role="navigation" id="materials" aria-label="依材料與品類選禮品" style="scroll-margin-top:100px;margin:24px 0 28px;"><p style="font-size:16px;color:#eee9df;margin:0 0 12px;">依材料與品類選禮品</p><div style="display:flex;flex-wrap:wrap;gap:10px;"><a href="https://wishlite.com.tw/product/category/84" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">回收塑膠 ↗</a><a href="https://wishlite.com.tw/product/category/86" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">再生紙纖 ↗</a><a href="https://wishlite.com.tw/product/category/68" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">牡蠣殼 ↗</a><a href="https://wishlite.com.tw/product/category/85" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">咖啡渣 ↗</a><a href="https://wishlite.com.tw/product/category/74" style="display:inline-flex;align-items:center;padding:10px 16px;border:1px solid #8fa18c;border-radius:24px;color:#f5f0e8;background:#34483b;text-decoration:none;font-size:15px;line-height:1.5;">手工皂 ↗</a></div></div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="social-proof reveal" id="proof">
+        <div class="section-container">
+            <div class="proof-stats">
+                <div class="stat">
+                    <div class="stat-number">80+</div>
+                    <div class="stat-label">家合作企業</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">30,000+</div>
+                    <div class="stat-label">份禮品交付</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6+</div>
+                    <div class="stat-label">再生材料來源</div>
+                </div>
+            </div>
+            <p class="proof-desc">涵蓋金融、科技、電信、製造與教育等產業。</p>
+            <div class="partner-grid">
+                <div class="partner-row">
+                    <span class="name">TSMC 台積電</span><span class="dot"> · </span><span class="name">Google</span><span class="dot"> · </span><span class="name">Microsoft</span><span class="dot"> · </span><span class="name">LINE</span><span class="dot"> · </span><span class="name">KPMG</span><span class="dot"> · </span><span class="name">BMW</span><span class="dot"> · </span><span class="name">MSI 微星</span><span class="dot"> · </span><span class="name">KINPO 金寶集團</span><span class="dot"> · </span><span class="name">L'Occitane 歐舒丹</span><span class="dot"> · </span><span class="name">誠品</span><span class="dot"> · </span><span class="name">行政院環境保護署</span><span class="dot"> · </span><span class="name">遠雄集團</span><span class="dot"> · </span><span class="name">台電</span><span class="dot"> · </span><span class="name">中油</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY WISHLITE -->
+    <section class="why-wishlite reveal" id="why">
+        <div class="section-container">
+            <div class="why-header">
+                <p class="section-label">WHY WISHLITE</p>
+                <h2 class="section-title">為什麼選擇 Wishlite</h2>
+                <p>把材料故事與品牌心意，變成日常禮物與親手參與的永續體驗。</p>
+            </div>
+            <div class="why-cards">
+                <div class="why-card">
+                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M26 5C13 4 5 10 6 19c1 7 10 9 15 3 4-5 4-10 5-17Z"/><path d="M5 27 21 11M12 20v-6M12 20h7"/></svg></span>
+                    <div class="why-card-title">有來源的永續材料</div>
+                    <div class="why-card-desc">從牡蠣殼、咖啡渣到回收塑膠，讓禮物帶著真實的材料故事。</div>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h12l10 10a3 3 0 0 1 0 4l-8 8a3 3 0 0 1-4 0L5 17V5Z"/><circle cx="11" cy="11" r="2"/><path d="m16 18 2 2 5-5"/></svg></span>
+                    <div class="why-card-title">可客製的品牌表達</div>
+                    <div class="why-card-desc">透過造型、Logo 與包裝配置，把品牌心意留在日常使用的禮物裡。</div>
+                </div>
+                <div class="why-card">
+                    <span class="why-card-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17v-5a2 2 0 0 1 4 0v4-10a2 2 0 0 1 4 0v10-12a2 2 0 0 1 4 0v12-8a2 2 0 0 1 4 0v13c0 5-3 8-8 8-3 0-5-2-7-5l-4-6a2 2 0 0 1 3-3l3 4"/></svg></span>
+                    <div class="why-card-title">可延伸為活動方案</div>
+                    <div class="why-card-desc">從禮品延伸到材料導覽與手作體驗，讓參與者親手認識材料、留下記憶。</div>
+                </div>
             </div>
         </div>
     </section>
