@@ -717,6 +717,17 @@ a{color:var(--moss)}
 .hub-again{display:block;margin:14px 0 0;background:none;border:0;padding:0;font:inherit;font-size:13px;color:#8a8270;text-decoration:underline;cursor:pointer}
 .hs.panel .hs-sen,.hs.panel .hs-sub,.hs.panel .hs-bar,.hs.panel .hs-stage,.hs.panel .hs-end,.hs.panel .hs-skip{display:none!important}
 .hs-trio.sync.on figure{transition-delay:0s!important}
+/* 製程一頁一步：圖卡左上角標出第幾步與名稱（Apple 11/18：一頁一頁轉換，每頁都看得到照片和文字） */
+.hs-step{position:absolute;left:10px;top:10px;z-index:3;margin:0;display:flex;align-items:center;gap:7px;padding:5px 12px 5px 5px;border-radius:999px;background:rgba(255,253,248,.95);color:#3d5a3e;font-size:15px;font-weight:700;line-height:1.3;box-shadow:0 2px 8px rgba(0,0,0,.14);animation:hsStepIn .4s ease}
+.hs-step i{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#c9a35a;color:#fff;font-style:normal;font-size:13px}
+.hs-step small{font-size:12px;font-weight:500;color:#8a8270;margin-left:2px}
+.hs-step[hidden]{display:none}
+/* 「原來……」那一幕：小森和對話框移到房間正中央，像故事的結尾（Apple 11/18 20:24） */
+.hs.center .hs-sen{left:calc(50% - 56px);bottom:auto;top:54%;width:112px}
+.hs.center .hs-sub{left:50%;right:auto;bottom:auto;top:calc(54% - 18px);transform:translate(-50%,-100%);width:max-content;max-width:calc(100vw - 32px);padding:14px 22px;border-radius:24px;background:#fffdf8;color:#3d5a3e;text-align:center;text-shadow:none;box-shadow:0 10px 26px rgba(0,0,0,.28),0 0 0 2px rgba(196,154,60,.5)}
+.hs.center .hs-sub::after{content:"";position:absolute;left:50%;bottom:-9px;width:18px;height:18px;margin-left:-9px;background:#fffdf8;transform:rotate(45deg);box-shadow:2px 2px 0 0 rgba(196,154,60,.5)}
+.hs-stage.wd{width:min(94vw,640px);aspect-ratio:16/7;max-height:none}   /* 橫長實拍（三盒紙漿並排）用寬圖卡 */
+@keyframes hsStepIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.hs-layer img{transition:none!important}.hs-sub .ln span{animation:none;opacity:1;transform:none}.hs-inset,.hs-end{transition:opacity .15s}}
 
 </style>
@@ -837,7 +848,7 @@ a{color:var(--moss)}
   <div class="expop" id="exPop" hidden role="dialog" aria-labelledby="exTitle"><button type="button" class="x" id="exClose" aria-label="關閉">×</button><div id="exPopBody"></div></div>
   <div class="hs" id="hs" hidden role="dialog" aria-label="小屋導覽"><div class="hs-bg" id="hsBg"></div><section class="hub-room" id="hubRoom" hidden aria-label="永續工作室"><div class="hr-blur"></div><img class="hr-img" src="img/hub-inside.webp" alt="Wishlite 永續工作室：材料桌和後方層架"><div class="hr-bar" id="hrBar"></div></section><section class="hub-panel" id="hubPanel" hidden aria-labelledby="hubPT"></section>
     <div class="hs-top"><span class="hs-place" id="hsPlace"></span><span class="sp"></span><button type="button" class="hs-skip" id="hsSkip">跳過</button><button type="button" class="hs-x" id="hsX" aria-label="走出小屋">×</button></div>
-    <div class="hs-stage" id="hsStage"><div class="hs-layer" id="hsL0"><img alt=""><div class="hs-inset"><img alt=""><small></small></div></div><div class="hs-layer" id="hsL1"><img alt=""><div class="hs-inset"><img alt=""><small></small></div></div><div class="hs-layer hs-trio" id="hsT"></div><p class="hs-note" id="hsNote" hidden></p><span class="hs-demo" hidden>示意圖</span></div>
+    <div class="hs-stage" id="hsStage"><div class="hs-layer" id="hsL0"><img alt=""><div class="hs-inset"><img alt=""><small></small></div></div><div class="hs-layer" id="hsL1"><img alt=""><div class="hs-inset"><img alt=""><small></small></div></div><div class="hs-layer hs-trio" id="hsT"></div><p class="hs-note" id="hsNote" hidden></p><p class="hs-step" id="hsStep" hidden></p><span class="hs-demo" hidden>示意圖</span></div>
     <img class="hs-sen" id="hsSen" alt="">
     <p class="hs-sub" id="hsSub" aria-live="polite"></p>
     <div class="hs-bar"><button type="button" class="hs-btn hs-prev" id="hsPrev" aria-label="上一句">‹</button><button type="button" class="hs-btn hs-pause" id="hsPause" aria-label="暫停" hidden>❚❚</button><div class="hs-dots" id="hsDots"></div><button type="button" class="hs-btn hs-next" id="hsNext" aria-live="polite">下一步 ›</button></div>
@@ -3406,6 +3417,14 @@ if(GL){
 
 // ---------- 小屋字幕導覽（牡蠣殼示範）：好奇 → 發現 → 理解 → 生活連結；畫面跟著字幕聚焦，一次一個重點 ----------
 // 每一幕：img＝要看的圖；at＝聚焦位置（transform-origin）；z0→z1＝由遠到近慢慢推近；inset＝角落小圖（作品對照原料）；clear＝收起圖卡，只留屋內與小森
+var STEP_LABEL = {   // 製程每一步的名稱（取自原本總覽頁的名稱；紙纖、自然素材取自小屋內已用的說法）
+  coffee:[["img/v2-story-coffee-1.webp","咖啡豆"],["img/v2-story-coffee-2.webp","沖煮後的咖啡渣"],["img/v2-story-coffee-3.webp","乾燥的咖啡渣"],["img/v2-story-coffee-4.webp","咖啡渣吊飾"]],
+  oyster:[["img/v2-story-oyster-1.webp","原殼"],["img/v2-story-oyster-2.webp","碎料與細粉"],["img/v2-story-oyster-3.webp","成品"]],
+  denim:[["img/v2-story-denim-1.webp","舊牛仔褲"],["img/v2-story-denim-2.webp","牛仔布條"],["img/v2-story-denim-3.webp","牛仔布杯墊"]],
+  caps:[["img/v2-story-caps-1.webp","回收瓶蓋"],["img/v2-story-caps-2.webp","分色碎片"],["img/v2-story-caps-3-real.webp","小海龜"]],
+  board:[["img/v2-story-board-1.webp","養樂多瓶與保麗龍"],["img/v2-story-board-2.webp","塑膠碎片"],["img/v2-story-board-3.webp","再生塑膠粒"],["img/v2-story-board-4.webp","捷綠木再生板材"]],
+  diaper:[["img/v2-story-diaper-1.webp","NG 尿布"],["img/v2-story-diaper-2-real.webp","紙纖"],["img/v2-story-diaper-dye.webp","原色與染色紙漿"],["img/work-diaper-seedearth.webp","種子地球"]],
+  natural:[["img/v2-story-natural-r1.webp","桂花葉",1],["img/v2-story-natural-r3.webp","去除葉肉",2],["img/v2-story-natural-r4.webp","葉脈",3],["img/v2-story-natural-r5.webp","染色葉脈",4]] };   // 第三個值＝第幾步（同一步可有兩張照片）
 var STORY = {
   coffee:{ place:"咖啡渣小屋", acts:["提出疑問", "看見轉變", "回到生活"], more:null, scenes:[   // 顆粒觀察與「靠近看看」暫不開：現有香牌照看不清顆粒
     { act:0, img:"img/v2-pile-coffee.webp", at:"50% 60%", z0:1.0, z1:1.08, sub:"每天倒掉的咖啡渣，\n還能去哪裡？" },
@@ -3413,9 +3432,9 @@ var STORY = {
     { act:1, img:"img/v2-story-coffee-2.webp", at:"45% 50%", z0:1.15, z1:1.3, sub:"沖煮之後，\n留下了咖啡渣。" },
     { act:1, img:"img/v2-story-coffee-3.webp", at:"45% 50%", z0:1.1, z1:1.25, sub:"收集起來的咖啡渣，\n先經過乾燥處理。" },
     { act:1, img:"img/v2-story-coffee-4.webp", at:"70% 55%", z0:1.15, z1:1.3, sub:"再搭配其他材料，\n做成生活裡的小物。" },
-    { act:1, sync:true, trio:[["img/v2-story-coffee-1.webp", "咖啡豆"], ["img/v2-story-coffee-2.webp", "沖煮後的咖啡渣"], ["img/v2-story-coffee-3.webp", "乾燥的咖啡渣"], ["img/v2-story-coffee-4.webp", "咖啡渣吊飾"]], sub:"原來，沖煮結束後，\n咖啡渣還能繼續被使用。" },
+    { act:1, clear:true, center:true, sub:"原來，沖煮結束後，\n咖啡渣還能繼續被使用。" },
     { act:2, img:"img/v2-story-coffee-4.webp", at:"72% 52%", z0:1.3, z1:1.4, inset:["img/v2-story-coffee-3.webp", "原本的模樣"], sub:"換了模樣，\n咖啡渣也成了隨身小物的一部分。" },
-    { act:2, clear:true, sub:"下次倒掉咖啡渣前，\n也許你會想起它還能去哪裡。" } ] },
+    { act:2, clear:true, center:true, sub:"下次倒掉咖啡渣前，\n也許你會想起它還能去哪裡。" } ] },
   hub:{ place:"Wishlite 工作室", acts:["回看材料","看見 Wishlite","帶回生活"], wide:true, sen:"img/sen-base.webp", more:null, scenes:[
     { act:0, img:"img/hub-desk.webp", at:"50% 42%", z0:1, z1:1.03, sub:"有些材料換了形狀，\n有些留下原本的紋路。" },
     { act:0, pair:[["img/hub-m-oyster.webp", "牡蠣殼"], ["img/case-oyster-pot.webp", "牡蠣殼盆器"], ["img/hub-m-denim.webp", "牛仔布"], ["img/work-denim-coaster.webp", "牛仔布杯墊"]], sub:"有些材料換了形狀，\n有些留下原本的紋路。" },
@@ -3427,53 +3446,49 @@ var STORY = {
     { act:1, img:"img/v2-story-denim-2.webp", sub:"舊牛仔布經過整理，\n成了一條條布條。" },
     { act:1, img:"img/v2-story-denim-2.webp", at:"58% 55%", z0:1.4, z1:1.75, sub:"變成布條後，\n原本的布紋和磨白痕跡，還看得見。" },
     { act:1, img:"img/v2-story-denim-3.webp", sub:"布條重新排列，\n做成了杯墊。" },
-    { act:1, sync:true, trio:[["img/v2-story-denim-1.webp","舊牛仔褲"],["img/v2-story-denim-2.webp","牛仔布條"],["img/v2-story-denim-3.webp","牛仔布杯墊"]], sub:"原來，舊衣服原本的樣子，\n也能成為新東西的特色。" },
+    { act:1, clear:true, center:true, sub:"原來，舊衣服原本的樣子，\n也能成為新東西的特色。" },
     { act:2, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔布紋？" },
-    { act:2, clear:true, sub:"下次整理衣櫃時，\n也許會多看一眼那件舊牛仔褲。" } ] },
+    { act:2, clear:true, center:true, sub:"下次整理衣櫃時，\n也許會多看一眼那件舊牛仔褲。" } ] },
   diaper:{ place:"紙纖小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
     { act:0, img:"img/v2-story-diaper-1.webp", at:"50% 50%", z0:1, z1:1.1, note:"NG 尿布來源｜台灣益鈞環科", sub:"一片尿布裡，\n我們重新利用的是哪一部分？" },
-    { act:1, img:"img/v2-story-diaper-2.webp", sub:"是裡面的紙纖。" },
-    { act:1, img:"img/v2-story-diaper-2.webp", at:"55% 50%", z0:1.3, z1:1.6, sub:"紙纖經過整理，\n再搭配其他材料，" },
-    { act:1, img:"img/v2-story-diaper-3.webp", sub:"做成一顆顆小地球。" },
-    { act:2, img:"img/work-diaper-seedearth.webp", at:"50% 50%", z0:1.02, z1:1.15, inset:["img/v2-story-diaper-1.webp","NG 尿布"], sub:"這顆小地球，\n原本是一片尿布的一部分。" },
-    { act:2, clear:true, sub:"原來，認識材料，\n可以從重新看待一件熟悉的東西開始。" } ] },
+    { act:1, img:"img/v2-story-diaper-2-real.webp", cover:true, at:"50% 50%", z0:1, z1:1.06, sub:"先把尿布中的紙纖\n整理出來。" },   // Apple 11/18 21:18：紙纖與染色改用她提供的實拍（IMG_6339、IMG_6362 裁切）
+    { act:1, img:"img/v2-story-diaper-dye.webp", at:"50% 50%", z0:1, z1:1, note:"中間：原色紙漿｜兩側：染色紙漿", sub:"紙纖加水調成紙漿，\n再染成藍色和綠色。" },
+    { act:1, img:"img/work-diaper-seedearth.webp", at:"50% 50%", z0:1.02, z1:1.1, sub:"再把紙漿做成\n一顆顆種子地球。" },
+    { act:2, clear:true, center:true, sub:"原來，認識材料，\n可以從重新看待一件熟悉的東西開始。" } ] },
   caps:{ place:"瓶蓋小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
     { act:0, img:"img/v2-story-caps-1.webp", at:"50% 50%", z0:1, z1:1.1, sub:"一個小小的瓶蓋，\n能做什麼？" },
-    { act:1, img:"img/v2-story-caps-1.webp", sub:"瓶蓋經過分類、清潔，" },
-    { act:1, img:"img/v2-story-caps-1.webp", note:"材質分類", sub:"先分清材質，" },
-    { act:1, img:"img/v2-story-caps-2.webp", sub:"再看看顏色能怎麼搭配。" },
-    { act:1, img:"img/v2-story-caps-2.webp", at:"30% 40%", z0:1.3, z1:1.6, sub:"破碎成彩色的小碎片，" },
-    { act:1, img:"img/v2-story-caps-2.webp", at:"50% 52%", z0:1.6, z1:2.0, sub:"不同顏色放在一起，\n就有了新的花紋。" },
-    { act:1, img:"img/v2-story-caps-3.webp", sub:"做成一隻隻小海龜。" },
-    { act:1, sync:true, trio:[["img/v2-story-caps-1.webp","回收瓶蓋"],["img/v2-story-caps-2.webp","分色碎片"],["img/v2-story-caps-3.webp","小海龜"]], sub:"原來，顏色怎麼排，\n就是每隻小海龜的個性。" },
+    { act:1, img:"img/v2-story-caps-1.webp", note:"材質分類", sub:"瓶蓋經過分類、清潔，\n先分清材質。" },   // Apple 11/18 20:32：瓶蓋製程保持三張照片，一張一頁，字幕合併
+    { act:1, img:"img/v2-story-caps-2.webp", at:"50% 50%", z0:1, z1:1.12, sub:"破碎成彩色的小碎片，\n再看看顏色能怎麼搭配。" },
+    { act:1, img:"img/v2-story-caps-3-real.webp", sub:"不同顏色放在一起，\n做成一隻隻小海龜。" },
+    { act:1, clear:true, center:true, sub:"原來，顏色怎麼排，\n就是每隻小海龜的個性。" },
     { act:2, img:"img/work-caps-turtle.webp", cover:true, at:"50% 50%", z0:1, z1:1.08, sub:"比一比，\n這幾隻小海龜的配色有什麼不同？" },
-    { act:2, clear:true, sub:"下次喝完飲料，\n也看看瓶蓋上的材質標示。" } ] },
+    { act:2, clear:true, center:true, sub:"下次喝完飲料，\n也看看瓶蓋上的材質標示。" } ] },
   board:{ place:"再生板材小屋", sen:"img/rit-board-g.webp", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
-    { act:0, img:"img/v2-story-board-1.webp", at:"50% 50%", z0:1, z1:1.1, sub:"養樂多瓶喝完了，\n瓶子去了哪裡？" },
+    { act:0, img:"img/v2-story-board-0.webp", at:"50% 50%", z0:1, z1:1.1, sub:"養樂多瓶喝完了，\n瓶子去了哪裡？" },
     { act:1, img:"img/v2-story-board-1.webp", note:"PS｜聚苯乙烯", sub:"這裡使用的養樂多瓶與保麗龍，\n都是 PS 塑膠。" },
     { act:1, img:"img/v2-story-board-2.webp", sub:"分類之後，\n變成塑膠碎片，" },
     { act:1, img:"img/v2-story-board-3.webp", sub:"再變成一粒粒再生塑膠粒，" },
-    { act:1, img:"img/v2-story-board-4.webp", sub:"最後成為捷綠木再生板材。" },
-    { act:1, sync:true, note:"材料來源｜捷綠盟科技股份有限公司", trio:[["img/v2-story-board-1.webp","養樂多瓶與保麗龍"],["img/v2-story-board-2.webp","塑膠碎片"],["img/v2-story-board-3.webp","再生塑膠粒"],["img/v2-story-board-4.webp","捷綠木再生板材"]], sub:"原來，看起來像木頭的板材，\n也能來自回收塑膠。" },
+    { act:1, img:"img/v2-story-board-4.webp", note:"材料來源｜捷綠盟科技股份有限公司", sub:"最後成為捷綠木再生板材。" },
+    { act:1, clear:true, center:true, sub:"原來，看起來像木頭的板材，\n也能來自回收塑膠。" },
     { act:2, img:"img/work-board-coaster-p2.webp", cover:true, at:"50% 50%", z0:1, z1:1.05, sub:"看看還沒拼貼的底座，\n和完成的杯墊。" },
     { act:2, img:"img/work-board-coaster.webp", cover:true, at:"50% 50%", z0:1.02, z1:1.18, sub:"彩色馬賽克下面，\n也藏著回收塑膠的故事。" },
-    { act:2, clear:true, sub:"下次回收塑膠時，\n也看看上面的材質標示。" } ] },
-  natural:{ place:"自然素材小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
-    { act:0, img:"img/v2-story-natural-1.webp", at:"55% 45%", z0:1, z1:1.1, sub:"葉子裡的細細紋路，\n原本是做什麼的？" },
-    { act:1, img:"img/v2-story-natural-1.webp", at:"58% 42%", z0:1.5, z1:1.85, sub:"葉脈原本就在葉片裡，\n負責運輸水分與養分。" },
-    { act:1, img:"img/v2-story-natural-2.webp", at:"50% 50%", z0:1, z1:1.06, slow:true, sub:"葉肉去除後，\n細細的脈絡就更清楚了。" },
-    { act:1, img:"img/v2-story-natural-2.webp", at:"50% 50%", z0:1.06, z1:1.06, sub:"原來，這些細線不只是花紋，\n也是葉子的運輸網。" },
-    { act:2, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 45%", z0:1, z1:1.04, note:"葉脈時光書籤", sub:"把一片葉子的紋路，\n留在正在讀的那一頁。" },
-    { act:2, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.04, z1:1.12, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"替讀到的那一頁，留一片葉子的紋路。", sub:"把一片葉子的紋路，\n留在正在讀的那一頁。" },
-    { act:2, clear:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
+    { act:2, clear:true, center:true, sub:"下次回收塑膠時，\n也看看上面的材質標示。" } ] },
+  natural:{ place:"自然素材小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[   // Apple 11/18 21:40：換成桂花葉實拍（新鮮葉、浸泡整理、葉脈、染色），一張照片一頁
+    { act:0, img:"img/v2-story-natural-r1.webp", cover:true, at:"50% 50%", z0:1, z1:1.06, sub:"葉子裡的細細紋路，\n原本是做什麼的？" },
+    { act:1, img:"img/v2-story-natural-r3.webp", cover:true, at:"45% 55%", z0:1, z1:1.06, sub:"把桂花葉浸泡、整理，\n再慢慢去除葉肉。" },
+    { act:1, img:"img/v2-story-natural-r4.webp", cover:true, at:"60% 45%", z0:1, z1:1.08, slow:true, sub:"葉肉去除後，\n細細的脈絡就更清楚了。" },
+    { act:1, img:"img/v2-story-natural-r5.webp", cover:true, at:"55% 45%", z0:1, z1:1.06, sub:"再替葉脈染上\n喜歡的顏色。" },
+    { act:1, clear:true, center:true, sub:"原來，這些細線不只是花紋，\n也是葉子的運輸網。" },
+    { act:2, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把一片葉子的紋路，\n留在正在讀的那一頁。" },
+    { act:2, clear:true, center:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
   oyster:{ place:"牡蠣殼小屋", scenes:[
     { act:0, k:"好奇", img:"img/v2-story-oyster-1.webp", at:"50% 55%", z0:1, z1:1.06, sub:"這麼硬的殼，\n怎麼變成不同形狀？" },
     { act:1, k:"發現", img:"img/v2-story-oyster-2.webp", at:"20% 58%", z0:1.6, z1:1.85, sub:"殼經過清潔、乾燥與破碎，\n變成一塊塊碎料。" },
     { act:1, k:"發現", img:"img/v2-story-oyster-2.webp", at:"84% 62%", z0:1.85, z1:2.05, sub:"再研磨，\n變成細細的粉。" },
     { act:1, k:"理解", img:"img/v2-story-oyster-3.webp", at:"40% 55%", z0:1.05, z1:1.12, sub:"殼粉搭配其他材料，\n再成形，就有了新的形狀。" },
-    { act:1, k:"理解", trio:[["img/v2-story-oyster-1.webp", "原殼"], ["img/v2-story-oyster-2.webp", "碎料與細粉"], ["img/v2-story-oyster-3.webp", "成品"]], sub:"原來，殼換了形狀，\n也能繼續被使用。" },
+    { act:1, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
     { act:2, k:"回想", img:"img/case-oyster-pot.webp", cover:true, at:"50% 45%", z0:1, z1:1.05, inset:["img/rit-oyster-shell.webp", "原本的模樣"], sub:"換了模樣，你還認得它嗎？" },
-    { act:2, k:"生活", clear:true, sub:"下次吃完蚵仔，\n也許你會多看一眼那些殼。" } ],
+    { act:2, k:"生活", clear:true, center:true, sub:"下次吃完蚵仔，\n也許你會多看一眼那些殼。" } ],
     acts:["提出疑問", "看見轉變", "回到生活"], more:{ label:"靠近看看殼的紋路", list:[
       { img:"img/real-oyster-out.webp", cover:true, real:true, at:"55% 40%", z0:1.02, z1:1.12, sub:"殼的外面，\n是一層層深淺交錯的紋路。" },
       { img:"img/real-oyster-in.webp", cover:true, real:true, at:"50% 45%", z0:1.02, z1:1.1, sub:"翻過來，\n裡面是一片光滑的白。" },
@@ -3496,7 +3511,9 @@ function hsOpen(p, s0){
 }
 function hsShow(sc){   // 換圖：兩層交疊淡入，新圖從 z0 慢慢推到 z1（同一張圖只移動焦點，不重新淡入）
   var nt = $("hsNote"); nt.hidden = !sc.note || !!sc.clear; nt.textContent = sc.note || "";    // 四格總覽有小字時，四格整體縮短，小字留在下方   // 圖卡下方小字（PS｜聚苯乙烯、材料來源、材質分類、作品短句）
-  var stage = $("hsStage"), T = $("hsT"); if(sc.clear || (sc.clearWide && size().w > 640)){ stage.classList.add("off"); return; } if(stage.classList.contains("off")) hs.wasOff = true; stage.classList.remove("off");
+  var stl = (hs && STEP_LABEL[hs.s.id]) || [], sk = sc.act < 2 && !sc.clear && !sc.trio && !sc.pair ? stl.findIndex(function(x){ return x[0] === sc.img; }) : -1, se = $("hsStep");   // 第幾步：只在製程幕顯示
+  se.hidden = sk < 0; if(sk >= 0){ var stN = function(x, k){ return x[2] || k + 1; }, stT = Math.max.apply(null, stl.map(stN)); se.innerHTML = "<i>" + stN(stl[sk], sk) + "</i>" + stl[sk][1] + "<small>／共 " + stT + " 步</small>"; se.style.animation = "none"; void se.offsetWidth; se.style.animation = ""; }
+  var stage = $("hsStage"), T = $("hsT"); stage.classList.toggle("wd", !!sc.wide); if(sc.clear || (sc.clearWide && size().w > 640)){ stage.classList.add("off"); return; } if(stage.classList.contains("off")) hs.wasOff = true; stage.classList.remove("off");
   if(sc.pair){ T.innerHTML = '<div class="hs-pair">' + [0, 2].map(function(k){ return '<div class="pr"><figure><img src="' + sc.pair[k][0] + '" alt=""><b>' + sc.pair[k][1] + '</b></figure><i aria-hidden="true">→</i><figure><img src="' + sc.pair[k+1][0] + '" alt=""><b>' + sc.pair[k+1][1] + "</b></figure></div>"; }).join("") + "</div>"; $("hsL0").classList.remove("on"); $("hsL1").classList.remove("on"); T.classList.remove("on", "sync"); T.classList.add("pairs"); void T.offsetWidth; T.classList.add("on"); return; }
   T.classList.remove("pairs");
   if(sc.trio){ T.innerHTML = sc.trio.map(function(x, k){ return '<figure style="height:' + Math.floor((sc.note ? 82 : 92)/sc.trio.length) + '%"><img src="' + x[0] + '" alt=""><b><i>' + (k + 1) + '</i>' + x[1] + "</b></figure>"; }).join(""); $("hsL0").classList.remove("on"); $("hsL1").classList.remove("on"); T.classList.remove("on"); T.classList.toggle("sync", !!sc.sync); void T.offsetWidth; T.classList.add("on"); return; }
@@ -3517,7 +3534,7 @@ function hsSub(t){ if(hs && hs.lastSub === t) return; if(hs) hs.lastSub = t; var
 function hsGo(i){
   clearTimeout(hs.timer); var n = hs.S.scenes.length; if(i < 0) return; if(i >= n){ hsEnd(); return; }
   hs.i = i; var sc = hs.S.scenes[i]; $("hs").classList.remove("ending"); $("hsEnd").classList.remove("on");
-  hsShow(sc); hsSub(sc.sub);
+  $("hs").classList.toggle("center", !!sc.center); hsShow(sc); hsSub(sc.sub);
   var a = sc.act, lastAct = hs.S.acts.length - 1; [].forEach.call($("hsDots").children, function(d, k){ d.className = k === a ? "on" : ""; });
   $("hsPrev").disabled = a === 0; var nxs = hs.S.scenes[i + 1], actEnd = !nxs || nxs.act !== a; $("hsNext").textContent = a === lastAct ? "看完了 ›" : "下一幕 ›"; var nb = $("hsNext"); nb.classList.remove("show"); clearTimeout(hs.nbT); if(actEnd) hs.nbT = setTimeout(function(){ nb.classList.add("show"); }, 600 + Array.from(sc.sub).length*40);   // 這一幕播完、最後一句讀完，才浮出「下一幕」，避免先按而跳過四格總覽（Apple 11/09 03:36）
   $("hsStage").querySelector(".hs-demo") && ($("hsStage").querySelector(".hs-demo").hidden = true);
@@ -3534,11 +3551,11 @@ function hsEnd(){   // 單島結尾：先留下感受，再給三個選擇
   $("hsMore").hidden = hs.moreSeen || !hs.S.more; $("hsWs").href = finderView("activities", hs.s); $("hsWorks").href = finderView("gifts", hs.s); 
   $("hsEnd").classList.add("on"); say("接下來想去哪裡？");
 }
-function hsMore(){ hs.moreSeen = true; $("hsEnd").classList.remove("on"); $("hs").classList.remove("ending"); [].forEach.call($("hsDots").children, function(d){ d.className = ""; }); $("hsPrev").disabled = true; $("hsNext").textContent = "看完了 ›"; $("hsNext").classList.add("show"); hsMoreGo(0); }
+function hsMore(){ $("hs").classList.remove("center"); hs.moreSeen = true; $("hsEnd").classList.remove("on"); $("hs").classList.remove("ending"); [].forEach.call($("hsDots").children, function(d){ d.className = ""; }); $("hsPrev").disabled = true; $("hsNext").textContent = "看完了 ›"; $("hsNext").classList.add("show"); hsMoreGo(0); }
 function hsMoreGo(k){ clearTimeout(hs.timer); var L = hs.S.more.list; if(k >= L.length){ hs.i = -2; return; } hs.i = -2; hs.mk = k; var m = L[k];   // 延伸觀察：真實殼面照片，幾句接續播放，可暫停
   hsShow(m); hsSub(m.sub); var dm = $("hsStage").querySelector(".hs-demo"); if(dm){ dm.hidden = false; dm.textContent = "實拍"; }
   if(!hs.paused && k + 1 < L.length) hs.timer = setTimeout(function(){ hsMoreGo(k + 1); }, 2600 + Array.from(m.sub).length*110); }
-function hsClose(then){ if(!hs) return; clearTimeout(hs.timer); var p = hs.p; hs = null; $("hs").hidden = true; appEl.classList.remove("hs-on"); if(then) then(p); }
+function hsClose(then){ if(!hs) return; clearTimeout(hs.timer); $("hs").classList.remove("center"); var p = hs.p; hs = null; $("hs").hidden = true; appEl.classList.remove("hs-on"); if(then) then(p); }
 $("hsNext").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2){ hsEnd(); return; } var cur = hs.S.scenes[hs.i], nxs = hs.S.scenes[hs.i + 1]; hsGo(nxs && nxs.act === cur.act ? hs.i + 1 : hsActStart(cur.act + 1)); });   // 下一幕
 $("hsPrev").addEventListener("click", function(){ if(!hs || hs.i < 0) return; var a = hs.S.scenes[hs.i].act; if(a > 0) hsGo(hsActStart(a - 1)); });   // 上一幕
 $("hsStage").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2 && hs.mk != null && hs.mk + 1 < hs.S.more.list.length){ hsMoreGo(hs.mk + 1); return; } if(hs.i >= 0 && hs.i < hs.S.scenes.length) hsGo(hs.i + 1); });   // 點圖也能往下看
