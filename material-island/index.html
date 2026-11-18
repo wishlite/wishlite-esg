@@ -3328,7 +3328,7 @@ function opFrame(){ var s = size(), tr = document.querySelector("#opening .op-to
   var L = side ? tr.right + 24 : 0, T = side ? 60 : tr.bottom + 96, Rr = s.w, B = bt.top - 12;
   return { ox: s.w/2 - (L + Rr)/2, oy: s.h/2 - (T + B)/2, fh: B - T }; }   // fh：可用高度太矮（橫放小螢幕）時鏡頭退遠一點
 function opPull(){ viewTo = { ox:0, oy:0 }; flyTo(homePose(), false, 3.4); (function wait(){ opAnim = setTimeout(function(){ if(flying) wait(); else opDone(); }, 120); })(); }   // 等鏡頭真的停下來才算拉遠完成
-var OP_LINES = ["嗨，我是小森！歡迎來到 Wishlite 永續工作室。", "今天，我們就從這裡搭船出發，一起拜訪七座材料島。", "看看咖啡渣、牛仔布、牡蠣殼……還能變成什麼呢？"];   // Apple 11/11 17:51 定稿
+var OP_LINES = ["嗨，我是小森！歡迎來到韻手作永續。", "今天，我們就從這裡搭船出發，一起拜訪七座材料島。", "看看咖啡渣、牛仔布、牡蠣殼……還能變成什麼呢？"];   // Apple 11/11 17:51 定稿
 var OP_TYPE = 60;   // 每個字 60 毫秒，三句約 9 秒
 function opTalk(done){ var b = $("opSay"), li = 0; b.hidden = false; b.textContent = "";   // 泡泡大小跟著每一句的字數走：整句的字先排好（還沒出現的字是透明的），所以打字時泡泡不會變大變小（Apple 11/11 20:25）
   requestAnimationFrame(opSayTick); b.classList.add("on");
@@ -3367,7 +3367,7 @@ $("opReplay").addEventListener("click", function(){ openingShow(true); });
 $("opSkip").addEventListener("click", function(){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; say("自己逛逛：點任何一座島就能出發"); });
 $("opGo").addEventListener("click", function(){ if(opNext() < 0){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; $("listBtn").click(); return; }   // 七島都走完：直接打開地圖
   openingHide();   // 鏡頭平順回到工作室的小森身旁，接現有的登船與航行
-  flyTo(islPose(HUB.isl, 2.6, null, size().w <= 640 ? 1.6 : 1), false, 1.3); toast("小森從 Wishlite 永續工作室出發！");
+  flyTo(islPose(HUB.isl, 2.6, null, size().w <= 640 ? 1.6 : 1), false, 1.3); toast("小森從韻手作永續出發！");
   var next = opNext(); if(next < 0) next = 0;
   setTimeout(function(){ var t0 = Date.now(); (function go(){ if(sailBoat && !sailBoat.userData.ready && Date.now() - t0 < 6000) return setTimeout(go, 150); openSpot(next, "explore"); })(); }, 1700); });   // 新船還在載就等一下（最多 6 秒）再出航
 var isReady = false;
