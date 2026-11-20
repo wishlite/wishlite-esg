@@ -2058,11 +2058,11 @@ function hubPanel(){ if(hs){ clearTimeout(hs.timer); clearTimeout(hs.nbT); }
     book:'<path d="M24 12c-5-3-12-4-19-3v28c7-1 14 0 19 3 5-3 12-4 19-3V9c-7-1-14 0-19 3zm0 0v28"/>' };
   var W = [
     ["hand", "親手體驗", "挑一場手作，做一件自己的作品。", SELECTOR + "?view=activities"],
-    ["people", "活動合作", "和同事、親子或社群一起動手。", ENTERPRISE_LINE_MSG],
+    ["people", "活動合作", "和同事、親子一起動手，<br>用 LINE 聊聊。", ENTERPRISE_LINE_MSG],   // Apple 11/20：點了會開 LINE，小字寫明；四個入口都會離開小島，箭頭改 ↗
     ["gift", "禮品與材料包", "把作品送給別人，或帶回家做。", SELECTOR + "?view=gifts"],
     ["book", "永續行動學院", "學習設計與帶領材料體驗。", ACADEMY_SITE] ];
   var P = $("hubPanel"); P.innerHTML = '<div class="hub-in"><button type="button" class="hub-x" id="hubX" aria-label="收起，回到屋內">×</button><p class="k">WISHLITE 工作室</p><h2 id="hubPT" tabindex="-1">把島上的發現，<br>帶回生活</h2><div class="hub-rows">' +
-    W.map(function(w){ return '<a class="hub-row" href="' + w[3] + '" target="_blank" rel="noopener"><svg class="hr-ic" viewBox="0 0 48 48" aria-hidden="true">' + IC[w[0]] + '</svg><span class="hr-tx"><b>' + w[1] + "</b><span>" + w[2] + '</span></span><svg class="hr-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>'; }).join("") +
+    W.map(function(w){ return '<a class="hub-row" href="' + w[3] + '" target="_blank" rel="noopener"><svg class="hr-ic" viewBox="0 0 48 48" aria-hidden="true">' + IC[w[0]] + '</svg><span class="hr-tx"><b>' + w[1] + "</b><span>" + w[2] + '</span></span><svg class="hr-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>'; }).join("") +
     '</div><div class="hub-foot"><button type="button" class="hub-bk" id="hubBook">打開集章冊 ›</button><span class="sp"></span>' + (nx >= 0 ? '<button type="button" class="solid" id="hubGo">跟小森去' + SPOTS[nx].name + '島</button><button type="button" id="hubMap">打開地圖</button>' : '<button type="button" class="solid" id="hubMap">打開地圖</button>') + '<button type="button" id="hubStay">回到花園</button></div></div>';   // 還有沒去過的島：主按鈕帶去下一座；七島都走過才以地圖為主（Apple 11/10 22:08）
   P.hidden = false; P.scrollTop = 0; $("hs").classList.add("room", "ways"); $("hubRoom").hidden = false; $("hubPT").focus({ preventScroll:true }); say("把島上的發現，帶回生活");
   var shut = function(then){ hsClose(function(){ P.hidden = true; $("hubRoom").hidden = true; $("hs").classList.remove("panel", "wide", "room", "ways"); then(); }); };
