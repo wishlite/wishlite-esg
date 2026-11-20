@@ -982,7 +982,7 @@ var GL = !!renderer;
 // ---------- 場景 ----------
 var scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(32, 1, 0.5, 600);
 var controls, sea, seaBase, hemi, sun, clock = new THREE.Clock();
-var TW, twTag, stars, cloudRing, islets = [], billboards = [], lamps = [], windows = [], clouds = [], boat, foams = [], pickables = [];
+var seaWaves = [], TW, twTag, stars, cloudRing, islets = [], billboards = [], lamps = [], windows = [], clouds = [], boat, foams = [], pickables = [];
 var RING = 15.5, HUB = { x:0, z:0, r:3.6, h:1.6 };
 // 配置：七座材料島依視覺平衡分布在初始視角可見的半球；工作坊移到前側偏右下的「集合港灣」
 // 七座島分散到整顆地球（側面與背面也有），起始只清楚看到約三座；高低左右錯開，不對應真實產地
@@ -1261,7 +1261,7 @@ function tickExtras(t){
 // 把不會動的小物件依材質合併，大幅減少繪製次數（手機也跑得動）
 function mergeStatic(){
   scene.updateMatrixWorld(true);
-  var skip = new Set(pickables.concat(foams, windows, flagMesh ? [flagMesh] : []));
+  var skip = new Set(pickables.concat(foams, seaWaves, windows, flagMesh ? [flagMesh] : []));
   if(HUB.isl){ HUB.mats = []; var mm = new Map();
     HUB.isl.group.traverse(function(o){ skip.add(o); if(!o.isMesh || o.userData.kind) return;
       var m = o.material; if(!mm.has(m)){ var c = m.clone(); c.userData = { op0:m.opacity, tr0:m.transparent, dw0:m.depthWrite }; mm.set(m, c); HUB.mats.push(c); } o.material = mm.get(m); }); }
@@ -1404,6 +1404,9 @@ function buildScene(){
   var earthTex = new THREE.TextureLoader().load("img/earth.webp"); earthTex.colorSpace = THREE.SRGBColorSpace; earthTex.anisotropy = 8;
   sea = new THREE.Mesh(new THREE.SphereGeometry(R, 160, 96), new THREE.MeshPhysicalMaterial({ map:earthTex, emissiveMap:earthTex, emissive:new THREE.Color(0xffffff), emissiveIntensity:0, roughness:1, metalness:0, sheen:1, sheenRoughness:.7, sheenColor:new THREE.Color(0xffffff) }));   // 地球本身微微自發光：夜晚也看得出海陸
   sea.receiveShadow = true; scene.add(sea);
+  // 海面浪紋與岸邊浪花：兩層只畫在海上的白色浪紋輪流浮現、微微漂動，讓海是活的（Apple 11/21）
+  ["a", "b"].forEach(function(k, i){ var t = new THREE.TextureLoader().load("img/sea-waves-" + k + ".webp"); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.anisotropy = 4;
+    var m = new THREE.Mesh(new THREE.SphereGeometry(R + .02 + i*.01, 128, 80), new THREE.MeshStandardMaterial({ map:t, transparent:true, opacity:0, depthWrite:false, roughness:1, metalness:0 })); m.renderOrder = 1; scene.add(m); seaWaves.push(m); });
   // 台灣：我們在這裡
   var tw = nrm(23.7, -25.7), pin = new THREE.Group(); pin.position.copy(tw).multiplyScalar(R); pin.quaternion.setFromUnitVectors(UP, tw);
   var pc = new THREE.Mesh(new THREE.ConeGeometry(.22, .7, 16), felt(0xc49a3c)); pc.rotation.x = Math.PI; pc.position.y = .35; pin.add(pc);
@@ -2183,6 +2186,7 @@ function tick(){
     wave += dt;
     cloudRing.rotation.y += dt*.03;
     tickExtras(wave);
+    seaWaves.forEach(function(m, i){ var ph = wave*.7 + i*Math.PI; m.material.opacity = .22 + .2*Math.sin(ph); m.material.map.offset.x = Math.sin(wave*.12 + i*2)*.0015; });
     foams.forEach(function(m, i){ var s = 1 + Math.sin(wave*1.2 + i)*.035; m.scale.set(s, s, 1); m.material.opacity = .32 + Math.sin(wave*1.2 + i)*.12; });
     billboards.forEach(function(b){
       var u = b.userData;
@@ -3172,8 +3176,20 @@ function walkAt(H, BD, tB, seat, p){
   var nUp = pos.clone().normalize(), zc = camera.position.clone().sub(pos).normalize(), yv = nUp.addScaledVector(zc, -nUp.dot(zc));
   if(yv.lengthSq() > 1e-6){ yv.normalize(); sailM4.makeBasis(yv.clone().cross(zc), yv, zc); sailSen.quaternion.setFromRotationMatrix(sailM4); }
 }
+// 航跡：船尾拖出兩道白色水痕，往外散開、慢慢變淡（Apple 11/21 參考航海小遊戲）
+var WAKE = { pool:[], acc:0, max:56 }, wkM4 = new THREE.Matrix4();
+function wakeTick(dt, H, p, fwd, moving){
+  if(!WAKE.pool.length){ var geo = new THREE.PlaneGeometry(2, 2), soft = texFromCanvas(64, 64, function(x, W, Hh){ var gr = x.createRadialGradient(W/2, Hh/2, 0, W/2, Hh/2, W/2); gr.addColorStop(0, "rgba(255,255,255,.95)"); gr.addColorStop(.55, "rgba(255,255,255,.45)"); gr.addColorStop(1, "rgba(255,255,255,0)"); x.fillStyle = gr; x.fillRect(0, 0, W, Hh); }); for(var i = 0; i < WAKE.max; i++){ var m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map:soft, color:0xf3f7f9, transparent:true, opacity:0, depthWrite:false })); m.visible = false; m.renderOrder = 0; m.userData = { age:9, life:1.7, pos:new THREE.Vector3(), vel:new THREE.Vector3(), fwd:new THREE.Vector3() }; scene.add(m); WAKE.pool.push(m); } }
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(H && p && moving > .25 && !reduce){ WAKE.acc += dt; var side = fwd.clone().cross(p).normalize(), stern = p.clone().multiplyScalar(R + .03).addScaledVector(fwd, -1.05);
+    while(WAKE.acc > .07){ WAKE.acc -= .07; [-1, 1].forEach(function(sg){ var m = WAKE.pool.find(function(x){ return x.userData.age >= x.userData.life; }); if(!m) return; var u = m.userData; u.age = 0; u.life = 1.5 + Math.random()*.4; u.pos.copy(stern).addScaledVector(side, sg*.16); u.vel.copy(side).multiplyScalar(sg*.32*moving).addScaledVector(fwd, -.1); u.fwd.copy(fwd); m.visible = true; }); } }
+  WAKE.pool.forEach(function(m){ var u = m.userData; if(u.age >= u.life){ m.visible = false; return; } u.age += dt; var k = u.age/u.life;
+    u.pos.addScaledVector(u.vel, dt); u.vel.multiplyScalar(Math.pow(.35, dt)); var n = u.pos.clone().normalize(); u.pos.copy(n).multiplyScalar(R + .03);
+    var f = u.fwd.clone().addScaledVector(n, -u.fwd.dot(n)).normalize(), sd = n.clone().cross(f); wkM4.makeBasis(f, sd, n); m.quaternion.setFromRotationMatrix(wkM4); m.position.copy(u.pos);
+    var sz = .1 + k*.3; m.scale.set(sz*2.2, sz, 1); m.material.opacity = .75*(1 - k)*(k < .1 ? k/.1 : 1); m.visible = u.age < u.life; });
+}
 function tickHop(dt, paused){
-  if(!hop) return;
+  if(!hop){ if(WAKE.pool.length) wakeTick(dt, null); return; }
   var H = hop; H.t += paused ? 99 : dt;
   var ks = Math.min(1, H.t/H.sail), e = ease(ks);   // 航行：兩頭慢、中間快，最後減速停妥
   var p = hopAt(H, e); H.cur.copy(p);
@@ -3182,7 +3198,9 @@ function tickHop(dt, paused){
   var moving = 1 - Math.max(0, (ks - .8)/.2), bob = Math.sin(H.t*5.5)*.04*(.4 + .6*moving);
   sailBoat.position.copy(p).multiplyScalar(R - .02 + bob);
   sailM4.makeBasis(fwd.clone().negate(), p, fwd.clone().negate().cross(p)); sailBoat.quaternion.setFromRotationMatrix(sailM4);
-  sailBoat.rotateX(Math.sin(H.t*3.1)*.06*(.4 + .6*moving));   // 隨浪左右輕晃；停靠時晃得少
+  sailBoat.rotateX(Math.sin(H.t*3.1)*.07*(.4 + .6*moving) + Math.sin(H.t*1.3 + .7)*.03);   // 隨浪左右輕晃；停靠時晃得少
+  sailBoat.rotateZ(Math.sin(H.t*2.2 + 1.1)*.045*(.3 + .7*moving));   // 船頭跟著浪輕輕上下點（Apple 11/21）
+  if(!paused) wakeTick(dt, H, p.clone().normalize(), fwd, moving*(ks < 1 ? 1 : 0));
   // 登岸：船停妥 → 放下踏階 → 小森起身 → 走上踏階、走到島上停下 → 站穩後船才退場（全程只有一個小森、位置連續）
   var tB = H.t - H.sail - H.hold;
   if(tB >= 0 && !H.board) H.board = makeBoard(H);
