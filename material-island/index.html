@@ -905,11 +905,11 @@ var SPOTS = [
     ws:[["咖啡渣發財香牌", "https://wishlite.com.tw/service/detail/30", "", "img/work-coffee-paiv.webp"], ["咖啡渣香氛燈", 410, "", "img/work-coffee-lamp.webp"], ["咖啡渣小海龜肌理畫", 377, "", "img/work-coffee-turtle.webp"], ["咖啡渣擴香石", 448, "", "img/work-coffee-stone.webp"]],
     kits:[["咖啡渣肌理畫 DIY 材料包", NOTION + "333704274681804a9c50f54fe0716238", "img/kit-coffee-texture.webp"], ["咖啡渣浮雕畫 DIY 材料包", NOTION + "3724a58538574b10a6de22fb95f23583", "img/kit-coffee-relief.webp"]],
     gifts:[["咖啡渣環保筆", NOTION + "32570427468181b1836cc88de265c71f", "img/gift-coffee-pen.webp"], ["咖啡渣保溫杯", NOTION + "33570427468180938593ec3c4f227e51", "img/gift-coffee-tumbler.webp"]] },
-  { id:"denim", pier:[.382, .686], ritual:{ say:"這些舊牛仔布，還能變成什麼呢？", wear:"穿上牛仔布裝備", fx:"coaster", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], v2:true, shell:[0.5663, 0.7953, 0.9697, 0.9797] }, showcase:true, theater:["img/ch2-denim-v2.jpg", "材料小劇場：舊牛仔褲剪成布條，再一圈圈縫成杯墊"], finder:"denim", body3d:"img/v2-isl-denim.webp", plaza:0.52, brief:"口袋、接縫、穿過的痕跡，都是下一件小物的好點子。", name:"牛仔褲", line:"褲子先下班，布料繼續玩。",
-    img:"img/ch2-denim.jpg", obj:"img/obj-denim.webp", sen:"img/sen-denim.webp", alt:"一件摺好的舊牛仔褲與幾片剪下的牛仔布",
+  { id:"denim", pier:[.382, .686], ritual:{ say:"這些舊牛仔褲，還能變成什麼呢？", wear:"穿上牛仔褲裝備", fx:"coaster", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], v2:true, shell:[0.5663, 0.7953, 0.9697, 0.9797] }, showcase:true, theater:["img/ch2-denim-v2.jpg", "材料小劇場：舊牛仔褲剪成布條，再一圈圈縫成杯墊"], finder:"denim", body3d:"img/v2-isl-denim.webp", plaza:0.52, brief:"口袋、接縫、穿過的痕跡，都是下一件小物的好點子。", name:"牛仔褲", line:"褲子先下班，布料繼續玩。",
+    img:"img/ch2-denim.jpg", obj:"img/obj-denim.webp", sen:"img/sen-denim.webp", alt:"一件摺好的舊牛仔褲與幾片剪下的布料",
     body:"<p>穿不下、穿舊了的牛仔褲，布料還很耐用。剪下來的布片，可以變成新的小物。</p>",
-    ws:[["牛仔布金屬字母掛飾", 413, "", "img/work-denim-letter.webp"], ["牛仔布杯墊", 411, "以工藝膠黏合固定。", "img/work-denim-coaster.webp"]],
-    kits:[["牛仔布杯墊 DIY 材料包", NOTION + "DIY-32570427468180848f8dd1ee3dc4cd7c", "img/kit-denim-coaster.webp"], ["牛仔布字母掛飾 DIY 材料包", NOTION + "362b534f7ba64382b196c207df02df83", "img/kit-denim-letter.webp"]],
+    ws:[["牛仔褲金屬字母掛飾", 413, "", "img/work-denim-letter.webp"], ["牛仔褲杯墊", 411, "以工藝膠黏合固定。", "img/work-denim-coaster.webp"]],
+    kits:[["牛仔褲杯墊 DIY 材料包", NOTION + "DIY-32570427468180848f8dd1ee3dc4cd7c", "img/kit-denim-coaster.webp"], ["牛仔褲字母掛飾 DIY 材料包", NOTION + "362b534f7ba64382b196c207df02df83", "img/kit-denim-letter-clean.webp"]],
     gifts:[], pending:"牛仔褲的來源與處理說明，待 Apple 提供確認版內容。" },
   { id:"oyster", pier:[.37, .74], ritual:{ say:"咦，這裡有一枚牡蠣殼。", wear:"穿上牡蠣裝備", tap:true, invite:"進屋看看，牡蠣殼還能變成什麼？", walk:-.32, v2:true, shell:[0.0379, 0.8203, 0.3617, 0.9828] }, finder:"oyster", body3d:"img/v2-isl-oyster.webp", plaza:.46, brief:"從殼到盆器，這回換我照顧植物。", name:"牡蠣殼", line:"吃完了，殼還有下半場。",
     img:"img/ch3-oyster.jpg", obj:"img/obj-oyster.webp", sen:"img/sen-oyster.webp", alt:"兩片牡蠣殼、碎殼與一小堆殼粉",
@@ -2398,7 +2398,7 @@ function fxStart(s, m){
     var spots = [[.64, .12]].concat(fxRing(15, rnd));
     spots.forEach(function(a, i){ var tx = T[i % 2 ? "turtle2" : "turtle1"]; if(!tx) return; var p = fxSprite(tx, (i ? .15 + rnd()*.09 : .22)*W, i % 3 ? 10 : 7);
       p.userData.q = { kind:"turtle", x:a[0]*W, y:a[1]*H, t0:1.9 + i*.11, ph:rnd()*6, r:(a[0] < 0 ? 1 : -1)*(.15 + rnd()*.2), crawl:i ? 1 : 0 }; g.add(p); items.push(p); });
-  } else if(k === "coaster"){   // 牛仔布杯墊翻轉登場
+  } else if(k === "coaster"){   // 牛仔褲杯墊翻轉登場
     if(T.coaster){ var KC = keepPose(k, W, H, T.coaster), pc = fxSprite(T.coaster, .42*W, 7); pc.userData.q = { kind:"coaster", x:-.64*W, y:.1*H, t0:2.0 }; g.add(pc); items.push(pc);
       fxRing(9, rnd).forEach(function(a, i){ var px = fxSprite(T.coaster, (.16 + rnd()*.1)*W, i % 3 ? 10 : 7); px.userData.q = { kind:"coaster", x:a[0]*W, y:a[1]*H, t0:2.15 + i*.1 }; g.add(px); items.push(px); }); }
   } else if(k === "earth"){   // 紙纖碎片聚攏成地球，再長出嫩芽
@@ -2497,7 +2497,7 @@ var SCENES = {
     { id:"pile", img:"img/v2-pile-coffee.webp", x:.62, yb:.12, w:1.15, ro:7, walk:.35, title:"一杯咖啡留下了什麼？", text:"每天沖煮後的咖啡渣，香氣和觸感都還在。", show:"story" },
     { id:"kit", img:"img/v2-kit-coffee.webp", head:"img/scene-coffee-pendant.webp", x:.12, yb:-.55, w:.42, ro:10, walk:.05, title:"帶一份回家做", text:"在家接著玩，也能送給喜歡手作的朋友。", show:"kits" } ] },
   denim:{ hint:"點點島上的東西，跟小森一起探索", props:[
-    { id:"house", img:"img/v2-house-denim.webp", head:"img/scene-denim-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-0.75, title:"走進牛仔布帳篷", text:"帳篷是舊牛仔褲拼起來的。來看看在這裡可以縫出什麼。", show:"ws" },
+    { id:"house", img:"img/v2-house-denim.webp", head:"img/scene-denim-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-0.75, title:"走進牛仔褲帳篷", text:"帳篷是舊牛仔褲拼起來的。來看看在這裡可以縫出什麼。", show:"ws" },
     { id:"pile", img:"img/v2-pile-denim.webp", x:.62, yb:.12, w:1.15, ro:7, walk:.35, title:"舊牛仔褲去哪了？", text:"褲子先下班，布料繼續玩。", show:"story" },
     { id:"kit", img:"img/v2-kit-denim.webp", x:.05, yb:-.55, w:.95, ro:10, walk:.05, title:"帶一份回家做", text:"在家接著玩，也能送給喜歡手作的朋友。", show:"kits" } ] },
   caps:{ hint:"點點島上的東西，跟小森一起探索", props:[
@@ -2696,9 +2696,9 @@ function exTick(dt){
 }
 // 「帶一份回家做」共用材料包卡片：1:1 實拍主圖 → 材料包名稱 → 一句做完會得到什麼 → 查看材料包 ↗（有材料包頁才顯示按鈕）（Apple 11/10 20:55）
 var KIT_LINE = { "瓶蓋票卡夾｜字母串珠 DIY 材料包":"挑幾顆喜歡的字母珠，串出自己的票卡夾。", "咖啡渣肌理畫 DIY 材料包":"把一隻小海龜，留在每天看得見的地方。", "咖啡渣浮雕畫 DIY 材料包":"用咖啡渣堆出高低層次，做一幅有立體紋理的畫。",
-  "牛仔布杯墊 DIY 材料包":"把舊牛仔布做成杯墊，留住原本的布紋。", "海洋風擴香石 DIY 材料包":"把牡蠣殼做成擴香石，放在家裡喜歡的角落。", "水晶星願擴香石 DIY 材料包":"把牡蠣殼做成擴香石，放在家裡喜歡的角落。",
+  "牛仔褲杯墊 DIY 材料包":"把舊牛仔褲做成杯墊，留住原本的布紋。", "海洋風擴香石 DIY 材料包":"把牡蠣殼做成擴香石，放在家裡喜歡的角落。", "水晶星願擴香石 DIY 材料包":"把牡蠣殼做成擴香石，放在家裡喜歡的角落。",
   "地球種子 DIY 材料包":"用回收紙纖做一顆小地球，種下自己的小芽。", "葉脈拾光打卡框｜DIY 材料包":"把一片葉脈放進透明框，留下它細細的紋路。",
-  "牛仔布字母掛飾 DIY 材料包":"把喜歡的字母配上牛仔布，做成每天都能帶出門的掛飾。", "手繪星球燈材料包":"用喜歡的顏色畫一顆星球，點亮房間的一角。", "蜂蠟護唇膏 DIY 材料包":"親手做一支蜂蠟護唇膏，放進包包隨身帶著。", "小海龜馬賽克杯墊｜DIY 材料包":"在再生板材底座上，拼出一塊自己的馬賽克杯墊。" };   // Apple 11/10 22:25 擬句，已對照官網／Notion 材料包頁內容
+  "牛仔褲字母掛飾 DIY 材料包":"把喜歡的字母配上牛仔褲布料，做成每天都能帶出門的掛飾。", "手繪星球燈材料包":"用喜歡的顏色畫一顆星球，點亮房間的一角。", "蜂蠟護唇膏 DIY 材料包":"親手做一支蜂蠟護唇膏，放進包包隨身帶著。", "小海龜馬賽克杯墊｜DIY 材料包":"在再生板材底座上，拼出一塊自己的馬賽克杯墊。" };   // Apple 11/10 22:25 擬句，已對照官網／Notion 材料包頁內容
 function kitCards(s, list){
   return '<div class="kitgrid">' + list.map(function(x){ var url = x[1] == null ? null : (typeof x[1] === "number" || !/^https?:/.test(String(x[1])) ? offURL(x[1]) : x[1]), line = KIT_LINE[x[0]];
     return '<div class="kitc"><div class="kph"><img src="' + x[2] + '" alt="' + x[0] + '" loading="lazy">' + (x[3] ? '<span class="kbadge">' + x[3] + "</span>" : "") + "</div>" +
@@ -2710,7 +2710,7 @@ function exItems(s, list, kind, label){
 }
 var GUIDE = {   // 走進小屋先看導覽：這裡是什麼地方、材料怎麼變身；再按下一步看可以做什麼
   coffee:"推開門，先聞到淡淡的咖啡香。架上一罐罐是曬乾的咖啡渣，桌上擺著還沒完成的作品。咖啡渣拌進材料裡，可以壓成香牌、做成香氛燈，也能畫進小海龜肌理畫，或做成擴香石。",
-  denim:"帳篷裡堆著一捲捲剪好的牛仔布。舊褲子拆開來，口袋、縫線和洗白的痕跡都還在。這些布條可以一圈圈縫成杯墊，也能做成金屬字母掛飾。",
+  denim:"帳篷裡堆著一捲捲剪好的牛仔褲布條。舊褲子拆開來，口袋、縫線和洗白的痕跡都還在。這些布條可以一圈圈縫成杯墊，也能做成金屬字母掛飾。",
   caps:"海龜屋的工作台上，瓶蓋依顏色分好、剪成小碎片。碎片加熱、壓進模型裡，就變成一隻隻彩色小海龜。",
   diaper:"溫室裡暖暖的，紙纖做的小地球排在架上，有幾顆已經冒出嫩芽。NG 尿布裡的紙纖，可以做成種子地球、地球生命樹，或紙漿畫冰箱貼。",
   board:"這間小屋是用回收塑膠再生板材蓋的。養樂多瓶和保麗龍都是 PS 材質，打碎、造粒後壓成板材，再切成小片，就能拼成馬賽克杯墊和星球燈。",
@@ -2718,7 +2718,7 @@ var GUIDE = {   // 走進小屋先看導覽：這裡是什麼地方、材料怎�
   oyster:"屋頂鋪著一片片牡蠣殼，桌上有殼粉、碎殼和做好的擴香石。吃完的牡蠣殼洗淨、敲碎、磨成粉，就能變成新的材料。" };
 var WORK_LINE = { "牡蠣殼多肉盆栽":"替桌上的小綠意，添一個新家。", "海洋風擴香石":"把一點海的模樣，留在日常。", "水晶許願擴香石":"替自己的小心願，留個位置。",
   "咖啡渣發財香牌":"掛在喜歡的角落，添一點好心情。", "咖啡渣香氛燈":"替晚上的小角落，留一盞暖光。", "咖啡渣小海龜肌理畫":"把一隻小海龜，留在每天看得見的地方。", "咖啡渣擴香石":"挑個喜歡的位置，放上一點香氣。",
-  "牛仔布金屬字母掛飾":"挑個喜歡的字母，掛上自己的日常。", "牛仔布杯墊":"杯子底下，也有一點熟悉的牛仔藍。",
+  "牛仔褲金屬字母掛飾":"挑個喜歡的字母，掛上自己的日常。", "牛仔褲杯墊":"杯子底下，也有一點熟悉的牛仔藍。",
   "地球種子":"把一顆小地球，帶進日常。", "地球生命樹":"替心裡喜歡的那棵樹，留個位置。", "地球紙漿畫冰箱貼":"把自己的小地球，貼在每天經過的地方。",
   "瓶蓋小海龜工作坊":"挑一組喜歡的顏色，讓小海龜陪你出門。",
   "馬賽克杯墊":"把喜歡的排列，放在杯子底下。", "馬賽克星球燈":"替夜晚留一點光，也留一點自己的喜歡。",
@@ -2727,7 +2727,7 @@ var WORK_LINE = { "牡蠣殼多肉盆栽":"替桌上的小綠意，添一個新�
 var TAP = {   // 各島：點材料拿起即變身 → 箭頭邀請進屋 → 材料轉變圖 → 真實作品（六島文字：Apple 11/08 13:53 正式版）
   oyster:{ tip:"牡蠣殼", title:"從一枚殼，到生活裡的小物。", cap:"牡蠣殼經過整理與研磨，再搭配其他材料，做成生活裡的小物。", steps:["原殼", "碎料與細粉", "成品"] },
   coffee:{ tip:"咖啡渣", say:"杯子裡的咖啡渣，還能變成什麼？", invite:"進屋看看，咖啡渣的新模樣。", title:"一杯咖啡之後，故事繼續。", cap:"咖啡渣經過收集與乾燥，再搭配其他材料，做成生活裡的小物。", steps:["咖啡豆", "沖煮後的咖啡渣", "乾燥的咖啡渣", "咖啡渣吊飾"] },
-  denim:{ tip:"牛仔布", say:"這塊牛仔布，還能變成什麼呢？", invite:"進屋看看，牛仔布還能陪你做什麼。", title:"換個模樣，繼續陪你過日子。", cap:"舊牛仔布經過整理，保留原有的布紋，成為新的隨身小物或桌上用品。", steps:["舊牛仔褲", "牛仔布條", "牛仔布杯墊"] },
+  denim:{ tip:"牛仔褲", say:"這件牛仔褲，還能變成什麼呢？", invite:"進屋看看，牛仔褲還能陪你做什麼。", title:"換個模樣，繼續陪你過日子。", cap:"舊牛仔褲經過整理，保留原有的布紋，成為新的隨身小物或桌上用品。", steps:["舊牛仔褲", "牛仔褲布條", "牛仔褲杯墊"] },
   diaper:{ tip:"紙纖", say:"這團紙纖，竟然來自 NG 尿布！", invite:"進屋看看，尿布還能變成什麼！", title:"從一片 NG 尿布，到掌心的小地球。", cap:"NG 尿布裡的紙纖經過整理，再搭配其他材料，做成不同模樣的作品。", steps:["NG 尿布", "紙纖", "種子地球"] },
   caps:{ tip:"瓶蓋", say:"這些瓶蓋，還能變成什麼呢？", invite:"進屋看看，瓶蓋怎麼變成小海龜。", title:"熟悉的瓶蓋，變成掌心的小海龜。", cap:"回收瓶蓋經過分類、清潔與破碎，再製成小海龜。", steps:["回收瓶蓋", "分色碎片", "小海龜"] },
   board:{ tip:"養樂多瓶", say:"喝完的養樂多瓶，還能變成什麼呢？", invite:"進屋看看，回收塑膠怎麼變成板材。", title:"從回收塑膠，到生活裡的新位置。", cap:"養樂多瓶、保麗龍等回收塑膠，經過分類與再製，成為捷綠木再生板材，再運用到生活作品裡。", src:"材料來源｜捷綠盟科技股份有限公司", steps:["養樂多瓶與保麗龍", "塑膠碎片", "再生塑膠粒", "捷綠木再生板材"] },
@@ -3339,7 +3339,7 @@ function opFrame(){ var s = size(), tr = document.querySelector("#opening .op-to
   var L = side ? tr.right + 24 : 0, T = side ? 60 : tr.bottom + 96, Rr = s.w, B = bt.top - 12;
   return { ox: s.w/2 - (L + Rr)/2, oy: s.h/2 - (T + B)/2, fh: B - T }; }   // fh：可用高度太矮（橫放小螢幕）時鏡頭退遠一點
 function opPull(){ viewTo = { ox:0, oy:0 }; flyTo(homePose(), false, 3.4); (function wait(){ opAnim = setTimeout(function(){ if(flying) wait(); else opDone(); }, 120); })(); }   // 等鏡頭真的停下來才算拉遠完成
-var OP_LINES = ["嗨，我是小森！歡迎來到韻手作永續。", "今天，我們就從這裡搭船出發，一起拜訪七座材料島。", "看看咖啡渣、牛仔布、牡蠣殼……還能變成什麼呢？"];   // Apple 11/11 17:51 定稿
+var OP_LINES = ["嗨，我是小森！歡迎來到韻手作永續。", "今天，我們就從這裡搭船出發，一起拜訪七座材料島。", "看看咖啡渣、牛仔褲、牡蠣殼……還能變成什麼呢？"];   // Apple 11/11 17:51 定稿
 var OP_TYPE = 60;   // 每個字 60 毫秒，三句約 9 秒
 function opTalk(done){ var b = $("opSay"), li = 0; b.hidden = false; b.textContent = "";   // 泡泡大小跟著每一句的字數走：整句的字先排好（還沒出現的字是透明的），所以打字時泡泡不會變大變小（Apple 11/11 20:25）
   requestAnimationFrame(opSayTick); b.classList.add("on");
@@ -3420,7 +3420,7 @@ if(GL){
 var STEP_LABEL = {   // 製程每一步的名稱（取自原本總覽頁的名稱；紙纖、自然素材取自小屋內已用的說法）
   coffee:[["img/v2-story-coffee-1.webp","咖啡豆"],["img/v2-story-coffee-2.webp","沖煮後的咖啡渣"],["img/v2-story-coffee-3.webp","乾燥的咖啡渣"],["img/v2-story-coffee-4.webp","咖啡渣吊飾"]],
   oyster:[["img/v2-story-oyster-1.webp","原殼"],["img/v2-story-oyster-2.webp","碎料與細粉"],["img/v2-story-oyster-3.webp","成品"]],
-  denim:[["img/v2-story-denim-1.webp","舊牛仔褲"],["img/v2-story-denim-2.webp","牛仔布條"],["img/v2-story-denim-3.webp","牛仔布杯墊"]],
+  denim:[["img/v2-story-denim-1.webp","舊牛仔褲"],["img/v2-story-denim-2.webp","牛仔褲布條"],["img/v2-story-denim-3.webp","牛仔褲杯墊"]],
   caps:[["img/v2-story-caps-1.webp","回收瓶蓋"],["img/v2-story-caps-2.webp","分色碎片"],["img/v2-story-caps-3-real.webp","小海龜"]],
   board:[["img/v2-story-board-1.webp","養樂多瓶與保麗龍"],["img/v2-story-board-2.webp","塑膠碎片"],["img/v2-story-board-3.webp","再生塑膠粒"],["img/v2-story-board-4.webp","捷綠木再生板材"]],
   diaper:[["img/v2-story-diaper-1.webp","NG 尿布"],["img/v2-story-diaper-2-real.webp","紙纖"],["img/v2-story-diaper-dye.webp","原色與染色紙漿"],["img/work-diaper-seedearth.webp","種子地球"]],
@@ -3437,17 +3437,17 @@ var STORY = {
     { act:2, clear:true, center:true, sub:"下次倒掉咖啡渣前，\n也許你會想起它還能去哪裡。" } ] },
   hub:{ place:"Wishlite 工作室", acts:["回看材料","看見 Wishlite","帶回生活"], wide:true, sen:"img/sen-base.webp", more:null, scenes:[
     { act:0, img:"img/hub-desk.webp", at:"50% 42%", z0:1, z1:1.03, sub:"有些材料換了形狀，\n有些留下原本的紋路。" },
-    { act:0, pair:[["img/hub-m-oyster.webp", "牡蠣殼"], ["img/case-oyster-pot.webp", "牡蠣殼盆器"], ["img/hub-m-denim.webp", "牛仔布"], ["img/work-denim-coaster.webp", "牛仔布杯墊"]], sub:"有些材料換了形狀，\n有些留下原本的紋路。" },
+    { act:0, pair:[["img/hub-m-oyster.webp", "牡蠣殼"], ["img/case-oyster-pot.webp", "牡蠣殼盆器"], ["img/hub-m-denim.webp", "牛仔褲"], ["img/work-denim-coaster.webp", "牛仔褲杯墊"]], sub:"有些材料換了形狀，\n有些留下原本的紋路。" },
     { act:1, img:"img/case-group-event.webp", cover:true, at:"50% 40%", z0:1, z1:1.04, sub:"在 Wishlite，我們把這些轉變，\n設計成可以一起動手的體驗。" },
     { act:1, img:"img/case-group-event.webp", cover:true, at:"40% 78%", z0:1.15, z1:1.28, sub:"從認識材料開始，\n讓每個人做出自己的選擇。" },
     { act:2, img:"img/hub-inside.webp", at:"50% 50%", z0:1, z1:1.02, clearWide:true, sub:"離開小島後，也許你會多看一眼，\n身邊那些準備被丟掉的東西。" } ] },
-  denim:{ place:"牛仔布小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
+  denim:{ place:"牛仔褲小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
     { act:0, img:"img/v2-story-denim-1.webp", at:"45% 45%", z0:1, z1:1.1, sub:"穿舊的牛仔褲，\n還能變成什麼？" },
-    { act:1, img:"img/v2-story-denim-2.webp", sub:"舊牛仔布經過整理，\n成了一條條布條。" },
+    { act:1, img:"img/v2-story-denim-2.webp", sub:"舊牛仔褲經過整理，\n成了一條條布條。" },
     { act:1, img:"img/v2-story-denim-2.webp", at:"58% 55%", z0:1.4, z1:1.75, sub:"變成布條後，\n原本的布紋和磨白痕跡，還看得見。" },
     { act:1, img:"img/v2-story-denim-3.webp", sub:"布條重新排列，\n做成了杯墊。" },
     { act:1, clear:true, center:true, sub:"原來，舊衣服原本的樣子，\n也能成為新東西的特色。" },
-    { act:2, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔布紋？" },
+    { act:2, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔褲布紋？" },
     { act:2, clear:true, center:true, sub:"下次整理衣櫃時，\n也許會多看一眼那件舊牛仔褲。" } ] },
   diaper:{ place:"紙纖小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
     { act:0, img:"img/v2-story-diaper-1.webp", at:"50% 50%", z0:1, z1:1.1, note:"NG 尿布來源｜台灣益鈞環科", sub:"一片尿布裡，\n我們重新利用的是哪一部分？" },
