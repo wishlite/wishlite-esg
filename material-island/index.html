@@ -3193,14 +3193,15 @@ function walkAt(H, BD, tB, seat, p){
 // 航跡：船尾拖出兩道白色水痕，往外散開、慢慢變淡（Apple 11/21 參考航海小遊戲）
 var WAKE = { pool:[], acc:0, max:56 }, wkM4 = new THREE.Matrix4();
 function wakeTick(dt, H, p, fwd, moving){
-  if(!WAKE.pool.length){ var geo = new THREE.PlaneGeometry(2, 2), soft = texFromCanvas(64, 64, function(x, W, Hh){ var gr = x.createRadialGradient(W/2, Hh/2, 0, W/2, Hh/2, W/2); gr.addColorStop(0, "rgba(255,255,255,.95)"); gr.addColorStop(.55, "rgba(255,255,255,.45)"); gr.addColorStop(1, "rgba(255,255,255,0)"); x.fillStyle = gr; x.fillRect(0, 0, W, Hh); }); for(var i = 0; i < WAKE.max; i++){ var m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map:soft, color:0xf3f7f9, transparent:true, opacity:0, depthWrite:false })); m.visible = false; m.renderOrder = 0; m.userData = { age:9, life:1.7, pos:new THREE.Vector3(), vel:new THREE.Vector3(), fwd:new THREE.Vector3() }; scene.add(m); WAKE.pool.push(m); } }
+  if(!WAKE.pool.length){ var geo = new THREE.PlaneGeometry(2, 2), soft = texFromCanvas(64, 64, function(x, W, Hh){ var gr = x.createRadialGradient(W/2, Hh/2, 0, W/2, Hh/2, W/2); gr.addColorStop(0, "rgba(255,255,255,.95)"); gr.addColorStop(.55, "rgba(255,255,255,.45)"); gr.addColorStop(1, "rgba(255,255,255,0)"); x.fillStyle = gr; x.fillRect(0, 0, W, Hh); }); for(var i = 0; i < WAKE.max; i++){ var m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ map:soft, color:0xf3f7f9, transparent:true, opacity:0, depthWrite:false })); m.visible = false; m.renderOrder = -1; m.userData = { age:9, life:1.7, pos:new THREE.Vector3(), vel:new THREE.Vector3(), fwd:new THREE.Vector3() }; scene.add(m); WAKE.pool.push(m); } }
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(H && p && moving > .25 && !reduce){ WAKE.acc += dt; var side = fwd.clone().cross(p).normalize(), stern = p.clone().multiplyScalar(R + .03).addScaledVector(fwd, -1.05);
+  if(H && p && moving > .25 && !reduce){ WAKE.acc += dt; var side = fwd.clone().cross(p).normalize(), stern = p.clone().multiplyScalar(R + .03).addScaledVector(fwd, -1.2);   // 從船尾後方才冒出，不會像從船身裡湧出（Apple 11/21 08:39）
     while(WAKE.acc > .07){ WAKE.acc -= .07; [-1, 1].forEach(function(sg){ var m = WAKE.pool.find(function(x){ return x.userData.age >= x.userData.life; }); if(!m) return; var u = m.userData; u.age = 0; u.life = 1.5 + Math.random()*.4; u.pos.copy(stern).addScaledVector(side, sg*.16); u.vel.copy(side).multiplyScalar(sg*.32*moving).addScaledVector(fwd, -.1); u.fwd.copy(fwd); m.visible = true; }); } }
   WAKE.pool.forEach(function(m){ var u = m.userData; if(u.age >= u.life){ m.visible = false; return; } u.age += dt; var k = u.age/u.life;
     u.pos.addScaledVector(u.vel, dt); u.vel.multiplyScalar(Math.pow(.35, dt)); var n = u.pos.clone().normalize(); u.pos.copy(n).multiplyScalar(R + .03);
     var f = u.fwd.clone().addScaledVector(n, -u.fwd.dot(n)).normalize(), sd = n.clone().cross(f); wkM4.makeBasis(f, sd, n); m.quaternion.setFromRotationMatrix(wkM4); m.position.copy(u.pos);
-    var sz = .1 + k*.3; m.scale.set(sz*2.2, sz, 1); m.material.opacity = .75*(1 - k)*(k < .1 ? k/.1 : 1); m.visible = u.age < u.life; });
+    var sz = .1 + k*.3; m.scale.set(sz*2.2, sz, 1); var bd = sailBoat && sailBoat.visible ? u.pos.distanceTo(sailBoat.position) : 9, hide = THREE.MathUtils.clamp((bd - 1.1)/.3, 0, 1);   // 靠近船身的水痕藏起來
+    m.material.opacity = .75*(1 - k)*(k < .1 ? k/.1 : 1)*hide; m.visible = u.age < u.life && hide > 0; });
 }
 function tickHop(dt, paused){
   if(!hop){ if(WAKE.pool.length) wakeTick(dt, null); return; }
