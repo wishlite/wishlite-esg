@@ -402,6 +402,14 @@ a{color:var(--moss)}
 .plan pre{white-space:pre-wrap;font:inherit;font-size:14px;line-height:1.7;background:var(--white);border:1px solid var(--sand);border-radius:12px;padding:10px 12px;margin:8px 0 0}
 .plan .warn{font-size:13px;line-height:1.6;color:var(--moss-dark);background:var(--cream);border-radius:10px;padding:8px 10px;margin:10px 0 0}
 .works{margin:14px 0 6px}
+.material-film{margin:18px 0}
+.material-film .film-player{position:relative;width:min(100%,248px);margin:0 auto}
+.material-film video{display:block;width:100%;aspect-ratio:9/16;border-radius:14px;background:#f2eee6}
+.material-film .film-play{position:absolute;inset:0;display:grid;place-items:center;width:100%;border:0;border-radius:14px;background:transparent;cursor:pointer}
+.material-film .film-play[hidden]{display:none}
+.material-film .film-play span{padding:9px 13px;border-radius:999px;background:var(--moss-dark);color:#fff;font:700 14px/1.5 "Noto Sans TC",sans-serif}
+.material-film h3{margin:0 0 10px;font:700 15px/1.5 "Noto Sans TC",sans-serif;color:var(--moss-dark)}
+.material-film p{margin:8px 0 0}
 .works h3,.bizbox h3{margin:0 0 8px}
 .works h3{font:700 15px/1.5 "Noto Sans TC",sans-serif;color:var(--moss-dark)}
 .works .item small{display:block;font-size:12px;color:var(--muted);line-height:1.6;margin:2px 0}
@@ -1869,6 +1877,20 @@ function theaterHTML(s){
   if(!s.theater) return "";
   return '<div class="theater" role="group" aria-label="材料小劇場"><button type="button" class="pimg" data-src="' + s.theater[0] + '" data-cap="' + s.theater[1] + '" aria-label="放大看材料小劇場"><img src="' + s.theater[0] + '" alt="' + s.theater[1] + '"' + (s.theater[2] ? ' class="' + s.theater[2] + '"' : "") + '></button><p class="cap">材料小劇場</p></div>';
 }
+var materialFilms = {
+  coffee: {
+    title:"咖啡喝完了，渣還能做什麼？", file:"coffee-material-story", seconds:30,
+    summary:"沖煮後的咖啡渣可以收集、攤薄、乾燥，並依用途過篩。搭配不同材料，可做成吊飾、肌理畫，也能用在隨行杯的杯身。"
+  },
+};
+function materialFilmHTML(s){
+  var film = materialFilms[s.id]; if(!film) return "";
+  var source = "video/" + film.file;
+  return '<section class="material-film" aria-labelledby="materialFilmTitle"><h3 id="materialFilmTitle">' + film.title + '</h3>' +
+    '<div class="film-player"><video playsinline preload="none" poster="' + source + '-poster.jpg" aria-labelledby="materialFilmTitle"><source src="' + source + '.mp4" type="video/mp4">此瀏覽器無法播放影片。</video>' +
+    '<button type="button" class="film-play"><span>▶ 播放影片 · ' + film.seconds + ' 秒</span></button></div>' +
+    '<p>' + film.summary + '</p>' + '</section>';
+}
 function extraHTML(s){
   if(!s.extra) return "";
   var e = s.extra;
@@ -1891,11 +1913,20 @@ function renderStory(s, i){
   var acad = s.biz ? '<p class="acad">喜歡的不只是作品，也想把這份體驗帶給別人？<br><a id="acadLink" href="' + ACADEMY_SITE + '" target="_blank" rel="noopener">認識永續行動學院 ↗</a><a id="acadFaq" href="' + ACADEMY_SITE + '#faq" target="_blank" rel="noopener">學院常見問題 ↗</a></p>' : "";
   // 示範版順序：材料小劇場 → 精簡材料故事 → 可以做的作品 → 參與入口；活動紀錄收在最後的「延伸看看」
   $("cardBody").innerHTML = '<button type="button" class="backisl" id="backIsl">← 回到島上</button>' + (s.showcase
-    ? theaterHTML(s) + s.body + (s.note ? '<p class="note">' + s.note + "</p>" : "") + worksHTML(s) + bizHTML(s) + takeHomeHTML(s) + acad + extraHTML(s)
+    ? theaterHTML(s) + s.body + (s.note ? '<p class="note">' + s.note + "</p>" : "") + materialFilmHTML(s) + worksHTML(s) + bizHTML(s) + takeHomeHTML(s) + acad + extraHTML(s)
     : s.body + (s.note ? '<p class="note">' + s.note + "</p>" : "") + casesHTML(s) + (s.works ? worksHTML(s) + bizHTML(s) + takeHomeHTML(s) : bizHTML(s) + tasksHTML(s)) + acad) +
     '<div class="briefacts"><button type="button" class="btn solid" id="toEnd">帶著' + s.name + '走進工作坊</button></div>';
   bindTabs(); bindCases(); bindWish();
   var pb = $("bizPlan"); if(pb) pb.onclick = function(){ openPlan(s); };
+  var playFilm = card.querySelector(".film-play");
+  if(playFilm) playFilm.onclick = function(){
+    var film = playFilm.previousElementSibling;
+    playFilm.hidden = true;
+    film.controls = true;
+    film.focus({preventScroll:true});
+    var playback = film.play();
+    if(playback && playback.catch) playback.catch(function(){});
+  };
   $("backIsl").onclick = function(){ renderBrief(s, i); fadeIn($("cardBody")); $("cardTitle").focus({ preventScroll:true }); };
   $("toEnd").onclick = function(){ openEnd(s); };
   card.scrollTop = 0; $("cardBody").scrollTop = 0; viewTo = cardOffset();
@@ -2079,6 +2110,7 @@ function hubPanel(){ if(hs){ clearTimeout(hs.timer); clearTimeout(hs.nbT); }
   if($("hubGo")) $("hubGo").onclick = function(){ shut(function(){ hubOff(); openSpot(nx, "explore"); }); };
 }
 function hideCard(){
+  var film = card.querySelector(".material-film video"); if(film) film.pause();
   exLeave();
   card.hidden = true; var hs = ++cardSeq; clearTimeout(dressT); if(rit) ritClear();
   setTimeout(function(){ if(hs === cardSeq && card.hidden) card.classList.remove("end", "brief", "story", "showcase", "touring"); }, 220);
