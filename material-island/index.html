@@ -648,6 +648,11 @@ a{color:var(--moss)}
 .hs-trio.on figure{opacity:1;transform:none}
 .hs-trio.on figure:nth-child(2){transition-delay:.7s}.hs-trio.on figure:nth-child(3){transition-delay:1.4s}
 .hs-next{opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease,visibility 0s .45s}.hs-next.show{opacity:1;visibility:visible;transform:none;transition:opacity .45s ease,transform .45s ease,visibility 0s}
+.hs-stage.vid{width:auto;height:calc(100vh - 250px - env(safe-area-inset-top));height:calc(100svh - 250px - env(safe-area-inset-top));max-height:none;max-width:92vw;aspect-ratio:9/16;background:#f3eee4}   /* 小屋影片（直式 9:16）：放在小屋中央，左右露出背景（Apple 11/21） */
+.hs-stage.vid > .hs-layer,.hs-stage.vid > #hsT{display:none}
+.hs-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#f3eee4;display:block}
+.hs-vid[hidden]{display:none}
+.hs.vidmode .hs-sub,.hs.vidmode .hs-sen{opacity:0;pointer-events:none}
 .hs.wide .hs-stage{width:min(94vw,760px);aspect-ratio:16/9;max-height:52vh}
 .hs.wide .hs-layer.cover img{object-fit:cover}
 .hs-trio.pairs{padding:0;background:#fffdf8;justify-content:center}
@@ -3515,14 +3520,11 @@ var STORY = {
     { act:2, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把一片葉子的紋路，\n留在正在讀的那一頁。" },
     { act:2, clear:true, center:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
   oyster:{ place:"牡蠣殼小屋", scenes:[
-    { act:0, k:"好奇", img:"img/v2-story-oyster-1.webp", at:"50% 55%", z0:1, z1:1.06, sub:"這麼硬的殼，\n怎麼變成不同形狀？" },
-    { act:1, k:"發現", img:"img/v2-story-oyster-2.webp", at:"20% 58%", z0:1.6, z1:1.85, sub:"殼經過清潔、乾燥與破碎，\n變成一塊塊碎料。" },
-    { act:1, k:"發現", img:"img/v2-story-oyster-2.webp", at:"84% 62%", z0:1.85, z1:2.05, sub:"再研磨，\n變成細細的粉。" },
-    { act:1, k:"理解", img:"img/v2-story-oyster-3.webp", at:"40% 55%", z0:1.05, z1:1.12, sub:"殼粉搭配其他材料，\n再成形，就有了新的形狀。" },
-    { act:1, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
-    { act:2, k:"回想", img:"img/case-oyster-pot.webp", cover:true, at:"50% 45%", z0:1, z1:1.05, inset:["img/rit-oyster-shell.webp", "原本的模樣"], sub:"換了模樣，你還認得它嗎？" },
-    { act:2, k:"生活", clear:true, center:true, sub:"下次吃完蚵仔，\n也許你會多看一眼那些殼。" } ],
-    acts:["提出疑問", "看見轉變", "回到生活"], more:{ label:"靠近看看殼的紋路", list:[
+    { act:0, k:"發現", video:"video/oyster-island.mp4", poster:"video/oyster-island-poster.jpg", sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）
+    { act:0, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
+    { act:1, k:"回想", img:"img/case-oyster-pot.webp", cover:true, at:"50% 45%", z0:1, z1:1.05, inset:["img/rit-oyster-shell.webp", "原本的模樣"], sub:"換了模樣，你還認得它嗎？" },
+    { act:1, k:"生活", clear:true, center:true, sub:"下次吃完蚵仔，\n也許你會多看一眼那些殼。" } ],
+    acts:["看見轉變", "回到生活"], more:{ label:"靠近看看殼的紋路", list:[
       { img:"img/real-oyster-out.webp", cover:true, real:true, at:"55% 40%", z0:1.02, z1:1.12, sub:"殼的外面，\n是一層層深淺交錯的紋路。" },
       { img:"img/real-oyster-in.webp", cover:true, real:true, at:"50% 45%", z0:1.02, z1:1.1, sub:"翻過來，\n裡面是一片光滑的白。" },
       { img:"img/real-oyster-many.webp", cover:true, real:true, at:"50% 50%", z0:1.02, z1:1.08, sub:"每一枚的形狀和花紋，\n都不太一樣。" } ] } } };
@@ -3546,7 +3548,10 @@ function hsShow(sc){   // 換圖：兩層交疊淡入，新圖從 z0 慢慢推�
   var nt = $("hsNote"); nt.hidden = !sc.note || !!sc.clear; nt.textContent = sc.note || "";    // 四格總覽有小字時，四格整體縮短，小字留在下方   // 圖卡下方小字（PS｜聚苯乙烯、材料來源、材質分類、作品短句）
   var stl = (hs && STEP_LABEL[hs.s.id]) || [], sk = sc.act < 2 && !sc.clear && !sc.trio && !sc.pair ? stl.findIndex(function(x){ return x[0] === sc.img; }) : -1, se = $("hsStep");   // 第幾步：只在製程幕顯示
   se.hidden = sk < 0; if(sk >= 0){ var stN = function(x, k){ return x[2] || k + 1; }, stT = Math.max.apply(null, stl.map(stN)); se.innerHTML = "<i>" + stN(stl[sk], sk) + "</i>" + stl[sk][1] + "<small>／共 " + stT + " 步</small>"; se.style.animation = "none"; void se.offsetWidth; se.style.animation = ""; }
-  var stage = $("hsStage"), T = $("hsT"); stage.classList.toggle("wd", !!sc.wide); if(sc.clear || (sc.clearWide && size().w > 640)){ stage.classList.add("off"); return; } if(stage.classList.contains("off")) hs.wasOff = true; stage.classList.remove("off");
+  var stage = $("hsStage"), T = $("hsT"); stage.classList.toggle("wd", !!sc.wide);
+  var vd = stage.querySelector(".hs-vid"); if(sc.video && !vd){ vd = document.createElement("video"); vd.className = "hs-vid"; vd.muted = true; vd.defaultMuted = true; vd.playsInline = true; vd.setAttribute("playsinline", ""); vd.setAttribute("muted", ""); vd.preload = "auto"; stage.appendChild(vd); }
+  stage.classList.toggle("vid", !!sc.video); $("hs").classList.toggle("vidmode", !!sc.video);
+  if(vd){ if(sc.video){ vd.hidden = false; if(vd.getAttribute("src") !== sc.video){ vd.src = sc.video; if(sc.poster) vd.poster = sc.poster; } vd.currentTime = 0; vd.onended = function(){ if(hs && hs.S.scenes[hs.i] === sc && !hs.paused) hsGo(hs.i + 1); }; if(!hs.paused){ var pr = vd.play(); if(pr && pr.catch) pr.catch(function(){}); } stage.classList.remove("off"); return; } else { vd.pause(); vd.hidden = true; } } if(sc.clear || (sc.clearWide && size().w > 640)){ stage.classList.add("off"); return; } if(stage.classList.contains("off")) hs.wasOff = true; stage.classList.remove("off");
   if(sc.pair){ T.innerHTML = '<div class="hs-pair">' + [0, 2].map(function(k){ return '<div class="pr"><figure><img src="' + sc.pair[k][0] + '" alt=""><b>' + sc.pair[k][1] + '</b></figure><i aria-hidden="true">→</i><figure><img src="' + sc.pair[k+1][0] + '" alt=""><b>' + sc.pair[k+1][1] + "</b></figure></div>"; }).join("") + "</div>"; $("hsL0").classList.remove("on"); $("hsL1").classList.remove("on"); T.classList.remove("on", "sync"); T.classList.add("pairs"); void T.offsetWidth; T.classList.add("on"); return; }
   T.classList.remove("pairs");
   if(sc.trio){ T.innerHTML = sc.trio.map(function(x, k){ return '<figure style="height:' + Math.floor((sc.note ? 82 : 92)/sc.trio.length) + '%"><img src="' + x[0] + '" alt=""><b><i>' + (k + 1) + '</i>' + x[1] + "</b></figure>"; }).join(""); $("hsL0").classList.remove("on"); $("hsL1").classList.remove("on"); T.classList.remove("on"); T.classList.toggle("sync", !!sc.sync); void T.offsetWidth; T.classList.add("on"); return; }
@@ -3573,7 +3578,7 @@ function hsGo(i){
   $("hsStage").querySelector(".hs-demo") && ($("hsStage").querySelector(".hs-demo").hidden = true);
   hsArm();
 }
-function hsArm(){ clearTimeout(hs.timer); if(hs.paused || hs.i < 0) return; var L = hs.S.scenes, sc = L[hs.i], nx = L[hs.i + 1];
+function hsArm(){ clearTimeout(hs.timer); if(hs.paused || hs.i < 0) return; var L = hs.S.scenes, sc = L[hs.i], nx = L[hs.i + 1]; if(sc.video) return;   // 影片幕：播完自動接下一句
   var inAct = nx && nx.act === sc.act; if(!inAct) return;   // 同一幕內字幕自動接續；不自動跨幕，幕與幕之間由訪客按「下一幕」
   hs.timer = setTimeout(function(){ hsGo(hs.i + 1); }, 1400 + Array.from(sc.sub).length*60); }   // 沒有聲音，畫面要緊湊連貫：一句約 20 字停 2.6 秒（Apple 11/10 14:45）
 function hsActStart(a){ var L = hs.S.scenes; for(var k = 0; k < L.length; k++) if(L[k].act === a) return k; return L.length; }
@@ -3593,7 +3598,7 @@ $("hsNext").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2
 $("hsPrev").addEventListener("click", function(){ if(!hs || hs.i < 0) return; var a = hs.S.scenes[hs.i].act; if(a > 0) hsGo(hsActStart(a - 1)); });   // 上一幕
 $("hsStage").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2 && hs.mk != null && hs.mk + 1 < hs.S.more.list.length){ hsMoreGo(hs.mk + 1); return; } if(hs.i >= 0 && hs.i < hs.S.scenes.length) hsGo(hs.i + 1); });   // 點圖也能往下看
 $("hsSkip").addEventListener("click", function(){ if(hs) hsEnd(); });
-$("hsPause").addEventListener("click", function(){ if(!hs) return; hs.paused = !hs.paused; this.textContent = hs.paused ? "▶" : "❚❚"; this.setAttribute("aria-label", hs.paused ? "繼續播放" : "暫停"); if(hs.paused) clearTimeout(hs.timer); else if(hs.i === -2 && hs.mk != null) hsMoreGo(hs.mk + 1 < hs.S.more.list.length ? hs.mk + 1 : hs.mk); else hsArm(); });
+$("hsPause").addEventListener("click", function(){ if(!hs) return; hs.paused = !hs.paused; var vd = document.querySelector("#hsStage .hs-vid"); if(vd && !vd.hidden){ if(hs.paused) vd.pause(); else { var pr = vd.play(); if(pr && pr.catch) pr.catch(function(){}); } } this.textContent = hs.paused ? "▶" : "❚❚"; this.setAttribute("aria-label", hs.paused ? "繼續播放" : "暫停"); if(hs.paused) clearTimeout(hs.timer); else if(hs.i === -2 && hs.mk != null) hsMoreGo(hs.mk + 1 < hs.S.more.list.length ? hs.mk + 1 : hs.mk); else hsArm(); });
 $("hsMore").addEventListener("click", function(){ if(hs) hsMore(); });
 ["hsWs", "hsWorks"].forEach(function(id){ $(id).addEventListener("click", function(){ if(hs){ clearTimeout(hs.timer); hs.paused = true; } }); });   // 工作坊／成品都連到官網「依材料找」對應頁，不在島上列出（Apple 11/09 03:30）
 $("hsOther").addEventListener("click", function(){ hsClose(function(){ var s = exp && exp.s; if(s) s._houseOut = true; exPopClose(); if(exp) exp.leftHouse = false; if(s) nextIslandGuide(s); }); });   // 直接走出小屋並開下一站選擇，不必回島上再按一次
