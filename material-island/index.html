@@ -3488,12 +3488,10 @@ var STORY = {
     { act:0, video:"video/denim-coaster-intro.mp4", poster:"video/denim-coaster-intro-poster.jpg", clickPlay:true, seconds:17.5, sub:"" },
     { act:1, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔褲布紋？" },
     { act:1, clear:true, center:true, sub:"下次整理衣櫃時，\n也許會多看一眼那件舊牛仔褲。" } ] },
-  diaper:{ place:"紙纖小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
-    { act:0, img:"img/v2-story-diaper-1.webp", at:"50% 50%", z0:1, z1:1.1, note:"NG 尿布來源｜台灣益鈞環科", sub:"一片尿布裡，\n我們重新利用的是哪一部分？" },
-    { act:1, img:"img/v2-story-diaper-2-real.webp", cover:true, at:"50% 50%", z0:1, z1:1.06, sub:"先把尿布中的紙纖\n整理出來。" },   // Apple 11/18 21:18：紙纖與染色改用她提供的實拍（IMG_6339、IMG_6362 裁切）
-    { act:1, img:"img/v2-story-diaper-dye.webp", at:"50% 50%", z0:1, z1:1, note:"中間：原色紙漿｜兩側：染色紙漿", sub:"紙纖加水調成紙漿，\n再染成藍色和綠色。" },
-    { act:1, img:"img/work-diaper-seedearth.webp", at:"50% 50%", z0:1.02, z1:1.1, sub:"再把紙漿做成\n一顆顆種子地球。" },
-    { act:2, clear:true, center:true, sub:"原來，認識材料，\n可以從重新看待一件熟悉的東西開始。" } ] },
+  diaper:{ place:"紙纖小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
+    { act:0, video:"video/diaper-material-story.mp4", poster:"video/diaper-material-story-poster.jpg", clickPlay:true, seconds:30, sub:"" },
+    { act:1, img:"img/work-diaper-seedearth.webp", at:"50% 50%", z0:1, z1:1, sub:"再生紙纖加上種子，\n就成了一顆種子地球。" },
+    { act:1, clear:true, center:true, sub:"原來，認識材料，\n可以從重新看待一件熟悉的東西開始。" } ] },
   caps:{ place:"瓶蓋小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
     { act:0, video:"video/caps-turtles-original.mp4", poster:"video/caps-bottle-turtles-poster.jpg", clickPlay:true, seconds:24.5, sub:"" },
     { act:1, img:"img/work-caps-turtle.webp", cover:true, at:"50% 50%", z0:1, z1:1, sub:"比一比，\n這幾隻小海龜的配色有什麼不同？" },
