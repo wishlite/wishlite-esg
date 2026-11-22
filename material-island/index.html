@@ -2803,7 +2803,7 @@ function exPick(){   // 點擊時先看是不是點到探索道具
 function ritLoad(s){
   fxLoad(s);
   if(s._ritTex) return; s._ritTex = {}; var L = new THREE.TextureLoader();
-  RIT_KEYS.concat(["shell"], s.ritual.more || []).forEach(function(k){ L.load((s.id === "coffee" || s.id === "oyster") && k === "g" ? s.sen : "img/rit-" + s.id + "-" + k + ".webp", function(t){ t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); s._ritTex[k] = t; }); });
+  RIT_KEYS.concat(["shell"], s.ritual.more || []).forEach(function(k){ L.load(k === "s0" ? SEN_BASE : (s.id === "coffee" || s.id === "oyster") && k === "g" ? s.sen : "img/rit-" + s.id + "-" + k + ".webp", function(t){ t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); s._ritTex[k] = t; }); });
 }
 // 手機載入優化（Apple 11/10 20:00）：一打開只載地球、總部和七座島的島圖；船開往哪座島才載那座島的小屋、道具、換裝圖，到了之後再順手預載下一站
 function islWant(i, pre){ var s = SPOTS[i]; if(!s || s._load) return; s._load = true; if(s.ritual && GL) ritLoad(s);
@@ -2964,7 +2964,7 @@ function tickRitual(dt){
     camera.position.sub(controls.target).setLength(cd2 + (dWant - cd2)*Math.min(1, dt*1.2)).add(controls.target);
   }
   if(rit.phase === "wait"){   // 鏡頭慢慢靠近、停穩後再留一拍
-    if(rit.prev){ if(rit.frame !== "prev"){ rit.frame = "prev"; senWear(s, rit.prev); if(ritOver) ritOver.visible = false; rit.waved = true; } } else if(!rit.frame) ritFrame("s0", 0);
+    if(rit.prev){ if(rit.frame !== "prev"){ rit.frame = "prev"; senWear(s, rit.prev); if(ritOver) ritOver.visible = false; rit.waved = true; } } else { if(!rit.frame) ritFrame("s0", 0); rit.waved = true; }
     if(!ritShell){ ritShell = ritShellMake(m, s); ritShell.material.opacity = 0; ritShell.material.transparent = true; }
     ritShell.material.opacity = Math.min(1, ritShell.material.opacity + dt*2.5); ritShell.position.x = ritShell.userData.x - (u.ox || 0); if(s.ritual.depth){ var ib0 = s._bb; ritShell.position.y = ritShell.userData.y - ib0.userData.H*(s.ritual.depth[0] - s.ritual.depth[1])*ib0.scale.y/(m.scale.y || 1); }
     if(flying || hop){ rit.t = 0; return; }
@@ -3265,7 +3265,7 @@ function tickHop(dt, paused){
     if(H.ritual){ }   // 上岸後由跟拍鏡頭直接對準小森，不先飛到固定構圖（手機與桌機都一樣，Apple 11/10 23:37）   // 站穩後鏡頭慢慢靠近
     else if(H.card){ if(H.to >= 0 && sceneOf(SPOTS[H.to])) exEnter(SPOTS[H.to]); else if(H.free){ card.hidden = false; viewTo = cardOffset(); } else { settleCard = true; flyTo(H.to >= 0 ? spotPose(SPOTS[H.to]) : islPose(HUB.isl, 2.6, null, size().w <= 640 ? 1.6 : 1)); } }   // 上島後鏡頭回到看島的位置，停穩才展開介紹卡
   } else if(kStep >= 1 && !H.landed){ H.landed = true; sailSen.visible = false; if(target) target.visible = true;   // 同一格交接，不留空白
-    if(H.to >= 0 && H.ritual){ var T0 = SPOTS[H.to]._ritTex; senWear(SPOTS[H.to], T0 && T0.s0 || sailSen.material.map); if(rit && T0 && T0.s0) rit.frame = "s0"; } else if(H.to >= 0 && H.fresh) dressSprite(SPOTS[H.to]); H.fresh = false; }
+    if(H.to >= 0 && H.ritual){ var T0 = SPOTS[H.to]._ritTex; var arriving = rit && rit.prev || T0 && T0.s0 || sailSen.material.map; senWear(SPOTS[H.to], arriving); if(rit) rit.frame = rit.prev ? "prev" : T0 && T0.s0 ? "s0" : null; } else if(H.to >= 0 && H.fresh) dressSprite(SPOTS[H.to]); H.fresh = false; }
 }
 var proj = new THREE.Vector3(), v3b = new THREE.Vector3();
 var camDir = new THREE.Vector3();
