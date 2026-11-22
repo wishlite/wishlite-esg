@@ -2295,6 +2295,7 @@ function tick(){
 }
 // ---------- 搭船跳島：小森坐上「捷綠木小帆船」，貼著海面駛向下一座島；靠岸、上島之後才展開介紹卡 ----------
 var senAt = -1, hop = null, sailBoat = null, sailSen = null, settleCard = false;   // senAt：小森現在在哪座島（-1＝工作坊）
+var BOAT_DECK = .18;   // 船內甲板高度（船身座標），小森的站點也用它
 function makeSailBoat(){
   // 船身：回收塑膠再生板材（捷綠木）的斑點質感，船舷做高一點；帆：小一點的毛氈帆放在船尾，不擋住小森
   var speck = texFromCanvas(256, 256, function(x, W, H){
@@ -2332,6 +2333,11 @@ function makeSailBoat(){
     m.traverse(function(o){ if(o.isMesh){ o.castShadow = true; o.renderOrder = 1;
       var mm = o.material; if(/Wood/.test(mm.name)){ mm.map = null; mm.color.set(0x8a6544); mm.needsUpdate = true; } mm.transparent = true; mm.side = THREE.DoubleSide; if(mats.indexOf(mm) < 0) mats.push(mm); } });
     g.children.slice().forEach(function(c){ c.visible = false; });
+    // 船內甲板：船隨浪搖時，海面會從船身裡面透出來，看起來像船破洞（Apple 11/22）→ 在船內鋪一層木板，高過海面，小森站在板上
+    var dk = [[-1.02, .03], [-.8, .12], [-.6, .19], [-.4, .26], [-.2, .3], [0, .34], [.2, .37], [.4, .39], [.6, .39], [.8, .38], [1.0, .34], [1.13, .29]], dsh = new THREE.Shape();
+    dk.forEach(function(q, j){ if(j) dsh.lineTo(q[0], q[1]); else dsh.moveTo(q[0], q[1]); }); for(var j = dk.length - 1; j >= 0; j--) dsh.lineTo(dk[j][0], -dk[j][1]);
+    var dMat = new THREE.MeshStandardMaterial({ color:0x9a7450, roughness:.9, transparent:true, side:THREE.DoubleSide }), dMesh = new THREE.Mesh(new THREE.ShapeGeometry(dsh), dMat);
+    dMesh.rotation.x = -Math.PI/2; dMesh.position.y = BOAT_DECK; dMesh.renderOrder = 1; dMesh.receiveShadow = true; mats.push(dMat); g.add(dMesh);
     g.add(m); g.userData.mats = mats; g.userData.blender = true; g.userData.ready = true; setTimeout(boatGlow, 0);
   }, function(e){ console.warn("[sailboat glb] 載入失敗，沿用程式畫的船", e); proc.forEach(function(c){ c.visible = true; }); g.userData.ready = true; });
   var sg = new THREE.PlaneGeometry(1, 1); sg.translate(0, .5, 0);
@@ -3234,7 +3240,7 @@ function tickHop(dt, paused){
   if(BD){ BD.mat.opacity = Math.max(0, Math.min(fadeB, tB/.35)); BD.steps.forEach(function(st, j){ var g = THREE.MathUtils.clamp((tB - j*.04)/.25, 0, 1); st.scale.setScalar(.001 + ease(g)); }); BD.group.visible = fadeB > 0; }
   var target = H.to >= 0 ? SPOTS[H.to]._sen : HUB.sen;
   if(H.ritual && H.to >= 0 && !H.s0 && !(rit && rit.prev) && SPOTS[H.to]._ritTex && SPOTS[H.to]._ritTex.s0 && H.t < H.sail + H.hold){ var t0 = SPOTS[H.to]._ritTex.s0; H.s0 = true; sailSen.material.map = t0; sailSen.material.needsUpdate = true; H.sw = H.sh*t0.image.width/t0.image.height; }   // 航行途中換成和島上同一張圖，上島交接不跳
-  var seat = sailBoat.localToWorld(new THREE.Vector3(-.15, .1, 0));
+  var seat = sailBoat.localToWorld(new THREE.Vector3(-.15, sailBoat.userData.blender ? BOAT_DECK : .1, 0));   // 小森站在船內甲板上
   sailSen.quaternion.copy(camera.quaternion);
   if(!BD || tB < .4){   // 坐在船上：面向鏡頭，但「上方」跟著船（轉向、鏡頭傾斜時不會像側身歪掉）
     var zc = camera.position.clone().sub(sailSen.position).normalize(), yv = p.clone().addScaledVector(zc, -p.dot(zc));
