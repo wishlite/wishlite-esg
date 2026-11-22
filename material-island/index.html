@@ -3478,14 +3478,10 @@ var STORY = {
     { act:1, img:"img/case-group-event.webp", cover:true, at:"50% 40%", z0:1, z1:1.04, sub:"在 Wishlite，我們把這些轉變，\n設計成可以一起動手的體驗。" },
     { act:1, img:"img/case-group-event.webp", cover:true, at:"40% 78%", z0:1.15, z1:1.28, sub:"從認識材料開始，\n讓每個人做出自己的選擇。" },
     { act:2, img:"img/hub-inside.webp", at:"50% 50%", z0:1, z1:1.02, clearWide:true, sub:"離開小島後，也許你會多看一眼，\n身邊那些準備被丟掉的東西。" } ] },
-  denim:{ place:"牛仔褲小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
-    { act:0, img:"img/v2-story-denim-1.webp", at:"45% 45%", z0:1, z1:1.1, sub:"穿舊的牛仔褲，\n還能變成什麼？" },
-    { act:1, img:"img/v2-story-denim-2.webp", sub:"舊牛仔褲經過整理，\n成了一條條布條。" },
-    { act:1, img:"img/v2-story-denim-2.webp", at:"58% 55%", z0:1.4, z1:1.75, sub:"變成布條後，\n原本的布紋和磨白痕跡，還看得見。" },
-    { act:1, img:"img/v2-story-denim-3.webp", sub:"布條重新排列，\n做成了杯墊。" },
-    { act:1, clear:true, center:true, sub:"原來，舊衣服原本的樣子，\n也能成為新東西的特色。" },
-    { act:2, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔褲布紋？" },
-    { act:2, clear:true, center:true, sub:"下次整理衣櫃時，\n也許會多看一眼那件舊牛仔褲。" } ] },
+  denim:{ place:"牛仔褲小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
+    { act:0, video:"video/denim-coaster.mp4", poster:"video/denim-coaster-poster.jpg", clickPlay:true, seconds:21, sub:"" },
+    { act:1, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔褲布紋？" },
+    { act:1, clear:true, center:true, sub:"下次整理衣櫃時，\n也許會多看一眼那件舊牛仔褲。" } ] },
   diaper:{ place:"紙纖小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
     { act:0, img:"img/v2-story-diaper-1.webp", at:"50% 50%", z0:1, z1:1.1, note:"NG 尿布來源｜台灣益鈞環科", sub:"一片尿布裡，\n我們重新利用的是哪一部分？" },
     { act:1, img:"img/v2-story-diaper-2-real.webp", cover:true, at:"50% 50%", z0:1, z1:1.06, sub:"先把尿布中的紙纖\n整理出來。" },   // Apple 11/18 21:18：紙纖與染色改用她提供的實拍（IMG_6339、IMG_6362 裁切）
@@ -3518,8 +3514,8 @@ var STORY = {
     { act:1, clear:true, center:true, sub:"原來，這些細線不只是花紋，\n也是葉子的運輸網。" },
     { act:2, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把一片葉子的紋路，\n留在正在讀的那一頁。" },
     { act:2, clear:true, center:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
-  oyster:{ place:"牡蠣殼小屋", scenes:[
-    { act:0, k:"發現", video:"video/oyster-island.mp4?v=2", poster:"video/oyster-island-poster.jpg?v=2", sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）；21:44 定案版 window-pot
+  oyster:{ place:"牡蠣殼小屋", manualNext:true, scenes:[
+    { act:0, k:"發現", video:"video/oyster-island.mp4?v=2", poster:"video/oyster-island-poster.jpg?v=2", clickPlay:true, seconds:24, sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）；21:44 定案版 window-pot
     { act:0, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
     { act:1, k:"回想", img:"img/case-oyster-pot.webp", cover:true, at:"50% 45%", z0:1, z1:1.05, inset:["img/rit-oyster-shell.webp", "原本的模樣"], sub:"換了模樣，你還認得它嗎？" },
     { act:1, k:"生活", clear:true, center:true, sub:"下次吃完蚵仔，\n也許你會多看一眼那些殼。" } ],
@@ -3560,10 +3556,11 @@ function hsShow(sc){   // 換圖：兩層交疊淡入，新圖從 z0 慢慢推�
   stage.classList.toggle("vid", !!sc.video); $("hs").classList.toggle("vidmode", !!sc.video);
   if(vd && sc.video){
     vd.pause(); vd.hidden = false; vd.controls = false; vd.poster = sc.poster || "";
-    vd.onended = function(){ if(hs && hs.S.scenes[hs.i] === sc && !hs.paused) hsGo(hs.i + 1); };
+    vd.onended = function(){ if(hs && !hs.S.manualNext && hs.S.scenes[hs.i] === sc && !hs.paused) hsGo(hs.i + 1); };
     if(sc.clickPlay){
       vd.preload = "none";
       if(vd.hasAttribute("src")){ vd.removeAttribute("src"); vd.load(); }
+      play.querySelector("span").textContent = "▶ 播放影片 · " + (sc.seconds || 30) + " 秒";
       play.hidden = false;
       play.onclick = function(e){
         e.stopPropagation();
@@ -3604,11 +3601,11 @@ function hsGo(i){
   hs.i = i; var sc = hs.S.scenes[i]; $("hs").classList.remove("ending"); $("hsEnd").classList.remove("on");
   $("hs").classList.toggle("center", !!sc.center); hsShow(sc); hsSub(sc.sub);
   var a = sc.act, lastAct = hs.S.acts.length - 1; [].forEach.call($("hsDots").children, function(d, k){ d.className = k === a ? "on" : ""; });
-  $("hsPrev").disabled = a === 0; var nxs = hs.S.scenes[i + 1], actEnd = !nxs || nxs.act !== a; $("hsNext").textContent = a === lastAct ? "看完了 ›" : "下一幕 ›"; var nb = $("hsNext"); nb.classList.remove("show"); clearTimeout(hs.nbT); if(actEnd) hs.nbT = setTimeout(function(){ nb.classList.add("show"); }, 600 + Array.from(sc.sub).length*40);   // 這一幕播完、最後一句讀完，才浮出「下一幕」，避免先按而跳過四格總覽（Apple 11/09 03:36）
+  $("hsPrev").disabled = a === 0; var nxs = hs.S.scenes[i + 1], actEnd = !nxs || nxs.act !== a; $("hsNext").textContent = i === n - 1 || (!hs.S.manualNext && a === lastAct) ? "看完了 ›" : "下一幕 ›"; var nb = $("hsNext"); nb.classList.remove("show"); clearTimeout(hs.nbT); if(actEnd || hs.S.manualNext) hs.nbT = setTimeout(function(){ nb.classList.add("show"); }, 600 + Array.from(sc.sub).length*40);   // 這一幕播完、最後一句讀完，才浮出「下一幕」，避免先按而跳過四格總覽（Apple 11/09 03:36）
   $("hsStage").querySelector(".hs-demo") && ($("hsStage").querySelector(".hs-demo").hidden = true);
   hsArm();
 }
-function hsArm(){ clearTimeout(hs.timer); if(hs.paused || hs.i < 0) return; var L = hs.S.scenes, sc = L[hs.i], nx = L[hs.i + 1]; if(sc.video) return;   // 影片幕：播完自動接下一句
+function hsArm(){ clearTimeout(hs.timer); if(hs.paused || hs.i < 0) return; var L = hs.S.scenes, sc = L[hs.i], nx = L[hs.i + 1]; if(sc.video || hs.S.manualNext) return;
   var inAct = nx && nx.act === sc.act; if(!inAct) return;   // 同一幕內字幕自動接續；不自動跨幕，幕與幕之間由訪客按「下一幕」
   hs.timer = setTimeout(function(){ hsGo(hs.i + 1); }, 1400 + Array.from(sc.sub).length*60); }   // 沒有聲音，畫面要緊湊連貫：一句約 20 字停 2.6 秒（Apple 11/10 14:45）
 function hsActStart(a){ var L = hs.S.scenes; for(var k = 0; k < L.length; k++) if(L[k].act === a) return k; return L.length; }
@@ -3622,15 +3619,15 @@ function hsEnd(){   // 單島結尾：先留下感受，再給三個選擇
   $("hsEnd").classList.add("on"); say("接下來想去哪裡？");
 }
 function hsMore(){ $("hs").classList.remove("center"); hs.moreSeen = true; $("hsEnd").classList.remove("on"); $("hs").classList.remove("ending"); [].forEach.call($("hsDots").children, function(d){ d.className = ""; }); $("hsPrev").disabled = true; $("hsNext").textContent = "看完了 ›"; $("hsNext").classList.add("show"); hsMoreGo(0); }
-function hsMoreGo(k){ clearTimeout(hs.timer); var L = hs.S.more.list; if(k >= L.length){ hs.i = -2; return; } hs.i = -2; hs.mk = k; var m = L[k];   // 延伸觀察：真實殼面照片，幾句接續播放，可暫停
+function hsMoreGo(k){ clearTimeout(hs.timer); var L = hs.S.more.list; if(k >= L.length){ hs.i = -2; return; } hs.i = -2; hs.mk = k; var m = L[k]; if(hs.S.manualNext) $("hsNext").textContent = k + 1 < L.length ? "下一幕 ›" : "看完了 ›";   // 延伸觀察：真實殼面照片，幾句接續播放，可暫停
   hsShow(m); hsSub(m.sub); var dm = $("hsStage").querySelector(".hs-demo"); if(dm){ dm.hidden = false; dm.textContent = "實拍"; }
-  if(!hs.paused && k + 1 < L.length) hs.timer = setTimeout(function(){ hsMoreGo(k + 1); }, 2600 + Array.from(m.sub).length*110); }
+  if(!hs.S.manualNext && !hs.paused && k + 1 < L.length) hs.timer = setTimeout(function(){ hsMoreGo(k + 1); }, 2600 + Array.from(m.sub).length*110); }
 function hsClose(then){ if(!hs) return; clearTimeout(hs.timer);
   var vd = $("hsStage").querySelector(".hs-vid"); if(vd) vd.pause();
   $("hsFilmPlay").hidden = true; $("hs").classList.remove("center"); var p = hs.p; hs = null; $("hs").hidden = true; appEl.classList.remove("hs-on"); if(then) then(p); }
-$("hsNext").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2){ hsEnd(); return; } var cur = hs.S.scenes[hs.i], nxs = hs.S.scenes[hs.i + 1]; hsGo(nxs && nxs.act === cur.act ? hs.i + 1 : hsActStart(cur.act + 1)); });   // 下一幕
+$("hsNext").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2){ if(hs.S.manualNext && hs.mk + 1 < hs.S.more.list.length) hsMoreGo(hs.mk + 1); else hsEnd(); return; } var cur = hs.S.scenes[hs.i], nxs = hs.S.scenes[hs.i + 1]; hsGo(nxs && nxs.act === cur.act ? hs.i + 1 : hsActStart(cur.act + 1)); });   // 下一幕
 $("hsPrev").addEventListener("click", function(){ if(!hs || hs.i < 0) return; var a = hs.S.scenes[hs.i].act; if(a > 0) hsGo(hsActStart(a - 1)); });   // 上一幕
-$("hsStage").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2 && hs.mk != null && hs.mk + 1 < hs.S.more.list.length){ hsMoreGo(hs.mk + 1); return; } if(hs.i >= 0 && hs.i < hs.S.scenes.length) hsGo(hs.i + 1); });   // 點圖也能往下看
+$("hsStage").addEventListener("click", function(){ if(!hs || hs.S.manualNext) return; if(hs.i === -2 && hs.mk != null && hs.mk + 1 < hs.S.more.list.length){ hsMoreGo(hs.mk + 1); return; } if(hs.i >= 0 && hs.i < hs.S.scenes.length) hsGo(hs.i + 1); });   // 點圖也能往下看
 $("hsSkip").addEventListener("click", function(){ if(hs) hsEnd(); });
 $("hsPause").addEventListener("click", function(){ if(!hs) return; hs.paused = !hs.paused; var vd = document.querySelector("#hsStage .hs-vid"); if(vd && !vd.hidden){ if(hs.paused) vd.pause(); else { var pr = vd.play(); if(pr && pr.catch) pr.catch(function(){}); } } this.textContent = hs.paused ? "▶" : "❚❚"; this.setAttribute("aria-label", hs.paused ? "繼續播放" : "暫停"); if(hs.paused) clearTimeout(hs.timer); else if(hs.i === -2 && hs.mk != null) hsMoreGo(hs.mk + 1 < hs.S.more.list.length ? hs.mk + 1 : hs.mk); else hsArm(); });
 $("hsMore").addEventListener("click", function(){ if(hs) hsMore(); });
