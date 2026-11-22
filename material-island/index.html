@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+<!-- Google Analytics（GA4：Wishlite 網站／串流「材料小島與學院頁」，Apple 11/23 建立） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-15W3Y6S38E"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", "G-15W3Y6S38E");
+// 小島專用事件：哪座島、進小屋、影片看完、點 LINE／官網
+var GA_ISL = ""; function track(n, p){ try{ p = p || {}; if(GA_ISL && !p.island) p.island = GA_ISL; gtag("event", n, p); }catch(_){ } }
+document.addEventListener("click", function(e){ var a = e.target.closest && e.target.closest("a[href]"); if(!a) return; var h = a.href || "", t = (a.textContent || "").trim().slice(0, 40);
+  if(/line\.me|lin\.ee/.test(h)) track("line_click", { link_text:t, link_url:h }); else if(/wishlite\.com\.tw/.test(h)) track("official_click", { link_text:t, link_url:h }); }, true);
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>材料小島｜Wishlite</title>
@@ -1912,7 +1920,7 @@ function renderBrief(s, i){
   card.scrollTop = 0; viewTo = cardOffset();
 }
 function openSpot(i, how){ hubOff(); twClose(false);
-  var s = SPOTS[i]; mode = how === "tour" ? "tour" : "explore"; if(exp && exp.s !== s) exLeave();
+  var s = SPOTS[i]; GA_ISL = s.id; track("island_visit", { island:s.id, how:how || "" }); mode = how === "tour" ? "tour" : "explore"; if(exp && exp.s !== s) exLeave();
   card.classList.remove("brief", "story", "showcase");
   if(!lastFocus || card.hidden) lastFocus = document.activeElement;
   setActive(i); focusIdx = i; var fresh = markSeen(s); intro.hidden = true; card.classList.remove("end");
@@ -3515,7 +3523,7 @@ var STORY = {
 var hs = null;   // 目前的小屋導覽狀態
 function hsHas(s){ return !!STORY[s.id]; }
 function hsOpen(p, s0){
-  var s = s0 || exp.s, S = STORY[s.id]; if(exp) exp.noSteps = false; $("hs").classList.toggle("wide", !!S.wide); $("hubPanel").hidden = true; $("hubRoom").hidden = true; $("hs").classList.remove("room", "ways", "panel"); hs = { p:p, s:s, S:S, i:-1, lay:0, auto:mode === "tour", paused:false, timer:null, moreSeen:false, list:S.scenes.slice() };
+  var s = s0 || exp.s, S = STORY[s.id]; GA_ISL = s.id; track("house_open", { island:s.id }); if(exp) exp.noSteps = false; $("hs").classList.toggle("wide", !!S.wide); $("hubPanel").hidden = true; $("hubRoom").hidden = true; $("hs").classList.remove("room", "ways", "panel"); hs = { p:p, s:s, S:S, i:-1, lay:0, auto:mode === "tour", paused:false, timer:null, moreSeen:false, list:S.scenes.slice() };
   $("hsBg").style.backgroundImage = "url(" + (p.head || "") + ")"; $("hsPlace").textContent = S.place;
   $("hsSen").src = S.sen || "img/sen-" + s.id + ".webp"; $("hsSen").alt = "小森";
   $("hsDots").innerHTML = S.acts.map(function(){ return "<i></i>"; }).join(""); $("hsMore").textContent = S.more ? S.more.label : "";
@@ -3545,7 +3553,8 @@ function hsShow(sc){   // 換圖：兩層交疊淡入，新圖從 z0 慢慢推�
   stage.classList.toggle("vid", !!sc.video); $("hs").classList.toggle("vidmode", !!sc.video);
   if(vd && sc.video){
     vd.pause(); vd.hidden = false; vd.controls = false; vd.poster = sc.poster || "";
-    vd.onended = function(){ if(!hs || hs.S.scenes[hs.i] !== sc) return; if(sc.waitForEnd) $("hsNext").classList.add("show"); else if(!hs.S.manualNext && !hs.paused) hsGo(hs.i + 1); };
+    vd.onplay = function(){ if(vd._gaS !== sc.video){ vd._gaS = sc.video; track("story_video_start", { video:sc.video }); } };
+    vd.onended = function(){ track("story_video_complete", { video:sc.video }); if(!hs || hs.S.scenes[hs.i] !== sc) return; if(sc.waitForEnd) $("hsNext").classList.add("show"); else if(!hs.S.manualNext && !hs.paused) hsGo(hs.i + 1); };
     if(sc.clickPlay){
       vd.preload = "none";
       if(vd.hasAttribute("src")){ vd.removeAttribute("src"); vd.load(); }
