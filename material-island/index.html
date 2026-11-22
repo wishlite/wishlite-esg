@@ -3494,14 +3494,10 @@ var STORY = {
     { act:1, img:"img/v2-story-diaper-dye.webp", at:"50% 50%", z0:1, z1:1, note:"中間：原色紙漿｜兩側：染色紙漿", sub:"紙纖加水調成紙漿，\n再染成藍色和綠色。" },
     { act:1, img:"img/work-diaper-seedearth.webp", at:"50% 50%", z0:1.02, z1:1.1, sub:"再把紙漿做成\n一顆顆種子地球。" },
     { act:2, clear:true, center:true, sub:"原來，認識材料，\n可以從重新看待一件熟悉的東西開始。" } ] },
-  caps:{ place:"瓶蓋小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
-    { act:0, img:"img/v2-story-caps-1.webp", at:"50% 50%", z0:1, z1:1.1, sub:"一個小小的瓶蓋，\n能做什麼？" },
-    { act:1, img:"img/v2-story-caps-1.webp", note:"材質分類", sub:"瓶蓋經過分類、清潔，\n先分清材質。" },   // Apple 11/18 20:32：瓶蓋製程保持三張照片，一張一頁，字幕合併
-    { act:1, img:"img/v2-story-caps-2.webp", at:"50% 50%", z0:1, z1:1.12, sub:"破碎成彩色的小碎片，\n再看看顏色能怎麼搭配。" },
-    { act:1, img:"img/v2-story-caps-3-real.webp", sub:"不同顏色放在一起，\n做成一隻隻小海龜。" },
-    { act:1, clear:true, center:true, sub:"原來，顏色怎麼排，\n就是每隻小海龜的個性。" },
-    { act:2, img:"img/work-caps-turtle.webp", cover:true, at:"50% 50%", z0:1, z1:1.08, sub:"比一比，\n這幾隻小海龜的配色有什麼不同？" },
-    { act:2, clear:true, center:true, sub:"下次喝完飲料，\n也看看瓶蓋上的材質標示。" } ] },
+  caps:{ place:"瓶蓋小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
+    { act:0, video:"video/caps-material-story.mp4", poster:"video/caps-material-story-poster.jpg", clickPlay:true, seconds:21.75, sub:"" },
+    { act:1, img:"img/work-caps-turtle.webp", cover:true, at:"50% 50%", z0:1, z1:1, sub:"比一比，\n這幾隻小海龜的配色有什麼不同？" },
+    { act:1, clear:true, center:true, sub:"同樣是回收瓶蓋，\n分開備料，就能做出不同配色。" } ] },
   board:{ place:"再生板材小屋", sen:"img/rit-board-g.webp", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[
     { act:0, img:"img/v2-story-board-0.webp", at:"50% 50%", z0:1, z1:1.1, sub:"養樂多瓶喝完了，\n瓶子去了哪裡？" },
     { act:1, img:"img/v2-story-board-1.webp", note:"PS｜聚苯乙烯", sub:"這裡使用的養樂多瓶與保麗龍，\n都是 PS 塑膠。" },
