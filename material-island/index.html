@@ -3506,14 +3506,10 @@ var STORY = {
     { act:2, img:"img/work-board-coaster-p2.webp", cover:true, at:"50% 50%", z0:1, z1:1.05, sub:"看看還沒拼貼的底座，\n和完成的杯墊。" },
     { act:2, img:"img/work-board-coaster.webp", cover:true, at:"50% 50%", z0:1.02, z1:1.18, sub:"彩色馬賽克下面，\n也藏著回收塑膠的故事。" },
     { act:2, clear:true, center:true, sub:"下次回收塑膠時，\n也看看上面的材質標示。" } ] },
-  natural:{ place:"自然素材小屋", acts:["提出疑問","看見轉變","回到生活"], more:null, scenes:[   // Apple 11/18 21:40：換成桂花葉實拍（新鮮葉、浸泡整理、葉脈、染色），一張照片一頁
-    { act:0, img:"img/v2-story-natural-r1.webp", cover:true, at:"50% 50%", z0:1, z1:1.06, sub:"葉子裡的細細紋路，\n原本是做什麼的？" },
-    { act:1, img:"img/v2-story-natural-r3.webp", cover:true, at:"45% 55%", z0:1, z1:1.06, sub:"把桂花葉浸泡、整理，\n再慢慢去除葉肉。" },
-    { act:1, img:"img/v2-story-natural-r4.webp", cover:true, at:"60% 45%", z0:1, z1:1.08, slow:true, sub:"葉肉去除後，\n細細的脈絡就更清楚了。" },
-    { act:1, img:"img/v2-story-natural-r5.webp", cover:true, at:"55% 45%", z0:1, z1:1.06, sub:"再替葉脈染上\n喜歡的顏色。" },
-    { act:1, clear:true, center:true, sub:"原來，這些細線不只是花紋，\n也是葉子的運輸網。" },
-    { act:2, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把一片葉子的紋路，\n留在正在讀的那一頁。" },
-    { act:2, clear:true, center:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
+  natural:{ place:"自然素材小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
+    { act:0, video:"video/natural-material-story.mp4", poster:"video/natural-material-story-poster.jpg", clickPlay:true, seconds:35, sub:"" },
+    { act:1, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把土地的記憶封存在書籤裡，\n陪伴日常的每一次閱讀。" },
+    { act:1, clear:true, center:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
   oyster:{ place:"牡蠣殼小屋", manualNext:true, scenes:[
     { act:0, k:"發現", video:"video/oyster-island-intro.mp4", poster:"video/oyster-island-intro-poster.jpg", clickPlay:true, seconds:21, sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）；21:44 定案版 window-pot
     { act:0, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
