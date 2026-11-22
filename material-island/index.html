@@ -908,7 +908,7 @@ const ENTERPRISE_LINE_MSG = "https://line.me/R/oaMessage/@728zvmqz/?";
 var SEN_BASE = "img/sen-base.webp";
 var SPOTS = [
   { id:"coffee", pier:[.366, .698], ritual:{ say:"杯子裡的咖啡渣，還能變成什麼？", wear:"穿上咖啡渣裝備", fx:"pop", walk:.3, wave:true, v2:true, spin:true, more:["b2"], path:[.6, .45], depth:[.47, .58], decor:true, shell:[0.625, 0.7781, 0.9886, 0.9844] }, showcase:true, theater:["img/ch1-coffee.jpg", "材料小劇場：微縮小人在咖啡杯與咖啡渣旁搬運、鏟渣"], finder:"coffee", body3d:"img/v2-isl-coffee.webp", plaza:0.58, brief:"杯子裡的任務結束，手作桌上的故事才要開始。", name:"咖啡渣", line:"咖啡喝完了，我還有事忙。",
-    img:"img/ch1-coffee.jpg", obj:"img/obj-coffee.webp", sen:"img/sen-coffee.webp", alt:"一小堆咖啡渣與幾顆咖啡豆",
+    img:"img/ch1-coffee.jpg", obj:"img/obj-coffee.webp", sen:"img/sen-coffee-original-pack.webp", alt:"一小堆咖啡渣與幾顆咖啡豆",
     body:"<p>每天被沖煮後留下的咖啡渣，重新轉化成手作體驗材料。香氣、觸感都還在，讓永續從抽象概念走進日常。</p>",
     ws:[["咖啡渣發財香牌", "https://wishlite.com.tw/service/detail/30", "", "img/work-coffee-paiv.webp"], ["咖啡渣香氛燈", 410, "", "img/work-coffee-lamp.webp"], ["咖啡渣小海龜肌理畫", 377, "", "img/work-coffee-turtle.webp"], ["咖啡渣擴香石", 448, "", "img/work-coffee-stone.webp"]],
     kits:[["咖啡渣肌理畫 DIY 材料包", NOTION + "333704274681804a9c50f54fe0716238", "img/kit-coffee-texture.webp"], ["咖啡渣浮雕畫 DIY 材料包", NOTION + "3724a58538574b10a6de22fb95f23583", "img/kit-coffee-relief.webp"]],
@@ -920,7 +920,7 @@ var SPOTS = [
     kits:[["牛仔褲杯墊 DIY 材料包", NOTION + "DIY-32570427468180848f8dd1ee3dc4cd7c", "img/kit-denim-coaster.webp"], ["牛仔褲字母掛飾 DIY 材料包", NOTION + "362b534f7ba64382b196c207df02df83", "img/kit-denim-letter-clean.webp"]],
     gifts:[], pending:"牛仔褲的來源與處理說明，待 Apple 提供確認版內容。" },
   { id:"oyster", pier:[.37, .74], ritual:{ say:"咦，這裡有一枚牡蠣殼。", wear:"穿上牡蠣裝備", tap:true, invite:"進屋看看，牡蠣殼還能變成什麼？", walk:-.32, v2:true, shell:[0.0379, 0.8203, 0.3617, 0.9828] }, finder:"oyster", body3d:"img/v2-isl-oyster.webp", plaza:.46, brief:"從殼到盆器，這回換我照顧植物。", name:"牡蠣殼", line:"吃完了，殼還有下半場。",
-    img:"img/ch3-oyster.jpg", obj:"img/obj-oyster.webp", sen:"img/sen-oyster.webp", alt:"兩片牡蠣殼、碎殼與一小堆殼粉",
+    img:"img/ch3-oyster.jpg", obj:"img/obj-oyster.webp", sen:"img/sen-oyster-holding-shell.png", alt:"兩片牡蠣殼、碎殼與一小堆殼粉",
     body:"<p>牡蠣肉被吃掉了，殼卻沒有跟著消失。殼主要由碳酸鈣構成，經過分類、清潔、乾燥、破碎與研磨，才能重新成為材料。</p>",
     kits:[["海洋風擴香石 DIY 材料包", NOTION + "32570427468180488f1de0a7385b3061", "img/kit-oyster-ocean.webp"], ["水晶星願擴香石 DIY 材料包", NOTION + "33570427468180058989fdc895ed3d6f", "img/kit-oyster-crystal.webp"]],
     // 詳細故事頁示範版：材料小劇場大圖 → 精簡故事 → 作品照片卡 → 參與入口；活動紀錄收在最後「延伸看看」
@@ -2803,7 +2803,7 @@ function exPick(){   // 點擊時先看是不是點到探索道具
 function ritLoad(s){
   fxLoad(s);
   if(s._ritTex) return; s._ritTex = {}; var L = new THREE.TextureLoader();
-  RIT_KEYS.concat(["shell"], s.ritual.more || []).forEach(function(k){ L.load("img/rit-" + s.id + "-" + k + ".webp", function(t){ t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); s._ritTex[k] = t; }); });
+  RIT_KEYS.concat(["shell"], s.ritual.more || []).forEach(function(k){ L.load((s.id === "coffee" || s.id === "oyster") && k === "g" ? s.sen : "img/rit-" + s.id + "-" + k + ".webp", function(t){ t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = renderer.capabilities.getMaxAnisotropy(); s._ritTex[k] = t; }); });
 }
 // 手機載入優化（Apple 11/10 20:00）：一打開只載地球、總部和七座島的島圖；船開往哪座島才載那座島的小屋、道具、換裝圖，到了之後再順手預載下一站
 function islWant(i, pre){ var s = SPOTS[i]; if(!s || s._load) return; s._load = true; if(s.ritual && GL) ritLoad(s);
@@ -3473,8 +3473,8 @@ var STEP_LABEL = {   // 製程每一步的名稱（取自原本總覽頁的名�
   diaper:[["img/v2-story-diaper-1.webp","NG 尿布"],["img/v2-story-diaper-2-real.webp","紙纖"],["img/v2-story-diaper-dye.webp","原色與染色紙漿"],["img/work-diaper-seedearth.webp","種子地球"]],
   natural:[["img/v2-story-natural-r1.webp","桂花葉",1],["img/v2-story-natural-r3.webp","去除葉肉",2],["img/v2-story-natural-r4.webp","葉脈",3],["img/v2-story-natural-r5.webp","染色葉脈",4]] };   // 第三個值＝第幾步（同一步可有兩張照片）
 var STORY = {
-  coffee:{ place:"咖啡渣小屋", acts:["看見轉變", "回到生活"], more:null, scenes:[
-    { act:0, video:"video/coffee-material-story.mp4", poster:"video/coffee-material-story-poster.jpg", clickPlay:true, sub:"" },
+  coffee:{ place:"咖啡渣小屋", sen:"img/sen-coffee-original-pack.webp", manualNext:true, acts:["看見轉變", "回到生活"], more:null, scenes:[
+    { act:0, video:"video/coffee-material-story.mp4", poster:"video/coffee-material-story-poster.jpg", clickPlay:true, waitForEnd:true, sub:"" },
     { act:0, clear:true, center:true, sub:"原來，沖煮結束後，\n咖啡渣還能繼續被使用。" },
     { act:1, img:"img/v2-story-coffee-4.webp", at:"72% 52%", z0:1.3, z1:1.4, inset:["img/v2-story-coffee-3.webp", "原本的模樣"], sub:"換了模樣，\n咖啡渣也成了隨身小物的一部分。" },
     { act:1, clear:true, center:true, sub:"下次倒掉咖啡渣前，\n也許你會想起它還能去哪裡。" } ] },
@@ -3498,12 +3498,12 @@ var STORY = {
     { act:1, clear:true, center:true, sub:"同樣是回收瓶蓋，\n分開備料，就能做出不同配色。" } ] },
   board:{ place:"再生板材小屋", sen:"img/rit-board-g.webp", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
     { act:0, video:"video/board-material-story-coaster.mp4", poster:"video/board-material-story-poster.jpg", clickPlay:true, seconds:35, sub:"" },
-    { act:1, clear:true, center:true, sub:"用完的塑膠容器，先倒空、簡單清洗，\n再依當地規定分類回收。" } ] },
+    { act:1, clear:true, center:true, sub:"下次喝完飲料，跟小森一起\n把空瓶倒乾淨、沖一沖，\n再按你家附近的回收規定分好。\n分好了，這些塑膠就有機會\n變成新的東西喔！" } ] },
   natural:{ place:"自然素材小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
     { act:0, video:"video/natural-material-story.mp4", poster:"video/natural-material-story-poster.jpg", clickPlay:true, seconds:35, sub:"" },
     { act:1, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把土地的記憶封存在書籤裡，\n陪伴日常的每一次閱讀。" },
     { act:1, clear:true, center:true, sub:"下次散步時，\n也看看身邊葉子的紋路。" } ] },
-  oyster:{ place:"牡蠣殼小屋", manualNext:true, scenes:[
+  oyster:{ place:"牡蠣殼小屋", sen:"img/sen-oyster-holding-shell.png", manualNext:true, scenes:[
     { act:0, k:"發現", video:"video/oyster-island-intro.mp4", poster:"video/oyster-island-intro-poster.jpg", clickPlay:true, seconds:21, sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）；21:44 定案版 window-pot
     { act:0, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
     { act:1, k:"回想", img:"img/case-oyster-pot.webp", cover:true, at:"50% 45%", z0:1, z1:1.05, inset:["img/rit-oyster-shell.webp", "原本的模樣"], sub:"換了模樣，你還認得它嗎？" },
@@ -3545,7 +3545,7 @@ function hsShow(sc){   // 換圖：兩層交疊淡入，新圖從 z0 慢慢推�
   stage.classList.toggle("vid", !!sc.video); $("hs").classList.toggle("vidmode", !!sc.video);
   if(vd && sc.video){
     vd.pause(); vd.hidden = false; vd.controls = false; vd.poster = sc.poster || "";
-    vd.onended = function(){ if(hs && !hs.S.manualNext && hs.S.scenes[hs.i] === sc && !hs.paused) hsGo(hs.i + 1); };
+    vd.onended = function(){ if(!hs || hs.S.scenes[hs.i] !== sc) return; if(sc.waitForEnd) $("hsNext").classList.add("show"); else if(!hs.S.manualNext && !hs.paused) hsGo(hs.i + 1); };
     if(sc.clickPlay){
       vd.preload = "none";
       if(vd.hasAttribute("src")){ vd.removeAttribute("src"); vd.load(); }
@@ -3590,7 +3590,7 @@ function hsGo(i){
   hs.i = i; var sc = hs.S.scenes[i]; $("hs").classList.remove("ending"); $("hsEnd").classList.remove("on");
   $("hs").classList.toggle("center", !!sc.center); hsShow(sc); hsSub(sc.sub);
   var a = sc.act, lastAct = hs.S.acts.length - 1; [].forEach.call($("hsDots").children, function(d, k){ d.className = k === a ? "on" : ""; });
-  $("hsPrev").disabled = a === 0; var nxs = hs.S.scenes[i + 1], actEnd = !nxs || nxs.act !== a; $("hsNext").textContent = i === n - 1 || (!hs.S.manualNext && a === lastAct) ? "看完了 ›" : "下一幕 ›"; var nb = $("hsNext"); nb.classList.remove("show"); clearTimeout(hs.nbT); if(actEnd || hs.S.manualNext) hs.nbT = setTimeout(function(){ nb.classList.add("show"); }, 600 + Array.from(sc.sub).length*40);   // 這一幕播完、最後一句讀完，才浮出「下一幕」，避免先按而跳過四格總覽（Apple 11/09 03:36）
+  $("hsPrev").disabled = a === 0; var nxs = hs.S.scenes[i + 1], actEnd = !nxs || nxs.act !== a; $("hsNext").textContent = i === n - 1 || (!hs.S.manualNext && a === lastAct) ? "看完了 ›" : "下一幕 ›"; var nb = $("hsNext"); nb.classList.remove("show"); clearTimeout(hs.nbT); if(!sc.waitForEnd && (actEnd || hs.S.manualNext)) hs.nbT = setTimeout(function(){ nb.classList.add("show"); }, 600 + Array.from(sc.sub).length*40);   // 這一幕播完、最後一句讀完，才浮出「下一幕」，避免先按而跳過四格總覽（Apple 11/09 03:36）
   $("hsStage").querySelector(".hs-demo") && ($("hsStage").querySelector(".hs-demo").hidden = true);
   hsArm();
 }
@@ -3614,7 +3614,7 @@ function hsMoreGo(k){ clearTimeout(hs.timer); var L = hs.S.more.list; if(k >= L.
 function hsClose(then){ if(!hs) return; clearTimeout(hs.timer);
   var vd = $("hsStage").querySelector(".hs-vid"); if(vd) vd.pause();
   $("hsFilmPlay").hidden = true; $("hs").classList.remove("center"); var p = hs.p; hs = null; $("hs").hidden = true; appEl.classList.remove("hs-on"); if(then) then(p); }
-$("hsNext").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2){ if(hs.S.manualNext && hs.mk + 1 < hs.S.more.list.length) hsMoreGo(hs.mk + 1); else hsEnd(); return; } var cur = hs.S.scenes[hs.i], nxs = hs.S.scenes[hs.i + 1]; hsGo(nxs && nxs.act === cur.act ? hs.i + 1 : hsActStart(cur.act + 1)); });   // 下一幕
+$("hsNext").addEventListener("click", function(){ if(!hs) return; if(hs.i === -2){ if(hs.S.manualNext && hs.mk + 1 < hs.S.more.list.length) hsMoreGo(hs.mk + 1); else hsEnd(); return; } var cur = hs.S.scenes[hs.i], nxs = hs.S.scenes[hs.i + 1]; if(cur && cur.waitForEnd && !$("hsNext").classList.contains("show")) return; hsGo(nxs && nxs.act === cur.act ? hs.i + 1 : hsActStart(cur.act + 1)); });   // 下一幕
 $("hsPrev").addEventListener("click", function(){ if(!hs || hs.i < 0) return; var a = hs.S.scenes[hs.i].act; if(a > 0) hsGo(hsActStart(a - 1)); });   // 上一幕
 $("hsStage").addEventListener("click", function(){ if(!hs || hs.S.manualNext) return; if(hs.i === -2 && hs.mk != null && hs.mk + 1 < hs.S.more.list.length){ hsMoreGo(hs.mk + 1); return; } if(hs.i >= 0 && hs.i < hs.S.scenes.length) hsGo(hs.i + 1); });   // 點圖也能往下看
 $("hsSkip").addEventListener("click", function(){ if(hs) hsEnd(); });
