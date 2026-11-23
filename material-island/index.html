@@ -3525,7 +3525,9 @@ var STORY = {
     { act:1, img:"img/case-group-event.webp", cover:true, at:"50% 40%", z0:1, z1:1.04, sub:"在 Wishlite，我們把這些轉變，\n設計成可以一起動手的體驗。" },
     { act:1, img:"img/case-group-event.webp", cover:true, at:"40% 78%", z0:1.15, z1:1.28, sub:"從認識材料開始，\n讓每個人做出自己的選擇。" },
     { act:2, img:"img/hub-inside.webp", at:"50% 50%", z0:1, z1:1.02, clearWide:true, sub:"離開小島後，也許你會多看一眼，\n身邊那些準備被丟掉的東西。" } ] },
-  denim:{ place:"牛仔褲小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
+  denim:{ place:"牛仔褲小屋", manualNext:true,
+    impact:{ fact:"台灣每分鐘約有 500 件衣服被丟掉，\n一年將近 8.2 萬公噸。", src:"資料來源：環境部資源循環署", ours:"在 Wishlite，已經有約 500 人次\n親手讓舊牛仔褲變成新的作品。" },   // Apple 11/23 定：環境部舊衣數據，參與人次約 500
+    acts:["看見轉變","回到生活"], more:null, scenes:[
     { act:0, video:"video/denim-coaster-intro.mp4", poster:"video/denim-coaster-intro-poster.jpg", clickPlay:true, waitForEnd:true, seconds:17.5, sub:"" },
     { act:1, img:"img/work-denim-coaster.webp", at:"50% 58%", z0:1.05, z1:1.25, inset:["img/v2-story-denim-1.webp","舊牛仔褲"], note:"以工藝膠黏合固定", sub:"找找看，\n杯墊上還有哪些熟悉的牛仔褲布紋？" },
     { act:1, clear:true, center:true, sub:"牛仔褲穿不下了？\n動手改一改，做成包包或杯墊吧！" } ] },
