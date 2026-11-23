@@ -2546,7 +2546,13 @@ function hubProps(ib){ var W = ib.userData.W, H = ib.userData.H, L = new THREE.T
 var SCENE_DECO = {   // 島上裝飾小物：只是島的一部分，不能點、不跳說明，也不擋小森的路（座標同島圖 0–1，底部中心對準）
   oyster:[ { img:"img/v2-deco-oyster-basket.webp", at:[.56, .335], w:.09 },    // 原貌｜一籃牡蠣殼（後方沙地）
            { img:"img/v2-deco-oyster-powder.webp", at:[.80, .485], w:.085 },   // 處理｜殼粉與木杓（材料堆右側）
-           { img:"img/v2-deco-oyster-pots.webp", at:[.765, .635], w:.10 } ] }; // 作品｜多肉盆栽（材料包右後方）
+           { img:"img/v2-deco-oyster-pots.webp", at:[.765, .635], w:.10 } ],   // 作品｜多肉盆栽（材料包右後方）
+  denim:[ { img:"img/v2-deco-denim-jeans.webp", at:[.56, .32], w:.15 },        // 原貌｜曬衣繩上的舊牛仔褲（後方）
+          { img:"img/v2-deco-denim-strips.webp", at:[.585, .43], w:.09 },      // 處理｜一捆牛仔褲布條（材料堆左側）
+          { img:"img/v2-deco-denim-coasters.webp", at:[.75, .575], w:.085 } ],   // 作品｜牛仔褲杯墊（材料堆右前方）
+  coffee:[ { img:"img/v2-deco-coffee-sieve.webp", at:[.55, .36], w:.11 },      // 處理｜竹篩上攤平的咖啡渣（後方）
+           { img:"img/v2-deco-coffee-bucket.webp", at:[.82, .50], w:.085 },    // 原貌｜咖啡渣收集桶與布袋（材料堆右側）
+           { img:"img/v2-deco-coffee-charms.webp", at:[.76, .575], w:.095 } ] }; // 作品｜咖啡渣香牌吊架（材料堆右前方）
 var SCENES = {
   board:{ hint:"點點島上的東西，跟小森一起探索", props:[
     { id:"house", img:"img/v2-house-board.webp", head:"img/scene-board-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-1.0, title:"走進捷綠木小屋", text:"屋子是用回收塑膠再生板材蓋的。來看看在這裡可以動手做什麼。", show:"ws" },
