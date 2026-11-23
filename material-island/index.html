@@ -2043,7 +2043,7 @@ function openEnd(from){
   from = from && from.finder ? from : null; endFrom = from; ++cardSeq; clearTimeout(dressT); if(rit) ritClear(); exLeave();
   var fromSen = senAt; senAt = -1; if(fromSen >= 0) startHop(SPOTS[fromSen]._sen, -1, false);   // 小森跟著你回到工作坊
   mode = "end"; setActive(-1); focusIdx = -1; setBiz(from); card.hidden = true; chips.hidden = true; intro.hidden = true; nbHide();
-  hubOn = true; hubSay = hubLine(); var b = $("rtSay"); b.textContent = hubSay; b.hidden = false; b.classList.remove("on"); setTimeout(function(){ if(hubOn) b.classList.add("on"); }, hop ? 2600 : 900);
+  hubOn = true; GA_ISL = "hub"; hubSay = hubLine(); var b = $("rtSay"); b.textContent = hubSay; b.hidden = false; b.classList.remove("on"); setTimeout(function(){ if(hubOn) b.classList.add("on"); }, hop ? 2600 : 900);
   tipSet("door", "進工作室坐坐", hubEnter);
   viewTo = { ox:0, oy:0 }; if(GL) flyTo(islPose(HUB.isl, 4.4, null, size().w <= 640 ? .84 : .66), false, 1.3);   // 靠近到看得清小屋、碼頭與小森
   try{ history.replaceState(null, "", "#next"); }catch(_){}
@@ -3554,7 +3554,7 @@ function hsShow(sc){   // 換圖：兩層交疊淡入，新圖從 z0 慢慢推�
   if(vd && sc.video){
     vd.pause(); vd.hidden = false; vd.controls = false; vd.poster = sc.poster || "";
     vd.onplay = function(){ if(vd._gaS !== sc.video){ vd._gaS = sc.video; track("story_video_start", { video:sc.video }); } };
-    vd.onended = function(){ track("story_video_complete", { video:sc.video }); if(!hs || hs.S.scenes[hs.i] !== sc) return; if(sc.waitForEnd) $("hsNext").classList.add("show"); else if(!hs.S.manualNext && !hs.paused) hsGo(hs.i + 1); };
+    vd.onended = function(){ if(vd._gaE !== sc.video){ vd._gaE = sc.video; track("story_video_complete", { video:sc.video }); } if(!hs || hs.S.scenes[hs.i] !== sc) return; if(sc.waitForEnd) $("hsNext").classList.add("show"); else if(!hs.S.manualNext && !hs.paused) hsGo(hs.i + 1); };
     if(sc.clickPlay){
       vd.preload = "none";
       if(vd.hasAttribute("src")){ vd.removeAttribute("src"); vd.load(); }
