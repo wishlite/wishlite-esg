@@ -659,6 +659,7 @@ a{color:var(--moss)}
 .hs-impact p{margin:0;white-space:pre-line;font-size:14px;line-height:1.65}
 .hs-impact .o{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,253,248,.25);font-weight:700;color:#f1dca6}
 .hs-impact small{display:block;margin-top:4px;font-size:11px;opacity:.7}
+.hs-impact.solo .o{margin-top:0;padding-top:0;border-top:0}
 .hs-end button{height:50px;border-radius:999px;font-size:16px;font-weight:600;cursor:pointer;border:1px solid rgba(255,253,248,.6);background:rgba(255,253,248,.14);color:#fff}
 .hs-end button.main{background:#fffdf8;color:#3d5a3e;border-color:#fffdf8}
 .hs-lite{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.hs-lite > *{white-space:nowrap}.hs-end .hs-lite .hs-link{display:inline-flex;align-items:center;height:40px;padding:0 16px;font-size:14px;font-weight:600;background:rgba(255,253,248,.1);border:1px solid rgba(255,253,248,.55);border-radius:999px;color:#fffdf8;text-decoration:none}
@@ -3548,7 +3549,9 @@ var STORY = {
     acts:["看見轉變","回到生活"], more:null, scenes:[
     { act:0, video:"video/board-material-story-coaster.mp4", poster:"video/board-material-story-poster.jpg", clickPlay:true, waitForEnd:true, seconds:35, sub:"" },
     { act:1, clear:true, center:true, sub:"下次跟小森一起做好回收分類，\n這些塑膠就有機會\n變成新的東西喔！" } ] },
-  natural:{ place:"自然素材小屋", manualNext:true, acts:["看見轉變","回到生活"], more:null, scenes:[
+  natural:{ place:"自然素材小屋", manualNext:true,
+    impact:{ ours:"一片落葉、一顆松果，\n在 Wishlite 已經有約 1,500 人次，\n把它們變成新的作品。" },   // Apple 11/23 定：自然素材不放公開數據，只放參與人次約 1500
+    acts:["看見轉變","回到生活"], more:null, scenes:[
     { act:0, video:"video/natural-material-story.mp4", poster:"video/natural-material-story-poster.jpg", clickPlay:true, waitForEnd:true, seconds:35, sub:"" },
     { act:1, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把土地的記憶封存在書籤裡，\n陪伴日常的每一次閱讀。" },
     { act:1, clear:true, center:true, sub:"下次出門，看看路邊的植物吧！\n你可能會發現以前沒注意的細節喔！" } ] },
@@ -3656,7 +3659,7 @@ function hsEnd(){   // 單島結尾：先留下感受，再給三個選擇
   if(hs.s.id === "hub"){ try{ localStorage.setItem("wl-hub-story", "1"); }catch(_){} hubRoom(); return; }   // 故事播完回到工作室內景，讓訪客自己選下一步
   clearTimeout(hs.timer); var fromMore = hs.i === -2; hs.i = hs.S.scenes.length; var last = hs.S.scenes[hs.S.scenes.length - 1];
   $("hsStage").classList.add("off"); $("hs").classList.add("ending"); if(!fromMore && $("hsSub").textContent !== last.sub.replace(/\n/g, "")) hsSub(last.sub);
-  var im = hs.S.impact; $("hsImpact").hidden = !im; if(im){ $("hsImpF").textContent = im.fact; $("hsImpO").textContent = im.ours || ""; $("hsImpO").hidden = !im.ours; $("hsImpS").textContent = im.src; }   // 影響數字（Apple 11/23）
+  var im = hs.S.impact; $("hsImpact").hidden = !im; if(im){ $("hsImpF").textContent = im.fact || ""; $("hsImpF").hidden = !im.fact; $("hsImpS").textContent = im.src || ""; $("hsImpS").hidden = !im.src; $("hsImpO").textContent = im.ours || ""; $("hsImpO").hidden = !im.ours; $("hsImpact").classList.toggle("solo", !im.fact); }   // 影響數字（Apple 11/23）
   $("hsMore").hidden = hs.moreSeen || !hs.S.more; $("hsWs").href = finderView("activities", hs.s); $("hsWorks").href = finderView("gifts", hs.s); 
   $("hsEnd").classList.add("on"); say("接下來想去哪裡？");
 }
