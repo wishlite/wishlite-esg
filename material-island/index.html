@@ -2543,6 +2543,10 @@ function hubProps(ib){ var W = ib.userData.W, H = ib.userData.H, L = new THREE.T
   HUB_PROPS.forEach(function(p){ L.load(p.img, function(tex){ tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
     var w = p.w*W, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, p.ro); mesh.scale.set(w, h, 1);
     mesh.position.set((p.at[0] - .5)*W - ((p.dx || .5) - .5)*w, (1 - p.at[1])*H - .06*h + h/2, .05); ib.add(mesh); HUB.props.push(mesh); }); }); }
+var SCENE_DECO = {   // 島上裝飾小物：只是島的一部分，不能點、不跳說明，也不擋小森的路（座標同島圖 0–1，底部中心對準）
+  oyster:[ { img:"img/v2-deco-oyster-basket.webp", at:[.56, .335], w:.09 },    // 原貌｜一籃牡蠣殼（後方沙地）
+           { img:"img/v2-deco-oyster-powder.webp", at:[.80, .485], w:.085 },   // 處理｜殼粉與木杓（材料堆右側）
+           { img:"img/v2-deco-oyster-pots.webp", at:[.765, .635], w:.10 } ] }; // 作品｜多肉盆栽（材料包右後方）
 var SCENES = {
   board:{ hint:"點點島上的東西，跟小森一起探索", props:[
     { id:"house", img:"img/v2-house-board.webp", head:"img/scene-board-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-1.0, title:"走進捷綠木小屋", text:"屋子是用回收塑膠再生板材蓋的。來看看在這裡可以動手做什麼。", show:"ws" },
@@ -2611,6 +2615,9 @@ function sceneMake(s){
       var dx = kind === "house" ? (HOUSE_DX[s.id] || .5) : .5;   // 房子以門洞對準門口座標；材料堆、材料包以底部中心對準
       mesh.scale.set(w, h, 1); mesh.position.set(q[0] - (dx - .5)*w, q[1] - .06*h + h/2, .05);
       mesh.userData.prop = p; mesh.userData.spot = s; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; g.add(mesh); if(!(kind === "pile" && s.ritual && s.ritual.tap)) exProps.push(mesh); }); });   /* 牡蠣殼島：材料堆先只保留場景外觀，不跳說明 */
+  (SCENE_DECO[s.id] || []).forEach(function(d){ L.load(d.img, function(tex){ tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
+    var w = d.w*W, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, 7.1), q = P(d.at); mesh.scale.set(w, h, 1); mesh.position.set(q[0], q[1] - .06*h + h/2, .04);
+    mesh.userData.deco = true; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; g.add(mesh); }); });
   sc.props.forEach(function(p){ if(p.door == null) return;   // 屋子門口立一塊直式招牌：邀請大家走進去探索
     var tex = signTex(p.title, s.id), w = .44*D.sW, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, 8), q = P(LY.sign); mesh.scale.set(w, h, 1);
     mesh.position.set(q[0], q[1] + h/2, .06); mesh.userData.prop = p; mesh.userData.spot = s; mesh.userData.sign = true; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; if(!(s.ritual && s.ritual.tap)){ g.add(mesh); exProps.push(mesh); }   /* 牡蠣殼島：不放直式門牌，改由門口箭頭指引 */
