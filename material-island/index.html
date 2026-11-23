@@ -14,6 +14,19 @@ document.addEventListener("click", function(e){ var a = e.target.closest && e.ta
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>材料小島｜Wishlite</title>
 <meta name="description" content="走進 Wishlite 材料小島：咖啡渣、牛仔褲、牡蠣殼、NG 尿布、回收瓶蓋、捷綠木與自然素材，七座小島，看見材料的下一段旅程。">
+<!-- 分享預覽（Apple 11/23 同意封面圖）：貼到 LINE／FB 時顯示 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Wishlite 韻手作永續">
+<meta property="og:title" content="材料小島｜Wishlite">
+<meta property="og:description" content="每一份材料，都還有下一站。跟小森開船上島，看看咖啡渣、牡蠣殼和舊牛仔褲，還能變成什麼。">
+<meta property="og:url" content="https://wishlite.github.io/wishlite-esg/material-island/">
+<meta property="og:image" content="https://wishlite.github.io/wishlite-esg/material-island/img/og-material-island.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="毛氈地球上的材料小島，左側寫著：每一份材料，都還有下一站。">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wishlite.github.io/wishlite-esg/material-island/img/og-material-island.jpg">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -371,6 +384,8 @@ a{color:var(--moss)}
 /* 背景音樂（預設關閉，訪客按了才播放） */
 .musicBtn{display:inline-flex;align-items:center;gap:5px;min-height:34px;cursor:pointer;font:inherit;font-size:13px;color:var(--muted)}
 .musicBtn svg{width:16px;height:16px;flex:none}
+.shareBtn{display:inline-flex;align-items:center;gap:5px;min-height:34px;cursor:pointer;font:inherit;font-size:13px;color:var(--moss-dark)}
+.shareBtn svg{width:16px;height:16px;flex:none}
 .musicBtn .mOn{display:none}
 .musicBtn[aria-pressed="true"]{background:var(--moss);border-color:var(--moss);color:var(--white)}
 .musicBtn[aria-pressed="true"] .mOn{display:inline}
@@ -381,11 +396,12 @@ a{color:var(--moss)}
 .site-return{display:inline-flex;align-items:center;min-height:34px;color:var(--moss-dark);text-decoration:none}
 .opening .site-return{position:absolute;left:94px;top:calc(10px + env(safe-area-inset-top));min-height:30px;padding:3px 10px;pointer-events:auto;z-index:2}
 @media (max-width:640px){
-  .top{display:grid;grid-template-columns:repeat(4,max-content);justify-content:space-between;gap:5px}
+  .top{display:grid;grid-template-columns:repeat(5,max-content);justify-content:space-between;gap:5px}
   .top .brand{grid-column:1/3;grid-row:1;justify-self:start}
-  .top .times{grid-column:3/5;grid-row:1;justify-self:end}
+  .top .times{grid-column:3/6;grid-row:1;justify-self:end}
   .top .sp{display:none}
-  .top .site-return,.top .biz,.top .bookBtn,.top .musicBtn{position:static;grid-row:2;min-height:34px;padding:4px 6px;font-size:12px;justify-self:start}
+  .top .site-return,.top .biz,.top .bookBtn,.top .musicBtn,.top .shareBtn{position:static;grid-row:2;min-height:34px;padding:4px 6px;font-size:12px;justify-self:start}
+  .top .shareTx{display:none}
 }
 
 .bizbox{margin:16px 0 6px;padding:14px 14px 12px;border-radius:14px;background:var(--cream)}
@@ -761,6 +777,7 @@ a{color:var(--moss)}
     <a class="pill biz" id="bizLink" href="https://wishlite.com.tw/service/detail/42?view=activities" target="_blank" rel="noopener" aria-label="直接找活動（官網活動選擇器，另開新頁）">直接找活動 ↗</a>
     <button type="button" class="pill seenpill bookBtn" id="bookBtn" aria-expanded="false" aria-controls="book">集章 <b id="seenN">0</b> / 7</button>
     <button type="button" class="pill musicBtn" id="musicBtn" aria-pressed="false" aria-label="播放背景音樂" title="背景音樂"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="mOn" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="mOff" d="M17 9l5 6M22 9l-5 6"/></svg><span id="musicLabel">音樂</span></button>
+    <button type="button" class="pill shareBtn" id="shareBtn" aria-label="分享材料小島" title="分享"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg><span class="shareTx">分享</span></button>
     <div class="pill times" role="group" aria-label="時段">
       <button type="button" data-t="day" aria-pressed="false" title="白天">白天</button>
       <button type="button" data-t="dusk" aria-pressed="false" title="黃昏">黃昏</button>
@@ -1698,6 +1715,16 @@ bookBtn.addEventListener("click", function(){ book.classList.contains("open") ? 
 $("bookClose").addEventListener("click", function(){ closeBook(true); });
 $("bookReset").addEventListener("click", function(){ var b = this; if(!b.dataset.sure){ b.dataset.sure = "1"; b.textContent = "足跡、收藏、換裝都會清空。確定的話再點一次"; setTimeout(function(){ delete b.dataset.sure; b.textContent = "清除我的旅程紀錄，重新開始"; }, 5000); return; } wipeMine(); location.reload(); });
 $("bookPlan").addEventListener("click", function(){ openPlan(focusIdx >= 0 ? SPOTS[focusIdx] : null); });
+// 分享（Apple 11/23）：在哪座島按，就分享那座島的網址（#島名），朋友點開會直接開船過去
+function shareIsland(){
+  var base = "https://wishlite.github.io/wishlite-esg/material-island/", sp = current >= 0 ? SPOTS[current] : null, url = base + (sp ? "#" + sp.id : ""),
+    text = sp ? "跟小森去「" + sp.name + "島」看看，這種材料還能變成什麼。" : "每一份材料，都還有下一站。跟小森開船上島，看看材料還能變成什麼。";
+  track("share_click", { island: sp ? sp.id : "globe" });
+  if(navigator.share){ navigator.share({ title:"材料小島｜Wishlite", text:text, url:url }).catch(function(){}); return; }
+  var done = function(){ toast("已複製連結，可以貼到 LINE 或 FB 分享"); };
+  try{ navigator.clipboard.writeText(url).then(done, function(){ prompt("複製這個連結分享：", url); }); }catch(_){ prompt("複製這個連結分享：", url); }
+}
+document.addEventListener("click", function(e){ if(e.target.closest && e.target.closest("#shareBtn")) shareIsland(); });
 var toastT; function toast(t){ var el = $("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(function(){ el.classList.remove("on"); }, 2200); }
 function stampsHTML(){
   return '<ol class="stamps" aria-label="探索章">' + SPOTS.map(function(s){ var on = !!seen[s.id];
