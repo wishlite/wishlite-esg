@@ -655,6 +655,10 @@ a{color:var(--moss)}
 .hs-next{background:#fffdf8;color:#3d5a3e;min-width:104px}
 .hs-end{position:absolute;left:16px;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
 .hs-end.on{opacity:1;transform:none;pointer-events:auto}
+.hs-impact{margin:0 0 4px;padding:14px 16px 12px;border-radius:16px;background:rgba(30,42,30,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fffdf8;text-align:center}
+.hs-impact p{margin:0;white-space:pre-line;font-size:14px;line-height:1.65}
+.hs-impact .o{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,253,248,.25);font-weight:700;color:#f1dca6}
+.hs-impact small{display:block;margin-top:4px;font-size:11px;opacity:.7}
 .hs-end button{height:50px;border-radius:999px;font-size:16px;font-weight:600;cursor:pointer;border:1px solid rgba(255,253,248,.6);background:rgba(255,253,248,.14);color:#fff}
 .hs-end button.main{background:#fffdf8;color:#3d5a3e;border-color:#fffdf8}
 .hs-lite{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.hs-lite > *{white-space:nowrap}.hs-end .hs-lite .hs-link{display:inline-flex;align-items:center;height:40px;padding:0 16px;font-size:14px;font-weight:600;background:rgba(255,253,248,.1);border:1px solid rgba(255,253,248,.55);border-radius:999px;color:#fffdf8;text-decoration:none}
@@ -849,7 +853,7 @@ a{color:var(--moss)}
     <div class="sec"><h3>到訪足跡 <small id="bookSeen" style="font-weight:400;color:var(--muted)"></small></h3><ol class="foot" id="bookFoot"></ol></div>
     <div class="sec"><h3>我的收藏</h3><ul class="wl" id="bookWish"></ul></div>
     <div class="sec"><h3>接下來</h3><div class="next">
-      <button type="button" class="btn solid" id="bookPlan">規劃企業活動</button>
+      <button type="button" class="btn solid" id="bookPlan">規劃一場活動</button>
       <a class="btn" id="bookMake" href="https://wishlite.com.tw/service/detail/42?view=activities" target="_blank" rel="noopener">找工作坊體驗 ↗</a>
       <a class="btn" id="bookGift" href="https://wishlite.com.tw/service/detail/42?view=gifts" target="_blank" rel="noopener">挑一份禮物 ↗</a></div></div>
     <div class="sec"><button type="button" class="book-reset" id="bookReset">清除我的旅程紀錄，重新開始</button></div>
@@ -885,7 +889,7 @@ a{color:var(--moss)}
     <img class="hs-sen" id="hsSen" alt="">
     <p class="hs-sub" id="hsSub" aria-live="polite"></p>
     <div class="hs-bar"><button type="button" class="hs-btn hs-prev" id="hsPrev" aria-label="上一句">‹</button><button type="button" class="hs-btn hs-pause" id="hsPause" aria-label="暫停" hidden>❚❚</button><div class="hs-dots" id="hsDots"></div><button type="button" class="hs-btn hs-next" id="hsNext" aria-live="polite">下一步 ›</button></div>
-    <div class="hs-end" id="hsEnd"><button type="button" class="main" id="hsOther">前往其他島</button><div class="hs-lite"><button type="button" id="hsMore">靠近看看殼的紋路</button><a id="hsWs" class="hs-link" href="#" target="_blank" rel="noopener">看看手作體驗 ↗</a><a id="hsWorks" class="hs-link" href="#" target="_blank" rel="noopener">看看商品介紹 ↗</a></div></div>
+    <div class="hs-end" id="hsEnd"><div class="hs-impact" id="hsImpact" hidden><p class="f" id="hsImpF"></p><small id="hsImpS"></small><p class="o" id="hsImpO"></p></div><button type="button" class="main" id="hsOther">前往其他島</button><div class="hs-lite"><button type="button" id="hsMore">靠近看看殼的紋路</button><a id="hsWs" class="hs-link" href="#" target="_blank" rel="noopener">看看手作體驗 ↗</a><a id="hsWorks" class="hs-link" href="#" target="_blank" rel="noopener">看看商品介紹 ↗</a><button type="button" id="hsPlan">想辦一場活動？</button></div></div>
   </div>
 
   <div class="reveal" id="reveal" inert aria-hidden="true" role="group" aria-label="材料小探索">
@@ -1656,8 +1660,8 @@ function showPlanForm(){
   $("bookMain").hidden = true; v.hidden = false;
   var F = planState.f;
   v.innerHTML = '<button type="button" class="back" id="planBack">← 回到集章冊</button>' +
-    '<h3 id="planTitle" tabindex="-1">規劃企業活動</h3>' +
-    '<p class="hint">先整理想詢問的內容；不確定的欄位可以留白，會寫成「尚未確定」。</p>' +
+    '<h3 id="planTitle" tabindex="-1">規劃一場活動</h3>' +
+    '<p class="hint">公司、學校、社團、親子團體都可以。先整理想詢問的內容；不確定的欄位可以留白，會寫成「尚未確定」。</p>' +
     "<label>材料</label><p style=\"margin:0;font-size:14px\">" + sp.name + "</p>" +
     "<label>想詢問的作品</label><ul class=\"picks\">" +
       wishes.map(function(w){ var m = SPOTS.find(function(x){ return x.id === w.spot; });
@@ -1686,7 +1690,7 @@ function planText(){
   var sp = planSpot(), F = planState.f, u = function(x){ return x || "尚未確定"; };
   var names = wishes.filter(function(w){ return planState.picks.indexOf(w.id) >= 0; }).map(function(w){ return w.name; });
   if(planState.recommend || !names.length) names.push("請協助推薦");
-  return ["【材料小島｜" + sp.name + "】企業活動詢問", "材料：" + sp.name, "想詢問的作品：" + names.join("、"),
+  return ["【材料小島｜" + sp.name + "】活動詢問", "材料：" + sp.name, "想詢問的作品：" + names.join("、"),
     "活動人數：" + u(F.people), "希望日期：" + u(F.date), "地點：" + u(F.place), "預算想法：" + u(F.budget)].concat(F.note ? ["補充：" + F.note] : []).join("\n");
 }
 function showPlanSummary(){
@@ -1694,7 +1698,7 @@ function showPlanSummary(){
   v.innerHTML = '<button type="button" class="back" id="planEdit0">← 修改內容</button>' +
     '<h3 id="planTitle" tabindex="-1">詢問摘要</h3><pre id="planText">' + esc(t) + "</pre>" +
     '<p class="warn" id="planWarn">這裡還沒有送出。開啟 LINE 後，訊息會先帶入對話框，請確認內容再自己按送出。</p>' +
-    '<div class="acts"><a class="btn solid" id="planLine" href="' + ENTERPRISE_LINE_MSG + encodeURIComponent(t) + '" target="_blank" rel="noopener">開啟企業 LINE ↗</a>' +
+    '<div class="acts"><a class="btn solid" id="planLine" href="' + ENTERPRISE_LINE_MSG + encodeURIComponent(t) + '" target="_blank" rel="noopener">開啟 LINE ↗</a>' +
     '<button type="button" class="btn" id="planCopy">複製詢問摘要</button></div>' +
     '<p class="hint">電腦上或沒有安裝 LINE 時，請按「複製詢問摘要」，再到 LINE 貼上。</p>';
   $("planEdit0").onclick = function(){ showPlanForm(); };
@@ -1880,8 +1884,8 @@ function alphaAt(img, uv){
 function bizHTML(s){
   if(!s.biz) return "";
   var b = s.biz;
-  return '<section class="bizbox" aria-labelledby="bizTitle"><h3 id="bizTitle">替公司辦一場</h3><p>' + b.title + "</p>" + (b.text ? "<p>" + b.text + "</p>" : "") +
-    '<button type="button" class="btn solid" id="bizPlan">規劃企業活動</button></section>';
+  return '<section class="bizbox" aria-labelledby="bizTitle"><h3 id="bizTitle">想辦一場活動？</h3><p>' + b.title + "</p>" + (b.text ? "<p>" + b.text + "</p>" : "") +
+    '<button type="button" class="btn solid" id="bizPlan">規劃一場活動</button></section>';
 }
 // 精簡版故事層（牡蠣殼）：可以做的作品（照片卡）＋材料包／禮品各一個入口
 // 照片卡：上方 1:1 作品照、下方名稱與簡介、查看與收藏；沒有可靠照片的項目改成緊湊文字連結，不留空白圖框
@@ -3538,7 +3542,9 @@ var STORY = {
     { act:0, video:"video/natural-material-story.mp4", poster:"video/natural-material-story-poster.jpg", clickPlay:true, waitForEnd:true, seconds:35, sub:"" },
     { act:1, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把土地的記憶封存在書籤裡，\n陪伴日常的每一次閱讀。" },
     { act:1, clear:true, center:true, sub:"下次出門，看看路邊的植物吧！\n你可能會發現以前沒注意的細節喔！" } ] },
-  oyster:{ place:"牡蠣殼小屋", sen:"img/sen-oyster-holding-shell.png", manualNext:true, scenes:[
+  oyster:{ place:"牡蠣殼小屋", sen:"img/sen-oyster-holding-shell.png", manualNext:true,
+    impact:{ fact:"台灣每年平均產生約 16 萬公噸廢棄牡蠣殼，\n其中約 2.3 萬公噸沒有被妥善處理。", src:"資料來源：農委會（今農業部）2007–2019 年廢棄物統計", ours:"在 Wishlite，已經有約 2,000 人次\n親手讓牡蠣殼變成新的作品。" },   // Apple 11/23 定：公開數據用農委會版本，參與人次約 2000
+    scenes:[
     { act:0, k:"發現", video:"video/oyster-island-intro.mp4", poster:"video/oyster-island-intro-poster.jpg", clickPlay:true, waitForEnd:true, seconds:21, sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）；21:44 定案版 window-pot
     { act:0, k:"理解", clear:true, center:true, sub:"原來，殼換了形狀，\n也能繼續被使用。" },
     { act:1, k:"回想", img:"img/case-oyster-pot.webp", cover:true, at:"50% 45%", z0:1, z1:1.05, inset:["img/rit-oyster-shell.webp", "原本的模樣"], sub:"換了模樣，你還認得它嗎？" },
@@ -3640,6 +3646,7 @@ function hsEnd(){   // 單島結尾：先留下感受，再給三個選擇
   if(hs.s.id === "hub"){ try{ localStorage.setItem("wl-hub-story", "1"); }catch(_){} hubRoom(); return; }   // 故事播完回到工作室內景，讓訪客自己選下一步
   clearTimeout(hs.timer); var fromMore = hs.i === -2; hs.i = hs.S.scenes.length; var last = hs.S.scenes[hs.S.scenes.length - 1];
   $("hsStage").classList.add("off"); $("hs").classList.add("ending"); if(!fromMore && $("hsSub").textContent !== last.sub.replace(/\n/g, "")) hsSub(last.sub);
+  var im = hs.S.impact; $("hsImpact").hidden = !im; if(im){ $("hsImpF").textContent = im.fact; $("hsImpO").textContent = im.ours || ""; $("hsImpO").hidden = !im.ours; $("hsImpS").textContent = im.src; }   // 影響數字（Apple 11/23）
   $("hsMore").hidden = hs.moreSeen || !hs.S.more; $("hsWs").href = finderView("activities", hs.s); $("hsWorks").href = finderView("gifts", hs.s); 
   $("hsEnd").classList.add("on"); say("接下來想去哪裡？");
 }
@@ -3657,6 +3664,7 @@ $("hsSkip").addEventListener("click", function(){ if(hs) hsEnd(); });
 $("hsPause").addEventListener("click", function(){ if(!hs) return; hs.paused = !hs.paused; var vd = document.querySelector("#hsStage .hs-vid"); if(vd && !vd.hidden){ if(hs.paused) vd.pause(); else { var pr = vd.play(); if(pr && pr.catch) pr.catch(function(){}); } } this.textContent = hs.paused ? "▶" : "❚❚"; this.setAttribute("aria-label", hs.paused ? "繼續播放" : "暫停"); if(hs.paused) clearTimeout(hs.timer); else if(hs.i === -2 && hs.mk != null) hsMoreGo(hs.mk + 1 < hs.S.more.list.length ? hs.mk + 1 : hs.mk); else hsArm(); });
 $("hsMore").addEventListener("click", function(){ if(hs) hsMore(); });
 ["hsWs", "hsWorks"].forEach(function(id){ $(id).addEventListener("click", function(){ if(hs){ clearTimeout(hs.timer); hs.paused = true; } }); });   // 工作坊／成品都連到官網「依材料找」對應頁，不在島上列出（Apple 11/09 03:30）
+$("hsPlan").addEventListener("click", function(){ var s = hs && hs.s; track("plan_open", { from:"island_end" }); hsClose(function(){ openPlan(s); }); });   // Apple 11/23：每座島結尾的活動詢問捷徑（不限公司，學校、社團、親子都可），打開詢問表單並帶入這座島的材料
 $("hsOther").addEventListener("click", function(){ hsClose(function(){ var s = exp && exp.s; if(s) s._houseOut = true; exPopClose(); if(exp) exp.leftHouse = false; if(s) nextIslandGuide(s); }); });   // 直接走出小屋並開下一站選擇，不必回島上再按一次
 $("hsX").addEventListener("click", function(){ var hub = hs && hs.s.id === "hub"; hsClose(function(){ if(hub){ $("hubPanel").hidden = true; $("hubRoom").hidden = true; $("hs").classList.remove("room", "ways"); hubBack(); } else exPopClose(); }); });
 window.__hsTour = function(){ if(!exp) return "noexp"; hsClose(); mode = "tour"; exp.st = "open"; hsOpen(SCENES[exp.s.id].props.find(function(x){ return x.id === "house"; })); return "ok"; };   // 測試：模擬「跟小森逛逛」自動播放
