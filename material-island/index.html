@@ -2531,8 +2531,8 @@ function fxTick(dt){
 // ---------- 島嶼共用版型（第 2 版島圖）：所有位置用島圖上的座標（0–1，左上為原點）----------
 var LAY = { dock:[.21, .74], start:[.27, .70], stand:[.50, .58], door:[.30, .385], sign:[.45, .43],
   house:{ w:.44 }, pile:{ at:[.71, .51], w:.18, stand:[.60, .56] }, kit:{ at:[.65, .72], w:.12, stand:[.55, .62] } };
-var LAY_ISL = { natural:{ house:{ w:.40 } }, diaper:{ house:{ w:.40 } } };
-var HOUSE_DX = { board:.43, caps:.38, coffee:.50, denim:.45, diaper:.50, natural:.50, oyster:.55 };   // 門洞中心在房子圖上的橫向位置
+var LAY_ISL = { natural:{ house:{ w:.40 } }, diaper:{ house:{ w:.40 } }, board:{ house:{ w:.60 } } };
+var HOUSE_DX = { board:.524, caps:.38, coffee:.50, denim:.45, diaper:.50, natural:.50, oyster:.55 };   // 門洞中心在房子圖上的橫向位置
 function layOf(s){ var o = LAY_ISL[s.id] || {}, r = {}; for(var k in LAY) r[k] = o[k] ? (Array.isArray(LAY[k]) ? o[k] : Object.assign({}, LAY[k], o[k])) : LAY[k]; return r; }
 function layDim(s){ var b = s._bb, m = s._sen; return b && m ? { W:b.userData.W*b.scale.x, H:b.userData.H*b.scale.y, sW:m.userData.W } : null; }
 function layApply(s){ var D = layDim(s); if(!D || !s.ritual) return; var L = layOf(s);
@@ -2555,10 +2555,12 @@ var SCENE_DECO = {   // 島上裝飾小物：只是島的一部分，不能點�
            { img:"img/v2-deco-coffee-charms.webp", at:[.76, .575], w:.095 } ],   // 作品｜咖啡渣香牌吊架（材料堆右前方）
   diaper:[ { img:"img/v2-deco-diaper-bowls.webp", at:[.53, .34], w:.11 },      // 處理｜原色與染色紙漿（後方）
            { img:"img/v2-deco-diaper-trays.webp", at:[.83, .49], w:.09 },      // 處理｜三色紙漿盒（材料堆右側）
-           { img:"img/v2-deco-diaper-earths.webp", at:[.77, .585], w:.085 } ] }; // 作品｜一籃種子地球（材料堆右前方）
+           { img:"img/v2-deco-diaper-earths.webp", at:[.77, .585], w:.085 } ],   // 作品｜一籃種子地球（材料堆右前方）
+  caps:[ { img:"img/v2-deco-caps-turtles.webp", at:[.58, .40], w:.10 } ],   // 作品｜三隻瓶蓋小海龜（材料堆左後方）
+  board:[] };   // 捷綠木島：長椅、馬賽克杯墊已畫進小屋圖（v2-house-board-felt2）
 var SCENES = {
   board:{ hint:"點點島上的東西，跟小森一起探索", props:[
-    { id:"house", img:"img/v2-house-board.webp", head:"img/scene-board-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-1.0, title:"走進捷綠木小屋", text:"屋子是用回收塑膠再生板材蓋的。來看看在這裡可以動手做什麼。", show:"ws" },
+    { id:"house", img:"img/v2-house-board-felt2.webp", head:"img/scene-board-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-1.0, title:"走進捷綠木小屋", text:"屋子是用回收塑膠再生板材蓋的。來看看在這裡可以動手做什麼。", show:"ws" },
     { id:"pile", img:"img/v2-pile-board.webp", x:.62, yb:.12, w:1.15, ro:7, walk:.35, title:"養樂多瓶去哪了？", text:"養樂多瓶和保麗龍一樣是 PS 材質。", show:"story" },
     { id:"stack", img:"img/v2-kit-board.webp", head:"img/scene-board-mosaic.webp", x:.05, yb:-.55, w:.95, ro:10, walk:.05, title:"帶一份回家做", text:"在家接著玩，也能送給喜歡手作的朋友。", show:"kits" } ] },
   coffee:{ hint:"點點島上的東西，跟小森一起探索", props:[
