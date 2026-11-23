@@ -938,7 +938,7 @@ const ENTERPRISE_LINE_MSG = "https://line.me/R/oaMessage/@728zvmqz/?";
 var SEN_BASE = "img/sen-base.webp";
 var SPOTS = [
   { id:"coffee", pier:[.366, .698], ritual:{ say:"杯子裡的咖啡渣，還能變成什麼？", wear:"穿上咖啡渣裝備", fx:"pop", walk:.3, wave:true, v2:true, spin:true, more:["b2"], path:[.6, .45], depth:[.47, .58], decor:true, shell:[0.625, 0.7781, 0.9886, 0.9844] }, showcase:true, theater:["img/ch1-coffee.jpg", "材料小劇場：微縮小人在咖啡杯與咖啡渣旁搬運、鏟渣"], finder:"coffee", body3d:"img/v2-isl-coffee.webp", plaza:0.58, brief:"杯子裡的任務結束，手作桌上的故事才要開始。", name:"咖啡渣", line:"咖啡喝完了，我還有事忙。",
-    img:"img/ch1-coffee.jpg", obj:"img/obj-coffee.webp", sen:"img/sen-coffee-original-pack.webp", alt:"一小堆咖啡渣與幾顆咖啡豆",
+    img:"img/ch1-coffee.jpg", obj:"img/obj-coffee.webp", sen:"img/sen-coffee-original-pack-v2.webp", alt:"一小堆咖啡渣與幾顆咖啡豆",
     body:"<p>每天被沖煮後留下的咖啡渣，重新轉化成手作體驗材料。香氣、觸感都還在，讓永續從抽象概念走進日常。</p>",
     ws:[["咖啡渣發財香牌", "https://wishlite.com.tw/service/detail/30", "", "img/work-coffee-paiv.webp"], ["咖啡渣香氛燈", 410, "", "img/work-coffee-lamp.webp"], ["咖啡渣小海龜肌理畫", 377, "", "img/work-coffee-turtle.webp"], ["咖啡渣擴香石", 448, "", "img/work-coffee-stone.webp"]],
     kits:[["咖啡渣肌理畫 DIY 材料包", NOTION + "333704274681804a9c50f54fe0716238", "img/kit-coffee-texture.webp"], ["咖啡渣浮雕畫 DIY 材料包", NOTION + "3724a58538574b10a6de22fb95f23583", "img/kit-coffee-relief.webp"]],
@@ -950,7 +950,7 @@ var SPOTS = [
     kits:[["牛仔褲杯墊 DIY 材料包", NOTION + "DIY-32570427468180848f8dd1ee3dc4cd7c", "img/kit-denim-coaster.webp"], ["牛仔褲字母掛飾 DIY 材料包", NOTION + "362b534f7ba64382b196c207df02df83", "img/kit-denim-letter-clean.webp"]],
     gifts:[], pending:"牛仔褲的來源與處理說明，待 Apple 提供確認版內容。" },
   { id:"oyster", pier:[.37, .74], ritual:{ say:"咦，這裡有一枚牡蠣殼。", wear:"穿上牡蠣裝備", tap:true, invite:"進屋看看，牡蠣殼還能變成什麼？", walk:-.32, v2:true, shell:[0.0379, 0.8203, 0.3617, 0.9828] }, finder:"oyster", body3d:"img/v2-isl-oyster.webp", plaza:.46, brief:"從殼到盆器，這回換我照顧植物。", name:"牡蠣殼", line:"吃完了，殼還有下半場。",
-    img:"img/ch3-oyster.jpg", obj:"img/obj-oyster.webp", sen:"img/sen-oyster-holding-shell.png", alt:"兩片牡蠣殼、碎殼與一小堆殼粉",
+    img:"img/ch3-oyster.jpg", obj:"img/obj-oyster.webp", sen:"img/sen-oyster-holding-shell.webp", alt:"兩片牡蠣殼、碎殼與一小堆殼粉",
     body:"<p>牡蠣肉被吃掉了，殼卻沒有跟著消失。殼主要由碳酸鈣構成，經過分類、清潔、乾燥、破碎與研磨，才能重新成為材料。</p>",
     kits:[["海洋風擴香石 DIY 材料包", NOTION + "32570427468180488f1de0a7385b3061", "img/kit-oyster-ocean.webp"], ["水晶星願擴香石 DIY 材料包", NOTION + "33570427468180058989fdc895ed3d6f", "img/kit-oyster-crystal.webp"]],
     // 詳細故事頁示範版：材料小劇場大圖 → 精簡故事 → 作品照片卡 → 參與入口；活動紀錄收在最後「延伸看看」
@@ -3513,7 +3513,7 @@ var STEP_LABEL = {   // 製程每一步的名稱（取自原本總覽頁的名�
   diaper:[["img/v2-story-diaper-1.webp","NG 尿布"],["img/v2-story-diaper-2-real.webp","紙纖"],["img/v2-story-diaper-dye.webp","原色與染色紙漿"],["img/work-diaper-seedearth.webp","種子地球"]],
   natural:[["img/v2-story-natural-r1.webp","桂花葉",1],["img/v2-story-natural-r3.webp","去除葉肉",2],["img/v2-story-natural-r4.webp","葉脈",3],["img/v2-story-natural-r5.webp","染色葉脈",4]] };   // 第三個值＝第幾步（同一步可有兩張照片）
 var STORY = {
-  coffee:{ place:"咖啡渣小屋", sen:"img/sen-coffee-original-pack.webp", manualNext:true,
+  coffee:{ place:"咖啡渣小屋", sen:"img/sen-coffee-original-pack-v2.webp", manualNext:true,
     impact:{ fact:"台灣一年喝掉超過 37 億杯咖啡，\n留下約 11.1 萬公噸咖啡渣。", src:"資料來源：環境部，2025 年 12 月", ours:"在 Wishlite，已經有約 1,350 人次\n親手讓咖啡渣變成新的作品。" },   // Apple 11/23 定：環境部數據，參與人次約 1350
     acts:["看見轉變", "回到生活"], more:null, scenes:[
     { act:0, video:"video/coffee-material-story.mp4", poster:"video/coffee-material-story-poster.jpg", clickPlay:true, waitForEnd:true, sub:"" },
@@ -3555,7 +3555,7 @@ var STORY = {
     { act:0, video:"video/natural-material-story.mp4", poster:"video/natural-material-story-poster.jpg", clickPlay:true, waitForEnd:true, seconds:35, sub:"" },
     { act:1, img:"img/work-natural-bookmark.webp", cover:true, at:"48% 42%", z0:1.02, z1:1.1, inset:["img/work-natural-bookmark-compare.webp","新鮮綠葉與葉脈"], note:"葉脈時光書籤", sub:"把土地的記憶封存在書籤裡，\n陪伴日常的每一次閱讀。" },
     { act:1, clear:true, center:true, sub:"下次出門，看看路邊的植物吧！\n你可能會發現以前沒注意的細節喔！" } ] },
-  oyster:{ place:"牡蠣殼小屋", sen:"img/sen-oyster-holding-shell.png", manualNext:true,
+  oyster:{ place:"牡蠣殼小屋", sen:"img/sen-oyster-holding-shell.webp", manualNext:true,
     impact:{ fact:"台灣每年平均產生約 16 萬公噸廢棄牡蠣殼，\n其中約 2.3 萬公噸沒有被妥善處理。", src:"資料來源：農委會（今農業部）2007–2019 年廢棄物統計", ours:"在 Wishlite，已經有約 2,000 人次\n親手讓牡蠣殼變成新的作品。" },   // Apple 11/23 定：公開數據用農委會版本，參與人次約 2000
     scenes:[
     { act:0, k:"發現", video:"video/oyster-island-intro.mp4", poster:"video/oyster-island-intro-poster.jpg", clickPlay:true, waitForEnd:true, seconds:21, sub:"" },   // Apple 11/21：前兩段照片輪播換成影片（影片內容為準）；21:44 定案版 window-pot
