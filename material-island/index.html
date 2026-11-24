@@ -502,7 +502,7 @@ a{color:var(--moss)}
 .steps-m{margin:4px -4px 6px}.steps-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 4px;scrollbar-width:none}.steps-track::-webkit-scrollbar{display:none}.step-f{flex:0 0 78%;margin:0;scroll-snap-align:start;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(30,42,30,.1)}.step-f img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff}.steps-lab{margin:8px 0 0;text-align:center;font-size:14px;font-weight:700;color:var(--moss-dark)}.steps-dots{display:flex;justify-content:center;gap:6px;margin:8px 0 2px}.steps-dots i{width:7px;height:7px;border-radius:50%;background:#d8d2c2}.steps-dots i.on{background:#c49a3c;width:18px;border-radius:4px}.steps-d{display:none;width:100%;border-radius:14px;background:#fff}@media (min-width:900px){.steps-m{display:none}.steps-d{display:block}}.gal-intro{font-size:14px;color:#5d5a50;margin:6px 0 14px}.gal-q{margin:4px 0 8px;font-size:17px;color:var(--moss-dark)}.gal-sub{margin:2px 0 6px;font-size:14px;font-weight:700;color:#8a6d2f}.gal-photos{display:flex;gap:6px;margin:6px 0 8px}.gal-photos img{flex:1;min-width:0;aspect-ratio:3/4;object-fit:cover;border-radius:10px}
 .gal-src{display:block;margin-top:6px;font-size:12px;color:#8b8778}
 .gal{display:flex;flex-direction:column;gap:18px;margin:8px 0 14px}.gal-it{display:flex;flex-direction:column;gap:4px;padding:0 0 8px;border:0;border-radius:14px;background:#fff;box-shadow:0 2px 8px rgba(30,42,30,.12);text-align:left;overflow:hidden;font:inherit;color:inherit;cursor:pointer}.gal-it img{width:100%;aspect-ratio:4/3;object-fit:cover;background:linear-gradient(100deg,#efe7d8 30%,#f8f3ea 50%,#efe7d8 70%);background-size:300% 100%;animation:galLoad 1.4s linear infinite}.gal-it img.ok{animation:none;background:none}@keyframes galLoad{to{background-position:-150% 0}}.gal-it b{padding:6px 14px 0;font-size:16px}.gal-it span{padding:0 14px 6px;font-size:14px;line-height:1.55;color:#5d5a50}.gal-line{font-size:15px}.gal-off{margin:10px 0 4px}.gal-more{margin:10px 0;font-size:14px}.gal-more summary{cursor:pointer;color:var(--moss-dark);font-weight:700}.gal-hint{text-align:center;font-size:12px;color:#7a7a6e;margin:4px 0 8px}
-.door-tip{position:absolute;z-index:4;margin:0;white-space:nowrap;padding:8px 14px;border-radius:18px;background:#fffdf7;color:var(--moss-dark);font-size:15px;font-weight:700;line-height:1.45;box-shadow:0 8px 20px rgba(30,42,30,.2),0 0 0 2px rgba(196,154,60,.55);pointer-events:none}
+.door-tip{position:absolute;z-index:4;margin:0;white-space:nowrap;padding:8px 14px;border-radius:18px;background:#fffdf7;color:var(--moss-dark);font-size:15px;font-weight:700;line-height:1.45;box-shadow:0 8px 20px rgba(30,42,30,.2),0 0 0 2px rgba(196,154,60,.55);pointer-events:auto;cursor:pointer}
 .rt-say{white-space:pre-line}.rt-say{position:absolute;left:0;top:0;z-index:4;margin:0;max-width:250px;padding:12px 18px;border-radius:26px;background:#fffdf7;color:var(--moss-dark);font-size:17px;font-weight:700;line-height:1.5;letter-spacing:.02em;
   box-shadow:0 10px 24px rgba(30,42,30,.22),0 0 0 2px rgba(196,154,60,.55);pointer-events:none;opacity:0;transform-origin:30% 120%;transform:translate(var(--sx,0px),var(--sy,0px)) scale(.3);transition:opacity .2s ease-out,transform .45s cubic-bezier(.34,1.56,.64,1)}
 .rt-say.on{opacity:1;transform:translate(var(--sx,0px),var(--sy,0px)) scale(1)}
@@ -581,6 +581,16 @@ a{color:var(--moss)}
 .nextbar{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 84px);z-index:6;width:min(380px,calc(100% - 32px));transform:translateX(-50%);padding:12px 12px 10px;border-radius:22px;background:rgba(255,253,248,.97);box-shadow:0 12px 32px rgba(46,70,48,.22);text-align:center}
 .nextbar[hidden]{display:none!important}
 #propTips{position:fixed;inset:0;pointer-events:none;z-index:5}
+.expop.find-strip{max-height:none;overflow:visible;padding:12px 44px 12px 12px;border-radius:18px;bottom:calc(88px + env(safe-area-inset-bottom))}
+.expop.find-strip #exPopBody{display:flex;gap:12px;align-items:center}
+.expop.find-strip .x{width:30px;height:30px;font-size:17px;top:8px;right:8px}
+.fs-ph{position:relative;flex:0 0 84px;width:84px;height:84px;padding:0;border:0;border-radius:12px;overflow:hidden;background:var(--cream);cursor:zoom-in}
+.fs-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.fs-note{position:absolute;left:0;right:0;bottom:0;font-size:10px;color:#fff;background:rgba(0,0,0,.45);text-align:center}
+.fs-tx{min-width:0}.expop.find-strip .fs-tx h3{margin:0 0 2px;padding:0;font-size:16px}.expop.find-strip .fs-tx p{margin:0;line-height:1.55;font-size:14px}
+.expop.find-strip .fs-k{font-size:12px!important;color:#9a7a48;letter-spacing:.06em;margin-bottom:2px!important}.expop.find-strip .fs-src{font-size:11px!important;color:var(--muted);margin-top:2px!important}
+.fs-big{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;background:rgba(20,28,20,.82);padding:24px}
+.fs-big[hidden]{display:none}.fs-big img{max-width:100%;max-height:80vh;border-radius:14px}.fs-big .x{position:absolute;top:16px;right:16px;width:40px;height:40px;border:0;border-radius:50%;background:#fffdf8;font-size:22px}.find-note{margin:4px 0 0;font-size:12px;color:var(--muted);text-align:right}.find-src{margin:-4px 0 6px;font-size:12px;color:var(--muted)}.find-n{margin:6px 0 2px;font-size:13px;color:var(--moss);font-weight:600}
 .ptip{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;background:none;font:inherit;opacity:0;pointer-events:none;transition:opacity .4s ease;cursor:pointer}
 .ptip .pt-tx{padding:7px 13px;border-radius:999px;background:rgba(255,253,248,.95);box-shadow:0 4px 14px rgba(46,70,48,.22);color:#3d5a3e;font-size:13px;font-weight:700;white-space:nowrap}
 .ptip .pt-ar{width:26px;height:auto;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
@@ -883,6 +893,7 @@ a{color:var(--moss)}
   <p class="door-tip" id="doorTip" hidden></p>
   <div class="rt-acts" id="rtActs" hidden role="group" aria-label="小森的邀請"><button type="button" class="btn solid" id="rtWear"></button><button type="button" class="btn" id="rtSkip">先看材料故事</button></div>
   <div class="exbar" id="exBar" hidden role="status"><span id="exHint"></span><button type="button" id="exInfo">島嶼介紹</button></div>
+  <div class="fs-big" id="fsBig" hidden role="dialog" aria-label="照片"><img alt=""><button type="button" class="x" aria-label="關閉" onclick="this.parentNode.hidden=true">×</button></div>
   <div class="expop" id="exPop" hidden role="dialog" aria-labelledby="exTitle"><button type="button" class="x" id="exClose" aria-label="關閉">×</button><div id="exPopBody"></div></div>
   <div class="hs" id="hs" hidden role="dialog" aria-label="小屋導覽"><div class="hs-bg" id="hsBg"></div><section class="hub-room" id="hubRoom" hidden aria-label="永續工作室"><div class="hr-blur"></div><img class="hr-img" src="img/hub-inside.webp" alt="Wishlite 永續工作室：材料桌和後方層架"><div class="hr-bar" id="hrBar"></div></section><section class="hub-panel" id="hubPanel" hidden aria-labelledby="hubPT"></section>
     <div class="hs-top"><span class="hs-place" id="hsPlace"></span><span class="sp"></span><button type="button" class="hs-skip" id="hsSkip">跳過</button><button type="button" class="hs-x" id="hsX" aria-label="走出小屋">×</button></div>
@@ -1851,6 +1862,7 @@ var ray = new THREE.Raycaster(), ptr = new THREE.Vector2(), down = null;
 canvas.addEventListener("pointerdown", function(e){ down = { x:e.clientX, y:e.clientY }; });
 canvas.addEventListener("pointerup", function(e){
   if(!down || !GL) return; var moved = Math.hypot(e.clientX-down.x, e.clientY-down.y); down = null; if(moved > 6) return;
+  if(!$("exPop").hidden && $("exPop").classList.contains("find-strip")){ exPopClose(); return; }   // 小發現窄條開著：點島上任何地方就收起來
   if(appEl.classList.contains("op-on")) return;   // 開場還沒結束：島上的東西都不能點，避免視窗疊在開場上（Apple 11/10 19:59）
   var r = canvas.getBoundingClientRect(); ptr.set(((e.clientX-r.left)/r.width)*2-1, -((e.clientY-r.top)/r.height)*2+1);
   ray.setFromCamera(ptr, camera);
@@ -2388,6 +2400,7 @@ function makeSailBoat(){
 // ---------- 第一次到島的迎接（牡蠣島試做）：站穩 → 走近材料 → 伸手、捧起、低頭看 → 遊客邀請 → 約 3 秒變身 → 抬頭展示、停一拍 → 介紹卡 ----------
 // 每一格都是完整的小森姿勢圖（同一畫框對齊），換格時只做極短的淡接，身體一直看得到
 var rit = null, ritOver = null, ritGlow = null, ritShell = null, dressed = {}; try{ dressed = JSON.parse(store("wl-island-dressed") || "{}") || {}; }catch(_){ dressed = {}; }
+var DRESSED0 = Object.assign({}, dressed);   // 上次來就換過裝的島＝回訪
 var RIT_KEYS = ["s0", "a", "b", "c", "d", "e", "e2", "f", "g"];
 function ritPose(s){   // 迎接時鏡頭對準小森（不是島中央），手機也看得清手部與裝備
   var base = islPose(s._isl, s._H || 3.6), m = s._sen; if(!m) return base;
@@ -2543,24 +2556,34 @@ function hubProps(ib){ var W = ib.userData.W, H = ib.userData.H, L = new THREE.T
   HUB_PROPS.forEach(function(p){ L.load(p.img, function(tex){ tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
     var w = p.w*W, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, p.ro); mesh.scale.set(w, h, 1);
     mesh.position.set((p.at[0] - .5)*W - ((p.dx || .5) - .5)*w, (1 - p.at[1])*H - .06*h + h/2, .05); ib.add(mesh); HUB.props.push(mesh); }); }); }
-var SCENE_DECO = {   // 島上裝飾小物：只是島的一部分，不能點、不跳說明，也不擋小森的路（座標同島圖 0–1，底部中心對準）
-  oyster:[ { img:"img/v2-deco-oyster-basket.webp", at:[.56, .335], w:.09 },    // 原貌｜一籃牡蠣殼（後方沙地）
-           { img:"img/v2-deco-oyster-powder.webp", at:[.80, .485], w:.085 },   // 處理｜殼粉與木杓（材料堆右側）
-           { img:"img/v2-deco-oyster-pots.webp", at:[.765, .635], w:.10 } ],   // 作品｜多肉盆栽（材料包右後方）
-  denim:[ { img:"img/v2-deco-denim-jeans.webp", at:[.56, .32], w:.15 },        // 原貌｜曬衣繩上的舊牛仔褲（後方）
-          { img:"img/v2-deco-denim-strips.webp", at:[.585, .43], w:.09 },      // 處理｜一捆牛仔褲布條（材料堆左側）
-          { img:"img/v2-deco-denim-coasters.webp", at:[.75, .575], w:.085 } ],   // 作品｜牛仔褲杯墊（材料堆右前方）
-  coffee:[ { img:"img/v2-deco-coffee-sieve.webp", at:[.55, .36], w:.11 },      // 處理｜竹篩上攤平的咖啡渣（後方）
-           { img:"img/v2-deco-coffee-bucket.webp", at:[.82, .50], w:.085 },    // 原貌｜咖啡渣收集桶與布袋（材料堆右側）
-           { img:"img/v2-deco-coffee-charms.webp", at:[.76, .575], w:.095 } ],   // 作品｜咖啡渣香牌吊架（材料堆右前方）
-  diaper:[ { img:"img/v2-deco-diaper-bowls.webp", at:[.53, .34], w:.11 },      // 處理｜原色與染色紙漿（後方）
-           { img:"img/v2-deco-diaper-trays.webp", at:[.83, .49], w:.09 },      // 處理｜三色紙漿盒（材料堆右側）
-           { img:"img/v2-deco-diaper-earths.webp", at:[.77, .585], w:.085 } ],   // 作品｜一籃種子地球（材料堆右前方）
-  caps:[ { img:"img/v2-deco-caps-turtles.webp", at:[.58, .40], w:.10 } ],   // 作品｜三隻瓶蓋小海龜（材料堆左後方）
-  board:[],
-  natural:[ { img:"img/v2-deco-natural-basket.webp", at:[.52, .37], w:.09 },      // 原貌｜松果與乾燥花籃（後方）
-            { img:"img/v2-deco-natural-jar.webp", at:[.80, .565], w:.065 },       // 處理｜浸泡葉子的玻璃罐（材料堆右側）
-            { img:"img/v2-deco-natural-bookmarks.webp", at:[.73, .66], w:.085 } ] };   // 作品｜葉脈書籤（材料包右側）   // 捷綠木島：長椅、馬賽克杯墊已畫進小屋圖（v2-house-board-felt2）
+var SCENE_DECO = {   // 島上小物＝小發現：換好裝以後可以點，小森走過去，跳出一張真實照片＋一句話（Apple 11/24：小物要有作用、回訪要有新鮮感）
+  oyster:[ { img:"img/v2-deco-oyster-basket.webp", at:[.56, .335], w:.09, title:"一籃牡蠣殼", photo:"img/real-oyster-many.webp", text:"每一枚牡蠣殼的形狀和花紋，都不太一樣。" },
+           { img:"img/v2-deco-oyster-powder.webp", at:[.80, .485], w:.085, title:"殼粉與木杓", photo:"img/v2-story-oyster-2.webp", text:"牡蠣殼先清洗、乾燥，再破碎、磨成細細的殼粉。" },
+           { img:"img/v2-deco-oyster-pots.webp", at:[.765, .635], w:.10, title:"多肉盆栽", photo:"img/case-oyster-pot.webp", text:"殼粉混合成形，就成了窗邊的小盆器。" } ],
+  denim:[ { img:"img/v2-deco-denim-jeans.webp", at:[.56, .32], w:.15, title:"曬衣繩上的舊牛仔褲", photo:"img/v2-story-denim-1.webp", text:"台灣每分鐘約有 500 件衣服被丟掉。這兩條，還有下一站。", src:"資料來源：環境部資源循環署" },
+          { img:"img/v2-deco-denim-strips.webp", at:[.585, .43], w:.09, title:"一捆牛仔褲布條", photo:"img/v2-story-denim-2.webp", text:"舊牛仔褲先整理好，再裁成一條條布條。" },
+          { img:"img/v2-deco-denim-coasters.webp", at:[.75, .575], w:.085, title:"牛仔褲杯墊", photo:"img/work-denim-coaster.webp", text:"布條一圈圈捲起來，以工藝膠黏合固定，就成了杯墊。" } ],
+  coffee:[ { img:"img/v2-deco-coffee-sieve.webp", at:[.55, .36], w:.11, title:"竹篩上的咖啡渣", photo:"img/v2-story-coffee-3.webp", text:"沖煮後的咖啡渣要先攤薄、乾燥，再過篩，才能當作材料。" },
+           { img:"img/v2-deco-coffee-bucket.webp", at:[.82, .50], w:.085, title:"咖啡渣收集桶", photo:"img/v2-story-coffee-2.webp", text:"台灣一年喝掉超過 37 億杯咖啡，留下約 11.1 萬公噸咖啡渣。", src:"資料來源：環境部，2025 年 12 月" },
+           { img:"img/v2-deco-coffee-charms.webp", at:[.76, .575], w:.095, title:"咖啡渣香牌", photo:"img/work-coffee-paiv.webp", text:"乾燥的咖啡渣搭配其他材料，就能做成香牌。" } ],
+  diaper:[ { img:"img/v2-deco-diaper-bowls.webp", at:[.53, .34], w:.11, title:"原色紙漿", photo:"img/v2-story-diaper-2-real.webp", text:"先把 NG 尿布裡的紙纖整理出來，加水調成紙漿。" },
+           { img:"img/v2-deco-diaper-trays.webp", at:[.83, .49], w:.09, title:"彩色紙漿", photo:"img/v2-story-diaper-dye.webp", text:"紙漿還能染上顏色，變得繽紛。" },
+           { img:"img/v2-deco-diaper-earths.webp", at:[.77, .585], w:.085, title:"一籃種子地球", photo:"img/work-diaper-seedearth.webp", text:"再生紙纖加上種子，就成了一顆會發芽的種子地球。" } ],
+  caps:[ { img:"img/v2-deco-caps-turtles.webp", at:[.58, .40], w:.10, title:"瓶蓋小海龜", photo:"img/work-caps-turtle.webp", text:"瓶蓋依顏色分好、剪碎，再壓成小海龜。" } ],
+  board:[ { hit:[.105, .33, .15, .17], stand:[.22, .47], title:"板材架", photo:"img/v2-story-board-4.webp", text:"養樂多瓶和保麗龍都是 PS，破碎、造粒以後，就能壓成板材。" },
+          { hit:[.46, .31, .19, .16], stand:[.47, .45], title:"藍色長椅", photo:"img/v2-deco-board-bench.webp", text:"捷綠木板材染成藍色，就成了戶外的長椅。", note:"示意圖" },
+          { hit:[.105, .415, .11, .07], stand:[.24, .49], title:"馬賽克杯墊", photo:"img/work-board-coaster.webp", text:"再生板材再加上馬賽克拼貼，就成了杯墊。" } ],   // 捷綠木島：小物畫在小屋圖裡，用看不見的點擊範圍
+  natural:[ { img:"img/v2-deco-natural-basket.webp", at:[.52, .37], w:.09, title:"松果與乾燥花", photo:"img/v2-story-natural-r1.webp", text:"一片落葉、一顆松果、一束花草，都是大自然給的材料。" },
+            { img:"img/v2-deco-natural-jar.webp", at:[.80, .565], w:.065, title:"浸泡中的葉子", photo:"img/v2-story-natural-r3.webp", text:"把桂花葉浸泡、整理，再慢慢去除葉肉。" },
+            { img:"img/v2-deco-natural-bookmarks.webp", at:[.73, .66], w:.085, title:"葉脈書籤", photo:"img/work-natural-bookmark.webp", text:"留下來的葉脈染上顏色，就成了葉脈時光書籤。" } ] };
+var FOUND = {}; try{ FOUND = JSON.parse(store("wl-island-found") || "{}") || {}; }catch(_){ FOUND = {}; }
+function foundHas(id, k){ return !!(FOUND[id] && FOUND[id].indexOf(k) >= 0); }
+function foundAdd(id, k){ var a = FOUND[id] = FOUND[id] || []; if(a.indexOf(k) < 0){ a.push(k); store("wl-island-found", JSON.stringify(FOUND)); return true; } return false; }
+function foundLeft(id){ return (SCENE_DECO[id] || []).filter(function(d, k){ return !foundHas(id, "f" + k); }).length; }
+function todayFind(){   // 今日小發現：每天（台灣時間）輪到一座島的一個小物，同一天進站的人都一樣
+  var all = []; ["coffee", "oyster", "denim", "diaper", "caps", "board", "natural"].forEach(function(id){ (SCENE_DECO[id] || []).forEach(function(d, k){ all.push([id, "f" + k]); }); });
+  var day = Math.floor((Date.now() + 8*3600*1000)/86400000); return all[day % all.length];
+}
 var SCENES = {
   board:{ hint:"點點島上的東西，跟小森一起探索", props:[
     { id:"house", img:"img/v2-house-board-felt2.webp", head:"img/scene-board-inside.webp", x:-.75, yb:.42, w:2.7, ro:7, door:-1.0, title:"走進捷綠木小屋", text:"屋子是用回收塑膠再生板材蓋的。來看看在這裡可以動手做什麼。", show:"ws" },
@@ -2629,9 +2652,15 @@ function sceneMake(s){
       var dx = kind === "house" ? (HOUSE_DX[s.id] || .5) : .5;   // 房子以門洞對準門口座標；材料堆、材料包以底部中心對準
       mesh.scale.set(w, h, 1); mesh.position.set(q[0] - (dx - .5)*w, q[1] - .06*h + h/2, .05);
       mesh.userData.prop = p; mesh.userData.spot = s; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; g.add(mesh); if(!(kind === "pile" && s.ritual && s.ritual.tap)) exProps.push(mesh); }); });   /* 牡蠣殼島：材料堆先只保留場景外觀，不跳說明 */
-  (SCENE_DECO[s.id] || []).forEach(function(d){ L.load(d.img, function(tex){ tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
-    var w = d.w*W, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, 7.1), q = P(d.at); mesh.scale.set(w, h, 1); mesh.position.set(q[0], q[1] - .06*h + h/2, .04);
-    mesh.userData.deco = true; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; g.add(mesh); }); });
+  (SCENE_DECO[s.id] || []).forEach(function(d, k){
+    var at = d.at || [d.hit[0] + d.hit[2]/2, d.hit[1] + d.hit[3]], st = d.stand || [at[0]*.6 + LY.stand[0]*.4, Math.min(.66, at[1]*.6 + LY.stand[1]*.4 + .03)];
+    var fp = { id:"f" + k, find:true, show:"find", title:d.title, text:d.text, photo:d.photo, src:d.src, note:d.note, stand:st };
+    function add(mesh, w, h){ mesh.userData.deco = true; mesh.userData.prop = fp; mesh.userData.spot = s; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; g.add(mesh); exProps.push(mesh); }
+    if(d.hit){   // 畫在小屋圖裡的小物：放一塊看不見的點擊範圍
+      var hw = d.hit[2]*W, hh = d.hit[3]*H, hm = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ transparent:true, opacity:0, depthTest:false, depthWrite:false }));
+      hm.userData.hit = true; hm.renderOrder = 6; hm.scale.set(hw, hh, 1); var q0 = P([d.hit[0] + d.hit[2]/2, d.hit[1] + d.hit[3]/2]); hm.position.set(q0[0], q0[1], .08); add(hm, hw, hh); return; }
+    L.load(d.img, function(tex){ tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
+    var w = d.w*W, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, 7.1), q = P(d.at); mesh.scale.set(w, h, 1); mesh.position.set(q[0], q[1] - .06*h + h/2, .04); add(mesh, w, h); }); });
   sc.props.forEach(function(p){ if(p.door == null) return;   // 屋子門口立一塊直式招牌：邀請大家走進去探索
     var tex = signTex(p.title, s.id), w = .44*D.sW, h = w*tex.image.height/tex.image.width, mesh = fxSprite(tex, w, 8), q = P(LY.sign); mesh.scale.set(w, h, 1);
     mesh.position.set(q[0], q[1] + h/2, .06); mesh.userData.prop = p; mesh.userData.spot = s; mesh.userData.sign = true; mesh.userData.base = { y:mesh.position.y, w:w, h:h }; if(!(s.ritual && s.ritual.tap)){ g.add(mesh); exProps.push(mesh); }   /* 牡蠣殼島：不放直式門牌，改由門口箭頭指引 */
@@ -2684,7 +2713,11 @@ function arrowTex(){ if(_arrowTex) return _arrowTex; var c = document.createElem
   _arrowTex = new THREE.CanvasTexture(c); _arrowTex.colorSpace = THREE.SRGBColorSpace; return _arrowTex; }
 function signTex(title, id){ var t = new THREE.CanvasTexture(signCanvas(title, SIGN_COLOR[id] || "#3d5a3e")); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t; }
 function inviteTick(){ var el = $("doorTip"); if(!el) return; var s = exp && exp.s, on = s && s.ritual && s.ritual.tap && exp.st === "idle" && $("exPop").hidden && s._arrowMesh && !s._inviteDone;
-  el.hidden = !on; if(!on) return; el.textContent = s.ritual.invite;
+  el.hidden = !on; var nb = $("nextBar");
+  if(!on){ if(!nb.hidden && nb.dataset.kind === "door") nbHide("door"); return; }
+  var goIn = function(){ var hm = exProps.find(function(o){ return o.userData.spot === s && o.userData.prop.door != null && !o.userData.sign && !o.userData.arrow; }); if(hm && exp && exp.st === "idle"){ nbHide("door"); exGo(hm); } };   // 走進小屋：底部按鈕＋可點的邀請框（Apple 11/24：有人看不懂金色箭頭）
+  if(nb.hidden) nbShow("走進小屋", goIn, null, "door", s.name + "小屋");
+  el.textContent = s.ritual.invite + " ›"; el.onclick = goIn;
   var v = s._arrowMesh.getWorldPosition(new THREE.Vector3()).project(camera), sz = size(), x = (v.x + 1)/2*sz.w, y = (1 - v.y)/2*sz.h;
   el.style.left = Math.max(10, Math.min(sz.w - el.offsetWidth - 10, x + 24)) + "px"; el.style.top = Math.max(90, y - el.offsetHeight/2) + "px"; }   // 提示放在箭頭旁邊、靠近小屋
 function sceneTick(dt){ SPOTS.forEach(function(s){
@@ -2697,6 +2730,7 @@ function sceneTick(dt){ SPOTS.forEach(function(s){
   if(g.visible && (m.material.depthTest || m.renderOrder < 9)){ m.material.depthTest = false; m.renderOrder = 9; }   // 小森永遠畫在房子前面（回訪、直接點進島時也一樣）
   g.children.forEach(function(mesh){ var B = mesh.userData.base;
     if(mesh.userData.arrow){ var showA = act && exp.st === "idle", tap = s.ritual && s.ritual.tap, bob = !tap || (s._inviteT != null && t - s._inviteT < 2*Math.PI*2/2.4 && !s._inviteDone); mesh.material.opacity = showA ? op : 0; mesh.position.y = B.y + (showA && bob ? Math.abs(Math.sin((t - (s._inviteT || 0))*2.4))*.06*u.H : 0); s._arrowMesh = mesh; return; }
+    if(mesh.userData.hit){ mesh.material.opacity = 0; return; }
     mesh.material.opacity = op; mesh.scale.set(B.w, B.h, 1); mesh.position.y = B.y; });   // 道具固定大小，不呼吸、不閃
 }); }
 function sceneAim(s){ var ib = s._bb, m = s._sen, D = layDim(s); if(!ib || !D) return null; var sx = .5 + ((m && m.userData.ox) || 0)/D.W, X = .47 + (sx - .5)*.35;   // 鏡頭對著島的廣場，小森走去哪就稍微跟過去
@@ -2706,9 +2740,11 @@ function scenePose(s){
   return { target:tgt, pos:tgt.clone().addScaledVector(dir, size().w <= 640 ? 21 : 13) };
 }
 function exEnter(s){
+  var back = !!dressed[s.id] && foundLeft(s.id) > 0 && (DRESSED0[s.id] || s._visitedOnce); s._visitedOnce = true; s._findHint = back;   // 回訪：還沒找到的小發現亮出提示
+  if(back) setTimeout(function(){ if(exp && exp.s === s && exp.st === "idle") tipSet("sen", "上次沒看到的，這裡還有喔", function(){ tipSet(null); }, 5); }, 1600);
   exp = { s:s, st:"idle", t:0 }; card.hidden = true; chips.hidden = true; viewTo = { ox:0, oy:0 };
   flyTo(scenePose(s), false, 1.4);
-  if(s.ritual && s.ritual.tap){ nbHide("ex"); if(s._inviteT == null){ s._inviteT = performance.now()/1000; say(s.ritual.invite); } else { if(dressed[s.id] && !DRESS_EACH[s.id]) setTimeout(function(){ if(exp && exp.s === s && exp.st === "idle") tipSet("sen", "再看一次換裝", function(){ if(exp && exp.s === s && exp.st === "idle" && !rit){ tipSet(null); ritReplay(s); } }, 8); }, 1800); } }   // 重訪：只留靜態箭頭，不重複邀請句、不跳動（Apple 11/08 18:06） else nbExplore(); say(SCENES[s.id].hint);
+  if(s.ritual && s.ritual.tap){ nbHide("ex"); if(s._inviteT == null){ s._inviteT = performance.now()/1000; say(s.ritual.invite); } else { if(dressed[s.id] && !DRESS_EACH[s.id]) setTimeout(function(){ if(exp && exp.s === s && exp.st === "idle") tipSet("sen", "再看一次換裝", function(){ if(exp && exp.s === s && exp.st === "idle" && !rit){ tipSet(null); ritReplay(s); } }, 8); }, s._findHint ? 7000 : 1800); } }   // 重訪：只留靜態箭頭，不重複邀請句、不跳動（Apple 11/08 18:06） else nbExplore(); say(SCENES[s.id].hint);
 }
 function exMesh(id){ return exProps.find(function(o){ return o.userData.spot === (exp && exp.s) && o.userData.prop.id === id && !o.userData.sign && !o.userData.arrow; }); }
 function nbShow(label, go, more, kind, cap){ var b = $("nextBar"); $("nbGoTxt").textContent = label; b.querySelector(".nb-k").textContent = cap || "下一步"; $("nbGo").onclick = go; b.dataset.kind = kind || "";
@@ -2733,17 +2769,21 @@ function exLeave(){ nbHide("next"); if(!exp) return; var s = exp.s; exPopClose(t
 // 走出小屋後，地上的材料堆和材料包冒出「點一下」提示，讓訪客知道它們可以點（Apple 11/10 22:50）
 var PT_V = null, PT_AR = null;   // 提示＝文字＋和門口一樣的金色箭頭往下指（Apple 11/11 12:03：不用 emoji）
 function propTipTick(){ var box = $("propTips"); if(!box) return; var s = exp && exp.s;
-  var on = s && s._houseOut && exp.st === "idle" && $("exPop").hidden && $("hs").hidden && !hop && !flying && !appEl.classList.contains("op-on");
+  var tf = todayFind(), today = s && tf[0] === s.id && !foundHas(s.id, tf[1]) && dressed[s.id];
+  var on = s && (s._houseOut || s._findHint || today) && exp.st === "idle" && $("exPop").hidden && $("hs").hidden && !hop && !flying && !appEl.classList.contains("op-on");
   if(!on){ if(box.childElementCount) box.innerHTML = ""; box._s = null; return; }
-  var list = exProps.filter(function(o){ return o.userData.spot === s && o.parent && o.parent.visible && !o.userData.sign && !o.userData.arrow && o.userData.prop.door == null && !(s._propDone && s._propDone[o.userData.prop.id]); });
+  var list = exProps.filter(function(o){ return o.userData.spot === s && o.parent && o.parent.visible && !o.userData.sign && !o.userData.arrow && o.userData.prop.door == null && !(s._propDone && s._propDone[o.userData.prop.id]) && !(o.userData.prop.find && foundHas(s.id, o.userData.prop.id)) && (o.userData.prop.find ? (s._houseOut || s._findHint || (s.id === tf[0] && o.userData.prop.id === tf[1])) : s._houseOut); });
   if(box._s !== s || box.childElementCount !== list.length){ box._s = s; box.innerHTML = "";
-    list.forEach(function(o){ var b = document.createElement("button"); b.type = "button"; b.className = "ptip"; if(!PT_AR){ try{ PT_AR = arrowTex().image.toDataURL(); }catch(_){ PT_AR = ""; } } b.innerHTML = '<span class="pt-tx">' + o.userData.prop.title + "</span>" + (PT_AR ? '<img class="pt-ar" alt="" src="' + PT_AR + '">' : ""); b.onclick = function(ev){ ev.stopPropagation(); exGo(o); }; b._o = o; box.appendChild(b); }); }
-  var sz = size(); PT_V = PT_V || new THREE.Vector3();
+    list.forEach(function(o){ var b = document.createElement("button"); b.type = "button"; b.className = "ptip"; if(!PT_AR){ try{ PT_AR = arrowTex().image.toDataURL(); }catch(_){ PT_AR = ""; } } var pp = o.userData.prop, tfx = todayFind(); b.innerHTML = '<span class="pt-tx">' + (pp.find ? (s.id === tfx[0] && pp.id === tfx[1] ? "今日小發現" : "小發現") : pp.title) + "</span>" + (PT_AR ? '<img class="pt-ar" alt="" src="' + PT_AR + '">' : ""); b.onclick = function(ev){ ev.stopPropagation(); exGo(o); }; b._o = o; box.appendChild(b); }); }
+  var sz = size(); PT_V = PT_V || new THREE.Vector3(); var busy = [$("doorTip"), $("tip3d")].filter(function(e){ return e && !e.hidden; }).map(function(e){ return e.getBoundingClientRect(); }).filter(function(r){ return r.width > 0; });
   [].forEach.call(box.children, function(b){ var v = b._o.localToWorld(PT_V.set(0, .5, 0)).project(camera), x = (v.x + 1)/2*sz.w, y = (1 - v.y)/2*sz.h - 8;
-    var vis = v.z < 1 && x > 20 && x < sz.w - 20 && y > 70 && y < sz.h - 60; b.style.transform = "translate(" + Math.round(Math.max(8, Math.min(sz.w - b.offsetWidth - 8, x - b.offsetWidth/2))) + "px," + Math.round(y - b.offsetHeight) + "px)"; b.classList.toggle("on", vis); });
+    var bx = Math.round(Math.max(8, Math.min(sz.w - b.offsetWidth - 8, x - b.offsetWidth/2))), by = Math.round(y - b.offsetHeight);
+    for(var g = 0; g < 4; g++){ var hit = busy.find(function(r){ return bx < r.right && bx + b.offsetWidth > r.left && by < r.bottom && by + b.offsetHeight > r.top; }); if(!hit) break; by = Math.round(hit.bottom + 4); }   // 不要壓到「進屋看看」、小森的話，提示彼此也不重疊
+    busy.push({ left:bx, right:bx + b.offsetWidth, top:by, bottom:by + b.offsetHeight });
+    var vis = v.z < 1 && x > 20 && x < sz.w - 20 && y > 70 && y < sz.h - 60; b.style.transform = "translate(" + bx + "px," + by + "px)"; b.classList.toggle("on", vis); });
 }
 function exGo(mesh){
-  if(!exp || exp.st !== "idle") return; nbHide("ex"); var p = mesh.userData.prop, m = exp.s._sen, W = m.userData.W; (exp.s._propDone = exp.s._propDone || {})[p.id] = true;   // 點過的道具就不再顯示提示
+  if(!exp || exp.st !== "idle") return; nbHide("ex"); var p = mesh.userData.prop, m = exp.s._sen, W = m.userData.W; if(!p.find) (exp.s._propDone = exp.s._propDone || {})[p.id] = true;   // 點過的道具就不再顯示提示
   var D = layDim(exp.s), st = p.stand || layOf(exp.s).stand, tx = (st[0] - .5)*D.W;   // 走到道具前的站位（房子＝門口）
   if(p.door != null) exp.s._inviteDone = true; exp.st = "walk"; exp.p = p; exp.x0 = m.userData.ox || 0; exp.x1 = tx; exp.d0 = m.userData.plazaAt; exp.d1 = 1 - st[1]; exp.t = 0; exp.dur = Math.max(.45, Math.hypot(tx - exp.x0, (exp.d1 - exp.d0)*D.H)/(.9*W));
 }
@@ -2832,7 +2872,18 @@ function exGallery(p, pick){   // 走進小屋：先看真實作品照片＋一�
   if($("exBack")) $("exBack").onclick = function(){ exp.galY = null; exPopClose(); }; if($("exGal")) $("exGal").onclick = function(){ exGallery(p); };
   say($("exTitle").textContent); $("exTitle").setAttribute("tabindex", "-1"); $("exTitle").focus({ preventScroll:true });
 }
+function exFind(p){   // 小發現：底部窄條（Apple 11/24：不要大卡擋住小森和島）
+  var s = exp.s, tf = todayFind(), today = tf[0] === s.id && tf[1] === p.id, fresh = foundAdd(s.id, p.id), tot = (SCENE_DECO[s.id] || []).length, got = tot - foundLeft(s.id);
+  track("find_open", { island:s.id, find:p.title });
+  var html = '<button type="button" class="fs-ph" id="fsPh" aria-label="放大照片"><img src="' + p.photo + '" alt="' + p.title + '">' + (p.note ? '<span class="fs-note">' + p.note + "</span>" : "") + '</button><div class="fs-tx">' +
+    '<p class="fs-k">' + (today ? "今日小發現" : "小發現") + "　" + got + "／" + tot + '</p><h3 id="exTitle">' + p.title + "</h3><p>" + p.text + "</p>" + (p.src ? '<p class="fs-src">' + p.src + "</p>" : "") + "</div>";
+  var pop = $("exPop"); pop.classList.add("find-strip"); $("exPopBody").innerHTML = html; pop.hidden = false; $("exBar").hidden = true; nbHide("ex"); nbHide("door");
+  pop._doneMsg = fresh && got === tot && tot > 1;
+  $("fsPh").onclick = function(){ var lb = $("fsBig"); lb.querySelector("img").src = p.photo; lb.querySelector("img").alt = p.title; lb.hidden = false; };
+  say(p.title + "：" + p.text);
+}
 function exPopOpen(p, step){
+  if(p.find){ exFind(p); return; }
   var s = exp.s, two = p.show === "ws" && !step;   // 帶一份回家做：點了直接看材料包清單，不再先經過一張封面頁（Apple 11/11 13:50）   // 第一頁：導覽；第二頁：工作坊或材料包
   if(p.show === "ws" && s.ritual && s.ritual.tap && !step){ if(hsHas(s)){ hsOpen(p); return; } exGallery(p); return; }
   var guide = two && p.show === "ws";   // 走進小屋第一頁：先看材料怎麼一步步變成作品（過程圖），再讀導覽
@@ -2851,14 +2902,16 @@ function exPopOpen(p, step){
 }
 function exPopClose(silent){
   if(!hs && !$("hs").hidden){ $("hs").hidden = true; $("hs").classList.remove("under"); appEl.classList.remove("hs-on", "hs-under"); }   // 從屋內作品列表離開：一起收起屋內畫面
-  $("exPop").hidden = true; if(!exp || silent) return; if(!(exp.s.ritual && exp.s.ritual.tap)) nbExplore();
+  var ep = $("exPop"), wasFind = ep.classList.contains("find-strip"); ep.hidden = true; ep.classList.remove("find-strip"); $("fsBig").hidden = true;
+  if(wasFind && ep._doneMsg){ ep._doneMsg = false; toast("這座島的小發現都找到了！"); }
+  if(!exp || silent) return; if(!(exp.s.ritual && exp.s.ritual.tap)) nbExplore();
   if(exp.st === "open"){ if(exp.p.door != null){ exp.st = "exit"; exp.t = 0; exp.leftHouse = true; exp.s._houseOut = true; } else { exBackTo(exp.s._sen.userData); } }
 }
 function exToCard(){ var s = exp && exp.s; exLeave(); if(!s) return; settleCard = true; flyTo(spotPose(s), false, 1.4); }
 function exPick(){   // 點擊時先看是不是點到探索道具
   if(!exp || exp.st !== "idle") return false;
   var hits = ray.intersectObjects(exProps.filter(function(o){ return o.userData.spot === exp.s && o.parent && o.parent.visible; }), false);
-  if(hits.length){ var best = hits.find(function(h){ return h.uv && alphaAt(h.object.material.map.image, h.uv) > 30; }) || hits[0]; exGo(best.object); return true; }   // 點到道具的範圍就算（像發芽地球這種細枝的圖，點在枝條之間也要有反應）
+  if(hits.length){ var best = hits.find(function(h){ return h.object.userData.hit || (h.uv && h.object.material.map && alphaAt(h.object.material.map.image, h.uv) > 30); }) || hits[0]; exGo(best.object); return true; }   // 點到道具的範圍就算（像發芽地球這種細枝的圖，點在枝條之間也要有反應）
   return false;
 }
 function ritLoad(s){
@@ -3479,7 +3532,9 @@ var opPinT = null; function opPinOn(){ $("opPin").classList.add("on"); opPinTick
 function opPinTick(){ var o = $("opening"); if(o.hidden || o.classList.contains("out") || !HUB.isl || !$("opPin").classList.contains("on")){ $("opPin").classList.remove("on"); return; }   // 拉遠後還找得到小森：在工作室上方標一下
   var v = islWorld(HUB.isl, HUB.top + 2.4).project(camera), S = size(); $("opPin").style.left = ((v.x + 1)/2*S.w) + "px"; $("opPin").style.top = ((1 - v.y)/2*S.h) + "px";
   requestAnimationFrame(opPinTick); }
-function openingHide(){ opStopOff(); if(opAnim) viewTo = { ox:0, oy:0 }; clearTimeout(opAnim); opAnim = null; opSayOff(); appEl.classList.remove("op-on"); var o = $("opening"); o.classList.add("out"); $("opPin").classList.remove("on"); setTimeout(function(){ o.hidden = true; }, 500); }
+function todayToast(){ var tf = todayFind(), sp = SPOTS.find(function(x){ return x.id === tf[0]; }), d = new Date(Date.now() + 8*3600*1000).toISOString().slice(0, 10);   // 一天提示一次：今天的小發現在哪座島
+  if(sp && store("wl-today-find") !== d && !foundHas(tf[0], tf[1])){ store("wl-today-find", d); toast("今天的小發現在" + sp.name + "島"); } }
+function openingHide(){ setTimeout(todayToast, 2600); opStopOff(); if(opAnim) viewTo = { ox:0, oy:0 }; clearTimeout(opAnim); opAnim = null; opSayOff(); appEl.classList.remove("op-on"); var o = $("opening"); o.classList.add("out"); $("opPin").classList.remove("on"); setTimeout(function(){ o.hidden = true; }, 500); }
 $("opSkipAnim").addEventListener("click", opSkipAnim);
 $("opStop").addEventListener("click", function(){ $("opGo").click(); });   // 點第一站提示＝跟小森出發
 $("opReplay").addEventListener("click", function(){ openingShow(true); });
@@ -3747,6 +3802,7 @@ window.__dbg = function(){ function pr(v){ var q = v.clone().project(camera); re
   o.cam = f(camera.position); o.tgt = f(controls.target); if(hop){ o.ap = f(hop.appr.pos); o.at = f(hop.appr.target); o.free = hop.free; o.bw = f(sailBoat.position); }
   SPOTS.forEach(function(s){ if(s._face > .01) o[s.id] = { face:+s._face.toFixed(2), at:pr(s._isl.group.position) }; });
   return JSON.stringify(o); };
+window.__expSt = function(){ return exp ? exp.st : null; };
 window.__exProp = function(id){ var o = exProps.find(function(x){ return x.userData.prop.id === id && SPOTS.indexOf(x.userData.spot) === current; }); if(!o) return null; var v = o.getWorldPosition(new THREE.Vector3()).project(camera); return [Math.round((v.x+1)/2*size().w), Math.round((1-v.y)/2*size().h), exp ? exp.st : null]; };
 window.__exDbg = function(){ var s = SPOTS[5], m = s._sen, P = function(o){ var v = o.getWorldPosition(new THREE.Vector3()).project(camera); return [Math.round((v.x+1)/2*size().w), Math.round((1-v.y)/2*size().h)]; }; return JSON.stringify({ msc:m.scale.toArray().map(function(x){return +x.toFixed(3)}), W:m.userData.W, H:m.userData.H, ox:m.userData.ox, sen:P(m), g:s._scene && P(s._scene), gs:s._scene && s._scene.scale.x, kids:s._scene && s._scene.children.map(function(c){ return [c.userData.prop.id, P(c), +c.position.x.toFixed(2)]; }), camd:+camera.position.distanceTo(controls.target).toFixed(2), fly:!!flying, view:[view.ox|0, view.oy|0, viewTo.ox|0, viewTo.oy|0], tgt:(function(){ var v = controls.target.clone().project(camera); return [Math.round((v.x+1)/2*size().w), Math.round((1-v.y)/2*size().h)]; })() }); };
 window.__worksHTML = function(i){ return worksHTML(SPOTS[i]); };
