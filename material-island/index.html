@@ -515,6 +515,7 @@ a{color:var(--moss)}
 .rt-say{white-space:pre-line}.rt-say{position:absolute;left:0;top:0;z-index:4;margin:0;max-width:250px;padding:12px 18px;border-radius:26px;background:#fffdf7;color:var(--moss-dark);font-size:17px;font-weight:700;line-height:1.5;letter-spacing:.02em;
   box-shadow:0 10px 24px rgba(30,42,30,.22),0 0 0 2px rgba(196,154,60,.55);pointer-events:none;opacity:0;transform-origin:30% 120%;transform:translate(var(--sx,0px),var(--sy,0px)) scale(.3);transition:opacity .2s ease-out,transform .45s cubic-bezier(.34,1.56,.64,1)}
 .rt-say.on{opacity:1;transform:translate(var(--sx,0px),var(--sy,0px)) scale(1)}
+.inv-say{pointer-events:auto;cursor:pointer;font-size:16px}.nb-k:empty{display:none}
 .rt-say::before,.rt-say::after{content:"";position:absolute;border-radius:50%;background:#fffdf7;box-shadow:0 0 0 2px rgba(196,154,60,.55),0 4px 10px rgba(30,42,30,.18)}
 .rt-say::after{left:calc(30% - 8px);bottom:-20px;width:16px;height:16px}
 .rt-say::before{left:calc(30% - 18px);bottom:-36px;width:10px;height:10px}
@@ -900,6 +901,7 @@ a{color:var(--moss)}
     <div class="nb-more" id="nbMore"></div>
   </div>
   <p class="rt-say" id="rtSay" hidden aria-live="polite"></p>
+  <p class="rt-say inv-say" id="invSay" hidden role="button" tabindex="0"></p>
   <p class="door-tip" id="doorTip" hidden></p>
   <div class="rt-acts" id="rtActs" hidden role="group" aria-label="小森的邀請"><button type="button" class="btn solid" id="rtWear"></button><button type="button" class="btn" id="rtSkip">先看材料故事</button></div>
   <div class="exbar" id="exBar" hidden role="status"><span id="exHint"></span><button type="button" id="exInfo">島嶼介紹</button></div>
@@ -2727,13 +2729,17 @@ function arrowTex(){ if(_arrowTex) return _arrowTex; var c = document.createElem
   _arrowTex = new THREE.CanvasTexture(c); _arrowTex.colorSpace = THREE.SRGBColorSpace; return _arrowTex; }
 function signTex(title, id){ var t = new THREE.CanvasTexture(signCanvas(title, SIGN_COLOR[id] || "#3d5a3e")); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t; }
 function inviteTick(){ var el = $("doorTip"); if(!el) return; var s = exp && exp.s, on = s && s.ritual && s.ritual.tap && exp.st === "idle" && $("exPop").hidden && s._arrowMesh && !s._inviteDone;
-  el.hidden = !on; var nb = $("nextBar");
-  if(!on){ if(!nb.hidden && nb.dataset.kind === "door") nbHide("door"); return; }
+  el.hidden = true; var nb = $("nextBar"), ib = $("invSay");   // 「進屋看看」改成小森的思考泡泡（Apple 11/25：門口的字框＋箭頭＋底部太多字）
+  if(!on){ if(!ib.hidden){ ib.classList.remove("on"); ib.hidden = true; } if(!nb.hidden && nb.dataset.kind === "door") nbHide("door"); return; }
   var goIn = function(){ var hm = exProps.find(function(o){ return o.userData.spot === s && o.userData.prop.door != null && !o.userData.sign && !o.userData.arrow; }); if(hm && exp && exp.st === "idle"){ nbHide("door"); exGo(hm); } };   // 走進小屋：底部按鈕＋可點的邀請框（Apple 11/24：有人看不懂金色箭頭）
-  if(nb.hidden) nbShow("走進小屋", goIn, null, "door", s.name + "小屋");
-  el.textContent = s.ritual.invite + " ›"; el.onclick = goIn;
-  var v = s._arrowMesh.getWorldPosition(new THREE.Vector3()).project(camera), sz = size(), x = (v.x + 1)/2*sz.w, y = (1 - v.y)/2*sz.h;
-  el.style.left = Math.max(10, Math.min(sz.w - el.offsetWidth - 10, x + 24)) + "px"; el.style.top = Math.max(90, y - el.offsetHeight/2) + "px"; }   // 提示放在箭頭旁邊、靠近小屋
+  if(nb.hidden) nbShow("走進小屋", goIn, null, "door", "");
+  var txt = s._findHint && performance.now() - (s._enterT || 0) < 4500 ? "上次沒看到的，這裡還有喔" : s.ritual.invite;
+  if(ib.textContent !== txt) ib.textContent = txt; ib.onclick = goIn; ib.onkeydown = function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); goIn(); } };
+  if(ib.hidden){ ib.hidden = false; requestAnimationFrame(function(){ ib.classList.add("on"); }); }
+  var m = s._sen; if(!m) return; var top = m.localToWorld(new THREE.Vector3(0, m.userData.H*1.02, 0)).project(camera), sz = size(), cr = canvas.getBoundingClientRect();
+  var x = (top.x + 1)/2*sz.w + cr.left, y = (1 - top.y)/2*sz.h + cr.top, w = ib.offsetWidth, h = ib.offsetHeight;
+  x = Math.max(10, Math.min(sz.w - w - 10, x - w*.3)); y = Math.max(96, y - h - 40);
+  ib.style.setProperty("--sx", Math.round(x) + "px"); ib.style.setProperty("--sy", Math.round(y) + "px"); }   // 泡泡放在小森頭上方，跟上島時那句一樣
 function sceneTick(dt){ SPOTS.forEach(function(s){
   var m = s._sen, ib = s._bb; if(!m || !ib || !m.parent) return;
   if(!s._lay && s.ritual) layApply(s);   // 島圖載好後，小森站到共用版型的廣場位置
@@ -2755,13 +2761,13 @@ function scenePose(s){
 }
 function exEnter(s){
   var back = !!dressed[s.id] && foundLeft(s.id) > 0 && (DRESSED0[s.id] || s._visitedOnce); s._visitedOnce = true; s._findHint = back;   // 回訪：還沒找到的小發現亮出提示
-  if(back) setTimeout(function(){ if(exp && exp.s === s && exp.st === "idle") tipSet("sen", "上次沒看到的，這裡還有喔", function(){ tipSet(null); }, 5); }, 1600);
+  s._enterT = performance.now() + 1200;
   exp = { s:s, st:"idle", t:0 }; card.hidden = true; chips.hidden = true; viewTo = { ox:0, oy:0 };
   flyTo(scenePose(s), false, 1.4);
-  if(s.ritual && s.ritual.tap){ nbHide("ex"); if(s._inviteT == null){ s._inviteT = performance.now()/1000; say(s.ritual.invite); } else { if(dressed[s.id] && !DRESS_EACH[s.id]) setTimeout(function(){ if(exp && exp.s === s && exp.st === "idle") tipSet("sen", "再看一次換裝", function(){ if(exp && exp.s === s && exp.st === "idle" && !rit){ tipSet(null); ritReplay(s); } }, 8); }, s._findHint ? 7000 : 1800); } }   // 重訪：只留靜態箭頭，不重複邀請句、不跳動（Apple 11/08 18:06） else nbExplore(); say(SCENES[s.id].hint);
+  if(s.ritual && s.ritual.tap){ nbHide("ex"); if(s._inviteT == null){ s._inviteT = performance.now()/1000; say(s.ritual.invite); } else { if(dressed[s.id] && !DRESS_EACH[s.id]) setTimeout(function(){ if(exp && exp.s === s && exp.st === "idle") tipSet("senLow", "再看一次換裝", function(){ if(exp && exp.s === s && exp.st === "idle" && !rit){ tipSet(null); ritReplay(s); } }, 8); }, s._findHint ? 7000 : 1800); } }   // 重訪：只留靜態箭頭，不重複邀請句、不跳動（Apple 11/08 18:06） else nbExplore(); say(SCENES[s.id].hint);
 }
 function exMesh(id){ return exProps.find(function(o){ return o.userData.spot === (exp && exp.s) && o.userData.prop.id === id && !o.userData.sign && !o.userData.arrow; }); }
-function nbShow(label, go, more, kind, cap){ var b = $("nextBar"); $("nbGoTxt").textContent = label; b.querySelector(".nb-k").textContent = cap || "下一步"; $("nbGo").onclick = go; b.dataset.kind = kind || "";
+function nbShow(label, go, more, kind, cap){ var b = $("nextBar"); $("nbGoTxt").textContent = label; b.querySelector(".nb-k").textContent = cap == null ? "下一步" : cap; $("nbGo").onclick = go; b.dataset.kind = kind || "";
   var m = $("nbMore"); m.innerHTML = ""; (more || []).forEach(function(x){ var e = document.createElement("button"); e.type = "button"; e.textContent = x[0]; e.onclick = x[1]; m.appendChild(e); });
   b.hidden = false; }
 function nbHide(kind){ var b = $("nextBar"); if(!kind || b.dataset.kind === kind) b.hidden = true; }
@@ -2789,7 +2795,7 @@ function propTipTick(){ var box = $("propTips"); if(!box) return; var s = exp &&
   var list = exProps.filter(function(o){ return o.userData.spot === s && o.parent && o.parent.visible && !o.userData.sign && !o.userData.arrow && o.userData.prop.door == null && !(s._propDone && s._propDone[o.userData.prop.id]) && !(o.userData.prop.find && foundHas(s.id, o.userData.prop.id)) && (o.userData.prop.find ? (s._houseOut || s._findHint || (s.id === tf[0] && o.userData.prop.id === tf[1])) : s._houseOut); });
   if(box._s !== s || box.childElementCount !== list.length){ box._s = s; box.innerHTML = "";
     list.forEach(function(o){ var b = document.createElement("button"); b.type = "button"; b.className = "ptip"; if(!PT_AR){ try{ PT_AR = arrowTex().image.toDataURL(); }catch(_){ PT_AR = ""; } } var pp = o.userData.prop, tfx = todayFind(); b.innerHTML = '<span class="pt-tx">' + (pp.find ? (s.id === tfx[0] && pp.id === tfx[1] ? "今日小發現" : "小發現") : pp.title) + "</span>" + (PT_AR ? '<img class="pt-ar" alt="" src="' + PT_AR + '">' : ""); b.onclick = function(ev){ ev.stopPropagation(); exGo(o); }; b._o = o; box.appendChild(b); }); }
-  var sz = size(); PT_V = PT_V || new THREE.Vector3(); var busy = [$("doorTip"), $("tip3d")].filter(function(e){ return e && !e.hidden; }).map(function(e){ return e.getBoundingClientRect(); }).filter(function(r){ return r.width > 0; });
+  var sz = size(); PT_V = PT_V || new THREE.Vector3(); var busy = [$("invSay"), $("tip3d")].filter(function(e){ return e && !e.hidden; }).map(function(e){ return e.getBoundingClientRect(); }).filter(function(r){ return r.width > 0; });
   [].forEach.call(box.children, function(b){ var v = b._o.localToWorld(PT_V.set(0, .5, 0)).project(camera), x = (v.x + 1)/2*sz.w, y = (1 - v.y)/2*sz.h - 8;
     var bx = Math.round(Math.max(8, Math.min(sz.w - b.offsetWidth - 8, x - b.offsetWidth/2))), by = Math.round(y - b.offsetHeight);
     for(var g = 0; g < 4; g++){ var hit = busy.find(function(r){ return bx < r.right && bx + b.offsetWidth > r.left && by < r.bottom && by + b.offsetHeight > r.top; }); if(!hit) break; by = Math.round(hit.bottom + 4); }   // 不要壓到「進屋看看」、小森的話，提示彼此也不重疊
@@ -3051,9 +3057,10 @@ var tip = null, HUB_LAY = { stand:[.45, .655], door:[.335, .455], doorBox:[.24, 
 function tipSet(at, text, go, secs){ var e = $("tip3d"); if(!at){ tip = null; e.classList.remove("on"); e.hidden = true; return; } tip = { at:at, until:secs ? performance.now()/1000 + secs : 0 }; e.textContent = text; e.onclick = function(ev){ ev.stopPropagation(); go(); }; e.hidden = false; e.classList.remove("on"); }
 function tipTick(){ if(!tip) return; var e = $("tip3d"), o = tip.at === "cup" ? ritShell : tip.at === "door" ? HUB.house : (exp && exp.s._sen), v;
   if(tip.until && performance.now()/1000 > tip.until){ tipSet(null); return; }
-  if(!o || !o.visible || (tip.at === "sen" && (!exp || exp.st !== "idle")) || (tip.at === "door" && (hop || !$("hs").hidden))){ e.classList.remove("on"); return; }
-  if(tip.at === "cup") v = o.getWorldPosition(new THREE.Vector3()); else if(tip.at === "door") v = o.localToWorld(new THREE.Vector3((HUB_LAY.door[0] - .5)*o.userData.W, (1 - HUB_LAY.door[1])*o.userData.H, 0)); else v = o.localToWorld(new THREE.Vector3(0, o.userData.H*.95, 0));
-  v.project(camera); var sz = size(), x = (v.x+1)/2*sz.w, y = (1-v.y)/2*sz.h + (tip.at === "cup" ? 30 : -6); e.classList.toggle("below", tip.at === "cup");
+  if(tip.at === "senLow") o = exp && exp.s._sen;
+  if(!o || !o.visible || ((tip.at === "sen" || tip.at === "senLow") && (!exp || exp.st !== "idle")) || (tip.at === "door" && (hop || !$("hs").hidden))){ e.classList.remove("on"); return; }
+  if(tip.at === "cup") v = o.getWorldPosition(new THREE.Vector3()); else if(tip.at === "door") v = o.localToWorld(new THREE.Vector3((HUB_LAY.door[0] - .5)*o.userData.W, (1 - HUB_LAY.door[1])*o.userData.H, 0)); else v = o.localToWorld(new THREE.Vector3(0, tip.at === "senLow" ? 0 : o.userData.H*.95, 0));
+  v.project(camera); var sz = size(), x = (v.x+1)/2*sz.w, y = (1-v.y)/2*sz.h + (tip.at === "cup" || tip.at === "senLow" ? 30 : -6); e.classList.toggle("below", tip.at === "cup" || tip.at === "senLow");
   x = Math.max(e.offsetWidth/2 + 8, Math.min(sz.w - e.offsetWidth/2 - 8, x));
   e.style.left = Math.round(x) + "px"; e.style.top = Math.round(y) + "px"; e.classList.add("on"); }
 function ritTapGo(){ if(!rit || rit.phase !== "tapwait") return; tipSet(null); if(rit.halo && rit.halo.parent) rit.halo.parent.remove(rit.halo); rit.halo = null; rit.t = 0; if(rit.prev && !rit.reduce){ rit.phase = "swap"; rit.swap = { t:0, g:swapMake(rit.s._sen, rit.s) }; } else { rit.phase = "reach"; ritFrame("a", 0); } if(ritShell){ ritShell.visible = !!rit.s.ritual.bigShell; ritShell.scale.set(1, 1, 1); } ritUI(null, false); }   // 點小森、點材料或按下方按鈕，都開始換裝
