@@ -515,7 +515,9 @@ a{color:var(--moss)}
 .rt-say{white-space:pre-line}.rt-say{position:absolute;left:0;top:0;z-index:4;margin:0;max-width:250px;padding:12px 18px;border-radius:26px;background:#fffdf7;color:var(--moss-dark);font-size:17px;font-weight:700;line-height:1.5;letter-spacing:.02em;
   box-shadow:0 10px 24px rgba(30,42,30,.22),0 0 0 2px rgba(196,154,60,.55);pointer-events:none;opacity:0;transform-origin:30% 120%;transform:translate(var(--sx,0px),var(--sy,0px)) scale(.3);transition:opacity .2s ease-out,transform .45s cubic-bezier(.34,1.56,.64,1)}
 .rt-say.on{opacity:1;transform:translate(var(--sx,0px),var(--sy,0px)) scale(1)}
-.inv-say{pointer-events:auto;cursor:pointer;font-size:16px}.nb-k:empty{display:none}
+.inv-say{pointer-events:auto;cursor:pointer;font-size:16px}
+.skip-sail{position:fixed;left:50%;bottom:calc(104px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;min-height:32px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--muted);background:rgba(249,246,240,.72)!important;box-shadow:none;cursor:pointer}
+.skip-sail::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}.nb-k:empty{display:none}
 .rt-say::before,.rt-say::after{content:"";position:absolute;border-radius:50%;background:#fffdf7;box-shadow:0 0 0 2px rgba(196,154,60,.55),0 4px 10px rgba(30,42,30,.18)}
 .rt-say::after{left:calc(30% - 8px);bottom:-20px;width:16px;height:16px}
 .rt-say::before{left:calc(30% - 18px);bottom:-36px;width:10px;height:10px}
@@ -902,6 +904,7 @@ a{color:var(--moss)}
   </div>
   <p class="rt-say" id="rtSay" hidden aria-live="polite"></p>
   <p class="rt-say inv-say" id="invSay" hidden role="button" tabindex="0"></p>
+  <button type="button" class="pill skip-sail" id="skipSail" hidden>直接上島 ›</button>
   <p class="door-tip" id="doorTip" hidden></p>
   <div class="rt-acts" id="rtActs" hidden role="group" aria-label="小森的邀請"><button type="button" class="btn solid" id="rtWear"></button><button type="button" class="btn" id="rtSkip">先看材料故事</button></div>
   <div class="exbar" id="exBar" hidden role="status"><span id="exHint"></span><button type="button" id="exInfo">島嶼介紹</button></div>
@@ -2193,7 +2196,9 @@ function twClose(refocus){ var c = $("twCard"); if(c.hidden) return; c.hidden = 
 // 左上角「材料小島｜Wishlite」：點了回到地球全景，等於按「回到全景」（Apple 11/15）
 $("backEarth").addEventListener("click", function(){ track("back_earth", { from:"button" }); goEarth(); });
 $("hsBack").addEventListener("click", function(){ $("hsX").click(); });
-setInterval(function(){ appEl.classList.toggle("on-isl", current >= 0 || !!exp); }, 300);
+setInterval(function(){ appEl.classList.toggle("on-isl", current >= 0 || !!exp);
+  var sk = $("skipSail"), show = !!(hop && !hop.landed && !hop.skip && hop.t > .8 && hop.to >= 0 && (SAIL_N >= 2 || Object.keys(DRESSED0).length)); if(sk.hidden === show) sk.hidden = !show; }, 250);
+$("skipSail").addEventListener("click", function(){ if(hop && !hop.landed){ hop.skip = true; track("skip_sail", { island:hop.to >= 0 ? SPOTS[hop.to].id : "hub" }); } $("skipSail").hidden = true; });
 $("brandHome").addEventListener("click", function(){ twClose(false); closeSheet(false); closeBook(false); $("homeBtn").click(); });
 $("brandHome").addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); this.click(); } });
 $("twClose").addEventListener("click", function(){ twClose(true); });
@@ -2362,6 +2367,7 @@ function tick(){
   placeTags(); placeReveal(dt); placeRitual();
 }
 // ---------- 搭船跳島：小森坐上「捷綠木小帆船」，貼著海面駛向下一座島；靠岸、上島之後才展開介紹卡 ----------
+var SAIL_N = 0;   // 這次造訪開了幾趟船：第一趟完整看航行，第二趟起才給「直接上島」（Apple 11/25：航行是期待感）
 var senAt = -1, hop = null, sailBoat = null, sailSen = null, settleCard = false;   // senAt：小森現在在哪座島（-1＝工作坊）
 var BOAT_DECK = .18;   // 船內甲板高度（船身座標），小森的站點也用它
 function makeSailBoat(){
@@ -3210,6 +3216,7 @@ function startHop(fromMesh, toIdx, fresh){
   var sail = THREE.MathUtils.clamp(1.8 + cum[cum.length - 1]*1.3, 2, 4);
   hop = { t:0, sail:sail, hold:.35, step:.5, a:a, b:b, path:path, cum:cum, from:fromIdx, cur:a.clone(), to:toIdx, fresh:fresh, sw:sw, sh:sh, appr:appr, cam0:{ p:camera.position.clone(), t:controls.target.clone() }, free:false, card:false, fwd:new THREE.Vector3(1, 0, 0) };
   flying = null; boat.visible = false; sailSen.material.depthTest = true; sailSen.renderOrder = 2;
+  if(toIdx >= 0) SAIL_N++;
   return true;
 }
 var sailM4 = new THREE.Matrix4();
@@ -3355,7 +3362,7 @@ function wakeTick(dt, H, p, fwd, moving){
 }
 function tickHop(dt, paused){
   if(!hop){ if(WAKE.pool.length) wakeTick(dt, null); return; }
-  var H = hop; H.t += paused ? 99 : dt;
+  var H = hop; H.t += (paused || H.skip) ? 99 : dt;   // 「直接上島」：跟「暫停動態」一樣直接到岸
   var ks = Math.min(1, H.t/H.sail), e = ease(ks);   // 航行：兩頭慢、中間快，最後減速停妥
   var p = hopAt(H, e); H.cur.copy(p);
   if(ks < 1){ var ahead = hopAt(H, Math.min(1, e + .02)), f = ahead.sub(p); f.addScaledVector(p, -f.dot(p)); if(f.lengthSq() > 1e-10) H.fwd.copy(f.normalize()); }
