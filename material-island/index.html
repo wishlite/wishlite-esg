@@ -275,7 +275,7 @@ a{color:var(--moss)}
 .stamps li{width:40px;height:40px;border-radius:50%;border:2px dashed var(--sand);display:grid;place-items:center;font-size:10px;line-height:1.1;text-align:center;color:var(--muted);background:var(--white)}
 .stamps li.on{border:2px solid var(--moss);background:var(--moss);color:var(--white);font-weight:700;transform:rotate(-8deg)}
 .stampnote{font-size:12px;color:var(--muted);line-height:1.6;margin:4px 0 12px}
-.toast{position:absolute;left:50%;top:72px;transform:translate(-50%,-8px);z-index:8;background:var(--moss);color:var(--white);border-radius:20px;padding:8px 16px;font-size:14px;font-weight:500;box-shadow:0 6px 20px rgba(30,42,30,.25);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease)}
+.toast{position:absolute;left:50%;top:calc(118px + env(safe-area-inset-top));transform:translate(-50%,-8px);z-index:8;background:var(--moss);color:var(--white);border-radius:20px;padding:8px 16px;font-size:14px;font-weight:500;box-shadow:0 6px 20px rgba(30,42,30,.25);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .biz{display:inline-flex;align-items:center;min-height:34px;text-decoration:none;color:var(--moss-dark);font-size:13px}
 .biz:hover{background:var(--cream)}
@@ -396,6 +396,7 @@ a{color:var(--moss)}
 .site-return{display:inline-flex;align-items:center;min-height:34px;color:var(--moss-dark);text-decoration:none}
 .back-earth{display:none;margin-left:10px;align-items:center;min-height:34px;color:#fff!important;background:var(--moss-dark)!important;font-weight:600;cursor:pointer}
 .on-isl .top .back-earth{display:inline-flex}.on-isl .top .site-return{display:none}
+#hsX{display:none}
 .hs-back{margin-right:8px;padding:6px 12px;border:0;border-radius:18px;background:rgba(255,253,248,.92);color:var(--moss-dark);font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .opening .site-return{position:absolute;left:94px;top:calc(10px + env(safe-area-inset-top));min-height:30px;padding:3px 10px;pointer-events:auto;z-index:2}
 @media (max-width:640px){
@@ -818,7 +819,7 @@ a{color:var(--moss)}
   <nav class="dock" aria-label="小島操作">
     <button type="button" class="primary" id="tourBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19l5-14 4 9 3-5 4 10"/></svg><span>精選導覽</span></button>
     <button type="button" id="listBtn" aria-expanded="false" aria-controls="sheet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span>地點清單</span></button>
-    <button type="button" id="homeBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>回到全景</span></button>
+    <button type="button" id="homeBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span>回到地球</span></button>
     <button type="button" id="motionBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path id="motionIcon" d="M9 5v14M15 5v14"/></svg><span id="motionLabel">暫停動態</span></button>
   </nav>
 
@@ -839,7 +840,7 @@ a{color:var(--moss)}
   <div class="scrim" id="scrim"></div>
   <aside class="sheet" id="sheet" aria-labelledby="sheetTitle" aria-hidden="true">
     <header><h2 id="sheetTitle">地點清單</h2><button type="button" class="x" id="sheetClose" aria-label="關閉地點清單">×</button></header>
-    <p class="sub">材料小劇場六個篇章，加上自然素材，共 7 座島；中間是 Wishlite 總部。每到一座島，就蓋一枚探索章。</p>
+    <p class="sub">一共 7 座材料島；中間是 Wishlite 總部。每到一座島，就蓋一枚探索章。</p>
     <ol id="list"></ol>
   </aside>
   <aside class="twcard" id="twCard" hidden role="dialog" aria-labelledby="twTitle">
@@ -901,7 +902,7 @@ a{color:var(--moss)}
   <div class="fs-big" id="fsBig" hidden role="dialog" aria-label="照片"><img alt=""><button type="button" class="x" aria-label="關閉" onclick="this.parentNode.hidden=true">×</button></div>
   <div class="expop" id="exPop" hidden role="dialog" aria-labelledby="exTitle"><button type="button" class="x" id="exClose" aria-label="關閉">×</button><div id="exPopBody"></div></div>
   <div class="hs" id="hs" hidden role="dialog" aria-label="小屋導覽"><div class="hs-bg" id="hsBg"></div><section class="hub-room" id="hubRoom" hidden aria-label="永續工作室"><div class="hr-blur"></div><img class="hr-img" src="img/hub-inside.webp" alt="Wishlite 永續工作室：材料桌和後方層架"><div class="hr-bar" id="hrBar"></div></section><section class="hub-panel" id="hubPanel" hidden aria-labelledby="hubPT"></section>
-    <div class="hs-top"><button type="button" class="hs-back" id="hsBack" aria-label="離開小屋，回到島上">‹ 回到島上</button><span class="hs-place" id="hsPlace"></span><span class="sp"></span><button type="button" class="hs-skip" id="hsSkip">跳過</button><button type="button" class="hs-x" id="hsX" aria-label="走出小屋">×</button></div>
+    <div class="hs-top"><button type="button" class="hs-back" id="hsBack" aria-label="離開小屋，回到島上">‹ 回到島上</button><span class="hs-place" id="hsPlace"></span><span class="sp"></span><button type="button" class="hs-skip" id="hsSkip">看結尾</button><button type="button" class="hs-x" id="hsX" aria-label="走出小屋">×</button></div>
     <div class="hs-stage" id="hsStage"><div class="hs-layer" id="hsL0"><img alt=""><div class="hs-inset"><img alt=""><small></small></div></div><div class="hs-layer" id="hsL1"><img alt=""><div class="hs-inset"><img alt=""><small></small></div></div><div class="hs-layer hs-trio" id="hsT"></div><p class="hs-note" id="hsNote" hidden></p><p class="hs-step" id="hsStep" hidden></p><span class="hs-demo" hidden>示意圖</span><button type="button" class="hs-film-play" id="hsFilmPlay" hidden><span>▶ 播放影片 · 30 秒</span></button></div>
     <img class="hs-sen" id="hsSen" alt="">
     <p class="hs-sub" id="hsSub" aria-live="polite"></p>
@@ -985,19 +986,19 @@ var SPOTS = [
            ["海洋風擴香石", OFFICIAL + "194", "", "img/work-oyster-ocean.webp"],
            ["水晶許願擴香石", OFFICIAL + "371", "", "img/work-oyster-crystal.webp"]],
     gifts:[["玉山擴香石（立體款）", NOTION + "33370427468181b281bdd3a76cc7512c", "img/gift-oyster-yushan.webp"], ["立體客製 Logo 擴香石", NOTION + "3257042746818119a3bec4d555538f55", "img/gift-oyster-line.webp"]], note:"「撿回來、洗一洗」並不足以安全使用，整理方式會依用途而不同。" },
-  { id:"diaper", pier:[.354, .678], ritual:{ say:"這些尿布紙纖，還能變成什麼呢？", wear:"穿上紙纖裝備", fx:"earth", walk:.3, wave:true, spin:true, depth:[0.6, 0.7], bigShell:true, v2:true, shell:[0.6629, 0.8109, 0.9602, 0.9828] }, showcase:true, theater:["img/ch4-diaper-v2.jpg", "材料小劇場：尿布紙纖拆開、打散，做成會發芽的種子地球"], finder:"fiber", body3d:"img/v2-isl-diaper.webp", plaza:0.7, brief:"NG 尿布裡的紙纖換個舞台，陪種子發芽。", name:"NG 尿布紙纖", line:"一片尿布裡，哪一部分能變成種子地球？",
+  { id:"diaper", pier:[.354, .678], ritual:{ say:"這些尿布紙纖，還能變成什麼呢？", wear:"穿上紙纖裝備", fx:"earth", walk:.3, wave:true, spin:true, depth:[0.6, 0.7], bigShell:true, v2:true, shell:[0.6629, 0.8109, 0.9602, 0.9828] }, showcase:true, theater:["img/ch4-diaper-v2.jpg", "材料小劇場：尿布紙纖拆開、打散，做成會發芽的種子地球"], finder:"fiber", body3d:"img/v2-isl-diaper.webp", plaza:0.7, brief:"NG 尿布裡的紙纖換個舞台，陪種子發芽。", name:"尿布紙纖", line:"一片尿布裡，哪一部分能變成種子地球？",
     img:"img/ch4-diaper.jpg", obj:"img/obj-diaper.webp", sen:"img/sen-diaper.webp", alt:"一片白色紙尿布與一團紙漿纖維",
     body:"<p>我們用的不是使用過的尿布，而是尿布工廠裡還沒被使用、因為外觀或規格不符留下的 NG 品，以及製造時的下腳料。</p><p>拆解後的紙漿纖維，包進植物種子，變成會發芽的種子地球。</p>",
     ws:[["地球種子", 259, "", "img/work-diaper-seedearth.webp"], ["地球生命樹", 419, "", "img/work-diaper-tree.webp"], ["地球紙漿畫冰箱貼", 437, "", "img/work-diaper-magnet.webp"]],
     kits:[["地球種子 DIY 材料包", OFFICIAL + "258", "img/kit-diaper-seedearth.webp"]],
     gifts:[["地球種子卡", NOTION + "325704274681819bb9c7c8ce0b70cc3d", "img/gift-diaper-card.webp"], ["地球種子（紙盒款）", NOTION + "325704274681818cbb06eb283f54dc56", "img/gift-diaper-box.webp"]] },
-  { id:"caps", pier:[.340, .677], ritual:{ say:"這些瓶蓋，還能變成什麼呢？", wear:"穿上瓶蓋裝備", fx:"turtles", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], bigShell:true, v2:true, shell:[0.6856, 0.8422, 0.9678, 0.9812] }, showcase:true, theater:["img/ch5-caps-v2.jpg", "材料小劇場：瓶蓋剪成碎片，再壓成彩色小海龜"], finder:"caps", body3d:"img/v2-isl-caps.webp", plaza:0.52, brief:"圓圓一小顆，配上巧思，也能游進日常。", name:"回收瓶蓋", line:"瓶子喝空了，瓶蓋有新點子。",
+  { id:"caps", pier:[.340, .677], ritual:{ say:"這些瓶蓋，還能變成什麼呢？", wear:"穿上瓶蓋裝備", fx:"turtles", walk:.3, wave:true, spin:true, depth:[0.42, 0.52], bigShell:true, v2:true, shell:[0.6856, 0.8422, 0.9678, 0.9812] }, showcase:true, theater:["img/ch5-caps-v2.jpg", "材料小劇場：瓶蓋剪成碎片，再壓成彩色小海龜"], finder:"caps", body3d:"img/v2-isl-caps.webp", plaza:0.52, brief:"圓圓一小顆，配上巧思，也能游進日常。", name:"瓶蓋", line:"瓶子喝空了，瓶蓋有新點子。",
     img:"img/ch5-caps.jpg", obj:"img/obj-caps.webp", sen:"img/sen-caps.webp", alt:"五個彩色塑膠瓶蓋與剪碎的瓶蓋碎片",
     body:"<p>飲料喝完了，瓶蓋還有下一站。</p><p>圓圓的形狀、繽紛的顏色，配上一點巧思，就能游成小魚、變身小海龜，繼續陪我們過日子。</p>",
     ws:[["瓶蓋小海龜工作坊", 375, "", "img/work-caps-turtle.webp"]],
     kits:[["瓶蓋票卡夾｜字母串珠 DIY 材料包", "https://wishlite.com.tw/product/detail/483", "img/kit-caps-cardholder.webp", "成品示意"]],   // 官網材料包頁 Apple 11/10 22:08 提供，已確認可公開開啟
     gifts:[["瓶蓋新生 ECO 證件票卡夾", NOTION + "3af477ea33b441f0b68d0acfeb06085d", "img/gift-caps-cardholder.webp"]] },
-  { id:"board", pier:[.669, .727], ritual:{ say:"這些養樂多瓶，還能變成什麼呢？", wear:"穿上再生板材裝備", fx:"build", walk:.3, wave:true, spin:true, depth:[0.45, 0.55], bigShell:true, v2:true, shell:[0.6496, 0.5109, 0.9621, 0.9828] }, showcase:true, theater:["img/ch6-board-v2.jpg", "材料小劇場：養樂多瓶和保麗龍打碎、造粒，壓成一塊再生板材"], finder:"wood", body3d:"img/v2-isl-board.webp", plaza:0.55, brief:"養樂多瓶、保麗龍，原來也有變成板材的一面。", name:"回收塑膠再生板材", sub:"捷綠木", line:"換個模樣，還認得我嗎？",
+  { id:"board", pier:[.669, .727], ritual:{ say:"這些養樂多瓶，還能變成什麼呢？", wear:"穿上再生板材裝備", fx:"build", walk:.3, wave:true, spin:true, depth:[0.45, 0.55], bigShell:true, v2:true, shell:[0.6496, 0.5109, 0.9621, 0.9828] }, showcase:true, theater:["img/ch6-board-v2.jpg", "材料小劇場：養樂多瓶和保麗龍打碎、造粒，壓成一塊再生板材"], finder:"wood", body3d:"img/v2-isl-board.webp", plaza:0.55, brief:"養樂多瓶、保麗龍，原來也有變成板材的一面。", name:"捷綠木", sub:"捷綠木", line:"換個模樣，還認得我嗎？",
     img:"img/ch6-board.jpg", obj:"img/obj-board.webp", sen:"img/rit-board-g.webp", alt:"三塊回收塑膠再生板材，旁邊是無標籤的小塑膠瓶與保麗龍底托",
     body:"<p>養樂多瓶、保麗龍底托這些回收塑膠，經過分選、清洗、破碎、造粒，壓成一塊塊再生板材，做成的產品叫捷綠木。</p><p>裁切成杯墊底座，拼上馬賽克磚，循環就變成看得見、用得到的作品。</p>",
     ws:[["馬賽克杯墊", 182, "底座使用回收塑膠再生板材（捷綠木）。", "img/work-board-coaster.webp", ["img/work-board-coaster-p1.webp", "img/work-board-coaster-p2.webp", "img/work-board-coaster-p3.webp"]], ["馬賽克星球燈", 291, "燈座與支架使用回收塑膠再生板材（捷綠木）；馬賽克拼貼片與燈具零件為其他素材。", "img/work-board-lamp.webp"]],
@@ -1843,7 +1844,8 @@ function home(){ hubOff();
   focusIdx = -1;
   mode = "explore"; hideCard(); setActive(-1); intro.hidden = false;
   viewTo = homeOffset(); flyTo(homePose());
-  say("回到全景");
+  if(Object.keys(dressed).length) setTimeout(todayToast, 1800);   // 今日小發現：逛完至少一座島、回到地球時才提示（Apple 11/25：不要在第一次搭船途中打斷）
+  say("回到地球");
 }
 $("homeBtn").addEventListener("click", home);
 function zoomStep(f){ if(!GL) return; flying = null; var d = camera.position.clone().sub(controls.target); var L = THREE.MathUtils.clamp(d.length()*f, controls.minDistance, controls.maxDistance); camera.position.copy(controls.target).addScaledVector(d.normalize(), L); controls.update(); intro.hidden = true; }
@@ -3542,7 +3544,7 @@ function opPinTick(){ var o = $("opening"); if(o.hidden || o.classList.contains(
   requestAnimationFrame(opPinTick); }
 function todayToast(){ var tf = todayFind(), sp = SPOTS.find(function(x){ return x.id === tf[0]; }), d = new Date(Date.now() + 8*3600*1000).toISOString().slice(0, 10);   // 一天提示一次：今天的小發現在哪座島
   if(sp && store("wl-today-find") !== d && !foundHas(tf[0], tf[1])){ store("wl-today-find", d); toast("今天的小發現在" + sp.name + "島"); } }
-function openingHide(){ setTimeout(todayToast, 2600); opStopOff(); if(opAnim) viewTo = { ox:0, oy:0 }; clearTimeout(opAnim); opAnim = null; opSayOff(); appEl.classList.remove("op-on"); var o = $("opening"); o.classList.add("out"); $("opPin").classList.remove("on"); setTimeout(function(){ o.hidden = true; }, 500); }
+function openingHide(){ opStopOff(); if(opAnim) viewTo = { ox:0, oy:0 }; clearTimeout(opAnim); opAnim = null; opSayOff(); appEl.classList.remove("op-on"); var o = $("opening"); o.classList.add("out"); $("opPin").classList.remove("on"); setTimeout(function(){ o.hidden = true; }, 500); }
 $("opSkipAnim").addEventListener("click", opSkipAnim);
 $("opStop").addEventListener("click", function(){ $("opGo").click(); });   // 點第一站提示＝跟小森出發
 $("opReplay").addEventListener("click", function(){ openingShow(true); });
