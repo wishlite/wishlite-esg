@@ -62,6 +62,10 @@ a{color:var(--moss)}
 .times button{border:0;background:transparent;border-radius:12px;padding:6px 9px;font-size:13px;min-height:34px}
 .times button[aria-pressed="true"]{background:var(--moss);color:var(--white)}
 .times button:focus-visible{outline:3px solid var(--gold)}
+/* 手機點按範圍：外觀不變，看不見的點擊範圍至少 44px（Apple 11/25） */
+.top .pill,.times button,.hs-back,.hs-skip,.hs-x,.nav button,.expop .x{position:relative}
+.top .pill:not(.times)::after,.times button::after,.hs-back::after,.hs-skip::after,.hs-x::after,.expop .x::after,.tip3d::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+.top .shareBtn{min-width:36px;justify-content:center}
 
 /* 地標名牌 */
 .tags{position:absolute;inset:0;pointer-events:none;z-index:2}
@@ -405,7 +409,7 @@ a{color:var(--moss)}
   .top .times{grid-column:3/6;grid-row:1;justify-self:end}
   .top .sp{display:none}
   .top .back-earth{margin-left:0}
-  .top .site-return,.top .back-earth,.top .biz,.top .bookBtn,.top .musicBtn,.top .shareBtn{position:static;grid-row:2;min-height:34px;padding:4px 6px;font-size:12px;justify-self:start}
+  .top .site-return,.top .back-earth,.top .biz,.top .bookBtn,.top .musicBtn,.top .shareBtn{position:relative;grid-row:2;min-height:34px;padding:4px 6px;font-size:12px;justify-self:start}
   .top .shareTx{display:none}
 }
 
@@ -1456,7 +1460,7 @@ function buildScene(){
   // 七座島的位置（緯度、經度），陸地跟著島長
   SPOTS.forEach(function(s){ s.lat = LAYOUT[s.id][0]; s.lon = LAYOUT[s.id][1]; s.n = nrm(s.lat, s.lon); });
   // 毛氈小地球
-  var earthTex = new THREE.TextureLoader().load("img/earth.webp"); earthTex.colorSpace = THREE.SRGBColorSpace; earthTex.anisotropy = 8;
+  var earthTex = new THREE.TextureLoader().load("img/earth.webp", function(t){ window.__earthImg = t.image; if(window.__seaFromEarth) window.__seaFromEarth(t.image); }); earthTex.colorSpace = THREE.SRGBColorSpace; earthTex.anisotropy = 8;
   sea = new THREE.Mesh(new THREE.SphereGeometry(R, 160, 96), new THREE.MeshPhysicalMaterial({ map:earthTex, emissiveMap:earthTex, emissive:new THREE.Color(0xffffff), emissiveIntensity:0, roughness:1, metalness:0, sheen:1, sheenRoughness:.7, sheenColor:new THREE.Color(0xffffff) }));   // 地球本身微微自發光：夜晚也看得出海陸
   sea.receiveShadow = true; scene.add(sea);
   // 海面：改用立體毛氈小浪花（見 buildTufts），不再鋪平面浪紋（Apple 11/21 06:45）
@@ -3203,7 +3207,7 @@ function startHop(fromMesh, toIdx, fresh){
 var sailM4 = new THREE.Matrix4();
 // ---------- 海上航路：從地球貼圖讀出海陸，船走海面（A* 尋路 + 拉直 + 圓滑） ----------
 var SEA = null, GRID = null;
-(function(){ var im = new Image(); im.onload = function(){ try{ var W = 720, H = 360, c = document.createElement("canvas"); c.width = W; c.height = H; var x = c.getContext("2d"); x.drawImage(im, 0, 0, W, H); SEA = { W:W, H:H, d:x.getImageData(0, 0, W, H).data }; }catch(_){ SEA = null; } }; im.src = "img/earth.webp"; })();
+(function(){ function build(im){ try{ var W = 720, H = 360, c = document.createElement("canvas"); c.width = W; c.height = H; var x = c.getContext("2d"); x.drawImage(im, 0, 0, W, H); SEA = { W:W, H:H, d:x.getImageData(0, 0, W, H).data }; }catch(_){ SEA = null; } } if(window.__earthImg) build(window.__earthImg); else window.__seaFromEarth = build; })();   // 海洋判斷用地球貼圖同一張，只下載一次
 // 毛氈小浪花：島嶼附近的海上放少量立體白浪頭，輕輕浮動、捲起（Apple 11/21）
 var tufts = [], tuftsBuilt = false;
 function buildTufts(){
