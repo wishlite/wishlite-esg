@@ -517,6 +517,11 @@ a{color:var(--moss)}
 .rt-say.on{opacity:1;transform:translate(var(--sx,0px),var(--sy,0px)) scale(1)}
 .inv-say{pointer-events:auto;cursor:pointer;font-size:16px}
 .skip-sail{position:fixed;left:50%;bottom:calc(104px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;min-height:32px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--muted);background:rgba(249,246,240,.72)!important;box-shadow:none;cursor:pointer}
+.drag-hint{position:fixed;left:50%;top:69%;transform:translate(-50%,-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;opacity:0;transition:opacity .4s ease}
+.drag-hint.on{opacity:1}.dh-hand{font-size:34px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.25));animation:dhSwipe 1.6s ease-in-out infinite}
+.dh-tx{padding:7px 14px;border-radius:999px;background:rgba(255,253,248,.94);color:var(--moss-dark);font-size:14px;font-weight:600;box-shadow:0 4px 14px rgba(46,70,48,.22);white-space:nowrap}
+@keyframes dhSwipe{0%,100%{transform:translateX(-28px)}50%{transform:translateX(28px)}}
+@media (prefers-reduced-motion:reduce){.dh-hand{animation:none}}
 .skip-sail::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}.nb-k:empty{display:none}
 .rt-say::before,.rt-say::after{content:"";position:absolute;border-radius:50%;background:#fffdf7;box-shadow:0 0 0 2px rgba(196,154,60,.55),0 4px 10px rgba(30,42,30,.18)}
 .rt-say::after{left:calc(30% - 8px);bottom:-20px;width:16px;height:16px}
@@ -905,6 +910,7 @@ a{color:var(--moss)}
   <p class="rt-say" id="rtSay" hidden aria-live="polite"></p>
   <p class="rt-say inv-say" id="invSay" hidden role="button" tabindex="0"></p>
   <button type="button" class="pill skip-sail" id="skipSail" hidden>直接上島 ›</button>
+  <div class="drag-hint" id="dragHint" hidden aria-hidden="true"><span class="dh-hand">👆</span><span class="dh-tx">拖一拖，看看地球另一邊</span></div>
   <p class="door-tip" id="doorTip" hidden></p>
   <div class="rt-acts" id="rtActs" hidden role="group" aria-label="小森的邀請"><button type="button" class="btn solid" id="rtWear"></button><button type="button" class="btn" id="rtSkip">先看材料故事</button></div>
   <div class="exbar" id="exBar" hidden role="status"><span id="exHint"></span><button type="button" id="exInfo">島嶼介紹</button></div>
@@ -3567,7 +3573,13 @@ function openingHide(){ opStopOff(); if(opAnim) viewTo = { ox:0, oy:0 }; clearTi
 $("opSkipAnim").addEventListener("click", opSkipAnim);
 $("opStop").addEventListener("click", function(){ $("opGo").click(); });   // 點第一站提示＝跟小森出發
 $("opReplay").addEventListener("click", function(){ openingShow(true); });
-$("opSkip").addEventListener("click", function(){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; say("自己逛逛：點任何一座島就能出發"); });
+$("opSkip").addEventListener("click", function(){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; say("自己逛逛：點任何一座島就能出發"); dragHint(); });
+function dragHint(){   // 第一次自己逛：提示地球可以拖著轉，地球也先自己慢慢轉一下（Apple 11/25）
+  if(!GL || store("wl-drag-hint")) return; store("wl-drag-hint", "1"); var el = $("dragHint"), done = false;
+  function off(){ if(done) return; done = true; controls.autoRotateSpeed = .45; el.classList.remove("on"); setTimeout(function(){ el.hidden = true; }, 450); controls.removeEventListener("start", off); }
+  setTimeout(function(){ if(exp || hop || current >= 0) return; el.hidden = false; requestAnimationFrame(function(){ el.classList.add("on"); }); idle = 5; controls.autoRotateSpeed = 3;   // 先轉快一點，讓背面的島轉出來
+    controls.addEventListener("start", off); setTimeout(off, 4500); setTimeout(function(){ controls.autoRotateSpeed = .45; }, 5000); }, 1400);
+}
 $("opGo").addEventListener("click", function(){ if(opNext() < 0){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; $("listBtn").click(); return; }   // 七島都走完：直接打開地圖
   openingHide();   // 鏡頭平順回到工作室的小森身旁，接現有的登船與航行
   flyTo(islPose(HUB.isl, 2.6, null, size().w <= 640 ? 1.6 : 1), false, 1.3); toast("小森從韻手作永續出發！");
