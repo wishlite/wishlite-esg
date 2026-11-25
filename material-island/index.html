@@ -3585,7 +3585,8 @@ $("opSkip").addEventListener("click", function(){ var anim = !!opAnim; openingHi
 function dragHint(){   // 第一次自己逛：提示地球可以拖著轉，地球也先自己慢慢轉一下（Apple 11/25）
   if(!GL || store("wl-drag-hint")) return; var el = $("dragHint"), done = false;
   function off(){ if(done) return; done = true; controls.autoRotateSpeed = .45; el.classList.remove("on"); setTimeout(function(){ el.hidden = true; }, 450); controls.removeEventListener("start", off); }
-  setTimeout(function(){ if(exp || hop || current >= 0) return; store("wl-drag-hint", "1"); el.hidden = false;   // 真的出現了才記成看過 requestAnimationFrame(function(){ el.classList.add("on"); }); idle = 5; controls.autoRotateSpeed = 3;   // 先轉快一點，讓背面的島轉出來
+  // 提示真的出現了才記成看過
+  setTimeout(function(){ if(exp || hop || current >= 0) return; store("wl-drag-hint", "1"); el.hidden = false; requestAnimationFrame(function(){ el.classList.add("on"); }); idle = 5; controls.autoRotateSpeed = 3;   // 先轉快一點，讓背面的島轉出來
     controls.addEventListener("start", off); setTimeout(off, 4500); setTimeout(function(){ controls.autoRotateSpeed = .45; }, 5000); }, 1400);
 }
 $("opGo").addEventListener("click", function(){ if(opNext() < 0){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; $("listBtn").click(); return; }   // 七島都走完：直接打開地圖
