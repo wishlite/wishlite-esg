@@ -2790,7 +2790,8 @@ function exLeave(){ nbHide("next"); if(!exp) return; var s = exp.s; exPopClose(t
 var PT_V = null, PT_AR = null;   // 提示＝文字＋和門口一樣的金色箭頭往下指（Apple 11/11 12:03：不用 emoji）
 function propTipTick(){ var box = $("propTips"); if(!box) return; var s = exp && exp.s;
   var tf = todayFind(), today = s && tf[0] === s.id && !foundHas(s.id, tf[1]) && dressed[s.id];
-  var on = s && (s._houseOut || s._findHint || today) && exp.st === "idle" && $("exPop").hidden && $("hs").hidden && !hop && !flying && !appEl.classList.contains("op-on");
+  var quiet = s && s._findHint && !s._houseOut && performance.now() - (s._enterT || 0) < 4800;   // 回訪：小森先說完「上次沒看到的」，小發現提示再出現（Apple 11/25：字太多）
+  var on = s && !quiet && (s._houseOut || s._findHint || today) && exp.st === "idle" && $("exPop").hidden && $("hs").hidden && !hop && !flying && !appEl.classList.contains("op-on");
   if(!on){ if(box.childElementCount) box.innerHTML = ""; box._s = null; return; }
   var list = exProps.filter(function(o){ return o.userData.spot === s && o.parent && o.parent.visible && !o.userData.sign && !o.userData.arrow && o.userData.prop.door == null && !(s._propDone && s._propDone[o.userData.prop.id]) && !(o.userData.prop.find && foundHas(s.id, o.userData.prop.id)) && (o.userData.prop.find ? (s._houseOut || s._findHint || (s.id === tf[0] && o.userData.prop.id === tf[1])) : s._houseOut); });
   if(box._s !== s || box.childElementCount !== list.length){ box._s = s; box.innerHTML = "";
