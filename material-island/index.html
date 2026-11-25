@@ -155,6 +155,12 @@ a{color:var(--moss)}
 .dock button.primary:hover{background:var(--moss-dark)}
 .dock button[aria-pressed="true"]{background:var(--sand)}
 .dock svg{width:18px;height:18px;flex:none}
+/* 在島上：底部導覽列縮成小圖示列，拿掉跟左上角重複的「回到地球」（Apple 11/25：底部太佔空間） */
+.on-isl .dock #homeBtn{display:none}
+.on-isl .dock{gap:2px;padding:3px}
+.on-isl .dock button{min-width:44px;min-height:40px;padding:6px 10px}
+.on-isl .dock button span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.bk-find{color:#9a7a48;font-size:11px}
 .zoom{position:absolute;right:12px;top:72px;display:flex;flex-direction:column;gap:6px;z-index:3}
 .zoom button{width:44px;height:44px;border-radius:50%;border:1px solid var(--sand);background:rgba(249,246,240,.95);font-size:20px;line-height:1;box-shadow:0 3px 10px rgba(30,42,30,.1)}
 .zoom button:focus-visible{outline:3px solid var(--gold)}
@@ -880,7 +886,7 @@ a{color:var(--moss)}
     <header><h2 id="bookTitle">我的材料集章冊</h2><button type="button" class="x" id="bookClose" aria-label="關閉集章冊">×</button></header>
     <div id="bookMain">
     <div class="sec"><h3>到訪足跡 <small id="bookSeen" style="font-weight:400;color:var(--muted)"></small></h3><ol class="foot" id="bookFoot"></ol></div>
-    <div class="sec"><h3>我的收藏</h3><ul class="wl" id="bookWish"></ul></div>
+    <div class="sec" hidden><h3>我的收藏</h3><ul class="wl" id="bookWish"></ul></div><!-- Apple 11/25：集章冊先拿掉「我的收藏」，不補 ♡ 按鈕 -->
     <div class="sec"><h3>接下來</h3><div class="next">
       <button type="button" class="btn solid" id="bookPlan">規劃一場活動</button>
       <a class="btn" id="bookMake" href="https://wishlite.com.tw/service/detail/42?view=activities" target="_blank" rel="noopener">找工作坊體驗 ↗</a>
@@ -1664,8 +1670,10 @@ function bindWish(){
 function bookName(s){ return s.name; }
 function renderBook(){
   $("bookFoot").innerHTML = SPOTS.map(function(s){ var on = !!seen[s.id];
-    return '<li class="' + (on ? "on" : "") + '"><div class="av">' + (on ? '<img src="' + s.sen + '" alt="">' : "") + "</div>" + bookName(s) + (on ? "" : "<br>（還沒去）") + "</li>"; }).join("");
-  $("bookSeen").textContent = "已到訪 " + seenCount() + "／" + N;
+    var ft = typeof SCENE_DECO !== "undefined" ? (SCENE_DECO[s.id] || []).length : 0, fg = ft && typeof foundLeft === "function" ? ft - foundLeft(s.id) : 0;
+    return '<li class="' + (on ? "on" : "") + (ft && fg === ft ? " allfound" : "") + '"><div class="av">' + (on ? '<img src="' + s.sen + '" alt="">' : "") + "</div>" + bookName(s) + (on ? (ft ? '<br><small class="bk-find">小發現 ' + fg + "／" + ft + (fg === ft ? " ✓" : "") + "</small>" : "") : "<br>（還沒去）") + "</li>"; }).join("");   // 集章冊記錄每座島找到幾個小發現（Apple 11/25）
+  var fT = 0, fG = 0; if(typeof SCENE_DECO !== "undefined") SPOTS.forEach(function(x){ var t = (SCENE_DECO[x.id] || []).length; fT += t; fG += t - foundLeft(x.id); });
+  $("bookSeen").textContent = "已到訪 " + seenCount() + "／" + N + (fT ? "・小發現 " + fG + "／" + fT : "");
   $("bookWish").innerHTML = wishes.length ? wishes.map(function(w, j){
     var sp = SPOTS.find(function(x){ return x.id === w.spot; });
     return "<li>" + w.name + "<small>" + (sp ? bookName(sp) : "") + "・" + w.kind + '</small><div class="acts"><a href="' + w.url + '" target="_blank" rel="noopener">看介紹 ↗</a><button type="button" data-unwish="' + j + '">移除</button></div></li>'; }).join("")
@@ -2606,7 +2614,7 @@ var SCENE_DECO = {   // 島上小物＝小發現：換好裝以後可以點，�
             { img:"img/v2-deco-natural-bookmarks.webp", at:[.73, .66], w:.085, title:"葉脈書籤", photo:"img/work-natural-bookmark.webp", text:"留下來的葉脈染上顏色，就成了葉脈時光書籤。" } ] };
 var FOUND = {}; try{ FOUND = JSON.parse(store("wl-island-found") || "{}") || {}; }catch(_){ FOUND = {}; }
 function foundHas(id, k){ return !!(FOUND[id] && FOUND[id].indexOf(k) >= 0); }
-function foundAdd(id, k){ var a = FOUND[id] = FOUND[id] || []; if(a.indexOf(k) < 0){ a.push(k); store("wl-island-found", JSON.stringify(FOUND)); return true; } return false; }
+function foundAdd(id, k){ var a = FOUND[id] = FOUND[id] || []; if(a.indexOf(k) < 0){ a.push(k); store("wl-island-found", JSON.stringify(FOUND)); try{ renderBook(); }catch(_){} return true; } return false; }
 function foundLeft(id){ return (SCENE_DECO[id] || []).filter(function(d, k){ return !foundHas(id, "f" + k); }).length; }
 function todayFind(){   // 今日小發現：每天（台灣時間）輪到一座島的一個小物，同一天進站的人都一樣
   var all = []; ["coffee", "oyster", "denim", "diaper", "caps", "board", "natural"].forEach(function(id){ (SCENE_DECO[id] || []).forEach(function(d, k){ all.push([id, "f" + k]); }); });
@@ -3575,9 +3583,9 @@ $("opStop").addEventListener("click", function(){ $("opGo").click(); });   // �
 $("opReplay").addEventListener("click", function(){ openingShow(true); });
 $("opSkip").addEventListener("click", function(){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; say("自己逛逛：點任何一座島就能出發"); dragHint(); });
 function dragHint(){   // 第一次自己逛：提示地球可以拖著轉，地球也先自己慢慢轉一下（Apple 11/25）
-  if(!GL || store("wl-drag-hint")) return; store("wl-drag-hint", "1"); var el = $("dragHint"), done = false;
+  if(!GL || store("wl-drag-hint")) return; var el = $("dragHint"), done = false;
   function off(){ if(done) return; done = true; controls.autoRotateSpeed = .45; el.classList.remove("on"); setTimeout(function(){ el.hidden = true; }, 450); controls.removeEventListener("start", off); }
-  setTimeout(function(){ if(exp || hop || current >= 0) return; el.hidden = false; requestAnimationFrame(function(){ el.classList.add("on"); }); idle = 5; controls.autoRotateSpeed = 3;   // 先轉快一點，讓背面的島轉出來
+  setTimeout(function(){ if(exp || hop || current >= 0) return; store("wl-drag-hint", "1"); el.hidden = false;   // 真的出現了才記成看過 requestAnimationFrame(function(){ el.classList.add("on"); }); idle = 5; controls.autoRotateSpeed = 3;   // 先轉快一點，讓背面的島轉出來
     controls.addEventListener("start", off); setTimeout(off, 4500); setTimeout(function(){ controls.autoRotateSpeed = .45; }, 5000); }, 1400);
 }
 $("opGo").addEventListener("click", function(){ if(opNext() < 0){ var anim = !!opAnim; openingHide(); if(anim) flyTo(homePose(), false, .8); intro.hidden = false; chips.hidden = false; $("listBtn").click(); return; }   // 七島都走完：直接打開地圖
